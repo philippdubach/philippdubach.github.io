@@ -37,3 +37,4 @@ theme = 'hugo-blog-awesome'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
