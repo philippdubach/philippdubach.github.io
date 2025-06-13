@@ -262,7 +262,7 @@ blockquote p {
     
     body {
         font-size: 1rem !important;
-        background-color: #f8f9fa !important;
+
     }
     
     /* Scale sidebar to maintain proportions */
@@ -287,7 +287,7 @@ blockquote p {
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #1a1a1a;
+        background-color: #2a2a2a;
         color: #e0e0e0;
     }
     
