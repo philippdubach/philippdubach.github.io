@@ -11,7 +11,7 @@ theme = 'hugo-blog-awesome'
 [params]
   author = "Phil"
   description = "Curated Articles and Papers on Economics, Finance and Technology"
-  keywords = ["links", "web", "technology"]
+  keywords = ["Finance", "Economics", "Technology", "Data", "Machine Learning"]
   
   # Social links
   [params.social]
