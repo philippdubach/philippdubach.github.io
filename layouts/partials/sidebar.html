@@ -1,0 +1,32 @@
+<aside class="sidebar">
+    <div class="sidebar-content">
+        <div class="site-header">
+            <h1 class="site-title">
+                <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+            </h1>
+            <p class="site-description">{{ .Site.Params.description }}</p>
+        </div>
+        
+        <nav class="navigation">
+            <ul>
+                {{ range .Site.Data.navigation.main }}
+                <li><a href="{{ .url }}">{{ .name }}</a></li>
+                {{ end }}
+            </ul>
+        </nav>
+        
+        {{ if .Site.Params.social }}
+        <div class="social-links">
+            {{ with .Site.Params.social.linkedin }}
+            <a href="https://ch.linkedin.com/{{ . }}" target="_blank" rel="noopener">LinkedIn</a>
+            {{ end }}
+            {{ with .Site.Params.social.github }}
+            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">GitHub</a>
+            {{ end }}
+            {{ with .Site.Params.social.email }}
+            <a href="mailto:{{ . }}">Email</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</aside>

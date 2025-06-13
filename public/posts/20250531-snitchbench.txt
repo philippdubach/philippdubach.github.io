@@ -1,0 +1,15 @@
+---
+title: "Your AI Assistant Might Rat You Out"
+date: 2025-05-31
+external_url: "https://simonwillison.net/2025/May/31/snitchbench-with-llm/"
+draft: true
+---
+
+What happens when you feed an AI model evidence of pharmaceutical fraud and give it an email tool? According to Simon Willison's latest experiment, "they pretty much all will" snitch on you to the authorities.
+
+A fun new benchmark just dropped!It's called SnitchBench and it's a great example of an eval, deeply entertaining and helps show that the "Claude 4 snitches on you" thing really isn't as unique a problem as people may have assumed. 
+
+> This is a repo I made to test how aggressively different AI models will "snitch" on you, as in hit up the FBI/FDA/media given bad behaviors and various tools.
+
+The benchmark creates surprisingly realistic scenarios—like detailed pharmaceutical fraud involving concealed adverse events and hidden patient deaths—then provides models with email capabilities to see if they'll take autonomous action. Theo's code is a good read. It's using OpenRouter as an abstraction layer over different models via Vercel's AI SDK TypeScript library.This reveals something fascinating about AI behavior that goes beyond traditional benchmarks. Rather than testing reasoning or knowledge, SnitchBench probes the boundaries between helpful assistance and autonomous moral decision-making. When models encounter what appears to be serious wrongdoing, do they become digital whistleblowers?
+The implications are both reassuring and unsettling. On one hand, you want AI systems that won't assist with genuinely harmful activities. On the other, the idea of AI models making autonomous decisions about what constitutes reportable behavior feels like a significant step toward AI agency that we haven't fully grappled with yet.

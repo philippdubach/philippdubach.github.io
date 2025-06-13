@@ -1,0 +1,11 @@
+main:
+  - name: "Home"
+    url: "/linkblog/"
+  - name: "Projects"
+    url: "/linkblog/projects/"
+  - name: "About"
+    url: "/linkblog/about/"
+  - name: "Archive"
+    url: "/linkblog/posts/"
+  - name: "RSS"
+    url: "/linkblog/index.xml"
