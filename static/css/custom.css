@@ -24,6 +24,8 @@ blockquote p {
   margin: 0.5em 0;
 }
 
+
+
 .container {
     display: flex;
     max-width: 1200px;
@@ -102,6 +104,7 @@ blockquote p {
 .post {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
+
 }
 
 .post:last-child {
@@ -250,165 +253,41 @@ blockquote p {
         color: #1a1a1a;
     }
 }
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+    color: #666;
+    font-size: 0.85rem;
+}
 
-/* MOBILE-FIRST RESPONSIVE DESIGN - Major overhaul for better mobile experience */
+/* Responsive design */
 @media (max-width: 768px) {
-    /* Reduce body padding for mobile to maximize content area */
-    body {
-        padding-top: 0;
-        line-height: 1.5; /* Slightly tighter line height for mobile */
-    }
-    
     .container {
         flex-direction: column;
-        margin: 0; /* Remove auto margins on mobile */
-        padding: 0; /* Remove container padding */
     }
     
-    /* Compact sidebar for mobile - much tighter spacing like reference */
     .sidebar {
         width: 100%;
         height: auto;
         position: static;
         border-right: none;
         border-bottom: 1px solid #e9ecef;
-        padding: 1rem 1rem 0.75rem 1rem; /* Reduced padding significantly */
-        background-color: #f8f9fa;
+        padding: 1rem;
     }
     
-    /* Smaller site title for mobile */
-    .site-title a {
-        font-size: 1.25rem; /* Reduced from 1.5rem */
-        line-height: 1.2;
-    }
-    
-    /* More compact site description */
-    .site-description {
-        margin: 0.25rem 0 1rem 0; /* Much tighter margins */
-        font-size: 0.85rem; /* Slightly smaller */
-        line-height: 1.4;
-    }
-    
-    /* Tighter navigation spacing */
-    .navigation ul {
-        margin-bottom: 1rem; /* Reduced from 2rem */
-    }
-    
-    .navigation li {
-        margin-bottom: 0.25rem; /* Reduced from 0.5rem */
-    }
-    
-    .navigation a {
-        font-size: 0.95rem; /* Slightly smaller for mobile */
-    }
-    
-    /* More compact social links */
-    .social-links {
-        margin-top: 0.75rem;
-    }
-    
-    .social-links a {
-        font-size: 0.85rem;
-        margin-right: 0.75rem;
-    }
-    
-    /* Significantly reduced content padding for mobile */
     .content {
-        padding: 1rem 1rem 1rem 1rem; /* Much more compact like reference */
+        padding: 1rem;
     }
     
-    /* Tighter post spacing on mobile */
-    .post {
-        margin-bottom: 0.75rem; /* Reduced spacing between posts */
-        padding-bottom: 0.75rem;
-    }
-    
-    /* More appropriate mobile font sizes */
-    .post-title a {
-        font-size: 1.1rem; /* Reduced from 1.25rem for mobile */
-        line-height: 1.3;
-    }
-    
-    .post-meta {
-        font-size: 0.8rem; /* Slightly smaller meta text */
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Tighter content paragraph spacing */
-    .post-content {
-        line-height: 1.5; /* Tighter line height for mobile */
-    }
-    
-    .post-content p {
-        margin-bottom: 0.75rem; /* Reduced paragraph spacing */
-    }
-    
-    /* Mobile blockquote adjustments */
-    blockquote {
-        margin: 0.75em 0; /* Tighter margins */
-        padding-left: 0.75em;
-        font-size: 0.95em; /* Slightly smaller for mobile */
-    }
-    
-    /* Archive mobile improvements */
     .archive-item {
         flex-direction: column;
         align-items: flex-start;
-        margin-bottom: 0.5rem; /* Tighter spacing */
     }
     
     .archive-meta {
         width: auto;
-        margin-bottom: 0.125rem; /* Very tight spacing */
-        font-size: 0.8rem;
-    }
-    
-    /* Single post mobile adjustments */
-    .single .post-title {
-        font-size: 1.4rem; /* Reduced from 1.75rem */
-        line-height: 1.25;
-        margin-bottom: 0.75rem;
-    }
-    
-    /* Tighter pagination on mobile */
-    .pagination {
-        margin-top: 2rem; /* Reduced from 3rem */
-        padding-top: 1.5rem;
-    }
-    
-    .pagination a {
-        padding: 0.4rem 0.8rem; /* Smaller buttons */
-        margin: 0 0.25rem;
-        font-size: 0.9rem;
-    }
-}
-
-/* Extra small screens - further optimizations */
-@media (max-width: 480px) {
-    /* Even more compact for very small screens */
-    .sidebar {
-        padding: 0.75rem 0.75rem 0.5rem 0.75rem;
-    }
-    
-    .content {
-        padding: 0.75rem;
-    }
-    
-    .site-title a {
-        font-size: 1.1rem;
-    }
-    
-    .site-description {
-        font-size: 0.8rem;
-        margin: 0.25rem 0 0.75rem 0;
-    }
-    
-    .post-title a {
-        font-size: 1rem;
-    }
-    
-    .post-content {
-        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
     }
 }
 
