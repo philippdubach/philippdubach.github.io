@@ -1,6 +1,6 @@
 baseURL = 'https://philippdubach.github.io/'
 languageCode = 'en-us'
-title = 'Braindump'
+title = 'Mainframe'
 theme = 'hugo-blog-awesome'
 
 # Pagination settings
@@ -9,7 +9,7 @@ theme = 'hugo-blog-awesome'
   path = "page"
 
 [params]
-  author = "Phil"
+  author = "Philipp"
   description = "Curated Articles and Papers on Economics, Finance and Technology"
   keywords = ["Finance", "Economics", "Technology", "Data", "Machine Learning"]
   
