@@ -6,8 +6,6 @@ This repository hosts the source code for my personal linkblog, which is automat
 
 **👉 [philippdubach.com](https://philippdubach.com)**
 
-This README is primarily for those who stumble upon the repository. The actual linkblog content and experience can be found at the link above.
-
 ## About
 
 I started this in 2024 as a simple way to collect interesting articles and papers that catch my attention. Each post includes a link, title, and my brief commentary or summary.
