@@ -1,0 +1,44 @@
+{{ define "main" }}
+<div class="posts">
+    {{ $posts := where .Site.RegularPages "Params.tags" "intersect" (slice "Project") }}
+    {{ $posts := $posts.ByDate.Reverse }}
+    {{ range (.Paginate $posts).Pages }}
+    <article class="post">
+        <header class="post-header">
+            <div class="post-meta">
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                    {{ .Date.Format "January 2, 2006" }}
+                </time>
+                {{ if .Params.external_url }}
+                    • <a href="{{ .Permalink }}" class="permalink">∞</a>
+                {{ end }}
+            </div>
+            <h2 class="post-title">
+                {{ if .Params.external_url }}
+                    <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">
+                        {{ .Title }}
+                        <span class="external-link">→</span>
+                    </a>
+                {{ else }}
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ end }}
+            </h2>
+        </header>
+        <div class="post-content">
+            {{ .Content }}
+        </div>
+    </article>
+    {{ end }}
+    
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="pagination">
+        {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="prev">← Newer Posts</a>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="next">Older Posts →</a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

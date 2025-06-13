@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="archive">
+    <h1>Archive</h1>
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $filtered := slice }}
+    {{ range $posts }}
+      {{ if not (in (default (slice) .Params.tags) "Project") }}
+        {{ $filtered = $filtered | append . }}
+      {{ end }}
+    {{ end }}
+    {{ $posts := $filtered.ByDate.Reverse }}
+    {{ range $posts.GroupByDate "2006" }}
+    <section class="year">
+        <h2>{{ .Key }}</h2>
+        {{ range .Pages }}
+        <article class="archive-item">
+            <div class="archive-meta">
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                    {{ .Date.Format "Jan 2" }}
+                </time>
+            </div>
+            <div class="archive-title">
+                {{ if .Params.external_url }}
+                    <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">
+                        {{ .Title }}
+                        <span class="external-link">→</span>
+                    </a>
+                    <a href="{{ .Permalink }}" class="permalink">∞</a>
+                {{ else }}
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ end }}
+            </div>
+        </article>
+        {{ end }}
+    </section>
+    {{ end }}
+</div>
+{{ end }}

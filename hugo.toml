@@ -1,0 +1,39 @@
+baseURL = 'https://philippdubach.github.io/'
+languageCode = 'en-us'
+title = 'Braindump'
+theme = 'hugo-blog-awesome'
+
+# Pagination settings
+[pagination]
+  pagerSize = 10
+  path = "page"
+
+[params]
+  author = "Phil"
+  description = "Curated Articles and Papers on Economics, Finance and Technology"
+  keywords = ["links", "web", "technology"]
+  
+  # Social links
+  [params.social]
+    github = "philippdubach"
+    email = "info@philippdubach.com"
+    linkedin = "in/philippdubach"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[permalinks]
+  posts = "/:year/:month/:day/:slug/"
+
+# Ensure posts are published by default
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = [":git", "lastmod", "date", "publishDate"]
+  publishDate = ["publishDate", "date"]
+  expiryDate = ["expiryDate"]
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
