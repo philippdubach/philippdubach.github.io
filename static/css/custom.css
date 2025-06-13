@@ -253,41 +253,34 @@ blockquote p {
         color: #1a1a1a;
     }
 }
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e9ecef;
-    text-align: center;
-    color: #666;
-    font-size: 0.85rem;
-}
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
+/* Responsive design - 50% scaling  */
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 8px !important;
     }
     
+    body {
+        font-size: 1rem !important;
+        background-color: #f8f9fa !important;
+    }
+    
+    /* Scale sidebar to maintain proportions */
     .sidebar {
-        width: 100%;
-        height: auto;
-        position: static;
-        border-right: none;
-        border-bottom: 1px solid #e9ecef;
-        padding: 1rem;
+        width: 100px !important; /* 50% of original 200px */
+        padding: 0.75rem !important; /* 50% of original 1.5rem */
     }
     
+    /* Scale container max-width proportionally and add margins */
+    .container {
+        max-width: 600px !important; /* 50% of original 1200px */
+        margin: 0 20px !important; /* Add 20px margins on left and right */
+    }
+    
+    /* Scale content max-width proportionally */
     .content {
-        padding: 1rem;
-    }
-    
-    .archive-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .archive-meta {
-        width: auto;
-        margin-bottom: 0.25rem;
+        max-width: 400px !important; /* 50% of original 800px */
+        padding: 1rem !important; /* 50% of original 2rem */
     }
 }
 
