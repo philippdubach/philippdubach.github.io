@@ -17,7 +17,7 @@ theme = 'hugo-blog-awesome'
   [params.social]
     github = "philippdubach"
     email = "info@philippdubach.com"
-    linkedin = "in/philippdubach"
+    #linkedin = "in/philippdubach"
 
 [markup]
   [markup.goldmark]
