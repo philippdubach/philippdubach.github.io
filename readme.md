@@ -2,8 +2,6 @@
 
 This repository hosts the source code for my personal linkblog, which is automatically deployed via GitHub Pages.
 
-## 🔗 Visit the Live Site
-
 **👉 [philippdubach.com](https://philippdubach.com)**
 
 ## About
