@@ -213,6 +213,19 @@ inflation.&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>My First &#39;Optimal&#39; Portfolio</title>
+      <link>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</link>
+      <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</guid>
+      
+      <description>&lt;p&gt;My first encounter with quantitative portfolio optimization came during my undergraduate studies.  Inspired by Meucci&amp;rsquo;s &lt;a href=&#34;https://link.springer.com/book/10.1007/978-3-540-27904-4&#34;&gt;Risk and Asset Allocation&lt;/a&gt; as well as Diamond and Boyd&amp;rsquo;s &lt;a href=&#34;https://web.stanford.edu/~boyd/teaching.html&#34;&gt;Stanford teaching on Convex Optimization&lt;/a&gt; I set out to build my first &amp;ldquo;optimal&amp;rdquo; portfolio.&lt;/p&gt;
+&lt;p&gt;With a healthy dose of home bias, I developed what would eventually be published as &lt;a href=&#34;https://digitalcollection.zhaw.ch/handle/11475/24351&#34;&gt;A Python integration of practical asset allocation based on modern portfolio theory and its advancements&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Looking back, the project feels embarrassingly naive—and surprisingly foundational. While it earned some recognition at the time, it now serves as a valuable reminder: sometimes the best foundation is built before you know enough to doubt yourself.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>Zochi AI Passes Academic Peer Review</title>
       <link>http://localhost:1313/2024/02/15/zochi-ai-passes-academic-peer-review/</link>
       <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
