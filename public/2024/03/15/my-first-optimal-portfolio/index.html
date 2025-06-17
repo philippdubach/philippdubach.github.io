@@ -80,6 +80,136 @@
     <div class="post-content">
         <p>My first encounter with quantitative portfolio optimization came during my undergraduate studies.  Inspired by Meucci&rsquo;s <a href="https://link.springer.com/book/10.1007/978-3-540-27904-4">Risk and Asset Allocation</a> as well as Diamond and Boyd&rsquo;s <a href="https://web.stanford.edu/~boyd/teaching.html">Stanford teaching on Convex Optimization</a> I set out to build my first &ldquo;optimal&rdquo; portfolio.</p>
 <p>With a healthy dose of home bias, I developed what would eventually be published as <a href="https://digitalcollection.zhaw.ch/handle/11475/24351">A Python integration of practical asset allocation based on modern portfolio theory and its advancements</a>.</p>
+<p>What motivated me most at the time was that Modern Portfolio Theory was around since 1990 yet at that point still most optimization libraries were proprietary.</p>
+<blockquote>
+<p>Nevertheless, only a few comprehensive software models are available publicly to use, study, or modify. We tackle this issue by engineering practical tools for asset allocation and implementing them in the Python programming language.</p></blockquote>
+<p>and therefore</p>
+<blockquote>
+<p>The focus is to keep the tools simple enough for interested practitioners to understand the underlying theory yet provide adequate numerical solutions.</p></blockquote>
+<p>Meanwhile others have built amazing projects such as <a href="https://github.com/robertmartin8/PyPortfolioOpt">PyPortfolioOpt</a> or <a href="https://github.com/dcajasn/Riskfolio-Lib">Riskfolio-Lib</a> that offer great open-source libraries for sophisticated portfolio optimization. Here&rsquo;s a short summary of what has been done in this thesis:</p>
+<p><picture style="display: block; width: 70%; margin: 0 auto;">
+  
+  <source media="(max-width: 768px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/efficient-frontier.jpg 320w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/efficient-frontier.jpg 480w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/efficient-frontier.jpg 640w"
+          sizes="70%">
+  
+  
+  <source media="(max-width: 1024px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/efficient-frontier.jpg 768w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/efficient-frontier.jpg 1024w"
+          sizes="70%">
+  
+  
+  <source media="(min-width: 1025px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/efficient-frontier.jpg 1200w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/efficient-frontier.jpg 1600w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/efficient-frontier.jpg 2000w"
+          sizes="70%">
+  
+  
+  <img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/efficient-frontier.jpg" 
+       alt="Efficient Frontier Visualization" 
+       class=""
+       loading="lazy"
+       style="width: 100%; height: auto; display: block;">
+</picture>
+This scatter plot showing the efficient frontier demonstrates the core concept of modern portfolio theory - the trade-off between risk and return that your optimization tackles.
+<br>
+<br>
+<picture style="display: block; width: 70%; margin: 0 auto;">
+  
+  <source media="(max-width: 768px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/results-vs-benchmark-table.jpg 320w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/results-vs-benchmark-table.jpg 480w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/results-vs-benchmark-table.jpg 640w"
+          sizes="70%">
+  
+  
+  <source media="(max-width: 1024px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/results-vs-benchmark-table.jpg 768w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/results-vs-benchmark-table.jpg 1024w"
+          sizes="70%">
+  
+  
+  <source media="(min-width: 1025px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/results-vs-benchmark-table.jpg 1200w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/results-vs-benchmark-table.jpg 1600w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/results-vs-benchmark-table.jpg 2000w"
+          sizes="70%">
+  
+  
+  <img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/results-vs-benchmark-table.jpg" 
+       alt="Benchmark vs Optimized Results" 
+       class=""
+       loading="lazy"
+       style="width: 100%; height: auto; display: block;">
+</picture>
+Shows the dramatic improvement achieved: same 9.386% return but volatility reduced from 14.445% to 5.574%, nearly tripling the Sharpe ratio from 0.650 to 1.684.
+<br>
+<br>
+<picture style="display: block; width: 70%; margin: 0 auto;">
+  
+  <source media="(max-width: 768px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/risk-aversion-parameters.jpg 320w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/risk-aversion-parameters.jpg 480w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/risk-aversion-parameters.jpg 640w"
+          sizes="70%">
+  
+  
+  <source media="(max-width: 1024px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/risk-aversion-parameters.jpg 768w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/risk-aversion-parameters.jpg 1024w"
+          sizes="70%">
+  
+  
+  <source media="(min-width: 1025px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/risk-aversion-parameters.jpg 1200w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/risk-aversion-parameters.jpg 1600w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/risk-aversion-parameters.jpg 2000w"
+          sizes="70%">
+  
+  
+  <img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/risk-aversion-parameters.jpg" 
+       alt="Risk Aversion Parameter Effects" 
+       class=""
+       loading="lazy"
+       style="width: 100%; height: auto; display: block;">
+</picture>
+This efficient frontier plot with different gamma values illustrates how the optimization framework adapts to different investor risk preferences.</p>
+<blockquote>
+<p>We demonstrate how even in an environment with high correlation, achieving a competitive return with a lower expected shortfall and lower excess risk than the given benchmark over multiple periods is possible.</p></blockquote>
+<p><picture style="display: block; width: 70%; margin: 0 auto;">
+  
+  <source media="(max-width: 768px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/oos-performance-table.jpg 320w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/oos-performance-table.jpg 480w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/oos-performance-table.jpg 640w"
+          sizes="70%">
+  
+  
+  <source media="(max-width: 1024px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/oos-performance-table.jpg 768w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/oos-performance-table.jpg 1024w"
+          sizes="70%">
+  
+  
+  <source media="(min-width: 1025px)" 
+          srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/oos-performance-table.jpg 1200w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/oos-performance-table.jpg 1600w,
+                  https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/oos-performance-table.jpg 2000w"
+          sizes="70%">
+  
+  
+  <img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/oos-performance-table.jpg" 
+       alt="Out-of-Sample Performance" 
+       class=""
+       loading="lazy"
+       style="width: 100%; height: auto; display: block;">
+</picture>
+Demonstrates real-world validation across different market conditions (2018 bear market, 2019 bull market), showing consistent CVaR reduction and improved risk-adjusted returns.
+These selections effectively showcase both the theoretical foundation and practical implementation success of your portfolio optimization work.</p>
 <p>Looking back, the project feels embarrassingly naive—and surprisingly foundational. While it earned some recognition at the time, it now serves as a valuable reminder: sometimes the best foundation is built before you know enough to doubt yourself.</p>
 
     </div>
