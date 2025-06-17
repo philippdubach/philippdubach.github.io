@@ -1,243 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Archive on philippdubach</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Archive on philippdubach</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 12 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Not All AI Skeptics Think Alike</title>
-      <link>http://localhost:1313/2025/06/12/not-all-ai-skeptics-think-alike/</link>
-      <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/06/12/not-all-ai-skeptics-think-alike/</guid>
-      
-      <description>&lt;p&gt;Apple&amp;rsquo;s recent paper &amp;ldquo;The Illusion of Thinking&amp;rdquo; has been widely understood to demonstrate that reasoning models don&amp;rsquo;t &amp;lsquo;actually&amp;rsquo; reason. Using controllable puzzle environments instead of contaminated math benchmarks, they discovered something fascinating: there are three distinct performance regimes when it comes to AI reasoning complexity. For simple problems, standard models actually outperform reasoning models while being more token-efficient. At medium complexity, reasoning models show their advantage. But at high complexity? Both collapse completely.
-Here&amp;rsquo;s the kicker: reasoning models exhibit counterintuitive scaling behavior—their thinking effort increases with problem complexity up to a point, then declines despite having adequate token budget. It&amp;rsquo;s like watching a student give up mid-exam when the questions get too hard, even though they have plenty of time left.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Your AI Assistant Might Rat You Out</title>
-      <link>http://localhost:1313/2025/05/31/your-ai-assistant-might-rat-you-out/</link>
-      <pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/05/31/your-ai-assistant-might-rat-you-out/</guid>
-      
-      <description>&lt;p&gt;There was this story going around the past few days&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Anthropic researchers find if Claude Opus 4 thinks you&amp;rsquo;re doing something immoral, it might &amp;ldquo;contact the press, contact regulators, try to lock you out of the system&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Mostly driven by a &lt;a href=&#34;https://x.com/sleepinyourhat/status/1925593359374328272&#34;&gt;Sam Bowman tweet&lt;/a&gt; referring to the &lt;a href=&#34;https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf&#34;&gt;Claude 4 System Card&lt;/a&gt; section 4.1.9 on high-agency behavior. The outrage was mostly by people misunderstanding the prerequisites necessary for such a scenario.  Nevertheless, an interesting question emerged: What happens when you feed an AI model evidence of fraud and give it an email tool? According to Simon Willison&amp;rsquo;s latest experiment, &amp;ldquo;they pretty much all will&amp;rdquo; snitch on you to the authorities.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Gambling vs. Investing</title>
-      <link>http://localhost:1313/2025/05/30/gambling-vs.-investing/</link>
-      <pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/05/30/gambling-vs.-investing/</guid>
-      
-      <description>&lt;p&gt;Kalshi, a prediction market startup, is using its federal financial license to offer sports betting nationwide, even in states where it&amp;rsquo;s not legal. The move has earned them cease-and-desist letters from state gaming regulators, but CEO Tarek Mansour isn&amp;rsquo;t backing down:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;We can go one by one for every financial market and it would fall under the definition of gambling. So what&amp;rsquo;s the difference?&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s a question that cuts to the heart of modern finance. The founders argue that Wall Street blurred the line between investing and gambling long ago, and casting Kalshi as the latter is inconsistent at best. They have a point—if you can bet on oil futures, Nvidia&amp;rsquo;s stock price, or interest rate movements, why is wagering on NFL touchdowns more objectionable?
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archive on philippdubach</title><link>http://localhost:1313/posts/</link><description>Recent content in Archive on philippdubach</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 12 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Not All AI Skeptics Think Alike</title><link>http://localhost:1313/2025/06/12/not-all-ai-skeptics-think-alike/</link><pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/06/12/not-all-ai-skeptics-think-alike/</guid><description>&lt;p>Apple&amp;rsquo;s recent paper &amp;ldquo;The Illusion of Thinking&amp;rdquo; has been widely understood to demonstrate that reasoning models don&amp;rsquo;t &amp;lsquo;actually&amp;rsquo; reason. Using controllable puzzle environments instead of contaminated math benchmarks, they discovered something fascinating: there are three distinct performance regimes when it comes to AI reasoning complexity. For simple problems, standard models actually outperform reasoning models while being more token-efficient. At medium complexity, reasoning models show their advantage. But at high complexity? Both collapse completely.
+Here&amp;rsquo;s the kicker: reasoning models exhibit counterintuitive scaling behavior—their thinking effort increases with problem complexity up to a point, then declines despite having adequate token budget. It&amp;rsquo;s like watching a student give up mid-exam when the questions get too hard, even though they have plenty of time left.&lt;/p></description></item><item><title>Your AI Assistant Might Rat You Out</title><link>http://localhost:1313/2025/05/31/your-ai-assistant-might-rat-you-out/</link><pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/31/your-ai-assistant-might-rat-you-out/</guid><description>&lt;p>There was this story going around the past few days&lt;/p>
+&lt;blockquote>
+&lt;p>Anthropic researchers find if Claude Opus 4 thinks you&amp;rsquo;re doing something immoral, it might &amp;ldquo;contact the press, contact regulators, try to lock you out of the system&amp;rdquo;&lt;/p>&lt;/blockquote>
+&lt;p>Mostly driven by a &lt;a href="https://x.com/sleepinyourhat/status/1925593359374328272">Sam Bowman tweet&lt;/a> referring to the &lt;a href="https://www-cdn.anthropic.com/6be99a52cb68eb70eb9572b4cafad13df32ed995.pdf">Claude 4 System Card&lt;/a> section 4.1.9 on high-agency behavior. The outrage was mostly by people misunderstanding the prerequisites necessary for such a scenario. Nevertheless, an interesting question emerged: What happens when you feed an AI model evidence of fraud and give it an email tool? According to Simon Willison&amp;rsquo;s latest experiment, &amp;ldquo;they pretty much all will&amp;rdquo; snitch on you to the authorities.&lt;/p></description></item><item><title>Gambling vs. Investing</title><link>http://localhost:1313/2025/05/30/gambling-vs.-investing/</link><pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/30/gambling-vs.-investing/</guid><description>&lt;p>Kalshi, a prediction market startup, is using its federal financial license to offer sports betting nationwide, even in states where it&amp;rsquo;s not legal. The move has earned them cease-and-desist letters from state gaming regulators, but CEO Tarek Mansour isn&amp;rsquo;t backing down:&lt;/p>
+&lt;blockquote>
+&lt;p>We can go one by one for every financial market and it would fall under the definition of gambling. So what&amp;rsquo;s the difference?&lt;/p>&lt;/blockquote>
+&lt;p>It&amp;rsquo;s a question that cuts to the heart of modern finance. The founders argue that Wall Street blurred the line between investing and gambling long ago, and casting Kalshi as the latter is inconsistent at best. They have a point—if you can bet on oil futures, Nvidia&amp;rsquo;s stock price, or interest rate movements, why is wagering on NFL touchdowns more objectionable?
 Benefiting from the Trump administration&amp;rsquo;s hands-off regulatory approach, with the CFTC dropping its legal challenge to their election contracts the odds might be in their favour. Even better, a Kalshi board member is awaiting confirmation to lead the very agency that was previously their biggest antagonist.
 The technical distinction matters: Kalshi operates as an exchange between traders rather than a house taking bets against customers. But functionally, with 79% of their recent trading volume being sports-related, they&amp;rsquo;re forcing us to confront an uncomfortable reality about risk, speculation, and what we choose to call &amp;ldquo;investing.&amp;rdquo;
-Whether you call it innovation or regulatory arbitrage, Kalshi is exposing the arbitrary nature of the lines we&amp;rsquo;ve drawn around acceptable financial speculation.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>The Model Said So</title>
-      <link>http://localhost:1313/2025/05/28/the-model-said-so/</link>
-      <pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/05/28/the-model-said-so/</guid>
-      
-      <description>&lt;p&gt;LLMs make your life easier until they don&amp;rsquo;t.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Their intrinsic complexity and lack of transparency pose significant challenges, especially in the highly regulated financial sector&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Unlike other industries where &amp;ldquo;the model said so&amp;rdquo; might suffice, finance demands audit trails, bias detection,
+Whether you call it innovation or regulatory arbitrage, Kalshi is exposing the arbitrary nature of the lines we&amp;rsquo;ve drawn around acceptable financial speculation.&lt;/p></description></item><item><title>The Model Said So</title><link>http://localhost:1313/2025/05/28/the-model-said-so/</link><pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/28/the-model-said-so/</guid><description>&lt;p>LLMs make your life easier until they don&amp;rsquo;t.&lt;/p>
+&lt;blockquote>
+&lt;p>Their intrinsic complexity and lack of transparency pose significant challenges, especially in the highly regulated financial sector&lt;/p>&lt;/blockquote>
+&lt;p>Unlike other industries where &amp;ldquo;the model said so&amp;rdquo; might suffice, finance demands audit trails, bias detection,
 and explainable decision-making—requirements that sit uncomfortably with neural networks containing billions of parameters.
 The research highlights a fundamental tension that&amp;rsquo;s about to reshape fintech:
 the same complexity that makes LLMs powerful at parsing market sentiment or generating investment reports also makes them regulatory nightmares
-in a sector where you need to explain every decision to examiners.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Dual Mandate Tensions</title>
-      <link>http://localhost:1313/2025/05/21/dual-mandate-tensions/</link>
-      <pubDate>Wed, 21 May 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/05/21/dual-mandate-tensions/</guid>
-      
-      <description>&lt;p&gt;Something interesting just happened at the National Bureau of Economic Research NBER&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;We study the optimal monetary policy response to the imposition of tariffs in a model
+in a sector where you need to explain every decision to examiners.&lt;/p></description></item><item><title>Dual Mandate Tensions</title><link>http://localhost:1313/2025/05/21/dual-mandate-tensions/</link><pubDate>Wed, 21 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/21/dual-mandate-tensions/</guid><description>&lt;p>Something interesting just happened at the National Bureau of Economic Research NBER&lt;/p>
+&lt;blockquote>
+&lt;p>We study the optimal monetary policy response to the imposition of tariffs in a model
 with imported intermediate inputs. In a simple open-economy framework, we show
 that a tariff maps exactly into a cost-push shock in the standard closed-economy New
 Keynesian model, shifting the Phillips curve upward. We then characterize optimal
 monetary policy, showing that it partially accommodates the shock to smooth the
 transition to a more distorted long-run equilibrium—at the cost of higher short-run
-inflation.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Beyond Monte Carlo: Tensor-Based Market Modeling</title>
-      <link>http://localhost:1313/2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/</link>
-      <pubDate>Sun, 11 May 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/</guid>
-      
-      <description>&lt;p&gt;A fascinating new paper from Stefano Iabichino at UBS Investment Bank explores what happens when you take the attention mechanisms powering modern AI and apply them to Wall Street&amp;rsquo;s most fundamental pricing problems, tackling what might be quantitative finance&amp;rsquo;s most intractable challenge.&lt;/p&gt;
-&lt;p&gt;The problem is elegantly simple yet profound: machine learning models are great at finding patterns in historical data, but financial theory demands that arbitrage-free prices be independent of past information. As the authors put it:&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>DeFi&#39;s $42 Billion Maturity Story</title>
-      <link>http://localhost:1313/2025/04/25/defis-42-billion-maturity-story/</link>
-      <pubDate>Fri, 25 Apr 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/04/25/defis-42-billion-maturity-story/</guid>
-      
-      <description>&lt;p&gt;A new academic review by Ali Farhani reveals that institutional Total Value Locked in DeFi protocols hit $42 billion in 2024, with BlackRock leading the charge by launching a $250 million tokenized fund on Centrifuge.&lt;/p&gt;
-&lt;p&gt;The numbers tell a remarkable story of maturation. Layer 2 solutions like Optimism and Arbitrum now dominate the scaling landscape, while zero-knowledge proofs have reduced compliance costs by 30%. Even the terminology is evolving—researchers now discuss &amp;ldquo;Total Value Redeemable&amp;rdquo; instead of the traditional TVL metric, acknowledging that not all locked value is immediately liquid. Despite technological advances, security incidents persist with painful regularity: $350 million lost in the Wormhole bridge exploit, $81 million in Orbit Chain&amp;rsquo;s multi-signature failure. Cross-chain bridges remain &amp;ldquo;high-risk attack targets,&amp;rdquo; a sobering reminder that connecting different blockchains is still more art than science. The regulatory landscape is complicated as well. Europe&amp;rsquo;s MiCA regulation provides clear frameworks, while the SEC maintains its enforcement-first approach. Hong Kong&amp;rsquo;s innovation sandbox offers a third path, balancing experimentation with oversight.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Passive Investing has an Active Problem</title>
-      <link>http://localhost:1313/2025/02/15/passive-investing-has-an-active-problem/</link>
-      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/02/15/passive-investing-has-an-active-problem/</guid>
-      
-      <description>&lt;p&gt;(1) A new academic paper suggests the rise of passive investing may be fueling fragile market moves.
+inflation.&lt;/p></description></item><item><title>Beyond Monte Carlo: Tensor-Based Market Modeling</title><link>http://localhost:1313/2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/</link><pubDate>Sun, 11 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/</guid><description>&lt;p>A fascinating new paper from Stefano Iabichino at UBS Investment Bank explores what happens when you take the attention mechanisms powering modern AI and apply them to Wall Street&amp;rsquo;s most fundamental pricing problems, tackling what might be quantitative finance&amp;rsquo;s most intractable challenge.&lt;/p>
+&lt;p>The problem is elegantly simple yet profound: machine learning models are great at finding patterns in historical data, but financial theory demands that arbitrage-free prices be independent of past information. As the authors put it:&lt;/p></description></item><item><title>DeFi's $42 Billion Maturity Story</title><link>http://localhost:1313/2025/04/25/defis-42-billion-maturity-story/</link><pubDate>Fri, 25 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/04/25/defis-42-billion-maturity-story/</guid><description>&lt;p>A new academic review by Ali Farhani reveals that institutional Total Value Locked in DeFi protocols hit $42 billion in 2024, with BlackRock leading the charge by launching a $250 million tokenized fund on Centrifuge.&lt;/p>
+&lt;p>The numbers tell a remarkable story of maturation. Layer 2 solutions like Optimism and Arbitrum now dominate the scaling landscape, while zero-knowledge proofs have reduced compliance costs by 30%. Even the terminology is evolving—researchers now discuss &amp;ldquo;Total Value Redeemable&amp;rdquo; instead of the traditional TVL metric, acknowledging that not all locked value is immediately liquid. Despite technological advances, security incidents persist with painful regularity: $350 million lost in the Wormhole bridge exploit, $81 million in Orbit Chain&amp;rsquo;s multi-signature failure. Cross-chain bridges remain &amp;ldquo;high-risk attack targets,&amp;rdquo; a sobering reminder that connecting different blockchains is still more art than science. The regulatory landscape is complicated as well. Europe&amp;rsquo;s MiCA regulation provides clear frameworks, while the SEC maintains its enforcement-first approach. Hong Kong&amp;rsquo;s innovation sandbox offers a third path, balancing experimentation with oversight.&lt;/p></description></item><item><title>Passive Investing has an Active Problem</title><link>http://localhost:1313/2025/02/15/passive-investing-has-an-active-problem/</link><pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/02/15/passive-investing-has-an-active-problem/</guid><description>&lt;p>(1) A new academic paper suggests the rise of passive investing may be fueling fragile market moves.
 (2) According to a study to be published in the American Economic Review, evidence is building that active managers are slow to scoop up stocks en masse when prices move away from their intrinsic worth.
-(3) Thanks to this lethargic trading behavior and the relentless boom in benchmark-tracking index funds, the impact of each trade on prices gets amplified, explaining how sell orders can induce broader equity gyrations&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>I Built a CGM Data Reader Dashboard</title>
-      <link>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader-dashboard/</link>
-      <pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader-dashboard/</guid>
-      
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>The Green Bond Commitment Premium</title>
-      <link>http://localhost:1313/2024/12/31/the-green-bond-commitment-premium/</link>
-      <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/12/31/the-green-bond-commitment-premium/</guid>
-      
-      <description>&lt;p&gt;The difference between green finance that works and green finance that doesn&amp;rsquo;t work seems to be commitment: Using a Difference-in-Differences model analyzing 2013-2023 bond data, researchers found no significant correlation between green bond issuance and CO2 emissions after net-zero policies were adopted. That&amp;rsquo;s the disappointing part. On the upside: companies issuing only green bonds showed higher ESG ratings, lower CO2 emissions, and lower financing costs, achieving substantial environmental benefits and economic advantages. Meanwhile, entities issuing both conventional and green bonds showed no environmental benefits, raising concerns about potential greenwashing.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>AI Learns Economics Like Undergrads</title>
-      <link>http://localhost:1313/2024/11/01/ai-learns-economics-like-undergrads/</link>
-      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/11/01/ai-learns-economics-like-undergrads/</guid>
-      
-      <description>&lt;p&gt;This cuts to the heart of how LLMs actually work: Testing Large Language Models on economics problems reveals that these supposedly sophisticated systems don&amp;rsquo;t just learn correct reasoning—they absorb our misconceptions too. The study found LLMs performing reasonably well on undergraduate economics questions (around 65% accuracy) but falling flat on graduate-level problems (35% accuracy). More tellingly, the specific errors weren&amp;rsquo;t random failures but systematic mistakes that mirror exactly what human students get wrong.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Meta&#39;s Edge AI Gambit</title>
-      <link>http://localhost:1313/2024/09/28/metas-edge-ai-gambit/</link>
-      <pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/09/28/metas-edge-ai-gambit/</guid>
-      
-      <description>&lt;p&gt;While the AI industry obsesses over ever-larger cloud models, Meta just made a somewhat contrarian bet with Llama 3.2. Instead of chasing GPT-4 with another massive, they&amp;rsquo;re going small and local — releasing lightweight AI models designed to run entirely on your phone. The technical achievement is genuinely impressive: vision-capable models that can analyze images and text, plus compact versions that &amp;ldquo;fit in as little as 1GB of memory.&amp;rdquo; But the real story might be more strategic. Meta is essentially arguing that the future of AI isn&amp;rsquo;t in OpenAI&amp;rsquo;s cloud-centric paradigm, but in edge computing where your data never leaves your device.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>How Some Active Funds Create Their Own Returns</title>
-      <link>http://localhost:1313/2024/06/21/how-some-active-funds-create-their-own-returns/</link>
-      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/06/21/how-some-active-funds-create-their-own-returns/</guid>
-      
-      <description>&lt;p&gt;(1) Many active funds hold concentrated portfolios. Flow-driven trading in these securities causes price pressure, which pushes up the funds&amp;rsquo; existing positions resulting in realized returns.
+(3) Thanks to this lethargic trading behavior and the relentless boom in benchmark-tracking index funds, the impact of each trade on prices gets amplified, explaining how sell orders can induce broader equity gyrations&lt;/p></description></item><item><title>I Built a CGM Data Reader</title><link>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</link><pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</guid><description/></item><item><title>The Green Bond Commitment Premium</title><link>http://localhost:1313/2024/12/31/the-green-bond-commitment-premium/</link><pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/12/31/the-green-bond-commitment-premium/</guid><description>&lt;p>The difference between green finance that works and green finance that doesn&amp;rsquo;t work seems to be commitment: Using a Difference-in-Differences model analyzing 2013-2023 bond data, researchers found no significant correlation between green bond issuance and CO2 emissions after net-zero policies were adopted. That&amp;rsquo;s the disappointing part. On the upside: companies issuing only green bonds showed higher ESG ratings, lower CO2 emissions, and lower financing costs, achieving substantial environmental benefits and economic advantages. Meanwhile, entities issuing both conventional and green bonds showed no environmental benefits, raising concerns about potential greenwashing.&lt;/p></description></item><item><title>AI Learns Economics Like Undergrads</title><link>http://localhost:1313/2024/11/01/ai-learns-economics-like-undergrads/</link><pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/11/01/ai-learns-economics-like-undergrads/</guid><description>&lt;p>This cuts to the heart of how LLMs actually work: Testing Large Language Models on economics problems reveals that these supposedly sophisticated systems don&amp;rsquo;t just learn correct reasoning—they absorb our misconceptions too. The study found LLMs performing reasonably well on undergraduate economics questions (around 65% accuracy) but falling flat on graduate-level problems (35% accuracy). More tellingly, the specific errors weren&amp;rsquo;t random failures but systematic mistakes that mirror exactly what human students get wrong.&lt;/p></description></item><item><title>Meta's Edge AI Gambit</title><link>http://localhost:1313/2024/09/28/metas-edge-ai-gambit/</link><pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/09/28/metas-edge-ai-gambit/</guid><description>&lt;p>While the AI industry obsesses over ever-larger cloud models, Meta just made a somewhat contrarian bet with Llama 3.2. Instead of chasing GPT-4 with another massive, they&amp;rsquo;re going small and local — releasing lightweight AI models designed to run entirely on your phone. The technical achievement is genuinely impressive: vision-capable models that can analyze images and text, plus compact versions that &amp;ldquo;fit in as little as 1GB of memory.&amp;rdquo; But the real story might be more strategic. Meta is essentially arguing that the future of AI isn&amp;rsquo;t in OpenAI&amp;rsquo;s cloud-centric paradigm, but in edge computing where your data never leaves your device.&lt;/p></description></item><item><title>How Some Active Funds Create Their Own Returns</title><link>http://localhost:1313/2024/06/21/how-some-active-funds-create-their-own-returns/</link><pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/06/21/how-some-active-funds-create-their-own-returns/</guid><description>&lt;p>(1) Many active funds hold concentrated portfolios. Flow-driven trading in these securities causes price pressure, which pushes up the funds&amp;rsquo; existing positions resulting in realized returns.
 (2) The researchers decomposes fund returns into a price pressure (self-inflated) and a fundamental component and show that when allocating capital across funds, investors are unable to identify whether realized returns are self-inflated or fundamental.
 (3) Because investors chase self-inflated fund returns at a high frequency, even short-lived impact meaningfully affects fund flows at longer time scales.
 (4) The combination of price impact and return chasing causes an endogenous feedback loop and a reallocation of wealth to early fund investors, which unravels once the price pressure reverts.
 (5) The researchers find that flows chasing self-inflated returns predict bubbles in ETFs and their subsequent crashes, and lead to a daily wealth reallocation of 500 Million from ETFs alone.
-(6) Around 2% of all daily flows and 8-12% of flows in the top decile of illiquid funds can be attributed to &amp;ldquo;Ponzi flows&amp;rdquo;. The researcher estimate that every day around $500 Million of investor wealth is reallocated because of the price impact of Ponzi flows.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>OpenAI Cuts Prices, Raises Stakes</title>
-      <link>http://localhost:1313/2024/05/20/openai-cuts-prices-raises-stakes/</link>
-      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/05/20/openai-cuts-prices-raises-stakes/</guid>
-      
-      <description>&lt;p&gt;OpenAI&amp;rsquo;s GPT-4o launch is a classic Silicon Valley competitive strategy disguised as a product announcement.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;GPT-4o is 2x faster, half the price, and has 5x higher rate limits compared to GPT-4 Turbo&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;The real headline isn&amp;rsquo;t the multimodal wizardry — though watching an AI tutor walk through math problems or harmonize in real-time is genuinely impressive. It&amp;rsquo;s the economics. OpenAI is essentially paying developers to build on their platform while making it prohibitively expensive for competitors to match these specs profitably.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>AlphaFold 3: Free for Science</title>
-      <link>http://localhost:1313/2024/05/12/alphafold-3-free-for-science/</link>
-      <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/05/12/alphafold-3-free-for-science/</guid>
-      
-      <description>&lt;p&gt;Nothing says &amp;ldquo;we&amp;rsquo;re serious about dominating a market&amp;rdquo; quite like giving away breakthrough technology for free. Google&amp;rsquo;s latest move with AlphaFold 3 might be their most audacious version of this strategy yet.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;AlphaFold 3 can predict the structure and interactions of all of life&amp;rsquo;s molecules with unprecedented accuracy&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;This isn&amp;rsquo;t just an incremental improvement - While previous versions of AlphaFold could predict protein structures, AlphaFold 3 models the interactions between proteins, DNA, RNA, and small molecules. It&amp;rsquo;s the difference between having a parts catalog and understanding how the entire machine works.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>My First &#39;Optimal&#39; Portfolio</title>
-      <link>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</link>
-      <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</guid>
-      
-      <description>&lt;p&gt;My first encounter with quantitative portfolio optimization came during my undergraduate studies.  Inspired by Meucci&amp;rsquo;s &lt;a href=&#34;https://link.springer.com/book/10.1007/978-3-540-27904-4&#34;&gt;Risk and Asset Allocation&lt;/a&gt; as well as Diamond and Boyd&amp;rsquo;s &lt;a href=&#34;https://web.stanford.edu/~boyd/teaching.html&#34;&gt;Stanford teaching on Convex Optimization&lt;/a&gt; I set out to build my first &amp;ldquo;optimal&amp;rdquo; portfolio.&lt;/p&gt;
-&lt;p&gt;With a healthy dose of home bias, I developed what would eventually be published as &lt;a href=&#34;https://digitalcollection.zhaw.ch/handle/11475/24351&#34;&gt;A Python integration of practical asset allocation based on modern portfolio theory and its advancements&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Looking back, the project feels embarrassingly naive—and surprisingly foundational. While it earned some recognition at the time, it now serves as a valuable reminder: sometimes the best foundation is built before you know enough to doubt yourself.&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Zochi AI Passes Academic Peer Review</title>
-      <link>http://localhost:1313/2024/02/15/zochi-ai-passes-academic-peer-review/</link>
-      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/02/15/zochi-ai-passes-academic-peer-review/</guid>
-      
-      <description>&lt;p&gt;Somewhere, a peer reviewer just realized they may have been outsmarted by a machine.&lt;/p&gt;
-&lt;p&gt;Intology&amp;rsquo;s Zochi has achieved something unprecedented: becoming the first AI system to independently pass peer review at an A* scientific conference. Not just any conference—ACL, one of the most prestigious venues in computational linguistics.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;Zochi represents a significant step forward in AI-assisted research, demonstrating the ability to comprehend and analyze complex academic literature with remarkable accuracy.&amp;rdquo;&lt;/p&gt;</description>
-      
-    </item>
-    
-  </channel>
-</rss>
+(6) Around 2% of all daily flows and 8-12% of flows in the top decile of illiquid funds can be attributed to &amp;ldquo;Ponzi flows&amp;rdquo;. The researcher estimate that every day around $500 Million of investor wealth is reallocated because of the price impact of Ponzi flows.&lt;/p></description></item><item><title>OpenAI Cuts Prices, Raises Stakes</title><link>http://localhost:1313/2024/05/20/openai-cuts-prices-raises-stakes/</link><pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/05/20/openai-cuts-prices-raises-stakes/</guid><description>&lt;p>OpenAI&amp;rsquo;s GPT-4o launch is a classic Silicon Valley competitive strategy disguised as a product announcement.&lt;/p>
+&lt;blockquote>
+&lt;p>GPT-4o is 2x faster, half the price, and has 5x higher rate limits compared to GPT-4 Turbo&lt;/p>&lt;/blockquote>
+&lt;p>The real headline isn&amp;rsquo;t the multimodal wizardry — though watching an AI tutor walk through math problems or harmonize in real-time is genuinely impressive. It&amp;rsquo;s the economics. OpenAI is essentially paying developers to build on their platform while making it prohibitively expensive for competitors to match these specs profitably.&lt;/p></description></item><item><title>AlphaFold 3: Free for Science</title><link>http://localhost:1313/2024/05/12/alphafold-3-free-for-science/</link><pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/05/12/alphafold-3-free-for-science/</guid><description>&lt;p>Nothing says &amp;ldquo;we&amp;rsquo;re serious about dominating a market&amp;rdquo; quite like giving away breakthrough technology for free. Google&amp;rsquo;s latest move with AlphaFold 3 might be their most audacious version of this strategy yet.&lt;/p>
+&lt;blockquote>
+&lt;p>&amp;ldquo;AlphaFold 3 can predict the structure and interactions of all of life&amp;rsquo;s molecules with unprecedented accuracy&amp;rdquo;&lt;/p>&lt;/blockquote>
+&lt;p>This isn&amp;rsquo;t just an incremental improvement - While previous versions of AlphaFold could predict protein structures, AlphaFold 3 models the interactions between proteins, DNA, RNA, and small molecules. It&amp;rsquo;s the difference between having a parts catalog and understanding how the entire machine works.&lt;/p></description></item><item><title>My First 'Optimal' Portfolio</title><link>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</link><pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</guid><description>&lt;p>My first encounter with quantitative portfolio optimization came during my undergraduate studies. Inspired by Meucci&amp;rsquo;s &lt;a href="https://link.springer.com/book/10.1007/978-3-540-27904-4">Risk and Asset Allocation&lt;/a> as well as Diamond and Boyd&amp;rsquo;s &lt;a href="https://web.stanford.edu/~boyd/teaching.html">Stanford teaching on Convex Optimization&lt;/a> I set out to build my first &amp;ldquo;optimal&amp;rdquo; portfolio.&lt;/p>
+&lt;p>With a healthy dose of home bias, I developed what would eventually be published as &lt;a href="https://digitalcollection.zhaw.ch/handle/11475/24351">A Python integration of practical asset allocation based on modern portfolio theory and its advancements&lt;/a>.&lt;/p>
+&lt;p>What motivated me most at the time was that Modern Portfolio Theory was around since 1990 yet at that point still most optimization libraries were proprietary.&lt;/p></description></item><item><title>Zochi AI Passes Academic Peer Review</title><link>http://localhost:1313/2024/02/15/zochi-ai-passes-academic-peer-review/</link><pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/02/15/zochi-ai-passes-academic-peer-review/</guid><description>&lt;p>Somewhere, a peer reviewer just realized they may have been outsmarted by a machine.&lt;/p>
+&lt;p>Intology&amp;rsquo;s Zochi has achieved something unprecedented: becoming the first AI system to independently pass peer review at an A* scientific conference. Not just any conference—ACL, one of the most prestigious venues in computational linguistics.&lt;/p>
+&lt;blockquote>
+&lt;p>&amp;ldquo;Zochi represents a significant step forward in AI-assisted research, demonstrating the ability to comprehend and analyze complex academic literature with remarkable accuracy.&amp;rdquo;&lt;/p></description></item><item><title>The Tech behind this Site</title><link>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</guid><description>&lt;p>Similar to how Simon Willison describes his difficulties managing images for his &lt;a href="https://simonwillison.net/2024/Dec/22/link-blog/">approach to running a link blog&lt;/a> I found it hard to remain true to pure markdown syntax but have images embedded in a responsive way on this site.&lt;/p>
+&lt;p>My current pipeline is as follows: I host my all my images in a R2 bucket and serve them from &lt;code>static.philippdubach.com&lt;/code>. I use Cloudflares&amp;rsquo;s image resizing CDN do I never have to worry about serving images in appropriate size or format. I basically just upload them with the highes possible quality and Cloudflare takes care of the rest.&lt;/p></description></item></channel></rss>
