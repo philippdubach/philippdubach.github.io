@@ -6,7 +6,7 @@ tags: ["Project"]
 
 Similar to how Simon Willison describes his difficulties managing images for his [approach to running a link blog](https://simonwillison.net/2024/Dec/22/link-blog/) I found it hard to remain true to pure markdown syntax but have images embedded in a responsive way on this site.
 
-My current pipeline is as follows: I host my all my images in a R2 bucket and serve it from ```static.philippdubach.com```. I use Cloudflares's image resizing CDN do I never have to worry about serving images in appropriate size or format. I basically just upload them with the highes possible quality and Cloudflare takes care of the rest.
+My current pipeline is as follows: I host my all my images in a R2 bucket and serve them from ```static.philippdubach.com```. I use Cloudflares's image resizing CDN do I never have to worry about serving images in appropriate size or format. I basically just upload them with the highes possible quality and Cloudflare takes care of the rest.
 
 Since the site runs on Hugo, I needed a solution that would work within this static site generation workflow. Pure markdown syntax like ```![alt](url)``` is clean and portable, but it doesn't give me the responsive image capabilities I was looking for.
 

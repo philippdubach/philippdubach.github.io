@@ -1,35 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Project on philippdubach</title>
-    <link>http://localhost:1313/tags/project/</link>
-    <description>Recent content in Project on philippdubach</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/project/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>I Built a CGM Data Reader Dashboard</title>
-      <link>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader-dashboard/</link>
-      <pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader-dashboard/</guid>
-      
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>My First &#39;Optimal&#39; Portfolio</title>
-      <link>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</link>
-      <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</guid>
-      
-      <description>&lt;p&gt;My first encounter with quantitative portfolio optimization came during my undergraduate studies.  Inspired by Meucci&amp;rsquo;s &lt;a href=&#34;https://link.springer.com/book/10.1007/978-3-540-27904-4&#34;&gt;Risk and Asset Allocation&lt;/a&gt; as well as Diamond and Boyd&amp;rsquo;s &lt;a href=&#34;https://web.stanford.edu/~boyd/teaching.html&#34;&gt;Stanford teaching on Convex Optimization&lt;/a&gt; I set out to build my first &amp;ldquo;optimal&amp;rdquo; portfolio.&lt;/p&gt;
-&lt;p&gt;With a healthy dose of home bias, I developed what would eventually be published as &lt;a href=&#34;https://digitalcollection.zhaw.ch/handle/11475/24351&#34;&gt;A Python integration of practical asset allocation based on modern portfolio theory and its advancements&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Looking back, the project feels embarrassingly naive—and surprisingly foundational. While it earned some recognition at the time, it now serves as a valuable reminder: sometimes the best foundation is built before you know enough to doubt yourself.&lt;/p&gt;</description>
-      
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Project on philippdubach</title><link>http://localhost:1313/tags/project/</link><description>Recent content in Project on philippdubach</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 02 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/project/index.xml" rel="self" type="application/rss+xml"/><item><title>I Built a CGM Data Reader</title><link>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</link><pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</guid><description/></item><item><title>My First 'Optimal' Portfolio</title><link>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</link><pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</guid><description>&lt;p>My first encounter with quantitative portfolio optimization came during my undergraduate studies. Inspired by Meucci&amp;rsquo;s &lt;a href="https://link.springer.com/book/10.1007/978-3-540-27904-4">Risk and Asset Allocation&lt;/a> as well as Diamond and Boyd&amp;rsquo;s &lt;a href="https://web.stanford.edu/~boyd/teaching.html">Stanford teaching on Convex Optimization&lt;/a> I set out to build my first &amp;ldquo;optimal&amp;rdquo; portfolio.&lt;/p>
+&lt;p>With a healthy dose of home bias, I developed what would eventually be published as &lt;a href="https://digitalcollection.zhaw.ch/handle/11475/24351">A Python integration of practical asset allocation based on modern portfolio theory and its advancements&lt;/a>.&lt;/p>
+&lt;p>What motivated me most at the time was that Modern Portfolio Theory was around since 1990 yet at that point still most optimization libraries were proprietary.&lt;/p></description></item><item><title>The Tech behind this Site</title><link>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</guid><description>&lt;p>Similar to how Simon Willison describes his difficulties managing images for his &lt;a href="https://simonwillison.net/2024/Dec/22/link-blog/">approach to running a link blog&lt;/a> I found it hard to remain true to pure markdown syntax but have images embedded in a responsive way on this site.&lt;/p>
+&lt;p>My current pipeline is as follows: I host my all my images in a R2 bucket and serve them from &lt;code>static.philippdubach.com&lt;/code>. I use Cloudflares&amp;rsquo;s image resizing CDN do I never have to worry about serving images in appropriate size or format. I basically just upload them with the highes possible quality and Cloudflare takes care of the rest.&lt;/p></description></item></channel></rss>
