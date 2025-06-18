@@ -5,7 +5,7 @@ external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255"
 ---
 > It ain’t what you don’t know that gets you into trouble. It’s what you know for sure that just ain’t so.
 
-This (fake) Mark Twain quote at the beginning of [The Big Short](https://en.wikipedia.org/wiki/The_Big_Short_(film)) captures the kind of sentiment of realizing that some foundational assumptions might be empirically wrong. 
+This (not actually) Mark Twain quote from [The Big Short](https://en.wikipedia.org/wiki/The_Big_Short_(film)) captures the sentiment of realizing that some foundational assumptions might be empirically wrong. 
 
 A recent article by [Anton Vorobets](https://antonvorobets.substack.com) that I came across in [Justina Lee](https://www.bloomberg.com/authors/AQ0Te4IePFE/justina-lee)'s Quant Newsletter presents compelling evidence that challenges one of the field's fundamental statistical assumptions, that asset returns follow normal distributions. Using 26 years of data from 10 US equity indices, he ran formal normality tests (Shapiro-Wilk, D'Agostino's K², Anderson-Darling) and found that the normal distribution hypothesis gets rejected in most cases. The supposed "Aggregational Gaussianity" that academics invoke through Central Limit Theorem arguments? It's mostly wishful thinking enabled by small sample sizes. As Vorobets observes:
 
