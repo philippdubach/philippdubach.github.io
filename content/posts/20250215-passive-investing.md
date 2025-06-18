@@ -1,5 +1,5 @@
 ---
-title: "Passive Investing has an Active Problem"
+title: "Passive Investing's Active Problem"
 date: 2025-02-15
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263"
 ---

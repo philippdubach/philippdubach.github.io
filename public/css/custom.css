@@ -308,12 +308,18 @@ blockquote p {
         padding: 1rem !important; /* 50% of original 2rem */
     }
     
+    /* Scale project tag for mobile */
     .project-tag {
         padding: 1px 3px !important; /* 50% of original 2px 6px */
         border-radius: 1.5px !important; /* 50% of original 3px */
         font-size: 4.5px !important; /* 50% of original 9px */
         letter-spacing: 0.15px !important; /* 50% of original 0.3px */
         margin-left: 3px !important; /* 50% of original 6px */
+    }
+    
+    /* ADD THIS: Scale archive meta width */
+    .archive-meta {
+        width: 30px !important; /* 50% of original 60px */
     }
 }
 
