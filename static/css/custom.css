@@ -288,7 +288,6 @@ blockquote p {
     
     body {
         font-size: 1rem !important;
-
     }
     
     /* Scale sidebar to maintain proportions */
@@ -307,6 +306,14 @@ blockquote p {
     .content {
         max-width: 400px !important; /* 50% of original 800px */
         padding: 1rem !important; /* 50% of original 2rem */
+    }
+    
+    .project-tag {
+        padding: 1px 3px !important; /* 50% of original 2px 6px */
+        border-radius: 1.5px !important; /* 50% of original 3px */
+        font-size: 4.5px !important; /* 50% of original 9px */
+        letter-spacing: 0.15px !important; /* 50% of original 0.3px */
+        margin-left: 3px !important; /* 50% of original 6px */
     }
 }
 
@@ -327,6 +334,11 @@ blockquote p {
     }
     
     .post-title a {
+        color: #e0e0e0;
+    }
+    
+    /* ADD THIS LINE: */
+    .archive-title a {
         color: #e0e0e0;
     }
     
