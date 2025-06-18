@@ -1,6 +1,6 @@
 ---
 title: "Trading on Market Sentiment"
-date: 2024-04-10
+date: 2025-02-20
 tags: ["Project"]
 draft: true
 ---

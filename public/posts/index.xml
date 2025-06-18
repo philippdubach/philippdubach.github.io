@@ -11,7 +11,97 @@ Here&amp;rsquo;s the kicker: reasoning models exhibit counterintuitive scaling b
 &lt;p>It&amp;rsquo;s a question that cuts to the heart of modern finance. The founders argue that Wall Street blurred the line between investing and gambling long ago, and casting Kalshi as the latter is inconsistent at best. They have a point—if you can bet on oil futures, Nvidia&amp;rsquo;s stock price, or interest rate movements, why is wagering on NFL touchdowns more objectionable?
 Benefiting from the Trump administration&amp;rsquo;s hands-off regulatory approach, with the CFTC dropping its legal challenge to their election contracts the odds might be in their favour. Even better, a Kalshi board member is awaiting confirmation to lead the very agency that was previously their biggest antagonist.
 The technical distinction matters: Kalshi operates as an exchange between traders rather than a house taking bets against customers. But functionally, with 79% of their recent trading volume being sports-related, they&amp;rsquo;re forcing us to confront an uncomfortable reality about risk, speculation, and what we choose to call &amp;ldquo;investing.&amp;rdquo;
-Whether you call it innovation or regulatory arbitrage, Kalshi is exposing the arbitrary nature of the lines we&amp;rsquo;ve drawn around acceptable financial speculation.&lt;/p></description></item><item><title>Modeling Glycemic Response XGBRegressor</title><link>http://localhost:1313/2025/05/30/modeling-glycemic-response-xgbregressor/</link><pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/30/modeling-glycemic-response-xgbregressor/</guid><description>&lt;p>Earlier this year I wrote about how &lt;a href="http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/">I built a CGM data reader&lt;/a>&lt;/p></description></item><item><title>The Model Said So</title><link>http://localhost:1313/2025/05/28/the-model-said-so/</link><pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/28/the-model-said-so/</guid><description>&lt;p>LLMs make your life easier until they don&amp;rsquo;t.&lt;/p>
+Whether you call it innovation or regulatory arbitrage, Kalshi is exposing the arbitrary nature of the lines we&amp;rsquo;ve drawn around acceptable financial speculation.
+&lt;br>_ _&lt;/p></description></item><item><title>Modeling Glycemic Response with XGBoost</title><link>http://localhost:1313/2025/05/30/modeling-glycemic-response-with-xgboost/</link><pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/30/modeling-glycemic-response-with-xgboost/</guid><description>&lt;p>Earlier this year I wrote how &lt;a href="http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/">I built a CGM data reader&lt;/a> afer wearing a continuous glucose monitor myself. Since I was already logging my macronutrients a learning more about molecular biology in an &lt;a href="https://ocw.mit.edu/courses/res-7-008-7-28x-molecular-biology/">MIT MOOC&lt;/a> I became curious if given a meal&amp;rsquo;s macronutrients (carbs, protein, fat) and some basic individual characteristics (age, BMI) could serve as features in a regressor machine learning model to predict the curve parameters of the postprandial glucose curve (how my blood sugar levels change after eating). I came across &lt;a href="https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867415014816%3Fshowall%3Dtrue">Personalized Nutrition by Prediction of Glycemic Responses&lt;/a> which did exactly that. Yet neither the data nor the code was publicly available. And - I wanted to predict my &lt;em>own&lt;/em> glycemic response curve. So I decided to build my own model. In the process I wrote this &lt;a href="https://static.philippdubach.com/pdf/Modeling_Postprandial_Glycemic_Response_in_Non_Diabetic_Adults_Using_XGBRegressor.pdf">working paper&lt;/a>.
+&lt;a href="https://static.philippdubach.com/pdf/Modeling_Postprandial_Glycemic_Response_in_Non_Diabetic_Adults_Using_XGBRegressor.pdf">
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/working_paper_overview.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/working_paper_overview.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/working_paper_overview.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/working_paper_overview.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/working_paper_overview.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/working_paper_overview.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/working_paper_overview.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/working_paper_overview.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/working_paper_overview.jpg"
+alt="Overview of Working Paper Pages"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>&lt;/a>
+The paper represents an exercise in applying machine learning techniques to medical applications. The methodologies employed were largely inspired by &lt;a href="https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867415014816%3Fshowall%3Dtrue">Zeevi et al.&lt;/a>’s approach. I quickly realized that training a model on my own data &lt;em>only&lt;/em> was not very promising if not impossible. To tackle this, I used the publicly available &lt;a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2005143">Hall dataset&lt;/a> containing continuous glucose monitoring data from 57 adults, which I narrowed down to 112 standardized meals from 19 non-diabetic subjects with their respective glucose curve after the meal (full methodology in the paper).
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/cgm-workflow-graph.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/cgm-workflow-graph.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/cgm-workflow-graph.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/cgm-workflow-graph.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/cgm-workflow-graph.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/cgm-workflow-graph.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/cgm-workflow-graph.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/cgm-workflow-graph.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/cgm-workflow-graph.jpg"
+alt="Overview of the CGM pipeline workflow"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>
+Rather than trying to predict the entire glucose curve, I simplified the problem by fitting each postprandial response to a normalized Gaussian function. This gave me three key parameters to predict: amplitude (how high glucose rises), time-to-peak (when it peaks), and curve width (how long the response lasts).
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/cgm-fitted-curve-large1.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/cgm-fitted-curve-large1.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/cgm-fitted-curve-large1.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/cgm-fitted-curve-large1.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/cgm-fitted-curve-large1.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/cgm-fitted-curve-large1.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/cgm-fitted-curve-large1.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/cgm-fitted-curve-large1.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/cgm-fitted-curve-large1.jpg"
+alt="Overview of single fitted curve of cgm measurements"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>
+The Gaussian approximation worked surprisingly well for characterizing most glucose responses. While some curves fit better than others the majority of postprandial responses were well-captured, though there&amp;rsquo;s clear variation between individuals and meals. Some responses are high amplitude, narrow width, while others are more gradual and prolonged.
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/example-fitted-cgm-measurements.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/example-fitted-cgm-measurements.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/example-fitted-cgm-measurements.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/example-fitted-cgm-measurements.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/example-fitted-cgm-measurements.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/example-fitted-cgm-measurements.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/example-fitted-cgm-measurements.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/example-fitted-cgm-measurements.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/example-fitted-cgm-measurements.jpg"
+alt="Overview of selected fitted curves"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>
+I then trained an XGBoost regressor with 27 engineered features including meal composition, participant characteristics, and interaction terms. XGBoost was chosen for its ability to handle mixed data types, built-in feature importance, and strong performance on tabular data. The pipeline included hyperparameter tuning with 5-fold cross-validation to optimize learning rate, tree depth, and regularization parameters. Rather than relying solely on basic meal macronutrients, I engineered features across multiple categories and implemented CGM statistical features calculated over different time windows (24-hour and 4-hour periods), including time-in-range and glucose variability metrics. Architecture wise I trained three separate XGBoost regressors - one for each Gaussian parameter.&lt;/p></description></item><item><title>The Model Said So</title><link>http://localhost:1313/2025/05/28/the-model-said-so/</link><pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/28/the-model-said-so/</guid><description>&lt;p>LLMs make your life easier until they don&amp;rsquo;t.&lt;/p>
 &lt;blockquote>
 &lt;p>Their intrinsic complexity and lack of transparency pose significant challenges, especially in the highly regulated financial sector&lt;/p>&lt;/blockquote>
 &lt;p>Unlike other industries where &amp;ldquo;the model said so&amp;rdquo; might suffice, finance demands audit trails, bias detection,
