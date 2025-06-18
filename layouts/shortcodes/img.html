@@ -4,7 +4,7 @@
 {{- $class := .Get "class" | default "" -}}
 {{- $width := .Get "width" | default "80%" -}}
 
-<picture style="display: block; width: {{ $width }}; margin: 0 auto;">
+<picture style="display: block; width: {{ $width }}; margin: 0 auto; padding: 1rem 0;">
   <!-- Mobile: 320px-768px -->
   <source media="(max-width: 768px)" 
           srcset="{{ $baseUrl }}/cdn-cgi/image/width=320,quality=80,format=webp/{{ $src }} 320w,

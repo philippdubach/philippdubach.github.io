@@ -15,19 +15,12 @@ My approach centered on a simple philosophy:
 >The focus is to keep the tools simple enough for interested practitioners to understand the underlying theory yet provide adequate numerical solutions.
 
 Today, the landscape has evolved dramatically. Projects like [PyPortfolioOpt](https://github.com/robertmartin8/PyPortfolioOpt) and [Riskfolio-Lib](https://github.com/dcajasn/Riskfolio-Lib) have established themselves as sophisticated open-source alternatives, far surpassing my early efforts in both scope and sophistication. Despite its limitations, the project yielded several meaningful insights:
-
 {{< img src="efficient-frontier.jpg" alt="Efficient Frontier Visualization" width="70%" >}}
 First I set out to visualize Modern Portfolio Theory's fundamental principle—the risk-return tradeoff that drives optimization decisions. This scatter plot showing the efficient frontier demonstrates said core concept.
-<br>
-<br>
 {{< img src="results-vs-benchmark-table.jpg" alt="Benchmark vs Optimized Results" width="70%" >}}
 The results of my first optimization: maintaining a 9.386% return while reducing volatility from 14.445% to 5.574%, effectively tripling the Sharpe ratio from 0.650 to 1.684.
-<br>
-<br>
 {{< img src="risk-aversion-parameters.jpg" alt="Risk Aversion Parameter Effects" width="70%" >}}
 By varying the risk aversion parameter (gamma), the framework successfully adapted to different investor profiles, showcasing the flexibility of the optimization approach. This efficient frontier plot with different gamma values illustrates how the optimization framework adapts to different investor risk preferences.
-<br>
-<br>
 {{< img src="oos-performance-table.jpg" alt="Out-of-Sample Performance" width="70%" >}}
 Perhaps most importantly, out-of-sample testing across diverse market conditions—including the 2018 bear market and 2019 bull market—demonstrated consistent CVaR reduction and improved risk-adjusted returns.
 
