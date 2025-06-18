@@ -20,7 +20,12 @@
                         <span class="external-link">→</span>
                     </a>
                 {{ else }}
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    <a href="{{ .Permalink }}">
+                        {{ .Title }}
+                        {{ if in .Params.tags "Project" }}
+                            <span class="project-tag">PROJECT</span>
+                        {{ end }}
+                    </a>
                 {{ end }}
             </h2>
         </header>
@@ -42,3 +47,4 @@
     {{ end }}
 </div>
 {{ end }}
+

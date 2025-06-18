@@ -2,13 +2,7 @@
 <div class="archive">
     <h1>Archive</h1>
     {{ $posts := where .Site.RegularPages "Section" "posts" }}
-    {{ $filtered := slice }}
-    {{ range $posts }}
-      {{ if not (in (default (slice) .Params.tags) "Project") }}
-        {{ $filtered = $filtered | append . }}
-      {{ end }}
-    {{ end }}
-    {{ $posts := $filtered.ByDate.Reverse }}
+    {{ $posts := $posts.ByDate.Reverse }}
     {{ range $posts.GroupByDate "2006" }}
     <section class="year">
         <h2>{{ .Key }}</h2>
@@ -27,7 +21,12 @@
                     </a>
                     <a href="{{ .Permalink }}" class="permalink">∞</a>
                 {{ else }}
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    <a href="{{ .Permalink }}">
+                        {{ .Title }}
+                        {{ if in .Params.tags "Project" }}
+                            <span class="project-tag">PROJECT</span>
+                        {{ end }}
+                    </a>
                 {{ end }}
             </div>
         </article>

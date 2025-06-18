@@ -1,2 +1,91 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Project on philippdubach</title><link>http://localhost:1313/tags/project/</link><description>Recent content in Project on philippdubach</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 30 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/project/index.xml" rel="self" type="application/rss+xml"/><item><title>Modeling Glycemic Response XGBRegressor</title><link>http://localhost:1313/2025/05/30/modeling-glycemic-response-xgbregressor/</link><pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/30/modeling-glycemic-response-xgbregressor/</guid><description>&lt;p>Earlier this year I wrote about how &lt;a href="http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/">I built a CGM data reader&lt;/a>&lt;/p></description></item><item><title>I Built a CGM Data Reader</title><link>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</link><pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</guid><description>&lt;p>Last year I put a Continuous Glucose Monitor (CGM) sensor, specifically the &lt;a href="https://www.freestyle.abbott">Abbott Freestyle Libre 3&lt;/a>, on my left arm. Why? I wanted to optimize my nutrition for an endurance cycling competitions. Where I live, the sensor is easy to get—without any medical prescription—and even easier to use. Unfortunately, Abbott&amp;rsquo;s &lt;a href="https://apps.apple.com/us/app/freestyle-librelink-us/id1325992472">FreeStyle LibreLink&lt;/a> app is less than optimal (3,250 other people with an average rating of 2.9/5.0 seem to agree). To their defense, the web app LibreView does offer some nice reports which can be generated as PDFs—not very dynamic, but still something! What I had in mind was more in the fashion of the &lt;a href="https://ultrahuman.com/m1">Ultrahuman M1 dashboard&lt;/a>. Unfortunately, I wasn&amp;rsquo;t allowed to use my Libre sensor (EU firmware) with their app (yes, I spoke to customer service).&lt;/p></description></item><item><title>My First 'Optimal' Portfolio</title><link>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</link><pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</guid><description>&lt;p>My introduction to quantitative portfolio optimization happened during my undergraduate years, inspired by Attilio Meucci&amp;rsquo;s &lt;a href="https://link.springer.com/book/10.1007/978-3-540-27904-4">Risk and Asset Allocation&lt;/a> and the convex optimization &lt;a href="https://web.stanford.edu/~boyd/teaching.html">teachings of Diamond and Boyd at Stanford&lt;/a>. With enthusiasm and perhaps more confidence than expertise, I created my first &amp;ldquo;optimal&amp;rdquo; portfolio. What struck me most was the disconnect between theory and accessibility. Modern Portfolio Theory had been established since 1990, yet the optimization tools remained largely locked behind proprietary software.&lt;/p></description></item><item><title>The Tech behind this Site</title><link>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</guid><description>&lt;p>Similar to how Simon Willison describes his difficulties managing images for his &lt;a href="https://simonwillison.net/2024/Dec/22/link-blog/">approach to running a link blog&lt;/a> I found it hard to remain true to pure markdown syntax but have images embedded in a responsive way on this site.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Project on philippdubach</title><link>http://localhost:1313/tags/project/</link><description>Recent content in Project on philippdubach</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 30 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/project/index.xml" rel="self" type="application/rss+xml"/><item><title>Modeling Glycemic Response with XGBoost</title><link>http://localhost:1313/2025/05/30/modeling-glycemic-response-with-xgboost/</link><pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/30/modeling-glycemic-response-with-xgboost/</guid><description>&lt;p>Earlier this year I wrote how &lt;a href="http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/">I built a CGM data reader&lt;/a> afer wearing a continuous glucose monitor myself. Since I was already logging my macronutrients a learning more about molecular biology in an &lt;a href="https://ocw.mit.edu/courses/res-7-008-7-28x-molecular-biology/">MIT MOOC&lt;/a> I became curious if given a meal&amp;rsquo;s macronutrients (carbs, protein, fat) and some basic individual characteristics (age, BMI) could serve as features in a regressor machine learning model to predict the curve parameters of the postprandial glucose curve (how my blood sugar levels change after eating). I came across &lt;a href="https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867415014816%3Fshowall%3Dtrue">Personalized Nutrition by Prediction of Glycemic Responses&lt;/a> which did exactly that. Yet neither the data nor the code was publicly available. And - I wanted to predict my &lt;em>own&lt;/em> glycemic response curve. So I decided to build my own model. In the process I wrote this &lt;a href="https://static.philippdubach.com/pdf/Modeling_Postprandial_Glycemic_Response_in_Non_Diabetic_Adults_Using_XGBRegressor.pdf">working paper&lt;/a>.
+&lt;a href="https://static.philippdubach.com/pdf/Modeling_Postprandial_Glycemic_Response_in_Non_Diabetic_Adults_Using_XGBRegressor.pdf">
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/working_paper_overview.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/working_paper_overview.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/working_paper_overview.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/working_paper_overview.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/working_paper_overview.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/working_paper_overview.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/working_paper_overview.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/working_paper_overview.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/working_paper_overview.jpg"
+alt="Overview of Working Paper Pages"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>&lt;/a>
+The paper represents an exercise in applying machine learning techniques to medical applications. The methodologies employed were largely inspired by &lt;a href="https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867415014816%3Fshowall%3Dtrue">Zeevi et al.&lt;/a>’s approach. I quickly realized that training a model on my own data &lt;em>only&lt;/em> was not very promising if not impossible. To tackle this, I used the publicly available &lt;a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2005143">Hall dataset&lt;/a> containing continuous glucose monitoring data from 57 adults, which I narrowed down to 112 standardized meals from 19 non-diabetic subjects with their respective glucose curve after the meal (full methodology in the paper).
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/cgm-workflow-graph.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/cgm-workflow-graph.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/cgm-workflow-graph.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/cgm-workflow-graph.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/cgm-workflow-graph.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/cgm-workflow-graph.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/cgm-workflow-graph.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/cgm-workflow-graph.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/cgm-workflow-graph.jpg"
+alt="Overview of the CGM pipeline workflow"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>
+Rather than trying to predict the entire glucose curve, I simplified the problem by fitting each postprandial response to a normalized Gaussian function. This gave me three key parameters to predict: amplitude (how high glucose rises), time-to-peak (when it peaks), and curve width (how long the response lasts).
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/cgm-fitted-curve-large1.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/cgm-fitted-curve-large1.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/cgm-fitted-curve-large1.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/cgm-fitted-curve-large1.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/cgm-fitted-curve-large1.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/cgm-fitted-curve-large1.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/cgm-fitted-curve-large1.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/cgm-fitted-curve-large1.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/cgm-fitted-curve-large1.jpg"
+alt="Overview of single fitted curve of cgm measurements"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>
+The Gaussian approximation worked surprisingly well for characterizing most glucose responses. While some curves fit better than others the majority of postprandial responses were well-captured, though there&amp;rsquo;s clear variation between individuals and meals. Some responses are high amplitude, narrow width, while others are more gradual and prolonged.
+&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;">
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/example-fitted-cgm-measurements.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/example-fitted-cgm-measurements.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/example-fitted-cgm-measurements.jpg 640w"
+sizes="80vw">
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/example-fitted-cgm-measurements.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/example-fitted-cgm-measurements.jpg 1024w"
+sizes="80vw">
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/example-fitted-cgm-measurements.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/example-fitted-cgm-measurements.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/example-fitted-cgm-measurements.jpg 2000w"
+sizes="80vw">
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/example-fitted-cgm-measurements.jpg"
+alt="Overview of selected fitted curves"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;">
+&lt;/picture>
+I then trained an XGBoost regressor with 27 engineered features including meal composition, participant characteristics, and interaction terms. XGBoost was chosen for its ability to handle mixed data types, built-in feature importance, and strong performance on tabular data. The pipeline included hyperparameter tuning with 5-fold cross-validation to optimize learning rate, tree depth, and regularization parameters. Rather than relying solely on basic meal macronutrients, I engineered features across multiple categories and implemented CGM statistical features calculated over different time windows (24-hour and 4-hour periods), including time-in-range and glucose variability metrics. Architecture wise I trained three separate XGBoost regressors - one for each Gaussian parameter.&lt;/p></description></item><item><title>I Built a CGM Data Reader</title><link>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</link><pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</guid><description>&lt;p>Last year I put a Continuous Glucose Monitor (CGM) sensor, specifically the &lt;a href="https://www.freestyle.abbott">Abbott Freestyle Libre 3&lt;/a>, on my left arm. Why? I wanted to optimize my nutrition for an endurance cycling competitions. Where I live, the sensor is easy to get—without any medical prescription—and even easier to use. Unfortunately, Abbott&amp;rsquo;s &lt;a href="https://apps.apple.com/us/app/freestyle-librelink-us/id1325992472">FreeStyle LibreLink&lt;/a> app is less than optimal (3,250 other people with an average rating of 2.9/5.0 seem to agree). To their defense, the web app LibreView does offer some nice reports which can be generated as PDFs—not very dynamic, but still something! What I had in mind was more in the fashion of the &lt;a href="https://ultrahuman.com/m1">Ultrahuman M1 dashboard&lt;/a>. Unfortunately, I wasn&amp;rsquo;t allowed to use my Libre sensor (EU firmware) with their app (yes, I spoke to customer service).&lt;/p></description></item><item><title>My First 'Optimal' Portfolio</title><link>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</link><pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/03/15/my-first-optimal-portfolio/</guid><description>&lt;p>My introduction to quantitative portfolio optimization happened during my undergraduate years, inspired by Attilio Meucci&amp;rsquo;s &lt;a href="https://link.springer.com/book/10.1007/978-3-540-27904-4">Risk and Asset Allocation&lt;/a> and the convex optimization &lt;a href="https://web.stanford.edu/~boyd/teaching.html">teachings of Diamond and Boyd at Stanford&lt;/a>. With enthusiasm and perhaps more confidence than expertise, I created my first &amp;ldquo;optimal&amp;rdquo; portfolio. What struck me most was the disconnect between theory and accessibility. Modern Portfolio Theory had been established since 1990, yet the optimization tools remained largely locked behind proprietary software.&lt;/p></description></item><item><title>The Tech behind this Site</title><link>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/01/15/the-tech-behind-this-site/</guid><description>&lt;p>Similar to how Simon Willison describes his difficulties managing images for his &lt;a href="https://simonwillison.net/2024/Dec/22/link-blog/">approach to running a link blog&lt;/a> I found it hard to remain true to pure markdown syntax but have images embedded in a responsive way on this site.&lt;/p>
 &lt;p>My current pipeline is as follows: I host my all my images in a R2 bucket and serve them from &lt;code>static.philippdubach.com&lt;/code>. I use Cloudflares&amp;rsquo;s image resizing CDN do I never have to worry about serving images in appropriate size or format. I basically just upload them with the highes possible quality and Cloudflare takes care of the rest.&lt;/p></description></item></channel></rss>
