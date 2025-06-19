@@ -27,12 +27,11 @@
     <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
     
     {{/* Favicons from static/icons */}}
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ "icons/apple-touch-icon.png" | relURL }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ "icons/favicon-32x32.png" | relURL }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ "icons/favicon-16x16.png" | relURL }}">
-    <link rel="mask-icon" href="{{ "icons/safari-pinned-tab.svg" | relURL }}">
-    <link rel="shortcut icon" href="{{ "icons/favicon.ico" | relURL }}">
-    <link rel="icon" type="image/svg+xml" href="{{ "icons/favicon.svg" | relURL }}">
-    
+    <link rel="icon" type="image/png" href="https://static.philippdubach.com/icons/favicon-96x96.png" sizes="96x96" 		/>
+	<link rel="icon" type="image/svg+xml" href="https://static.philippdubach.com/icons/favicon.svg" />
+	<link rel="shortcut icon" href="https://static.philippdubach.com/icons/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="https://static.philippdubach.com/icons/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="philippdubach.com" />
+	<link rel="manifest" href="https://static.philippdubach.com/icons/site.webmanifest" />
     <meta name="theme-color" content="{{ .Site.Params.webmanifest.theme_color | default "#434648" }}">
 </head>
