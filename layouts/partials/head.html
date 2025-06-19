@@ -1,13 +1,38 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
-<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    {{- hugo.Generator }}
+    
+    <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
-{{ if .Site.Params.keywords }}
-<meta name="keywords" content="{{ delimit .Site.Params.keywords "," }}">
-{{ end }}
+    {{ if .Site.Params.keywords }}
+    <meta name="keywords" content="{{ delimit .Site.Params.keywords "," }}">
+    {{ end }}
 
-<link rel="canonical" href="{{ .Permalink }}">
-<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}/index.xml">
+    {{/* Open Graph tags */}}
+    {{ template "_internal/opengraph.html" . }}
 
-<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+    {{/* Twitter Card tags */}}
+    {{ template "_internal/twitter_cards.html" . }}
+
+    <link rel="canonical" href="{{ .Permalink }}">
+    
+    {{- with .OutputFormats.Get "RSS" }}
+    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
+    <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}">
+    {{- end }}
+
+    <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+    
+    {{/* Favicons from static/icons */}}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ "icons/apple-touch-icon.png" | relURL }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ "icons/favicon-32x32.png" | relURL }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ "icons/favicon-16x16.png" | relURL }}">
+    <link rel="mask-icon" href="{{ "icons/safari-pinned-tab.svg" | relURL }}">
+    <link rel="shortcut icon" href="{{ "icons/favicon.ico" | relURL }}">
+    <link rel="icon" type="image/svg+xml" href="{{ "icons/favicon.svg" | relURL }}">
+    
+    <meta name="theme-color" content="{{ .Site.Params.webmanifest.theme_color | default "#434648" }}">
+</head>

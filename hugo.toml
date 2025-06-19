@@ -1,7 +1,6 @@
-baseURL = 'https://philippdubach.github.io/'
+baseURL = 'https://philippdubach.com/'
 languageCode = 'en-us'
 title = 'philippdubach'
-theme = 'hugo-blog-awesome'
 
 # Pagination settings
 [pagination]
@@ -12,12 +11,12 @@ theme = 'hugo-blog-awesome'
   author = "Philipp Dubach"
   description = "Personal Projects, Curated Articles and Papers on Economics, Finance and Technology"
   keywords = ["Finance", "Economics", "Technology", "Data", "Machine Learning"]
+  favicon = "/favicon.ico"
   
   # Social links
   [params.social]
     github = "philippdubach"
     email = "info@philippdubach.com"
-    #linkedin = "in/philippdubach"
 
 [markup]
   [markup.goldmark]
@@ -40,4 +39,6 @@ theme = 'hugo-blog-awesome'
     
 [minify]
   minifyOutput = true
+  
+  
 

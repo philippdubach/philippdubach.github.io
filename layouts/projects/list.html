@@ -12,6 +12,9 @@
                 {{ if .Params.external_url }}
                     • <a href="{{ .Permalink }}" class="permalink">∞</a>
                 {{ end }}
+                {{ if in .Params.tags "Project" }}
+                    <span class="project-tag">PROJECT</span>
+                {{ end }}
             </div>
             <h2 class="post-title">
                 {{ if .Params.external_url }}
