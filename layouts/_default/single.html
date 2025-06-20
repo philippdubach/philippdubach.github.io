@@ -26,4 +26,76 @@
         {{ .Content }}
     </div>
 </article>
+
+{{/* Only show navigation if not on about page */}}
+{{ if not (eq .RelPermalink "/about/") }}
+<hr style="height:0.5px;border-width:0;color:gray;background-color:gray">
+<nav class="post-navigation">
+    {{/* Your existing navigation code */}}
+    {{ $projectPosts := where .Site.RegularPages "Params.tags" "intersect" (slice "Project") }}
+    {{ $recentProjects := first 1 ($projectPosts.ByDate.Reverse) }}
+    
+    {{ $recentPosts := slice }}
+    {{ range .Site.RegularPages.ByDate.Reverse }}
+        {{ $isProject := false }}
+        {{ if .Params.tags }}
+            {{ if in .Params.tags "Project" }}
+                {{ $isProject = true }}
+            {{ end }}
+        {{ end }}
+        {{ if not $isProject }}
+            {{ $recentPosts = $recentPosts | append . }}
+            {{ if eq (len $recentPosts) 2 }}
+                {{ break }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    {{ if $recentPosts }}
+    <div class="recent-post">
+        <h3>Most recent articles</h3>
+        <div class="navigation-links">
+            {{ range $recentPosts }}
+                <p>■ <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "2nd January 2006" }}</p>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+    
+    {{ if $recentProjects }}
+    <div class="recent-project">
+        <h3>Most recent personal project</h3>
+        <div class="navigation-links">
+            {{ range $recentProjects }}
+                <p>■ <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "2nd January 2006" }}</p>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</nav>
+{{ end }}
+
+<style>
+.post-navigation h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.navigation-links p {
+    font-size: 0.85rem;
+    margin: 0.25rem 0;
+    line-height: 1.4;
+}
+
+.navigation-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navigation-links a:hover {
+    text-decoration: underline;
+    color: #007acc;
+}
+</style>
 {{ end }}
