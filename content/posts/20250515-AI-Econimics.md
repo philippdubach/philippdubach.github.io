@@ -1,6 +1,7 @@
 ---
 title: "AI Learns Economics Like Undergrads"
 date: 2024-11-01
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://arxiv.org/abs/2411.00782"
 ---
 

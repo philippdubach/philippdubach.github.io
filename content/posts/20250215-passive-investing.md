@@ -1,6 +1,7 @@
 ---
 title: "Passive Investing's Active Problem"
 date: 2025-02-15
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263"
 ---
 

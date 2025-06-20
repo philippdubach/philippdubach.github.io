@@ -1,6 +1,7 @@
 ---
 title: "AlphaFold 3: Free for Science"
 date: 2024-05-12
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/"
 ---
 

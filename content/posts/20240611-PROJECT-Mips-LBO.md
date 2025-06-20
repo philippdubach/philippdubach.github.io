@@ -1,6 +1,7 @@
 ---
 title: "Flirting With Models: Leveraged Buyout (LBO)"
 date: 2024-06-11
+images: ['https://static.philippdubach.com/ograph/ograph-project.jpg']
 tags: ["Project"]
 draft: true
 ---

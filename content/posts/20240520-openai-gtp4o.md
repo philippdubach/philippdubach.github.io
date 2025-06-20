@@ -1,6 +1,7 @@
 ---
 title: "OpenAI Cuts Prices, Raises Stakes"
 date: 2024-05-20
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://openai.com/index/hello-gpt-4o/"
 ---
 

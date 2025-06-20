@@ -1,6 +1,7 @@
 ---
 title: "The Green Bond Commitment Premium"
 date: 2024-12-31
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://www.nature.com/articles/s41599-024-04318-1"
 ---
 
