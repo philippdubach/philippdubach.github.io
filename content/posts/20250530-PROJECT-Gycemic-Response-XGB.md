@@ -1,6 +1,8 @@
 ---
 title: "Modeling Glycemic Response with XGBoost"
 date: 2025-05-30
+description : ['We built a machine learning model to predict blood sugar responses after meals using continuous glucose monitor data, meal macronutrients, and personal characteristics. Inspired by a paper on personalized nutrition. Using a dataset of 112 standardized meals from 19 non-diabetic adults, we simplified glucose curves into three Gaussian parameters: amplitude, time-to-peak, and curve width. An XGBoost regressor with 27 engineered features achieved moderate success predicting amplitude (R² = 0.46) but failed at timing predictions. While falling short of our goal to predict personal glycemic responses, this exercise demonstrates the challenges of applying ML to personalized nutrition with limited data. Complete code and working paper available on GitHub.']
+images : ['https://static.philippdubach.com/ograph-xgboost.jpg']
 tags: ["Project"]
 draft: false
 ---
