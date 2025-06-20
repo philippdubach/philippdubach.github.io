@@ -1,6 +1,7 @@
 ---
 title: "My First 'Optimal' Portfolio"
 date: 2024-03-15
+images: ['https://static.philippdubach.com/ograph/ograph-portfolio.jpg']
 tags: ["Project"]
 ---
 
@@ -8,15 +9,14 @@ My introduction to quantitative portfolio optimization happened during my underg
 
 >Nevertheless, only a few comprehensive software models are available publicly to use, study, or modify. We tackle this issue by engineering practical tools for asset allocation and implementing them in the Python programming language.
 
-This gap inspired what would eventually become a published as: [A Python integration of practical asset allocation based on modern portfolio theory and its advancements](https://digitalcollection.zhaw.ch/handle/11475/24351).
+This gap inspired what would eventually be published as: [A Python integration of practical asset allocation based on modern portfolio theory and its advancements](https://digitalcollection.zhaw.ch/handle/11475/24351).
 
 My approach centered on a simple philosophy:
-
 >The focus is to keep the tools simple enough for interested practitioners to understand the underlying theory yet provide adequate numerical solutions.
 
 Today, the landscape has evolved dramatically. Projects like [PyPortfolioOpt](https://github.com/robertmartin8/PyPortfolioOpt) and [Riskfolio-Lib](https://github.com/dcajasn/Riskfolio-Lib) have established themselves as sophisticated open-source alternatives, far surpassing my early efforts in both scope and sophistication. Despite its limitations, the project yielded several meaningful insights:
 {{< img src="efficient-frontier.jpg" alt="Efficient Frontier Visualization" width="70%" >}}
-First I set out to visualize Modern Portfolio Theory's fundamental principle—the risk-return tradeoff that drives optimization decisions. This scatter plot showing the efficient frontier demonstrates said core concept.
+First, I set out to visualize Modern Portfolio Theory's fundamental principle—the risk-return tradeoff that drives optimization decisions. This scatter plot showing the efficient frontier demonstrates this core concept.
 {{< img src="results-vs-benchmark-table.jpg" alt="Benchmark vs Optimized Results" width="70%" >}}
 The results of my first optimization: maintaining a 9.386% return while reducing volatility from 14.445% to 5.574%, effectively tripling the Sharpe ratio from 0.650 to 1.684.
 {{< img src="risk-aversion-parameters.jpg" alt="Risk Aversion Parameter Effects" width="70%" >}}
@@ -27,4 +27,3 @@ Perhaps most importantly, out-of-sample testing across diverse market conditions
 >We demonstrate how even in an environment with high correlation, achieving a competitive return with a lower expected shortfall and lower excess risk than the given benchmark over multiple periods is possible.
 
 Looking back, the project feels embarrassingly naive—and surprisingly foundational. While it earned some recognition at the time, it now serves as a valuable reminder: sometimes the best foundation is built before you know enough to doubt yourself.
-
