@@ -1,9 +1,10 @@
 ---
 title: "It just ain’t so"
 date: 2025-06-15
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255"
 ---
-> It ain’t what you don’t know that gets you into trouble. It’s what you know for sure that just ain’t so.
+> It ain't what you don't know that gets you into trouble. It's what you know for sure that just ain't so.
 
 This (not actually) Mark Twain quote from [The Big Short](https://en.wikipedia.org/wiki/The_Big_Short_(film)) captures the sentiment of realizing that some foundational assumptions might be empirically wrong. 
 
@@ -11,8 +12,7 @@ A recent article by [Anton Vorobets](https://antonvorobets.substack.com) that I 
 
 > Finance and economics academia is unfortunately driven by several convenient myths, i.e., claims that are taken for granted and spread among university academics despite their poor empirical support.
 
-The article highlights significant practical consequences for portfolio management and risk assessment. Portfolio optimization based on normal distribution assumptions ignores fat left tails—exactly the kind of extreme downside events that can wipe out portfolios.
-This misspecification can lead to inadequate risk management and suboptimal asset allocation decisions. Vorobets suggests [alternative approaches, including Monte Carlo simulations combined with Conditional Value-at-Risk (CVaR) optimization](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4034316), which better accommodate the complex distributional properties observed in financial data. While computationally more demanding, these methods offer improved alignment with empirical reality.
+The article highlights significant practical consequences for portfolio management and risk assessment. Portfolio optimization based on normal distribution assumptions ignores fat left tails—exactly the kind of extreme downside events that can wipe out portfolios. This misspecification can lead to inadequate risk management and suboptimal asset allocation decisions. Vorobets suggests [alternative approaches, including Monte Carlo simulations combined with Conditional Value-at-Risk (CVaR) optimization](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4034316), which better accommodate the complex distributional properties observed in financial data. While computationally more demanding, these methods offer improved alignment with empirical reality.
 
 Reading this piece gave me a few ideas for extensions I might want to explore in an upcoming personal project:
 (1) While Vorobets focuses on US equity indices, similar analysis across fixed income, commodities, currencies, and alternative assets would provide a more comprehensive view of distributional properties across financial markets. Each asset class exhibits distinct market microstructure characteristics that may influence distributional behavior.

@@ -1,6 +1,7 @@
 ---
 title: "How Some Active Funds Create Their Own Returns"
 date: 2024-06-21
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://arxiv.org/abs/2405.12768"
 ---
 

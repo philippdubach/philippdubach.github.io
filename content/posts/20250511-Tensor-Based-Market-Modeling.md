@@ -1,6 +1,7 @@
 ---
 title: "Beyond Monte Carlo: Tensor-Based Market Modeling"
 date: 2025-05-11
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863"
 ---
 

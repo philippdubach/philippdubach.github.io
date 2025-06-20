@@ -1,6 +1,7 @@
 ---
 title: "The Model Said So"
 date: 2025-05-28
+images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://arxiv.org/abs/2505.24650"
 ---
 
