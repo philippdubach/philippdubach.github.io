@@ -1,5 +1,5 @@
 ---
-title: "It just ain’t so"
+title: "It Just Ain’t So"
 date: 2025-06-15
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255"
