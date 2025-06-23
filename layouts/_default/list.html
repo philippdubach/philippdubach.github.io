@@ -1,6 +1,13 @@
 {{ define "main" }}
 <div class="archive">
     <h1>Archive</h1>
+    
+    {{ if .Content }}
+    <div class="archive-description">
+        {{ .Content }}
+    </div>
+    {{ end }}
+    
     {{ $posts := where .Site.RegularPages "Section" "posts" }}
     {{ $posts := $posts.ByDate.Reverse }}
     {{ range $posts.GroupByDate "2006" }}
