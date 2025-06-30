@@ -12,6 +12,7 @@ title = 'philippdubach'
   description = "Personal Projects, Curated Articles and Papers on Economics, Finance and Technology"
   keywords = ["Finance", "Economics", "Technology", "Data", "Machine Learning"]
   favicon = "/favicon.ico"
+  math = false
   
   # Social links
   [params.social]
@@ -22,6 +23,12 @@ title = 'philippdubach'
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
 
 [permalinks]
   posts = "/:year/:month/:day/:slug/"
@@ -39,6 +46,3 @@ title = 'philippdubach'
     
 [minify]
   minifyOutput = true
-  
-  
-
