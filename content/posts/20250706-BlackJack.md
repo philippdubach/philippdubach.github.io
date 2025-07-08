@@ -1,7 +1,7 @@
 ---
-title: "Blackjack with Computer Vision"
+title: "Counting Cards with Computer Vision"
 date: 2025-07-06
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-blackjack.jpg']
 tags: ["Project"]
 ---
 After installing [Claude Code](https://www.anthropic.com/claude-code)
