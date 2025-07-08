@@ -1,6 +1,6 @@
 ---
 title: "Novo Nordisk's Post-Patent Strategy"
-date: 2025-06-30
+date: 2025-06-29
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736%2825%2901185-7/"
 ---
