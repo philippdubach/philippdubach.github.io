@@ -1,9 +1,13 @@
 ---
 title: "Counting Cards with Computer Vision"
 date: 2025-07-06
+description: "I built a real-time blackjack odds calculator using Claude Code AI, YOLOv11 computer vision, and Monte Carlo simulation. Complete tutorial with Python code, dataset annotation, and model training for automated card detection and probability analysis."
 images: ['https://static.philippdubach.com/ograph/ograph-blackjack.jpg']
+keywords: ["Claude Code", "computer vision", "YOLOv11", "Monte Carlo simulation", "blackjack odds", "object detection", "machine learning", "Python coding", "card detection", "AI programming", "data annotation", "transfer learning", "real-time detection", "Roboflow", "gaming AI"]
 tags: ["Project"]
+draft: false
 ---
+
 After installing [Claude Code](https://www.anthropic.com/claude-code)
 >the agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster through natural language commands
 

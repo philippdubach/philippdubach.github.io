@@ -1,4 +1,4 @@
-{{/* Enhanced Twitter Cards implementation */}}
+{{/* Twitter Cards implementation */}}
 <meta name="twitter:card" content="summary_large_image">
 {{ if .Site.Params.social.twitter }}
 <meta name="twitter:site" content="{{ .Site.Params.social.twitter }}">
@@ -7,13 +7,19 @@
 <meta name="twitter:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
 <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
-{{/* Twitter Image */}}
+{{/* Twitter Image - handles multiple formats */}}
 {{ $image := "" }}
-{{ if .Params.image }}
+{{ if .Params.images }}
+    {{/* Handle images array (your format) */}}
+    {{ $image = index .Params.images 0 }}
+{{ else if .Params.image }}
+    {{/* Handle single image field */}}
     {{ $image = .Params.image | absURL }}
 {{ else if .Site.Params.default_image }}
-    {{ $image = .Site.Params.default_image | absURL }}
+    {{/* Fallback to site default */}}
+    {{ $image = .Site.Params.default_image }}
 {{ end }}
+
 {{ if $image }}
 <meta name="twitter:image" content="{{ $image }}">
 {{ end }}
