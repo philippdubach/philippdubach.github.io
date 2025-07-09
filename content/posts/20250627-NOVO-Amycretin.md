@@ -2,6 +2,8 @@
 title: "Novo Nordisk's Post-Patent Strategy"
 date: 2025-06-29
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+description: "Analysis of Novo Nordisk's post-patent strategy as Ozempic faces 2031 expiration, focusing on promising Phase 1 results for amycretin showing 24.3% weight loss and the company's diversified pipeline approach to maintain market leadership."
+keywords: ["Novo Nordisk", "Ozempic patent expiration", "amycretin", "weight loss drug", "semaglutide", "GLP-1 receptor", "pharmaceutical pipeline", "drug development", "Wegovy", "obesity treatment", "Phase 1 results", "patent cliff", "biotech investment", "pharmaceutical manufacturing", "Eli Lilly competition"]
 external_url: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736%2825%2901185-7/"
 ---
 

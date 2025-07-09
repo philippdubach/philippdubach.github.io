@@ -2,6 +2,8 @@
 title: "Sentiment Trading Revisited"
 date: 2025-07-07
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+description: "A new research paper by Ayaan Qayyum demonstrates that using OpenAI's embedding models to convert news headlines into high-dimensional vectors can reduce stock market prediction errors by up to 40% when combined with neural networks."
+keywords: ["sentiment trading", "OpenAI embedding models", "neural networks", "stock market prediction", "news sentiment analysis", "GRU", "LSTM", "temporal convolutional networks", "PyTorch", "financial machine learning", "market sentiment", "algorithmic trading", "news headlines trading", "time-independent models", "semantic analysis"]
 external_url: "https://arxiv.org/abs/2507.01970"
 draft: false
 ---

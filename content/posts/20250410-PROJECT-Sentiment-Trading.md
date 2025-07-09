@@ -2,6 +2,8 @@
 title: "Trading on Market Sentiment"
 date: 2025-02-20
 images: ['https://static.philippdubach.com/ograph/ograph-sentiment.jpg']
+description: "This post explores using OpenAI's GPT-3.5 model for sentiment analysis in financial markets, comparing its performance against industry benchmark RavenPack for predicting market movements from news headlines."
+keywords: ["market sentiment trading", "GPT-3.5 sentiment analysis", "financial NLP", "RavenPack benchmark", "algorithmic trading", "news headline analysis", "large language models finance", "sentiment-based trading strategy", "OpenAI financial applications", "quantitative trading", "market prediction", "financial sentiment scoring", "trading automation", "investment strategy", "fintech machine learning"]
 tags: ["Project"]
 draft: false
 ---

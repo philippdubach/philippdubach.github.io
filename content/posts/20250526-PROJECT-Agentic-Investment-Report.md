@@ -2,6 +2,8 @@
 title: "AI Agents Build my Investment Reports"
 date: 2025-06-26
 images: ['https://static.philippdubach.com/ograph/ograph-investment-report.jpg']
+description: "A comprehensive implementation of a multi-agent AI system that automatically generates personalized investment reports by orchestrating specialized agents for news analysis, portfolio performance tracking, and market data integration."
+keywords: ["AI agents", "investment reports", "multi-agent system", "agentic AI", "portfolio management", "automated trading", "Claude Sonnet", "Streamlit", "market data analysis", "news aggregation", "economic calendar", "portfolio performance", "financial automation", "investment research", "wealth management"]
 tags: ["Project"]
 draft: true
 ---

@@ -2,6 +2,9 @@
 title: "Modeling Glycemic Response with XGBoost"
 date: 2025-05-30
 images: ['https://static.philippdubach.com/ograph/ograph-xgboost.jpg']
+description: "A machine learning project using XGBoost to predict postprandial glucose responses from meal macronutrients and individual characteristics."
+keywords: ["continuous glucose monitoring", "CGM data", "postprandial glucose response", "XGBoost regressor", "machine learning", "personalized nutrition", "glycemic response prediction", "glucose curve modeling", "macronutrients", "blood sugar prediction", "MIT MOOC", "Hall dataset", "Gaussian curve fitting", "hyperparameter tuning", "feature engineering"]
+
 tags: ["Project"]
 draft: false
 ---

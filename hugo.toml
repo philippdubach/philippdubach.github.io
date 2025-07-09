@@ -59,8 +59,8 @@ title = 'philippdubach'
   priority = 0.5
   filename = 'sitemap.xml'
 
-# Enable RSS
 [outputs]
-  home = ['HTML', 'RSS']
+  home = ['HTML', 'RSS', 'SiteMap']
   page = ['HTML']
-  section = ['HTML', 'RSS']
+  section = ['HTML', 'RSS', 'SiteMap']
+  
