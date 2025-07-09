@@ -5,10 +5,21 @@
     
     {{/* SEO Meta Tags */}}
     <meta name="robots" content="index, follow">
-    <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    <title>
+	{{- if .IsHome -}}
+    	Home - {{ .Site.Params.site_name }}
+	{{- else if .Title -}}
+    	{{ .Title }} - {{ .Site.Params.site_name }}
+	{{- else -}}
+    	{{ .Site.Params.site_name }}
+	{{- end -}}
+	</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
-    {{ if .Site.Params.keywords }}
+    {{/* Use post-specific keywords if available, otherwise site-wide */}}
+    {{ if .Params.keywords }}
+    <meta name="keywords" content="{{ delimit .Params.keywords "," }}">
+    {{ else if .Site.Params.keywords }}
     <meta name="keywords" content="{{ delimit .Site.Params.keywords "," }}">
     {{ end }}
 
@@ -17,7 +28,7 @@
     {{ end }}
 
     {{/* Hugo Generator */}}
-    {{- hugo.Generator }}
+    {{ hugo.Generator }}
 
     {{/* Canonical URL */}}
     <link rel="canonical" href="{{ .Permalink }}">
@@ -32,12 +43,12 @@
     <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
     
     {{/* Favicons */}}
-    <link rel="icon" type="image/png" href="https://static.philippdubach.com/icons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="https://static.philippdubach.com/icons/favicon.svg" />
-    <link rel="shortcut icon" href="https://static.philippdubach.com/icons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://static.philippdubach.com/icons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="{{ .Site.Params.site_name | default .Site.Title }}" />
-    <link rel="manifest" href="https://static.philippdubach.com/icons/site.webmanifest" />
+	<link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+	<link rel="shortcut icon" href="/icons/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="{{ .Site.Params.site_name | default 	.Site.Title }}" />
+	<link rel="manifest" href="/icons/site.webmanifest" />
     <meta name="theme-color" content="{{ .Site.Params.theme_color | default "#434648" }}">
     <meta name="msapplication-TileColor" content="{{ .Site.Params.msapplication_tile_color | default "#434648" }}">
 
