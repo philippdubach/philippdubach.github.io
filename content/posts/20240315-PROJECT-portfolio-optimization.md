@@ -2,6 +2,8 @@
 title: "My First 'Optimal' Portfolio"
 date: 2024-03-15
 images: ['https://static.philippdubach.com/ograph/ograph-portfolio.jpg']
+description: "A retrospective on developing Python-based quantitative portfolio optimization tools, exploring Modern Portfolio Theory implementation, efficient frontier visualization, and out-of-sample testing results that demonstrated improved risk-adjusted returns."
+keywords: ["quantitative portfolio optimization", "Modern Portfolio Theory", "Python portfolio optimization", "efficient frontier", "risk-return tradeoff", "Sharpe ratio", "CVaR reduction", "asset allocation", "PyPortfolioOpt", "Riskfolio-Lib", "out-of-sample testing", "risk aversion parameter", "convex optimization", "open-source finance tools", "portfolio management Python"]
 tags: ["Project"]
 ---
 

@@ -2,6 +2,8 @@
 title: "Beyond Monte Carlo: Tensor-Based Market Modeling"
 date: 2025-05-11
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+description: "Explores a groundbreaking approach using Transition Probability Tensors and attention mechanisms to solve quantitative finance's fundamental tension between machine learning pattern recognition and arbitrage-free pricing requirements."
+keywords: ["tensor-based market modeling", "Monte Carlo simulation", "quantitative finance", "attention mechanisms", "Transition Probability Tensors", "arbitrage-free pricing", "First Fundamental Theorem of Finance", "risk factor modeling", "financial derivatives pricing", "machine learning finance", "volatility regimes", "hedging strategies", "market stress testing", "UBS Investment Bank", "algorithmic trading"]
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863"
 ---
 

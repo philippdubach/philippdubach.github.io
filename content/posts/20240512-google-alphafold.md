@@ -2,6 +2,8 @@
 title: "AlphaFold 3: Free for Science"
 date: 2024-05-12
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+description: "Google releases AlphaFold 3 for free to researchers, enabling unprecedented prediction of molecular interactions between proteins, DNA, RNA, and small molecules, potentially transforming drug discovery while establishing Google's dominance in the life sciences AI market."
+keywords: ["AlphaFold 3", "Google DeepMind", "protein structure prediction", "molecular interactions", "drug discovery", "AI in life sciences", "pharmaceutical AI", "protein folding", "molecular modeling", "AlphaFold Server", "structural biology", "computational biology", "AI drug development", "Google cloud strategy", "life sciences platform"]
 external_url: "https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/"
 ---
 
