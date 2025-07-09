@@ -13,7 +13,13 @@ title = 'philippdubach'
   keywords = ["Finance", "Economics", "Technology", "Data", "Machine Learning"]
   favicon = "/favicon.ico"
   math = false
+  site_name = "philippdubach"
+  locale = "en_US"
+  default_image = "https://static.philippdubach.com/ograph/ograph-post.jpg"
+  theme_color = "#2c3e50"
+  msapplication_tile_color = "#2c3e50"
   
+ 
   # Social links
   [params.social]
     github = "philippdubach"
@@ -46,3 +52,15 @@ title = 'philippdubach'
     
 [minify]
   minifyOutput = true
+
+# SEO improvements
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.5
+  filename = 'sitemap.xml'
+
+# Enable RSS
+[outputs]
+  home = ['HTML', 'RSS']
+  page = ['HTML']
+  section = ['HTML', 'RSS']

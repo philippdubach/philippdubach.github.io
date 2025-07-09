@@ -1,9 +1,10 @@
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    {{- hugo.Generator }}
-    
+    {{/* SEO Meta Tags */}}
+    <meta name="robots" content="index, follow">
     <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
@@ -11,27 +12,41 @@
     <meta name="keywords" content="{{ delimit .Site.Params.keywords "," }}">
     {{ end }}
 
-    {{/* Open Graph tags */}}
-    {{ template "_internal/opengraph.html" . }}
+    {{ if .Site.Params.author }}
+    <meta name="author" content="{{ .Site.Params.author }}">
+    {{ end }}
 
-    {{/* Twitter Card tags */}}
-    {{ template "_internal/twitter_cards.html" . }}
+    {{/* Hugo Generator */}}
+    {{- hugo.Generator }}
 
+    {{/* Canonical URL */}}
     <link rel="canonical" href="{{ .Permalink }}">
     
+    {{/* RSS Feed */}}
     {{- with .OutputFormats.Get "RSS" }}
     <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
     <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}">
     {{- end }}
 
+    {{/* Stylesheets */}}
     <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
     
-    {{/* Favicons from static/icons */}}
-    <link rel="icon" type="image/png" href="https://static.philippdubach.com/icons/favicon-96x96.png" sizes="96x96" 		/>
-	<link rel="icon" type="image/svg+xml" href="https://static.philippdubach.com/icons/favicon.svg" />
-	<link rel="shortcut icon" href="https://static.philippdubach.com/icons/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="https://static.philippdubach.com/icons/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="philippdubach.com" />
-	<link rel="manifest" href="https://static.philippdubach.com/icons/site.webmanifest" />
-    <meta name="theme-color" content="{{ .Site.Params.webmanifest.theme_color | default "#434648" }}">
+    {{/* Favicons */}}
+    <link rel="icon" type="image/png" href="https://static.philippdubach.com/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="https://static.philippdubach.com/icons/favicon.svg" />
+    <link rel="shortcut icon" href="https://static.philippdubach.com/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://static.philippdubach.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="{{ .Site.Params.site_name | default .Site.Title }}" />
+    <link rel="manifest" href="https://static.philippdubach.com/icons/site.webmanifest" />
+    <meta name="theme-color" content="{{ .Site.Params.theme_color | default "#434648" }}">
+    <meta name="msapplication-TileColor" content="{{ .Site.Params.msapplication_tile_color | default "#434648" }}">
+
+    {{/* Open Graph */}}
+    {{ partial "opengraph.html" . }}
+
+    {{/* Twitter Cards */}}
+    {{ partial "twitter.html" . }}
+
+    {{/* Structured Data */}}
+    {{ partial "structured-data.html" . }}
 </head>
