@@ -7,6 +7,9 @@ math: true
 draft: true
 ---
 
+$$\Delta u_{t+i,t-1} = \beta_i X_{t-1} + \delta_i + \epsilon_{u,t+i}$$
+$$dy_{t+i,t-1} = dy^{POT}_{t+i,t-1} + \gamma_i \Delta u_{t+i,t-1} + \epsilon_{y,t+i}$$
+
 
 This is an inline \(a^*=x-b^*\) equation.
 
