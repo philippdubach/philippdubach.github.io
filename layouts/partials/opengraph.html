@@ -5,6 +5,7 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ .Site.Params.site_name | default .Site.Title }}">
 <meta property="og:locale" content="{{ .Site.Params.locale | default "en_US" }}">
+<meta property="og:logo" content="{{ .Site.BaseURL }}icons/favicon.ico">
 
 {{/* Open Graph Image - handles multiple formats */}}
 {{ $image := "" }}
