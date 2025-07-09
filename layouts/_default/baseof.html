@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default "en" }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        {{- if .IsHome -}}
-            Home - {{ .Site.Title }}
-        {{- else -}}
-            {{- if .Title -}}
-                {{ .Title }} - {{ .Site.Title }}
-            {{- else -}}
-                {{ .Site.Title }}
-            {{- end -}}
-        {{- end -}}
-    </title>
-    {{ partial "head.html" . }}
-    
-    {{- if .Param "math" -}}
-        {{ partialCached "math.html" . }}
-    {{- end -}}
-</head>
+{{ partial "head.html" . }}
 <body class="linkblog">
     <div class="container">
         {{ partial "sidebar.html" . }}
@@ -29,5 +10,9 @@
         </main>
     </div>
     {{ partial "footer.html" . }}
+    
+    {{- if .Param "math" -}}
+        {{ partialCached "math.html" . }}
+    {{- end -}}
 </body>
 </html>

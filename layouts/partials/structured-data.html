@@ -39,7 +39,9 @@
   "headline": "{{ .Title }}",
   "name": "{{ .Title }}",
   "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
-  {{ if .Params.tags }}
+  {{ if .Params.keywords }}
+  "keywords": [{{ range $i, $keyword := .Params.keywords }}{{ if $i }}, {{ end }}"{{ $keyword }}"{{ end }}],
+  {{ else if .Params.tags }}
   "keywords": [{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}"{{ $tag }}"{{ end }}],
   {{ end }}
   "articleBody": {{ .Content | plainify | jsonify }},
