@@ -46,10 +46,12 @@
   "wordCount": {{ .WordCount }},
   "inLanguage": "{{ .Site.Language.Lang | default "en" }}",
   {{ $image := "" }}
-  {{ if .Params.image }}
+  {{ if .Params.images }}
+    {{ $image = index .Params.images 0 }}
+  {{ else if .Params.image }}
     {{ $image = .Params.image | absURL }}
   {{ else if .Site.Params.default_image }}
-    {{ $image = .Site.Params.default_image | absURL }}
+    {{ $image = .Site.Params.default_image }}
   {{ end }}
   {{ if $image }}
   "image": "{{ $image }}",

@@ -1,4 +1,4 @@
-{{/* Enhanced Open Graph implementation */}}
+{{/* Open Graph implementation */}}
 <meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
@@ -6,13 +6,19 @@
 <meta property="og:site_name" content="{{ .Site.Params.site_name | default .Site.Title }}">
 <meta property="og:locale" content="{{ .Site.Params.locale | default "en_US" }}">
 
-{{/* Open Graph Image */}}
+{{/* Open Graph Image - handles multiple formats */}}
 {{ $image := "" }}
-{{ if .Params.image }}
+{{ if .Params.images }}
+    {{/* Handle images array (your format) */}}
+    {{ $image = index .Params.images 0 }}
+{{ else if .Params.image }}
+    {{/* Handle single image field */}}
     {{ $image = .Params.image | absURL }}
 {{ else if .Site.Params.default_image }}
-    {{ $image = .Site.Params.default_image | absURL }}
+    {{/* Fallback to site default */}}
+    {{ $image = .Site.Params.default_image }}
 {{ end }}
+
 {{ if $image }}
 <meta property="og:image" content="{{ $image }}">
 {{ end }}
