@@ -2,7 +2,7 @@
 title: "I Built a CGM Data Reader"
 date: 2025-01-02
 images: ['https://static.philippdubach.com/ograph/ograph-cgm.jpg']
-description: "I built a comprehensive CGM data analysis tool using Python to integrate Abbott Freestyle Libre 3 glucose data with nutrition, sleep, and workout data, creating an interactive dashboard for optimizing endurance cycling performance."
+description: "Philipp built a comprehensive CGM data analysis tool using Python to integrate Abbott Freestyle Libre 3 glucose data with nutrition, sleep, and workout data, creating an interactive dashboard for optimizing endurance cycling performance."
 keywords: ["CGM data reader", "Abbott Freestyle Libre 3", "continuous glucose monitor", "LibreView data", "glucose tracking dashboard", "endurance cycling nutrition", "Python data analysis", "CGM visualization", "blood sugar monitoring", "fitness data integration", "MacroFactor nutrition", "Garmin workout data", "glucose pattern analysis", "time-in-range metrics"]
 tags: ["Project"]
 draft: false
