@@ -227,28 +227,22 @@ blockquote p {
     margin-bottom: 1rem;
 }
 
-/* Pagination styles */
+/* Pagination */
 .pagination {
-    margin-top: 3rem;
+    margin-top: 2rem;
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid #e9ecef;
 }
 
 .pagination a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    background-color: #f8f9fa;
     color: #007acc;
     text-decoration: none;
-    border-radius: 4px;
-    border: 1px solid #e9ecef;
+    font-weight: 500;
 }
 
 .pagination a:hover {
-    background-color: #007acc;
-    color: white;
+    text-decoration: underline;
 }
 
 /* Dark mode pagination */
@@ -258,14 +252,11 @@ blockquote p {
     }
     
     .pagination a {
-        background-color: #2a2a2a;
         color: #4da6ff;
-        border-color: #404040;
     }
     
     .pagination a:hover {
-        background-color: #4da6ff;
-        color: #1a1a1a;
+        color: #66b3ff;
     }
 }
 

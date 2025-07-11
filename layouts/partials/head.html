@@ -61,4 +61,76 @@
 
     {{/* Structured Data */}}
     {{ partial "structured-data.html" . }}
+
+    {{/* Structured Data */}}
+    {{ partial "structured-data.html" . }}
+    
+    {{/* Temporary reflow debugging */}}
+<script>
+// TEMPORARY: Remove after debugging
+(function() {
+    // Track forced reflows
+    let writes = [];
+    let reads = [];
+    let rafId = null;
+    
+    // Properties that trigger layout
+    const layoutProps = ['offsetHeight', 'offsetWidth', 'offsetTop', 'offsetLeft', 
+                        'scrollHeight', 'scrollWidth', 'scrollTop', 'scrollLeft',
+                        'clientHeight', 'clientWidth', 'clientTop', 'clientLeft'];
+    
+    // Track reads
+    layoutProps.forEach(prop => {
+        const original = Object.getOwnPropertyDescriptor(HTMLElement.prototype, prop);
+        if (original && original.get) {
+            Object.defineProperty(HTMLElement.prototype, prop, {
+                get: function() {
+                    if (writes.length > 0) {
+                        console.warn(`⚠️ FORCED REFLOW: Reading ${prop} after DOM write!`);
+                        console.log('Recent writes:', writes);
+                        console.log('Element:', this);
+                        console.trace();
+                    }
+                    reads.push({prop, element: this.tagName});
+                    return original.get.call(this);
+                }
+            });
+        }
+    });
+    
+    // Track writes
+    const originalStyle = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'style');
+    Object.defineProperty(HTMLElement.prototype, 'style', {
+        get: function() {
+            const styleObj = originalStyle.get.call(this);
+            return new Proxy(styleObj, {
+                set: function(target, property, value) {
+                    writes.push({property, value, element: target.parentElement?.tagName});
+                    // Clear reads after write (potential reflow point)
+                    reads = [];
+                    // Clear writes on next frame
+                    if (!rafId) {
+                        rafId = requestAnimationFrame(() => {
+                            writes = [];
+                            rafId = null;
+                        });
+                    }
+                    target[property] = value;
+                    return true;
+                }
+            });
+        }
+    });
+    
+    // Also monitor getBoundingClientRect
+    const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+    Element.prototype.getBoundingClientRect = function() {
+        if (writes.length > 0) {
+            console.warn('⚠️ FORCED REFLOW: getBoundingClientRect() called after DOM write!');
+            console.trace();
+        }
+        return originalGetBoundingClientRect.call(this);
+    };
+})();
+</script>
 </head>
