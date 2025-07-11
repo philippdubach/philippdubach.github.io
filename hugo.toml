@@ -2,7 +2,6 @@ baseURL = 'https://philippdubach.com/'
 languageCode = 'en-us'
 title = 'philippdubach'
 
-# Pagination settings
 [pagination]
   pagerSize = 15
   path = "page"
@@ -20,7 +19,6 @@ title = 'philippdubach'
   msapplication_tile_color = "#2c3e50"
   
  
-  # Social links
   [params.social]
     github = "philippdubach"
     email = "info@philippdubach.com"
@@ -39,7 +37,6 @@ title = 'philippdubach'
 [permalinks]
   posts = "/:year/:month/:day/:slug/"
 
-# Ensure posts are published by default
 [frontmatter]
   date = ["date", "publishDate", "lastmod"]
   lastmod = [":git", "lastmod", "date", "publishDate"]
@@ -53,7 +50,7 @@ title = 'philippdubach'
 [minify]
   minifyOutput = true
 
-# SEO improvements
+
 [sitemap]
   changefreq = 'monthly'
   priority = 0.5
