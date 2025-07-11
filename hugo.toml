@@ -2,8 +2,9 @@ baseURL = 'https://philippdubach.com/'
 languageCode = 'en-us'
 title = 'philippdubach'
 
+
 [pagination]
-  pagerSize = 15
+  pagerSize = 10
   path = "page"
 
 [params]

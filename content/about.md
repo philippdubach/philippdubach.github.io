@@ -6,4 +6,4 @@ I started this site in 2024 as a simple way to collect interesting articles and 
 
 This collection helps me maintain a personal repository of articles and papers, practice my writing through short summaries, and motivate myself to complete personal projects by sharing them in a structured way.
 
-The site runs on Hugo and is hosted on GitHub Pages.
+The site [runs on Hugo](/2024/01/15/the-tech-behind-this-site/) and is hosted on GitHub Pages.
