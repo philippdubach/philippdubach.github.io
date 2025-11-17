@@ -5,7 +5,6 @@ images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://www.theregister.com/2025/10/29/microsoft_earnings_q1_26_openai_loss/"
 description: "A closer look at OpenAI's suspected $11.5 billion quarterly losses and Anthropic CEO Dario Amodei's framework for treating each AI model as an independent profitable business unit, examining whether this accounting approach resolves the profitability paradox facing AI companies."
 keywords: ["AI model profitability", "OpenAI losses", "Dario Amodei", "Anthropic CEO", "AI business models", "model training costs", "AI scaling laws", "open-source AI competition", "AI revenue models", "machine learning economics", "AI investment returns", "model deployment costs", "AGI development", "AI company valuation", "artificial intelligence P&L"]
-
 draft: false
 ---
 
@@ -27,12 +26,12 @@ The pattern continues:
 Again, viewed in isolation, this model returned 2x its training cost. 
 >And you spend $10 billion to train the model for the following year.
 
- The losses appear to accelerate dramatically, from $100 million to $800 million to $8 billion.
+The losses appear to accelerate dramatically, from $100 million to $800 million to $8 billion.
 
 This is where Amodei's reframing becomes interesting. 
 >If you consider each model to be a company, the model that was trained in 2023 was profitable. You paid $100 million and then it made $200 million of revenue." 
 
-He also acknowledges there are inference costs (the actual computing expenses of running the model for users) but suggests these don't fundamentally change the picture in his simplified example.His core argument:
+He also acknowledges there are inference costs (the actual computing expenses of running the model for users) but suggests these don't fundamentally change the picture in his simplified example. His core argument:
 
 >If every model was a company, the model in this example is actually profitable. What's going on is that at the same time as you're reaping the benefits from one company, you're founding another company that's much more expensive and requires much more upfront R&D investment.
 
