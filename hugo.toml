@@ -9,7 +9,7 @@ title = 'philippdubach'
 
 [params]
   author = "Philipp Dubach"
-  description = "Personal Projects, Curated Articles and Papers on Economics, Finance and Technology"
+  description = "Blog about Personal Projects, Articles and Papers on Economics, Finance and Technology"
   keywords = ["Finance", "Economics", "Technology", "Data", "Machine Learning"]
   favicon = "/favicon.ico"
   math = false
