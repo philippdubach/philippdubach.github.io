@@ -3,7 +3,7 @@ title: "AI models as standalone P&Ls"
 date: 2025-11-09
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
 external_url: "https://www.theregister.com/2025/10/29/microsoft_earnings_q1_26_openai_loss/"
-description: "A closer look at OpenAI's $11.5 billion quarterly losses and Anthropic CEO Dario Amodei's framework for treating each AI model as an independent profitable business unit, examining whether this accounting approach resolves the profitability paradox facing AI companies."
+description: "A closer look at OpenAI's suspected $11.5 billion quarterly losses and Anthropic CEO Dario Amodei's framework for treating each AI model as an independent profitable business unit, examining whether this accounting approach resolves the profitability paradox facing AI companies."
 keywords: ["AI model profitability", "OpenAI losses", "Dario Amodei", "Anthropic CEO", "AI business models", "model training costs", "AI scaling laws", "open-source AI competition", "AI revenue models", "machine learning economics", "AI investment returns", "model deployment costs", "AGI development", "AI company valuation", "artificial intelligence P&L"]
 
 draft: false
@@ -11,7 +11,7 @@ draft: false
 
 > Microsoft reported earnings for the quarter ended Sept. [...] buried in its financial filings were a couple of passages suggesting that OpenAI suffered a net loss of $11.5 billion or more during the quarter.
 
-For every dollar of revenue, they're spending roughly $5 to deliver the product. What initially sounds like a joke about "making it up on volume" points to a more fundamental problem facing OpenAI and its competitors. AI companies are locked into continuously releasing more powerful (and expensive) models. If they stop, [open-source alternatives will catch up](https://arxiv.org/abs/2311.16989) and offer equivalent capabilities at substantially lower costs. This creates an uncomfortable dynamic. If your current model requires spending more than you earn just to fund the next generation, the path to profitability becomes unclear—perhaps impossible.
+For every dollar of revenue, they're allegedly spending roughly $5 to deliver the product. What initially sounds like a joke about "making it up on volume" points to a more fundamental problem facing OpenAI and its competitors. AI companies are locked into continuously releasing more powerful (and expensive) models. If they stop, [open-source alternatives will catch up](https://arxiv.org/abs/2311.16989) and offer equivalent capabilities at substantially lower costs. This creates an uncomfortable dynamic. If your current model requires spending more than you earn just to fund the next generation, the path to profitability becomes unclear—perhaps impossible.
 
 Anthropic CEO Dario Amodei (everybody's favorite AI CEO) recently offered a different perspective in a [conversation with Stripe co-founder John Collison](https://youtu.be/GcqQ1ebBqkc?si=sEDGAVBuZsjtLpZS&t=1016). He argues that treating each model as an independent business unit reveals a different picture than conventional accounting suggests.
 
