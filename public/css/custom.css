@@ -163,7 +163,7 @@ blockquote p {
     text-decoration: underline;
 }
 
-/* Project Post Tag - Modern Minimal */
+/* Project Post Tag */
 .project-tag {
     background-color: #e9ecef;
     color: #495057;
@@ -178,7 +178,6 @@ blockquote p {
     vertical-align: middle;
     border: 1px solid #dee2e6;
 }
-
 
 /* Archive styles */
 .archive {
@@ -245,30 +244,6 @@ blockquote p {
     text-decoration: underline;
 }
 
-/* Dark mode pagination */
-@media (prefers-color-scheme: dark) {
-    .pagination {
-        border-top-color: #404040;
-    }
-    
-    .pagination a {
-        color: #4da6ff;
-    }
-    
-    .pagination a:hover {
-        color: #66b3ff;
-    }
-}
-
-/* Dark mode project tag */
-@media (prefers-color-scheme: dark) {
-    .project-tag {
-        background-color: #404040;
-        color: #b0b0b0;
-        border-color: #555;
-    }
-}
-
 /* Responsive design - 50% scaling  */
 @media screen and (max-width: 768px) {
     html {
@@ -306,49 +281,7 @@ blockquote p {
         margin-left: 3px !important; /* 50% of original 6px */
     }
     
-    /* ADD THIS: Scale archive meta width */
     .archive-meta {
         width: 30px !important; /* 50% of original 60px */
-    }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #2a2a2a;
-        color: #e0e0e0;
-    }
-    
-    .sidebar {
-        background-color: #2a2a2a;
-        border-right-color: #404040;
-    }
-    
-    .site-title a {
-        color: #e0e0e0;
-    }
-    
-    .post-title a {
-        color: #e0e0e0;
-    }
-    
-    /* ADD THIS LINE: */
-    .archive-title a {
-        color: #e0e0e0;
-    }
-    
-    .post-title a:hover,
-    .navigation a:hover,
-    .social-links a:hover,
-    .archive-title a:hover {
-        color: #4da6ff;
-    }
-    
-    .post {
-        border-bottom-color: #404040;
-    }
-    
-    .footer {
-        border-top-color: #404040;
     }
 }
