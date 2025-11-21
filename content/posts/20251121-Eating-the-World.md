@@ -3,7 +3,8 @@ title: "Is AI Really Eating the World?"
 date: 2025-11-21
 images: ['https://static.philippdubach.com/ograph/ograph-eatingtheworld.jpg']
 external_url: "https://www.ben-evans.com/presentations/"
-
+description: "We go through Benedict Evans' analysis of generative AI as a potential platform shift, exploring the massive $400 billion investment by tech giants, the commoditization of AI models, and the uncertainty around whether AI will follow traditional technology adoption patterns or break the cycle entirely."
+keywords: ["Benedict Evans", "generative AI", "platform shift", "ChatGPT", "AI investment", "hyperscalers", "AI commoditization", "OpenAI", "AI adoption", "enterprise AI", "AI infrastructure", "technology cycles", "AI automation", "LLM deployment", "AI transformation"]
 draft: true
 ---
 In November 2025, Benedict Evans gave two presentations on generative AI, three years after ChatGPT's launch. His core argument remains uncomfortable: we know this matters, but we don't know how. I'm interested in Evans's work because he applies pattern recognition from previous platform shifts to a technology that may or may not follow those patterns.
