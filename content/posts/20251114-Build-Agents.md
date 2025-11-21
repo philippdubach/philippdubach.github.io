@@ -3,8 +3,8 @@ title: "The Bicycle Needs Riding to be Understood"
 date: 2025-11-14
 images: ['https://static.philippdubach.com/ograph/ograph-agents.jpg']
 external_url: "https://fly.io/blog/everyone-write-an-agent/"
-description: "Explores why developers should build LLM agents through hands-on experimentation, discussing how these AI systems exhibit surprising autonomous behaviors and how context engineering involves practical programming challenges like token management and balancing deterministic vs. emergent behaviors."
-keywords: ["LLM agent", "AI agent development", "context engineering", "token management", "Python agent", "autonomous AI behavior", "emergent behavior", "sub-agents", "nondeterminism", "LLM programming", "agent design", "AI experimentation", "Thomas Ptacek", "machine learning agents", "AI development"]
+description: "We explore why developers should build LLM agents through hands-on experimentation, examining how these AI systems exhibit surprising autonomous behaviors and discussing practical programming challenges like token management and balancing deterministic versus emergent behaviors."
+keywords: ["LLM agent development", "AI agent experimentation", "context engineering", "token management", "autonomous AI behavior", "emergent behavior", "Python agent programming", "sub-agents orchestration", "nondeterminism in AI", "agent design patterns", "LLM programming challenges", "hands-on AI development", "Thomas Ptacek", "bicycle metaphor programming", "AI behavior unpredictability"]
 draft: false
 ---
 > Some concepts are easy to grasp in the abstract. Boiling water: apply heat and wait. Others you really need to try. You only think you understand how a bicycle works, until you learn to ride one. 
