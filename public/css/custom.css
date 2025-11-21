@@ -91,6 +91,7 @@ blockquote p {
 .content {
     flex: 1;
     padding: 2rem;
+    padding-bottom: 3rem;
     max-width: 800px;
 }
 
@@ -229,8 +230,10 @@ blockquote p {
 /* Pagination */
 .pagination {
     margin-top: 2rem;
+    margin-bottom: 1rem;
     text-align: center;
     padding-top: 2rem;
+    padding-bottom: 1rem;
     border-top: 1px solid #e9ecef;
 }
 
@@ -270,6 +273,13 @@ blockquote p {
     .content {
         max-width: 400px !important; /* 50% of original 800px */
         padding: 1rem !important; /* 50% of original 2rem */
+        padding-bottom: 2rem !important; /* Moderate extra bottom padding for mobile */
+    }
+    
+    /* Enhanced pagination spacing for mobile */
+    .pagination {
+        margin-bottom: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
     }
     
     /* Scale project tag for mobile */
