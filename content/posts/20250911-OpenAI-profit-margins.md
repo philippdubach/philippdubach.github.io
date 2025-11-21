@@ -1,5 +1,5 @@
 ---
-title: "AI models as standalone P&Ls"
+title: "AI Models as Standalone P&Ls"
 date: 2025-11-09
 images: ['https://static.philippdubach.com/ograph/ograph-aipnl.jpg']
 external_url: "https://www.theregister.com/2025/10/29/microsoft_earnings_q1_26_openai_loss/"
