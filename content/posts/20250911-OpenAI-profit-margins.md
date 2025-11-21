@@ -1,7 +1,7 @@
 ---
 title: "AI models as standalone P&Ls"
 date: 2025-11-09
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-aipnl.jpg']
 external_url: "https://www.theregister.com/2025/10/29/microsoft_earnings_q1_26_openai_loss/"
 description: "A closer look at OpenAI's suspected $11.5 billion quarterly losses and Anthropic CEO Dario Amodei's framework for treating each AI model as an independent profitable business unit, examining whether this accounting approach resolves the profitability paradox facing AI companies."
 keywords: ["AI model profitability", "OpenAI losses", "Dario Amodei", "Anthropic CEO", "AI business models", "model training costs", "AI scaling laws", "open-source AI competition", "AI revenue models", "machine learning economics", "AI investment returns", "model deployment costs", "AGI development", "AI company valuation", "artificial intelligence P&L"]

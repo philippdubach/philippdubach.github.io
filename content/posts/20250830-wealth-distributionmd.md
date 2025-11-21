@@ -1,7 +1,7 @@
 ---
 title: "Agent-based Systems for Modeling Wealth Distribution"
 date: 2025-08-30
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-distribution.jpg']
 description: "We explore agent-based modeling of wealth distribution using the Affine Wealth Model, demonstrating how random transactions lead to Pareto distributions and how wealth taxes can potentially create more equitable outcomes through interactive visualizations."
 keywords: ["agent-based systems", "wealth distribution", "Affine Wealth Model", "Pareto distribution", "wealth tax", "economic modeling", "Gary Stevenson", "Asset-Exchange Model", "wealth inequality", "stochastic modeling", "binary-transaction model", "Gini coefficient", "economic simulation", "wealth concentration", "progressive taxation"] 
 external_url: "https://arxiv.org/abs/1604.02370"

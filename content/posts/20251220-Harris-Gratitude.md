@@ -1,7 +1,7 @@
 ---
 title: "Gratitude"
 date: 2025-12-20
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-gratitude.jpg']
 external_url: "https://dynamic.wakingup.com/course/CO12EEC99?source=content%20share&share_id=2A1E6620&pack=PK94738&code=SCD12FF3B"
 description: "Sam Harris's perspective on gratitude as a powerful mental practice, demonstrating how reflecting on potential losses and others' suffering can instantly transform our mindset and help us appreciate ordinary moments."
 keywords: ["gratitude practice", "Sam Harris", "mindfulness meditation", "mental reframing", "perspective shift", "emotional wellbeing", "stress management", "appreciation techniques", "present moment awareness", "psychological transformation", "mindful living", "gratitude research", "contemplative practice", "mental health", "conscious awareness"]

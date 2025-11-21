@@ -1,7 +1,7 @@
 ---
 title: "It Just Ain’t So"
 date: 2025-06-15
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-gaussian.jpg']
 description: "Explores compelling evidence that challenges the fundamental finance assumption that asset returns follow normal distributions, revealing how this misspecification affects portfolio optimization and risk management in practice."
 keywords: ["normal distribution", "asset returns", "portfolio optimization", "risk management", "financial statistics", "normality tests", "Shapiro-Wilk test", "fat tails", "Monte Carlo simulation", "CVaR optimization", "equity indices", "distributional assumptions", "Central Limit Theorem", "quantitative finance", "empirical finance"]
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255"
