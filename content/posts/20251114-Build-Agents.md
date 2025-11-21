@@ -1,7 +1,7 @@
 ---
 title: "The Bicycle Needs Riding to be Understood"
 date: 2025-11-14
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-agents.jpg']
 external_url: "https://fly.io/blog/everyone-write-an-agent/"
 description: "Explores why developers should build LLM agents through hands-on experimentation, discussing how these AI systems exhibit surprising autonomous behaviors and how context engineering involves practical programming challenges like token management and balancing deterministic vs. emergent behaviors."
 keywords: ["LLM agent", "AI agent development", "context engineering", "token management", "Python agent", "autonomous AI behavior", "emergent behavior", "sub-agents", "nondeterminism", "LLM programming", "agent design", "AI experimentation", "Thomas Ptacek", "machine learning agents", "AI development"]

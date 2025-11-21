@@ -1,7 +1,7 @@
 ---
 title: "The State of AI Report 2025"
 date: 2025-10-12
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-stateofaireport.jpg']
 description: "Analysis of The State of AI Report 2025, discussing survey bias concerns while highlighting key developments including reasoning models from major AI companies, China's growing AI capabilities, and significant business adoption growth."
 keywords: ["State of AI Report 2025", "AI survey bias", "reasoning models", "OpenAI", "Google AI", "Anthropic", "DeepSeek", "China AI capabilities", "AI business adoption", "AI practitioners survey", "Nathan Benaich", "Air Street Capital", "AI tools pricing", "multi-gigawatt data centers", "statistical significance"]
 external_url: "https://docs.google.com/presentation/d/1xiLl0VdrlNMAei8pmaX4ojIOfej6lhvZbOIK7Z6C-Go/edit?usp=sharing"

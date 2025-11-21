@@ -1,7 +1,7 @@
 ---
-title: "Everything Is a DCF Model"
+title: "Everything is a DCF Model"
 date: 2025-10-19
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-dcf.jpg']
 description: "We look at a paper by analysts at Morgan Stanley that argues that discounted cash flow (DCF) models are fundamental to all investment valuation, explaining why 'everything is a DCF model' applies to stocks, bonds, real estate, and private equity, while addressing common objections to DCF usage."
 keywords: ["DCF model", "discounted cash flow", "investment valuation", "present value", "cash flows", "private equity", "venture capital", "buyout firms", "asset valuation", "intrinsic value", "financial modeling", "investment analysis", "equity valuation", "real estate valuation", "corporate bonds"]
 external_url: "https://www.morganstanley.com/content/dam/im/assets/publication/thought-leadership/consilient-observer/article_everythingisadcfmodel_us.pdf"
