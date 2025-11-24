@@ -1,6 +1,6 @@
 ---
 title: "Is AI Really Eating the World?"
-date: 2025-11-22
+date: 2025-11-23
 images: ['https://static.philippdubach.com/ograph/ograph-eatingtheworld.jpg']
 external_url: "https://www.ben-evans.com/presentations/"
 description: "We go through Benedict Evans' analysis of generative AI as a potential platform shift, exploring whether AI models will become commodities like previous technologies, while discussing the massive tech investments, uncertain enterprise adoption patterns, and open questions about competitive advantages in the AI landscape."
