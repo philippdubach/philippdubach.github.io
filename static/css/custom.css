@@ -295,3 +295,40 @@ blockquote p {
         width: 30px !important; /* 50% of original 60px */
     }
 }
+
+/* Lightbox styles */
+.img-lightbox {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.img-lightbox:hover {
+  opacity: 0.9;
+}
+
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f8f9fa;
+  z-index: 9999;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.lightbox-overlay:target {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  background: #f8f9fa;
+}
