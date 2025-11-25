@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archive on philippdubach</title><link>http://localhost:1313/posts/</link><description>Recent content in Archive on philippdubach</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 24 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Is AI Really Eating the World?</title><link>http://localhost:1313/2025/11/23/is-ai-really-eating-the-world/</link><pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/11/23/is-ai-really-eating-the-world/</guid><description>&lt;p&gt;In August 2011, Marc Andreessen wrote &lt;a href="https://a16z.com/why-software-is-eating-the-world/"&gt;&amp;ldquo;Why Software Is Eating the World&amp;rdquo;&lt;/a&gt;, an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, &lt;a href="https://www.ben-evans.com/benedictevans/2014/1/18/a16z"&gt;Benedict Evans&lt;/a&gt;, a former a16z partner, gave a presentation on generative AI three years after ChatGPT&amp;rsquo;s launch. His argument in short:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archive on philippdubach</title><link>http://localhost:1313/posts/</link><description>Recent content in Archive on philippdubach</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 20 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2026 Asset Allocation</title><link>http://localhost:1313/2025/11/24/2026-asset-allocation/</link><pubDate>Mon, 24 Nov 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/11/24/2026-asset-allocation/</guid><description>&lt;p&gt;Two lines about my investment philosophy: I have two portfolios: (1) Long term diversified low cost ETFs. (2) Collecting diamonds in front of bulldozers i.e. short term option plays and some stock plays I find interesting. The overall allocation is around 9:1. In this here we are only going to look at portfolio one. But let&amp;rsquo;s start with the conclusion, heres how I will rebalance my portfolio starting 2026:&lt;/p&gt;
+&lt;a href="#lightbox-allocation_comparison-png-0" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/allocation_comparison.png 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/allocation_comparison.png 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/allocation_comparison.png 640w"
+sizes="80vw"&gt;
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/allocation_comparison.png 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/allocation_comparison.png 1024w"
+sizes="80vw"&gt;
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/allocation_comparison.png 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/allocation_comparison.png 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/allocation_comparison.png 2000w"
+sizes="80vw"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/allocation_comparison.png"
+alt="Donut charts comparing 2025 and 2026 asset allocation: Domestic Equities (24%), US Equities (33%), European Equities (10%), Asia Developed (3%), Asia Emerging (10%), Fixed Income (10%), Metals (5%), Alternative Assets (5%)"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;"&gt;
+&lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-allocation_comparison-png-0" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/allocation_comparison.png"
+alt="Donut charts comparing 2025 and 2026 asset allocation: Domestic Equities (24%), US Equities (33%), European Equities (10%), Asia Developed (3%), Asia Emerging (10%), Fixed Income (10%), Metals (5%), Alternative Assets (5%)"&gt;
+&lt;/a&gt;
+&lt;p&gt;What changed: -5% US Equities Valuation elevated, less exceptional growth ahead; Avoid double hit from equity normalization + USD depreciation. +5% Europe Fiscal revolution, 22% valuation discount. Natural currency positioning; EUR stable/stronger vs CHF. +3% Fixed Income. Best yields since GFC, rate cuts ahead. Diversification, income; hedge if USD exposure +2% Asia Developed. Japan reforms, Takaichi stimulus | JPY strengthening vs USD (and vs CHF) adds return. +2% Asia EM China tech opportunity, stimulus supporting CNY appreciation vs USD; diversification from developed +2% Alternatives Portfolio resilience, uncorrelated returnsAccess to Swiss private markets; currency matched Metals unchanged Gold strong; copper attractive Inflation hedge; benefits from USD weakness. Since my base currency is CHF I will include an &lt;a href="#fxhedge"&gt;FX / hedge section&lt;/a&gt; at the end, since this might not apply to everyone. Also &lt;a href="#end"&gt;scroll to the end&lt;/a&gt; for a short, more technical insight on how I structured my research process.&lt;/p&gt;</description></item><item><title>Is AI Really Eating the World?</title><link>http://localhost:1313/2025/11/23/is-ai-really-eating-the-world/</link><pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/11/23/is-ai-really-eating-the-world/</guid><description>&lt;p&gt;In August 2011, Marc Andreessen wrote &lt;a href="https://a16z.com/why-software-is-eating-the-world/"&gt;&amp;ldquo;Why Software Is Eating the World&amp;rdquo;&lt;/a&gt;, an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, &lt;a href="https://www.ben-evans.com/benedictevans/2014/1/18/a16z"&gt;Benedict Evans&lt;/a&gt;, a former a16z partner, gave a presentation on generative AI three years after ChatGPT&amp;rsquo;s launch. His argument in short:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;we know this matters, but we don&amp;rsquo;t know how.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In this article I will try to explain why I find his framing fascinating but incomplete. Evans structures technology history in cycles. Every 10-15 years, the industry reorganizes around a new platform: &lt;a href="https://en.wikipedia.org/wiki/Mainframe_computer"&gt;mainframes&lt;/a&gt; (1960s-70s), PCs (1980s), web (1990s), smartphones (2000s-2010s). Each shift pulls all innovation, investment, and company creation into its orbit. Generative AI appears to be the next platform shift, or it could break the cycle entirely. The range of outcomes spans from &amp;ldquo;just more software&amp;rdquo; to a single unified intelligence that handles everything. The pattern recognition is smart, but I think the current evidence points more clearly toward commoditization than Evans suggests, with value flowing up the stack rather than to model providers.&lt;/p&gt;</description></item><item><title>Weather Forecasts Have Improved a Lot</title><link>http://localhost:1313/2025/11/22/weather-forecasts-have-improved-a-lot/</link><pubDate>Sat, 22 Nov 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/11/22/weather-forecasts-have-improved-a-lot/</guid><description>&lt;p&gt;Reading the press release for Google DeepMind&amp;rsquo;s &lt;a href="https://deepmind.google/discover/blog/weathernext-2-our-most-advanced-weather-forecasting-model/"&gt;WeatherNext 2&lt;/a&gt;, I wondered: have weather forecasts actually improved over the past years?&lt;/p&gt;
@@ -23,7 +51,8 @@ An example of the bias:&lt;/p&gt;</description></item><item><title>Popular Scien
 &lt;p&gt;Brunkow, meanwhile, got the news of her prize from an AP photographer who came to her Seattle home in the early hours of the morning. She said she had ignored the earlier call from the Nobel Committee. &amp;ldquo;My phone rang and I saw a number from Sweden and thought: &amp;lsquo;That&amp;rsquo;s just, that&amp;rsquo;s spam of some sort.&amp;rsquo;&amp;rdquo;&lt;/p&gt;</description></item><item><title>Agent-based Systems for Modeling Wealth Distribution</title><link>http://localhost:1313/2025/08/30/agent-based-systems-for-modeling-wealth-distribution/</link><pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/08/30/agent-based-systems-for-modeling-wealth-distribution/</guid><description>&lt;p&gt;A question &lt;a href="https://www.youtube.com/garyseconomics"&gt;Gary Stevenson&lt;/a&gt;, the self-proclaimed &lt;a href="https://on.ft.com/4n7z5jD"&gt;best trader in the world&lt;/a&gt;, has been asking for some time is &lt;a href="https://uclrethinkingeconomics.com/2025/06/25/gary-stevenson-can-a-wealth-tax-fix-britains-economy/"&gt;if a wealth tax can fix Britain&amp;rsquo;s economy&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[&amp;hellip;] he believed the continued parlous state of the economy would halt any interest rate hikes. The reason? Because when ordinary people receive money, they spend it, stimulating the economy, while the wealthy tend to save it. But our economic model promotes the concentration of wealth among a select few at the expense of everybody else&amp;rsquo;s living standards.&lt;/p&gt;</description></item><item><title>Visualizing Gradients with PyTorch</title><link>http://localhost:1313/2025/08/23/visualizing-gradients-with-pytorch/</link><pubDate>Sat, 23 Aug 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/08/23/visualizing-gradients-with-pytorch/</guid><description>&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Gradient"&gt;Gradients&lt;/a&gt; are one of the most important concepts in calculus and machine learning, but it&amp;rsquo;s often poorly understood. Trying to understand them better myself, I wanted to build a visualization tool that helps me develop the correct mental picture of what the gradient of a function is. I came across &lt;a href="https://github.com/GistNoesis/VisualizeGradient"&gt;GistNoesis/VisualizeGradient&lt;/a&gt;, so I went on from there to write my own iteration. This mental model generalizes beautifully to higher dimensions and is crucial for understanding optimization algorithms.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-torch-gradients_Figure_2-png-0" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/torch-gradients_Figure_2.png 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/torch-gradients_Figure_2.png 480w,
@@ -44,11 +73,17 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-torch-gradients_Figure_2-png-0" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/torch-gradients_Figure_2.png"
+alt="2D Gradient Plot: The colored surface shows function values. Black arrows show gradient vectors in the input plane (x-y space), pointing toward the direction of steepest ascent."&gt;
+&lt;/a&gt;
 &lt;em&gt;The colored surface shows function values. Black arrows show gradient vectors in the input plane (x-y space), pointing toward the direction of steepest ascent.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Sentiment Trading Revisited</title><link>http://localhost:1313/2025/07/07/sentiment-trading-revisited/</link><pubDate>Mon, 07 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/07/07/sentiment-trading-revisited/</guid><description>&lt;p&gt;Interesting new paper that builds on many of the ideas &lt;a href="http://localhost:1313/2025/02/20/trading-on-market-sentiment/"&gt;I explored in this project&lt;/a&gt;. The research, by Ayaan Qayyum, an &lt;a href="https://soe.rutgers.edu/news/ayaan-qayyum-electrical-and-computer-engineering"&gt;Undergraduate Research Scholar at Rutgers&lt;/a&gt;, shows that the core concept of using advanced language models for sentiment trading is not only viable but highly effective. The study takes a similar but more advanced approach. Instead of using a model like GPT-3.5 to generate a simple sentiment score, it uses &lt;a href="https://platform.openai.com/docs/guides/embeddings/embedding-models"&gt;OpenAI&amp;rsquo;s embedding models&lt;/a&gt; to convert news headlines into rich, high-dimensional vectors. By training a &lt;a href="https://arxiv.org/html/2507.01970v1/extracted/6556003/diagrams/model_comb_diagram.png"&gt;battery of neural networks&lt;/a&gt; including&lt;/p&gt;</description></item><item><title>Counting Cards with Computer Vision</title><link>http://localhost:1313/2025/07/06/counting-cards-with-computer-vision/</link><pubDate>Sun, 06 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/07/06/counting-cards-with-computer-vision/</guid><description>&lt;p&gt;After installing &lt;a href="https://www.anthropic.com/claude-code"&gt;Claude Code&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;the agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster through natural language commands&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;I was looking for a task to test its abilities. Fairly quickly we wrote &lt;a href="https://gist.github.com/philippdubach/741cbd56498e43375892966ca691b9c2"&gt;less than 200 lines of python code predicting black jack odds&lt;/a&gt; using Monte Carlo Simulation. When I went on to test this little tool on &lt;a href="https://games.washingtonpost.com/games/blackjack"&gt;Washington Post&amp;rsquo;s&lt;/a&gt; online Black Jack (I also didn&amp;rsquo;t know that existed!) I quickly noticed how impractical it was to manually input all the card values on the table manually. What if the tool would also automatically recognize the cards that are on the table and calculate the odds from it? I have never done anything with computer vision so this seemed like a good challenge.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-classification-gif-0" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/classification.gif 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/classification.gif 480w,
@@ -69,8 +104,14 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-classification-gif-0" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/classification.gif"
+alt="alt text here"&gt;
+&lt;/a&gt;
 To get to any reasonable result we have to start with classification where we &amp;ldquo;teach&amp;rdquo; the model to categorize data by showing them lots of examples with correct labels. But where do the labels come from? I manually annotated &lt;a href="https://universe.roboflow.com/cards-agurd/playing_card_classification"&gt;409 playing cards across 117 images&lt;/a&gt; using Roboflow Annotate (at first I only did half as much - why this wasn&amp;rsquo;t a good idea we&amp;rsquo;ll see in a minute). Once enough screenshots of cards were annotated we can train the model to recognize the cards and predict card values on tables it has never seen before. I was able to use a &lt;a href="https://www.nvidia.com/en-us/data-center/tesla-t4/"&gt;NVIDIA T4 GPU&lt;/a&gt; inside Google Colab which offers some GPU time for free when capacity is available.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-gpu_setup_colab-png-1" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/gpu_setup_colab.png 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/gpu_setup_colab.png 480w,
@@ -91,10 +132,16 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-gpu_setup_colab-png-1" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/gpu_setup_colab.png"
+alt="alt text here"&gt;
+&lt;/a&gt;
 During training, the algorithm learns patterns from this example data, adjusting its internal parameters millions of times until it gets really good at recognizing the differences between categories (in this case different cards). Once trained, the model can then make predictions on new, unseen data by applying the patterns it learned. With the annotated dataset ready, it was time to implement the actual computer vision model. I chose to run inference on &lt;a href="https://docs.ultralytics.com/de/models/yolo11/"&gt;Ultralytics&amp;rsquo; YOLOv11&lt;/a&gt; pre-trained model, a state-of-the-art object detection algorithm. I set up the environment in Google Colab following the &lt;a href="https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolo11-object-detection-on-custom-dataset.ipynb"&gt;&amp;ldquo;How to Train YOLO11 Object Detection on a Custom Dataset&amp;rdquo;&lt;/a&gt; notebook. After extracting the annotated dataset from Roboflow, I began training the model using the pre-trained YOLOv11s weights as a starting point. This approach, called &lt;a href="https://en.wikipedia.org/wiki/Transfer_learning"&gt;transfer learning&lt;/a&gt;, allows the model to leverage patterns already learned from millions of general images and adapt them to this specific task.
 I initially set it up to &lt;a href="https://docs.ultralytics.com/guides/model-training-tips/#other-techniques-to-consider-when-handling-a-large-dataset"&gt;run for 350 epochs&lt;/a&gt;, though the model&amp;rsquo;s built-in early stopping mechanism kicked in after 242 epochs when no improvement was observed for 100 consecutive epochs. The best results were achieved at epoch 142, taking around 13 minutes to complete on the Tesla T4 GPU.
 The initial results were quite promising, with an overall mean Average Precision (mAP) of 80.5% at IoU threshold 0.5. Most individual card classes achieved good precision and recall scores, with only a few cards like the 6 and Queen showing slightly lower precision values.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-run1_results-png-2" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/run1_results.png 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/run1_results.png 480w,
@@ -115,8 +162,14 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-run1_results-png-2" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/run1_results.png"
+alt="Training results showing confusion matrix and loss curves"&gt;
+&lt;/a&gt;
 However, looking at the confusion matrix and loss curves revealed some interesting patterns. While the model was learning effectively (as shown by the steadily decreasing loss), there were still some misclassifications between similar cards, particularly among the numbered cards. This highlighted exactly why I mentioned earlier that annotating only half the amount of data initially &amp;ldquo;wasn&amp;rsquo;t a good idea&amp;rdquo; - more training examples would likely improve these edge cases and reduce confusion between similar-looking cards. My first attempt at solving the remaining accuracy issues was to add another layer to the workflow by sending the detected cards to Anthropic&amp;rsquo;s Claude API for additional OCR processing.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-claude_vision_workflow_results-png-3" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/claude_vision_workflow_results.png 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/claude_vision_workflow_results.png 480w,
@@ -137,10 +190,16 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-claude_vision_workflow_results-png-3" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/claude_vision_workflow_results.png"
+alt="Roboflow workflow with Claude API integration"&gt;
+&lt;/a&gt;
 This hybrid approach was very effective - the combination of YOLO&amp;rsquo;s object detection to dynamically crop down the Black Jack table to individual cards with Claude&amp;rsquo;s advanced vision capabilities yielded 99.9% accuracy on the predicted cards. However, this solution came with a significant drawback: the additional API layer consumed valuable time and the large model&amp;rsquo;s processing overhead, making it impractical for real-time gameplay.
 Seeking a faster solution, I implemented the same workflow &lt;a href="https://github.com/JaidedAI/EasyOCR"&gt;locally using easyOCR&lt;/a&gt; instead. EasyOCR seems to be really good at extracting black text on white background but &lt;a href="https://stackoverflow.com/questions/68261703/how-to-improve-accuracy-prediction-for-easyocr"&gt;might struggle with everything else&lt;/a&gt;. While it was able to correctly identify the card numbers when it detected them, it struggled to recognize around half of the cards in the first place - even when fed pre-cropped card images directly from the YOLO model. This inconsistency made it unreliable for the application.
 Rather than continue band-aid solutions, I decided to go back and improve my dataset. I doubled the training data by adding another 60 screenshots with the same train/test split as before. More importantly, I went through all the previous annotations and fixed many of the bounding polygons. I noticed that several misidentifications were caused by the model detecting face-down dealer cards as valid cards, which happened because some annotations for face-up cards inadvertently included parts of the card backs next to them. The improved dataset and cleaned annotations delivered what I was hoping for: The confusion matrix now shows a much cleaner diagonal pattern, indicating that the model now correctly identifies most cards without the cross-contamination issues we saw earlier.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-run_best-png-4" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/run_best.png 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/run_best.png 480w,
@@ -161,8 +220,14 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-run_best-png-4" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/run_best.png"
+alt="Final training results with improved dataset"&gt;
+&lt;/a&gt;
 Both the training and validation losses converge smoothly without signs of overfitting, while the precision and recall metrics climb steadily to plateau near perfect scores. The mAP@50 reaches an impressive 99.5%. Most significantly, the confusion matrix now shows that the model has virtually eliminated false positives with background elements. The &amp;ldquo;background&amp;rdquo; column (rightmost) in the confusion matrix is now much cleaner, with only minimal misclassifications of actual cards as background noise.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-local_run_interference_visual-png-5" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/local_run_interference_visual.png 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/local_run_interference_visual.png 480w,
@@ -183,8 +248,14 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-local_run_interference_visual-png-5" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/local_run_interference_visual.png"
+alt="Real-time blackjack card detection and odds calculation"&gt;
+&lt;/a&gt;
 With the model trained and performing, it was time to deploy it and play some blackjack. Initially, I tested the system using &lt;a href="https://docs.roboflow.com/deploy/serverless-hosted-api-v2"&gt;Roboflow&amp;rsquo;s hosted API&lt;/a&gt;, which took around 4 seconds per inference - far too slow for practical gameplay. However, running the model locally on my laptop dramatically improved performance, achieving inference times of less than 0.1 seconds per image (1.3ms preprocess, 45.5ms inference, 0.4ms postprocess per image). I then &lt;a href="https://python-mss.readthedocs.io/"&gt;integrated the model with MSS&lt;/a&gt; to capture a real-time feed of my browser window. The system automatically overlays the detected cards with their predicted values and confidence scores
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-black_jack_odds_demo-gif-6" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/black_jack_odds_demo.gif 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/black_jack_odds_demo.gif 480w,
@@ -205,6 +276,11 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-black_jack_odds_demo-gif-6" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/black_jack_odds_demo.gif"
+alt="Overview of selected fitted curves"&gt;
+&lt;/a&gt;
 The final implementation successfully combines the pieces: the computer vision model detects and identifies cards in real-time, feeds this information to the Monte Carlo simulation, and displays both the card recognition results and the calculated odds directly on screen - do not try this at your local (online) casino!&lt;/p&gt;</description></item><item><title>NVIDIA Likes Small Language Models</title><link>http://localhost:1313/2025/07/04/nvidia-likes-small-language-models/</link><pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/07/04/nvidia-likes-small-language-models/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;A Small Language Model (SLM) is a LM that can fit onto a common consumer electronic device and perform inference with latency sufficiently low to be practical when serving the agentic requests of one user. [&amp;hellip;] We note that as of 2025, we would be comfortable with considering most models below 10bn parameters in size to be SLMs.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;The &lt;a href="https://research.nvidia.com/labs/lpr/slm-agents/"&gt;(NVIDIA) researchers&lt;/a&gt; argue that most agentic applications perform repetitive, specialized tasks that don&amp;rsquo;t require the full generalist capabilities of LLMs. They propose heterogeneous agentic systems where SLMs handle most tasks while LLMs are used selectively for complex reasoning. They present three main arguments: (1) SLMs are sufficiently powerful for agentic tasks, as demonstrated by recent models like &lt;a href="https://azure.microsoft.com/en-us/products/phi"&gt;Microsoft&amp;rsquo;s Phi series&lt;/a&gt;, &lt;a href="https://research.nvidia.com/labs/adlr/nemotronh/"&gt;NVIDIA&amp;rsquo;s Nemotron-H family&lt;/a&gt;, and &lt;a href="https://huggingface.co/collections/HuggingFaceTB/smollm2-6723884218bcda64b34d7db9"&gt;Hugging Face&amp;rsquo;s SmolLM2 series&lt;/a&gt;, which achieve comparable performance to much larger models &lt;a href="https://arxiv.org/abs/2501.05465"&gt;while being 10-30x more efficient&lt;/a&gt;. (2) SLMs are inherently more operationally suitable for agentic systems due to their faster inference, lower latency, and ability to run on edge devices. (3) SLMs are necessarily more economical, offering significant cost savings in inference, fine-tuning, and deployment.&lt;/p&gt;</description></item><item><title>Novo Nordisk's Post-Patent Strategy</title><link>http://localhost:1313/2025/06/29/novo-nordisks-post-patent-strategy/</link><pubDate>Sun, 29 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/06/29/novo-nordisks-post-patent-strategy/</guid><description>&lt;p&gt;Novo Nordisk, a long time member of my &amp;ldquo;regrets&amp;rdquo; stock list, has become &lt;a href="https://finance.yahoo.com/quote/NVO/chart/"&gt;reasonably affordable lately (-48% yoy)&lt;/a&gt;. Part of the reason being that they currently sit atop a ~$20 billion Ozempic/Wegovy franchise that faces &lt;a href="https://journals.library.columbia.edu/index.php/stlr/blog/view/653"&gt;patent expiration in 2031&lt;/a&gt;. That&amp;rsquo;s roughly seven years to replace their blockbuster drug. We revisit them today, since per &lt;a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)01185-7/fulltext"&gt;newly published Lancet data&lt;/a&gt;, Novo&amp;rsquo;s lead replacement candidate—amycretin—just posted some genuinely impressive Phase 1 results. The injectable version delivered &lt;a href="https://www.thelancet.com/cms/10.1016/S0140-6736(25)01185-7/asset/6f4ec048-c12e-4185-a860-a2dc988746c4/main.assets/gr3_lrg.jpg"&gt;24.3% average weight loss versus 1.1% for placebo&lt;/a&gt;, beating both current market leaders (Wegovy at 15% and Lilly&amp;rsquo;s Zepbound at 22.5%). Even the oral version hit 13.1% weight loss in just 12 weeks, with patients still losing weight when the trial ended.&lt;/p&gt;</description></item><item><title>Behavioral Economics &amp; Transit Policy</title><link>http://localhost:1313/2025/06/22/behavioral-economics-transit-policy/</link><pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/06/22/behavioral-economics-transit-policy/</guid><description>&lt;p&gt;Over the weekend a &lt;a href="https://www.wsj.com/opinion/new-yorks-choice-cuomo-or-socialism-election-mayor-race-vote-mamdani-ede84c75"&gt;WSJ editorial on the 2025 New York City mayoral election&lt;/a&gt; called one of the potential Democratic candidates Zohran Mamdani &amp;ldquo;a literal socialist&amp;rdquo; for - among other things - running on the promise of &lt;a href="https://www.thenation.com/article/society/new-york-city-bus-free-fare/"&gt;free bus rides for all&lt;/a&gt;:&lt;/p&gt;
@@ -221,7 +297,8 @@ Here&amp;rsquo;s the kicker: reasoning models exhibit counterintuitive scaling b
 &lt;p&gt;We can go one by one for every financial market and it would fall under the definition of gambling. So what&amp;rsquo;s the difference?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;It&amp;rsquo;s a question that cuts to the heart of modern finance. The founders argue that Wall Street blurred the line between investing and gambling long ago, and casting Kalshi as the latter is inconsistent at best. They have a point—if you can bet on oil futures, Nvidia&amp;rsquo;s stock price, or interest rate movements, why is wagering on NFL touchdowns more objectionable?&lt;/p&gt;</description></item><item><title>Modeling Glycemic Response with XGBoost</title><link>http://localhost:1313/2025/05/30/modeling-glycemic-response-with-xgboost/</link><pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/30/modeling-glycemic-response-with-xgboost/</guid><description>&lt;p&gt;Earlier this year I wrote how &lt;a href="http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/"&gt;I built a CGM data reader&lt;/a&gt; after wearing a continuous glucose monitor myself. Since I was already logging my macronutrients and learning more about molecular biology in an &lt;a href="https://ocw.mit.edu/courses/res-7-008-7-28x-molecular-biology/"&gt;MIT MOOC&lt;/a&gt; I became curious if given a meal&amp;rsquo;s macronutrients (carbs, protein, fat) and some basic individual characteristics (age, BMI), these could serve as features in a regressor machine learning model to predict the curve parameters of the postprandial glucose curve (how my blood sugar levels change after eating). I came across a paper on &lt;a href="https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867415014816%3Fshowall%3Dtrue"&gt;Personalized Nutrition by Prediction of Glycemic Responses&lt;/a&gt; which did exactly that. Unfortunately, neither the data nor the code were publicly available. And - I wanted to predict my &lt;em&gt;own&lt;/em&gt; glycemic response curve. So I decided to build my own model. In the process I wrote this &lt;a href="https://static.philippdubach.com/pdf/Modeling_Postprandial_Glycemic_Response_in_Non_Diabetic_Adults_Using_XGBRegressor.pdf"&gt;working paper&lt;/a&gt;.
 &lt;a href="https://static.philippdubach.com/pdf/Modeling_Postprandial_Glycemic_Response_in_Non_Diabetic_Adults_Using_XGBRegressor.pdf"&gt;
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-working_paper_overview-jpg-0" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/working_paper_overview.jpg 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/working_paper_overview.jpg 480w,
@@ -241,9 +318,15 @@ alt="Overview of Working Paper Pages"
 class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
-&lt;/picture&gt;&lt;/a&gt;
+&lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-working_paper_overview-jpg-0" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/working_paper_overview.jpg"
+alt="Overview of Working Paper Pages"&gt;
+&lt;/a&gt;&lt;/a&gt;
 The paper represents an exercise in applying machine learning techniques to medical applications. The methodologies employed were largely inspired by &lt;a href="https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867415014816%3Fshowall%3Dtrue"&gt;Zeevi et al.&lt;/a&gt;&amp;rsquo;s approach. I quickly realized that training a model on my own data &lt;em&gt;only&lt;/em&gt; was not very promising if not impossible. To tackle this, I used the publicly available &lt;a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2005143"&gt;Hall dataset&lt;/a&gt; containing continuous glucose monitoring data from 57 adults, which I narrowed down to 112 standardized meals from 19 non-diabetic subjects with their respective glucose curve after the meal (full methodology in the paper).
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-cgm-workflow-graph-jpg-1" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/cgm-workflow-graph.jpg 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/cgm-workflow-graph.jpg 480w,
@@ -264,8 +347,14 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-cgm-workflow-graph-jpg-1" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/cgm-workflow-graph.jpg"
+alt="Overview of the CGM pipeline workflow"&gt;
+&lt;/a&gt;
 Rather than trying to predict the entire glucose curve, I simplified the problem by fitting each postprandial response to a normalized Gaussian function. This gave me three key parameters to predict: amplitude (how high glucose rises), time-to-peak (when it peaks), and curve width (how long the response lasts).
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-cgm-fitted-curve-large1-jpg-2" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/cgm-fitted-curve-large1.jpg 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/cgm-fitted-curve-large1.jpg 480w,
@@ -286,8 +375,14 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-cgm-fitted-curve-large1-jpg-2" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/cgm-fitted-curve-large1.jpg"
+alt="Overview of single fitted curve of cgm measurements"&gt;
+&lt;/a&gt;
 The Gaussian approximation worked surprisingly well for characterizing most glucose responses. While some curves fit better than others, the majority of postprandial responses were well-captured, though there&amp;rsquo;s clear variation between individuals and meals. Some responses were high amplitude, narrow width, while others are more gradual and prolonged.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-example-fitted-cgm-measurements-jpg-3" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/example-fitted-cgm-measurements.jpg 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/example-fitted-cgm-measurements.jpg 480w,
@@ -308,6 +403,11 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-example-fitted-cgm-measurements-jpg-3" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/example-fitted-cgm-measurements.jpg"
+alt="Overview of selected fitted curves"&gt;
+&lt;/a&gt;
 I then trained an XGBoost regressor with 27 engineered features including meal composition, participant characteristics, and interaction terms. XGBoost was chosen for its ability to handle mixed data types, built-in feature importance, and strong performance on tabular data. The pipeline included hyperparameter tuning with 5-fold cross-validation to optimize learning rate, tree depth, and regularization parameters. Rather than relying solely on basic meal macronutrients, I engineered features across multiple categories and implemented CGM statistical features calculated over different time windows (24-hour and 4-hour periods), including time-in-range and glucose variability metrics. Architecture wise, I trained three separate XGBoost regressors - one for each Gaussian parameter.&lt;/p&gt;</description></item><item><title>The Model Said So</title><link>http://localhost:1313/2025/05/28/the-model-said-so/</link><pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/28/the-model-said-so/</guid><description>&lt;p&gt;LLMs make your life easier until they don&amp;rsquo;t.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Their intrinsic complexity and lack of transparency pose significant challenges, especially in the highly regulated financial sector&lt;/p&gt;&lt;/blockquote&gt;
@@ -327,7 +427,8 @@ inflation.&lt;/p&gt;</description></item><item><title>Beyond Monte Carlo: Tensor
 &lt;p&gt;The problem is elegantly simple yet profound: machine learning models are great at finding patterns in historical data, but financial theory demands that arbitrage-free prices be independent of past information. As the authors put it:&lt;/p&gt;</description></item><item><title>DeFi's $42 Billion Maturity Story</title><link>http://localhost:1313/2025/04/25/defis-42-billion-maturity-story/</link><pubDate>Fri, 25 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/04/25/defis-42-billion-maturity-story/</guid><description>&lt;p&gt;A new academic review by Ali Farhani reveals that institutional Total Value Locked in DeFi protocols hit $42 billion in 2024, with BlackRock leading the charge by launching a $250 million tokenized fund on Centrifuge.&lt;/p&gt;
 &lt;p&gt;The numbers tell a remarkable story of maturation. Layer 2 solutions like Optimism and Arbitrum now dominate the scaling landscape, while zero-knowledge proofs have reduced compliance costs by 30%. Even the terminology is evolving—researchers now discuss &amp;ldquo;Total Value Redeemable&amp;rdquo; instead of the traditional TVL metric, acknowledging that not all locked value is immediately liquid. Despite technological advances, security incidents persist with painful regularity: $350 million lost in the Wormhole bridge exploit, $81 million in Orbit Chain&amp;rsquo;s multi-signature failure. Cross-chain bridges remain &amp;ldquo;high-risk attack targets,&amp;rdquo; a sobering reminder that connecting different blockchains is still more art than science. The regulatory landscape is complicated as well. Europe&amp;rsquo;s MiCA regulation provides clear frameworks, while the SEC maintains its enforcement-first approach. Hong Kong&amp;rsquo;s innovation sandbox offers a third path, balancing experimentation with oversight.&lt;/p&gt;</description></item><item><title>Trading on Market Sentiment</title><link>http://localhost:1313/2025/02/20/trading-on-market-sentiment/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/02/20/trading-on-market-sentiment/</guid><description>&lt;p&gt;&lt;em&gt;This post is based in part on a 2022 presentation I gave for the &lt;a href="https://www.ft.com/content/3bd45acd-b323-3c6b-ba98-ac78b456f308"&gt;ICBS Student Investment Fund&lt;/a&gt; and my seminar work at Imperial College London.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;As we were looking for new investment strategies for our Macro Sentiment Trading team, OpenAI had just published their &lt;a href="https://platform.openai.com/docs/models/gpt-3-5-turbo"&gt;GPT-3.5 Model&lt;/a&gt;. After first experiments with the model, we asked ourselves: How would large language models like GPT-3.5 perform in predicting sentiment in financial markets, where the signal-to-noise ratio is notoriously low? And could they potentially even outperform industry benchmarks at interpreting market sentiment from news headlines? The idea wasn&amp;rsquo;t entirely new. &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3389884"&gt;Studies&lt;/a&gt; &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1702854"&gt;[2]&lt;/a&gt; &lt;a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=685145"&gt;[3]&lt;/a&gt; have shown that investor sentiment, extracted from news and social media, can forecast market movements. But most approaches rely on traditional NLP models or proprietary systems like &lt;a href="https://www.ravenpack.com"&gt;RavenPack&lt;/a&gt;. With the recent advances in large language models, I wanted to test whether these more sophisticated models could provide a competitive edge in sentiment-based trading. Before looking at model selection, it&amp;rsquo;s worth understanding what makes trading on sentiment so challenging. News headlines present two fundamental problems that any robust system must address.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-news-relevance-timeline-jpg-0" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/news-relevance-timeline.jpg 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/news-relevance-timeline.jpg 480w,
@@ -348,8 +449,14 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-news-relevance-timeline-jpg-0" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/news-relevance-timeline.jpg"
+alt="Relative frequency of monthly Google News Search terms over 5 years. Numbers represent search interest relative to highest point. A value of 100 is the peak popularity for the term."&gt;
+&lt;/a&gt;
 First, headlines are inherently non-stationary. Unlike other data sources, news reflects the constantly shifting landscape of global events, political climates, economic trends, etc. A model trained on COVID-19 vaccine headlines from 2020 might struggle with geopolitical tensions in 2023. This temporal drift means algorithms must be adaptive to maintain relevance.
-&lt;picture style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0;"&gt;
+&lt;a href="#lightbox-headline-market-impact-jpg-1" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
 &lt;source media="(max-width: 768px)"
 srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/headline-market-impact.jpg 320w,
 https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/headline-market-impact.jpg 480w,
@@ -370,6 +477,11 @@ class=""
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-headline-market-impact-jpg-1" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/headline-market-impact.jpg"
+alt="Impact of headlines measured by subsequent index move (Data Source: Bloomberg)"&gt;
+&lt;/a&gt;
 Second, the relationship between headlines and market impact is far from obvious. Consider these actual headlines from November 2020: &amp;ldquo;Pfizer Vaccine Prevents 90% of COVID Infections&amp;rdquo; drove the S&amp;amp;P 500 up 1.85%, while &amp;ldquo;Pfizer Says Safety Milestone Achieved&amp;rdquo; barely moved the market at -0.05%. The same company, similar positive news, dramatically different market reactions.&lt;/p&gt;</description></item><item><title>Passive Investing's Active Problem</title><link>http://localhost:1313/2025/02/15/passive-investings-active-problem/</link><pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/02/15/passive-investings-active-problem/</guid><description>&lt;p&gt;(1) A new academic paper suggests the rise of passive investing may be fueling fragile market moves.
 (2) According to a study to be published in the American Economic Review, evidence is building that active managers are slow to scoop up stocks en masse when prices move away from their intrinsic worth.
 (3) Thanks to this lethargic trading behavior and the relentless boom in benchmark-tracking index funds, the impact of each trade on prices gets amplified, explaining how sell orders can induce broader equity gyrations&lt;/p&gt;</description></item><item><title>I Built a CGM Data Reader</title><link>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</link><pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/01/02/i-built-a-cgm-data-reader/</guid><description>&lt;p&gt;Last year I put a Continuous Glucose Monitor (CGM) sensor, specifically the &lt;a href="https://www.freestyle.abbott"&gt;Abbott Freestyle Libre 3&lt;/a&gt;, on my left arm. Why? I wanted to optimize my nutrition for endurance cycling competitions. Where I live, the sensor is easy to get—without any medical prescription—and even easier to use. Unfortunately, Abbott&amp;rsquo;s &lt;a href="https://apps.apple.com/us/app/freestyle-librelink-us/id1325992472"&gt;FreeStyle LibreLink&lt;/a&gt; app is less than optimal (3,250 other people with an average rating of 2.9/5.0 seem to agree). In their defense, the web app LibreView does offer some nice reports which can be generated as PDFs—not very dynamic, but still something! What I had in mind was more in the fashion of the &lt;a href="https://ultrahuman.com/m1"&gt;Ultrahuman M1 dashboard&lt;/a&gt;. Unfortunately, I wasn&amp;rsquo;t allowed to use my Libre sensor (EU firmware) with their app (yes, I spoke to customer service).&lt;/p&gt;</description></item><item><title>The Green Bond Commitment Premium</title><link>http://localhost:1313/2024/12/31/the-green-bond-commitment-premium/</link><pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/12/31/the-green-bond-commitment-premium/</guid><description>&lt;p&gt;The difference between green finance that works and green finance that doesn&amp;rsquo;t work seems to be commitment: Using a Difference-in-Differences model analyzing 2013-2023 bond data, researchers found no significant correlation between green bond issuance and CO2 emissions after net-zero policies were adopted. That&amp;rsquo;s the disappointing part. On the upside: companies issuing only green bonds showed higher ESG ratings, lower CO2 emissions, and lower financing costs, achieving substantial environmental benefits and economic advantages. Meanwhile, entities issuing both conventional and green bonds showed no environmental benefits, raising concerns about potential greenwashing.&lt;/p&gt;</description></item><item><title>Crypto Mean Reversion Trading</title><link>http://localhost:1313/2024/11/11/crypto-mean-reversion-trading/</link><pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/11/11/crypto-mean-reversion-trading/</guid><description>&lt;p&gt;In late 2021, Lars Kaiser&amp;rsquo;s paper on &lt;a href="https://www.sciencedirect.com/science/article/abs/pii/S1544612318304513"&gt;seasonality in cryptocurrencies&lt;/a&gt; inspired me to use my &lt;a href="https://docs.kraken.com/api/"&gt;Kraken API Key&lt;/a&gt; to try and make some money. A quick summary of the paper: (1) Kaiser analyzes seasonality patterns across 10 cryptocurrencies (Bitcoin, Ethereum, etc.), examining returns, volatility, trading volume, and spreads (2) Finds no consistent calendar effects in cryptocurrency returns, supporting weak-form market efficiency (3) Observes robust patterns in trading activity - lower volume, volatility, and spreads in January, weekends, and summer months (4) Documents significant impact of January 2018 market sell-off on seasonality patterns (5) Reports a &amp;ldquo;reverse Monday effect&amp;rdquo; for Bitcoin (positive Monday returns) and &amp;ldquo;reverse January effect&amp;rdquo; (negative January returns) (6) Trading activity patterns suggest crypto markets are dominated by retail rather than institutional investors.&lt;/p&gt;</description></item><item><title>Meta's Edge AI Gambit</title><link>http://localhost:1313/2024/09/28/metas-edge-ai-gambit/</link><pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/09/28/metas-edge-ai-gambit/</guid><description>&lt;p&gt;While the AI industry obsesses over ever-larger cloud models, Meta just made a somewhat contrarian bet with Llama 3.2. Instead of chasing GPT-4 with another massive, they&amp;rsquo;re going small and local — releasing lightweight AI models designed to run entirely on your phone. The technical achievement is genuinely impressive: vision-capable models that can analyze images and text, plus compact versions that &amp;ldquo;fit in as little as 1GB of memory.&amp;rdquo; But the real story might be more strategic. Meta is essentially arguing that the future of AI isn&amp;rsquo;t in OpenAI&amp;rsquo;s cloud-centric paradigm, but in edge computing where your data never leaves your device.&lt;/p&gt;</description></item><item><title>How Some Active Funds Create Their Own Returns</title><link>http://localhost:1313/2024/06/21/how-some-active-funds-create-their-own-returns/</link><pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/2024/06/21/how-some-active-funds-create-their-own-returns/</guid><description>&lt;p&gt;(1) Many active funds hold concentrated portfolios. Flow-driven trading in these securities causes price pressure, which pushes up the funds&amp;rsquo; existing positions resulting in realized returns.
