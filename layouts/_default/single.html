@@ -19,6 +19,8 @@
             {{ if .Params.external_url }}
                 • <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">Original Link</a>
             {{ end }}
+            • {{ .FuzzyWordCount }} words
+            • {{ .ReadingTime }} min read
         </div>
         {{ end }}
     </header>
@@ -26,6 +28,8 @@
         {{ .Content }}
     </div>
 </article>
+
+
 
 
 <!--

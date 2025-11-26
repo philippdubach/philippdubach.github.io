@@ -25,3 +25,5 @@ Added LaTeX math rendering using [MathJax 3](https://github.com/mathjax/MathJax-
 _(June 2025) Update II:_
 Enhanced SEO capabilities with comprehensive metadata support. Built custom [Open Graph integration](https://gist.github.com/philippdubach/39838f8e9e1b9fb085947a6b92062e0a) that automatically generates social media previews, plus added per-post keyword management.
 
+_(November 2025) Update:_
+Added new [shortcode to embedd html tables](https://gist.github.com/philippdubach/b703005536d6030c87e17d21cb0d430b) as well as updated my [image shortcode](https://gist.github.com/philippdubach/167189c7090c6813c5110c467cb5ebe9) to add lightbox support on images.
