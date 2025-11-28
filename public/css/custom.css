@@ -112,6 +112,7 @@ blockquote p {
 
 .post-title {
     margin-bottom: 0.5rem;
+    line-height: 1.3;
 }
 
 .post-title a {
@@ -119,6 +120,7 @@ blockquote p {
     color: #333;
     font-size: 1.25rem;
     font-weight: 600;
+    line-height: 1.3;
 }
 
 .post-title a:hover {
@@ -273,7 +275,7 @@ blockquote p {
     .content {
         max-width: 400px !important; /* 50% of original 800px */
         padding: 1rem !important; /* 50% of original 2rem */
-        padding-bottom: 2rem !important; /* Moderate extra bottom padding for mobile */
+        padding-bottom: 0.5rem !important; /* Changed from 2rem */
     }
     
     /* Enhanced pagination spacing for mobile */
@@ -293,6 +295,18 @@ blockquote p {
     
     .archive-meta {
         width: 30px !important; /* 50% of original 60px */
+    }
+    
+    /* Tighten post title line spacing on mobile */
+    .post-title,
+    .post-title a {
+        line-height: 1.2 !important;
+    }
+    
+    /* Mobile feedback footer spacing */
+    .feedback-footer {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
     }
 }
 
@@ -331,4 +345,35 @@ blockquote p {
   max-height: 95%;
   object-fit: contain;
   background: #f8f9fa;
+}
+
+/* Feedback footer */
+.feedback-footer {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.feedback-footer a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.feedback-footer a:hover {
+    text-decoration: underline;
+}
+
+.feedback-footer .latest-post {
+    margin-top: 0.5rem;
+}
+
+/* Mobile scaling for feedback footer */
+@media screen and (max-width: 768px) {
+    .feedback-footer {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+    }
 }

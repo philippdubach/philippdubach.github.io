@@ -2,6 +2,9 @@ baseURL = 'https://philippdubach.com/'
 languageCode = 'en-us'
 title = 'philippdubach'
 
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$', '^GOATCOUNTER_API_TOKEN$']
 
 [pagination]
   pagerSize = 10
