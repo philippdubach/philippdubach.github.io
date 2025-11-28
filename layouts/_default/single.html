@@ -30,78 +30,21 @@
     </div>
 </article>
 
-
-
-
-<!--
-{{ if not (eq .RelPermalink "/about/") }}
-<hr style="height:0.5px;border-width:0;color:gray;background-color:gray">
-<nav class="post-navigation">
-    {{/* Your existing navigation code */}}
-    {{ $projectPosts := where .Site.RegularPages "Params.tags" "intersect" (slice "Project") }}
-    {{ $recentProjects := first 1 ($projectPosts.ByDate.Reverse) }}
-    
-    {{ $recentPosts := slice }}
-    {{ range .Site.RegularPages.ByDate.Reverse }}
-        {{ $isProject := false }}
-        {{ if .Params.tags }}
-            {{ if in .Params.tags "Project" }}
-                {{ $isProject = true }}
-            {{ end }}
-        {{ end }}
-        {{ if not $isProject }}
-            {{ $recentPosts = $recentPosts | append . }}
-            {{ if eq (len $recentPosts) 2 }}
-                {{ break }}
-            {{ end }}
-        {{ end }}
+<footer class="feedback-footer">
+  <p>Have feedback, comments, or ideas? <a href="mailto:info@philippdubach.com">I'd love to hear from you</a>.</p>
+  <p class="latest-post">Latest: <a href="{{ (index (where .Site.RegularPages "Section" "posts") 0).RelPermalink }}">{{ (index (where .Site.RegularPages "Section" "posts") 0).Title }}</a></p>
+  
+  {{ $url := "https://philippdubach.goatcounter.com/api/v0/stats/hits?limit=1" }}
+  {{ $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" (getenv "GOATCOUNTER_API_TOKEN"))) }}
+  {{ with resources.GetRemote $url $opts }}
+    {{ $data := . | transform.Unmarshal }}
+    {{ if $data.hits }}
+      {{ $topPost := index $data.hits 0 }}
+      {{ $title := $topPost.title }}
+      {{ $title = index (split $title " - ") 0 }}
+      <p class="most-read">Top this week: <a href="{{ $topPost.path }}">{{ $title }}</a></p>
     {{ end }}
+  {{ end }}
+</footer>
 
-    {{ if $recentPosts }}
-    <div class="recent-post">
-        <h3>Most recent articles</h3>
-        <div class="navigation-links">
-            {{ range $recentPosts }}
-                <p>■ <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "2nd January 2006" }}</p>
-            {{ end }}
-        </div>
-    </div>
-    {{ end }}
-    
-    {{ if $recentProjects }}
-    <div class="recent-project">
-        <h3>Most recent personal project</h3>
-        <div class="navigation-links">
-            {{ range $recentProjects }}
-                <p>■ <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "2nd January 2006" }}</p>
-            {{ end }}
-        </div>
-    </div>
-    {{ end }}
-</nav>
-{{ end }}
-
-<style>
-.post-navigation h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    margin-top: 1rem;
-}
-
-.navigation-links p {
-    font-size: 0.85rem;
-    margin: 0.25rem 0;
-    line-height: 1.4;
-}
-
-.navigation-links a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.navigation-links a:hover {
-    text-decoration: underline;
-    color: #007acc;
-}
-</style> -->
 {{ end }}
