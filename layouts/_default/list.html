@@ -21,20 +21,12 @@
                 </time>
             </div>
             <div class="archive-title">
-                {{ if .Params.external_url }}
-                    <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">
-                        {{ .Title }}
-                        <span class="external-link">→</span>
-                    </a>
-                    <a href="{{ .Permalink }}" class="permalink">∞</a>
-                {{ else }}
-                    <a href="{{ .Permalink }}">
-                        {{ .Title }}
-                        {{ if in .Params.tags "Project" }}
-                           <span class="project-tag">PROJECT</span>
-                        {{ end }}
-                    </a>
-                {{ end }}
+                <a href="{{ .Permalink }}">
+                    {{ .Title }}
+                    {{ if in .Params.tags "Project" }}
+                       <span class="project-tag">PROJECT</span>
+                    {{ end }}
+                </a>
             </div>
         </article>
         {{ end }}
