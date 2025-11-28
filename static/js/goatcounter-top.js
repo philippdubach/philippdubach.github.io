@@ -18,7 +18,7 @@ async function fetchTopPost() {
       // Extract title - remove the site name suffix
       let title = topPost.title.replace(' - philippdubach.com', '');
       
-      container.innerHTML = `Top this week: <a href="${topPost.path}">${title}</a>`;
+      container.innerHTML = `Most read: <a href="${topPost.path}">${title}</a>`;
     } else {
       console.log('No hits found');
       container.remove();

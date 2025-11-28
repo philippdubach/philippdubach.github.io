@@ -13,5 +13,3 @@ There was this "[I work with Models](https://us1.discourse-cdn.com/flex001/uploa
 >This monograph presents the core principles that have guided the development of diffusion models, tracing their origins and showing how diverse formulations arise from shared mathematical ideas. Diffusion modeling starts by defining a forward process that gradually corrupts data into noise, linking the data distribution to a simple prior through a continuum of intermediate distributions.
 
 If you want to get into this topic in the first place, be sure to check out [Stefano Ermon's CS236 Deep Generative Models Course](https://deepgenerativemodels.github.io). Lecture recordings of the full course can also be found on [YouTube](https://www.youtube.com/playlist?list=PLoROMvodv4rPOWA-omMM6STXaWW4FvJT8).
-
-_Original paper linked in this post's title._

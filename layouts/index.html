@@ -5,29 +5,22 @@
     {{ range (.Paginate $posts).Pages }}
     <article class="post">
         <header class="post-header">
+            <h2 class="post-title">
+                <a href="{{ .Permalink }}">
+                    {{ .Title }}
+                </a>
+                {{ if in .Params.tags "Project" }}
+                    <span class="project-tag">PROJECT</span>
+                {{ end }}
+            </h2>
             <div class="post-meta">
                 <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
                     {{ .Date.Format "January 2, 2006" }}
                 </time>
                 {{ if .Params.external_url }}
-                    • <a href="{{ .Permalink }}" class="permalink">∞</a>
-                {{ end }}
-                {{ if in .Params.tags "Project" }}
-                    •<span class="project-tag">PROJECT</span>
+                    · <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>
                 {{ end }}
             </div>
-            <h2 class="post-title">
-                {{ if .Params.external_url }}
-                    <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">
-                        {{ .Title }}
-                        <span class="external-link">→</span>
-                    </a>
-                {{ else }}
-                    <a href="{{ .Permalink }}">
-                        {{ .Title }}
-                    </a>
-                {{ end }}
-            </h2>
         </header>
         <div class="post-content">
             {{ .Content }}
