@@ -12,6 +12,10 @@
 {{ if .Params.images }}
     {{/* Handle images array (your format) */}}
     {{ $image = index .Params.images 0 }}
+    {{/* Ensure absolute URL for Twitter Cards */}}
+    {{ if not (hasPrefix $image "http") }}
+        {{ $image = $image | absURL }}
+    {{ end }}
 {{ else if .Params.image }}
     {{/* Handle single image field */}}
     {{ $image = .Params.image | absURL }}
@@ -22,4 +26,5 @@
 
 {{ if $image }}
 <meta name="twitter:image" content="{{ $image }}">
+<meta name="twitter:image:src" content="{{ $image }}">
 {{ end }}
