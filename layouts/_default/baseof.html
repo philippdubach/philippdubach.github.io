@@ -16,6 +16,16 @@
     {{- end -}}
 
     {{ if not hugo.IsServer }}
+    <script>
+      // Enhanced GoatCounter configuration to better track referrers from redirects
+      window.goatcounter = window.goatcounter || {};
+      // GoatCounter should automatically track referrers, but we ensure it's enabled
+      // If referrer is from pdub.click, we can add additional tracking
+      if (document.referrer && document.referrer.includes('pdub.click')) {
+        // GoatCounter will automatically use document.referrer, but we can enhance it
+        window.goatcounter.no_onload = false; // Ensure onload tracking works
+      }
+    </script>
     <script data-goatcounter="https://philippdubach.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
     {{ end }}

@@ -1,12 +1,12 @@
 ---
-title: "Is AI Really Eating the World? What we've Learned [1/2]"
+title: "Is AI Really Eating the World? [1/2]"
 date: 2025-11-23
 images: ['https://static.philippdubach.com/ograph/ograph-eatingtheworld1.jpg']
 external_url: "https://www.ben-evans.com/presentations/"
 description: "We go through Benedict Evans' analysis of generative AI as a potential platform shift, exploring whether AI models will become commodities like previous technologies, while discussing the massive tech investments, uncertain enterprise adoption patterns, and open questions about competitive advantages in the AI landscape."
 keywords: ["generative AI", "artificial intelligence", "platform shift", "enterprise AI adoption", "AI infrastructure", "machine learning models", "digital transformation", "AI integration", "technology cycles", "AI development", "business automation", "AI investment", "software development AI", "AI consulting", "technology disruption"]
 draft: false
-aliases: ["/2025/11/23/is-ai-really-eating-the-world"]
+aliases: ["/2025/11/23/is-ai-really-eating-the-world", "/2025/11/23/is-ai-really-eating-the-world-what-weve-learned-1/2/"]
 ---
 
 In August 2011, Marc Andreessen wrote ["Why Software Is Eating the World"](https://a16z.com/why-software-is-eating-the-world/), an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, [Benedict Evans](https://www.ben-evans.com/benedictevans/2014/1/18/a16z), a former a16z partner, gave a presentation on generative AI three years after ChatGPT's launch. His argument in short: 
