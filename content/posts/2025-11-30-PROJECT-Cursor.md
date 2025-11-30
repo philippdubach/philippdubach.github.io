@@ -1,6 +1,6 @@
 ---
 title: "Deploying to Production with AI Agents: Testing Cursor on Azure"
-images: ['https://static.philippdubach.com/ograph/ograph-cursor.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-cursor-azure.jpg']
 date: 2025-11-30
 description: "First impressions of Cursor AI after using it to deploy YOURLS from scratch. How it handled SSH access, server configuration, and SSL certificates."
 keywords: ["Cursor AI", "AI coding assistant", "YOURLS deployment", "SSH automation", "server setup"]
