@@ -50,6 +50,10 @@
   {{ $image := "" }}
   {{ if .Params.images }}
     {{ $image = index .Params.images 0 }}
+    {{/* Ensure absolute URL for structured data */}}
+    {{ if not (hasPrefix $image "http") }}
+      {{ $image = $image | absURL }}
+    {{ end }}
   {{ else if .Params.image }}
     {{ $image = .Params.image | absURL }}
   {{ else if .Site.Params.default_image }}

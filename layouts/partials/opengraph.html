@@ -12,6 +12,10 @@
 {{ if .Params.images }}
     {{/* Handle images array (your format) */}}
     {{ $image = index .Params.images 0 }}
+    {{/* Ensure absolute URL for Open Graph */}}
+    {{ if not (hasPrefix $image "http") }}
+        {{ $image = $image | absURL }}
+    {{ end }}
 {{ else if .Params.image }}
     {{/* Handle single image field */}}
     {{ $image = .Params.image | absURL }}
@@ -22,6 +26,17 @@
 
 {{ if $image }}
 <meta property="og:image" content="{{ $image }}">
+<meta property="og:image:secure_url" content="{{ $image }}">
+<meta property="og:image:url" content="{{ $image }}">
+{{ if hasSuffix $image ".jpg" }}
+<meta property="og:image:type" content="image/jpeg">
+{{ else if hasSuffix $image ".png" }}
+<meta property="og:image:type" content="image/png">
+{{ else if hasSuffix $image ".webp" }}
+<meta property="og:image:type" content="image/webp">
+{{ else }}
+<meta property="og:image:type" content="image/jpeg">
+{{ end }}
 {{ end }}
 
 {{/* Article-specific Open Graph tags */}}
