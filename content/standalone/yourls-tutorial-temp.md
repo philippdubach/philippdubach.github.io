@@ -2,7 +2,7 @@
 title: "How to Install YOURLS: Free Self-Hosted URL Shortener on Azure, AWS, Oracle (Ubuntu 22.04)"
 
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-slug: yourls-tutorial
+slug: yourls-azure-tutorial
 description: "Complete step-by-step guide to install and configure YOURLS (Your Own URL Shortener) on Azure, AWS, or Oracle Cloud using Ubuntu 22.04. Learn how to set up a free self-hosted URL shortener with Apache, MySQL, and SSL certificates."
 keywords: ["YOURLS", "URL shortener", "self-hosted URL shortener", "Azure tutorial", "AWS tutorial", "Oracle Cloud", "Ubuntu 22.04", "YOURLS installation", "free URL shortener", "self-hosted", "Apache MySQL PHP", "Let's Encrypt SSL", "cloud hosting", "VM setup", "URL shortening service", "YOURLS configuration", "web server setup", "database configuration"]
 draft: false
