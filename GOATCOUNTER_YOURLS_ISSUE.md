@@ -184,3 +184,4 @@ After implementing a solution:
 - Some privacy-focused browsers/extensions may block referrer headers
 - Server-side tracking (Solution 1) bypasses these limitations
 
+
