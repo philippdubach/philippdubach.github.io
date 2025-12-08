@@ -21,7 +21,7 @@ One particularly striking lesson: a system I built to maximize clicks became stu
 
 But when bandits fit the use case, the value extends beyond optimization. You gain the ability to accurately estimate improvement from other features—quantifying that spacing improvements delivered 10x more value than the Really Big Feature expected to dominate.
 
-The book's chapters on "bandits with knapsacks" and "bandits and agents" work as standalone surveys, and the appendix provides solid background on concentration and KL-divergence. Six years later, it's still the introduction I'd recommend—just with the caveat that production deployment requires understanding when *not* to use them: when you care about information gained in experiments, when cohorts are too small to converge quickly, or when you can't tolerate the state management complexity.
+The book's chapters on "bandits with knapsacks" and "bandits and agents" work as standalone surveys, and the appendix provides solid background on concentration and KL-divergence. Six years later, it's still the introduction I'd recommend—just with the caveat that production deployment requires understanding when not to use them: when you care about information gained in experiments, when cohorts are too small to converge quickly, or when you can't tolerate the state management complexity.
 
 As I've come to think of it: bandits work brilliantly until you need to reason about what they're doing. Then you wish they didn't work quite so well.
 
