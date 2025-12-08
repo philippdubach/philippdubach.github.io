@@ -10,24 +10,19 @@ draft: true
 
 In November 2025, The New Yorker published ["The Case That A.I. Is Thinking"](https://www.newyorker.com/magazine/2025/11/10/the-case-that-ai-is-thinking), a piece that captured the strange moment we're in. Dario Amodei predicts AI smarter than Nobel Prize winners by 2027. Sam Altman writes about digital superintelligence. Meanwhile, most people interact with AI tools that feel like Clippy, Microsoft's old assistant that was more annoying than useful. The gap between the hype and daily experience creates a fog where it's tempting to conclude there's nothing to see here.
 
-{{< img src="nike_stock_prices.png" alt="Athletic Footwear Stock Performance 2024-2025 with Key Events" width="80%" >}}
-
 
 But there's a more interesting question than whether AI is thinking. What does thinking mean for value creation? If compression equals understanding, as Eric Baum argued decades ago, and if today's models compress the internet into something that fits on your laptop, does that create economic moats or just better commodities? The neuroscience insights are real. The economic implications are less clear.
-
-{{< img src="compression_ratio1.png" alt="AI Model Compression Ratios: Training Data Size vs Model Size Over Time" width="80%" >}}
 
 Eric Baum's 2003 book "What Is Thought?" makes a simple argument: understanding is compression, and compression is understanding. When you compress data effectively, you're not just shrinking files. You're finding the underlying structure. A calculator program compresses millions of arithmetic examples more efficiently than a zip file because it understands the rules. Large language models trained on terabytes of text compress that into models one six-hundredth the size. DeepSeek, one of the best open-source models, can write novels, suggest medical diagnoses, and speak dozens of languages. The training data is massive. The model you download is tiny. That compression ratio keeps improving.
 
 From an information theory perspective, this makes sense. Better compression means better understanding of the underlying patterns. But information theory doesn't tell us about economic value. If understanding is just better compression, and compression keeps improving, what happens to the companies building these models? The [cost of training frontier models has collapsed](https://www.semianalysis.com/p/deepseek-debates). DeepSeek proved that anyone with $500 million can build a competitive model. That's still a high barrier, but it's not a moat. When OpenAI launched ChatGPT in November 2022, it had a massive quality advantage. Today, dozens of models cluster around similar performance. The compression is getting better. The competitive advantage is getting smaller.
 
-{{< img src="api_cost_decline1.png" alt="AI API Cost Per Token Over Time (Log Scale)" width="80%" >}}
 
 Neuroscientists are using AI models to study how brains work. Doris Tsao at UC Berkeley, who decoded how macaque monkeys perceive faces, says the advances in machine learning have taught us more about intelligence than neuroscience discovered in the past hundred years. Jonathan Cohen at Princeton argues that large language models mirror the neocortex, the part of the brain responsible for higher-order thinking. Kenneth Norman at Princeton calls working AI systems that instantiate theories of human intelligence the dream of cognitive neuroscience.
 
 This convergence between AI and neuroscience is real. But what does it mean for business? If AI models work like brains, does that create defensible advantages? The evidence suggests the opposite. [OpenAI's API pricing has dropped by 97% since GPT-3's launch](https://techcrunch.com/2025/08/08/openai-priced-gpt-5-so-low-it-may-spark-a-price-war/). Every year brings an order of magnitude decline in the price of a given output. The models are getting more brain-like. The prices are collapsing toward marginal cost. That's what happens when capabilities commoditize.
 
-{{< img src="model_performance_clustering1.png" alt="AI Model Benchmark Scores Showing Performance Convergence" width="80%" >}}
+
 
 The commoditization is visible in the data. [GPT-4 launched in March 2023](https://openai.com/index/gpt-4-research/) with a substantial lead. Within six months, [Claude 2 was comparable](https://www.anthropic.com/news/claude-2). Within a year, multiple models clustered around similar capability. The diffusion is fast. When you plot benchmark scores on standard evaluations like MMLU and HumanEval, leaders change weekly. The gaps are small. Consumer awareness doesn't track model quality. ChatGPT dominates with [over 700 million weekly active users](https://openai.com/index/how-people-are-using-chatgpt/) not because it has the best model anymore, but because it got there first and built brand.
 
