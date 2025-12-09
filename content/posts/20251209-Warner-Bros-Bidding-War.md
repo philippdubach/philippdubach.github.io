@@ -7,14 +7,12 @@ keywords: ["Warner Bros Discovery", "Netflix acquisition", "Paramount hostile ta
 draft: false	
 ---
 
-In the [HBO series Succession](https://en.wikipedia.org/wiki/Succession_(TV_series)), billionaire Logan Roy's children spent four seasons scheming, backstabbing, and making offers to inherit a media empire. This week, the real version played out in real time, with more zeros and a $252 billion Oracle stake. Time for a closer look:
+In the [HBO series Succession](https://en.wikipedia.org/wiki/Succession_(TV_series)), billionaire Logan Roy's children spent four seasons scheming, backstabbing, and making offers to inherit a media empire. This week, the real version played out with more zeros and a $252 billion Oracle stake. Time for a closer look:
 
 On Friday, Warner Bros. Discovery's board agreed to sell the company to [Netflix for $72 billion](https://ir.netflix.net/investor-news-and-events/financial-releases/press-release-details/2025/NETFLIX-TO-ACQUIRE-WARNER-BROS--FOLLOWING-THE-SEPARATION-OF-DISCOVERY-GLOBAL-FOR-A-TOTAL-ENTERPRISE-VALUE-OF-82-7-BILLION-Equity-Value-of-72-0-Billion/default.aspx). By Monday, [Paramount had launched a hostile tender offer](https://ir.paramount.com/news-releases/news-release-details/paramount-launches-all-cash-tender-offer-acquire-warner-bros) directly to shareholders at $30 per share, all cash. The gap between those two numbers contains everything interesting about streaming economics, hostile deal mechanics, and what happens when aggregator theory meets dealmaking reality.
 
 The Netflix offer breaks down into three pieces: $23.25 per share in cash, $4.50 per share in Netflix stock subject to a collar, and shares in a spun-off entity called Discovery Global containing CNN and the cable networks that Netflix doesn't want. Analysts value that stub somewhere between $2 and $5 per share, which puts the total package at roughly $29.75 to $32.75. Paramount is offering $30 per share in cash for the entire company, including the cable assets. Warner's stock closed Friday at $26.08 and opened Monday around $27.64, which tells you the market expects a bidding war but isn't fully convinced either deal closes.
-
 {{< img src="wbd_offer_comparison2.png" alt="Comparison of Netflix vs Paramount offers for Warner Bros Discovery" width="80%" >}}
-
 David Ellison made the straightforward case on CNBC:
 
 >We're sitting on Wall Street, where cash is still king. We are offering shareholders $17.6 billion more cash than the deal they currently have signed up with Netflix.
