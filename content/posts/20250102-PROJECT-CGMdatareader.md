@@ -8,6 +8,8 @@ tags: ["Project"]
 draft: false
 ---
 
+>_If you are reading this you might also be interested in [Modeling Glycemic Response with XGBoost](/2025/05/30/modeling-glycemic-response-with-xgboost/)_
+
 Last year I put a Continuous Glucose Monitor (CGM) sensor, specifically the [Abbott Freestyle Libre 3](https://www.freestyle.abbott), on my left arm. Why? I wanted to optimize my nutrition for endurance cycling competitions. Where I live, the sensor is easy to get—without any medical prescription—and even easier to use. Unfortunately, Abbott's [FreeStyle LibreLink](https://apps.apple.com/us/app/freestyle-librelink-us/id1325992472) app is less than optimal (3,250 other people with an average rating of 2.9/5.0 seem to agree). In their defense, the web app LibreView does offer some nice reports which can be generated as PDFs—not very dynamic, but still something! What I had in mind was more in the fashion of the [Ultrahuman M1 dashboard](https://ultrahuman.com/m1). Unfortunately, I wasn't allowed to use my Libre sensor (EU firmware) with their app (yes, I spoke to customer service).
 
 At that point, I wasn't left with much enthusiasm, only a coin-sized sensor in my arm. The LibreView website fortunately lets you download most of your (own) data in a CSV report (_there is also a [reverse engineered API](https://github.com/FokkeZB/libreview-unofficial)_), which is nice. So that's what I did: download the data, `pd.read_csv()` it into my notebook, calculate summary statistics, and plot the values.
