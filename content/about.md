@@ -9,6 +9,4 @@ This collection helps me maintain a personal repository of articles and papers, 
 The website [runs on Hugo](/2024/01/15/the-tech-behind-this-site/) and is hosted on GitHub Pages.
 <br>
 <br>
->_This website complies with the GDPR by not collecting any personal information, and with the EU Cookie Directive by not using cookies for any purpose other than to provide service functionality._
-> 
->_No personally identifiable information is collected, anonymized logs with source addresses are sometimes kept longer to help diagnose bugs (see [Privacy Policy](https://www.goatcounter.com/help/privacy))._
+>_This website complies with the GDPR by not collecting any personal information, and with the EU Cookie Directive by not using cookies for any purpose other than to provide service functionality. Anonymized logs are sometimes kept to help diagnose bugs (see [Privacy Policy](https://www.goatcounter.com/help/privacy))._
