@@ -6,7 +6,7 @@ draft: false
 **2025**
 
 *Volatility Regime Prediction via Causal Discovery in Option Markets*<br>
-Draft ([Dataset](https://github.com/philippdubach/volatility-regime-prediction/blob/b7ac783adaf8951e310358e16fb545fbd0bb92c6/reports/data_report.pdf))
+Draft ([Dataset](https://github.com/philippdubach/vol-regime-prediction/blob/12e853a594a91f359d1c8838ee9e87d404701bf2/reports/data_report.pdf))
 
 *Attention Dynamics in Online Communities: Power Laws, Preferential Attachment, and Early Success Prediction on Hacker News*<br>
 [Abstract](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5910263) | [Article](/standalone/hn-research/)
