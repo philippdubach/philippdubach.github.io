@@ -39,55 +39,59 @@
   var status = document.getElementById('share-status');
   if (!link) return;
   
-  var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  
-  function copyToClipboard(text) {
-    // Safari loses user gesture context after async operations, so always use execCommand
-    if (!isSafari && navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text);
-    }
-    // Fallback using execCommand (works in Safari)
-    var textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      return Promise.resolve();
-    } catch (e) {
-      document.body.removeChild(textarea);
-      return Promise.reject(e);
-    }
-  }
-  
   link.addEventListener('click', function(e) {
     e.preventDefault();
     status.textContent = '...';
-    var url = encodeURIComponent(window.location.href);
-    fetch('https://pdub.click/yourls-api.php?signature=4807288869&action=shorturl&format=json&url=' + url)
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        var short = data.shorturl;
-        if (short) {
-          copyToClipboard(short).then(function() {
-            status.textContent = 'url copied';
-            setTimeout(function() { status.textContent = ''; }, 2000);
-          }).catch(function() {
-            status.textContent = short;
-            setTimeout(function() { status.textContent = ''; }, 4000);
-          });
-        } else {
-          status.textContent = 'error';
-          setTimeout(function() { status.textContent = ''; }, 2000);
-        }
-      })
-      .catch(function() {
+    var pageUrl = window.location.href;
+    
+    // Safari requires ClipboardItem with Promise for async clipboard writes
+    // The Promise must be created synchronously during the user gesture
+    if (navigator.clipboard && navigator.clipboard.write && typeof ClipboardItem !== 'undefined') {
+      var clipboardItem = new ClipboardItem({
+        'text/plain': fetch('https://pdub.click/yourls-api.php?signature=4807288869&action=shorturl&format=json&url=' + encodeURIComponent(pageUrl))
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            var short = data.shorturl || '';
+            return new Blob([short], { type: 'text/plain' });
+          })
+          .catch(function() {
+            return new Blob([''], { type: 'text/plain' });
+          })
+      });
+      navigator.clipboard.write([clipboardItem]).then(function() {
+        status.textContent = 'url copied';
+        setTimeout(function() { status.textContent = ''; }, 2000);
+      }).catch(function() {
         status.textContent = 'error';
         setTimeout(function() { status.textContent = ''; }, 2000);
       });
+    } else {
+      // Fallback for older browsers without ClipboardItem support
+      fetch('https://pdub.click/yourls-api.php?signature=4807288869&action=shorturl&format=json&url=' + encodeURIComponent(pageUrl))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var short = data.shorturl;
+          if (short && navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(short).then(function() {
+              status.textContent = 'url copied';
+              setTimeout(function() { status.textContent = ''; }, 2000);
+            }).catch(function() {
+              status.textContent = short;
+              setTimeout(function() { status.textContent = ''; }, 4000);
+            });
+          } else if (short) {
+            status.textContent = short;
+            setTimeout(function() { status.textContent = ''; }, 4000);
+          } else {
+            status.textContent = 'error';
+            setTimeout(function() { status.textContent = ''; }, 2000);
+          }
+        })
+        .catch(function() {
+          status.textContent = 'error';
+          setTimeout(function() { status.textContent = ''; }, 2000);
+        });
+    }
   });
 })();
 </script>
