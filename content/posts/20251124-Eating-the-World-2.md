@@ -1,5 +1,6 @@
 ---
 title: "Is AI Really Eating the World? AGI, Networks, Value [2/2]"
+seoTitle: "Is AI Really Eating the World? [Part 2]"
 date: 2025-11-24
 images: ['https://static.philippdubach.com/ograph/ograph-eatingtheworld2.jpg']
 external_url: "https://www.ben-evans.com/presentations/"

@@ -1,5 +1,6 @@
 ---
 title: "Building a Real-Time HN Archive: Cloudflare Workers, AI, and 100K Posts"
+seoTitle: "Building a Serverless Hacker News Archive"
 slug: hn-archiver
 images: ['https://static.philippdubach.com/ograph/ograph-hn-technical.jpg']
 description: "A deep dive into building a serverless Hacker News archiver using Cloudflare Workers, D1, Workers AI for topic classification, and Vectorize for semantic search. Architecture patterns for real-time data collection at scale."

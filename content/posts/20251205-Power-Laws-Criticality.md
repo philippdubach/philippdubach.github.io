@@ -1,5 +1,6 @@
 ---
 title: "Power Laws, Criticality, and the Economics of Extreme Events"
+seoTitle: "Power Laws and the Economics of Extremes"
 date: 2025-12-05
 images: ['https://static.philippdubach.com/ograph/ograph-powerlaws.jpg']
 description: "An economic analysis of power law distributions: how self-organized criticality and extreme value theory explain financial crises, tail risk, and income inequality. Examining why Value at Risk models fail and what fat tail distributions mean for portfolio theory and risk management."

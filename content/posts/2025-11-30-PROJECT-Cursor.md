@@ -1,5 +1,6 @@
 ---
 title: "Deploying to Production with AI Agents: Testing Cursor on Azure"
+seoTitle: "AI Agents in Production: Testing Cursor"
 images: ['https://static.philippdubach.com/ograph/ograph-agentic-deployment.jpg']
 date: 2025-11-30
 description: "First impressions of Cursor AI after using it to deploy YOURLS from scratch. How it handled SSH access, server configuration, and SSL certificates."

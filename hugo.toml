@@ -30,6 +30,9 @@ title = 'philippdubach'
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
+      # unsafe = true allows raw HTML in markdown files
+      # Required for: <br>, <a>, <section>, <h6> tags used in content files
+      # Content is author-controlled, not user-submitted, so security risk is minimal
       unsafe = true
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
