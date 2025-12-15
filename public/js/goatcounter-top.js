@@ -10,8 +10,6 @@ async function fetchTopPost() {
     
     const data = await response.json();
     
-    console.log('GoatCounter data:', data); // Debug log
-    
     if (data.hits && data.hits.length > 0) {
       const topPost = data.hits[0];
       
@@ -20,11 +18,9 @@ async function fetchTopPost() {
       
       container.innerHTML = `Most read: <a href="${topPost.path}">${title}</a>`;
     } else {
-      console.log('No hits found');
       container.remove();
     }
   } catch (error) {
-    console.error('Could not load top post:', error);
     container.remove();
   }
 }

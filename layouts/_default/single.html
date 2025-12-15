@@ -32,9 +32,23 @@
   </p>
 </footer>
 
-<script src="/js/goatcounter-top.js"></script>
 <script>
 (function(){
+  // Fetch top post from GoatCounter
+  var container = document.getElementById('top-post-week');
+  if (container) {
+    fetch('https://weekly-top-goatcounter-api.philippd.workers.dev')
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function(data) {
+        if (data.hits && data.hits.length > 0) {
+          var t = data.hits[0];
+          container.innerHTML = 'Most read: <a href="' + t.path + '">' + t.title.replace(' - philippdubach.com', '') + '</a>';
+        } else { container.remove(); }
+      })
+      .catch(function() { container.remove(); });
+  }
+
+  // Share link handler
   var link = document.getElementById('share-link');
   var status = document.getElementById('share-status');
   if (!link) return;
