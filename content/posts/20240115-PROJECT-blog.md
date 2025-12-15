@@ -27,3 +27,9 @@ Enhanced SEO capabilities with comprehensive metadata support. Built custom [Ope
 
 _(November 2025) Update:_
 Added new [shortcode to embedd html tables](https://gist.github.com/philippdubach/b703005536d6030c87e17d21cb0d430b) as well as updated my [image shortcode](https://gist.github.com/philippdubach/167189c7090c6813c5110c467cb5ebe9) to add lightbox support on images.
+
+_(December 2025) Update:_
+Completed a full security, stability, and performance audit. Fixed SEO issues: resolved multiple H1 tags per page by changing sidebar title from `<h1>` to `<div>`, added `seoTitle` frontmatter support for pages with long titles, and added meta descriptions to archive pages. Hardened Content Security Policy with `frame-ancestors` directive. Added preconnect hints for external domains (gc.zgo.at, static.philippdubach.com). Removed unused legacy meta partials.
+
+_(December 2025) Update II:_
+Added one-click short link sharing via [YOURLS](https://yourls.org/) integration. Click the ∞ symbol next to read time to generate a pdub.click short URL and copy it to clipboard. Uses JSONP for cross-origin compatibility with minimal inline JavaScript (~500 bytes).
