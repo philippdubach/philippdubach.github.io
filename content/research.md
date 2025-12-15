@@ -9,10 +9,10 @@ draft: false
 Draft | ([Dataset](https://github.com/philippdubach/vol-regime-prediction/blob/797c2af0296d1c2c21c96531db51b1ca6b293b97/reports/Volatility_Regime_Prediction_Dataset.pdf))
 
 *Option Order Flow Imbalances, Informed Trading, and Short-Term Market Returns: A High-Frequency Analysis of Information Asymmetry in SPY Options (2008-2025)*<br>
-Draft | ([Dataset](https://github.com/philippdubach/vol-model/blob/e9ab0ec0bd7cd983a16afbef7b5ad878f67dae8b/reports/dataset_description.pdf))
+Draft | ([Dataset](https://github.com/philippdubach/spy-options-dataset/blob/e36c4ae40dd9c5ad51dd9caf8503ff4686b178cb/reports/dataset_description.pdf))
 
 *Transformer Networks for Cross-Sectional and Temporal Option Chain Modeling with No-Arbitrage Guarantees*<br>
-Draft | ([Dataset](https://github.com/philippdubach/vol-model/blob/e9ab0ec0bd7cd983a16afbef7b5ad878f67dae8b/reports/dataset_description.pdf))
+Draft | ([Dataset](https://github.com/philippdubach/spy-options-dataset/blob/e36c4ae40dd9c5ad51dd9caf8503ff4686b178cb/reports/dataset_description.pdf))
 
 <br>
 
