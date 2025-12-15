@@ -14,6 +14,8 @@
             {{ if .Params.external_url }}
                 • <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>
             {{ end }}
+            • <a href="#" id="share-link" title="Copy short link" aria-label="Copy short link" style="text-decoration:none">∞</a>
+            <span id="share-status"></span>
         </div>
         {{ end }}
     </header>
@@ -31,5 +33,35 @@
 </footer>
 
 <script src="/js/goatcounter-top.js"></script>
+<script>
+(function(){
+  var link = document.getElementById('share-link');
+  var status = document.getElementById('share-status');
+  if (!link) return;
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    status.textContent = '...';
+    var url = encodeURIComponent(window.location.href);
+    var cb = 'yourls_' + Date.now();
+    window[cb] = function(data) {
+      var short = data.shorturl;
+      if (short) {
+        navigator.clipboard.writeText(short).then(function() {
+          status.textContent = 'url copied';
+          setTimeout(function() { status.textContent = ''; }, 2000);
+        });
+      } else {
+        status.textContent = 'error';
+        setTimeout(function() { status.textContent = ''; }, 2000);
+      }
+      delete window[cb];
+      document.body.removeChild(s);
+    };
+    var s = document.createElement('script');
+    s.src = 'https://pdub.click/yourls-api.php?signature=4807288869&action=shorturl&format=jsonp&callback=' + cb + '&url=' + url;
+    document.body.appendChild(s);
+  });
+})();
+</script>
 
 {{ end }}
