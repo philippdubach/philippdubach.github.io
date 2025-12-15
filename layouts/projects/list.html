@@ -1,4 +1,5 @@
 {{ define "main" }}
+<h1 class="visually-hidden">Projects</h1>
 <div class="posts">
     {{ $posts := where .Site.RegularPages "Params.tags" "intersect" (slice "Project") }}
     {{ $posts := $posts.ByDate.Reverse }}

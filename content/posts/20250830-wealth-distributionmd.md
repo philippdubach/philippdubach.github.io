@@ -1,5 +1,6 @@
 ---
 title: "Agent-based Systems for Modeling Wealth Distribution"
+seoTitle: "Modeling Wealth Distribution"
 date: 2025-08-30
 images: ['https://static.philippdubach.com/ograph/ograph-distribution.jpg']
 description: "We explore agent-based modeling of wealth distribution using the Affine Wealth Model, demonstrating how random transactions lead to Pareto distributions and how wealth taxes can potentially create more equitable outcomes through interactive visualizations."
