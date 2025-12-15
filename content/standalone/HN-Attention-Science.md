@@ -1,5 +1,6 @@
 ---
 title: "The Attention Paradox: Concentration Without Cumulative Advantage on Hacker News"
+seoTitle: "The Attention Paradox: Power Laws on Hacker News"
 slug: hn-research
 images: ['https://static.philippdubach.com/ograph/ograph-hn-science.jpg']
 description: "A quantitative analysis of collective attention on Hacker News reveals extreme inequality (Gini 0.91) without preferential attachment. Early engagement velocity predicts viral success with 97.6% precision."
