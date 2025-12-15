@@ -43,21 +43,36 @@
     status.textContent = '...';
     var url = encodeURIComponent(window.location.href);
     var cb = 'yourls_' + Date.now();
+    var done = false;
     window[cb] = function(data) {
+      done = true;
       var short = data.shorturl;
       if (short) {
         navigator.clipboard.writeText(short).then(function() {
           status.textContent = 'url copied';
           setTimeout(function() { status.textContent = ''; }, 2000);
+        }).catch(function() {
+          status.textContent = short;
+          setTimeout(function() { status.textContent = ''; }, 4000);
         });
       } else {
         status.textContent = 'error';
         setTimeout(function() { status.textContent = ''; }, 2000);
       }
       delete window[cb];
-      document.body.removeChild(s);
+      if (s.parentNode) s.parentNode.removeChild(s);
     };
     var s = document.createElement('script');
+    s.onerror = function() {
+      setTimeout(function() {
+        if (!done) {
+          status.textContent = 'error';
+          setTimeout(function() { status.textContent = ''; }, 2000);
+        }
+        delete window[cb];
+        if (s.parentNode) s.parentNode.removeChild(s);
+      }, 500);
+    };
     s.src = 'https://pdub.click/yourls-api.php?signature=4807288869&action=shorturl&format=jsonp&callback=' + cb + '&url=' + url;
     document.body.appendChild(s);
   });
