@@ -38,6 +38,31 @@
   var link = document.getElementById('share-link');
   var status = document.getElementById('share-status');
   if (!link) return;
+  
+  var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  
+  function copyToClipboard(text) {
+    // Safari loses user gesture context after async operations, so always use execCommand
+    if (!isSafari && navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback using execCommand (works in Safari)
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return Promise.resolve();
+    } catch (e) {
+      document.body.removeChild(textarea);
+      return Promise.reject(e);
+    }
+  }
+  
   link.addEventListener('click', function(e) {
     e.preventDefault();
     status.textContent = '...';
@@ -47,7 +72,7 @@
       .then(function(data) {
         var short = data.shorturl;
         if (short) {
-          navigator.clipboard.writeText(short).then(function() {
+          copyToClipboard(short).then(function() {
             status.textContent = 'url copied';
             setTimeout(function() { status.textContent = ''; }, 2000);
           }).catch(function() {
