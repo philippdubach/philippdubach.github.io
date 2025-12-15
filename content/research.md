@@ -11,6 +11,8 @@ Draft | ([Dataset](https://github.com/philippdubach/vol-regime-prediction/blob/7
 *Option Order Flow Imbalances, Informed Trading, and Short-Term Market Returns: A High-Frequency Analysis of Information Asymmetry in SPY Options (2008-2025)*<br>
 Draft | ([Dataset](https://github.com/philippdubach/vol-model/blob/e9ab0ec0bd7cd983a16afbef7b5ad878f67dae8b/reports/dataset_description.pdf))
 
+*Transformer Networks for Cross-Sectional and Temporal Option Chain Modeling with No-Arbitrage Guarantees*<br>
+Draft | ([Dataset](https://github.com/philippdubach/vol-model/blob/e9ab0ec0bd7cd983a16afbef7b5ad878f67dae8b/reports/dataset_description.pdf))
 
 <br>
 
