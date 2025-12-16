@@ -22,7 +22,7 @@ Draft | ([Dataset](https://github.com/philippdubach/spy-options-dataset/blob/e36
 [Abstract](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5910263) | [Article](/standalone/hn-research/)
 
 *Modeling Postprandial Glycemic Response in Non-Diabetic Adults Using XGBRegressor*<br>
-[Abstract](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-69oS2wAAAAJ&citation_for_view=-69oS2wAAAAJ:u5HHmVD_uO8C) | [Article](/2025/05/30/modeling-glycemic-response-with-xgboost/)
+[Abstract](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5914902) | [Article](/2025/05/30/modeling-glycemic-response-with-xgboost/)
 
 <br>
 
