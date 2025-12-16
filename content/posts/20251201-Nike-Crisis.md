@@ -2,7 +2,7 @@
 title: "Nike's Crisis and the Economics of Brand Decay"
 date: 2025-12-02
 images: ['https://static.philippdubach.com/ograph/ograph-nike-crisis.jpg']
-description: "A economic analysis of Nike's crisis: how complementary assets, path dependency, and strategic misalignment destroyed competitive advantage. Examining Porter's theory, supply chain economics, trade policy impacts, and the organizational economics behind corporate decline."
+description: "Economic analysis of Nike's crisis: how complementary assets, path dependency, and strategic misalignment destroyed competitive advantage."
 keywords: ["NIKE Case study", "competitive advantage theory", "corporate strategy analysis", "organizational economics", "brand economics", "supply chain economics", "path dependency economics", "market structure analysis", "corporate decline analysis", "strategic management", "business model innovation", "trade policy economics", "Porter competitive strategy"]
 draft: false
 ---

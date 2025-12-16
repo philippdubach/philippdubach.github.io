@@ -2,7 +2,7 @@
 title: "Damodaran on Gold's 2025 Surge"
 date: 2025-11-16
 images: ['https://static.philippdubach.com/ograph/ograph-Damodaran.jpg']
-description: "Analysis of Aswath Damodaran's insights on gold's 2025 price surge, exploring gold as insurance against tail risks despite being an unproductive asset that contradicts traditional value investing principles."
+description: "Damodaran's analysis of gold's 2025 surge: insurance against tail risks despite being unproductive, contradicting value investing principles."
 keywords: ["Aswath Damodaran", "gold price surge 2025", "gold valuation", "unproductive assets", "Warren Buffett investing", "tail risk insurance", "hyperinflation hedge", "market dislocation", "portfolio diversification", "collectible vs asset", "macro uncertainty", "value investing", "gold investment analysis", "asset pricing", "investment framework"]
 external_url: "https://aswathdamodaran.blogspot.com/2025/11/a-golden-year-2025-golds-price-surge.html"
 draft: false

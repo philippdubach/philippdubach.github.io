@@ -3,7 +3,7 @@ title: "Weather Forecasts Have Improved a Lot"
 date: 2025-11-22
 images: ['https://static.philippdubach.com/ograph/ograph-weather.jpg']
 external_url: "https://ourworldindata.org/weather-forecasts"
-description: "I explore the dramatic improvements in weather forecasting accuracy over recent decades, highlighting Google DeepMind's WeatherNext 2 AI model and its advanced prediction capabilities."
+description: "Exploring dramatic improvements in weather forecasting accuracy, highlighting Google DeepMind's WeatherNext 2 AI model capabilities."
 keywords: ["weather forecasting", "Google DeepMind", "WeatherNext 2", "AI weather prediction", "hurricane forecasting", "weather accuracy", "meteorology technology", "CRPS objective", "neural weather models", "weather AI", "forecast improvements", "climate prediction", "machine learning weather", "atmospheric modeling", "weather technology"]
 draft: false
 ---

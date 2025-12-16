@@ -3,7 +3,7 @@ title: "Michael Burry's $379 Newsletter"
 date: 2025-11-28
 images: ['https://static.philippdubach.com/ograph/ograph-burry-newsletter.jpg']
 external_url: "https://michaeljburry.substack.com"
-description: "Michael Burry launches a Substack newsletter after deregistering his hedge fund, warning that AI markets are in bubble territory similar to the 1999 dot-com crash, with particular focus on criticizing Nvidia's valuation and business model."
+description: "Michael Burry launches a Substack after deregistering his hedge fund, warning AI markets are in bubble territory like the 1999 dot-com crash."
 keywords: ["Michael Burry", "Substack newsletter", "AI bubble", "Nvidia criticism", "dot-com crash comparison", "Big Short investor", "GPU depreciation", "artificial intelligence valuations", "market prediction", "tech bubble warning"]
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: "The Green Bond Commitment Premium"
 date: 2024-12-31
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "Research reveals that companies issuing only green bonds achieve significant environmental and financial benefits, while those mixing green and conventional bonds show no environmental impact, highlighting the importance of full commitment in green finance."
+description: "Research shows companies issuing only green bonds achieve environmental benefits, while mixing green and conventional bonds shows no impact."
 keywords: ["green bond commitment premium", "green finance", "ESG ratings", "CO2 emissions", "net-zero policies", "greenwashing", "sustainable finance", "environmental finance", "green bond issuance", "carbon reduction policies", "difference-in-differences model", "financing costs", "pure-play green issuers", "bond market analysis", "environmental impact"]
 external_url: "https://www.nature.com/articles/s41599-024-04318-1"
 ---

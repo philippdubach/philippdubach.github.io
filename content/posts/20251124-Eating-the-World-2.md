@@ -4,7 +4,7 @@ seoTitle: "Is AI Really Eating the World? [Part 2]"
 date: 2025-11-24
 images: ['https://static.philippdubach.com/ograph/ograph-eatingtheworld2.jpg']
 external_url: "https://www.ben-evans.com/presentations/"
-description: "In part two the analysis of Benedict Evans AI is Eating the World we question how AI and LLMs may transform recommendation systems and examines whether AGI development will create lasting competitive advantages or lead to commoditized markets where value flows to applications and distribution."
+description: "Part 2: How AI may transform recommendations and whether AGI creates lasting advantages or commoditized markets where value flows elsewhere."
 keywords: ["artificial intelligence", "large language models", "LLMs", "recommendation systems", "AGI artificial general intelligence", "AI market dynamics", "machine learning", "pattern matching", "AI applications", "hyperscalers", "vertical integration", "AI competitive advantage", "enterprise AI", "AI commoditization"]
 draft: false
 ---

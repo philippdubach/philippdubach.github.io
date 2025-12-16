@@ -3,7 +3,7 @@ title: "What 100,000 Hacker News Posts Reveal About Online Attention"
 seoTitle: "100K Hacker News Posts: Online Attention Study"
 date: 2025-12-19
 images: ['https://static.philippdubach.com/ograph/ograph-hn-attention.jpg']
-description: "An analysis of nearly 100,000 Hacker News posts shows extreme attention inequality but no rich-get-richer effect. What happens in the first two hours determines everything, and timing barely matters."
+description: "Analysis of 100K Hacker News posts shows extreme attention inequality but no rich-get-richer effect. The first two hours determine everything."
 keywords: ["Hacker News", "attention economics", "social media analytics", "content virality", "data science", "power laws", "online communities", "engagement prediction", "computational social science"]
 tags: ["Project"]
 draft: true

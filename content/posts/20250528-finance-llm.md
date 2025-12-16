@@ -2,7 +2,7 @@
 title: "The Model Said So"
 date: 2025-05-28
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "Explores the fundamental tension between LLMs' powerful capabilities and their lack of transparency in finance, where regulatory compliance demands explainable AI and audit trails that conflict with complex neural networks."
+description: "The tension between LLM capabilities and transparency in finance, where regulatory compliance demands explainable AI that neural networks lack."
 keywords: ["LLMs in finance", "explainable AI", "financial regulation", "audit trails", "bias detection", "neural networks", "fintech compliance", "model transparency", "regulatory challenges", "financial AI", "market sentiment analysis", "investment reports", "regulatory nightmares", "decision-making transparency", "financial sector AI"]
 external_url: "https://arxiv.org/abs/2505.24650"
 ---

@@ -2,7 +2,7 @@
 title: "Behavioral Economics & Transit Policy"
 date: 2025-06-22
 images: ['https://static.philippdubach.com/ograph/ograph-TransitPolicy.jpg']
-description: "Explores how behavioral economics research on zero pricing applies to transit policy, examining why free public transit feels revolutionary compared to cheap fares, and analyzing the potential political consequences of eliminating fare structures."
+description: "How behavioral economics on zero pricing applies to transit: why free public transit feels revolutionary and its political consequences."
 keywords: ["behavioral economics", "transit policy", "free public transit", "zero pricing", "fare-free buses", "congestion pricing", "Dan Ariely", "zero as special price", "public transportation", "NYC mayoral election", "Zohran Mamdani", "market norms vs social norms", "transit funding", "behavioral psychology", "urban policy"]
 external_url: "https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf"
 ---
