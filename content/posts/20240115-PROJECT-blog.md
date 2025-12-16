@@ -2,7 +2,7 @@
 title: "The Tech behind this Site"
 date: 2024-01-15
 images: ['https://static.philippdubach.com/ograph/ograph-projects.jpg']
-description: "Describing the technical solution for implementing responsive images in Hugo static sites using Cloudflare's image CDN and custom shortcodes, maintaining clean markdown-like syntax while delivering optimized WebP images across different screen sizes."
+description: "Technical guide to implementing responsive images in Hugo using Cloudflare's CDN and custom shortcodes for optimized WebP delivery."
 keywords: ["Hugo static site", "responsive images", "Cloudflare image CDN", "Hugo shortcode", "WebP optimization", "image resizing", "R2 bucket", "static site generation", "markdown syntax", "picture element", "image transformations", "mobile optimization", "web performance"]
 tags: ["Project"]
 ---

@@ -3,7 +3,7 @@ title: "Working with Models"
 date: 2025-11-08
 images: ['https://static.philippdubach.com/ograph/ograph-models.jpg']
 external_url: "https://arxiv.org/abs/2510.21890"
-description: "We explore diffusion models and their mathematical foundations, referencing a comprehensive monograph that traces their origins and core principles, along with recommended learning resources including Stanford's CS236 Deep Generative Models course."
+description: "Exploring diffusion models and their mathematical foundations, with learning resources including Stanford's CS236 Deep Generative Models course."
 keywords: ["diffusion models", "mathematical foundations", "CS236 course", "Stefano Ermon", "deep generative models", "Stanford course", "forward process", "data distribution", "noise modeling", "machine learning", "generative modeling", "YouTube lectures", "model development", "data corruption", "prior distribution"]
 draft: false
 ---

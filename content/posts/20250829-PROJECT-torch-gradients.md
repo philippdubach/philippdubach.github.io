@@ -2,7 +2,7 @@
 title: "Visualizing Gradients with PyTorch"
 date: 2025-08-23
 images: ['https://static.philippdubach.com/ograph/ograph-project.jpg']
-description: "A PyTorch-based visualization tool for understanding gradients in calculus and machine learning, featuring 2D surface plots with gradient vectors to help develop intuitive understanding of optimization concepts."
+description: "A PyTorch visualization tool for understanding gradients with 2D surface plots and vectors to build intuition for optimization."
 keywords: ["PyTorch gradients", "gradient visualization", "machine learning gradients", "calculus visualization", "gradient vectors", "steepest ascent", "optimization algorithms", "2D gradient plots", "PyTorch tutorial", "mathematical visualization", "gradient descent", "function gradients", "torch-gradients", "gradient mental model", "ML optimization"]
 tags: ["Project"]
 draft: false

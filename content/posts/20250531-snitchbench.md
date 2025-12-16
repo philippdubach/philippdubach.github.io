@@ -2,7 +2,7 @@
 title: "Your AI Assistant Might Rat You Out"
 date: 2025-05-31
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "A new benchmark called SnitchBench tests whether AI models will autonomously report suspected illegal activities to authorities when given email tools, revealing concerning implications for AI agency and autonomous moral decision-making."
+description: "SnitchBench tests whether AI models will autonomously report suspected illegal activities to authorities, revealing concerns about AI agency."
 keywords: ["SnitchBench", "AI whistleblowing", "Claude Opus 4", "Anthropic", "AI agency", "autonomous AI behavior", "AI ethics", "AI benchmarking", "digital whistleblowers", "AI moral decision-making", "high-agency AI behavior", "AI system card", "Simon Willison", "AI safety", "AI assistance boundaries"]
 external_url: "https://simonwillison.net/2025/May/31/snitchbench-with-llm/"
 ---

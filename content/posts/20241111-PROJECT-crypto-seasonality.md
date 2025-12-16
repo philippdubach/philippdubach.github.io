@@ -2,7 +2,7 @@
 title: "Crypto Mean Reversion Trading"
 date: 2024-11-11
 images: ['https://static.philippdubach.com/ograph/ograph-crypto.jpg']
-description: "A cryptocurrency mean reversion trading strategy inspired by market inefficiency research, using the PELT algorithm to detect change points and automatically executing trades on Kraken exchange following large price movements."
+description: "A crypto mean reversion strategy using PELT algorithm to detect change points and auto-execute trades on Kraken following price movements."
 keywords: ["crypto mean reversion trading", "cryptocurrency trading strategy", "PELT algorithm", "change point detection", "Kraken API", "market inefficiency", "Bitcoin trading", "Ethereum trading", "automated trading bot", "cryptocurrency seasonality", "efficient market hypothesis", "altcoin trading", "volatility trading", "crypto market patterns", "algorithmic trading"]
 tags: ["Project"]
 draft: false

@@ -3,7 +3,7 @@ title: "When Machines Think: The Economics of AI Understanding"
 date: 2025-12-15
 images: ['https://static.philippdubach.com/ograph/ograph-ai-thinking.jpg']
 external_url: "https://www.newyorker.com/magazine/2025/11/10/the-case-that-ai-is-thinking"
-description: "Examining whether AI models actually think or just pattern-match, and what this means for economic value creation. Based on recent neuroscience research and the commoditization of AI capabilities, we explore whether understanding creates competitive moats or flows to applications and distribution."
+description: "Do AI models think or pattern-match? What neuroscience research means for value creation and whether understanding creates competitive moats."
 keywords: ["artificial intelligence", "AI thinking", "machine learning economics", "neural networks", "AI commoditization", "cognitive economics", "AI model performance", "pattern matching", "AI understanding", "neuroscience AI", "AI investment", "large language models"]
 draft: true
 ---

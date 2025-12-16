@@ -2,7 +2,7 @@
 title: "Popular Science Nobel Prize"
 date: 2025-10-11
 images: ['https://static.philippdubach.com/ograph/ograph-nobel.jpg']
-description: "Mary E. Brunkow et al. won the 2025 Nobel Prize in Physiology or Medicine for discoveries about peripheral immune tolerance and regulatory T cells. We take a look at the so called Popular Science summary of their discoveries."
+description: "Mary E. Brunkow et al. won the 2025 Nobel Prize in Medicine for discoveries about peripheral immune tolerance and regulatory T cells."
 keywords: ["Mary E. Brunkow", "Nobel Prize 2025", "Physiology or Medicine", "peripheral immune tolerance", "regulatory T cells", "immune system regulation", "Fred Ramsdell", "Shimon Sakaguchi", "autoimmune diseases", "cancer treatments", "central immune tolerance", "T cells", "stem cell transplants", "immunology research", "Nobel Prize popular information"]
 external_url: "https://www.nobelprize.org/uploads/2025/10/popular-medicineprize2025-2.pdf"
 draft: false

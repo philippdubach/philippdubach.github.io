@@ -2,7 +2,7 @@
 title: "OpenAI Cuts Prices, Raises Stakes"
 date: 2024-05-20
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "OpenAI's GPT-4o launch represents an aggressive competitive strategy offering 2x faster performance at half the price, using this strategy to dominate the AI market while delivering breakthrough multimodal capabilities across text, vision, and audio."
+description: "OpenAI's GPT-4o offers 2x faster performance at half the price with breakthrough multimodal capabilities across text, vision, and audio."
 keywords: ["OpenAI GPT-4o", "AI competitive strategy", "multimodal AI", "GPT-4 Turbo", "AI pricing strategy", "real-time voice conversation", "ChatGPT free tier", "AI market competition", "Silicon Valley strategy", "AI ecosystem", "text vision audio AI", "AI rate limits", "Google Anthropic competition", "AI wars", "frontier AI capabilities"]
 external_url: "https://openai.com/index/hello-gpt-4o/"
 ---

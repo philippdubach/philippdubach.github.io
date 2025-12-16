@@ -3,7 +3,7 @@ title: "GLP-1 Receptor Agonists in ASUD Treatment"
 date: 2025-11-21
 images: ['https://static.philippdubach.com/ograph/ograph-glp1addiction.jpg']
 external_url: "https://academic.oup.com/jes/article/9/11/bvaf141/8277723"
-description: "A look at new research on GLP-1 receptor agonists like semaglutide as potential new medical treatments for alcohol dependency and related health conditions, highlighting promising results from early clinical trials."
+description: "Research on GLP-1 agonists like semaglutide as potential treatments for alcohol dependency, with promising results from early trials."
 keywords: ["GLP-1 receptor agonists", "semaglutide", "alcohol dependency treatment", "medical therapy research", "healthcare innovation", "pharmaceutical research", "Ozempic", "Novo Nordisk", "randomized controlled trial", "naltrexone", "diabetes medication", "clinical trials", "healthcare solutions", "GLP-1RA therapy"]
 draft: false
 ---

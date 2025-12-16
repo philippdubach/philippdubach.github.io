@@ -2,7 +2,7 @@
 title: "Passive Investing's Active Problem"
 date: 2025-02-15
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "A new academic study reveals that the rise of passive investing may be increasing market volatility, as slow-moving active managers and the dominance of index funds amplify the impact of individual trades on stock prices."
+description: "New research reveals passive investing may increase market volatility as index fund dominance amplifies individual trade impacts on prices."
 keywords: ["passive investing", "market volatility", "index funds", "active managers", "American Economic Review", "benchmark-tracking funds", "Big Passive", "equity gyrations", "intrinsic worth", "financial markets", "trading behavior", "stock prices", "AI market swings", "investment strategy", "market dynamics"]
 external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263"
 ---

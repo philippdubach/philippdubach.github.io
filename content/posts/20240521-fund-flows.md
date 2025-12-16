@@ -2,7 +2,7 @@
 title: "How Some Active Funds Create Their Own Returns"
 date: 2024-06-21
 images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "Research reveals how active funds create 'self-inflated' returns through concentrated portfolios and flow-driven trading that pushes up existing positions, creating a Ponzi-like feedback loop that reallocates $500 million daily from late to early investors."
+description: "Research reveals how active funds create 'self-inflated' returns through flow-driven trading, reallocating $500M daily from late to early investors."
 keywords: ["active funds", "self-inflated returns", "price pressure", "concentrated portfolios", "flow-driven trading", "Ponzi flows", "fund illiquidity", "ETF bubbles", "return chasing", "price impact", "fund flows", "wealth reallocation", "investment drawdowns", "fund performance", "market liquidity"]
 external_url: "https://arxiv.org/abs/2405.12768"
 ---

@@ -2,7 +2,7 @@
 title: "The AI Funding Boom: What $70 Billion Actually Means"
 date: 2025-12-15
 images: ['https://static.philippdubach.com/ograph/ograph-ai-funding-boom.jpg']
-description: "A critical economic analysis of the 49 US AI startups that raised $100M+ in 2025: examining funding concentration, infrastructure vs application layers, and whether this represents sustainable investment or speculative excess in the venture capital market."
+description: "Analysis of 49 US AI startups raising $100M+ in 2025: funding concentration, infrastructure vs applications, and venture capital dynamics."
 keywords: ["AI startup funding", "venture capital 2025", "AI investment bubble", "startup valuation economics", "AI infrastructure investment", "tech funding trends", "AI unicorn valuations", "venture capital concentration", "AI market analysis", "startup funding economics", "tech investment cycle", "AI capital allocation"]
 draft: true
 ---

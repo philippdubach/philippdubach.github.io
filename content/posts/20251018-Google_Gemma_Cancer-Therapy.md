@@ -2,7 +2,7 @@
 title: "Google Discovers New Cancer Therapy Pathway"
 date: 2025-10-18
 images: ['https://static.philippdubach.com/ograph/ograph-CancerTherapy.jpg']
-description: "Google releases C2S-Scale 27B, a 27 billion parameter AI model built on Gemma that discovered a novel cancer therapy pathway by identifying drug combinations that can make tumors more 'visible' to the immune system."
+description: "Google releases C2S-Scale 27B, an AI model that discovered a cancer therapy pathway by identifying drugs making tumors visible to immunity."
 keywords: ["C2S-Scale 27B", "Gemma AI model", "cancer immunotherapy", "cold tumors", "hot tumors", "antigen presentation", "silmitasertib", "CK2 inhibitor", "interferon", "single-cell analysis", "virtual drug screening", "Google DeepMind", "Yale University collaboration", "foundation model", "therapeutic discovery"]
 external_url: "https://www.biorxiv.org/content/10.1101/2025.04.14.648850v3.full.pdf"
 draft: false
