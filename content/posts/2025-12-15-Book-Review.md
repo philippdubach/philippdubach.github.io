@@ -1,20 +1,22 @@
 ---
-title: "Book Review: Why Machines Learn by Anil Ananthaswamy"
-date: 2025-12-15
-images: ['https://static.philippdubach.com/ograph/ograph-hn-science.jpg']
-description: ""
-keywords: [""]
-draft: true
+title: "Book Review: Why Machines Learn"
+date: 2025-12-27
+images: ['https://static.philippdubach.com/ograph/ograph-aibookreview.jpg']
+description: "A review of Ananthaswamy's Why Machines Learn: A clear tour of the math behind modern machine learning, with real derivations and geometry."
+keywords: ["machine learning", "book review", "mathematics", "neural networks", "AI"]
+draft: false
 ---
 
->We cannot leave decisions about how AI will be built and deployed solely to its practitioners. If we are to effectively regulate this technology, another layer of society—educators, politicians, policymakers [...]—must come to grips with the basics of the mathematics of machine learning.
+> We cannot leave decisions about how AI will be built and deployed solely to its practitioners. If we are to effectively regulate this technology, another layer of society, educators, politicians, policymakers [...], must come to grips with the basics of the mathematics of machine learning.
 
-Over the past few months I had some more time to read, and I picked up Why Machines Learn by Anil Ananthaswamy. The book is an easy read and has a touch of popular science literature but quickly moves into detailed mathematical derivations of the formulas used in AI algorithms. Even if your last lecture was some time ago, don't be afraid of the math. Ananthaswamy provides a strong conceptual history of the mathematics underlying machine learning methods. He starts from vectors and dot products, showing how these aren't just computational steps but geometric transformations that reveal the underlying structure of data. 
+I read a book that is sort of related to my recent writing on AI hir. It was *Why Machines Learn: The Elegant Math Behind Modern AI* by [Anil Ananthaswamy](https://www.anilananthaswamy.com/).
 
-It provides great explanations on how a neural network layer applies a linear transformation followed by a nonlinear activation and began to see how vectors in high-dimensional space are being rotated, scaled, and projected in ways that extract meaningful patterns. Sounds fun right?
+I admire the attempt to actually explain the math, with a ton of equations, instead of doing the [usual human drama story](https://en.wikipedia.org/wiki/Nexus:_A_Brief_History_of_Information_Networks_from_the_Stone_Age_to_AI) about geniuses and labs. I also admit I did not absorb all of it. That is not a complaint. It is a good sign that the author did not flatten the material into a few metaphors and call it a day.
 
-The book progresses through perceptrons, backpropagation, Principal Component Analysis, Support Vector Machines, Convolutional Neural Networks, and Generative Adversarial Networks. Ananthaswamy weaves together the history of these technologies, while presenting the math and algorithms in an accessible way that offers what he calls a "graded ascent" through increasingly sophisticated concepts. 
+If you have read my posts on why AI might commoditize rather than stay a winner-takes-all business, for example [Is AI Really Eating the World?](https://philippdubach.com/2025/11/23/is-ai-really-eating-the-world-1/2/), this book is a useful reminder that the story still starts with linear algebra. Ananthaswamy begins at the beginning: vectors, dot products, projections. The move here is to treat these as geometry, not just arithmetic. A dot product is a way to measure alignment, but it is also a way to map one space onto another. Once you see that, a neural network layer reads less like mysticism and more like a pipeline of linear maps plus nonlinearities.
 
-For me the book works as an amazing introduction that captures both the elegance and complexity of machine learning. There are more rigorous books on the topic but Ananthaswamy hits the sweet spot with a narrative of the AI journey that introduces the pioneers and their thought processes in developing the math that enabled everything. 
+That framing is the book’s main strength. When it works, you get an intuition for how high-dimensional data gets rotated, scaled, and squeezed until classes separate or features become easier to represent. When it stops working, you still have the derivations, so you can slow down and check what you missed.
 
+The tour is broad. It moves from perceptrons to backpropagation, then through Principal Component Analysis and Support Vector Machines, and later into convolutional networks and generative models like GANs. There is history, but it is there to support the technical arc, not to replace it. The “graded ascent” idea mostly holds. Early chapters give you enough scaffolding to follow later ones. If you have not looked at derivatives or matrix calculus in a while, you will feel it, but you can still keep pace if you accept that this is a book you sometimes read with a pencil.
 
+Two things I liked in particular: (1) It does not pretend there is a single “deep learning trick” that explains everything. The methods are varied and the trade-offs are real. (2) It gives you enough math to see why some ideas scale and others do not, without turning into a textbook.
