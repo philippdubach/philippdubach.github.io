@@ -9,7 +9,7 @@ draft: false
 
 > We cannot leave decisions about how AI will be built and deployed solely to its practitioners. If we are to effectively regulate this technology, another layer of society, educators, politicians, policymakers [...], must come to grips with the basics of the mathematics of machine learning.
 
-I read a book that is sort of related to my recent writing on AI hir. It was *Why Machines Learn: The Elegant Math Behind Modern AI* by [Anil Ananthaswamy](https://www.anilananthaswamy.com/).
+I read a book that is sort of related to my recent writing on AI: *Why Machines Learn: The Elegant Math Behind Modern AI* by [Anil Ananthaswamy](https://www.anilananthaswamy.com/).
 
 I admire the attempt to actually explain the math, with a ton of equations, instead of doing the [usual human drama story](https://en.wikipedia.org/wiki/Nexus:_A_Brief_History_of_Information_Networks_from_the_Stone_Age_to_AI) about geniuses and labs. I also admit I did not absorb all of it. That is not a complaint. It is a good sign that the author did not flatten the material into a few metaphors and call it a day.
 
