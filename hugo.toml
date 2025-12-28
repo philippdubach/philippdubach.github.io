@@ -5,6 +5,7 @@ title = 'philippdubach'
 [security]
   [security.funcs]
     getenv = ['^HUGO_', '^CI$', '^GOATCOUNTER_API_TOKEN$']
+    readFile = ['.*']
 
 [pagination]
   pagerSize = 10
