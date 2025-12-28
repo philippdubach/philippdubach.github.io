@@ -410,7 +410,11 @@ blockquote p {
 }
 
 .newsletter-message a {
-    color: inherit;
+    color: #007acc;
+    text-decoration: none;
+}
+
+.newsletter-message a:hover {
     text-decoration: underline;
 }
 
