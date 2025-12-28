@@ -337,7 +337,7 @@ blockquote p {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    max-width: 320px;
+    max-width: 300px;
     width: 100%;
 }
 
@@ -393,7 +393,7 @@ blockquote p {
     border-radius: 0;
     line-height: 1.6;
     text-align: center;
-    max-width: 320px;
+    max-width: 300px;
     width: 100%;
 }
 
@@ -515,13 +515,13 @@ blockquote p {
         margin: 2rem 0 !important;
     }
     
-    /* Newsletter form maintains same size on mobile */
+    /* Newsletter form narrower on mobile */
     .newsletter-form {
-        max-width: 320px !important;
+        max-width: 200px !important;
     }
     
     .newsletter-message {
-        max-width: 320px !important;
+        max-width: 200px !important;
     }
     
     .newsletter-date {
