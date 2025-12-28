@@ -1,7 +1,6 @@
 ---
 title: "Newsletter"
 slug: newsletter
-permalink: "/newsletter/"
 description: "Subscribe to receive monthly updates with new posts, projects, and interesting articles I've been reading."
 robots: "noindex, nofollow"
 draft: false
