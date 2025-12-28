@@ -329,7 +329,7 @@ blockquote p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 3rem 0;
+    margin: 2rem 0;
 }
 
 .newsletter-form {
@@ -512,7 +512,7 @@ blockquote p {
     }
     
     #newsletter-form-container {
-        margin: 2rem 0 !important;
+        margin: 1rem 0 !important;
     }
     
     /* Newsletter form narrower on mobile */

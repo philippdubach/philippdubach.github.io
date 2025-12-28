@@ -6,9 +6,7 @@ robots: "noindex, nofollow"
 draft: false
 ---
 
-I send out a monthly update with new posts, things I've been working on, and interesting articles I've been reading.
-
-You can preview the latest newsletter: <span id="latest-newsletter-link">Loading...</span>
+I send out a newsletter version of this blog, things I've been working on, and interesting articles once every month or so. You can subscribe to that here:
 
 <div id="newsletter-form-container">
   <form id="newsletter-form" class="newsletter-form">
@@ -29,85 +27,97 @@ You can preview the latest newsletter: <span id="latest-newsletter-link">Loading
   <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
 </div>
 
+You can also preview the latest <span id="latest-newsletter-link">Loading...</span>
+
 <script>
 (function() {
-  // Load latest newsletter link
-  var latestLinkSpan = document.getElementById('latest-newsletter-link');
-  if (latestLinkSpan) {
-    fetch('https://newsletter-api.philippd.workers.dev/api/newsletters')
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  
+  function init() {
+    // Load latest newsletter link
+    var latestLinkSpan = document.getElementById('latest-newsletter-link');
+    if (latestLinkSpan) {
+      fetch('https://newsletter-api.philippd.workers.dev/api/newsletters')
+        .then(function(response) {
+          if (!response.ok) throw new Error('Failed to fetch newsletters');
+          return response.json();
+        })
+        .then(function(data) {
+          if (data.newsletters && data.newsletters.length > 0) {
+            var latest = data.newsletters[0];
+            latestLinkSpan.innerHTML = '<a href="' + latest.url + '" target="_blank" rel="noopener">' + latest.title + '</a>';
+          } else {
+            latestLinkSpan.textContent = 'No newsletters available yet.';
+          }
+        })
+        .catch(function(error) {
+          console.error('Error loading newsletter:', error);
+          latestLinkSpan.textContent = 'Unable to load latest newsletter.';
+        });
+    }
+    
+    // Form handling
+    var form = document.getElementById('newsletter-form');
+    var messageDiv = document.getElementById('newsletter-message');
+    var emailInput = document.getElementById('email');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      var email = emailInput.value.trim();
+      if (!email) return;
+      
+      // Basic email validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showMessage('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      // Disable form during submission
+      var submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Subscribing...';
+      
+      fetch('https://newsletter-api.philippd.workers.dev/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email })
+      })
       .then(function(response) {
-        if (!response.ok) throw new Error('Failed to fetch newsletters');
         return response.json();
       })
       .then(function(data) {
-        if (data.newsletters && data.newsletters.length > 0) {
-          var latest = data.newsletters[0];
-          latestLinkSpan.innerHTML = '<a href="' + latest.url + '" target="_blank" rel="noopener">' + latest.title + '</a>';
+        if (data.success) {
+          form.style.display = 'none';
+          showMessage('Thanks for subscribing! You\'ll receive the next newsletter in your inbox. In the meantime, you can <a href="/newsletter-archive/">browse the archive</a>.', 'success');
         } else {
-          latestLinkSpan.textContent = 'No newsletters available yet.';
+          showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+          submitButton.disabled = false;
+          submitButton.textContent = 'Subscribe';
         }
       })
       .catch(function(error) {
-        latestLinkSpan.textContent = 'Unable to load latest newsletter.';
-      });
-  }
-  
-  var form = document.getElementById('newsletter-form');
-  var messageDiv = document.getElementById('newsletter-message');
-  var emailInput = document.getElementById('email');
-  
-  if (!form) return;
-  
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    var email = emailInput.value.trim();
-    if (!email) return;
-    
-    // Basic email validation
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      showMessage('Please enter a valid email address.', 'error');
-      return;
-    }
-    
-    // Disable form during submission
-    var submitButton = form.querySelector('button[type="submit"]');
-    submitButton.disabled = true;
-    submitButton.textContent = 'Subscribing...';
-    
-    fetch('https://newsletter-api.philippd.workers.dev/api/subscribe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: email })
-    })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      if (data.success) {
-        form.style.display = 'none';
-        showMessage('Thanks for subscribing! You\'ll receive the next newsletter in your inbox. In the meantime, you can <a href="/newsletter-archive/">browse the archive</a>.', 'success');
-      } else {
-        showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+        showMessage('Something went wrong. Please try again later.', 'error');
         submitButton.disabled = false;
         submitButton.textContent = 'Subscribe';
-      }
-    })
-    .catch(function(error) {
-      showMessage('Something went wrong. Please try again later.', 'error');
-      submitButton.disabled = false;
-      submitButton.textContent = 'Subscribe';
+      });
     });
-  });
-  
-  function showMessage(text, type) {
-    messageDiv.innerHTML = text;
-    messageDiv.className = 'newsletter-message newsletter-message-' + type;
-    messageDiv.style.display = 'block';
+    
+    function showMessage(text, type) {
+      messageDiv.innerHTML = text;
+      messageDiv.className = 'newsletter-message newsletter-message-' + type;
+      messageDiv.style.display = 'block';
+    }
   }
 })();
 </script>
-
