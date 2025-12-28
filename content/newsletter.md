@@ -31,6 +31,27 @@ You can preview the latest newsletter: <span id="latest-newsletter-link">Loading
 
 <script>
 (function() {
+  // Load latest newsletter link
+  var latestLinkSpan = document.getElementById('latest-newsletter-link');
+  if (latestLinkSpan) {
+    fetch('https://newsletter-api.philippd.workers.dev/api/newsletters')
+      .then(function(response) {
+        if (!response.ok) throw new Error('Failed to fetch newsletters');
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.newsletters && data.newsletters.length > 0) {
+          var latest = data.newsletters[0];
+          latestLinkSpan.innerHTML = '<a href="' + latest.url + '" target="_blank" rel="noopener">' + latest.title + '</a>';
+        } else {
+          latestLinkSpan.textContent = 'No newsletters available yet.';
+        }
+      })
+      .catch(function(error) {
+        latestLinkSpan.textContent = 'Unable to load latest newsletter.';
+      });
+  }
+  
   var form = document.getElementById('newsletter-form');
   var messageDiv = document.getElementById('newsletter-message');
   var emailInput = document.getElementById('email');
