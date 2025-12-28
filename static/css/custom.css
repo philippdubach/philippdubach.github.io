@@ -515,22 +515,13 @@ blockquote p {
         margin: 2rem 0 !important;
     }
     
+    /* Newsletter form maintains same size on mobile */
     .newsletter-form {
-        flex-direction: column !important;
-        gap: 0.75rem !important;
-        max-width: 100% !important;
-    }
-    
-    .form-group {
-        min-width: 100% !important;
-    }
-    
-    .newsletter-button {
-        width: 100% !important;
+        max-width: 320px !important;
     }
     
     .newsletter-message {
-        max-width: 100% !important;
+        max-width: 320px !important;
     }
     
     .newsletter-date {
