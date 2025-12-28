@@ -15,7 +15,7 @@
     <link rel="dns-prefetch" href="https://pdub.click">
     
     {{/* SEO Meta Tags */}}
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="{{ if .Params.robots }}{{ .Params.robots }}{{ else }}index, follow{{ end }}">
     {{/* Use seoTitle if available (for shorter SEO-optimized titles), otherwise use Title */}}
     {{- $pageTitle := .Params.seoTitle | default .Title -}}
     <title>
