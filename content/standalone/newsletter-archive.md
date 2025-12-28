@@ -1,8 +1,7 @@
 ---
 title: "Newsletter Archive"
-slug: newsletter-archive
-permalink: "/newsletter-archive/"
 description: "Archive of past newsletters"
+robots: "noindex, nofollow"
 draft: false
 ---
 

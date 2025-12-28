@@ -3,12 +3,13 @@ title: "Newsletter"
 slug: newsletter
 permalink: "/newsletter/"
 description: "Subscribe to receive monthly updates with new posts, projects, and interesting articles I've been reading."
+robots: "noindex, nofollow"
 draft: false
 ---
 
 I send out a monthly update with new posts, things I've been working on, and interesting articles I've been reading.
 
-You can preview the latest newsletter: [December 2025](https://static.philippdubach.com/newsletter/newsletter-2025-12.html)
+You can preview the latest newsletter: <span id="latest-newsletter-link">Loading...</span>
 
 <div id="newsletter-form-container">
   <form id="newsletter-form" class="newsletter-form">
