@@ -19,13 +19,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/Newsletter_Overview2.jpg"
 alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-Newsletter_Overview2-jpg-0" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/Newsletter_Overview2.jpg"
-alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions"&gt;
+alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions"
+loading="lazy"&gt;
 &lt;/a&gt;
 Friends have been asking how they can stay up to date with what I&amp;rsquo;m working on and keep track of the things I read, write, and share. RSS feeds don&amp;rsquo;t seem to be en vogue anymore, apparently. So I built a mailing list. What else would you do over the Christmas break?&lt;/p&gt;</description></item><item><title>How AI is Shaping My Investment Portfolio for 2026</title><link>http://localhost:1313/2025/12/12/how-ai-is-shaping-my-investment-portfolio-for-2026/</link><pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/12/12/how-ai-is-shaping-my-investment-portfolio-for-2026/</guid><description>&lt;p&gt;I have two portfolios: (a) long-term, diversified, low-cost ETFs, and (b) collecting diamonds in front of bulldozers, short-term option plays, and some individual stocks I find interesting. Here, we will only look at (a). This essay is structured along five themes I believe to be true for 2026:&lt;/p&gt;
 &lt;p&gt;&lt;a href="#section1"&gt;(1)&lt;/a&gt; Market Concentration and High Valuations&lt;br&gt;
@@ -53,13 +55,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/wbd_offer_comparison2.png"
 alt="Comparison of Netflix vs Paramount offers for Warner Bros Discovery"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-wbd_offer_comparison2-png-0" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/wbd_offer_comparison2.png"
-alt="Comparison of Netflix vs Paramount offers for Warner Bros Discovery"&gt;
+alt="Comparison of Netflix vs Paramount offers for Warner Bros Discovery"
+loading="lazy"&gt;
 &lt;/a&gt;
 The Netflix offer breaks down into three pieces: $23.25 per share in cash, $4.50 per share in Netflix stock subject to a collar, and shares in a spun-off entity called Discovery Global containing CNN and the cable networks that Netflix doesn&amp;rsquo;t want. Analysts value that stub somewhere between $2 and $5 per share, which puts the total package at roughly $29.75 to $32.75. Paramount is offering $30 per share in cash for the entire company, including the cable assets. Warner&amp;rsquo;s stock closed Friday at $26.08 and opened Monday around $27.64, which tells you the market expects a bidding war but isn&amp;rsquo;t fully convinced either deal closes.&lt;/p&gt;</description></item><item><title>Nike's Crisis and the Economics of Brand Decay</title><link>http://localhost:1313/2025/12/02/nikes-crisis-and-the-economics-of-brand-decay/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/12/02/nikes-crisis-and-the-economics-of-brand-decay/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;What it sounds like is that the CEO has the wrong people making the wrong decisions across the strongest brand or one of the strongest brands in consumer history.&lt;/p&gt;&lt;/blockquote&gt;
@@ -111,13 +115,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/torch-gradients_Figure_2.png"
 alt="2D Gradient Plot: The colored surface shows function values. Black arrows show gradient vectors in the input plane (x-y space), pointing toward the direction of steepest ascent."
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-torch-gradients_Figure_2-png-0" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/torch-gradients_Figure_2.png"
-alt="2D Gradient Plot: The colored surface shows function values. Black arrows show gradient vectors in the input plane (x-y space), pointing toward the direction of steepest ascent."&gt;
+alt="2D Gradient Plot: The colored surface shows function values. Black arrows show gradient vectors in the input plane (x-y space), pointing toward the direction of steepest ascent."
+loading="lazy"&gt;
 &lt;/a&gt;
 &lt;em&gt;The colored surface shows function values. Black arrows show gradient vectors in the input plane (x-y space), pointing toward the direction of steepest ascent.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Sentiment Trading Revisited</title><link>http://localhost:1313/2025/07/07/sentiment-trading-revisited/</link><pubDate>Mon, 07 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/07/07/sentiment-trading-revisited/</guid><description>&lt;p&gt;Interesting new paper that builds on many of the ideas &lt;a href="http://localhost:1313/2025/02/20/trading-on-market-sentiment/"&gt;I explored in this project&lt;/a&gt;. The research, by Ayaan Qayyum, an &lt;a href="https://soe.rutgers.edu/news/ayaan-qayyum-electrical-and-computer-engineering"&gt;Undergraduate Research Scholar at Rutgers&lt;/a&gt;, shows that the core concept of using advanced language models for sentiment trading is not only viable but highly effective. The study takes a similar but more advanced approach. Instead of using a model like GPT-3.5 to generate a simple sentiment score, it uses &lt;a href="https://platform.openai.com/docs/guides/embeddings/embedding-models"&gt;OpenAI&amp;rsquo;s embedding models&lt;/a&gt; to convert news headlines into rich, high-dimensional vectors. By training a &lt;a href="https://arxiv.org/html/2507.01970v1/extracted/6556003/diagrams/model_comb_diagram.png"&gt;battery of neural networks&lt;/a&gt; including&lt;/p&gt;</description></item><item><title>Counting Cards with Computer Vision</title><link>http://localhost:1313/2025/07/06/counting-cards-with-computer-vision/</link><pubDate>Sun, 06 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/07/06/counting-cards-with-computer-vision/</guid><description>&lt;p&gt;After installing &lt;a href="https://www.anthropic.com/claude-code"&gt;Claude Code&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -142,13 +148,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/classification.gif"
 alt="alt text here"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-classification-gif-0" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/classification.gif"
-alt="alt text here"&gt;
+alt="alt text here"
+loading="lazy"&gt;
 &lt;/a&gt;
 To get to any reasonable result we have to start with classification where we &amp;ldquo;teach&amp;rdquo; the model to categorize data by showing them lots of examples with correct labels. But where do the labels come from? I manually annotated &lt;a href="https://universe.roboflow.com/cards-agurd/playing_card_classification"&gt;409 playing cards across 117 images&lt;/a&gt; using Roboflow Annotate (at first I only did half as much - why this wasn&amp;rsquo;t a good idea we&amp;rsquo;ll see in a minute). Once enough screenshots of cards were annotated we can train the model to recognize the cards and predict card values on tables it has never seen before. I was able to use a &lt;a href="https://www.nvidia.com/en-us/data-center/tesla-t4/"&gt;NVIDIA T4 GPU&lt;/a&gt; inside Google Colab which offers some GPU time for free when capacity is available.
 &lt;a href="#lightbox-gpu_setup_colab-png-1" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -170,13 +178,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/gpu_setup_colab.png"
 alt="alt text here"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-gpu_setup_colab-png-1" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/gpu_setup_colab.png"
-alt="alt text here"&gt;
+alt="alt text here"
+loading="lazy"&gt;
 &lt;/a&gt;
 During training, the algorithm learns patterns from this example data, adjusting its internal parameters millions of times until it gets really good at recognizing the differences between categories (in this case different cards). Once trained, the model can then make predictions on new, unseen data by applying the patterns it learned. With the annotated dataset ready, it was time to implement the actual computer vision model. I chose to run inference on &lt;a href="https://docs.ultralytics.com/de/models/yolo11/"&gt;Ultralytics&amp;rsquo; YOLOv11&lt;/a&gt; pre-trained model, a state-of-the-art object detection algorithm. I set up the environment in Google Colab following the &lt;a href="https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolo11-object-detection-on-custom-dataset.ipynb"&gt;&amp;ldquo;How to Train YOLO11 Object Detection on a Custom Dataset&amp;rdquo;&lt;/a&gt; notebook. After extracting the annotated dataset from Roboflow, I began training the model using the pre-trained YOLOv11s weights as a starting point. This approach, called &lt;a href="https://en.wikipedia.org/wiki/Transfer_learning"&gt;transfer learning&lt;/a&gt;, allows the model to leverage patterns already learned from millions of general images and adapt them to this specific task.
 I initially set it up to &lt;a href="https://docs.ultralytics.com/guides/model-training-tips/#other-techniques-to-consider-when-handling-a-large-dataset"&gt;run for 350 epochs&lt;/a&gt;, though the model&amp;rsquo;s built-in early stopping mechanism kicked in after 242 epochs when no improvement was observed for 100 consecutive epochs. The best results were achieved at epoch 142, taking around 13 minutes to complete on the Tesla T4 GPU.
@@ -200,13 +210,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/run1_results.png"
 alt="Training results showing confusion matrix and loss curves"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-run1_results-png-2" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/run1_results.png"
-alt="Training results showing confusion matrix and loss curves"&gt;
+alt="Training results showing confusion matrix and loss curves"
+loading="lazy"&gt;
 &lt;/a&gt;
 However, looking at the confusion matrix and loss curves revealed some interesting patterns. While the model was learning effectively (as shown by the steadily decreasing loss), there were still some misclassifications between similar cards, particularly among the numbered cards. This highlighted exactly why I mentioned earlier that annotating only half the amount of data initially &amp;ldquo;wasn&amp;rsquo;t a good idea&amp;rdquo; - more training examples would likely improve these edge cases and reduce confusion between similar-looking cards. My first attempt at solving the remaining accuracy issues was to add another layer to the workflow by sending the detected cards to Anthropic&amp;rsquo;s Claude API for additional OCR processing.
 &lt;a href="#lightbox-claude_vision_workflow_results-png-3" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -228,13 +240,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/claude_vision_workflow_results.png"
 alt="Roboflow workflow with Claude API integration"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-claude_vision_workflow_results-png-3" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/claude_vision_workflow_results.png"
-alt="Roboflow workflow with Claude API integration"&gt;
+alt="Roboflow workflow with Claude API integration"
+loading="lazy"&gt;
 &lt;/a&gt;
 This hybrid approach was very effective - the combination of YOLO&amp;rsquo;s object detection to dynamically crop down the Black Jack table to individual cards with Claude&amp;rsquo;s advanced vision capabilities yielded 99.9% accuracy on the predicted cards. However, this solution came with a significant drawback: the additional API layer consumed valuable time and the large model&amp;rsquo;s processing overhead, making it impractical for real-time gameplay.
 Seeking a faster solution, I implemented the same workflow &lt;a href="https://github.com/JaidedAI/EasyOCR"&gt;locally using easyOCR&lt;/a&gt; instead. EasyOCR seems to be really good at extracting black text on white background but &lt;a href="https://stackoverflow.com/questions/68261703/how-to-improve-accuracy-prediction-for-easyocr"&gt;might struggle with everything else&lt;/a&gt;. While it was able to correctly identify the card numbers when it detected them, it struggled to recognize around half of the cards in the first place - even when fed pre-cropped card images directly from the YOLO model. This inconsistency made it unreliable for the application.
@@ -258,13 +272,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/run_best.png"
 alt="Final training results with improved dataset"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-run_best-png-4" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/run_best.png"
-alt="Final training results with improved dataset"&gt;
+alt="Final training results with improved dataset"
+loading="lazy"&gt;
 &lt;/a&gt;
 Both the training and validation losses converge smoothly without signs of overfitting, while the precision and recall metrics climb steadily to plateau near perfect scores. The mAP@50 reaches an impressive 99.5%. Most significantly, the confusion matrix now shows that the model has virtually eliminated false positives with background elements. The &amp;ldquo;background&amp;rdquo; column (rightmost) in the confusion matrix is now much cleaner, with only minimal misclassifications of actual cards as background noise.
 &lt;a href="#lightbox-local_run_interference_visual-png-5" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -286,13 +302,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/local_run_interference_visual.png"
 alt="Real-time blackjack card detection and odds calculation"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-local_run_interference_visual-png-5" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/local_run_interference_visual.png"
-alt="Real-time blackjack card detection and odds calculation"&gt;
+alt="Real-time blackjack card detection and odds calculation"
+loading="lazy"&gt;
 &lt;/a&gt;
 With the model trained and performing, it was time to deploy it and play some blackjack. Initially, I tested the system using &lt;a href="https://docs.roboflow.com/deploy/serverless-hosted-api-v2"&gt;Roboflow&amp;rsquo;s hosted API&lt;/a&gt;, which took around 4 seconds per inference - far too slow for practical gameplay. However, running the model locally on my laptop dramatically improved performance, achieving inference times of less than 0.1 seconds per image (1.3ms preprocess, 45.5ms inference, 0.4ms postprocess per image). I then &lt;a href="https://python-mss.readthedocs.io/"&gt;integrated the model with MSS&lt;/a&gt; to capture a real-time feed of my browser window. The system automatically overlays the detected cards with their predicted values and confidence scores
 &lt;a href="#lightbox-black_jack_odds_demo-gif-6" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -314,13 +332,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/black_jack_odds_demo.gif"
 alt="Overview of selected fitted curves"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-black_jack_odds_demo-gif-6" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/black_jack_odds_demo.gif"
-alt="Overview of selected fitted curves"&gt;
+alt="Overview of selected fitted curves"
+loading="lazy"&gt;
 &lt;/a&gt;
 The final implementation successfully combines the pieces: the computer vision model detects and identifies cards in real-time, feeds this information to the Monte Carlo simulation, and displays both the card recognition results and the calculated odds directly on screen - do not try this at your local (online) casino!&lt;/p&gt;</description></item><item><title>NVIDIA Likes Small Language Models</title><link>http://localhost:1313/2025/07/04/nvidia-likes-small-language-models/</link><pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/07/04/nvidia-likes-small-language-models/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;A Small Language Model (SLM) is a LM that can fit onto a common consumer electronic device and perform inference with latency sufficiently low to be practical when serving the agentic requests of one user. [&amp;hellip;] We note that as of 2025, we would be comfortable with considering most models below 10bn parameters in size to be SLMs.&lt;/p&gt;&lt;/blockquote&gt;
@@ -357,13 +377,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/working_paper_overview.jpg"
 alt="Overview of Working Paper Pages"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-working_paper_overview-jpg-0" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/working_paper_overview.jpg"
-alt="Overview of Working Paper Pages"&gt;
+alt="Overview of Working Paper Pages"
+loading="lazy"&gt;
 &lt;/a&gt;&lt;/a&gt;
 The paper represents an exercise in applying machine learning techniques to medical applications. The methodologies employed were largely inspired by &lt;a href="https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867415014816%3Fshowall%3Dtrue"&gt;Zeevi et al.&lt;/a&gt;&amp;rsquo;s approach. I quickly realized that training a model on my own data &lt;em&gt;only&lt;/em&gt; was not very promising if not impossible. To tackle this, I used the publicly available &lt;a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2005143"&gt;Hall dataset&lt;/a&gt; containing continuous glucose monitoring data from 57 adults, which I narrowed down to 112 standardized meals from 19 non-diabetic subjects with their respective glucose curve after the meal (full methodology in the paper).
 &lt;a href="#lightbox-cgm-workflow-graph-jpg-1" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -385,13 +407,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/cgm-workflow-graph.jpg"
 alt="Overview of the CGM pipeline workflow"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-cgm-workflow-graph-jpg-1" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/cgm-workflow-graph.jpg"
-alt="Overview of the CGM pipeline workflow"&gt;
+alt="Overview of the CGM pipeline workflow"
+loading="lazy"&gt;
 &lt;/a&gt;
 Rather than trying to predict the entire glucose curve, I simplified the problem by fitting each postprandial response to a normalized Gaussian function. This gave me three key parameters to predict: amplitude (how high glucose rises), time-to-peak (when it peaks), and curve width (how long the response lasts).
 &lt;a href="#lightbox-cgm-fitted-curve-large1-jpg-2" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -413,13 +437,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/cgm-fitted-curve-large1.jpg"
 alt="Overview of single fitted curve of cgm measurements"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-cgm-fitted-curve-large1-jpg-2" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/cgm-fitted-curve-large1.jpg"
-alt="Overview of single fitted curve of cgm measurements"&gt;
+alt="Overview of single fitted curve of cgm measurements"
+loading="lazy"&gt;
 &lt;/a&gt;
 The Gaussian approximation worked surprisingly well for characterizing most glucose responses. While some curves fit better than others, the majority of postprandial responses were well-captured, though there&amp;rsquo;s clear variation between individuals and meals. Some responses were high amplitude, narrow width, while others are more gradual and prolonged.
 &lt;a href="#lightbox-example-fitted-cgm-measurements-jpg-3" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -441,13 +467,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/example-fitted-cgm-measurements.jpg"
 alt="Overview of selected fitted curves"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-example-fitted-cgm-measurements-jpg-3" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/example-fitted-cgm-measurements.jpg"
-alt="Overview of selected fitted curves"&gt;
+alt="Overview of selected fitted curves"
+loading="lazy"&gt;
 &lt;/a&gt;
 I then trained an XGBoost regressor with 27 engineered features including meal composition, participant characteristics, and interaction terms. XGBoost was chosen for its ability to handle mixed data types, built-in feature importance, and strong performance on tabular data. The pipeline included hyperparameter tuning with 5-fold cross-validation to optimize learning rate, tree depth, and regularization parameters. Rather than relying solely on basic meal macronutrients, I engineered features across multiple categories and implemented CGM statistical features calculated over different time windows (24-hour and 4-hour periods), including time-in-range and glucose variability metrics. Architecture wise, I trained three separate XGBoost regressors - one for each Gaussian parameter.&lt;/p&gt;</description></item><item><title>The Model Said So</title><link>http://localhost:1313/2025/05/28/the-model-said-so/</link><pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/05/28/the-model-said-so/</guid><description>&lt;p&gt;LLMs make your life easier until they don&amp;rsquo;t.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -487,13 +515,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/news-relevance-timeline.jpg"
 alt="Relative frequency of monthly Google News Search terms over 5 years. Numbers represent search interest relative to highest point. A value of 100 is the peak popularity for the term."
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-news-relevance-timeline-jpg-0" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/news-relevance-timeline.jpg"
-alt="Relative frequency of monthly Google News Search terms over 5 years. Numbers represent search interest relative to highest point. A value of 100 is the peak popularity for the term."&gt;
+alt="Relative frequency of monthly Google News Search terms over 5 years. Numbers represent search interest relative to highest point. A value of 100 is the peak popularity for the term."
+loading="lazy"&gt;
 &lt;/a&gt;
 First, headlines are inherently non-stationary. Unlike other data sources, news reflects the constantly shifting landscape of global events, political climates, economic trends, etc. A model trained on COVID-19 vaccine headlines from 2020 might struggle with geopolitical tensions in 2023. This temporal drift means algorithms must be adaptive to maintain relevance.
 &lt;a href="#lightbox-headline-market-impact-jpg-1" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
@@ -515,13 +545,15 @@ sizes="80vw"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/headline-market-impact.jpg"
 alt="Impact of headlines measured by subsequent index move (Data Source: Bloomberg)"
 class=""
+width="1200"
 loading="lazy"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
 &lt;a href="#_" id="lightbox-headline-market-impact-jpg-1" class="lightbox-overlay"&gt;
 &lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/headline-market-impact.jpg"
-alt="Impact of headlines measured by subsequent index move (Data Source: Bloomberg)"&gt;
+alt="Impact of headlines measured by subsequent index move (Data Source: Bloomberg)"
+loading="lazy"&gt;
 &lt;/a&gt;
 Second, the relationship between headlines and market impact is far from obvious. Consider these actual headlines from November 2020: &amp;ldquo;Pfizer Vaccine Prevents 90% of COVID Infections&amp;rdquo; drove the S&amp;amp;P 500 up 1.85%, while &amp;ldquo;Pfizer Says Safety Milestone Achieved&amp;rdquo; barely moved the market at -0.05%. The same company, similar positive news, dramatically different market reactions.&lt;/p&gt;</description></item><item><title>Passive Investing's Active Problem</title><link>http://localhost:1313/2025/02/15/passive-investings-active-problem/</link><pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/02/15/passive-investings-active-problem/</guid><description>&lt;p&gt;(1) A new academic paper suggests the rise of passive investing may be fueling fragile market moves.
 (2) According to a study to be published in the American Economic Review, evidence is building that active managers are slow to scoop up stocks en masse when prices move away from their intrinsic worth.

@@ -3,6 +3,9 @@
 {{- $alt := .Get "alt" | default "" -}}
 {{- $class := .Get "class" | default "" -}}
 {{- $width := .Get "width" | default "80%" -}}
+{{- $imgWidth := .Get "imgWidth" | default "1200" -}}
+{{- $imgHeight := .Get "imgHeight" | default "auto" -}}
+{{- $priority := .Get "priority" | default "false" -}}
 {{- $id := printf "%s-%d" (replace (replace $src "/" "-") "." "-") .Ordinal -}}
 
 <a href="#lightbox-{{ $id }}" style="display: block; width: {{ $width }}; margin: 0 auto; padding: 1rem 0; text-decoration: none;">
@@ -31,7 +34,10 @@
     <img src="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80/{{ $src }}" 
          alt="{{ $alt }}" 
          class="{{ $class }}"
-         loading="lazy"
+         width="{{ $imgWidth }}"
+         {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}"{{ end }}
+         {{ if eq $priority "true" }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
+         {{ if eq $priority "true" }}decoding="async"{{ end }}
          style="width: 100%; height: auto; display: block;">
   </picture>
 </a>
@@ -39,5 +45,6 @@
 <!-- Lightbox overlay -->
 <a href="#_" id="lightbox-{{ $id }}" class="lightbox-overlay">
   <img src="{{ $baseUrl }}/cdn-cgi/image/width=2000,quality=90,format=webp/{{ $src }}" 
-       alt="{{ $alt }}">
+       alt="{{ $alt }}"
+       loading="lazy">
 </a>
