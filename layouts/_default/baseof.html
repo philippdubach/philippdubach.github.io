@@ -2,9 +2,10 @@
 <html lang="{{ .Site.LanguageCode | default "en" }}">
 {{ partial "head.html" . }}
 <body class="linkblog">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="container">
         {{ partial "sidebar.html" . }}
-        <main class="content">
+        <main id="main-content" class="content" role="main">
             {{ partial "header.html" . }}
             {{ block "main" . }}{{ end }}
         </main>

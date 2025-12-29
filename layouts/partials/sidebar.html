@@ -1,13 +1,13 @@
-<aside class="sidebar">
+<aside class="sidebar" role="complementary" aria-label="Site navigation and information">
     <div class="sidebar-content">
         <div class="site-header">
             <div class="site-title">
-                <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+                <a href="{{ .Site.BaseURL }}" aria-label="Home - {{ .Site.Title }}">{{ .Site.Title }}</a>
             </div>
             <p class="site-description">{{ .Site.Params.description }}</p>
         </div>
         
-        <nav class="navigation">
+        <nav class="navigation" aria-label="Main navigation">
             <ul>
                 {{ range .Site.Data.navigation.main }}
                 <li><a href="{{ .url }}">{{ .name }}</a></li>
@@ -16,15 +16,15 @@
         </nav>
         
         {{ if .Site.Params.social }}
-        <div class="social-links">
+        <div class="social-links" aria-label="Social media links">
             {{ with .Site.Params.social.linkedin }}
-            <a href="https://ch.linkedin.com/{{ . }}" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://ch.linkedin.com/{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn profile (opens in new tab)">LinkedIn</a>
             {{ end }}
             {{ with .Site.Params.social.github }}
-            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub profile (opens in new tab)">GitHub</a>
             {{ end }}
             {{ with .Site.Params.social.email }}
-            <a href="mailto:{{ . }}">Email</a>
+            <a href="mailto:{{ . }}" aria-label="Send email">Email</a>
             {{ end }}
         </div>
         {{ end }}

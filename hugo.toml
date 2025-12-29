@@ -1,6 +1,7 @@
 baseURL = 'https://philippdubach.com/'
 languageCode = 'en-us'
 title = 'philippdubach'
+enableRobotsTXT = true
 
 [security]
   [security.funcs]
