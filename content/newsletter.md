@@ -1,8 +1,7 @@
 ---
-title: "Newsletter"
-slug: newsletter
+title: "Subscribe"
+slug: subscribe
 description: "Subscribe to receive monthly updates with new posts, projects, and interesting articles I've been reading."
-robots: "noindex, nofollow"
 draft: false
 ---
 
@@ -27,8 +26,6 @@ I send out a newsletter version of this blog, things I've been working on, and i
   <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
 </div>
 
-You can also preview the latest <span id="latest-newsletter-link">Loading...</span>
-
 <script>
 (function() {
   // Wait for DOM to be ready
@@ -39,28 +36,6 @@ You can also preview the latest <span id="latest-newsletter-link">Loading...</sp
   }
   
   function init() {
-    // Load latest newsletter link
-    var latestLinkSpan = document.getElementById('latest-newsletter-link');
-    if (latestLinkSpan) {
-      fetch('https://newsletter-api.philippd.workers.dev/api/newsletters')
-        .then(function(response) {
-          if (!response.ok) throw new Error('Failed to fetch newsletters');
-          return response.json();
-        })
-        .then(function(data) {
-          if (data.newsletters && data.newsletters.length > 0) {
-            var latest = data.newsletters[0];
-            latestLinkSpan.innerHTML = '<a href="' + latest.url + '" target="_blank" rel="noopener">' + latest.title + '</a>';
-          } else {
-            latestLinkSpan.textContent = 'No newsletters available yet.';
-          }
-        })
-        .catch(function(error) {
-          console.error('Error loading newsletter:', error);
-          latestLinkSpan.textContent = 'Unable to load latest newsletter.';
-        });
-    }
-    
     // Form handling
     var form = document.getElementById('newsletter-form');
     var messageDiv = document.getElementById('newsletter-message');
@@ -121,3 +96,5 @@ You can also preview the latest <span id="latest-newsletter-link">Loading...</sp
   }
 })();
 </script>
+
+Alternatively, you can also subscribe to the [RSS feed](/index.xml).
