@@ -387,6 +387,13 @@ blockquote p {
     cursor: not-allowed;
 }
 
+.subscriber-count {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+}
+
 .newsletter-message {
     margin: 1.5rem 0 0 0;
     padding: 0;
