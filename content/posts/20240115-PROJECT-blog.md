@@ -33,3 +33,9 @@ Completed a full security, stability, and performance audit. Fixed SEO issues: r
 
 _(December 2025) Update II:_
 Added one-click short link sharing via [YOURLS](https://yourls.org/) integration. Click the ∞ symbol next to read time to generate a pdub.click short URL and copy it to clipboard. Uses JSONP for cross-origin compatibility with minimal inline JavaScript (~500 bytes).
+
+_(December 2025) Update III:_
+[Integrated email newsletter subscription](/2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/) using a Cloudflare Workers API backed by Workers KV (plus R2 for hosting the newsletter HTML). The subscribe form submits to a serverless endpoint that validates emails, stores subscribers, and applies rate limiting + basic spam protection. The worker also triggers a welcome email via Resend.
+
+_(December 2025) Update IV:_
+Added syntax-highlighted code blocks with line numbers using Hugo's built-in Chroma highlighter. Configured `lineNumbersInTable = true` for a clean two-column layout—line numbers in a gray sidebar, code content in the main area with horizontal scroll for long lines. GitHub-inspired color theme with proper styling for keywords, strings, comments, and functions.

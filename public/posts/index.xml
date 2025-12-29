@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archive on philippdubach</title><link>http://localhost:1313/posts/</link><description>Recent content in Archive on philippdubach</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 27 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Book Review: Why Machines Learn</title><link>http://localhost:1313/2025/12/27/book-review-why-machines-learn/</link><pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/12/27/book-review-why-machines-learn/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;We cannot leave decisions about how AI will be built and deployed solely to its practitioners. If we are to effectively regulate this technology, another layer of society, educators, politicians, policymakers [&amp;hellip;], must come to grips with the basics of the mathematics of machine learning.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;I read a book that is sort of related to my recent writing on AI: &lt;em&gt;Why Machines Learn: The Elegant Math Behind Modern AI&lt;/em&gt; by &lt;a href="https://www.anilananthaswamy.com/"&gt;Anil Ananthaswamy&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>How AI is Shaping My Investment Portfolio for 2026</title><link>http://localhost:1313/2025/12/12/how-ai-is-shaping-my-investment-portfolio-for-2026/</link><pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/12/12/how-ai-is-shaping-my-investment-portfolio-for-2026/</guid><description>&lt;p&gt;I have two portfolios: (a) long-term, diversified, low-cost ETFs, and (b) collecting diamonds in front of bulldozers, short-term option plays, and some individual stocks I find interesting. Here, we will only look at (a). This essay is structured along five themes I believe to be true for 2026:&lt;/p&gt;
+&lt;p&gt;I read a book that is sort of related to my recent writing on AI: &lt;em&gt;Why Machines Learn: The Elegant Math Behind Modern AI&lt;/em&gt; by &lt;a href="https://www.anilananthaswamy.com/"&gt;Anil Ananthaswamy&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Building a No-Tracking Newsletter from Markdown to Distribution</title><link>http://localhost:1313/2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/</link><pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/</guid><description>&lt;p&gt;&lt;a href="#lightbox-Newsletter_Overview2-jpg-0" style="display: block; width: 80%; margin: 0 auto; padding: 1rem 0; text-decoration: none;"&gt;
+&lt;picture class="img-lightbox"&gt;
+&lt;source media="(max-width: 768px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=320,quality=80,format=webp/Newsletter_Overview2.jpg 320w,
+https://static.philippdubach.com/cdn-cgi/image/width=480,quality=80,format=webp/Newsletter_Overview2.jpg 480w,
+https://static.philippdubach.com/cdn-cgi/image/width=640,quality=80,format=webp/Newsletter_Overview2.jpg 640w"
+sizes="80vw"&gt;
+&lt;source media="(max-width: 1024px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=768,quality=80,format=webp/Newsletter_Overview2.jpg 768w,
+https://static.philippdubach.com/cdn-cgi/image/width=1024,quality=80,format=webp/Newsletter_Overview2.jpg 1024w"
+sizes="80vw"&gt;
+&lt;source media="(min-width: 1025px)"
+srcset="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80,format=webp/Newsletter_Overview2.jpg 1200w,
+https://static.philippdubach.com/cdn-cgi/image/width=1600,quality=80,format=webp/Newsletter_Overview2.jpg 1600w,
+https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp/Newsletter_Overview2.jpg 2000w"
+sizes="80vw"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=80/Newsletter_Overview2.jpg"
+alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions"
+class=""
+loading="lazy"
+style="width: 100%; height: auto; display: block;"&gt;
+&lt;/picture&gt;
+&lt;/a&gt;
+&lt;a href="#_" id="lightbox-Newsletter_Overview2-jpg-0" class="lightbox-overlay"&gt;
+&lt;img src="https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=90,format=webp/Newsletter_Overview2.jpg"
+alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions"&gt;
+&lt;/a&gt;
+Friends have been asking how they can stay up to date with what I&amp;rsquo;m working on and keep track of the things I read, write, and share. RSS feeds don&amp;rsquo;t seem to be en vogue anymore, apparently. So I built a mailing list. What else would you do over the Christmas break?&lt;/p&gt;</description></item><item><title>How AI is Shaping My Investment Portfolio for 2026</title><link>http://localhost:1313/2025/12/12/how-ai-is-shaping-my-investment-portfolio-for-2026/</link><pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/2025/12/12/how-ai-is-shaping-my-investment-portfolio-for-2026/</guid><description>&lt;p&gt;I have two portfolios: (a) long-term, diversified, low-cost ETFs, and (b) collecting diamonds in front of bulldozers, short-term option plays, and some individual stocks I find interesting. Here, we will only look at (a). This essay is structured along five themes I believe to be true for 2026:&lt;/p&gt;
 &lt;p&gt;&lt;a href="#section1"&gt;(1)&lt;/a&gt; Market Concentration and High Valuations&lt;br&gt;
 &lt;a href="#section2"&gt;(2)&lt;/a&gt; US Dollar Depreciation Expected Despite Continued Dominance&lt;br&gt;
 &lt;a href="#section3"&gt;(3)&lt;/a&gt; AI Investment Remains Central But Requires Scrutiny&lt;br&gt;
