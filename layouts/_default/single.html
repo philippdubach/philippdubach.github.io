@@ -26,7 +26,6 @@
 
 <footer class="feedback-footer">
   <p>Have feedback, comments, or ideas? <a href="mailto:info@philippdubach.com">I'd love to hear from you</a>.</p>
-  <p><a href="/subscribe/">Subscribe</a> for monthly updates.</p>
   <p class="latest-post">Latest: <a href="{{ (index (where .Site.RegularPages "Section" "posts") 0).RelPermalink }}">{{ (index (where .Site.RegularPages "Section" "posts") 0).Title }}</a></p>
   <p class="most-read" id="top-post-week" style="min-height: 1.5em;">
     <!-- Populated by JS -->
