@@ -23,6 +23,7 @@ I send out a newsletter version of this blog, things I've been working on, and i
     </div>
     <button type="submit" class="newsletter-button">Subscribe</button>
   </form>
+  <p id="subscriber-count" class="subscriber-count" style="display: none;"></p>
   <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
 </div>
 
@@ -40,6 +41,20 @@ I send out a newsletter version of this blog, things I've been working on, and i
     var form = document.getElementById('newsletter-form');
     var messageDiv = document.getElementById('newsletter-message');
     var emailInput = document.getElementById('email');
+    var countDiv = document.getElementById('subscriber-count');
+    
+    // Fetch and display subscriber count
+    if (countDiv) {
+      fetch('https://newsletter-api.philippd.workers.dev/api/subscriber-count')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.display) {
+            countDiv.textContent = 'Join ' + data.display + ' readers';
+            countDiv.style.display = 'block';
+          }
+        })
+        .catch(function() { /* Silent fail */ });
+    }
     
     if (!form) return;
     
@@ -74,6 +89,7 @@ I send out a newsletter version of this blog, things I've been working on, and i
       .then(function(data) {
         if (data.success) {
           form.style.display = 'none';
+          if (countDiv) countDiv.style.display = 'none';
           showMessage('Thanks for subscribing! You\'ll receive the next newsletter in your inbox. In the meantime, you can <a href="/newsletter-archive/">browse the archive</a>.', 'success');
         } else {
           showMessage(data.error || 'Something went wrong. Please try again.', 'error');
