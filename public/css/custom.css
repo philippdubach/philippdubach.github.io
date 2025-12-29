@@ -541,3 +541,266 @@ blockquote p {
         min-width: auto !important;
     }
 }
+
+/* ===================================
+   Code Blocks Styling
+   =================================== */
+
+/* Base code font */
+code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Inline code */
+p code,
+li code,
+td code,
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+    background-color: #f6f8fa;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.875em;
+    color: #24292f;
+    word-break: break-word;
+}
+
+/* Base pre styles */
+pre {
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    padding: 0;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+/* Hugo syntax highlighting container */
+.highlight {
+    margin: 1rem 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #f6f8fa;
+    max-width: 100%;
+}
+
+.highlight pre {
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0;
+    overflow-x: auto;
+}
+
+/* Table layout for line numbers */
+.highlight table,
+.highlight .lntable {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: table;
+}
+
+.highlight table td,
+.highlight .lntd {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    vertical-align: top;
+}
+
+/* Line numbers column */
+.highlight .lntd:first-child {
+    width: 3.5rem;
+    min-width: 3.5rem;
+    user-select: none;
+    background-color: #ebedf0;
+    border-right: 1px solid #d0d7de;
+}
+
+.highlight .lntd:first-child pre {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.highlight .lntd:first-child pre code {
+    display: block;
+    padding: 1rem 0;
+}
+
+.highlight .lnt,
+.highlight .ln {
+    display: block;
+    padding: 0 0.75rem;
+    color: #6e7781;
+    text-align: right;
+    font-size: inherit;
+    line-height: inherit;
+    white-space: pre;
+    user-select: none;
+}
+
+/* Code content column */
+.highlight .lntd:last-child {
+    overflow-x: auto;
+}
+
+.highlight .lntd:last-child pre {
+    padding: 0;
+    margin: 0;
+    overflow-x: auto;
+}
+
+.highlight .lntd:last-child pre code {
+    display: block;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-x: visible;
+    padding: 1rem;
+}
+
+/* Keep Chroma's default line wrapper behavior */
+.chroma .line {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.chroma .cl {
+    display: block;
+}
+
+.chroma .hl {
+    background-color: #fff8c5;
+}
+
+/* ===================================
+   Syntax Highlighting - GitHub Theme
+   Generated using: hugo gen chromastyles --style=github
+   =================================== */
+
+/* Background and base */
+.bg { background-color: #f6f8fa; }
+.chroma { background-color: #f6f8fa; color: #1f2328; }
+
+/* Error */
+.chroma .err { color: #cf222e; background-color: transparent; }
+
+/* Keywords */
+.chroma .k { color: #cf222e; }
+.chroma .kc { color: #cf222e; }
+.chroma .kd { color: #cf222e; }
+.chroma .kn { color: #cf222e; }
+.chroma .kp { color: #cf222e; }
+.chroma .kr { color: #cf222e; }
+.chroma .kt { color: #cf222e; }
+
+/* Names */
+.chroma .na { color: #1f2328; }
+.chroma .nc { color: #1f2328; }
+.chroma .no { color: #0550ae; }
+.chroma .nd { color: #8250df; }
+.chroma .ni { color: #6639ba; }
+.chroma .nl { color: #0550ae; font-weight: bold; }
+.chroma .nn { color: #24292e; }
+.chroma .nx { color: #1f2328; }
+.chroma .nt { color: #116329; }
+.chroma .nb { color: #6639ba; }
+.chroma .bp { color: #6a737d; }
+
+/* Variables */
+.chroma .nv { color: #953800; }
+.chroma .vc { color: #953800; }
+.chroma .vg { color: #953800; }
+.chroma .vi { color: #953800; }
+.chroma .vm { color: #953800; }
+
+/* Functions */
+.chroma .nf { color: #8250df; }
+.chroma .fm { color: #8250df; }
+
+/* Strings */
+.chroma .s { color: #0a3069; }
+.chroma .sa { color: #0a3069; }
+.chroma .sb { color: #0a3069; }
+.chroma .sc { color: #0a3069; }
+.chroma .dl { color: #0a3069; }
+.chroma .sd { color: #0a3069; }
+.chroma .s2 { color: #0a3069; }
+.chroma .se { color: #0a3069; }
+.chroma .sh { color: #0a3069; }
+.chroma .si { color: #0a3069; }
+.chroma .sx { color: #0a3069; }
+.chroma .sr { color: #0a3069; }
+.chroma .s1 { color: #0a3069; }
+.chroma .ss { color: #032f62; }
+
+/* Numbers */
+.chroma .m { color: #0550ae; }
+.chroma .mb { color: #0550ae; }
+.chroma .mf { color: #0550ae; }
+.chroma .mh { color: #0550ae; }
+.chroma .mi { color: #0550ae; }
+.chroma .il { color: #0550ae; }
+.chroma .mo { color: #0550ae; }
+
+/* Operators */
+.chroma .o { color: #0550ae; }
+.chroma .ow { color: #cf222e; }
+
+/* Punctuation */
+.chroma .p { color: #1f2328; }
+
+/* Comments */
+.chroma .c { color: #6e7781; font-style: italic; }
+.chroma .ch { color: #6e7781; font-style: italic; }
+.chroma .cm { color: #6e7781; font-style: italic; }
+.chroma .c1 { color: #6e7781; font-style: italic; }
+.chroma .cs { color: #6e7781; font-style: italic; }
+.chroma .cp { color: #6e7781; }
+.chroma .cpf { color: #6e7781; }
+
+/* Generic */
+.chroma .gd { color: #82071e; background-color: #ffebe9; }
+.chroma .ge { font-style: italic; }
+.chroma .gi { color: #116329; background-color: #dafbe1; }
+.chroma .go { color: #1f2328; }
+.chroma .gl { text-decoration: underline; }
+.chroma .gs { font-weight: bold; }
+.chroma .w { color: #f6f8fa; }
+
+/* ===================================
+   Responsive Code Blocks
+   =================================== */
+@media screen and (max-width: 768px) {
+    .highlight .lntd:first-child {
+        width: 2.5rem;
+        min-width: 2.5rem;
+    }
+    
+    .highlight .lnt,
+    .highlight .ln {
+        padding: 0 0.5rem;
+        font-size: inherit;
+    }
+    
+    code {
+        font-size: 0.75rem;
+    }
+
+    .highlight .lntd:first-child pre code {
+        padding: 0.75rem 0;
+    }
+
+    .highlight .lntd:last-child pre code {
+        padding: 0.75rem;
+    }
+}
