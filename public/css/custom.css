@@ -322,7 +322,9 @@ blockquote p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     z-index: 9999;
     cursor: pointer;
     align-items: center;
@@ -339,7 +341,9 @@ blockquote p {
     max-width: 95%;
     max-height: 95%;
     object-fit: contain;
-    background: #fff;
+    background: transparent;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
 }
 
 /* Feedback footer */
@@ -517,7 +521,8 @@ blockquote p {
     }
     
     .sidebar {
-        width: 100px !important;
+        width: 90px !important;
+        min-width: 90px !important;
         padding: 0.75rem !important;
     }
     
