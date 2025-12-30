@@ -39,7 +39,6 @@ async function sendWelcomeEmail(subscriberEmail: string, env: Env) {
         body: JSON.stringify({
             from: 'Philipp Dubach <noreply@notifications.philippdubach.com>',
             to: [subscriberEmail],
-            bcc: ['info@philippdubach.com'],
             subject: 'Welcome to the Newsletter',
             html: `<p>Thanks for subscribing!</p>`,
         }),

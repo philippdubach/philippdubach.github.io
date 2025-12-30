@@ -55,7 +55,6 @@ https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp
 </span><span class=lnt>14
 </span><span class=lnt>15
 </span><span class=lnt>16
-</span><span class=lnt>17
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-typescript data-lang=typescript><span class=line><span class=cl><span class=kr>async</span> <span class=kd>function</span> <span class=nx>sendWelcomeEmail</span><span class=p>(</span><span class=nx>subscriberEmail</span>: <span class=kt>string</span><span class=p>,</span> <span class=nx>env</span>: <span class=kt>Env</span><span class=p>)</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>    <span class=kr>const</span> <span class=nx>response</span> <span class=o>=</span> <span class=k>await</span> <span class=nx>fetch</span><span class=p>(</span><span class=s1>&#39;https://api.resend.com/emails&#39;</span><span class=p>,</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>        <span class=nx>method</span><span class=o>:</span> <span class=s1>&#39;POST&#39;</span><span class=p>,</span>
@@ -66,7 +65,6 @@ https://static.philippdubach.com/cdn-cgi/image/width=2000,quality=80,format=webp
 </span></span><span class=line><span class=cl>        <span class=nx>body</span>: <span class=kt>JSON.stringify</span><span class=p>({</span>
 </span></span><span class=line><span class=cl>            <span class=kr>from</span><span class=o>:</span> <span class=s1>&#39;Philipp Dubach &lt;noreply@notifications.philippdubach.com&gt;&#39;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>            <span class=nx>to</span><span class=o>:</span> <span class=p>[</span><span class=nx>subscriberEmail</span><span class=p>],</span>
-</span></span><span class=line><span class=cl>            <span class=nx>bcc</span><span class=o>:</span> <span class=p>[</span><span class=s1>&#39;info@philippdubach.com&#39;</span><span class=p>],</span>
 </span></span><span class=line><span class=cl>            <span class=nx>subject</span><span class=o>:</span> <span class=s1>&#39;Welcome to the Newsletter&#39;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>            <span class=nx>html</span><span class=o>:</span> <span class=sb>`&lt;p&gt;Thanks for subscribing!&lt;/p&gt;`</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>        <span class=p>}),</span>
