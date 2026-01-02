@@ -22,11 +22,11 @@ Draft | ([Dataset](https://github.com/philippdubach/options-dataset-hist/blob/ma
 [Abstract](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5910263) | [Article](/standalone/hn-research/)
 
 *Modeling Postprandial Glycemic Response in Non-Diabetic Adults Using XGBRegressor*<br>
-[Abstract](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5914902) | [Article](/2025/05/30/modeling-glycemic-response-with-xgboost/)
+[Abstract](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5914902) | [Article](/posts/modeling-glycemic-response-with-xgboost/)
 
 <br>
 
 **2021**
 
 *A Python integration of practical asset allocation based on modern portfolio theory and its advancements*<br>
-[Abstract](https://digitalcollection.zhaw.ch/items/69a8ead0-acc2-4410-beca-d8637bf4027d) | [Article](/2024/03/15/my-first-optimal-portfolio/)
+[Abstract](https://digitalcollection.zhaw.ch/items/69a8ead0-acc2-4410-beca-d8637bf4027d) | [Article](/posts/my-first-optimal-portfolio/)

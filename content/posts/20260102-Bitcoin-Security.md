@@ -44,7 +44,7 @@ The next halving arrives in April 2028. Mining rewards drop to 1.5625 BTC per bl
 
 What actually prevents this attack? Probably the practical difficulties Rosenthal identifies rather than any fundamental economic barrier. The market should price these risks but appears not to. Bitcoin trades as if 51% attacks are theoretical rather than economically viable. That may remain true as long as practical obstacles hold. 
 
-**Happy New Year! If it's your first time here consider subscribing to the mailing list.** It's a completely free, [no-tracking newsletter](/2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/) with monthly articles, papers, and projects.<div id="newsletter-form-container">
+**Happy New Year! If it's your first time here consider subscribing to the mailing list.** It's a completely free, [no-tracking newsletter](/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/) with monthly articles, papers, and projects.<div id="newsletter-form-container">
   <form id="newsletter-form" class="newsletter-form">
     <div class="form-group">
       <label for="email" class="visually-hidden">Email address</label>
