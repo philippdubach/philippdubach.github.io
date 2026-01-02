@@ -25,6 +25,7 @@ keywords:
 draft: false
 aliases:
 - /2025/11/23/is-ai-really-eating-the-world-1/2/
+- /2025/11/23/is-ai-really-eating-the-world/
 
 ---
 In August 2011, Marc Andreessen wrote ["Why Software Is Eating the World"](https://a16z.com/why-software-is-eating-the-world/), an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, [Benedict Evans](https://www.ben-evans.com/benedictevans/2014/1/18/a16z), a former a16z partner, gave a presentation on generative AI three years after ChatGPT's launch. His argument in short: 
