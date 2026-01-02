@@ -23,7 +23,8 @@ keywords:
 - GLP-1RA therapy
 draft: false
 aliases:
-- /2025/11/21/20251123-glp1-addiction-treatment/
+- /2025/11/21/glp-1-receptor-agonists-in-asud-treatment/
+
 ---
 > Alcohol and other substance use disorders (ASUDs) are complex, multifaceted, but treatable medical conditions with widespread medical, psychological, and societal consequences. However, treatment options remain limited, therefore the discovery and development of new treatments for ASUDs is critical. Glucagon-like peptide-1 receptor agonists (GLP-1RAs), currently approved for the treatment of type 2 diabetes mellitus, obesity, and obstructive sleep apnea, have recently emerged as potential new pharmacotherapies for ASUDs.
 

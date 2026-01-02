@@ -24,7 +24,8 @@ keywords:
 - artificial intelligence P&L
 draft: false
 aliases:
-- /2025/11/09/20250911-OpenAI-profit-margins/
+- /2025/11/09/ai-models-as-standalone-pls/
+
 ---
 > Microsoft reported earnings for the quarter ended Sept. [...] buried in its financial filings were a couple of passages suggesting that OpenAI suffered a net loss of $11.5 billion or more during the quarter.
 

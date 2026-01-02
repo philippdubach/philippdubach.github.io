@@ -23,7 +23,8 @@ keywords:
 - AI assistance boundaries
 external_url: https://simonwillison.net/2025/May/31/snitchbench-with-llm/
 aliases:
-- /2025/05/31/20250531-snitchbench/
+- /2025/05/31/your-ai-assistant-might-rat-you-out/
+
 ---
 There was this story going around the past few days
 

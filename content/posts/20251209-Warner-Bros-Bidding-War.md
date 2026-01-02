@@ -4,7 +4,10 @@ date: 2025-12-09
 images: ['https://static.philippdubach.com/ograph/ograph-warner-bidding.jpg']
 description: "Netflix's $72B Warner Bros. deal vs Paramount's hostile $30/share tender: streaming economics, deal mechanics, and antitrust uncertainty."
 keywords: ["Warner Bros Discovery", "Netflix acquisition", "Paramount hostile takeover", "streaming consolidation", "media M&A", "David Ellison", "antitrust review", "Hollywood dealmaking", "aggregation theory", "HBO Max", "entertainment economics", "hostile tender offer"]
-draft: false	
+draft: false
+aliases:
+- /2025/12/09/not-logan-roy-netflix-vs-paramounts-bidding-war/
+
 ---
 
 In the [HBO series Succession](https://en.wikipedia.org/wiki/Succession_(TV_series)), billionaire Logan Roy's children spent four seasons scheming, backstabbing, and making offers to inherit a media empire. This week, the real version played out with more zeros and a $252 billion Oracle stake. Time for a closer look:

@@ -24,7 +24,8 @@ keywords:
 external_url: https://aswathdamodaran.blogspot.com/2025/11/a-golden-year-2025-golds-price-surge.html
 draft: false
 aliases:
-- /2025/11/16/20241116-Damodaran-Gold/
+- /2025/11/16/damodaran-on-golds-2025-surge/
+
 ---
 [Aswath Damodaran's](https://pages.stern.nyu.edu/~adamodar/) latest analysis into gold's 2025 surge walks through gold's contradictory nature as a collectible rather than an asset with cash flows, showing why it's impossible to "value" gold in the traditional sense, yet entirely possible to understand what drives its pricing. 
 

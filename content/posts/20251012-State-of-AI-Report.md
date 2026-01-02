@@ -24,7 +24,8 @@ keywords:
 external_url: https://docs.google.com/presentation/d/1xiLl0VdrlNMAei8pmaX4ojIOfej6lhvZbOIK7Z6C-Go/edit?usp=sharing
 draft: false
 aliases:
-- /2025/10/12/20251012-State-of-AI-Report/
+- /2025/10/12/the-state-of-ai-report-2025/
+
 ---
 This year's rendition of [The State of AI Report](https://www.stateof.ai) is making rounds on LinkedIn (yes, LinkedIn the place where the great [E = MC2 + AI](https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2Fy9dk1prvwf2b1.jpg) equation was "discovered").
 

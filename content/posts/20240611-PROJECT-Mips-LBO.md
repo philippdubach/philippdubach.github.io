@@ -7,7 +7,8 @@ tags:
 - Project
 draft: true
 aliases:
-- /2024/06/11/20240611-PROJECT-Mips-LBO/
+- /2024/06/11/flirting-with-models-leveraged-buyout-lbo/
+
 ---
 A bit of a different project this time - I came across something me and a group of fellow students built that gained us a top spot at the GMA Challenge hosted by Cambridge Judge Business School:
 

@@ -21,7 +21,8 @@ keywords:
 - Porter competitive strategy
 draft: false
 aliases:
-- /2025/12/02/20251201-Nike-Crisis/
+- /2025/12/02/nikes-crisis-and-the-economics-of-brand-decay/
+
 ---
 > What it sounds like is that the CEO has the wrong people making the wrong decisions across the strongest brand or one of the strongest brands in consumer history.
 

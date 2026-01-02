@@ -6,6 +6,7 @@ images:
 external_url: https://www.hoover.org/research/trade-deficits-arent-problem
 draft: true
 aliases:
-- /2025/11/29/20251129-Trade-Deficits/
+- /2025/11/29/do-trade-deficits-really-matter/
+
 ---
 Review on Hoover Institute Article

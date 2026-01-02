@@ -23,7 +23,8 @@ keywords:
 - empirical finance
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255
 aliases:
-- /2025/06/15/20240112-Not-Normal_Distribution/
+- /2025/06/15/it-just-aint-so/
+
 ---
 > It ain't what you don't know that gets you into trouble. It's what you know for sure that just ain't so.
 

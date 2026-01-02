@@ -13,7 +13,8 @@ keywords:
 - AI
 draft: false
 aliases:
-- /2025/12/27/2025-12-15-Book-Review/
+- /2025/12/27/book-review-why-machines-learn/
+
 ---
 > We cannot leave decisions about how AI will be built and deployed solely to its practitioners. If we are to effectively regulate this technology, another layer of society, educators, politicians, policymakers [...], must come to grips with the basics of the mathematics of machine learning.
 

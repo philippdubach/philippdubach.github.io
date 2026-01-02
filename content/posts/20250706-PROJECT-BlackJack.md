@@ -25,7 +25,8 @@ tags:
 - Project
 draft: false
 aliases:
-- /2025/07/06/20250706-PROJECT-BlackJack/
+- /2025/07/06/counting-cards-with-computer-vision/
+
 ---
 After installing [Claude Code](https://www.anthropic.com/claude-code)
 >the agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster through natural language commands

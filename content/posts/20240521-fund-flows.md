@@ -23,7 +23,8 @@ keywords:
 - market liquidity
 external_url: https://arxiv.org/abs/2405.12768
 aliases:
-- /2024/06/21/20240521-fund-flows/
+- /2024/06/21/how-some-active-funds-create-their-own-returns/
+
 ---
 (1) Many active funds hold concentrated portfolios. Flow-driven trading in these securities causes price pressure, which pushes up the funds' existing positions resulting in realized returns.
 (2) The researchers decomposes fund returns into a price pressure (self-inflated) and a fundamental component and show that when allocating capital across funds, investors are unable to identify whether realized returns are self-inflated or fundamental.

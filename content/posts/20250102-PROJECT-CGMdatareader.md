@@ -24,7 +24,8 @@ tags:
 - Project
 draft: false
 aliases:
-- /2025/01/02/20250102-PROJECT-CGMdatareader/
+- /2025/01/02/i-built-a-cgm-data-reader/
+
 ---
 >_If you're reading this, you might also be interested in: [Modeling Glycemic Response with XGBoost](/2025/05/30/modeling-glycemic-response-with-xgboost/)_
 

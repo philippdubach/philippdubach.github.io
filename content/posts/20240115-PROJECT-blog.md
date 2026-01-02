@@ -22,7 +22,8 @@ keywords:
 tags:
 - Project
 aliases:
-- /2024/01/15/20240115-PROJECT-blog/
+- /2024/01/15/the-tech-behind-this-site/
+
 ---
 Similar to how Simon Willison describes his difficulties managing images for his [approach to running a link blog](https://simonwillison.net/2024/Dec/22/link-blog/) I found it hard to remain true to pure markdown syntax but have images embedded in a responsive way on this site.
 

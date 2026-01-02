@@ -23,7 +23,8 @@ keywords:
 - urban policy
 external_url: https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf
 aliases:
-- /2025/06/22/20250622-Transit-Policy/
+- /2025/06/22/behavioral-economics-transit-policy/
+
 ---
 Over the weekend a [WSJ editorial on the 2025 New York City mayoral election](https://www.wsj.com/opinion/new-yorks-choice-cuomo-or-socialism-election-mayor-race-vote-mamdani-ede84c75) called one of the potential Democratic candidates Zohran Mamdani "a literal socialist" for - among other things - running on the promise of [free bus rides for all](https://www.thenation.com/article/society/new-york-city-bus-free-fare/):
 

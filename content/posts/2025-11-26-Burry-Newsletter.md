@@ -19,7 +19,8 @@ keywords:
 - tech bubble warning
 draft: false
 aliases:
-- /2025/11/28/2025-11-26-Burry-Newsletter/
+- /2025/11/28/michael-burrys-379-newsletter/
+
 ---
 [Michael Burry](https://en.wikipedia.org/wiki/Michael_Burry) (who in your head probably looks like [Christian Bale thanks to The Big Short](https://www.historyvshollywood.com/reelfaces/big-short/)), the investor who famously predicted the 2008 housing crash, has launched a Substack newsletter after [deregistering his hedge fund](https://www.bloomberg.com/news/articles/2025-11-18/burry-says-he-s-active-in-markets-after-fund-is-deregistered). The $379 annual subscription capitalizes on the 1.6 million followers he's built on [X](https://twitter.com/michaeljburry), offering what he describes as his "sole focus" going forward.
 

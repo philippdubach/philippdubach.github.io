@@ -23,7 +23,8 @@ keywords:
 - algorithmic trading
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863
 aliases:
-- /2025/05/11/20250511-Tensor-Based-Market-Modeling/
+- /2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/
+
 ---
 A fascinating new paper from Stefano Iabichino at UBS Investment Bank explores what happens when you take the attention mechanisms powering modern AI and apply them to Wall Street's most fundamental pricing problems, tackling what might be quantitative finance's most intractable challenge.
 

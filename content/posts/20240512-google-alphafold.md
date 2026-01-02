@@ -23,7 +23,8 @@ keywords:
 - life sciences platform
 external_url: https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/
 aliases:
-- /2024/05/12/20240512-google-alphafold/
+- /2024/05/12/alphafold-3-free-for-science/
+
 ---
 Nothing says "we're serious about dominating a market" quite like giving away breakthrough technology for free. Google's latest move with AlphaFold 3 might be their most audacious version of this strategy yet.
 

@@ -24,7 +24,8 @@ keywords:
 - conscious awareness
 draft: false
 aliases:
-- /2025/12/01/20251220-Harris-Gratitude/
+- /2025/12/01/gratitude/
+
 ---
 Thoughts on gratitude by [Sam Harris](https://en.wikipedia.org/wiki/Sam_Harris):
 

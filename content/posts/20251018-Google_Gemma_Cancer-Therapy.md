@@ -24,7 +24,8 @@ keywords:
 external_url: https://www.biorxiv.org/content/10.1101/2025.04.14.648850v3.full.pdf
 draft: false
 aliases:
-- /2025/10/18/20251018-Google_Gemma_Cancer-Therapy/
+- /2025/10/18/google-discovers-new-cancer-therapy-pathway/
+
 ---
 Google gets a lot of scrutiny for some of their work in other domains; nevertheless, it's fair to appreciate that they continue to put major resources behind using AI to accelerate therapeutic discovery. The [model](https://huggingface.co/vandijklab/C2S-Scale-Gemma-2-27B) and [resources](https://github.com/vandijklab/cell2sentence) are open access and available to the research community. 
 

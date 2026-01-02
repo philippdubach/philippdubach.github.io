@@ -19,7 +19,8 @@ keywords:
 - crypto trading
 draft: false
 aliases:
-- /2026/01/02/20260102-Bitcoin-Security/
+- /2026/01/02/bitcoin-security/
+
 ---
 Bitcoin's security model rests on one assumption: attacking the network costs more than any attacker could gain. A [2024 paper by Farokhnia and Goharshady](https://hal.science/hal-04616643v1) does the math on this assumption and finds it wanting. 
 

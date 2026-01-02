@@ -24,7 +24,8 @@ keywords:
 - AI behavior unpredictability
 draft: false
 aliases:
-- /2025/11/14/20251114-Build-Agents/
+- /2025/11/14/the-bicycle-needs-riding-to-be-understood/
+
 ---
 > Some concepts are easy to grasp in the abstract. Boiling water: apply heat and wait. Others you really need to try. You only think you understand how a bicycle works, until you learn to ride one. 
 

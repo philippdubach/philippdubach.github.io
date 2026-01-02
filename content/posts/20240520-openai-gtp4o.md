@@ -23,7 +23,8 @@ keywords:
 - frontier AI capabilities
 external_url: https://openai.com/index/hello-gpt-4o/
 aliases:
-- /2024/05/20/20240520-openai-gtp4o/
+- /2024/05/20/openai-cuts-prices-raises-stakes/
+
 ---
 OpenAI's GPT-4o launch is a classic Silicon Valley competitive strategy disguised as a product announcement.
 

@@ -25,7 +25,8 @@ tags:
 - Project
 draft: false
 aliases:
-- /2025/02/20/20250410-PROJECT-Sentiment-Trading/
+- /2025/02/20/trading-on-market-sentiment/
+
 ---
 _This post is based in part on a 2022 presentation I gave for the [ICBS Student Investment Fund](https://www.ft.com/content/3bd45acd-b323-3c6b-ba98-ac78b456f308) and my seminar work at Imperial College London._
 

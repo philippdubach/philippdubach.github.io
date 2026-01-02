@@ -23,7 +23,8 @@ keywords:
 - environmental impact
 external_url: https://www.nature.com/articles/s41599-024-04318-1
 aliases:
-- /2024/12/31/20241231-green-bond/
+- /2024/12/31/the-green-bond-commitment-premium/
+
 ---
 The difference between green finance that works and green finance that doesn't work seems to be commitment: Using a Difference-in-Differences model analyzing 2013-2023 bond data, researchers found no significant correlation between green bond issuance and CO2 emissions after net-zero policies were adopted. That's the disappointing part. On the upside: companies issuing only green bonds showed higher ESG ratings, lower CO2 emissions, and lower financing costs, achieving substantial environmental benefits and economic advantages. Meanwhile, entities issuing both conventional and green bonds showed no environmental benefits, raising concerns about potential greenwashing.
 

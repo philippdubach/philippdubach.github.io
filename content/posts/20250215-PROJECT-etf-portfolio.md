@@ -7,7 +7,8 @@ images:
 - https://static.philippdubach.com/ograph/ograph-project.jpg
 draft: true
 aliases:
-- /2025/02/15/20250215-PROJECT-etf-portfolio/
+- /2025/02/15/vibe-coding-a-robust-etf-portfolio/
+
 ---
 ## What does "robust" evene mean?
 

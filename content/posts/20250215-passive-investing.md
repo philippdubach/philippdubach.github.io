@@ -23,7 +23,8 @@ keywords:
 - market dynamics
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263
 aliases:
-- /2025/02/15/20250215-passive-investing/
+- /2025/02/15/passive-investings-active-problem/
+
 ---
 (1) A new academic paper suggests the rise of passive investing may be fueling fragile market moves.
 (2) According to a study to be published in the American Economic Review, evidence is building that active managers are slow to scoop up stocks en masse when prices move away from their intrinsic worth.
