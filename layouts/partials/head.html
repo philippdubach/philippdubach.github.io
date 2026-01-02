@@ -22,11 +22,11 @@
     {{- $pageTitle := .Params.seoTitle | default .Title -}}
     <title>
 	{{- if .IsHome -}}
-    	Home - {{ .Site.Params.site_name }}
-	{{- else if $pageTitle -}}
-    	{{ $pageTitle }} - {{ .Site.Params.site_name }}
-	{{- else -}}
     	{{ .Site.Params.site_name }}
+	{{- else if $pageTitle -}}
+    	{{ $pageTitle }} - philippdubach.com
+	{{- else -}}
+    	philippdubach.com
 	{{- end -}}
 	</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
