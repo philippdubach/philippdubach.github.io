@@ -1,5 +1,5 @@
 {{ define "main" }}
-<h1 style="display:none;">Philipp D. Dubach - Macroeconomics, Quantitative Finance & AI Strategy</h1>
+<h1 class="visually-hidden">Latest Posts</h1>
 <div class="posts">
     {{ $posts := where .Site.RegularPages "Section" "posts" }}
     {{ $posts := $posts.ByDate.Reverse }}
