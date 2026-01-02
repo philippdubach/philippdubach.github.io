@@ -1,6 +1,7 @@
+# SEO SETTINGS
 baseURL = 'https://philippdubach.com/'
 languageCode = 'en-us'
-title = 'philippdubach'
+title = 'Philipp D. Dubach | Quantitative Finance & AI Strategy'
 enableRobotsTXT = true
 
 [security]
@@ -12,13 +13,20 @@ enableRobotsTXT = true
   pagerSize = 10
   path = "page"
 
+
 [params]
-  author = "Philipp Dubach"
-  description = "Blog about Personal Projects, Articles and Papers on Economics, Finance and Technology"
-  keywords = ["Finance", "Economics", "Technology", "Data", "Machine Learning"]
+  author = "Philipp D. Dubach"
+  # SEO Description
+  description = "Exploring the intersection of Macroeconomics, Quantitative Finance, and AI infrastructure. Analysis of LLM unit economics, global monetary frameworks, and systemic liquidity."
+  keywords = ["Quantitative Finance", "Macro Strategy", "AI Infrastructure", "Machine Learning", "Asset Allocation", "Bretton Woods III", "Python for Finance"]
+  
+  # VISUAL SETTINGS 
+  sidebar_title = "philippdubach"
+  sidebar_description = "Blog about Personal Projects, Articles and Papers on Economics, Finance and Technology"
+  
   favicon = "/favicon.ico"
   math = false
-  site_name = "philippdubach.com"
+  site_name = "Philipp D. Dubach - Macro & Tech Thought Leadership"
   locale = "en_US"
   default_image = "https://static.philippdubach.com/ograph/ograph-post.jpg"
   theme_color = "#2c3e50"
@@ -51,8 +59,11 @@ enableRobotsTXT = true
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
 
+#[permalinks]
+#  posts = "/:year/:month/:day/:slug/"
+  
 [permalinks]
-  posts = "/:year/:month/:day/:slug/"
+  posts = "/posts/:slug/"
 
 [frontmatter]
   date = ["date", "publishDate", "lastmod"]
@@ -67,10 +78,9 @@ enableRobotsTXT = true
 [minify]
   minifyOutput = true
 
-
 [sitemap]
-  changefreq = 'daily'
-  priority = 0.5
+  changefreq = 'weekly' 
+  priority = 0.8 
   filename = 'sitemap.xml'
 
 [outputs]

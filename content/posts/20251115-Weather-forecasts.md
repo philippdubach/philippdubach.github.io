@@ -1,13 +1,31 @@
 ---
-title: "Weather Forecasts Have Improved a Lot"
+title: Weather Forecasts Have Improved a Lot
 date: 2025-11-22
-images: ['https://static.philippdubach.com/ograph/ograph-weather.jpg']
-external_url: "https://ourworldindata.org/weather-forecasts"
-description: "Exploring dramatic improvements in weather forecasting accuracy, highlighting Google DeepMind's WeatherNext 2 AI model capabilities."
-keywords: ["weather forecasting", "Google DeepMind", "WeatherNext 2", "AI weather prediction", "hurricane forecasting", "weather accuracy", "meteorology technology", "CRPS objective", "neural weather models", "weather AI", "forecast improvements", "climate prediction", "machine learning weather", "atmospheric modeling", "weather technology"]
+images:
+- https://static.philippdubach.com/ograph/ograph-weather.jpg
+external_url: https://ourworldindata.org/weather-forecasts
+description: Exploring dramatic improvements in weather forecasting accuracy, highlighting
+  Google DeepMind's WeatherNext 2 AI model capabilities.
+keywords:
+- weather forecasting
+- Google DeepMind
+- WeatherNext 2
+- AI weather prediction
+- hurricane forecasting
+- weather accuracy
+- meteorology technology
+- CRPS objective
+- neural weather models
+- weather AI
+- forecast improvements
+- climate prediction
+- machine learning weather
+- atmospheric modeling
+- weather technology
 draft: false
+aliases:
+- /2025/11/22/20251115-Weather-forecasts/
 ---
-
 Reading the press release for Google DeepMind's [WeatherNext 2](https://deepmind.google/discover/blog/weathernext-2-our-most-advanced-weather-forecasting-model/), I wondered: have weather forecasts actually improved over the past years?
 
 Turns out they have, dramatically. [A four-day forecast today matches the accuracy of a one-day forecast from 30 years ago](https://ourworldindata.org/weather-forecasts). Hurricane track errors that once exceeded 400 nautical miles for 72-hour forecasts now sit below 80 miles. The [European Centre for Medium-Range Weather Forecasts reports three-day forecasts now reach 97% accuracy](https://charts.ecmwf.int), with seven-day forecasts approaching that threshold.

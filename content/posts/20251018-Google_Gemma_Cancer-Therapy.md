@@ -1,13 +1,31 @@
 ---
-title: "Google Discovers New Cancer Therapy Pathway"
+title: Google Discovers New Cancer Therapy Pathway
 date: 2025-10-18
-images: ['https://static.philippdubach.com/ograph/ograph-CancerTherapy.jpg']
-description: "Google releases C2S-Scale 27B, an AI model that discovered a cancer therapy pathway by identifying drugs making tumors visible to immunity."
-keywords: ["C2S-Scale 27B", "Gemma AI model", "cancer immunotherapy", "cold tumors", "hot tumors", "antigen presentation", "silmitasertib", "CK2 inhibitor", "interferon", "single-cell analysis", "virtual drug screening", "Google DeepMind", "Yale University collaboration", "foundation model", "therapeutic discovery"]
-external_url: "https://www.biorxiv.org/content/10.1101/2025.04.14.648850v3.full.pdf"
+images:
+- https://static.philippdubach.com/ograph/ograph-CancerTherapy.jpg
+description: Google releases C2S-Scale 27B, an AI model that discovered a cancer therapy
+  pathway by identifying drugs making tumors visible to immunity.
+keywords:
+- C2S-Scale 27B
+- Gemma AI model
+- cancer immunotherapy
+- cold tumors
+- hot tumors
+- antigen presentation
+- silmitasertib
+- CK2 inhibitor
+- interferon
+- single-cell analysis
+- virtual drug screening
+- Google DeepMind
+- Yale University collaboration
+- foundation model
+- therapeutic discovery
+external_url: https://www.biorxiv.org/content/10.1101/2025.04.14.648850v3.full.pdf
 draft: false
+aliases:
+- /2025/10/18/20251018-Google_Gemma_Cancer-Therapy/
 ---
-
 Google gets a lot of scrutiny for some of their work in other domains; nevertheless, it's fair to appreciate that they continue to put major resources behind using AI to accelerate therapeutic discovery. The [model](https://huggingface.co/vandijklab/C2S-Scale-Gemma-2-27B) and [resources](https://github.com/vandijklab/cell2sentence) are open access and available to the research community. 
 
 >How C2S-Scale 27B works: A major challenge in cancer immunotherapy is that many tumors are "cold" — invisible to the body's immune system. A key strategy to make them "hot" is to force them to display immune-triggering signals through a process called antigen presentation. We gave our new C2S-Scale 27B model a task: Find a drug that acts as a conditional amplifier, one that would boost the immune signal only in a specific "immune-context-positive" environment where low levels of interferon (a key immune-signaling protein) were already present, but inadequate to induce antigen presentation on their own.

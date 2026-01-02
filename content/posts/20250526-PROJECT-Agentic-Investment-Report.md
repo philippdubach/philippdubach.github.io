@@ -1,11 +1,31 @@
 ---
-title: "AI Agents Build my Investment Reports"
+title: AI Agents Build my Investment Reports
 date: 2025-06-26
-images: ['https://static.philippdubach.com/ograph/ograph-investment-report.jpg']
-description: "A multi-agent AI system that auto-generates investment reports using specialized agents for news, portfolio performance, and market data."
-keywords: ["AI agents", "investment reports", "multi-agent system", "agentic AI", "portfolio management", "automated trading", "Claude Sonnet", "Streamlit", "market data analysis", "news aggregation", "economic calendar", "portfolio performance", "financial automation", "investment research", "wealth management"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-investment-report.jpg
+description: A multi-agent AI system that auto-generates investment reports using
+  specialized agents for news, portfolio performance, and market data.
+keywords:
+- AI agents
+- investment reports
+- multi-agent system
+- agentic AI
+- portfolio management
+- automated trading
+- Claude Sonnet
+- Streamlit
+- market data analysis
+- news aggregation
+- economic calendar
+- portfolio performance
+- financial automation
+- investment research
+- wealth management
+tags:
+- Project
 draft: true
+aliases:
+- /2025/06/26/20250526-PROJECT-Agentic-Investment-Report/
 ---
 How I built a multi-agent system that automatically generates personalized morning market reports. But what even are AI Agents? A term that seems to be [everything everywhere all at once](https://trends.google.com/trends/explore?date=today%205-y&q=Agentic%20AI&hl=en)right now. [According to Wikipedia](https://en.wikipedia.org/wiki/Agentic_AI) Agentic AI is a class of artificial intelligence
 > that focuses on autonomous systems that can make decisions and perform tasks without human intervention. The independent systems automatically respond to conditions, to produce process results.

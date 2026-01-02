@@ -1,13 +1,14 @@
 ---
-title: "Vibe-coding a robust ETF Portfolio"
+title: Vibe-coding a robust ETF Portfolio
 date: 2025-02-15
-tags: ["Project"]
-images: ['https://static.philippdubach.com/ograph/ograph-project.jpg']
+tags:
+- Project
+images:
+- https://static.philippdubach.com/ograph/ograph-project.jpg
 draft: true
+aliases:
+- /2025/02/15/20250215-PROJECT-etf-portfolio/
 ---
-
-
-
 ## What does "robust" evene mean?
 
 ## Utility Philosophy

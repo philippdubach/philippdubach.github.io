@@ -1,13 +1,32 @@
 ---
-title: "Crypto Mean Reversion Trading"
+title: Crypto Mean Reversion Trading
 date: 2024-11-11
-images: ['https://static.philippdubach.com/ograph/ograph-crypto.jpg']
-description: "A crypto mean reversion strategy using PELT algorithm to detect change points and auto-execute trades on Kraken following price movements."
-keywords: ["crypto mean reversion trading", "cryptocurrency trading strategy", "PELT algorithm", "change point detection", "Kraken API", "market inefficiency", "Bitcoin trading", "Ethereum trading", "automated trading bot", "cryptocurrency seasonality", "efficient market hypothesis", "altcoin trading", "volatility trading", "crypto market patterns", "algorithmic trading"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-crypto.jpg
+description: A crypto mean reversion strategy using PELT algorithm to detect change
+  points and auto-execute trades on Kraken following price movements.
+keywords:
+- crypto mean reversion trading
+- cryptocurrency trading strategy
+- PELT algorithm
+- change point detection
+- Kraken API
+- market inefficiency
+- Bitcoin trading
+- Ethereum trading
+- automated trading bot
+- cryptocurrency seasonality
+- efficient market hypothesis
+- altcoin trading
+- volatility trading
+- crypto market patterns
+- algorithmic trading
+tags:
+- Project
 draft: false
+aliases:
+- /2024/11/11/20241111-PROJECT-crypto-seasonality/
 ---
-
 In late 2021, Lars Kaiser's paper on [seasonality in cryptocurrencies](https://www.sciencedirect.com/science/article/abs/pii/S1544612318304513) inspired me to use my [Kraken API Key](https://docs.kraken.com/api/) to try and make some money. A quick summary of the paper: (1) Kaiser analyzes seasonality patterns across 10 cryptocurrencies (Bitcoin, Ethereum, etc.), examining returns, volatility, trading volume, and spreads (2) Finds no consistent calendar effects in cryptocurrency returns, supporting weak-form market efficiency (3) Observes robust patterns in trading activity - lower volume, volatility, and spreads in January, weekends, and summer months (4) Documents significant impact of January 2018 market sell-off on seasonality patterns (5) Reports a "reverse Monday effect" for Bitcoin (positive Monday returns) and "reverse January effect" (negative January returns) (6) Trading activity patterns suggest crypto markets are dominated by retail rather than institutional investors. 
 
 The paper's main finding: crypto markets appear efficient in terms of returns but show behavioral patterns in trading.

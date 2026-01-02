@@ -1,12 +1,27 @@
 ---
-title: "The AI Funding Boom: What $70 Billion Actually Means"
+title: 'The AI Funding Boom: What $70 Billion Actually Means'
 date: 2025-12-15
-images: ['https://static.philippdubach.com/ograph/ograph-ai-funding-boom.jpg']
-description: "Analysis of 49 US AI startups raising $100M+ in 2025: funding concentration, infrastructure vs applications, and venture capital dynamics."
-keywords: ["AI startup funding", "venture capital 2025", "AI investment bubble", "startup valuation economics", "AI infrastructure investment", "tech funding trends", "AI unicorn valuations", "venture capital concentration", "AI market analysis", "startup funding economics", "tech investment cycle", "AI capital allocation"]
+images:
+- https://static.philippdubach.com/ograph/ograph-ai-funding-boom.jpg
+description: 'Analysis of 49 US AI startups raising $100M+ in 2025: funding concentration,
+  infrastructure vs applications, and venture capital dynamics.'
+keywords:
+- AI startup funding
+- venture capital 2025
+- AI investment bubble
+- startup valuation economics
+- AI infrastructure investment
+- tech funding trends
+- AI unicorn valuations
+- venture capital concentration
+- AI market analysis
+- startup funding economics
+- tech investment cycle
+- AI capital allocation
 draft: true
+aliases:
+- /2025/12/15/20251215-AI-Funding-Boom/
 ---
-
 In late November, [TechCrunch reported that 49 US AI startups had raised funding rounds worth $100 million or more in 2025](https://techcrunch.com/2025/11/26/here-are-the-49-us-ai-startups-that-have-raised-100m-or-more-in-2025/), matching 2024's total with a month remaining. The raw numbers are striking. But what they actually mean depends on where you look. The funding isn't evenly distributed. It's concentrated in infrastructure companies, research labs building foundation models, and a handful of application layer companies that have found product-market fit. The rest are betting that AI will transform their specific verticals, which may or may not happen.
 
 {{< img src="ai_funding_by_month.png" alt="AI Startup Funding by Month (2025)" width="80%" >}}

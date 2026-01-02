@@ -1,14 +1,23 @@
 ---
-title: "Deploying to Production with AI Agents: Testing Cursor on Azure"
-seoTitle: "AI Agents in Production: Testing Cursor"
-images: ['https://static.philippdubach.com/ograph/ograph-agentic-deployment.jpg']
+title: 'Deploying to Production with AI Agents: Testing Cursor on Azure'
+seoTitle: 'AI Agents in Production: Testing Cursor'
+images:
+- https://static.philippdubach.com/ograph/ograph-agentic-deployment.jpg
 date: 2025-11-30
-description: "First impressions of Cursor AI after using it to deploy YOURLS from scratch. How it handled SSH access, server configuration, and SSL certificates."
-keywords: ["Cursor AI", "AI coding assistant", "YOURLS deployment", "SSH automation", "server setup"]
-tags: ["Project"]
+description: First impressions of Cursor AI after using it to deploy YOURLS from scratch.
+  How it handled SSH access, server configuration, and SSL certificates.
+keywords:
+- Cursor AI
+- AI coding assistant
+- YOURLS deployment
+- SSH automation
+- server setup
+tags:
+- Project
 draft: false
+aliases:
+- /2025/11/30/2025-11-30-PROJECT-Cursor/
 ---
-
 I've been curious about [Cursor's capabilities](https://cursor.com/features) for a while, but never had a good reason to try it. This weekend I decided to host my own URL shortener and deployed [YOURLS](https://yourls.org), a free and open-source link shortener, on a fresh Azure VM. It seemed like a solid test case since it involves SSH access, server configuration, database setup, and SSL certificates. If an AI assistant could handle that end-to-end, it would be genuinely useful.
 
 I was honestly surprised. Cursor didn't just write commands it connected via SSH, navigated the server, installed dependencies, configured Apache virtual hosts, set up MySQL, and handled the SSL certificate setup. It made sensible decisions about file permissions, security settings, and configuration details. When I asked for a custom YOURLS plugin to add date prefixes to short URLs, it built it on the first try. The whole build and deployment took about 15 minutes, which previously took me at least an hour of manual work and troubleshooting.

@@ -1,12 +1,30 @@
 ---
-title: "Passive Investing's Active Problem"
+title: Passive Investing's Active Problem
 date: 2025-02-15
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "New research reveals passive investing may increase market volatility as index fund dominance amplifies individual trade impacts on prices."
-keywords: ["passive investing", "market volatility", "index funds", "active managers", "American Economic Review", "benchmark-tracking funds", "Big Passive", "equity gyrations", "intrinsic worth", "financial markets", "trading behavior", "stock prices", "AI market swings", "investment strategy", "market dynamics"]
-external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263"
+images:
+- https://static.philippdubach.com/ograph/ograph-post.jpg
+description: New research reveals passive investing may increase market volatility
+  as index fund dominance amplifies individual trade impacts on prices.
+keywords:
+- passive investing
+- market volatility
+- index funds
+- active managers
+- American Economic Review
+- benchmark-tracking funds
+- Big Passive
+- equity gyrations
+- intrinsic worth
+- financial markets
+- trading behavior
+- stock prices
+- AI market swings
+- investment strategy
+- market dynamics
+external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263
+aliases:
+- /2025/02/15/20250215-passive-investing/
 ---
-
 (1) A new academic paper suggests the rise of passive investing may be fueling fragile market moves.
 (2) According to a study to be published in the American Economic Review, evidence is building that active managers are slow to scoop up stocks en masse when prices move away from their intrinsic worth.
 (3) Thanks to this lethargic trading behavior and the relentless boom in benchmark-tracking index funds, the impact of each trade on prices gets amplified, explaining how sell orders can induce broader equity gyrations

@@ -1,12 +1,30 @@
 ---
-title: "The Model Said So"
+title: The Model Said So
 date: 2025-05-28
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "The tension between LLM capabilities and transparency in finance, where regulatory compliance demands explainable AI that neural networks lack."
-keywords: ["LLMs in finance", "explainable AI", "financial regulation", "audit trails", "bias detection", "neural networks", "fintech compliance", "model transparency", "regulatory challenges", "financial AI", "market sentiment analysis", "investment reports", "regulatory nightmares", "decision-making transparency", "financial sector AI"]
-external_url: "https://arxiv.org/abs/2505.24650"
+images:
+- https://static.philippdubach.com/ograph/ograph-post.jpg
+description: The tension between LLM capabilities and transparency in finance, where
+  regulatory compliance demands explainable AI that neural networks lack.
+keywords:
+- LLMs in finance
+- explainable AI
+- financial regulation
+- audit trails
+- bias detection
+- neural networks
+- fintech compliance
+- model transparency
+- regulatory challenges
+- financial AI
+- market sentiment analysis
+- investment reports
+- regulatory nightmares
+- decision-making transparency
+- financial sector AI
+external_url: https://arxiv.org/abs/2505.24650
+aliases:
+- /2025/05/28/20250528-finance-llm/
 ---
-
 LLMs make your life easier until they don't.
 
 > Their intrinsic complexity and lack of transparency pose significant challenges, especially in the highly regulated financial sector

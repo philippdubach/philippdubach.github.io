@@ -1,12 +1,31 @@
 ---
-title: "My First 'Optimal' Portfolio"
+title: My First 'Optimal' Portfolio
 date: 2024-03-15
-images: ['https://static.philippdubach.com/ograph/ograph-portfolio.jpg']
-description: "Developing Python-based portfolio optimization tools with Modern Portfolio Theory, efficient frontier visualization, and out-of-sample testing."
-keywords: ["quantitative portfolio optimization", "Modern Portfolio Theory", "Python portfolio optimization", "efficient frontier", "risk-return tradeoff", "Sharpe ratio", "CVaR reduction", "asset allocation", "PyPortfolioOpt", "Riskfolio-Lib", "out-of-sample testing", "risk aversion parameter", "convex optimization", "open-source finance tools", "portfolio management Python"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-portfolio.jpg
+description: Developing Python-based portfolio optimization tools with Modern Portfolio
+  Theory, efficient frontier visualization, and out-of-sample testing.
+keywords:
+- quantitative portfolio optimization
+- Modern Portfolio Theory
+- Python portfolio optimization
+- efficient frontier
+- risk-return tradeoff
+- Sharpe ratio
+- CVaR reduction
+- asset allocation
+- PyPortfolioOpt
+- Riskfolio-Lib
+- out-of-sample testing
+- risk aversion parameter
+- convex optimization
+- open-source finance tools
+- portfolio management Python
+tags:
+- Project
+aliases:
+- /2024/03/15/20240315-PROJECT-portfolio-optimization/
 ---
-
 My introduction to quantitative portfolio optimization happened during my undergraduate years, inspired by Attilio Meucci's [Risk and Asset Allocation](https://link.springer.com/book/10.1007/978-3-540-27904-4) and the convex optimization [teachings of Diamond and Boyd at Stanford](https://web.stanford.edu/~boyd/teaching.html). With enthusiasm and perhaps more confidence than expertise, I created my first "optimal" portfolio. What struck me most was the disconnect between theory and accessibility. Modern Portfolio Theory had been established since 1990, yet the optimization tools remained largely locked behind proprietary software. 
 
 >Nevertheless, only a few comprehensive software models are available publicly to use, study, or modify. We tackle this issue by engineering practical tools for asset allocation and implementing them in the Python programming language.

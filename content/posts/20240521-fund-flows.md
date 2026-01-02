@@ -1,12 +1,30 @@
 ---
-title: "How Some Active Funds Create Their Own Returns"
+title: How Some Active Funds Create Their Own Returns
 date: 2024-06-21
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "Research reveals how active funds create 'self-inflated' returns through flow-driven trading, reallocating $500M daily from late to early investors."
-keywords: ["active funds", "self-inflated returns", "price pressure", "concentrated portfolios", "flow-driven trading", "Ponzi flows", "fund illiquidity", "ETF bubbles", "return chasing", "price impact", "fund flows", "wealth reallocation", "investment drawdowns", "fund performance", "market liquidity"]
-external_url: "https://arxiv.org/abs/2405.12768"
+images:
+- https://static.philippdubach.com/ograph/ograph-post.jpg
+description: Research reveals how active funds create 'self-inflated' returns through
+  flow-driven trading, reallocating $500M daily from late to early investors.
+keywords:
+- active funds
+- self-inflated returns
+- price pressure
+- concentrated portfolios
+- flow-driven trading
+- Ponzi flows
+- fund illiquidity
+- ETF bubbles
+- return chasing
+- price impact
+- fund flows
+- wealth reallocation
+- investment drawdowns
+- fund performance
+- market liquidity
+external_url: https://arxiv.org/abs/2405.12768
+aliases:
+- /2024/06/21/20240521-fund-flows/
 ---
-
 (1) Many active funds hold concentrated portfolios. Flow-driven trading in these securities causes price pressure, which pushes up the funds' existing positions resulting in realized returns.
 (2) The researchers decomposes fund returns into a price pressure (self-inflated) and a fundamental component and show that when allocating capital across funds, investors are unable to identify whether realized returns are self-inflated or fundamental.
 (3) Because investors chase self-inflated fund returns at a high frequency, even short-lived impact meaningfully affects fund flows at longer time scales.

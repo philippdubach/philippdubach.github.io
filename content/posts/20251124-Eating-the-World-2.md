@@ -1,12 +1,30 @@
 ---
-title: "Is AI Really Eating the World? AGI, Networks, Value [2/2]"
-seoTitle: "Is AI Really Eating the World? [Part 2]"
+title: Is AI Really Eating the World? AGI, Networks, Value [2/2]
+seoTitle: Is AI Really Eating the World? [Part 2]
 date: 2025-11-24
-images: ['https://static.philippdubach.com/ograph/ograph-eatingtheworld2.jpg']
-external_url: "https://www.ben-evans.com/presentations/"
-description: "Part 2: How AI may transform recommendations and whether AGI creates lasting advantages or commoditized markets where value flows elsewhere."
-keywords: ["artificial intelligence", "large language models", "LLMs", "recommendation systems", "AGI artificial general intelligence", "AI market dynamics", "machine learning", "pattern matching", "AI applications", "hyperscalers", "vertical integration", "AI competitive advantage", "enterprise AI", "AI commoditization"]
+images:
+- https://static.philippdubach.com/ograph/ograph-eatingtheworld2.jpg
+external_url: https://www.ben-evans.com/presentations/
+description: 'Part 2: How AI may transform recommendations and whether AGI creates
+  lasting advantages or commoditized markets where value flows elsewhere.'
+keywords:
+- artificial intelligence
+- large language models
+- LLMs
+- recommendation systems
+- AGI artificial general intelligence
+- AI market dynamics
+- machine learning
+- pattern matching
+- AI applications
+- hyperscalers
+- vertical integration
+- AI competitive advantage
+- enterprise AI
+- AI commoditization
 draft: false
+aliases:
+- /2025/11/24/20251124-Eating-the-World-2/
 ---
 _Start by reading [Is AI Really Eating the World? What we've Learned [1/2]](/2025/11/23/is-ai-really-eating-the-world-what-weve-learned-1/2/)_
 

@@ -1,13 +1,26 @@
 ---
-title: "Bitcoin Security"
+title: Bitcoin Security
 date: 2026-01-02
-images: ['https://static.philippdubach.com/ograph/ograph-bitcoin-security.jpg']
-external_url: "https://hal.science/hal-04616643v1"
-description: "A 2024 paper calculates $6.77B buys majority hash power. Bitcoin derivatives create profit incentives for block-reverting attacks."
-keywords: ["Bitcoin", "51% attack", "cryptocurrency security", "Bitcoin derivatives", "proof of work", "selfish mining", "blockchain security", "hash rate", "Bitcoin futures", "crypto trading"]
+images:
+- https://static.philippdubach.com/ograph/ograph-bitcoin-security.jpg
+external_url: https://hal.science/hal-04616643v1
+description: A 2024 paper calculates $6.77B buys majority hash power. Bitcoin derivatives
+  create profit incentives for block-reverting attacks.
+keywords:
+- Bitcoin
+- 51% attack
+- cryptocurrency security
+- Bitcoin derivatives
+- proof of work
+- selfish mining
+- blockchain security
+- hash rate
+- Bitcoin futures
+- crypto trading
 draft: false
+aliases:
+- /2026/01/02/20260102-Bitcoin-Security/
 ---
-
 Bitcoin's security model rests on one assumption: attacking the network costs more than any attacker could gain. A [2024 paper by Farokhnia and Goharshady](https://hal.science/hal-04616643v1) does the math on this assumption and finds it wanting. 
 
 >For roughly $6.77 billion in hardware, an attacker could control over 50% of Bitcoin's hash rate. With 30% of hash power, success probability exceeds 95% within 34 days at a cost of about $2.9 billion. 

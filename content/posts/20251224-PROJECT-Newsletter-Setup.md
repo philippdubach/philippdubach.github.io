@@ -1,11 +1,26 @@
 ---
-title: "Building a No-Tracking Newsletter from Markdown to Distribution"
+title: Building a No-Tracking Newsletter from Markdown to Distribution
 date: 2025-12-24
-images: ['https://static.philippdubach.com/ograph/ograph-newsletter-setup.jpg']
-description: "Building a privacy-focused newsletter from Markdown to HTML with Cloudflare Workers, KV storage, and Resend API."
-keywords: ["newsletter system", "Cloudflare Workers", "email API", "privacy-focused email", "markdown to html", "KV storage", "Resend API", "self-hosted newsletter", "no-tracking email", "developer newsletter"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-newsletter-setup.jpg
+description: Building a privacy-focused newsletter from Markdown to HTML with Cloudflare
+  Workers, KV storage, and Resend API.
+keywords:
+- newsletter system
+- Cloudflare Workers
+- email API
+- privacy-focused email
+- markdown to html
+- KV storage
+- Resend API
+- self-hosted newsletter
+- no-tracking email
+- developer newsletter
+tags:
+- Project
 draft: false
+aliases:
+- /2025/12/24/20251224-PROJECT-Newsletter-Setup/
 ---
 {{< img src="Newsletter_Overview2.jpg" alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions" width="80%" >}}
 Friends have been asking how they can stay up to date with what I'm working on and keep track of the things I read, write, and share. RSS feeds don't seem to be en vogue anymore, apparently. So I built a mailing list. What else would you do over the Christmas break?

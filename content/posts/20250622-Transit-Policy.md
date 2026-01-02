@@ -1,12 +1,30 @@
 ---
-title: "Behavioral Economics & Transit Policy"
+title: Behavioral Economics & Transit Policy
 date: 2025-06-22
-images: ['https://static.philippdubach.com/ograph/ograph-TransitPolicy.jpg']
-description: "How behavioral economics on zero pricing applies to transit: why free public transit feels revolutionary and its political consequences."
-keywords: ["behavioral economics", "transit policy", "free public transit", "zero pricing", "fare-free buses", "congestion pricing", "Dan Ariely", "zero as special price", "public transportation", "NYC mayoral election", "Zohran Mamdani", "market norms vs social norms", "transit funding", "behavioral psychology", "urban policy"]
-external_url: "https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf"
+images:
+- https://static.philippdubach.com/ograph/ograph-TransitPolicy.jpg
+description: 'How behavioral economics on zero pricing applies to transit: why free
+  public transit feels revolutionary and its political consequences.'
+keywords:
+- behavioral economics
+- transit policy
+- free public transit
+- zero pricing
+- fare-free buses
+- congestion pricing
+- Dan Ariely
+- zero as special price
+- public transportation
+- NYC mayoral election
+- Zohran Mamdani
+- market norms vs social norms
+- transit funding
+- behavioral psychology
+- urban policy
+external_url: https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf
+aliases:
+- /2025/06/22/20250622-Transit-Policy/
 ---
-
 Over the weekend a [WSJ editorial on the 2025 New York City mayoral election](https://www.wsj.com/opinion/new-yorks-choice-cuomo-or-socialism-election-mayor-race-vote-mamdani-ede84c75) called one of the potential Democratic candidates Zohran Mamdani "a literal socialist" for - among other things - running on the promise of [free bus rides for all](https://www.thenation.com/article/society/new-york-city-bus-free-fare/):
 
 > Zohran won New York's first fare-free bus pilot on five lines across the city. As Mayor, he'll permanently eliminate the fare on every city bus [...] Fast and free buses will not only make buses reliable and accessible but will improve safety for riders and operators – creating the world-class service New Yorkers deserve.

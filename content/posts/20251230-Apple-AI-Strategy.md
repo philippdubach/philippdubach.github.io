@@ -1,13 +1,28 @@
 ---
-title: "Apple's AI Bet: Playing the Long Game or Missing the Moment?"
+title: 'Apple''s AI Bet: Playing the Long Game or Missing the Moment?'
 date: 2025-12-30
-images: ['https://static.philippdubach.com/ograph/ograph-apple-ai-strategy.jpg']
-external_url: "https://www.theinformation.com/articles/2026-predictions-apple-will-reverse-ai-slump"
-description: "Apple’s $157B cash pile and Gemini-powered Siri shift show a restrained AI strategy. Is Apple winning the war as AI models become low-cost commodities?"
-keywords: ["Apple AI strategy", "Siri Gemini update", "AI commoditization", "Apple Intelligence", "LLM market dynamics", "Big Tech AI spending", "AI investment bubble", "iPhone AI distribution", "Private Cloud Compute", "Apple cash reserves", "AI model pricing collapse", "Tim Cook AI strategy"]
+images:
+- https://static.philippdubach.com/ograph/ograph-apple-ai-strategy.jpg
+external_url: https://www.theinformation.com/articles/2026-predictions-apple-will-reverse-ai-slump
+description: "Apple\u2019s $157B cash pile and Gemini-powered Siri shift show a restrained\
+  \ AI strategy. Is Apple winning the war as AI models become low-cost commodities?"
+keywords:
+- Apple AI strategy
+- Siri Gemini update
+- AI commoditization
+- Apple Intelligence
+- LLM market dynamics
+- Big Tech AI spending
+- AI investment bubble
+- iPhone AI distribution
+- Private Cloud Compute
+- Apple cash reserves
+- AI model pricing collapse
+- Tim Cook AI strategy
 draft: false
+aliases:
+- /2025/12/30/20251230-Apple-AI-Strategy/
 ---
-
 [The Information](https://www.theinformation.com/articles/2026-predictions-apple-will-reverse-ai-slump) published a piece today arguing that Apple's restrained AI approach may finally pay off in 2026. The thesis: while OpenAI, Google, and Meta pour hundreds of billions into data centers and model training, Apple has kept its powder dry, sitting on [$157 billion in cash and marketable securities](https://www.apple.com/newsroom/2025/10/apple-reports-fourth-quarter-results/) as of Q4 2025. If the AI spending bubble deflates, Apple's position looks rather clever. This piqued my interest, from a strategy point of view: Apple hasn't been absent from AI. They've been making a specific bet that large language models will commoditize, and that value will flow to distribution and customer relationships rather than to whoever has the best model. The revamped Siri expected in spring 2026 will reportedly be powered by [Google's Gemini through a deal worth $1 billion annually](https://www.bloomberg.com/news/articles/2025-11-05/apple-plans-to-use-1-2-trillion-parameter-google-gemini-model-to-power-new-siri). The custom Gemini model will run on Apple's Private Cloud Compute servers.
 {{< img src="ai_capex_comparison.png" alt="Big Tech AI Capital Expenditure 2023-2025" width="80%" >}}
 This is consistent with Apple's history. They didn't build their own search engine. They took Google's money to be the default on Safari. [John Giannandrea's retirement](https://www.apple.com/newsroom/2025/12/john-giannandrea-to-retire-from-apple/) earlier this month, with Siri now under Mike Rockwell, signals internal recognition that something had to change.

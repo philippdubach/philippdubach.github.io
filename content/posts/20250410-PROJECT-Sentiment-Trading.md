@@ -1,11 +1,31 @@
 ---
-title: "Trading on Market Sentiment"
+title: Trading on Market Sentiment
 date: 2025-02-20
-images: ['https://static.philippdubach.com/ograph/ograph-sentiment.jpg']
-description: "Using GPT-3.5 for sentiment analysis in financial markets, comparing performance against RavenPack for predicting movements from headlines."
-keywords: ["market sentiment trading", "GPT-3.5 sentiment analysis", "financial NLP", "RavenPack benchmark", "algorithmic trading", "news headline analysis", "large language models finance", "sentiment-based trading strategy", "OpenAI financial applications", "quantitative trading", "market prediction", "financial sentiment scoring", "trading automation", "investment strategy", "fintech machine learning"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-sentiment.jpg
+description: Using GPT-3.5 for sentiment analysis in financial markets, comparing
+  performance against RavenPack for predicting movements from headlines.
+keywords:
+- market sentiment trading
+- GPT-3.5 sentiment analysis
+- financial NLP
+- RavenPack benchmark
+- algorithmic trading
+- news headline analysis
+- large language models finance
+- sentiment-based trading strategy
+- OpenAI financial applications
+- quantitative trading
+- market prediction
+- financial sentiment scoring
+- trading automation
+- investment strategy
+- fintech machine learning
+tags:
+- Project
 draft: false
+aliases:
+- /2025/02/20/20250410-PROJECT-Sentiment-Trading/
 ---
 _This post is based in part on a 2022 presentation I gave for the [ICBS Student Investment Fund](https://www.ft.com/content/3bd45acd-b323-3c6b-ba98-ac78b456f308) and my seminar work at Imperial College London._
 

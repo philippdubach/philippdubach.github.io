@@ -1,12 +1,28 @@
 ---
-title: "Nike's Crisis and the Economics of Brand Decay"
+title: Nike's Crisis and the Economics of Brand Decay
 date: 2025-12-02
-images: ['https://static.philippdubach.com/ograph/ograph-nike-crisis.jpg']
-description: "Economic analysis of Nike's crisis: how complementary assets, path dependency, and strategic misalignment destroyed competitive advantage."
-keywords: ["NIKE Case study", "competitive advantage theory", "corporate strategy analysis", "organizational economics", "brand economics", "supply chain economics", "path dependency economics", "market structure analysis", "corporate decline analysis", "strategic management", "business model innovation", "trade policy economics", "Porter competitive strategy"]
+images:
+- https://static.philippdubach.com/ograph/ograph-nike-crisis.jpg
+description: 'Economic analysis of Nike''s crisis: how complementary assets, path
+  dependency, and strategic misalignment destroyed competitive advantage.'
+keywords:
+- NIKE Case study
+- competitive advantage theory
+- corporate strategy analysis
+- organizational economics
+- brand economics
+- supply chain economics
+- path dependency economics
+- market structure analysis
+- corporate decline analysis
+- strategic management
+- business model innovation
+- trade policy economics
+- Porter competitive strategy
 draft: false
+aliases:
+- /2025/12/02/20251201-Nike-Crisis/
 ---
-
 > What it sounds like is that the CEO has the wrong people making the wrong decisions across the strongest brand or one of the strongest brands in consumer history.
 
 This quote by [Scott Galloway on his podcast](https://www.youtube.com/watch?v=vRNe_aJEUqA) is from July 2024. In March 2025, Nike reported its worst revenue decline in nearly five years: an [11.5% drop to $11.01 billion. Digital sales fell 20%, app downloads decreased 35%, and store foot traffic declined 11%](https://www.reuters.com/business/retail-consumer/nike-post-worst-revenue-fall-5-years-stagnant-demand-2025-03-19/). The company that once captured roughly half of the US athletic footwear market now faces a crisis that reveals how competitive advantages work, and how quickly they can disappear.

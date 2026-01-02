@@ -1,12 +1,13 @@
 ---
-title: "Lessons from Wargaming Great Power Conflict"
+title: Lessons from Wargaming Great Power Conflict
 date: 2025-11-30
-images: ['https://static.philippdubach.com/ograph/ograph-wargaming.jpg']
-external_url: "https://www.csis.org/topics/wargaming-and-scenarios"
-
+images:
+- https://static.philippdubach.com/ograph/ograph-wargaming.jpg
+external_url: https://www.csis.org/topics/wargaming-and-scenarios
 draft: true
+aliases:
+- /2025/11/30/20251130-Wargaming/
 ---
-
 Review  CSIS  papers on wargaming
 
 The First Battle of the Next War Wargaming a Chinese Invasion of Taiwan
