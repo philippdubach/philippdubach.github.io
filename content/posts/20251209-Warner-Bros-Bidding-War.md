@@ -6,7 +6,7 @@ description: "Netflix's $72B Warner Bros. deal vs Paramount's hostile $30/share 
 keywords: ["Warner Bros Discovery", "Netflix acquisition", "Paramount hostile takeover", "streaming consolidation", "media M&A", "David Ellison", "antitrust review", "Hollywood dealmaking", "aggregation theory", "HBO Max", "entertainment economics", "hostile tender offer"]
 draft: false
 aliases:
-- /2025/12/09/not-logan-roy-netflix-vs-paramounts-bidding-war/
+- /2025/12/09/not-logan-roy-netflix-vs.-paramounts-bidding-war/
 
 ---
 
