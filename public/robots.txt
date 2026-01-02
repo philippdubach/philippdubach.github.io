@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: http://localhost:1313/sitemap.xml
+Sitemap: https://philippdubach.com/sitemap.xml
 
 # Disallow admin/private areas
 Disallow: /cdn-cgi/
