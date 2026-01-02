@@ -20,7 +20,8 @@ keywords:
 - AI capital allocation
 draft: true
 aliases:
-- /2025/12/15/20251215-AI-Funding-Boom/
+- /2025/12/15/the-ai-funding-boom-what-70-billion-actually-means/
+
 ---
 In late November, [TechCrunch reported that 49 US AI startups had raised funding rounds worth $100 million or more in 2025](https://techcrunch.com/2025/11/26/here-are-the-49-us-ai-startups-that-have-raised-100m-or-more-in-2025/), matching 2024's total with a month remaining. The raw numbers are striking. But what they actually mean depends on where you look. The funding isn't evenly distributed. It's concentrated in infrastructure companies, research labs building foundation models, and a handful of application layer companies that have found product-market fit. The rest are betting that AI will transform their specific verticals, which may or may not happen.
 

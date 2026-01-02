@@ -20,7 +20,8 @@ tags:
 - Project
 draft: true
 aliases:
-- /2025/12/19/20251211-HN-Attention/
+- /2025/12/19/what-100000-hacker-news-posts-reveal-about-online-attention/
+
 ---
 I built a system to archive Hacker News in real-time, capturing every story, comment, and score change as it happens. After collecting nearly 100,000 items with 22,000 temporal snapshots during December 2025, the data tells a story that contradicts how most people think about online success.
 {{< img src="hn_archiver_overview2.png" alt="Key results: Gini 0.91, Velocity correlation 0.74, Matthew effect -0.04, Viral precision 97.6%" width="100%" >}}

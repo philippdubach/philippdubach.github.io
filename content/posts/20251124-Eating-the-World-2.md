@@ -24,7 +24,8 @@ keywords:
 - AI commoditization
 draft: false
 aliases:
-- /2025/11/24/20251124-Eating-the-World-2/
+- /2025/11/24/is-ai-really-eating-the-world-agi-networks-value-2/2/
+
 ---
 _Start by reading [Is AI Really Eating the World? What we've Learned [1/2]](/2025/11/23/is-ai-really-eating-the-world-what-weve-learned-1/2/)_
 

@@ -24,7 +24,8 @@ keywords:
 external_url: https://www.morganstanley.com/content/dam/im/assets/publication/thought-leadership/consilient-observer/article_everythingisadcfmodel_us.pdf
 draft: false
 aliases:
-- /2025/10/19/20251018-Everything_DCF_Model/
+- /2025/10/19/everything-is-a-dcf-model/
+
 ---
 A brilliant piece of writing from [Michael Mauboussin](https://www.morganstanley.com/im/en-us/individual-investor/about-us/people-and-teams/investment-professionals/michael-mauboussin.html) and [Dan Callahan](https://www.morganstanley.com/im/en-us/individual-investor/about-us/people-and-teams/investment-professionals/dan-callahan.html) at Morgan Stanley that was formative in what I personally believe when it comes to valuation. 
 

@@ -24,7 +24,8 @@ keywords:
 - weather technology
 draft: false
 aliases:
-- /2025/11/22/20251115-Weather-forecasts/
+- /2025/11/22/weather-forecasts-have-improved-a-lot/
+
 ---
 Reading the press release for Google DeepMind's [WeatherNext 2](https://deepmind.google/discover/blog/weathernext-2-our-most-advanced-weather-forecasting-model/), I wondered: have weather forecasts actually improved over the past years?
 

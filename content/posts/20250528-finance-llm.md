@@ -23,7 +23,8 @@ keywords:
 - financial sector AI
 external_url: https://arxiv.org/abs/2505.24650
 aliases:
-- /2025/05/28/20250528-finance-llm/
+- /2025/05/28/the-model-said-so/
+
 ---
 LLMs make your life easier until they don't.
 

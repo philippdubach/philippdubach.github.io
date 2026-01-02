@@ -6,7 +6,8 @@ images:
 external_url: https://www.csis.org/topics/wargaming-and-scenarios
 draft: true
 aliases:
-- /2025/11/30/20251130-Wargaming/
+- /2025/11/30/lessons-from-wargaming-great-power-conflict/
+
 ---
 Review  CSIS  papers on wargaming
 

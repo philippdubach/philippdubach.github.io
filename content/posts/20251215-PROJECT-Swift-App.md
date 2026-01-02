@@ -7,5 +7,6 @@ tags:
 - Project
 draft: true
 aliases:
-- /2026/01/05/20251215-PROJECT-Swift-App/
+- /2026/01/05/building-a-swift-ios-app-with-cursor/
+
 ---

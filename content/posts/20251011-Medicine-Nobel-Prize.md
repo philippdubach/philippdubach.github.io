@@ -24,7 +24,8 @@ keywords:
 external_url: https://www.nobelprize.org/uploads/2025/10/popular-medicineprize2025-2.pdf
 draft: false
 aliases:
-- /2025/10/11/20251011-Medicine-Nobel-Prize/
+- /2025/10/11/popular-science-nobel-prize/
+
 ---
 [Mary E. Brunkow](https://en.wikipedia.org/wiki/Mary_E._Brunkow) just won the Nobel Prize in Physiology or Medicine 2025 for their (she was jointly awarded) discoveries concerning [peripheral immune tolerance](https://en.wikipedia.org/wiki/Peripheral_tolerance).
 

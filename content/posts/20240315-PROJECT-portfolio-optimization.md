@@ -24,7 +24,8 @@ keywords:
 tags:
 - Project
 aliases:
-- /2024/03/15/20240315-PROJECT-portfolio-optimization/
+- /2024/03/15/my-first-optimal-portfolio/
+
 ---
 My introduction to quantitative portfolio optimization happened during my undergraduate years, inspired by Attilio Meucci's [Risk and Asset Allocation](https://link.springer.com/book/10.1007/978-3-540-27904-4) and the convex optimization [teachings of Diamond and Boyd at Stanford](https://web.stanford.edu/~boyd/teaching.html). With enthusiasm and perhaps more confidence than expertise, I created my first "optimal" portfolio. What struck me most was the disconnect between theory and accessibility. Modern Portfolio Theory had been established since 1990, yet the optimization tools remained largely locked behind proprietary software. 
 

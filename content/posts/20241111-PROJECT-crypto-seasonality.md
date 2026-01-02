@@ -25,7 +25,8 @@ tags:
 - Project
 draft: false
 aliases:
-- /2024/11/11/20241111-PROJECT-crypto-seasonality/
+- /2024/11/11/crypto-mean-reversion-trading/
+
 ---
 In late 2021, Lars Kaiser's paper on [seasonality in cryptocurrencies](https://www.sciencedirect.com/science/article/abs/pii/S1544612318304513) inspired me to use my [Kraken API Key](https://docs.kraken.com/api/) to try and make some money. A quick summary of the paper: (1) Kaiser analyzes seasonality patterns across 10 cryptocurrencies (Bitcoin, Ethereum, etc.), examining returns, volatility, trading volume, and spreads (2) Finds no consistent calendar effects in cryptocurrency returns, supporting weak-form market efficiency (3) Observes robust patterns in trading activity - lower volume, volatility, and spreads in January, weekends, and summer months (4) Documents significant impact of January 2018 market sell-off on seasonality patterns (5) Reports a "reverse Monday effect" for Bitcoin (positive Monday returns) and "reverse January effect" (negative January returns) (6) Trading activity patterns suggest crypto markets are dominated by retail rather than institutional investors. 
 

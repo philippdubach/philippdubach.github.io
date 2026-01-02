@@ -21,7 +21,8 @@ keywords:
 - large language models
 draft: true
 aliases:
-- /2025/12/15/20251215-ai-thinking-economics/
+- /2025/12/15/when-machines-think-the-economics-of-ai-understanding/
+
 ---
 In November 2025, The New Yorker published ["The Case That A.I. Is Thinking"](https://www.newyorker.com/magazine/2025/11/10/the-case-that-ai-is-thinking), a piece that captured the strange moment we're in. Dario Amodei predicts AI smarter than Nobel Prize winners by 2027. Sam Altman writes about digital superintelligence. Meanwhile, most people interact with AI tools that feel like Clippy, Microsoft's old assistant that was more annoying than useful. The gap between the hype and daily experience creates a fog where it's tempting to conclude there's nothing to see here.
 

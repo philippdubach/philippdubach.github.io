@@ -21,7 +21,8 @@ keywords:
 - Tim Cook AI strategy
 draft: false
 aliases:
-- /2025/12/30/20251230-Apple-AI-Strategy/
+- /2025/12/30/apples-ai-bet-playing-the-long-game-or-missing-the-moment/
+
 ---
 [The Information](https://www.theinformation.com/articles/2026-predictions-apple-will-reverse-ai-slump) published a piece today arguing that Apple's restrained AI approach may finally pay off in 2026. The thesis: while OpenAI, Google, and Meta pour hundreds of billions into data centers and model training, Apple has kept its powder dry, sitting on [$157 billion in cash and marketable securities](https://www.apple.com/newsroom/2025/10/apple-reports-fourth-quarter-results/) as of Q4 2025. If the AI spending bubble deflates, Apple's position looks rather clever. This piqued my interest, from a strategy point of view: Apple hasn't been absent from AI. They've been making a specific bet that large language models will commoditize, and that value will flow to distribution and customer relationships rather than to whoever has the best model. The revamped Siri expected in spring 2026 will reportedly be powered by [Google's Gemini through a deal worth $1 billion annually](https://www.bloomberg.com/news/articles/2025-11-05/apple-plans-to-use-1-2-trillion-parameter-google-gemini-model-to-power-new-siri). The custom Gemini model will run on Apple's Private Cloud Compute servers.
 {{< img src="ai_capex_comparison.png" alt="Big Tech AI Capital Expenditure 2023-2025" width="80%" >}}

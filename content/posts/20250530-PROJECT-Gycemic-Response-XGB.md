@@ -25,7 +25,8 @@ tags:
 - Project
 draft: false
 aliases:
-- /2025/05/30/20250530-PROJECT-Gycemic-Response-XGB/
+- /2025/05/30/modeling-glycemic-response-with-xgboost/
+
 ---
 Earlier this year I wrote how [I built a CGM data reader](/2025/01/02/i-built-a-cgm-data-reader/) after wearing a continuous glucose monitor myself. Since I was already logging my macronutrients and learning more about molecular biology in an [MIT MOOC](https://ocw.mit.edu/courses/res-7-008-7-28x-molecular-biology/) I became curious if given a meal's macronutrients (carbs, protein, fat) and some basic individual characteristics (age, BMI), these could serve as features in a regressor machine learning model to predict the curve parameters of the postprandial glucose curve (how my blood sugar levels change after eating). I came across a paper on [Personalized Nutrition by Prediction of Glycemic Responses](https://pdub.click/2512231c) which did exactly that. Unfortunately, neither the data nor the code were publicly available. And - I wanted to predict my _own_ glycemic response curve. So I decided to build my own model. In the process I wrote this [working paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5914902).
 <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5914902">

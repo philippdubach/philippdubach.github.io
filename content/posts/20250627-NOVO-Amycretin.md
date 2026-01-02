@@ -23,7 +23,8 @@ keywords:
 - Eli Lilly competition
 external_url: https://www.thelancet.com/journals/lancet/article/PIIS0140-6736%2825%2901185-7/
 aliases:
-- /2025/06/29/20250627-NOVO-Amycretin/
+- /2025/06/29/novo-nordisks-post-patent-strategy/
+
 ---
 Novo Nordisk, a long time member of my "regrets" stock list, has become [reasonably affordable lately (-48% yoy)](https://finance.yahoo.com/quote/NVO/chart/). Part of the reason being that they currently sit atop a ~$20 billion Ozempic/Wegovy franchise that faces [patent expiration in 2031](https://journals.library.columbia.edu/index.php/stlr/blog/view/653). That's roughly seven years to replace their blockbuster drug. We revisit them today, since per [newly published Lancet data](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)01185-7/fulltext), Novo's lead replacement candidate—amycretin—just posted some genuinely impressive Phase 1 results. The injectable version delivered [24.3% average weight loss versus 1.1% for placebo](https://www.thelancet.com/cms/10.1016/S0140-6736(25)01185-7/asset/6f4ec048-c12e-4185-a860-a2dc988746c4/main.assets/gr3_lrg.jpg), beating both current market leaders (Wegovy at 15% and Lilly's Zepbound at 22.5%). Even the oral version hit 13.1% weight loss in just 12 weeks, with patients still losing weight when the trial ended.
 

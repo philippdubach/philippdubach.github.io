@@ -20,7 +20,8 @@ tags:
 - Project
 draft: false
 aliases:
-- /2025/12/24/20251224-PROJECT-Newsletter-Setup/
+- /2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/
+
 ---
 {{< img src="Newsletter_Overview2.jpg" alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions" width="80%" >}}
 Friends have been asking how they can stay up to date with what I'm working on and keep track of the things I read, write, and share. RSS feeds don't seem to be en vogue anymore, apparently. So I built a mailing list. What else would you do over the Christmas break?

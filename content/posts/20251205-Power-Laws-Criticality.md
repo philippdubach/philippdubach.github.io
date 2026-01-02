@@ -21,7 +21,8 @@ keywords:
 - income inequality economics
 draft: true
 aliases:
-- /2025/12/05/20251205-Power-Laws-Criticality/
+- /2025/12/05/power-laws-criticality-and-the-economics-of-extreme-events/
+
 ---
 In October 2008, as Lehman Brothers collapsed and credit markets froze, risk managers at major banks discovered their models had a fundamental flaw. They had assumed asset returns followed normal distributions, which meant a simultaneous 20% decline across multiple asset classes was a once-in-10,000-year event. But it was happening in real time. [The Financial Crisis Inquiry Commission's report](https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf) documented how [Value at Risk models used by major banks](https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr348.pdf) systematically underestimated tail risk by assuming Gaussian distributions. The models weren't just wrong about probabilities. They were wrong about the underlying structure. Financial markets don't follow bell curves. They follow power laws, where extreme events are inevitable features of the system's architecture.
 

@@ -16,7 +16,8 @@ tags:
 - Project
 draft: false
 aliases:
-- /2025/11/30/2025-11-30-PROJECT-Cursor/
+- /2025/11/30/deploying-to-production-with-ai-agents-testing-cursor-on-azure/
+
 ---
 I've been curious about [Cursor's capabilities](https://cursor.com/features) for a while, but never had a good reason to try it. This weekend I decided to host my own URL shortener and deployed [YOURLS](https://yourls.org), a free and open-source link shortener, on a fresh Azure VM. It seemed like a solid test case since it involves SSH access, server configuration, database setup, and SSL certificates. If an AI assistant could handle that end-to-end, it would be genuinely useful.
 
