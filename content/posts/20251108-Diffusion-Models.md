@@ -27,7 +27,7 @@ aliases:
 - /2025/11/08/working-with-models/
 
 ---
-There was this "[I work with Models](https://us1.discourse-cdn.com/flex001/uploads/ultralytics1/original/1X/45c604467b6f4212858281cf28f71a77083fb45e.jpeg)" joke which I first heard years ago from an analyst working on a valuation model ([see my previous post](/2025/10/19/everything-is-a-dcf-model/)). I guess it has become more relevant than ever:
+There was this "[I work with Models](https://us1.discourse-cdn.com/flex001/uploads/ultralytics1/original/1X/45c604467b6f4212858281cf28f71a77083fb45e.jpeg)" joke which I first heard years ago from an analyst working on a valuation model ([see my previous post](/posts/everything-is-a-dcf-model/)). I guess it has become more relevant than ever:
 
 >This monograph presents the core principles that have guided the development of diffusion models, tracing their origins and showing how diverse formulations arise from shared mathematical ideas. Diffusion modeling starts by defining a forward process that gradually corrupts data into noise, linking the data distribution to a simple prior through a continuum of intermediate distributions.
 
