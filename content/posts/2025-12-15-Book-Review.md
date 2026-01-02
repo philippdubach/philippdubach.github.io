@@ -1,12 +1,20 @@
 ---
-title: "Book Review: Why Machines Learn"
+title: 'Book Review: Why Machines Learn'
 date: 2025-12-27
-images: ['https://static.philippdubach.com/ograph/ograph-aibookreview.jpg']
-description: "A review of Ananthaswamy's Why Machines Learn: A clear tour of the math behind modern machine learning, with real derivations and geometry."
-keywords: ["machine learning", "book review", "mathematics", "neural networks", "AI"]
+images:
+- https://static.philippdubach.com/ograph/ograph-aibookreview.jpg
+description: 'A review of Ananthaswamy''s Why Machines Learn: A clear tour of the
+  math behind modern machine learning, with real derivations and geometry.'
+keywords:
+- machine learning
+- book review
+- mathematics
+- neural networks
+- AI
 draft: false
+aliases:
+- /2025/12/27/2025-12-15-Book-Review/
 ---
-
 > We cannot leave decisions about how AI will be built and deployed solely to its practitioners. If we are to effectively regulate this technology, another layer of society, educators, politicians, policymakers [...], must come to grips with the basics of the mathematics of machine learning.
 
 I read a book that is sort of related to my recent writing on AI: *Why Machines Learn: The Elegant Math Behind Modern AI* by [Anil Ananthaswamy](https://www.anilananthaswamy.com/).

@@ -1,12 +1,30 @@
 ---
-title: "The Green Bond Commitment Premium"
+title: The Green Bond Commitment Premium
 date: 2024-12-31
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "Research shows companies issuing only green bonds achieve environmental benefits, while mixing green and conventional bonds shows no impact."
-keywords: ["green bond commitment premium", "green finance", "ESG ratings", "CO2 emissions", "net-zero policies", "greenwashing", "sustainable finance", "environmental finance", "green bond issuance", "carbon reduction policies", "difference-in-differences model", "financing costs", "pure-play green issuers", "bond market analysis", "environmental impact"]
-external_url: "https://www.nature.com/articles/s41599-024-04318-1"
+images:
+- https://static.philippdubach.com/ograph/ograph-post.jpg
+description: Research shows companies issuing only green bonds achieve environmental
+  benefits, while mixing green and conventional bonds shows no impact.
+keywords:
+- green bond commitment premium
+- green finance
+- ESG ratings
+- CO2 emissions
+- net-zero policies
+- greenwashing
+- sustainable finance
+- environmental finance
+- green bond issuance
+- carbon reduction policies
+- difference-in-differences model
+- financing costs
+- pure-play green issuers
+- bond market analysis
+- environmental impact
+external_url: https://www.nature.com/articles/s41599-024-04318-1
+aliases:
+- /2024/12/31/20241231-green-bond/
 ---
-
 The difference between green finance that works and green finance that doesn't work seems to be commitment: Using a Difference-in-Differences model analyzing 2013-2023 bond data, researchers found no significant correlation between green bond issuance and CO2 emissions after net-zero policies were adopted. That's the disappointing part. On the upside: companies issuing only green bonds showed higher ESG ratings, lower CO2 emissions, and lower financing costs, achieving substantial environmental benefits and economic advantages. Meanwhile, entities issuing both conventional and green bonds showed no environmental benefits, raising concerns about potential greenwashing.
 
 >Those issuing only green bonds tend to have higher ESG ratings, lower CO2 emissions, and lower financing costs.

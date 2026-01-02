@@ -1,14 +1,27 @@
 ---
-title: "What 100,000 Hacker News Posts Reveal About Online Attention"
-seoTitle: "100K Hacker News Posts: Online Attention Study"
+title: What 100,000 Hacker News Posts Reveal About Online Attention
+seoTitle: '100K Hacker News Posts: Online Attention Study'
 date: 2025-12-19
-images: ['https://static.philippdubach.com/ograph/ograph-hn-attention.jpg']
-description: "Analysis of 100K Hacker News posts shows extreme attention inequality but no rich-get-richer effect. The first two hours determine everything."
-keywords: ["Hacker News", "attention economics", "social media analytics", "content virality", "data science", "power laws", "online communities", "engagement prediction", "computational social science"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-hn-attention.jpg
+description: Analysis of 100K Hacker News posts shows extreme attention inequality
+  but no rich-get-richer effect. The first two hours determine everything.
+keywords:
+- Hacker News
+- attention economics
+- social media analytics
+- content virality
+- data science
+- power laws
+- online communities
+- engagement prediction
+- computational social science
+tags:
+- Project
 draft: true
+aliases:
+- /2025/12/19/20251211-HN-Attention/
 ---
-
 I built a system to archive Hacker News in real-time, capturing every story, comment, and score change as it happens. After collecting nearly 100,000 items with 22,000 temporal snapshots during December 2025, the data tells a story that contradicts how most people think about online success.
 {{< img src="hn_archiver_overview2.png" alt="Key results: Gini 0.91, Velocity correlation 0.74, Matthew effect -0.04, Viral precision 97.6%" width="100%" >}}
 The headline result: a [Gini coefficient](https://en.wikipedia.org/wiki/Gini_coefficient) of 0.91. That means the bottom 80% of posts receive less than 10% of total upvotes. HN's attention economy is more unequal than income distribution in the most unequal countries on Earth.

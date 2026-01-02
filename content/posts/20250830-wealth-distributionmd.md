@@ -1,14 +1,32 @@
 ---
-title: "Agent-based Systems for Modeling Wealth Distribution"
-seoTitle: "Modeling Wealth Distribution"
+title: Agent-based Systems for Modeling Wealth Distribution
+seoTitle: Modeling Wealth Distribution
 date: 2025-08-30
-images: ['https://static.philippdubach.com/ograph/ograph-distribution.jpg']
-description: "Agent-based modeling of wealth distribution using the Affine Wealth Model, showing how random transactions lead to Pareto distributions."
-keywords: ["agent-based systems", "wealth distribution", "Affine Wealth Model", "Pareto distribution", "wealth tax", "economic modeling", "Gary Stevenson", "Asset-Exchange Model", "wealth inequality", "stochastic modeling", "binary-transaction model", "Gini coefficient", "economic simulation", "wealth concentration", "progressive taxation"] 
-external_url: "https://arxiv.org/abs/1604.02370"
+images:
+- https://static.philippdubach.com/ograph/ograph-distribution.jpg
+description: Agent-based modeling of wealth distribution using the Affine Wealth Model,
+  showing how random transactions lead to Pareto distributions.
+keywords:
+- agent-based systems
+- wealth distribution
+- Affine Wealth Model
+- Pareto distribution
+- wealth tax
+- economic modeling
+- Gary Stevenson
+- Asset-Exchange Model
+- wealth inequality
+- stochastic modeling
+- binary-transaction model
+- Gini coefficient
+- economic simulation
+- wealth concentration
+- progressive taxation
+external_url: https://arxiv.org/abs/1604.02370
 draft: false
+aliases:
+- /2025/08/30/20250830-wealth-distributionmd/
 ---
-
 A question [Gary Stevenson](https://www.youtube.com/garyseconomics), the self-proclaimed [best trader in the world](https://on.ft.com/4n7z5jD), has been asking for some time is [if a wealth tax can fix Britain's economy](https://uclrethinkingeconomics.com/2025/06/25/gary-stevenson-can-a-wealth-tax-fix-britains-economy/).
 > [...] he believed the continued parlous state of the economy would halt any interest rate hikes. The reason? Because when ordinary people receive money, they spend it, stimulating the economy, while the wealthy tend to save it. But our economic model promotes the concentration of wealth among a select few at the expense of everybody else's living standards.
 

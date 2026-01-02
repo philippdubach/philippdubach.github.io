@@ -1,12 +1,13 @@
 ---
-title: "Introduction to Multi-Armed Bandits"
+title: Introduction to Multi-Armed Bandits
 date: 2025-10-25
-images: ['https://static.philippdubach.com/ograph/ograph-mab.jpg']
-
-external_url: "https://arxiv.org/abs/1904.07272"
+images:
+- https://static.philippdubach.com/ograph/ograph-mab.jpg
+external_url: https://arxiv.org/abs/1904.07272
 draft: true
+aliases:
+- /2025/10/25/20251025-MAB-Introduction/
 ---
-
 This 2019 textbook by Slivkins remains one of the best introductions to multi-armed bandits—a deceptively simple framework for algorithms making decisions under uncertainty. The book's structure is pedagogical and comprehensive: four chapters on IID rewards, three on adversarial scenarios, one on contextual bandits, and three on economic applications including learning in repeated games and exploration under incentive constraints.
 
 The framework is elegantly simple: you have K possible actions (arms) and T rounds, choosing an arm each round to maximize total reward. But I've learned that implementation reveals complexities the textbook can't fully capture.

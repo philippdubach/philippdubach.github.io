@@ -1,12 +1,29 @@
 ---
-title: "The Tech behind this Site"
+title: The Tech behind this Site
 date: 2024-01-15
-images: ['https://static.philippdubach.com/ograph/ograph-projects.jpg']
-description: "Technical guide to implementing responsive images in Hugo using Cloudflare's CDN and custom shortcodes for optimized WebP delivery."
-keywords: ["Hugo static site", "responsive images", "Cloudflare image CDN", "Hugo shortcode", "WebP optimization", "image resizing", "R2 bucket", "static site generation", "markdown syntax", "picture element", "image transformations", "mobile optimization", "web performance"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-projects.jpg
+description: Technical guide to implementing responsive images in Hugo using Cloudflare's
+  CDN and custom shortcodes for optimized WebP delivery.
+keywords:
+- Hugo static site
+- responsive images
+- Cloudflare image CDN
+- Hugo shortcode
+- WebP optimization
+- image resizing
+- R2 bucket
+- static site generation
+- markdown syntax
+- picture element
+- image transformations
+- mobile optimization
+- web performance
+tags:
+- Project
+aliases:
+- /2024/01/15/20240115-PROJECT-blog/
 ---
-
 Similar to how Simon Willison describes his difficulties managing images for his [approach to running a link blog](https://simonwillison.net/2024/Dec/22/link-blog/) I found it hard to remain true to pure markdown syntax but have images embedded in a responsive way on this site.
 
 My current pipeline is as follows: I host my all my images in a R2 bucket and serve them from ```static.philippdubach.com```. I use Cloudflares's image resizing CDN do I never have to worry about serving images in appropriate size or format. I basically just upload them with the highes possible quality and Cloudflare takes care of the rest.

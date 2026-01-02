@@ -1,12 +1,14 @@
 ---
-title: "Math Template"
+title: Math Template
 date: 2024-01-01
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-external_url: "https://gohugo.io/content-management/mathematics/"
+images:
+- https://static.philippdubach.com/ograph/ograph-post.jpg
+external_url: https://gohugo.io/content-management/mathematics/
 math: true
 draft: true
+aliases:
+- /2024/01/01/20240101-Math-Template/
 ---
-
 $$\Delta u_{t+i,t-1} = \beta_i X_{t-1} + \delta_i + \epsilon_{u,t+i}$$
 $$dy_{t+i,t-1} = dy^{POT}_{t+i,t-1} + \gamma_i \Delta u_{t+i,t-1} + \epsilon_{y,t+i}$$
 

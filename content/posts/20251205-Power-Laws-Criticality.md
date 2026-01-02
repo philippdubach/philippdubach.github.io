@@ -1,13 +1,28 @@
 ---
-title: "Power Laws, Criticality, and the Economics of Extreme Events"
-seoTitle: "Power Laws and the Economics of Extremes"
+title: Power Laws, Criticality, and the Economics of Extreme Events
+seoTitle: Power Laws and the Economics of Extremes
 date: 2025-12-05
-images: ['https://static.philippdubach.com/ograph/ograph-powerlaws.jpg']
-description: "How self-organized criticality and extreme value theory explain financial crises, tail risk, and why VaR models fail in risk management."
-keywords: ["power law distribution", "tail risk", "self-organized criticality", "extreme value theory", "Value at Risk", "Pareto distribution", "financial crisis modeling", "complex systems economics", "portfolio theory", "fat tail distributions", "risk model failure", "income inequality economics"]
+images:
+- https://static.philippdubach.com/ograph/ograph-powerlaws.jpg
+description: How self-organized criticality and extreme value theory explain financial
+  crises, tail risk, and why VaR models fail in risk management.
+keywords:
+- power law distribution
+- tail risk
+- self-organized criticality
+- extreme value theory
+- Value at Risk
+- Pareto distribution
+- financial crisis modeling
+- complex systems economics
+- portfolio theory
+- fat tail distributions
+- risk model failure
+- income inequality economics
 draft: true
+aliases:
+- /2025/12/05/20251205-Power-Laws-Criticality/
 ---
-
 In October 2008, as Lehman Brothers collapsed and credit markets froze, risk managers at major banks discovered their models had a fundamental flaw. They had assumed asset returns followed normal distributions, which meant a simultaneous 20% decline across multiple asset classes was a once-in-10,000-year event. But it was happening in real time. [The Financial Crisis Inquiry Commission's report](https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf) documented how [Value at Risk models used by major banks](https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr348.pdf) systematically underestimated tail risk by assuming Gaussian distributions. The models weren't just wrong about probabilities. They were wrong about the underlying structure. Financial markets don't follow bell curves. They follow power laws, where extreme events are inevitable features of the system's architecture.
 
 This isn't a quirk of finance. In 1896, Italian engineer Vilfredo Pareto analyzed income tax records across Europe and found the same pattern everywhere. [His original work, published in 1897](https://www.jstor.org/stable/2959679), showed that when he plotted income distributions on logarithmic scales, they formed straight lines with slopes around -1.5. The richest 1% didn't earn twice or ten times more than average. They earned hundreds or thousands of times more. This pattern held across Italy, England, France, and Prussia. Pareto had discovered what we now call a power law distribution, and it appears throughout economic systems: income, wealth, company sizes, city populations, venture capital returns, and market crashes.

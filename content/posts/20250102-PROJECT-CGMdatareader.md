@@ -1,13 +1,31 @@
 ---
-title: "I Built a CGM Data Reader"
+title: I Built a CGM Data Reader
 date: 2025-01-02
-images: ['https://static.philippdubach.com/ograph/ograph-cgm.jpg']
-description: "Built a CGM data analysis tool integrating Abbott Libre 3 glucose data with nutrition, sleep, and workout data for cycling performance."
-keywords: ["CGM data reader", "Abbott Freestyle Libre 3", "continuous glucose monitor", "LibreView data", "glucose tracking dashboard", "endurance cycling nutrition", "Python data analysis", "CGM visualization", "blood sugar monitoring", "fitness data integration", "MacroFactor nutrition", "Garmin workout data", "glucose pattern analysis", "time-in-range metrics"]
-tags: ["Project"]
+images:
+- https://static.philippdubach.com/ograph/ograph-cgm.jpg
+description: Built a CGM data analysis tool integrating Abbott Libre 3 glucose data
+  with nutrition, sleep, and workout data for cycling performance.
+keywords:
+- CGM data reader
+- Abbott Freestyle Libre 3
+- continuous glucose monitor
+- LibreView data
+- glucose tracking dashboard
+- endurance cycling nutrition
+- Python data analysis
+- CGM visualization
+- blood sugar monitoring
+- fitness data integration
+- MacroFactor nutrition
+- Garmin workout data
+- glucose pattern analysis
+- time-in-range metrics
+tags:
+- Project
 draft: false
+aliases:
+- /2025/01/02/20250102-PROJECT-CGMdatareader/
 ---
-
 >_If you're reading this, you might also be interested in: [Modeling Glycemic Response with XGBoost](/2025/05/30/modeling-glycemic-response-with-xgboost/)_
 
 Last year I put a Continuous Glucose Monitor (CGM) sensor, specifically the [Abbott Freestyle Libre 3](https://www.freestyle.abbott), on my left arm. Why? I wanted to optimize my nutrition for endurance cycling competitions. Where I live, the sensor is easy to get—without any medical prescription—and even easier to use. Unfortunately, Abbott's [FreeStyle LibreLink](https://apps.apple.com/us/app/freestyle-librelink-us/id1325992472) app is less than optimal (3,250 other people with an average rating of 2.9/5.0 seem to agree). In their defense, the web app LibreView does offer some nice reports which can be generated as PDFs—not very dynamic, but still something! What I had in mind was more in the fashion of the [Ultrahuman M1 dashboard](https://ultrahuman.com/m1). Unfortunately, I wasn't allowed to use my Libre sensor (EU firmware) with their app (yes, I spoke to customer service).

@@ -1,12 +1,30 @@
 ---
-title: "OpenAI Cuts Prices, Raises Stakes"
+title: OpenAI Cuts Prices, Raises Stakes
 date: 2024-05-20
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "OpenAI's GPT-4o offers 2x faster performance at half the price with breakthrough multimodal capabilities across text, vision, and audio."
-keywords: ["OpenAI GPT-4o", "AI competitive strategy", "multimodal AI", "GPT-4 Turbo", "AI pricing strategy", "real-time voice conversation", "ChatGPT free tier", "AI market competition", "Silicon Valley strategy", "AI ecosystem", "text vision audio AI", "AI rate limits", "Google Anthropic competition", "AI wars", "frontier AI capabilities"]
-external_url: "https://openai.com/index/hello-gpt-4o/"
+images:
+- https://static.philippdubach.com/ograph/ograph-post.jpg
+description: OpenAI's GPT-4o offers 2x faster performance at half the price with breakthrough
+  multimodal capabilities across text, vision, and audio.
+keywords:
+- OpenAI GPT-4o
+- AI competitive strategy
+- multimodal AI
+- GPT-4 Turbo
+- AI pricing strategy
+- real-time voice conversation
+- ChatGPT free tier
+- AI market competition
+- Silicon Valley strategy
+- AI ecosystem
+- text vision audio AI
+- AI rate limits
+- Google Anthropic competition
+- AI wars
+- frontier AI capabilities
+external_url: https://openai.com/index/hello-gpt-4o/
+aliases:
+- /2024/05/20/20240520-openai-gtp4o/
 ---
-
 OpenAI's GPT-4o launch is a classic Silicon Valley competitive strategy disguised as a product announcement.
 
 > GPT-4o is 2x faster, half the price, and has 5x higher rate limits compared to GPT-4 Turbo

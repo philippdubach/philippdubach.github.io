@@ -1,13 +1,31 @@
 ---
-title: "Damodaran on Gold's 2025 Surge"
+title: Damodaran on Gold's 2025 Surge
 date: 2025-11-16
-images: ['https://static.philippdubach.com/ograph/ograph-Damodaran.jpg']
-description: "Damodaran's analysis of gold's 2025 surge: insurance against tail risks despite being unproductive, contradicting value investing principles."
-keywords: ["Aswath Damodaran", "gold price surge 2025", "gold valuation", "unproductive assets", "Warren Buffett investing", "tail risk insurance", "hyperinflation hedge", "market dislocation", "portfolio diversification", "collectible vs asset", "macro uncertainty", "value investing", "gold investment analysis", "asset pricing", "investment framework"]
-external_url: "https://aswathdamodaran.blogspot.com/2025/11/a-golden-year-2025-golds-price-surge.html"
+images:
+- https://static.philippdubach.com/ograph/ograph-Damodaran.jpg
+description: 'Damodaran''s analysis of gold''s 2025 surge: insurance against tail
+  risks despite being unproductive, contradicting value investing principles.'
+keywords:
+- Aswath Damodaran
+- gold price surge 2025
+- gold valuation
+- unproductive assets
+- Warren Buffett investing
+- tail risk insurance
+- hyperinflation hedge
+- market dislocation
+- portfolio diversification
+- collectible vs asset
+- macro uncertainty
+- value investing
+- gold investment analysis
+- asset pricing
+- investment framework
+external_url: https://aswathdamodaran.blogspot.com/2025/11/a-golden-year-2025-golds-price-surge.html
 draft: false
+aliases:
+- /2025/11/16/20241116-Damodaran-Gold/
 ---
-
 [Aswath Damodaran's](https://pages.stern.nyu.edu/~adamodar/) latest analysis into gold's 2025 surge walks through gold's contradictory nature as a collectible rather than an asset with cash flows, showing why it's impossible to "value" gold in the traditional sense, yet entirely possible to understand what drives its pricing. 
 
 Even though gold is outperforming almost all other assets in my portfolio this year I fundamentally don't like holding it. I'm a [Buffett disciple](https://buffett.cnbc.com/2011-berkshire-hathaway-annual-meeting/): gold is an unproductive asset that generates no earnings, pays no dividends. 

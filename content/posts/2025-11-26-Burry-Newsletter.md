@@ -1,13 +1,26 @@
 ---
-title: "Michael Burry's $379 Newsletter"
+title: Michael Burry's $379 Newsletter
 date: 2025-11-28
-images: ['https://static.philippdubach.com/ograph/ograph-burry-newsletter.jpg']
-external_url: "https://michaeljburry.substack.com"
-description: "Michael Burry launches a Substack after deregistering his hedge fund, warning AI markets are in bubble territory like the 1999 dot-com crash."
-keywords: ["Michael Burry", "Substack newsletter", "AI bubble", "Nvidia criticism", "dot-com crash comparison", "Big Short investor", "GPU depreciation", "artificial intelligence valuations", "market prediction", "tech bubble warning"]
+images:
+- https://static.philippdubach.com/ograph/ograph-burry-newsletter.jpg
+external_url: https://michaeljburry.substack.com
+description: Michael Burry launches a Substack after deregistering his hedge fund,
+  warning AI markets are in bubble territory like the 1999 dot-com crash.
+keywords:
+- Michael Burry
+- Substack newsletter
+- AI bubble
+- Nvidia criticism
+- dot-com crash comparison
+- Big Short investor
+- GPU depreciation
+- artificial intelligence valuations
+- market prediction
+- tech bubble warning
 draft: false
+aliases:
+- /2025/11/28/2025-11-26-Burry-Newsletter/
 ---
-
 [Michael Burry](https://en.wikipedia.org/wiki/Michael_Burry) (who in your head probably looks like [Christian Bale thanks to The Big Short](https://www.historyvshollywood.com/reelfaces/big-short/)), the investor who famously predicted the 2008 housing crash, has launched a Substack newsletter after [deregistering his hedge fund](https://www.bloomberg.com/news/articles/2025-11-18/burry-says-he-s-active-in-markets-after-fund-is-deregistered). The $379 annual subscription capitalizes on the 1.6 million followers he's built on [X](https://twitter.com/michaeljburry), offering what he describes as his "sole focus" going forward.
 
 The newsletter's [inaugural post takes](https://michaeljburry.substack.com/p/foundations-my-1999-and-part-of-2000) (which he kindly enough made accessible for free as a Thanksgiving gift today) readers back to 1999, when Burry was a 27-year-old neurology resident at Stanford making $33'000 annually while carrying $150'000 in medical school debt. There he wrote his [Valuestocks.net article "Buffett Revisited"](https://michaeljburry.substack.com/api/v1/file/a7e6acc6-aeac-460a-a26a-5fbe43e50d19.pdf). A fellow resident casually mentioned making $1.5 million on Polycom stock. Physicians crowded around terminals checking stocks while patients waited. In that environment, Burry was writing investment analysis late at night, getting paid $1 per word by MSN Money under the pen name "Value Doc." His VSN Fund returned 68.1% in 1999, and by February 2000, the [San Francisco Chronicle](https://michaeljburry.substack.com/api/v1/file/7e7cf8c7-2cd5-4bc1-8e36-0f7354ae04d6.pdf) noted he had shorted Amazon. Fourteen days after that article appeared, the NASDAQ topped. It was a peak it wouldn't revisit for 15 years.

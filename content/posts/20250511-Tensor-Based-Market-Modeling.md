@@ -1,12 +1,30 @@
 ---
-title: "Beyond Monte Carlo: Tensor-Based Market Modeling"
+title: 'Beyond Monte Carlo: Tensor-Based Market Modeling'
 date: 2025-05-11
-images: ['https://static.philippdubach.com/ograph/ograph-post.jpg']
-description: "Using Transition Probability Tensors and attention mechanisms to bridge ML pattern recognition with arbitrage-free pricing in quant finance."
-keywords: ["tensor-based market modeling", "Monte Carlo simulation", "quantitative finance", "attention mechanisms", "Transition Probability Tensors", "arbitrage-free pricing", "First Fundamental Theorem of Finance", "risk factor modeling", "financial derivatives pricing", "machine learning finance", "volatility regimes", "hedging strategies", "market stress testing", "UBS Investment Bank", "algorithmic trading"]
-external_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863"
+images:
+- https://static.philippdubach.com/ograph/ograph-post.jpg
+description: Using Transition Probability Tensors and attention mechanisms to bridge
+  ML pattern recognition with arbitrage-free pricing in quant finance.
+keywords:
+- tensor-based market modeling
+- Monte Carlo simulation
+- quantitative finance
+- attention mechanisms
+- Transition Probability Tensors
+- arbitrage-free pricing
+- First Fundamental Theorem of Finance
+- risk factor modeling
+- financial derivatives pricing
+- machine learning finance
+- volatility regimes
+- hedging strategies
+- market stress testing
+- UBS Investment Bank
+- algorithmic trading
+external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863
+aliases:
+- /2025/05/11/20250511-Tensor-Based-Market-Modeling/
 ---
-
 A fascinating new paper from Stefano Iabichino at UBS Investment Bank explores what happens when you take the attention mechanisms powering modern AI and apply them to Wall Street's most fundamental pricing problems, tackling what might be quantitative finance's most intractable challenge.
 
 The problem is elegantly simple yet profound: machine learning models are great at finding patterns in historical data, but financial theory demands that arbitrage-free prices be independent of past information. As the authors put it:

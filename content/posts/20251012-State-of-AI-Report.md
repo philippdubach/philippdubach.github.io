@@ -1,13 +1,31 @@
 ---
-title: "The State of AI Report 2025"
+title: The State of AI Report 2025
 date: 2025-10-12
-images: ['https://static.philippdubach.com/ograph/ograph-stateofaireport.jpg']
-description: "Analysis of the State of AI Report 2025: reasoning models, China's AI capabilities, business adoption growth, and survey bias concerns."
-keywords: ["State of AI Report 2025", "AI survey bias", "reasoning models", "OpenAI", "Google AI", "Anthropic", "DeepSeek", "China AI capabilities", "AI business adoption", "AI practitioners survey", "Nathan Benaich", "Air Street Capital", "AI tools pricing", "multi-gigawatt data centers", "statistical significance"]
-external_url: "https://docs.google.com/presentation/d/1xiLl0VdrlNMAei8pmaX4ojIOfej6lhvZbOIK7Z6C-Go/edit?usp=sharing"
+images:
+- https://static.philippdubach.com/ograph/ograph-stateofaireport.jpg
+description: 'Analysis of the State of AI Report 2025: reasoning models, China''s
+  AI capabilities, business adoption growth, and survey bias concerns.'
+keywords:
+- State of AI Report 2025
+- AI survey bias
+- reasoning models
+- OpenAI
+- Google AI
+- Anthropic
+- DeepSeek
+- China AI capabilities
+- AI business adoption
+- AI practitioners survey
+- Nathan Benaich
+- Air Street Capital
+- AI tools pricing
+- multi-gigawatt data centers
+- statistical significance
+external_url: https://docs.google.com/presentation/d/1xiLl0VdrlNMAei8pmaX4ojIOfej6lhvZbOIK7Z6C-Go/edit?usp=sharing
 draft: false
+aliases:
+- /2025/10/12/20251012-State-of-AI-Report/
 ---
-
 This year's rendition of [The State of AI Report](https://www.stateof.ai) is making rounds on LinkedIn (yes, LinkedIn the place where the great [E = MC2 + AI](https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2Fy9dk1prvwf2b1.jpg) equation was "discovered").
 
 Worth keeping in mind this is made by [Nathan Benaich](https://www.nathanbenaich.com) the Founder of Air Street Capital, a venture capital firm investing in "AI-first companies", so obviously comes with a lot of bias. It's also a relatively small, open survey, with 1'200 "AI practitioners" surveyed.
