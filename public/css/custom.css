@@ -5,6 +5,34 @@
     box-sizing: border-box;
 }
 
+/* 404 Error page styles */
+.error-page {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.error-page h1 {
+    font-size: 6rem;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.error-page p {
+    font-size: 1.1rem;
+    color: #595959;
+    margin-bottom: 1rem;
+}
+
+.error-page a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.error-page a:hover {
+    text-decoration: underline;
+}
+
 /* Accessibility - visually hidden but accessible to screen readers */
 .visually-hidden {
     position: absolute;
