@@ -1,1 +1,36 @@
+# macOS system files
 **/.DS_Store
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Hugo generated files
+/public/
+/resources/_gen/
+/.hugo_build.lock
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js (if using npm packages)
+node_modules/
+package-lock.json
+
+# Environment files
+.env
+.venv
+.env.local
+.env.*.local
+.github/
+
+# Temporary files
+tmp/
+*.tmp
+*.bak
+*.old

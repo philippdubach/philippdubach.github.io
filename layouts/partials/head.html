@@ -3,8 +3,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    {{/* Content Security Policy - allows GoatCounter and necessary scripts */}}
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://pdub.click; frame-ancestors 'self'; base-uri 'self';">
+    {{/* Content Security Policy - allows GoatCounter, MathJax CDN, and necessary scripts */}}
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://pdub.click https://cdn.jsdelivr.net; frame-ancestors 'self'; base-uri 'self';">
     
     {{/* Preconnect to external domains for faster resource loading */}}
     <link rel="preconnect" href="https://gc.zgo.at" crossorigin>

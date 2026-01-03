@@ -38,7 +38,7 @@
   var container = document.getElementById('top-post-week');
   if (container) {
     fetch('https://weekly-top-goatcounter-api.philippd.workers.dev')
-      .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
       .then(function(data) {
         if (data.hits && data.hits.length > 0) {
           var t = data.hits[0];
@@ -48,7 +48,8 @@
       .catch(function() { container.remove(); });
   }
 
-  // Share link handler
+  // Share link handler - generates short URLs via pdub.click proxy
+  // Note: The short URL service is rate-limited and proxied through Cloudflare Workers
   var link = document.getElementById('share-link');
   var status = document.getElementById('share-status');
   if (!link) return;
@@ -57,19 +58,20 @@
     e.preventDefault();
     status.textContent = '...';
     var pageUrl = window.location.href;
+    var apiEndpoint = 'https://pdub.click/shorten?url=' + encodeURIComponent(pageUrl);
     
     // Safari requires ClipboardItem with Promise for async clipboard writes
     // The Promise must be created synchronously during the user gesture
     if (navigator.clipboard && navigator.clipboard.write && typeof ClipboardItem !== 'undefined') {
       var clipboardItem = new ClipboardItem({
-        'text/plain': fetch('https://pdub.click/yourls-api.php?signature=4807288869&action=shorturl&format=json&url=' + encodeURIComponent(pageUrl))
-          .then(function(r) { return r.json(); })
+        'text/plain': fetch(apiEndpoint)
+          .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
           .then(function(data) {
             var short = data.shorturl || '';
             return new Blob([short], { type: 'text/plain' });
           })
           .catch(function() {
-            return new Blob([''], { type: 'text/plain' });
+            return new Blob([pageUrl], { type: 'text/plain' });
           })
       });
       navigator.clipboard.write([clipboardItem]).then(function() {
@@ -81,8 +83,8 @@
       });
     } else {
       // Fallback for older browsers without ClipboardItem support
-      fetch('https://pdub.click/yourls-api.php?signature=4807288869&action=shorturl&format=json&url=' + encodeURIComponent(pageUrl))
-        .then(function(r) { return r.json(); })
+      fetch(apiEndpoint)
+        .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
         .then(function(data) {
           var short = data.shorturl;
           if (short && navigator.clipboard && navigator.clipboard.writeText) {
