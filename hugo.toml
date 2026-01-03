@@ -25,7 +25,7 @@ enableRobotsTXT = true
   
   favicon = "/favicon.ico"
   math = false
-  site_name = "Philipp D. Dubach - Macro & Tech Thought Leadership"
+  site_name = "Philipp D. Dubach - Finance, Tech & Strategy"
   locale = "en_US"
   default_image = "https://static.philippdubach.com/ograph/ograph-post.jpg"
   theme_color = "#2c3e50"
