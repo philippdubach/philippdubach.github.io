@@ -27,6 +27,9 @@ jobs:
         with:
           sitemap-location: 'https://philippdubach.com/sitemap.xml'
           key: ${{ secrets.INDEXNOW_KEY }}
-          since: 1
+          # TEMPORARY: Bulk submit all URLs for initial IndexNow setup
+          # After first successful run, revert to: since: 1, since-unit: 'day', remove lastmod-required
+          since: 9999
           since-unit: 'day'
+          lastmod-required: false
           endpoint: 'api.indexnow.org'  # Shares with all participating engines
