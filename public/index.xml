@@ -23,6 +23,7 @@ alt="Bar chart showing cost to acquire Bitcoin hash power by percentage, from $0
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -53,6 +54,7 @@ alt="Big Tech AI Capital Expenditure 2023-2025"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -84,6 +86,7 @@ alt="Screenshot of rendered newsletter showing article preview cards with images
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -120,6 +123,7 @@ alt="Comparison of Netflix vs Paramount offers for Warner Bros Discovery"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -180,6 +184,7 @@ alt="2D Gradient Plot: The colored surface shows function values. Black arrows s
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -213,6 +218,7 @@ alt="alt text here"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -243,6 +249,7 @@ alt="alt text here"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -275,6 +282,7 @@ alt="Training results showing confusion matrix and loss curves"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -305,6 +313,7 @@ alt="Roboflow workflow with Claude API integration"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -337,6 +346,7 @@ alt="Final training results with improved dataset"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -367,6 +377,7 @@ alt="Real-time blackjack card detection and odds calculation"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -397,6 +408,7 @@ alt="Overview of selected fitted curves"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -442,6 +454,7 @@ alt="Overview of Working Paper Pages"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -472,6 +485,7 @@ alt="Overview of the CGM pipeline workflow"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -502,6 +516,7 @@ alt="Overview of single fitted curve of cgm measurements"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -532,6 +547,7 @@ alt="Overview of selected fitted curves"
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -580,6 +596,7 @@ alt="Relative frequency of monthly Google News Search terms over 5 years. Number
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;
@@ -610,6 +627,7 @@ alt="Impact of headlines measured by subsequent index move (Data Source: Bloombe
 class=""
 width="1200"
 loading="lazy"
+decoding="async"
 style="width: 100%; height: auto; display: block;"&gt;
 &lt;/picture&gt;
 &lt;/a&gt;

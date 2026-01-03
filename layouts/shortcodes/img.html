@@ -37,7 +37,7 @@
          width="{{ $imgWidth }}"
          {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}"{{ end }}
          {{ if eq $priority "true" }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
-         {{ if eq $priority "true" }}decoding="async"{{ end }}
+         decoding="async"
          style="width: 100%; height: auto; display: block;">
   </picture>
 </a>
