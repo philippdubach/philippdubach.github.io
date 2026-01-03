@@ -1,0 +1,32 @@
+# Submit recently updated URLs to search engines via IndexNow protocol
+# Runs daily and after each deployment to notify Bing, Yandex, etc. of changes
+name: IndexNow
+
+on:
+  # Run after Hugo deployment completes
+  workflow_run:
+    workflows: ["Deploy Hugo site to Pages"]
+    types:
+      - completed
+  
+  # Also run daily to catch any missed updates
+  schedule:
+    - cron: '0 6 * * *'  # 6 AM UTC daily
+  
+  # Manual trigger for testing
+  workflow_dispatch:
+
+jobs:
+  submit-urls:
+    runs-on: ubuntu-latest
+    # Only run if deployment succeeded (or on schedule/manual trigger)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Submit to IndexNow
+        uses: bojieyang/indexnow-action@v2
+        with:
+          sitemap-location: 'https://philippdubach.com/sitemap.xml'
+          key: ${{ secrets.INDEXNOW_KEY }}
+          since: 1
+          since-unit: 'day'
+          endpoint: 'api.indexnow.org'  # Shares with all participating engines

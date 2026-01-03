@@ -56,6 +56,8 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Setup IndexNow key file
+        run: echo "${{ secrets.INDEXNOW_KEY }}" > ./public/${{ secrets.INDEXNOW_KEY }}.txt
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
