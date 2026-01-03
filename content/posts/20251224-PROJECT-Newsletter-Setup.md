@@ -1,7 +1,8 @@
 ---
 title: Building a No-Tracking Newsletter from Markdown to Distribution
-seoTitle: Building a No-Tracking Newsletter
+seoTitle: Building a No-Tracking Newsletter System
 date: 2025-12-24
+lastmod: 2026-01-03
 images:
 - https://static.philippdubach.com/ograph/ograph-newsletter-setup.jpg
 description: Building a privacy-focused newsletter from Markdown to HTML with Cloudflare

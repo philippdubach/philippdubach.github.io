@@ -2,6 +2,7 @@
 title: 'Apple''s AI Bet: Playing the Long Game or Missing the Moment?'
 seoTitle: 'Apple''s AI Bet: Long Game or Missing the Moment?'
 date: 2025-12-30
+lastmod: 2026-01-03
 images:
 - https://static.philippdubach.com/ograph/ograph-apple-ai-strategy.jpg
 external_url: https://www.theinformation.com/articles/2026-predictions-apple-will-reverse-ai-slump
