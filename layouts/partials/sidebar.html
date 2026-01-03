@@ -2,9 +2,9 @@
     <div class="sidebar-content">
         <div class="site-header">
             <div class="site-title">
-                <a href="{{ .Site.BaseURL }}" aria-label="Home - {{ .Site.Title }}">{{ .Site.Title }}</a>
+                <a href="{{ .Site.BaseURL }}" aria-label="Home - {{ .Site.Title }}">{{ .Site.Params.sidebar_title | default .Site.Title }}</a>
             </div>
-            <p class="site-description">{{ .Site.Params.description }}</p>
+            <p class="site-description">{{ .Site.Params.sidebar_description | default .Site.Params.description }}</p>
         </div>
         
         <nav class="navigation" aria-label="Main navigation">
