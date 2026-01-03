@@ -1,5 +1,6 @@
 ---
 title: Building a No-Tracking Newsletter from Markdown to Distribution
+seoTitle: Building a No-Tracking Newsletter
 date: 2025-12-24
 images:
 - https://static.philippdubach.com/ograph/ograph-newsletter-setup.jpg
