@@ -3,6 +3,21 @@
 {{ partial "head.html" . }}
 <body class="linkblog">
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    {{/* Mobile menu toggle (CSS-only, hidden checkbox) */}}
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+    
+    {{/* Mobile header - visible only on small screens */}}
+    <header class="mobile-header" role="banner">
+        <a href="{{ .Site.BaseURL }}" class="mobile-logo">{{ .Site.Params.sidebar_title | default .Site.Title }}</a>
+        <label for="menu-toggle" class="menu-icon" aria-label="Toggle navigation menu">
+            <span class="hamburger"></span>
+        </label>
+    </header>
+    
+    {{/* Overlay for closing menu */}}
+    <label for="menu-toggle" class="menu-overlay" aria-hidden="true"></label>
+    
     <div class="container">
         {{ partial "sidebar.html" . }}
         <main id="main-content" class="content" role="main">

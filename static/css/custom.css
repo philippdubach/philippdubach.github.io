@@ -201,7 +201,7 @@ blockquote p {
 .post-title a {
     text-decoration: none;
     color: #333;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.3;
 }
@@ -315,22 +315,55 @@ blockquote p {
 
 /* Pagination */
 .pagination {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     margin-bottom: 1rem;
-    text-align: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
+    padding-top: 1.5rem;
     border-top: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.pagination a {
-    color: #007acc;
+.pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    min-height: 44px;
+    color: #333;
     text-decoration: none;
     font-weight: 500;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    background: transparent;
+    transition: color 0.15s, background-color 0.15s;
+}
+
+.pagination-btn:hover {
+    color: #007acc;
+    background-color: #f8fafc;
+}
+
+.pagination-btn.disabled {
+    color: #ccc;
+    cursor: default;
+    pointer-events: none;
+}
+
+.pagination-arrow {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.pagination-info {
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 400;
 }
 
 .pagination a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Lightbox styles */
@@ -549,87 +582,329 @@ a.lightbox-overlay:target {
     text-decoration: underline;
 }
 
-/* Responsive design - 50% scaling */
+/* Hidden checkbox for toggle state */
+.menu-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Mobile header - hidden on desktop */
+.mobile-header {
+    display: none;
+}
+
+/* Overlay - hidden on desktop */
+.menu-overlay {
+    display: none;
+}
+
+/* ===================================
+   Responsive Design - Mobile First
+   =================================== */
+
 @media screen and (max-width: 768px) {
+    /* Base font - readable size */
     html {
-        font-size: 8px !important;
+        font-size: 15px;
     }
     
     body {
-        font-size: 1rem !important;
+        padding-top: 0;
     }
     
+    /* Mobile header - always visible sticky bar */
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 52px;
+        padding: 0 1rem;
+        background: #fff;
+        border-bottom: 1px solid #e9ecef;
+        z-index: 1000;
+    }
+    
+    .mobile-logo {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+        text-decoration: none;
+        letter-spacing: -0.01em;
+    }
+    
+    .mobile-logo:hover {
+        color: #007acc;
+    }
+    
+    /* Hamburger icon - CSS-drawn lines, minimal style */
+    .menu-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .hamburger {
+        position: relative;
+        width: 20px;
+        height: 1.5px;
+        background: #333;
+        border-radius: 1px;
+        transition: background 0.2s ease;
+    }
+    
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 20px;
+        height: 1.5px;
+        background: #333;
+        border-radius: 1px;
+        transition: transform 0.2s ease, top 0.2s ease;
+    }
+    
+    .hamburger::before {
+        top: -6px;
+    }
+    
+    .hamburger::after {
+        top: 6px;
+    }
+    
+    /* Hamburger to X animation */
+    .menu-toggle:checked ~ .mobile-header .hamburger {
+        background: transparent;
+    }
+    
+    .menu-toggle:checked ~ .mobile-header .hamburger::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    
+    .menu-toggle:checked ~ .mobile-header .hamburger::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+    
+    /* Overlay for closing menu - subtle, minimal */
+    .menu-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s, visibility 0.25s;
+        z-index: 998;
+        cursor: pointer;
+    }
+    
+    .menu-toggle:checked ~ .menu-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Sidebar - slide-in drawer on mobile */
     .sidebar {
-        width: 90px !important;
-        min-width: 90px !important;
-        padding: 0.75rem !important;
+        position: fixed;
+        top: 52px; /* Below mobile header */
+        left: 0;
+        width: 260px;
+        max-width: 80vw;
+        height: calc(100vh - 52px);
+        padding: 1.5rem;
+        background: #fff;
+        z-index: 999;
+        transform: translateX(-100%);
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        border-right: 1px solid #e9ecef;
     }
     
+    /* Hide only site title - already in mobile header, keep description */
+    .sidebar .site-title {
+        display: none;
+    }
+    
+    .sidebar .site-description {
+        margin-top: 0;
+    }
+    
+    .menu-toggle:checked ~ .container .sidebar {
+        transform: translateX(0);
+    }
+    
+    /* Container - full width on mobile */
     .container {
-        max-width: 600px !important;
-        margin: 0 20px !important;
+        flex-direction: column;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    /* Content area */
+    .content {
+        max-width: 100%;
+        padding: 1.25rem 1rem;
+        padding-bottom: 2rem;
+    }
+    
+    /* Posts and archive */
+    .posts,
+    .archive {
+        max-width: 100%;
+    }
+    
+    /* Typography adjustments */
+    .post-title a {
+        font-size: 1.25rem;
+        line-height: 1.35;
+    }
+    
+    .single .post-title {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+    
+    .post-content {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+    
+    .post-meta {
+        font-size: 0.8rem;
+    }
+    
+    /* Sidebar styles when visible */
+    .site-title a {
+        font-size: 1.35rem;
+    }
+    
+    .site-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .navigation li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .navigation a {
+        font-size: 1rem;
+    }
+    
+    .social-links {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    .social-links a {
+        font-size: 0.95rem;
+        margin-right: 1.25rem;
+    }
+    
+    /* Project tag */
+    .project-tag {
+        font-size: 8px;
+        padding: 2px 5px;
+        margin-left: 4px;
+    }
+    
+    /* Archive */
+    .archive-meta {
+        width: 50px;
+        font-size: 0.8rem;
+    }
+    
+    .archive-title a {
+        font-size: 0.95rem;
+    }
+    
+    .year h2 {
+        font-size: 1.25rem;
+        margin: 1.5rem 0 0.75rem 0;
+    }
+    
+    /* Pagination - horizontal on mobile too */
+    .pagination {
+        padding-top: 1.25rem;
+        margin-top: 2rem;
+        gap: 0.5rem;
+    }
+    
+    .pagination-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        min-height: 40px;
+    }
+    
+    .pagination-info {
+        font-size: 0.75rem;
+    }
+    
+    /* Feedback and newsletter */
+    .feedback-footer {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .newsletter-form {
+        max-width: 280px;
+    }
+    
+    /* Focus visible for touch */
+    .menu-icon:focus-visible {
+        outline: 2px solid #007acc;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 400px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .mobile-header {
+        padding: 0 0.75rem;
     }
     
     .content {
-        max-width: 400px !important;
-        padding: 1rem !important;
-        padding-bottom: 0.5rem !important;
-        overflow-x: hidden !important;
-        min-width: 0 !important;
+        padding: 1rem 0.75rem;
     }
     
-    .pagination {
-        margin-bottom: 1.5rem !important;
-        padding-bottom: 1.5rem !important;
+    .pagination-btn {
+        padding: 0.6rem 0.75rem;
     }
     
-    .project-tag {
-        padding: 1px 3px !important;
-        border-radius: 1.5px !important;
-        font-size: 4.5px !important;
-        letter-spacing: 0.15px !important;
-        margin-left: 3px !important;
+    .pagination-text {
+        display: none;
     }
     
-    .archive-meta {
-        width: 30px !important;
-    }
-    
-    .post-title,
-    .post-title a,
-    .single .post-title {
-        line-height: 1.2 !important;
-    }
-    
-    .post-content p:last-child {
-        margin-bottom: 0.25rem !important;
-    }
-    
-    .feedback-footer {
-        margin-top: 0.5rem !important;
-        padding-top: 0.5rem !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    #newsletter-form-container {
-        margin: 1rem 0 !important;
-    }
-    
-    /* Newsletter form narrower on mobile */
-    .newsletter-form {
-        max-width: 200px !important;
-    }
-    
-    .newsletter-message {
-        max-width: 200px !important;
-    }
-    
-    .newsletter-date {
-        display: block !important;
-        margin-bottom: 0.25rem !important;
-        min-width: auto !important;
+    .pagination-arrow {
+        font-size: 1.1rem;
     }
 }
+
+/* ===================================
+   Mobile Header & Navigation
+   CSS-only hamburger menu
+   =================================== */
 
 /* ===================================
    Code Blocks Styling
