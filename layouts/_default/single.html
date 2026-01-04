@@ -48,8 +48,8 @@
       .catch(function() { container.remove(); });
   }
 
-  // Share link handler - generates short URLs via pdub.click proxy
-  // Note: The short URL service is rate-limited and proxied through Cloudflare Workers
+  // Share link handler - copies page URL to clipboard
+  // Falls back to canonical URL if short URL service unavailable
   var link = document.getElementById('share-link');
   var status = document.getElementById('share-status');
   if (!link) return;
@@ -57,57 +57,59 @@
   link.addEventListener('click', function(e) {
     e.preventDefault();
     status.textContent = '...';
-    var pageUrl = window.location.href;
-    var apiEndpoint = 'https://pdub.click/shorten?url=' + encodeURIComponent(pageUrl);
     
-    // Safari requires ClipboardItem with Promise for async clipboard writes
-    // The Promise must be created synchronously during the user gesture
-    if (navigator.clipboard && navigator.clipboard.write && typeof ClipboardItem !== 'undefined') {
-      var clipboardItem = new ClipboardItem({
-        'text/plain': fetch(apiEndpoint)
-          .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
-          .then(function(data) {
-            var short = data.shorturl || '';
-            return new Blob([short], { type: 'text/plain' });
-          })
-          .catch(function() {
-            return new Blob([pageUrl], { type: 'text/plain' });
-          })
-      });
-      navigator.clipboard.write([clipboardItem]).then(function() {
-        status.textContent = 'url copied';
-        setTimeout(function() { status.textContent = ''; }, 2000);
-      }).catch(function() {
-        status.textContent = 'error';
-        setTimeout(function() { status.textContent = ''; }, 2000);
-      });
-    } else {
-      // Fallback for older browsers without ClipboardItem support
-      fetch(apiEndpoint)
-        .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
-        .then(function(data) {
-          var short = data.shorturl;
-          if (short && navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(short).then(function() {
-              status.textContent = 'url copied';
-              setTimeout(function() { status.textContent = ''; }, 2000);
-            }).catch(function() {
-              status.textContent = short;
-              setTimeout(function() { status.textContent = ''; }, 4000);
-            });
-          } else if (short) {
-            status.textContent = short;
-            setTimeout(function() { status.textContent = ''; }, 4000);
-          } else {
-            status.textContent = 'error';
-            setTimeout(function() { status.textContent = ''; }, 2000);
-          }
-        })
-        .catch(function() {
-          status.textContent = 'error';
-          setTimeout(function() { status.textContent = ''; }, 2000);
+    // Get canonical URL or fallback to current URL
+    var canonical = document.querySelector('link[rel="canonical"]');
+    var pageUrl = canonical ? canonical.href : window.location.href;
+    // Clean URL: remove trailing slashes and query params for consistency
+    var cleanUrl = pageUrl.replace(/\/+$/, '').split('?')[0];
+    
+    // Attempt to shorten via YOURLS API proxy (with timeout)
+    var apiEndpoint = 'https://pdub.click/yourls-api.php?action=shorturl&format=json&url=' + encodeURIComponent(cleanUrl);
+    var timeoutMs = 3000;
+    
+    // Create abort controller for timeout
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timeoutId = controller ? setTimeout(function() { controller.abort(); }, timeoutMs) : null;
+    
+    // Function to copy text and show status
+    var copyAndShow = function(text, isShort) {
+      if (timeoutId) clearTimeout(timeoutId);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          status.textContent = isShort ? 'short url copied' : 'url copied';
+          setTimeout(function() { status.textContent = ''; }, 2500);
+        }).catch(function() {
+          status.textContent = text; // Show URL if copy fails
+          setTimeout(function() { status.textContent = ''; }, 4000);
         });
-    }
+      } else {
+        status.textContent = text;
+        setTimeout(function() { status.textContent = ''; }, 4000);
+      }
+    };
+    
+    // Try to get short URL, fallback to full URL on any error
+    fetch(apiEndpoint, controller ? { signal: controller.signal } : {})
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function(data) {
+        if (data && data.shorturl && data.status === 'success') {
+          copyAndShow(data.shorturl, true);
+        } else if (data && data.shorturl) {
+          // URL already exists, use existing short URL
+          copyAndShow(data.shorturl, true);
+        } else {
+          throw new Error('No short URL returned');
+        }
+      })
+      .catch(function(err) {
+        // Service unavailable, timeout, or error - fallback to canonical URL
+        console.log('Short URL unavailable, using canonical:', err.message || err);
+        copyAndShow(cleanUrl, false);
+      });
   });
 })();
 </script>
