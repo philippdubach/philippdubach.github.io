@@ -29,4 +29,5 @@ jobs:
           key: ${{ secrets.INDEXNOW_KEY }}
           since: 1
           since-unit: 'day'
+          limit: 1000
           endpoint: 'api.indexnow.org'  # Shares with all participating engines
