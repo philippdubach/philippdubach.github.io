@@ -11,7 +11,11 @@ export async function postToBluesky(handle, appPassword, message, url, imageUrl,
   const session = await createSession(handle, appPassword);
   const { accessJwt, did } = session;
 
-  const fullText = `${message}\n\n${url}`;
+  const MAX_POST_LENGTH = 300;
+  const fullText = url ? `${message}\n\n${url}` : message;
+  if (fullText.length > MAX_POST_LENGTH) {
+    throw new Error(`Bluesky post exceeds ${MAX_POST_LENGTH} characters (got ${fullText.length})`);
+  }
   const facets = detectFacets(fullText);
 
   const record = {
@@ -81,7 +85,11 @@ function detectFacets(text) {
   let match;
   
   while ((match = urlRegex.exec(text)) !== null) {
-    const url = match[1];
+    // Trim common trailing punctuation that is likely not part of the URL
+    const rawUrl = match[1];
+    const url = rawUrl.replace(/[)\]\}.,!?;:]+$/u, '');
+    if (!url) continue;
+    
     const beforeText = text.substring(0, match.index);
     const byteStart = encoder.encode(beforeText).length;
     const byteEnd = byteStart + encoder.encode(url).length;
@@ -127,6 +135,9 @@ async function createEmbed(url, imageUrl, title, description, accessJwt) {
  * Upload image to Bluesky
  */
 async function uploadImage(imageUrl, accessJwt) {
+  const MAX_IMAGE_SIZE = 1024 * 1024; // 1MB limit
+  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+  
   try {
     const imageResponse = await fetch(imageUrl);
     if (!imageResponse.ok) {
@@ -135,7 +146,22 @@ async function uploadImage(imageUrl, accessJwt) {
     }
 
     const contentType = imageResponse.headers.get('content-type') || 'image/png';
+    if (!ALLOWED_TYPES.some(t => contentType.startsWith(t))) {
+      console.warn('Invalid image type:', contentType);
+      return null;
+    }
+    
+    const contentLength = imageResponse.headers.get('content-length');
+    if (contentLength && parseInt(contentLength, 10) > MAX_IMAGE_SIZE) {
+      console.warn('Image too large:', contentLength);
+      return null;
+    }
+    
     const imageBuffer = await imageResponse.arrayBuffer();
+    if (imageBuffer.byteLength > MAX_IMAGE_SIZE) {
+      console.warn('Image exceeds size limit after download');
+      return null;
+    }
 
     const uploadResponse = await fetch(`${BLUESKY_API}/com.atproto.repo.uploadBlob`, {
       method: 'POST',

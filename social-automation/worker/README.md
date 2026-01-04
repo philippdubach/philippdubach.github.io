@@ -93,16 +93,10 @@ curl "https://social-poster.YOUR_SUBDOMAIN.workers.dev/trigger?dry=true"
 curl "https://social-poster.YOUR_SUBDOMAIN.workers.dev/trigger"
 ```
 
-### View Posted Articles
+### View Status
 
 ```bash
-curl "https://social-poster.YOUR_SUBDOMAIN.workers.dev/posted"
-```
-
-### Clear State (for testing)
-
-```bash
-curl -X POST "https://social-poster.YOUR_SUBDOMAIN.workers.dev/clear"
+curl "https://social-poster.YOUR_SUBDOMAIN.workers.dev/status"
 ```
 
 ### Local Development
@@ -117,10 +111,9 @@ Then visit `http://localhost:8787/trigger?dry=true`
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/health` | GET | Health check |
+| `/health` | GET | Health check (no auth required) |
 | `/trigger` | GET | Trigger posting (add `?dry=true` for dry run) |
-| `/posted` | GET | List all posted articles |
-| `/clear` | POST | Clear posted state |
+| `/status` | GET | Show count of posted articles |
 
 ## Cost
 

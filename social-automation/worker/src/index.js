@@ -60,7 +60,18 @@ async function processNewPosts(env, dryRun = false) {
     throw new Error('RSS_URL environment variable not configured');
   }
 
-  const rssResponse = await fetch(env.RSS_URL, {
+  // Validate RSS_URL is a valid URL with http/https
+  let rssUrl;
+  try {
+    rssUrl = new URL(env.RSS_URL);
+  } catch (e) {
+    throw new Error('RSS_URL must be a valid URL');
+  }
+  if (rssUrl.protocol !== 'http:' && rssUrl.protocol !== 'https:') {
+    throw new Error('RSS_URL must use http or https protocol');
+  }
+
+  const rssResponse = await fetch(rssUrl.toString(), {
     headers: { 'User-Agent': 'SocialPoster/1.0' }
   });
   if (!rssResponse.ok) throw new Error(`RSS fetch failed: ${rssResponse.status}`);
@@ -74,6 +85,10 @@ async function processNewPosts(env, dryRun = false) {
   if (!Array.isArray(posts)) {
     throw new Error('Failed to parse RSS feed');
   }
+  if (posts.length === 0) {
+    console.warn(`RSS feed at ${env.RSS_URL} is valid but contains no items`);
+    return results;
+  }
 
   for (const post of posts) {
     const info = extractPostInfo(post);
@@ -86,7 +101,7 @@ async function processNewPosts(env, dryRun = false) {
     
     // Sanitize and create safe ID
     const id = info.link.match(/\/posts\/([^\/]+)\/?$/)?.[1] || 
-               info.link.replace(/[^a-zA-Z0-9-]/g, '-').substring(0, 100);
+               info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
     if (await env.POSTED_STATE.get(id)) {
       results.skipped++;
@@ -104,6 +119,9 @@ async function processNewPosts(env, dryRun = false) {
         continue;
       }
 
+      if (!env.BLUESKY_HANDLE || !env.BLUESKY_APP_PASSWORD) {
+        throw new Error('BLUESKY_HANDLE and BLUESKY_APP_PASSWORD secrets are required');
+      }
       const bsky = await postToBluesky(env.BLUESKY_HANDLE, env.BLUESKY_APP_PASSWORD, message, info.link, info.image, info.title, info.ogDescription);
       await env.POSTED_STATE.put(id, JSON.stringify({ title: info.title, uri: bsky.uri, at: new Date().toISOString() }));
       results.posted.push({ id, title: info.title, uri: bsky.uri });

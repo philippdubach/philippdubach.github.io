@@ -42,6 +42,7 @@ export async function generatePostMessage(ai, title, description) {
     }
     throw new Error('No response');
   } catch (e) {
-    return `New post: ${title.length > 180 ? title.substring(0, 177) + '...' : title}`;
+    const fallback = `New post: ${title}`;
+    return fallback.length > 200 ? fallback.substring(0, 197) + '...' : fallback;
   }
 }

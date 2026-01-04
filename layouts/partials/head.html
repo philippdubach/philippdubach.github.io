@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://static.philippdubach.com" crossorigin>
     <link rel="preconnect" href="https://pdub.click" crossorigin>
     <link rel="preconnect" href="https://newsletter-api.philippd.workers.dev" crossorigin>
-    {{/* dns-prefetch for domains that may be used but not immediately */}}
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    {{/* Preconnect to MathJax CDN */}}
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     {{/* SEO Meta Tags */}}
     <meta name="robots" content="{{ if .Params.robots }}{{ .Params.robots }}{{ else }}index, follow{{ end }}">

@@ -9,8 +9,8 @@
     "deploy": "wrangler deploy",
     "tail": "wrangler tail",
     "kv:create": "wrangler kv namespace create POSTED_STATE",
-    "secret:bluesky-handle": "echo 'Enter your Bluesky handle:' && wrangler secret put BLUESKY_HANDLE",
-    "secret:bluesky-password": "echo 'Enter your Bluesky app password:' && wrangler secret put BLUESKY_APP_PASSWORD"
+    "secret:bluesky-handle": "wrangler secret put BLUESKY_HANDLE",
+    "secret:bluesky-password": "wrangler secret put BLUESKY_APP_PASSWORD"
   },
   "devDependencies": {
     "wrangler": "^3.0.0"

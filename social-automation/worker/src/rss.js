@@ -13,9 +13,8 @@ export function parseRSS(xml) {
   
   // Match all <item> elements
   const itemRegex = /<item>([\s\S]*?)<\/item>/g;
-  let match;
   
-  while ((match = itemRegex.exec(xml)) !== null) {
+  for (const match of xml.matchAll(itemRegex)) {
     const itemXml = match[1];
     items.push({
       title: extractTag(itemXml, 'title'),
@@ -109,7 +108,7 @@ export function extractPostInfo(item) {
 export async function fetchOGMetadata(url) {
   try {
     const response = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SocialPoster/1.0)' },
+      headers: { 'User-Agent': 'SocialPoster/1.0' },
     });
     
     if (!response.ok) return { image: null, description: null };
