@@ -30,12 +30,31 @@
     {{ end }}
     
     {{ if gt .Paginator.TotalPages 1 }}
-    <nav class="pagination">
+    <nav class="pagination" aria-label="Page navigation">
         {{ if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" class="prev">← Newer Posts</a>
+            <a href="{{ .Paginator.Prev.URL }}" class="pagination-btn prev">
+                <span class="pagination-arrow">←</span>
+                <span class="pagination-text">Newer</span>
+            </a>
+        {{ else }}
+            <span class="pagination-btn disabled" aria-hidden="true">
+                <span class="pagination-arrow">←</span>
+                <span class="pagination-text">Newer</span>
+            </span>
         {{ end }}
+        
+        <span class="pagination-info">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
+        
         {{ if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" class="next">Older Posts →</a>
+            <a href="{{ .Paginator.Next.URL }}" class="pagination-btn next">
+                <span class="pagination-text">Older</span>
+                <span class="pagination-arrow">→</span>
+            </a>
+        {{ else }}
+            <span class="pagination-btn disabled" aria-hidden="true">
+                <span class="pagination-text">Older</span>
+                <span class="pagination-arrow">→</span>
+            </span>
         {{ end }}
     </nav>
     {{ end }}
