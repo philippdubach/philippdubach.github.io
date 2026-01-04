@@ -49,7 +49,7 @@
   }
 
   // Share link handler - copies page URL to clipboard
-  // Falls back to canonical URL if short URL service unavailable
+  // Uses YOURLS shortener proxy worker, falls back to canonical URL if unavailable
   var link = document.getElementById('share-link');
   var status = document.getElementById('share-status');
   if (!link) return;
@@ -64,8 +64,9 @@
     // Clean URL: remove trailing slashes and query params for consistency
     var cleanUrl = pageUrl.replace(/\/+$/, '').split('?')[0];
     
-    // Attempt to shorten via YOURLS API proxy (with timeout)
-    var apiEndpoint = 'https://pdub.click/yourls-api.php?action=shorturl&format=json&url=' + encodeURIComponent(cleanUrl);
+    // Use the YOURLS shortener proxy worker endpoint
+    // This proxies to YOURLS API with server-side authentication
+    var apiEndpoint = 'https://pdub.click/shorten?url=' + encodeURIComponent(cleanUrl);
     var timeoutMs = 3000;
     
     // Create abort controller for timeout
