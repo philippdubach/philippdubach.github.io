@@ -113,4 +113,4 @@ I send out a newsletter version of this blog, things I've been working on, and i
 })();
 </script>
 
-Alternatively, you can also subscribe to the [RSS feed](/index.xml) or follow on [Bluesky](https://bsky.app/profile/philippdubach.com).
+Alternatively, you can also subscribe to the [RSS feed](/index.xml) or get updates on [Bluesky](https://bsky.app/profile/philippdubach.com).
