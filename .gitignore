@@ -27,7 +27,9 @@ package-lock.json
 .venv
 .env.local
 .env.*.local
-.github/
+
+# Social automation local files
+social-automation/
 
 # Temporary files
 tmp/
