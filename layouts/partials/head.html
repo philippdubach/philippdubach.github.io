@@ -7,14 +7,13 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://pdub.click https://cdn.jsdelivr.net; frame-ancestors 'self'; base-uri 'self';">
     
     {{/* Preconnect to external domains for faster resource loading */}}
+    {{/* Note: preconnect implies dns-prefetch, so no need for both */}}
     <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
     <link rel="preconnect" href="https://static.philippdubach.com" crossorigin>
     <link rel="preconnect" href="https://pdub.click" crossorigin>
     <link rel="preconnect" href="https://newsletter-api.philippd.workers.dev" crossorigin>
-    <link rel="dns-prefetch" href="https://gc.zgo.at">
-    <link rel="dns-prefetch" href="https://static.philippdubach.com">
-    <link rel="dns-prefetch" href="https://pdub.click">
-    <link rel="dns-prefetch" href="https://newsletter-api.philippd.workers.dev">
+    {{/* dns-prefetch for domains that may be used but not immediately */}}
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     
     {{/* SEO Meta Tags */}}
     <meta name="robots" content="{{ if .Params.robots }}{{ .Params.robots }}{{ else }}index, follow{{ end }}">

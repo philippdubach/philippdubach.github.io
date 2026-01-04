@@ -1,0 +1,18 @@
+{
+  "name": "social-poster-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for automated social media posting",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "kv:create": "wrangler kv namespace create POSTED_STATE",
+    "secret:bluesky-handle": "echo 'Enter your Bluesky handle:' && wrangler secret put BLUESKY_HANDLE",
+    "secret:bluesky-password": "echo 'Enter your Bluesky app password:' && wrangler secret put BLUESKY_APP_PASSWORD"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
