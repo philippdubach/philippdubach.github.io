@@ -16,7 +16,7 @@ A personal linkblog and project showcase started in 2024 to collect interesting 
 - **CDN**: Cloudflare for static assets (`static.philippdubach.com`)
 - **URL Shortener**: Self-hosted YOURLS via Cloudflare Workers proxy (`pdub.click`)
 - **Search Engine Indexing**: IndexNow protocol integration
-- **Social Automation**: Cloudflare Workers with Workers AI for automated Bluesky posting
+- **Social Automation**: Cloudflare Workers with Workers AI for automated [Bluesky](https://bsky.app/profile/philippdubach.com) posting
 
 ## Project Structure
 
