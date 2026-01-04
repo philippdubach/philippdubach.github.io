@@ -48,68 +48,85 @@
       .catch(function() { container.remove(); });
   }
 
-  // Share link handler - copies page URL to clipboard
-  // Uses YOURLS shortener proxy worker, falls back to canonical URL if unavailable
+  // Share link handler - copies short URL to clipboard
+  // Lightweight, works on all browsers (desktop + mobile)
   var link = document.getElementById('share-link');
   var status = document.getElementById('share-status');
   if (!link) return;
-  
+
+  // Cross-browser clipboard copy (works on iOS Safari, older browsers)
+  function copyText(text, cb) {
+    // Try modern API first
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function() { cb(true); }, function() { cb(false); });
+      return;
+    }
+    // Fallback: textarea method (works everywhere including iOS)
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;top:0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      var ok = document.execCommand('copy');
+      cb(ok);
+    } catch (e) { cb(false); }
+    document.body.removeChild(ta);
+  }
+
+  // Get canonical URL once
+  var canonical = document.querySelector('link[rel="canonical"]');
+  var pageUrl = (canonical ? canonical.href : location.href).replace(/\/+$/, '').split('?')[0];
+  var shortUrl = null; // Cache the short URL after first fetch
+
   link.addEventListener('click', function(e) {
     e.preventDefault();
+    
+    // If we already have the short URL cached, just copy it
+    if (shortUrl) {
+      copyText(shortUrl, function(ok) {
+        status.textContent = ok ? 'copied!' : shortUrl;
+        setTimeout(function() { status.textContent = ''; }, 2500);
+      });
+      return;
+    }
+
     status.textContent = '...';
-    
-    // Get canonical URL or fallback to current URL
-    var canonical = document.querySelector('link[rel="canonical"]');
-    var pageUrl = canonical ? canonical.href : window.location.href;
-    // Clean URL: remove trailing slashes and query params for consistency
-    var cleanUrl = pageUrl.replace(/\/+$/, '').split('?')[0];
-    
-    // Use the YOURLS shortener proxy worker endpoint
-    // This proxies to YOURLS API with server-side authentication
-    var apiEndpoint = 'https://yourls-shortener-proxy.philippd.workers.dev/shorten?url=' + encodeURIComponent(cleanUrl);
-    var timeoutMs = 3000;
-    
-    // Create abort controller for timeout
-    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-    var timeoutId = controller ? setTimeout(function() { controller.abort(); }, timeoutMs) : null;
-    
-    // Function to copy text and show status
-    var copyAndShow = function(text, isShort) {
-      if (timeoutId) clearTimeout(timeoutId);
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(function() {
-          status.textContent = isShort ? 'short url copied' : 'url copied';
+
+    // Fetch short URL with timeout
+    var done = false;
+    var tid = setTimeout(function() {
+      if (done) return;
+      done = true;
+      copyText(pageUrl, function(ok) {
+        status.textContent = ok ? 'copied!' : pageUrl;
+        setTimeout(function() { status.textContent = ''; }, 2500);
+      });
+    }, 3000);
+
+    fetch('https://yourls-shortener-proxy.philippd.workers.dev/shorten?url=' + encodeURIComponent(pageUrl))
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function(d) {
+        if (done) return;
+        done = true;
+        clearTimeout(tid);
+        // YOURLS returns shorturl for both new and existing URLs
+        var url = d && d.shorturl ? d.shorturl : pageUrl;
+        if (d && d.shorturl) shortUrl = d.shorturl; // Cache it
+        copyText(url, function(ok) {
+          status.textContent = ok ? 'copied!' : url;
           setTimeout(function() { status.textContent = ''; }, 2500);
-        }).catch(function() {
-          status.textContent = text; // Show URL if copy fails
-          setTimeout(function() { status.textContent = ''; }, 4000);
         });
-      } else {
-        status.textContent = text;
-        setTimeout(function() { status.textContent = ''; }, 4000);
-      }
-    };
-    
-    // Try to get short URL, fallback to full URL on any error
-    fetch(apiEndpoint, controller ? { signal: controller.signal } : {})
-      .then(function(r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
       })
-      .then(function(data) {
-        if (data && data.shorturl && data.status === 'success') {
-          copyAndShow(data.shorturl, true);
-        } else if (data && data.shorturl) {
-          // URL already exists, use existing short URL
-          copyAndShow(data.shorturl, true);
-        } else {
-          throw new Error('No short URL returned');
-        }
-      })
-      .catch(function(err) {
-        // Service unavailable, timeout, or error - fallback to canonical URL
-        console.log('Short URL unavailable, using canonical:', err.message || err);
-        copyAndShow(cleanUrl, false);
+      .catch(function() {
+        if (done) return;
+        done = true;
+        clearTimeout(tid);
+        copyText(pageUrl, function(ok) {
+          status.textContent = ok ? 'copied!' : pageUrl;
+          setTimeout(function() { status.textContent = ''; }, 2500);
+        });
       });
   });
 })();
