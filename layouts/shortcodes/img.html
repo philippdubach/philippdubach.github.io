@@ -7,6 +7,10 @@
 {{- $imgHeight := .Get "imgHeight" | default "auto" -}}
 {{- $priority := .Get "priority" | default "false" -}}
 {{- $id := printf "%s-%d" (replace (replace $src "/" "-") "." "-") .Ordinal -}}
+{{- $sizes := $width -}}
+{{- if hasSuffix $width "%" -}}
+        {{- $sizes = replace $width "%" "vw" -}}
+{{- end -}}
 
 <a href="#lightbox-{{ $id }}" style="display: block; width: {{ $width }}; margin: 0 auto; padding: 1rem 0; text-decoration: none;">
   <picture class="img-lightbox">
@@ -14,21 +18,24 @@
     <source media="(max-width: 768px)" 
             srcset="{{ $baseUrl }}/cdn-cgi/image/width=320,quality=80,format=webp/{{ $src }} 320w,
                     {{ $baseUrl }}/cdn-cgi/image/width=480,quality=80,format=webp/{{ $src }} 480w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=640,quality=80,format=webp/{{ $src }} 640w"
-            sizes="{{ if eq $width "80%" }}80vw{{ else }}{{ $width }}{{ end }}">
+                    {{ $baseUrl }}/cdn-cgi/image/width=640,quality=80,format=webp/{{ $src }} 640w,
+                    {{ $baseUrl }}/cdn-cgi/image/width=960,quality=80,format=webp/{{ $src }} 960w,
+                    {{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w"
+            sizes="{{ $sizes }}">
     
     <!-- Tablet: 768px-1024px -->
     <source media="(max-width: 1024px)" 
             srcset="{{ $baseUrl }}/cdn-cgi/image/width=768,quality=80,format=webp/{{ $src }} 768w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=1024,quality=80,format=webp/{{ $src }} 1024w"
-            sizes="{{ if eq $width "80%" }}80vw{{ else }}{{ $width }}{{ end }}">
+                    {{ $baseUrl }}/cdn-cgi/image/width=1024,quality=80,format=webp/{{ $src }} 1024w,
+                    {{ $baseUrl }}/cdn-cgi/image/width=1440,quality=80,format=webp/{{ $src }} 1440w"
+            sizes="{{ $sizes }}">
     
     <!-- Desktop: 1024px+ -->
     <source media="(min-width: 1025px)" 
             srcset="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w,
                     {{ $baseUrl }}/cdn-cgi/image/width=1600,quality=80,format=webp/{{ $src }} 1600w,
                     {{ $baseUrl }}/cdn-cgi/image/width=2000,quality=80,format=webp/{{ $src }} 2000w"
-            sizes="{{ if eq $width "80%" }}80vw{{ else }}{{ $width }}{{ end }}">
+            sizes="{{ $sizes }}">
     
     <!-- Fallback -->
     <img src="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80/{{ $src }}" 
