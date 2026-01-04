@@ -1,6 +1,7 @@
 # macOS system files
 **/.DS_Store
 .DS_Store
+**/*.DS_Store
 
 # Logs
 logs/
@@ -28,8 +29,9 @@ package-lock.json
 .env.local
 .env.*.local
 
-# Social automation local files
-social-automation/
+# Social automation local development files (keep source, ignore build artifacts)
+social-automation/worker/node_modules/
+social-automation/worker/.wrangler/
 
 # Temporary files
 tmp/

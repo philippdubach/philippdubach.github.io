@@ -16,33 +16,38 @@ A personal linkblog and project showcase started in 2024 to collect interesting 
 - **CDN**: Cloudflare for static assets (`static.philippdubach.com`)
 - **URL Shortener**: Self-hosted YOURLS via Cloudflare Workers proxy (`pdub.click`)
 - **Search Engine Indexing**: IndexNow protocol integration
+- **Social Automation**: Cloudflare Workers with Workers AI for automated Bluesky posting
 
 ## Project Structure
 
 ```
-├── archetypes/          # Hugo content templates
-├── content/             # Markdown content files
-│   ├── posts/           # Blog posts and articles
-│   ├── projects/        # Project index
-│   ├── standalone/      # Long-form research articles
-│   ├── about.md         # About page
-│   ├── newsletter.md    # Newsletter subscription
-│   └── research.md      # Research publications
+├── archetypes/              # Hugo content templates
+├── content/                 # Markdown content files
+│   ├── posts/               # Blog posts and articles
+│   ├── projects/            # Project index
+│   ├── standalone/          # Long-form research articles
+│   ├── about.md             # About page
+│   ├── newsletter.md        # Newsletter subscription
+│   └── research.md          # Research publications
 ├── data/
-│   └── navigation.yaml  # Site navigation configuration
-├── layouts/             # Hugo templates
-│   ├── _default/        # Base templates (baseof, single, list, rss)
-│   ├── partials/        # Reusable template components
-│   ├── projects/        # Project-specific templates
-│   └── shortcodes/      # Custom shortcodes (img, table)
+│   └── navigation.yaml      # Site navigation configuration
+├── layouts/                 # Hugo templates
+│   ├── _default/            # Base templates (baseof, single, list, rss)
+│   ├── partials/            # Reusable template components
+│   ├── projects/            # Project-specific templates
+│   └── shortcodes/          # Custom shortcodes (img, table)
 ├── static/
-│   ├── css/custom.css   # Site styles with syntax highlighting
-│   └── icons/           # Favicons and app icons
-├── .github/workflows/   # CI/CD workflows
-│   ├── hugo.yml         # Build and deploy to GitHub Pages
-│   ├── indexnow.yml     # Search engine URL submission
-│   └── claude.yml       # Claude AI code assistant
-└── hugo.toml            # Hugo configuration
+│   ├── css/custom.css       # Site styles with syntax highlighting
+│   └── icons/               # Favicons and app icons
+├── social-automation/       # Cloudflare Worker for social posting
+│   └── worker/              # Worker source code
+│       ├── src/             # JavaScript modules
+│       └── wrangler.toml    # Worker configuration
+├── .github/workflows/       # CI/CD workflows
+│   ├── hugo.yml             # Build and deploy to GitHub Pages
+│   ├── indexnow.yml         # Search engine URL submission
+│   └── claude.yml           # Claude AI code assistant
+└── hugo.toml                # Hugo configuration
 ```
 
 ## Features
@@ -53,7 +58,7 @@ A personal linkblog and project showcase started in 2024 to collect interesting 
   - CSS inlined in head (no external stylesheet request)
   - Responsive images via Cloudflare Image Resizing
   - Lazy loading for images and lightbox overlays
-  - DNS prefetching for external resources
+  - Preconnect hints for external resources
 - **SEO**: 
   - Open Graph and Twitter Card meta tags
   - JSON-LD structured data (Article, BreadcrumbList)
@@ -63,8 +68,10 @@ A personal linkblog and project showcase started in 2024 to collect interesting 
   - Content Security Policy headers
   - No cookies or tracking scripts (GoatCounter is privacy-focused)
   - External links use `rel="noopener"`
+  - Sandboxed iframes for embedded content
 - **Math Support**: MathJax 3 with LaTeX syntax (enabled per-page)
 - **Code Highlighting**: Chroma with GitHub-style theme
+- **Social Automation**: AI-generated Bluesky posts for new articles
 
 ## Local Development
 
@@ -91,6 +98,22 @@ The site automatically deploys to GitHub Pages when changes are pushed to `main`
 2. IndexNow key file is generated
 3. Site is deployed to GitHub Pages
 4. IndexNow workflow submits updated URLs to search engines
+
+### Social Automation
+
+The social automation worker monitors the RSS feed and posts to Bluesky:
+
+```bash
+cd social-automation/worker
+npm install
+npx wrangler login
+npx wrangler deploy
+```
+
+Required secrets (set via `wrangler secret put`):
+- `BLUESKY_HANDLE` - Your Bluesky handle
+- `BLUESKY_APP_PASSWORD` - App password from Bluesky settings
+- `API_SECRET` - Secret for manual trigger endpoint
 
 ## Configuration
 

@@ -1,0 +1,22 @@
+name = "social-poster"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Workers AI binding for LLM-generated posts
+[ai]
+binding = "AI"
+
+# KV namespace for tracking posted articles
+# NOTE: Replace this ID with your own namespace created via `wrangler kv namespace create POSTED_STATE`
+[[kv_namespaces]]
+binding = "POSTED_STATE"
+id = "a439712ab156465da731909fecc56b09"
+
+# Scheduled triggers - runs every 15 minutes
+[triggers]
+crons = ["*/15 * * * *"]
+
+# Environment variables (non-secret)
+[vars]
+RSS_URL = "https://philippdubach.com/posts/index.xml"
+SITE_NAME = "philippdubach.com"
