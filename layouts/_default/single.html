@@ -56,29 +56,40 @@
 
   // Cross-browser clipboard copy (works on iOS Safari, older browsers)
   function copyText(text, cb) {
-    // Try modern API first
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function() { cb(true); }, function() { cb(false); });
+    function fallbackCopy() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { ta.setSelectionRange(0, ta.value.length); } catch (e) {}
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      cb(ok);
+    }
+
+    // Try modern API first, but fall back if it fails (Safari/iOS can reject).
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function() {
+        cb(true);
+      }).catch(function() {
+        fallbackCopy();
+      });
       return;
     }
-    // Fallback: textarea method (works everywhere including iOS)
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;left:-9999px;top:0';
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    try {
-      var ok = document.execCommand('copy');
-      cb(ok);
-    } catch (e) { cb(false); }
-    document.body.removeChild(ta);
+
+    fallbackCopy();
   }
 
   // Get canonical URL once
   var canonical = document.querySelector('link[rel="canonical"]');
   var pageUrl = (canonical ? canonical.href : location.href).replace(/\/+$/, '').split('?')[0];
   var shortUrl = null; // Cache the short URL after first fetch
+  var storageKey = 'shorturl:' + pageUrl;
+  try { shortUrl = localStorage.getItem(storageKey) || null; } catch (e) {}
 
   link.addEventListener('click', function(e) {
     e.preventDefault();
@@ -86,7 +97,7 @@
     // If we already have the short URL cached, just copy it
     if (shortUrl) {
       copyText(shortUrl, function(ok) {
-        status.textContent = ok ? 'copied!' : shortUrl;
+        status.textContent = ok ? 'short url copied' : shortUrl;
         setTimeout(function() { status.textContent = ''; }, 2500);
       });
       return;
@@ -100,7 +111,7 @@
       if (done) return;
       done = true;
       copyText(pageUrl, function(ok) {
-        status.textContent = ok ? 'copied!' : pageUrl;
+        status.textContent = ok ? 'url copied' : pageUrl;
         setTimeout(function() { status.textContent = ''; }, 2500);
       });
     }, 3000);
@@ -113,9 +124,12 @@
         clearTimeout(tid);
         // YOURLS returns shorturl for both new and existing URLs
         var url = d && d.shorturl ? d.shorturl : pageUrl;
-        if (d && d.shorturl) shortUrl = d.shorturl; // Cache it
+        if (d && d.shorturl) {
+          shortUrl = d.shorturl;
+          try { localStorage.setItem(storageKey, shortUrl); } catch (e) {}
+        }
         copyText(url, function(ok) {
-          status.textContent = ok ? 'copied!' : url;
+          status.textContent = ok ? (d && d.shorturl ? 'short url copied' : 'url copied') : url;
           setTimeout(function() { status.textContent = ''; }, 2500);
         });
       })
@@ -124,7 +138,7 @@
         done = true;
         clearTimeout(tid);
         copyText(pageUrl, function(ok) {
-          status.textContent = ok ? 'copied!' : pageUrl;
+          status.textContent = ok ? 'url copied' : pageUrl;
           setTimeout(function() { status.textContent = ''; }, 2500);
         });
       });
