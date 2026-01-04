@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://philippdubach.com/sitemap.xml
-
-# Disallow admin/private areas
-Disallow: /cdn-cgi/
