@@ -54,9 +54,11 @@
   var status = document.getElementById('share-status');
   if (!link) return;
 
-  // Cross-browser clipboard copy (works on iOS Safari, older browsers)
-  function copyText(text, cb) {
-    function fallbackCopy() {
+  // Clipboard copy must run during the click (user gesture), especially in Safari.
+  // So: prefer a synchronous execCommand() copy, with async clipboard API as backup.
+  function copyTextInGesture(text, cb) {
+    var ok = false;
+    try {
       var ta = document.createElement('textarea');
       ta.value = text;
       ta.setAttribute('readonly', '');
@@ -65,23 +67,23 @@
       ta.focus();
       ta.select();
       try { ta.setSelectionRange(0, ta.value.length); } catch (e) {}
-      var ok = false;
       try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
       document.body.removeChild(ta);
-      cb(ok);
+    } catch (e) {
+      ok = false;
     }
 
-    // Try modern API first, but fall back if it fails (Safari/iOS can reject).
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function() {
-        cb(true);
-      }).catch(function() {
-        fallbackCopy();
-      });
+    if (ok) {
+      cb(true);
       return;
     }
 
-    fallbackCopy();
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function() { cb(true); }, function() { cb(false); });
+      return;
+    }
+
+    cb(false);
   }
 
   // Get canonical URL once
@@ -91,57 +93,44 @@
   var storageKey = 'shorturl:' + pageUrl;
   try { shortUrl = localStorage.getItem(storageKey) || null; } catch (e) {}
 
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    // If we already have the short URL cached, just copy it
-    if (shortUrl) {
-      copyText(shortUrl, function(ok) {
-        status.textContent = ok ? 'short url copied' : shortUrl;
-        setTimeout(function() { status.textContent = ''; }, 2500);
-      });
-      return;
-    }
+  // Prefetch short URL early so the first click can copy synchronously.
+  var shortUrlPromise = null;
+  function fetchShortUrl() {
+    if (shortUrl) return Promise.resolve(shortUrl);
+    if (shortUrlPromise) return shortUrlPromise;
 
-    status.textContent = '...';
-
-    // Fetch short URL with timeout
-    var done = false;
-    var tid = setTimeout(function() {
-      if (done) return;
-      done = true;
-      copyText(pageUrl, function(ok) {
-        status.textContent = ok ? 'url copied' : pageUrl;
-        setTimeout(function() { status.textContent = ''; }, 2500);
-      });
-    }, 3000);
-
-    fetch('https://yourls-shortener-proxy.philippd.workers.dev/shorten?url=' + encodeURIComponent(pageUrl))
-      .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+    shortUrlPromise = fetch('https://yourls-shortener-proxy.philippd.workers.dev/shorten?url=' + encodeURIComponent(pageUrl))
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(d) {
-        if (done) return;
-        done = true;
-        clearTimeout(tid);
-        // YOURLS returns shorturl for both new and existing URLs
-        var url = d && d.shorturl ? d.shorturl : pageUrl;
         if (d && d.shorturl) {
           shortUrl = d.shorturl;
           try { localStorage.setItem(storageKey, shortUrl); } catch (e) {}
+          return shortUrl;
         }
-        copyText(url, function(ok) {
-          status.textContent = ok ? (d && d.shorturl ? 'short url copied' : 'url copied') : url;
-          setTimeout(function() { status.textContent = ''; }, 2500);
-        });
+        throw new Error('No shorturl');
       })
       .catch(function() {
-        if (done) return;
-        done = true;
-        clearTimeout(tid);
-        copyText(pageUrl, function(ok) {
-          status.textContent = ok ? 'url copied' : pageUrl;
-          setTimeout(function() { status.textContent = ''; }, 2500);
-        });
+        return null;
       });
+
+    return shortUrlPromise;
+  }
+
+  // Kick off prefetch without blocking render.
+  fetchShortUrl();
+
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Clipboard write must happen *now* (Safari): only use whatever is already cached.
+    var toCopy = shortUrl || pageUrl;
+    copyTextInGesture(toCopy, function(ok) {
+      status.textContent = ok ? (shortUrl ? 'short url copied' : 'url copied') : toCopy;
+      setTimeout(function() { status.textContent = ''; }, 2500);
+    });
+
+    // Ensure we prefetch for next clicks if not ready yet.
+    if (!shortUrl) fetchShortUrl();
   });
 })();
 </script>
