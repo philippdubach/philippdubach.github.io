@@ -9,18 +9,16 @@ I send out a newsletter version of this blog, things I've been working on, and i
 
 <div id="newsletter-form-container">
   <form id="newsletter-form" class="newsletter-form">
-    <div class="form-group">
-      <label for="email" class="visually-hidden">Email address</label>
-      <input 
-        type="email" 
-        id="email" 
-        name="email" 
-        placeholder="your@email.com" 
-        required 
-        class="newsletter-input"
-        aria-label="Email address"
-      />
-    </div>
+    <label for="email" class="visually-hidden">Email address</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      placeholder="your@email.com" 
+      required 
+      class="newsletter-input"
+      aria-label="Email address"
+    />
     <button type="submit" class="newsletter-button">Sign Up</button>
   </form>
   <p id="subscriber-count" class="subscriber-count" style="display: none;"></p>

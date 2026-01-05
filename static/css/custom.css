@@ -558,18 +558,13 @@ a.lightbox-overlay:target {
     margin: 0;
     display: flex;
     gap: 0;
-    align-items: center;
     max-width: 400px;
     width: 100%;
 }
 
-.form-group {
+.newsletter-input {
     flex: 1;
     min-width: 0;
-}
-
-.newsletter-input {
-    width: 100%;
     padding: 0.75rem 1rem;
     font-size: 1rem;
     border: 1px solid #333;
@@ -992,18 +987,7 @@ a.lightbox-overlay:target {
     }
     
     .newsletter-form {
-        max-width: 100%;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    
-    .newsletter-input {
-        border-right: 1px solid #333;
-    }
-    
-    .newsletter-button {
-        width: 100%;
-        padding: 0.875rem 1.5rem;
+        max-width: 90%;
     }
     
     /* Inline newsletter mobile */
@@ -1318,6 +1302,7 @@ pre {
         max-width: 100%;
         width: 100%;
         overflow-x: auto;
+        font-size: 0.8125rem;
     }
 
     .highlight table,
@@ -1328,14 +1313,14 @@ pre {
     }
 
     .highlight .lntd:first-child {
-        width: 2.5rem;
-        min-width: 2.5rem;
+        width: 2rem;
+        min-width: 2rem;
     }
     
     .highlight .lnt,
     .highlight .ln {
-        padding: 0 0.5rem;
-        font-size: inherit;
+        padding: 0 0.4rem;
+        font-size: 0.75rem;
     }
     
     code {
@@ -1343,10 +1328,10 @@ pre {
     }
 
     .highlight .lntd:first-child pre code {
-        padding: 0.75rem 0;
+        padding: 0.5rem 0;
     }
 
     .highlight .lntd:last-child pre code {
-        padding: 0.75rem;
+        padding: 0.5rem 0.75rem;
     }
 }
