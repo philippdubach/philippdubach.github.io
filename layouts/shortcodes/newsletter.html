@@ -15,7 +15,7 @@
       />
       <button type="submit" class="inline-newsletter-button">Sign Up</button>
     </form>
-    <p class="inline-newsletter-privacy">Free, no spam, <a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">no tracking</a>. Unsubscribe anytime.</p>
+    <p id="{{ $id }}-privacy" class="inline-newsletter-privacy"><a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">No tracking</a>. Unsubscribe anytime.</p>
     <div id="{{ $id }}-message" class="inline-newsletter-message" style="display: none;"></div>
   </div>
 </aside>
@@ -25,11 +25,26 @@
   var formId = '{{ $id }}-form';
   var messageId = '{{ $id }}-message';
   var emailId = '{{ $id }}-email';
+  var privacyId = '{{ $id }}-privacy';
   
   function init() {
     var form = document.getElementById(formId);
     var messageDiv = document.getElementById(messageId);
     var emailInput = document.getElementById(emailId);
+    var privacyDiv = document.getElementById(privacyId);
+    
+    // Fetch subscriber count and prepend to privacy text
+    if (privacyDiv) {
+      fetch('https://newsletter-api.philippd.workers.dev/api/subscriber-count')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.display) {
+            var currentHTML = privacyDiv.innerHTML;
+            privacyDiv.innerHTML = 'Join ' + data.display + ' readers. ' + currentHTML;
+          }
+        })
+        .catch(function() { /* Silent fail - shows default text */ });
+    }
     
     if (!form) return;
     
