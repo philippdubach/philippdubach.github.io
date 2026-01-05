@@ -21,7 +21,7 @@ I send out a newsletter version of this blog, things I've been working on, and i
         aria-label="Email address"
       />
     </div>
-    <button type="submit" class="newsletter-button">Subscribe</button>
+    <button type="submit" class="newsletter-button">Sign Up</button>
   </form>
   <p id="subscriber-count" class="subscriber-count" style="display: none;"></p>
   <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
