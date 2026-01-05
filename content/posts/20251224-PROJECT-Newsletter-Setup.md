@@ -96,10 +96,10 @@ You can find [my first newsletter here](https://static.philippdubach.com/newslet
 
 <script>
 (function() {
-  var formId = 'project-newsletter-form';
-  var messageId = 'project-newsletter-message';
-  var emailId = 'project-newsletter-email';
-  var privacyId = 'project-newsletter-privacy';
+  var formId = '{{ $id }}-form';
+  var messageId = '{{ $id }}-message';
+  var emailId = '{{ $id }}-email';
+  var privacyId = '{{ $id }}-privacy';
   
   function init() {
     var form = document.getElementById(formId);
