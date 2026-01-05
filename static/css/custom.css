@@ -451,6 +451,12 @@ a.lightbox-overlay:target {
     width: 80%;
 }
 
+/* Variant without left border for standalone pages */
+.inline-newsletter.no-border {
+    border-left: none;
+    padding-left: 0;
+}
+
 .inline-newsletter-form {
     width: 90%;
 }

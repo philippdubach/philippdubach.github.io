@@ -74,50 +74,50 @@ The total cost of running this: zero. Cloudflare Workers has a generous free tie
 
 You can find [my first newsletter here](https://static.philippdubach.com/newsletter/newsletter-2025-12.html). The full code for both the [newsletter generator](https://github.com/philippdubach/newsletter-generator) and the [subscriber API](https://github.com/philippdubach/newsletter-api) is on GitHub. Needless to say, I would be delighted if we keep in touch through my mailing list:
 
-<div id="newsletter-form-container">
-  <form id="newsletter-form" class="newsletter-form">
-    <div class="form-group">
-      <label for="email" class="visually-hidden">Email address</label>
+<aside class="inline-newsletter no-border" aria-label="Newsletter signup">
+  <div class="inline-newsletter-content">
+    <form id="project-newsletter-form" class="inline-newsletter-form">
+      <label for="project-newsletter-email" class="visually-hidden">Email address</label>
       <input 
         type="email" 
-        id="email" 
+        id="project-newsletter-email" 
         name="email" 
         placeholder="your@email.com" 
         required 
-        class="newsletter-input"
+        class="inline-newsletter-input"
         aria-label="Email address"
       />
-    </div>
-    <button type="submit" class="newsletter-button">Subscribe</button>
-  </form>
-  <p id="subscriber-count" class="subscriber-count" style="display: none;"></p>
-  <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
-</div>
+      <button type="submit" class="inline-newsletter-button">Sign Up</button>
+    </form>
+    <p id="project-newsletter-privacy" class="inline-newsletter-privacy"><a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">No tracking</a>. Unsubscribe anytime.</p>
+    <div id="project-newsletter-message" class="inline-newsletter-message" style="display: none;"></div>
+  </div>
+</aside>
 
 <script>
 (function() {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  var formId = 'project-newsletter-form';
+  var messageId = 'project-newsletter-message';
+  var emailId = 'project-newsletter-email';
+  var privacyId = 'project-newsletter-privacy';
   
   function init() {
-    var form = document.getElementById('newsletter-form');
-    var messageDiv = document.getElementById('newsletter-message');
-    var emailInput = document.getElementById('email');
-    var countDiv = document.getElementById('subscriber-count');
+    var form = document.getElementById(formId);
+    var messageDiv = document.getElementById(messageId);
+    var emailInput = document.getElementById(emailId);
+    var privacyDiv = document.getElementById(privacyId);
     
-    if (countDiv) {
+    // Fetch subscriber count and prepend to privacy text
+    if (privacyDiv) {
       fetch('https://newsletter-api.philippd.workers.dev/api/subscriber-count')
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (data.display) {
-            countDiv.textContent = 'Join ' + data.display + ' readers';
-            countDiv.style.display = 'block';
+            var currentHTML = privacyDiv.innerHTML;
+            privacyDiv.innerHTML = 'Join ' + data.display + ' readers. ' + currentHTML;
           }
         })
-        .catch(function() {});
+        .catch(function() { /* Silent fail - shows default text */ });
     }
     
     if (!form) return;
@@ -147,26 +147,32 @@ You can find [my first newsletter here](https://static.philippdubach.com/newslet
       .then(function(data) {
         if (data.success) {
           form.style.display = 'none';
-          if (countDiv) countDiv.style.display = 'none';
+          document.querySelector('#' + formId).closest('.inline-newsletter').querySelector('.inline-newsletter-privacy').style.display = 'none';
           showMessage('Thanks for subscribing! You\'ll receive the next newsletter in your inbox.', 'success');
         } else {
           showMessage(data.error || 'Something went wrong. Please try again.', 'error');
           submitButton.disabled = false;
-          submitButton.textContent = 'Subscribe';
+          submitButton.textContent = 'Sign Up';
         }
       })
       .catch(function() {
         showMessage('Something went wrong. Please try again later.', 'error');
         submitButton.disabled = false;
-        submitButton.textContent = 'Subscribe';
+        submitButton.textContent = 'Sign Up';
       });
     });
     
     function showMessage(text, type) {
       messageDiv.innerHTML = text;
-      messageDiv.className = 'newsletter-message newsletter-message-' + type;
+      messageDiv.className = 'inline-newsletter-message inline-newsletter-message-' + type;
       messageDiv.style.display = 'block';
     }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();
 </script>
