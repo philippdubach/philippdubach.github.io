@@ -1,7 +1,7 @@
 ---
 title: "Praise by Name, Criticize by Category: On the Retirement of Warren Buffett"
 seoTitle: "Buffett Retires at 95: What 60 Years of Letters Taught"
-date: 2026-01-05
+date: 2026-01-06
 lastmod: 2026-01-06
 images:
 - https://static.philippdubach.com/ograph/ograph-buffet-retirement.jpg
@@ -16,7 +16,7 @@ keywords:
 - Buffett Apple investment
 - capital allocation
 - Berkshire operating profit
-draft: false
+draft: true
 ---
 
 [Warren Buffett](https://en.wikipedia.org/wiki/Warren_Buffett) has stepped down as CEO at 95. [Greg Abel](https://en.wikipedia.org/wiki/Greg_Abel) inherits a company that paid [$26.8 billion in federal income taxes](https://www.berkshirehathaway.com/letters/2024ltr.pdf) last year, roughly 5% of what all of corporate America paid combined. I do not have [much in common with Buffett](/posts/damodaran-on-golds-2025-surge/), but I will miss his shareholder letters. Berkshire's archive is a rare case of a public company explaining decisions candidly to its owners.
