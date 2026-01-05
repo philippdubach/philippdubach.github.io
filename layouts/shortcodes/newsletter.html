@@ -1,0 +1,89 @@
+{{- $id := printf "inline-newsletter-%d" .Ordinal -}}
+<aside class="inline-newsletter" aria-label="Newsletter signup">
+  <div class="inline-newsletter-content">
+    <p class="inline-newsletter-headline">Enjoy this writing? Get new posts, projects, and articles delivered monthly.</p>
+    <form id="{{ $id }}-form" class="inline-newsletter-form">
+      <label for="{{ $id }}-email" class="visually-hidden">Email address</label>
+      <input 
+        type="email" 
+        id="{{ $id }}-email" 
+        name="email" 
+        placeholder="your@email.com" 
+        required 
+        class="inline-newsletter-input"
+        aria-label="Email address"
+      />
+      <button type="submit" class="inline-newsletter-button">Sign Up</button>
+    </form>
+    <p class="inline-newsletter-privacy">Free, no spam, <a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">no tracking</a>. Unsubscribe anytime.</p>
+    <div id="{{ $id }}-message" class="inline-newsletter-message" style="display: none;"></div>
+  </div>
+</aside>
+
+<script>
+(function() {
+  var formId = '{{ $id }}-form';
+  var messageId = '{{ $id }}-message';
+  var emailId = '{{ $id }}-email';
+  
+  function init() {
+    var form = document.getElementById(formId);
+    var messageDiv = document.getElementById(messageId);
+    var emailInput = document.getElementById(emailId);
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      var email = emailInput.value.trim();
+      if (!email) return;
+      
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showMessage('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      var submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Subscribing...';
+      
+      fetch('https://newsletter-api.philippd.workers.dev/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function(response) { return response.json(); })
+      .then(function(data) {
+        if (data.success) {
+          form.style.display = 'none';
+          document.querySelector('#' + formId).closest('.inline-newsletter').querySelector('.inline-newsletter-privacy').style.display = 'none';
+          showMessage('Thanks for subscribing! You\'ll receive the next newsletter in your inbox.', 'success');
+        } else {
+          showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+          submitButton.disabled = false;
+          submitButton.textContent = 'Sign Up';
+        }
+      })
+      .catch(function() {
+        showMessage('Something went wrong. Please try again later.', 'error');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Sign Up';
+      });
+    });
+    
+    function showMessage(text, type) {
+      messageDiv.innerHTML = text;
+      messageDiv.className = 'inline-newsletter-message inline-newsletter-message-' + type;
+      messageDiv.style.display = 'block';
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
