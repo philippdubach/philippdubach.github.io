@@ -4,7 +4,7 @@ seoTitle: "65% of HN Posts Have Negative Sentiment, They Outperform"
 date: 2026-01-06
 lastmod: 2026-01-06
 slug: hn-sentiment
-images: ['https://static.philippdubach.com/ograph/ograph-hn-science.jpg']
+images: ['https://static.philippdubach.com/ograph/ograph-hn-sentiment.jpg']
 description: "Analysis of 32,000 HN posts and 340K comments reveals negativity bias correlates with higher engagement. Data, methodology, and full paper available."
 keywords: ["Hacker News sentiment analysis", "attention dynamics research", "HN engagement data", "NLP sentiment classification", "social news ranking", "content virality", "DistilBERT BERT RoBERTa", "LLM sentiment scoring", "tech community behavior", "computational social science"]
 draft: false
