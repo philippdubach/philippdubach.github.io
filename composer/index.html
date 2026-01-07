@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Post Composer - philippdubach.com</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
     
     <!-- KaTeX for math rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -367,6 +368,56 @@
         
         #markdown-editor::placeholder {
             color: #999;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .composer-container {
+                flex-direction: column;
+            }
+            
+            .editor-panel {
+                width: 100% !important;
+                height: 50vh;
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            .preview-panel {
+                width: 100% !important;
+                height: 50vh;
+            }
+            
+            .resizer {
+                display: none;
+            }
+            
+            .editor-actions {
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+            
+            .btn {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.7rem;
+            }
+            
+            .field-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .field-group.small {
+                flex: 1;
+            }
+            
+            .checkbox-group {
+                padding-top: 0.5rem;
+            }
+            
+            body.focus-mode .editor-panel {
+                height: 100vh;
+            }
         }
         
         /* Right: Preview Panel */
