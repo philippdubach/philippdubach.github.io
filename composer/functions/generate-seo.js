@@ -26,19 +26,23 @@ export async function onRequestPost(context) {
 
 Your task is to generate SEO metadata for blog posts. The target audience is professionals and enthusiasts interested in finance, technology, and data science.
 
-Guidelines:
-- Title: Keep the original title or suggest minor improvements for SEO (60 chars max)
-- Description: Write a compelling meta description (150-160 chars) that summarizes the key value proposition
-- Keywords: Generate 8-12 relevant keywords, mix of broad and specific terms
+STRICT Guidelines:
+- Title: 50-60 characters MAXIMUM (aim for ~55 chars). Keep the original title or suggest minor improvements for SEO. Shorter titles perform better in search results.
+- Description: 120-160 characters EXACTLY. Write a compelling meta description that summarizes the key value proposition. Must be complete sentences that entice clicks.
+- Keywords: Generate 3-6 keywords total:
+  * 1 primary keyword (most important, should appear naturally in title/description)
+  * 2-5 secondary/long-tail keywords (supporting terms)
+  * Focus on specificity over breadth
+  * Aim for natural keyword density of 0.5-2%
+  * NEVER stuff keywords - quality over quantity
 - Consider search intent: what would someone searching for this content type?
-- Use natural language, avoid keyword stuffing
 - Focus on unique angles and specific insights from the content
 
 Respond ONLY with valid JSON in this exact format:
 {
-    "title": "SEO-optimized title",
-    "description": "Meta description for search engines",
-    "keywords": ["keyword1", "keyword2", "keyword3"]
+    "title": "SEO-optimized title (50-60 chars)",
+    "description": "Meta description (120-160 chars)",
+    "keywords": ["primary keyword", "secondary1", "secondary2"]
 }`;
 
         const userPrompt = `Generate SEO metadata for this blog post:
