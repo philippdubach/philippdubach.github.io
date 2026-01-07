@@ -1,9 +1,18 @@
 export async function onRequestPost(context) {
     const { request, env } = context;
     
-    // CORS headers
+    // Get origin for CORS - restrict to same origin in production
+    const origin = request.headers.get('Origin') || '';
+    const allowedOrigins = [
+        'https://post-composer.pages.dev',
+        'http://localhost:8788',
+        'http://127.0.0.1:8788'
+    ];
+    
+    const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+    
     const corsHeaders = {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': corsOrigin,
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
     };
@@ -13,6 +22,21 @@ export async function onRequestPost(context) {
         
         if (!content || content.trim().length < 50) {
             return new Response(JSON.stringify({ error: 'Content too short for SEO generation' }), {
+                status: 400,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+        }
+        
+        // Validate input lengths to prevent abuse
+        if (content.length > 50000) {
+            return new Response(JSON.stringify({ error: 'Content too long (max 50,000 characters)' }), {
+                status: 400,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+        }
+        
+        if (title && title.length > 500) {
+            return new Response(JSON.stringify({ error: 'Title too long (max 500 characters)' }), {
                 status: 400,
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' }
             });
@@ -118,10 +142,20 @@ Remember: Respond ONLY with the JSON object, no other text.`;
     }
 }
 
-export async function onRequestOptions() {
+export async function onRequestOptions(context) {
+    const { request } = context;
+    const origin = request.headers.get('Origin') || '';
+    const allowedOrigins = [
+        'https://post-composer.pages.dev',
+        'http://localhost:8788',
+        'http://127.0.0.1:8788'
+    ];
+    
+    const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+    
     return new Response(null, {
         headers: {
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': corsOrigin,
             'Access-Control-Allow-Methods': 'POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type',
         }
