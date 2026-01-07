@@ -57,3 +57,5 @@ _Apart from that I am excited to - at a first glance - observe the following sim
 (4) Both use mathematical approaches to characterize glucose responses - I used Gaussian curve fitting, while Singh et. al. use incremental area under the curve (iAUC).
 (5) Both employ cross-validation techniques for model evaluation and hyperparameter tuning.
 (6) SHAP Analysis: Both use SHAP for model interpretability and feature importance analysis._<a id="update">
+
+{{< disclaimer type="medical" >}}

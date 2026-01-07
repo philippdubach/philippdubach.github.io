@@ -374,18 +374,22 @@
         @media (max-width: 768px) {
             .composer-container {
                 flex-direction: column;
+                height: auto;
+                overflow-y: auto;
             }
             
             .editor-panel {
                 width: 100% !important;
-                height: 50vh;
+                height: 100vh;
+                min-height: 100vh;
                 border-right: none;
                 border-bottom: 1px solid #e0e0e0;
             }
             
             .preview-panel {
                 width: 100% !important;
-                height: 50vh;
+                height: auto;
+                min-height: 50vh;
             }
             
             .resizer {
@@ -486,6 +490,9 @@
         .inline-newsletter-privacy { margin: 0.75rem 0 0 0; font-size: 0.8rem; color: #666; }
         hr { border: none; border-top: 1px solid #e9ecef; margin: 2rem 0; }
         .katex-display { margin: 1rem 0; overflow-x: auto; }
+        .disclaimer { margin: 2rem 0; padding: 0.75rem 1rem; border-left: 3px solid #656d76; background: #f6f8fa; }
+        .disclaimer p { margin: 0; font-size: 0.8rem; line-height: 1.5; color: #656d76; }
+        .disclaimer a { color: #007acc; }
         .feedback-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e9ecef; text-align: center; color: #595959; font-size: 0.9rem; }
         .feedback-footer p { margin: 0; line-height: 1.6; }
         .feedback-footer a { color: #007acc; text-decoration: none; }
@@ -561,6 +568,7 @@
                     <button class="btn" onclick="insertShortcode('img')">+ Image</button>
                     <button class="btn" onclick="insertShortcode('table')">+ Table</button>
                     <button class="btn" onclick="insertShortcode('newsletter')">+ Newsletter</button>
+                    <button class="btn" onclick="insertShortcode('disclaimer')">+ Disclaimer</button>
                     <button class="btn btn-ai" onclick="generateSEO()" id="seo-btn">✨ AI SEO</button>
                     <button class="btn btn-primary" onclick="copyMarkdown()">Copy</button>
                     <button class="btn btn-primary" onclick="downloadMarkdown()">Download</button>
@@ -949,6 +957,21 @@ def hello():
                 return `<aside class="inline-newsletter"><div class="inline-newsletter-content"><p class="inline-newsletter-headline">Enjoy this writing? Get new posts, projects, and articles delivered monthly.</p><form class="inline-newsletter-form"><input type="email" placeholder="your@email.com" class="inline-newsletter-input" disabled><button type="button" class="inline-newsletter-button" disabled>Sign Up</button></form><p class="inline-newsletter-privacy">No tracking. Unsubscribe anytime.</p></div></aside>`;
             });
             
+            // Disclaimer shortcode with multiple types
+            text = text.replace(/\{\{<\s*disclaimer\s*(?:type=["']([^"']+)["'])?\s*>\}\}/g, (match, type) => {
+                const disclaimerType = type || 'finance';
+                const disclaimers = {
+                    finance: '<strong>Disclaimer:</strong> This content is for informational and educational purposes only and does not constitute investment, financial, tax, or legal advice. Past performance is not indicative of future results. Always conduct your own research and consult with qualified professionals before making any investment decisions.',
+                    medical: '<strong>Disclaimer:</strong> This content is for informational purposes only and does not constitute medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions regarding a medical condition.',
+                    general: '<strong>Disclaimer:</strong> The views expressed in this article are the author\'s own and do not represent professional advice. Information may be incomplete or outdated. Use at your own discretion.',
+                    ai: '<strong>Disclaimer:</strong> This content discusses AI systems and their applications. AI capabilities evolve rapidly; information may become outdated. Any code or implementations are provided as-is without warranty.',
+                    research: '<strong>Disclaimer:</strong> This content summarizes or references third-party research. The author is not affiliated with the researchers cited. Interpretations are the author\'s own and may not reflect the original researchers\' views.',
+                    gambling: '<strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial or legal advice. Gambling carries significant risks; ensure you comply with local laws, age restrictions, and only wager responsibly. If you or someone you know is struggling with gambling, seek support at <a href="https://www.gambleaware.org" target="_blank" rel="noopener">BeGambleAware.org</a> or <a href="https://gamblersanonymous.org" target="_blank" rel="noopener">Gamblers Anonymous</a>.'
+                };
+                const text = disclaimers[disclaimerType] || disclaimers.finance;
+                return `<aside class="disclaimer" role="note" aria-label="Disclaimer"><div class="disclaimer-content"><p>${text}</p></div></aside>`;
+            });
+            
             return text;
         }
         
@@ -959,6 +982,7 @@ def hello():
             if (type === 'img') shortcode = '{{< img src="path/to/image.jpg" alt="Description" width="80%" >}}';
             else if (type === 'table') shortcode = '{{< table src="table.html" height="600px" >}}';
             else if (type === 'newsletter') shortcode = '{{< newsletter >}}';
+            else if (type === 'disclaimer') shortcode = '{{< disclaimer type="finance" >}}';
             
             editor.value = editor.value.substring(0, start) + shortcode + editor.value.substring(editor.selectionEnd);
             editor.selectionStart = editor.selectionEnd = start + shortcode.length;
