@@ -5,7 +5,7 @@ A local markdown editor with live preview that matches your blog's styling.
 ## Features
 
 - **Live Preview**: Real-time rendering as you type
-- **Hugo Shortcodes**: Support for `{{< img >}}`, `{{< table >}}`, and `{{< newsletter >}}`
+- **Hugo Shortcodes**: Support for `{{< img >}}`, `{{< table >}}`, `{{< newsletter >}}`, and `{{< disclaimer >}}`
 - **Math Support**: KaTeX rendering for LaTeX math (enable "Math" checkbox)
 - **Syntax Highlighting**: Code blocks with GitHub-style highlighting
 - **Frontmatter Editor**: Visual fields for title, date, external URL, draft status
@@ -23,6 +23,9 @@ A local markdown editor with live preview that matches your blog's styling.
 
 # Newsletter signup
 {{< newsletter >}}
+
+# Disclaimer (types: finance, medical, general, ai, research, gambling)
+{{< disclaimer type="finance" >}}
 ```
 
 ## Keyboard Shortcuts
