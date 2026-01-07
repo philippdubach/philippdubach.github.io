@@ -22,9 +22,6 @@
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     
     <style>
-        /* ===================================
-           Composer Layout
-           =================================== */
         * {
             margin: 0;
             padding: 0;
@@ -38,18 +35,116 @@
             background: #f5f5f5;
         }
         
+        /* Focus mode styles */
+        body.focus-mode {
+            background: #1a1a1a;
+        }
+        
+        body.focus-mode .editor-panel {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: none;
+            background: #1a1a1a;
+        }
+        
+        body.focus-mode .preview-panel,
+        body.focus-mode .resizer {
+            display: none;
+        }
+        
+        body.focus-mode .editor-header {
+            background: #252525;
+            border-color: #333;
+        }
+        
+        body.focus-mode .editor-header h2 {
+            color: #888;
+        }
+        
+        body.focus-mode .frontmatter-section {
+            background: #222;
+            border-color: #333;
+        }
+        
+        body.focus-mode .frontmatter-header {
+            color: #888;
+        }
+        
+        body.focus-mode .frontmatter-header:hover {
+            background: #2a2a2a;
+        }
+        
+        body.focus-mode .frontmatter-header h3 {
+            color: #888;
+        }
+        
+        body.focus-mode .frontmatter-fields {
+            background: #222;
+        }
+        
+        body.focus-mode .field-group label {
+            color: #666;
+        }
+        
+        body.focus-mode .field-group input,
+        body.focus-mode .field-group textarea {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #ddd;
+        }
+        
+        body.focus-mode .checkbox-group label {
+            color: #888;
+        }
+        
+        body.focus-mode #markdown-editor {
+            background: #1a1a1a;
+            color: #d4d4d4;
+            caret-color: #fff;
+        }
+        
+        body.focus-mode .status-bar {
+            background: #252525;
+            border-color: #333;
+            color: #666;
+        }
+        
+        body.focus-mode .btn {
+            background: #333;
+            border-color: #444;
+            color: #aaa;
+        }
+        
+        body.focus-mode .btn:hover {
+            background: #444;
+            border-color: #555;
+        }
+        
+        body.focus-mode .btn-primary {
+            background: #4a4a4a;
+            border-color: #555;
+            color: #fff;
+        }
+        
+        body.focus-mode .btn-focus {
+            background: #007acc;
+            border-color: #007acc;
+            color: #fff;
+        }
+        
         .composer-container {
             display: flex;
             height: 100vh;
         }
         
-        /* Left: Editor Panel */
         .editor-panel {
             width: 50%;
             display: flex;
             flex-direction: column;
             border-right: 1px solid #e0e0e0;
             background: #fff;
+            transition: all 0.3s ease;
         }
         
         .editor-header {
@@ -70,6 +165,7 @@
         .editor-actions {
             display: flex;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
         
         .btn {
@@ -87,6 +183,11 @@
         .btn:hover {
             background: #f0f0f0;
             border-color: #ccc;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
         
         .btn-primary {
@@ -107,6 +208,30 @@
         .btn-danger:hover {
             background: #dc3545;
             color: #fff;
+        }
+        
+        .btn-focus {
+            background: #007acc;
+            color: #fff;
+            border-color: #007acc;
+        }
+        
+        .btn-focus:hover {
+            background: #005a9e;
+        }
+        
+        .btn-ai {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+        }
+        
+        .btn-ai:hover {
+            background: linear-gradient(135deg, #5a6fd6 0%, #6a4190 100%);
+        }
+        
+        .btn-ai:disabled {
+            background: #ccc;
         }
         
         /* Frontmatter Section */
@@ -169,6 +294,7 @@
             display: flex;
             gap: 0.75rem;
             margin-bottom: 0.5rem;
+            align-items: flex-end;
         }
         
         .field-row:last-child {
@@ -181,6 +307,10 @@
         
         .field-group.small {
             flex: 0 0 140px;
+        }
+        
+        .field-group.auto {
+            flex: 0 0 auto;
         }
         
         .field-group label {
@@ -240,10 +370,19 @@
             cursor: pointer;
         }
         
-        /* Editor */
-        #markdown-editor {
+        /* Syntax Highlighted Editor */
+        .editor-wrapper {
             flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #markdown-editor {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
             border: none;
             padding: 1.5rem;
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
@@ -251,8 +390,70 @@
             line-height: 1.6;
             resize: none;
             outline: none;
-            background: #fff;
+            background: transparent;
+            color: transparent;
+            caret-color: #333;
+            z-index: 2;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-y: auto;
         }
+        
+        #syntax-highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 1.5rem;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-y: auto;
+            pointer-events: none;
+            z-index: 1;
+            background: #fff;
+            color: #333;
+        }
+        
+        body.focus-mode #syntax-highlight {
+            background: #1a1a1a;
+            color: #d4d4d4;
+        }
+        
+        /* Syntax colors - Light mode */
+        .syntax-heading { color: #0550ae; font-weight: bold; }
+        .syntax-bold { color: #333; font-weight: bold; }
+        .syntax-italic { color: #333; font-style: italic; }
+        .syntax-link-text { color: #0550ae; }
+        .syntax-link-url { color: #6e7781; }
+        .syntax-code { color: #cf222e; background: #f6f8fa; border-radius: 3px; padding: 0 2px; }
+        .syntax-code-block { color: #1f2328; background: #f6f8fa; display: block; }
+        .syntax-code-lang { color: #8250df; background: #f6f8fa; }
+        .syntax-blockquote { color: #57606a; border-left: 3px solid #d0d7de; padding-left: 8px; display: inline; }
+        .syntax-list { color: #cf222e; }
+        .syntax-hr { color: #d0d7de; }
+        .syntax-shortcode { color: #8250df; background: #f0f7ff; border-radius: 3px; padding: 0 2px; }
+        .syntax-frontmatter { color: #6e7781; background: #f6f8fa; }
+        .syntax-math { color: #953800; background: #fff8e6; border-radius: 3px; padding: 0 2px; }
+        
+        /* Syntax colors - Dark mode (focus) */
+        body.focus-mode .syntax-heading { color: #79c0ff; }
+        body.focus-mode .syntax-bold { color: #e6edf3; }
+        body.focus-mode .syntax-italic { color: #e6edf3; }
+        body.focus-mode .syntax-link-text { color: #79c0ff; }
+        body.focus-mode .syntax-link-url { color: #8b949e; }
+        body.focus-mode .syntax-code { color: #ff7b72; background: #2d2d2d; }
+        body.focus-mode .syntax-code-block { color: #e6edf3; background: #2d2d2d; }
+        body.focus-mode .syntax-code-lang { color: #d2a8ff; background: #2d2d2d; }
+        body.focus-mode .syntax-blockquote { color: #8b949e; border-left-color: #484f58; }
+        body.focus-mode .syntax-list { color: #ff7b72; }
+        body.focus-mode .syntax-hr { color: #484f58; }
+        body.focus-mode .syntax-shortcode { color: #d2a8ff; background: #2d333b; }
+        body.focus-mode .syntax-frontmatter { color: #8b949e; background: #2d2d2d; }
+        body.focus-mode .syntax-math { color: #ffa657; background: #3d3000; }
         
         #markdown-editor::placeholder {
             color: #999;
@@ -285,281 +486,48 @@
             max-width: 800px;
         }
         
-        /* ===================================
-           Blog Styles (from custom.css)
-           =================================== */
-        
-        /* Post styles */
-        .post {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-        }
-        
-        .post-title {
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .post-meta {
-            font-size: 0.85rem;
-            color: #595959;
-            margin-bottom: 1rem;
-        }
-        
-        .post-meta a {
-            color: #007acc;
-            text-decoration: none;
-        }
-        
-        .post-content {
-            line-height: 1.7;
-            color: #333;
-        }
-        
-        .post-content p {
-            margin-bottom: 1rem;
-        }
-        
-        .post-content a {
-            color: #007acc;
-            text-decoration: none;
-        }
-        
-        .post-content a:hover {
-            text-decoration: underline;
-        }
-        
-        .post-content h1,
-        .post-content h2,
-        .post-content h3,
-        .post-content h4,
-        .post-content h5,
-        .post-content h6 {
-            margin: 1.5rem 0 1rem 0;
-            line-height: 1.3;
-            color: #333;
-        }
-        
+        /* Blog Styles */
+        .post { margin-bottom: 1rem; padding-bottom: 1rem; }
+        .post-title { margin-bottom: 0.5rem; line-height: 1.3; font-size: 1.5rem; font-weight: 600; color: #333; }
+        .post-meta { font-size: 0.85rem; color: #595959; margin-bottom: 1rem; }
+        .post-meta a { color: #007acc; text-decoration: none; }
+        .post-content { line-height: 1.7; color: #333; }
+        .post-content p { margin-bottom: 1rem; }
+        .post-content a { color: #007acc; text-decoration: none; }
+        .post-content a:hover { text-decoration: underline; }
+        .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 { margin: 1.5rem 0 1rem 0; line-height: 1.3; color: #333; }
         .post-content h1 { font-size: 1.75rem; }
         .post-content h2 { font-size: 1.5rem; }
         .post-content h3 { font-size: 1.25rem; }
         .post-content h4 { font-size: 1.1rem; }
-        
-        .post-content ul,
-        .post-content ol {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-        
-        .post-content li {
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Blockquote */
-        blockquote {
-            margin: 1em 0;
-            padding-left: 1em;
-            border-left: 2px solid #aaa;
-            color: #595959;
-        }
-        
-        blockquote p {
-            margin: 0.5em 0;
-        }
-        
-        /* Tables */
-        .post-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        
-        .post-content th,
-        .post-content td {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        
-        .post-content th {
-            background: #f6f8fa;
-            font-weight: 600;
-        }
-        
-        /* Code */
-        code {
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-        
-        p code,
-        li code,
-        td code {
-            background-color: #f6f8fa;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-size: 0.875em;
-            color: #24292f;
-        }
-        
-        pre {
-            background-color: #f6f8fa;
-            border-radius: 6px;
-            padding: 1rem;
-            margin: 1rem 0;
-            overflow-x: auto;
-        }
-        
-        pre code {
-            background: none;
-            padding: 0;
-            font-size: 0.875rem;
-        }
-        
-        /* Images */
-        .post-content img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 1rem auto;
-            border-radius: 4px;
-        }
-        
-        /* Image shortcode container */
-        .img-container {
-            display: block;
-            margin: 0 auto;
-            padding: 1rem 0;
-        }
-        
-        .img-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        
-        .img-container img:hover {
-            opacity: 0.9;
-        }
-        
-        /* Table shortcode container */
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            margin: 2rem 0;
-        }
-        
-        .table-container iframe {
-            width: 100%;
-            border: none;
-            background: transparent;
-        }
-        
-        /* Newsletter shortcode */
-        .inline-newsletter {
-            margin: 2.5rem auto;
-            padding: 0.5rem 0 0.5rem 1.5rem;
-            border-left: 2px solid #333;
-            width: 80%;
-        }
-        
-        .inline-newsletter-headline {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            font-weight: 400;
-            line-height: 1.4;
-            color: #333;
-            margin: 0 0 1.25rem 0;
-        }
-        
-        .inline-newsletter-form {
-            display: flex;
-            gap: 0;
-            max-width: 90%;
-        }
-        
-        .inline-newsletter-input {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            border: 1px solid #333;
-            border-right: none;
-            background: #fff;
-        }
-        
-        .inline-newsletter-button {
-            padding: 0.75rem 1.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background: #333;
-            color: #fff;
-            border: 1px solid #333;
-            cursor: pointer;
-        }
-        
-        .inline-newsletter-privacy {
-            margin: 0.75rem 0 0 0;
-            font-size: 0.8rem;
-            color: #666;
-        }
-        
-        /* Horizontal rule */
-        hr {
-            border: none;
-            border-top: 1px solid #e9ecef;
-            margin: 2rem 0;
-        }
-        
-        /* KaTeX display math */
-        .katex-display {
-            margin: 1rem 0;
-            overflow-x: auto;
-        }
-        
-        /* Feedback footer */
-        .feedback-footer {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e9ecef;
-            text-align: center;
-            color: #595959;
-            font-size: 0.9rem;
-        }
-        
-        .feedback-footer p {
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .feedback-footer a {
-            color: #007acc;
-            text-decoration: none;
-        }
-        
-        /* Project tag */
-        .project-tag {
-            background-color: #e9ecef;
-            color: #495057;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 9px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            margin-left: 6px;
-            display: inline-block;
-            vertical-align: middle;
-            border: 1px solid #dee2e6;
-        }
+        .post-content ul, .post-content ol { margin: 1rem 0; padding-left: 1.5rem; }
+        .post-content li { margin-bottom: 0.5rem; }
+        blockquote { margin: 1em 0; padding-left: 1em; border-left: 2px solid #aaa; color: #595959; }
+        blockquote p { margin: 0.5em 0; }
+        .post-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .post-content th, .post-content td { padding: 0.5rem; border: 1px solid #ddd; text-align: left; }
+        .post-content th { background: #f6f8fa; font-weight: 600; }
+        code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace; font-size: 0.875rem; line-height: 1.5; }
+        p code, li code, td code { background-color: #f6f8fa; padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.875em; color: #24292f; }
+        pre { background-color: #f6f8fa; border-radius: 6px; padding: 1rem; margin: 1rem 0; overflow-x: auto; }
+        pre code { background: none; padding: 0; font-size: 0.875rem; }
+        .post-content img { max-width: 100%; height: auto; display: block; margin: 1rem auto; border-radius: 4px; }
+        .img-container { display: block; margin: 0 auto; padding: 1rem 0; }
+        .img-container img { width: 100%; height: auto; display: block; cursor: pointer; transition: opacity 0.2s; }
+        .img-container img:hover { opacity: 0.9; }
+        .table-container { width: 100%; overflow-x: auto; margin: 2rem 0; }
+        .table-container iframe { width: 100%; border: none; background: transparent; }
+        .inline-newsletter { margin: 2.5rem auto; padding: 0.5rem 0 0.5rem 1.5rem; border-left: 2px solid #333; width: 80%; }
+        .inline-newsletter-headline { font-family: Georgia, "Times New Roman", serif; font-size: 1.5rem; font-style: italic; font-weight: 400; line-height: 1.4; color: #333; margin: 0 0 1.25rem 0; }
+        .inline-newsletter-form { display: flex; gap: 0; max-width: 90%; }
+        .inline-newsletter-input { flex: 1; padding: 0.75rem 1rem; font-size: 1rem; border: 1px solid #333; border-right: none; background: #fff; }
+        .inline-newsletter-button { padding: 0.75rem 1.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: #333; color: #fff; border: 1px solid #333; cursor: pointer; }
+        .inline-newsletter-privacy { margin: 0.75rem 0 0 0; font-size: 0.8rem; color: #666; }
+        hr { border: none; border-top: 1px solid #e9ecef; margin: 2rem 0; }
+        .katex-display { margin: 1rem 0; overflow-x: auto; }
+        .feedback-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e9ecef; text-align: center; color: #595959; font-size: 0.9rem; }
+        .feedback-footer p { margin: 0; line-height: 1.6; }
+        .feedback-footer a { color: #007acc; text-decoration: none; }
         
         /* Status bar */
         .status-bar {
@@ -603,25 +571,42 @@
         .toast.show {
             opacity: 1;
         }
+        
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <div class="composer-container">
-        <!-- Editor Panel -->
         <div class="editor-panel">
             <div class="editor-header">
                 <h2>Post Composer</h2>
                 <div class="editor-actions">
+                    <button class="btn btn-focus" onclick="toggleFocusMode()" id="focus-btn">Focus</button>
                     <button class="btn" onclick="insertShortcode('img')">+ Image</button>
                     <button class="btn" onclick="insertShortcode('table')">+ Table</button>
                     <button class="btn" onclick="insertShortcode('newsletter')">+ Newsletter</button>
+                    <button class="btn btn-ai" onclick="generateSEO()" id="seo-btn">✨ AI SEO</button>
                     <button class="btn btn-primary" onclick="copyMarkdown()">Copy</button>
                     <button class="btn btn-primary" onclick="downloadMarkdown()">Download</button>
                     <button class="btn btn-danger" onclick="clearAll()">Clear</button>
                 </div>
             </div>
             
-            <!-- Essential Fields (Always visible) -->
             <div class="frontmatter-section open" id="essential-section">
                 <div class="frontmatter-header" onclick="toggleSection('essential-section')">
                     <h3>Essential</h3>
@@ -644,7 +629,6 @@
                 </div>
             </div>
             
-            <!-- SEO & Metadata (Collapsible) -->
             <div class="frontmatter-section" id="seo-section">
                 <div class="frontmatter-header" onclick="toggleSection('seo-section')">
                     <h3>SEO & Metadata <span class="frontmatter-badge" id="seo-badge">0 fields</span></h3>
@@ -671,7 +655,6 @@
                 </div>
             </div>
             
-            <!-- Advanced (Collapsible) -->
             <div class="frontmatter-section" id="advanced-section">
                 <div class="frontmatter-header" onclick="toggleSection('advanced-section')">
                     <h3>Advanced <span class="frontmatter-badge" id="advanced-badge">0 fields</span></h3>
@@ -692,11 +675,11 @@
                 </div>
             </div>
             
-            <textarea id="markdown-editor" placeholder="Write your post content here...
+            <div class="editor-wrapper">
+                <div id="syntax-highlight"></div>
+                <textarea id="markdown-editor" placeholder="Write your post content here...
 
 Paste a complete Hugo post with frontmatter (---) and it will be parsed automatically.
-
-Or just start writing markdown:
 
 > This is a blockquote
 
@@ -707,10 +690,14 @@ Regular paragraph with **bold** and *italic* text.
 - List item 1  
 - List item 2
 
-Use shortcodes:
-{{< img src=&quot;path/to/image.jpg&quot; alt=&quot;Description&quot; width=&quot;80%&quot; >}}
-{{< newsletter >}}
+`inline code`
+
+```python
+def hello():
+    print('Hello!')
+```
 "></textarea>
+            </div>
             
             <div class="status-bar">
                 <span id="word-count">0 words</span>
@@ -718,10 +705,8 @@ Use shortcodes:
             </div>
         </div>
         
-        <!-- Resizer -->
         <div class="resizer" id="resizer"></div>
         
-        <!-- Preview Panel -->
         <div class="preview-panel">
             <div class="preview-header">
                 <h2>Preview</h2>
@@ -742,7 +727,6 @@ Use shortcodes:
                         <p>Start writing to see your preview...</p>
                     </div>
                 </article>
-                
                 <footer class="feedback-footer">
                     <p>Have feedback, comments, or ideas? <a href="mailto:info@philippdubach.com">I'd love to hear from you</a>.</p>
                 </footer>
@@ -753,35 +737,19 @@ Use shortcodes:
     <div class="toast" id="toast"></div>
     
     <script>
-        // ===================================
-        // State Management
-        // ===================================
-        let frontmatter = {
-            title: '',
-            date: '',
-            description: '',
-            keywords: [],
-            images: [],
-            external_url: '',
-            aliases: [],
-            draft: false,
-            math: false
-        };
-        
+        // State
+        let frontmatter = { title: '', date: '', description: '', keywords: [], images: [], external_url: '', aliases: [], draft: false, math: false };
         let bodyContent = '';
         let isUpdatingFromPaste = false;
+        let isFocusMode = false;
         
-        // ===================================
-        // Configure Libraries
-        // ===================================
+        // Configure marked
         marked.setOptions({
             breaks: true,
             gfm: true,
             highlight: function(code, lang) {
                 if (lang && hljs.getLanguage(lang)) {
-                    try {
-                        return hljs.highlight(code, { language: lang }).value;
-                    } catch (e) {}
+                    try { return hljs.highlight(code, { language: lang }).value; } catch (e) {}
                 }
                 return hljs.highlightAuto(code).value;
             }
@@ -789,51 +757,100 @@ Use shortcodes:
         
         const STATIC_BASE = 'https://static.philippdubach.com';
         
-        // ===================================
-        // Frontmatter Parsing
-        // ===================================
+        // Syntax highlighting for editor
+        function highlightSyntax(text) {
+            if (!text) return '';
+            
+            let html = escapeHtml(text);
+            
+            // Code blocks (must be first)
+            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (m, lang, code) => {
+                return `<span class="syntax-code-block">\`\`\`<span class="syntax-code-lang">${lang}</span>\n${code}\`\`\`</span>`;
+            });
+            
+            // Inline code
+            html = html.replace(/`([^`\n]+)`/g, '<span class="syntax-code">`$1`</span>');
+            
+            // Headings
+            html = html.replace(/^(#{1,6}\s.*)$/gm, '<span class="syntax-heading">$1</span>');
+            
+            // Bold
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<span class="syntax-bold">**$1**</span>');
+            
+            // Italic
+            html = html.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<span class="syntax-italic">*$1*</span>');
+            
+            // Links
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<span class="syntax-link-text">[$1]</span>(<span class="syntax-link-url">$2</span>)');
+            
+            // Blockquotes
+            html = html.replace(/^(&gt;\s?.*)$/gm, '<span class="syntax-blockquote">$1</span>');
+            
+            // Lists
+            html = html.replace(/^(\s*[-*+]\s)/gm, '<span class="syntax-list">$1</span>');
+            html = html.replace(/^(\s*\d+\.\s)/gm, '<span class="syntax-list">$1</span>');
+            
+            // Horizontal rule
+            html = html.replace(/^(---+|___+|\*\*\*+)$/gm, '<span class="syntax-hr">$1</span>');
+            
+            // Shortcodes
+            html = html.replace(/(\{\{&lt;[^&]*&gt;\}\})/g, '<span class="syntax-shortcode">$1</span>');
+            
+            // Math
+            html = html.replace(/\$\$[\s\S]*?\$\$/g, m => `<span class="syntax-math">${m}</span>`);
+            html = html.replace(/(?<!\$)\$(?!\$)([^$\n]+)\$(?!\$)/g, '<span class="syntax-math">$$$1$$</span>');
+            
+            return html;
+        }
+        
+        function escapeHtml(text) {
+            return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        
+        function updateSyntaxHighlight() {
+            const editor = document.getElementById('markdown-editor');
+            const highlight = document.getElementById('syntax-highlight');
+            highlight.innerHTML = highlightSyntax(editor.value) + '\n';
+            highlight.scrollTop = editor.scrollTop;
+        }
+        
+        // Sync scroll
+        document.getElementById('markdown-editor').addEventListener('scroll', function() {
+            document.getElementById('syntax-highlight').scrollTop = this.scrollTop;
+        });
+        
+        // Focus mode
+        function toggleFocusMode() {
+            isFocusMode = !isFocusMode;
+            document.body.classList.toggle('focus-mode', isFocusMode);
+            document.getElementById('focus-btn').textContent = isFocusMode ? 'Exit Focus' : 'Focus';
+        }
+        
+        // Frontmatter parsing
         function parseFrontmatter(text) {
             const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-            if (!match) {
-                return { frontmatter: null, body: text };
-            }
-            
+            if (!match) return { frontmatter: null, body: text };
             try {
-                const parsed = jsyaml.load(match[1]);
-                return { frontmatter: parsed, body: match[2] };
+                return { frontmatter: jsyaml.load(match[1]), body: match[2] };
             } catch (e) {
-                console.error('YAML parse error:', e);
                 return { frontmatter: null, body: text };
             }
         }
         
         function generateFrontmatterYaml() {
             let lines = ['---'];
+            if (frontmatter.title) lines.push(`title: ${frontmatter.title}`);
+            if (frontmatter.date) lines.push(`date: ${frontmatter.date}`);
             
-            // Title
-            if (frontmatter.title) {
-                lines.push(`title: ${frontmatter.title}`);
-            }
-            
-            // Date
-            if (frontmatter.date) {
-                lines.push(`date: ${frontmatter.date}`);
-            }
-            
-            // Images
             if (frontmatter.images && frontmatter.images.length > 0) {
                 lines.push('images:');
-                frontmatter.images.forEach(img => {
-                    lines.push(`- ${img}`);
-                });
+                frontmatter.images.forEach(img => lines.push(`- ${img}`));
             } else {
                 lines.push('images:');
                 lines.push('- https://static.philippdubach.com/ograph/ograph-post.jpg');
             }
             
-            // Description
             if (frontmatter.description) {
-                // Escape single quotes and wrap in quotes if contains special chars
                 const desc = frontmatter.description;
                 if (desc.includes(':') || desc.includes("'") || desc.includes('"')) {
                     lines.push(`description: '${desc.replace(/'/g, "''")}'`);
@@ -842,46 +859,25 @@ Use shortcodes:
                 }
             }
             
-            // Keywords
             if (frontmatter.keywords && frontmatter.keywords.length > 0) {
                 lines.push('keywords:');
-                frontmatter.keywords.forEach(kw => {
-                    lines.push(`- ${kw.trim()}`);
-                });
+                frontmatter.keywords.forEach(kw => lines.push(`- ${kw.trim()}`));
             }
             
-            // External URL
-            if (frontmatter.external_url) {
-                lines.push(`external_url: ${frontmatter.external_url}`);
-            }
-            
-            // Math
-            if (frontmatter.math) {
-                lines.push('math: true');
-            }
-            
-            // Draft
+            if (frontmatter.external_url) lines.push(`external_url: ${frontmatter.external_url}`);
+            if (frontmatter.math) lines.push('math: true');
             lines.push(`draft: ${frontmatter.draft ? 'true' : 'false'}`);
             
-            // Aliases
             if (frontmatter.aliases && frontmatter.aliases.length > 0) {
                 lines.push('aliases:');
-                frontmatter.aliases.forEach(alias => {
-                    if (alias.trim()) {
-                        lines.push(`- ${alias.trim()}`);
-                    }
-                });
+                frontmatter.aliases.forEach(alias => { if (alias.trim()) lines.push(`- ${alias.trim()}`); });
             }
             
-            lines.push('---');
-            lines.push('');
-            
+            lines.push('---', '');
             return lines.join('\n');
         }
         
-        // ===================================
-        // UI Sync Functions
-        // ===================================
+        // UI sync
         function syncFieldsFromFrontmatter() {
             document.getElementById('post-title').value = frontmatter.title || '';
             document.getElementById('post-date').value = frontmatter.date || '';
@@ -892,7 +888,6 @@ Use shortcodes:
             document.getElementById('post-aliases').value = (frontmatter.aliases || []).join('\n');
             document.getElementById('post-draft').checked = frontmatter.draft || false;
             document.getElementById('post-math').checked = frontmatter.math || false;
-            
             updateBadges();
         }
         
@@ -900,42 +895,32 @@ Use shortcodes:
             frontmatter.title = document.getElementById('post-title').value;
             frontmatter.date = document.getElementById('post-date').value;
             frontmatter.description = document.getElementById('post-description').value;
-            
-            const keywordsStr = document.getElementById('post-keywords').value;
-            frontmatter.keywords = keywordsStr ? keywordsStr.split(',').map(k => k.trim()).filter(k => k) : [];
-            
-            const imageUrl = document.getElementById('post-images').value;
-            frontmatter.images = imageUrl ? [imageUrl] : [];
-            
+            const kw = document.getElementById('post-keywords').value;
+            frontmatter.keywords = kw ? kw.split(',').map(k => k.trim()).filter(k => k) : [];
+            const img = document.getElementById('post-images').value;
+            frontmatter.images = img ? [img] : [];
             frontmatter.external_url = document.getElementById('post-external').value;
-            
-            const aliasesStr = document.getElementById('post-aliases').value;
-            frontmatter.aliases = aliasesStr ? aliasesStr.split('\n').map(a => a.trim()).filter(a => a) : [];
-            
+            const al = document.getElementById('post-aliases').value;
+            frontmatter.aliases = al ? al.split('\n').map(a => a.trim()).filter(a => a) : [];
             frontmatter.draft = document.getElementById('post-draft').checked;
             frontmatter.math = document.getElementById('post-math').checked;
-            
             updateBadges();
         }
         
         function updateBadges() {
-            // SEO badge
             let seoCount = 0;
             if (frontmatter.description) seoCount++;
             if (frontmatter.keywords && frontmatter.keywords.length > 0) seoCount++;
             if (frontmatter.images && frontmatter.images.length > 0) seoCount++;
             document.getElementById('seo-badge').textContent = `${seoCount} field${seoCount !== 1 ? 's' : ''}`;
             
-            // Advanced badge
             let advCount = 0;
             if (frontmatter.external_url) advCount++;
             if (frontmatter.aliases && frontmatter.aliases.length > 0) advCount++;
             document.getElementById('advanced-badge').textContent = `${advCount} field${advCount !== 1 ? 's' : ''}`;
         }
         
-        // ===================================
-        // Event Handlers
-        // ===================================
+        // Event handlers
         function onFieldChange() {
             syncFrontmatterFromFields();
             updatePreview();
@@ -945,12 +930,9 @@ Use shortcodes:
         function onEditorInput() {
             const editor = document.getElementById('markdown-editor');
             const text = editor.value;
-            
-            // Check if content starts with frontmatter
             const parsed = parseFrontmatter(text);
             
             if (parsed.frontmatter) {
-                // Update frontmatter from parsed content
                 frontmatter = {
                     title: parsed.frontmatter.title || '',
                     date: parsed.frontmatter.date || '',
@@ -963,7 +945,6 @@ Use shortcodes:
                     math: parsed.frontmatter.math || false
                 };
                 
-                // Format date if it's a Date object
                 if (frontmatter.date instanceof Date) {
                     frontmatter.date = frontmatter.date.toISOString().split('T')[0];
                 } else if (typeof frontmatter.date === 'string' && frontmatter.date.includes('T')) {
@@ -971,72 +952,40 @@ Use shortcodes:
                 }
                 
                 bodyContent = parsed.body;
-                
-                // Update fields to match
                 syncFieldsFromFrontmatter();
                 
-                // Replace editor content with just the body (strip frontmatter)
-                // But only if this looks like a paste (content changed significantly)
                 if (!isUpdatingFromPaste) {
                     isUpdatingFromPaste = true;
-                    const cursorPos = editor.selectionStart;
                     editor.value = bodyContent;
-                    // Try to maintain cursor position
-                    const newPos = Math.min(cursorPos, bodyContent.length);
-                    editor.selectionStart = editor.selectionEnd = newPos;
                     isUpdatingFromPaste = false;
                 }
             } else {
                 bodyContent = text;
             }
             
+            updateSyntaxHighlight();
             updatePreview();
             saveToLocalStorage();
         }
         
-        // ===================================
         // Shortcodes
-        // ===================================
         function processShortcodes(text) {
-            // {{< img src="..." alt="..." width="..." >}}
             text = text.replace(/\{\{<\s*img\s+([^>]+)\s*>\}\}/g, (match, attrs) => {
                 const src = attrs.match(/src=["']([^"']+)["']/)?.[1] || '';
                 const alt = attrs.match(/alt=["']([^"']+)["']/)?.[1] || '';
                 const width = attrs.match(/width=["']([^"']+)["']/)?.[1] || '80%';
-                
                 const imgUrl = src.startsWith('http') ? src : `${STATIC_BASE}/${src}`;
-                
-                return `<div class="img-container" style="width: ${width}; margin: 0 auto;">
-                    <img src="${imgUrl}" alt="${alt}" loading="lazy">
-                </div>`;
+                return `<div class="img-container" style="width: ${width}; margin: 0 auto;"><img src="${imgUrl}" alt="${alt}" loading="lazy"></div>`;
             });
             
-            // {{< table src="..." height="..." >}}
             text = text.replace(/\{\{<\s*table\s+([^>]+)\s*>\}\}/g, (match, attrs) => {
                 const src = attrs.match(/src=["']([^"']+)["']/)?.[1] || '';
                 const height = attrs.match(/height=["']([^"']+)["']/)?.[1] || '800px';
-                const alt = attrs.match(/alt=["']([^"']+)["']/)?.[1] || 'Embedded table';
-                
-                const tableUrl = `${STATIC_BASE}/html/${src}`;
-                
-                return `<div class="table-container">
-                    <iframe src="${tableUrl}" style="width: 100%; height: ${height}; border: none;" 
-                            title="${alt}" loading="lazy"></iframe>
-                </div>`;
+                return `<div class="table-container"><iframe src="${STATIC_BASE}/html/${src}" style="width: 100%; height: ${height}; border: none;" loading="lazy"></iframe></div>`;
             });
             
-            // {{< newsletter >}}
             text = text.replace(/\{\{<\s*newsletter\s*>\}\}/g, () => {
-                return `<aside class="inline-newsletter">
-                    <div class="inline-newsletter-content">
-                        <p class="inline-newsletter-headline">Enjoy this writing? Get new posts, projects, and articles delivered monthly.</p>
-                        <form class="inline-newsletter-form">
-                            <input type="email" placeholder="your@email.com" class="inline-newsletter-input" disabled>
-                            <button type="button" class="inline-newsletter-button" disabled>Sign Up</button>
-                        </form>
-                        <p class="inline-newsletter-privacy">No tracking. Unsubscribe anytime.</p>
-                    </div>
-                </aside>`;
+                return `<aside class="inline-newsletter"><div class="inline-newsletter-content"><p class="inline-newsletter-headline">Enjoy this writing? Get new posts, projects, and articles delivered monthly.</p><form class="inline-newsletter-form"><input type="email" placeholder="your@email.com" class="inline-newsletter-input" disabled><button type="button" class="inline-newsletter-button" disabled>Sign Up</button></form><p class="inline-newsletter-privacy">No tracking. Unsubscribe anytime.</p></div></aside>`;
             });
             
             return text;
@@ -1045,194 +994,169 @@ Use shortcodes:
         function insertShortcode(type) {
             const editor = document.getElementById('markdown-editor');
             const start = editor.selectionStart;
-            const end = editor.selectionEnd;
-            
             let shortcode = '';
-            switch (type) {
-                case 'img':
-                    shortcode = '{{< img src="path/to/image.jpg" alt="Description" width="80%" >}}';
-                    break;
-                case 'table':
-                    shortcode = '{{< table src="table.html" height="600px" >}}';
-                    break;
-                case 'newsletter':
-                    shortcode = '{{< newsletter >}}';
-                    break;
-            }
+            if (type === 'img') shortcode = '{{< img src="path/to/image.jpg" alt="Description" width="80%" >}}';
+            else if (type === 'table') shortcode = '{{< table src="table.html" height="600px" >}}';
+            else if (type === 'newsletter') shortcode = '{{< newsletter >}}';
             
-            editor.value = editor.value.substring(0, start) + shortcode + editor.value.substring(end);
+            editor.value = editor.value.substring(0, start) + shortcode + editor.value.substring(editor.selectionEnd);
             editor.selectionStart = editor.selectionEnd = start + shortcode.length;
             editor.focus();
             bodyContent = editor.value;
+            updateSyntaxHighlight();
             updatePreview();
             saveToLocalStorage();
         }
         
-        // ===================================
         // Preview
-        // ===================================
         function getStats(text) {
-            const cleanText = text
-                .replace(/\{\{<[^>]+>\}\}/g, '')
-                .replace(/```[\s\S]*?```/g, '')
-                .replace(/`[^`]+`/g, '')
-                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-                .replace(/[#*_~]/g, '')
-                .trim();
-            
-            const words = cleanText.split(/\s+/).filter(w => w.length > 0).length;
-            const readingTime = Math.max(1, Math.ceil(words / 200));
-            
-            return { words, readingTime };
+            const clean = text.replace(/\{\{<[^>]+>\}\}/g, '').replace(/```[\s\S]*?```/g, '').replace(/`[^`]+`/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*_~]/g, '').trim();
+            const words = clean.split(/\s+/).filter(w => w.length > 0).length;
+            return { words, readingTime: Math.max(1, Math.ceil(words / 200)) };
         }
         
         function formatDate(dateStr) {
-            if (!dateStr) {
-                const now = new Date();
-                return now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            }
-            const date = new Date(dateStr + 'T12:00:00');
-            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            if (!dateStr) return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            return new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         }
         
         function debounce(func, wait) {
             let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
+            return function(...args) {
                 clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
+                timeout = setTimeout(() => func(...args), wait);
             };
         }
         
         const updatePreview = debounce(function() {
-            const title = frontmatter.title || 'Untitled Post';
-            const date = frontmatter.date;
-            const external = frontmatter.external_url;
-            
-            // Process shortcodes
-            let processed = processShortcodes(bodyContent);
-            
-            // Convert markdown to HTML
-            const html = marked.parse(processed);
-            
-            // Update preview
-            document.getElementById('preview-title').innerHTML = title;
-            document.getElementById('preview-date').textContent = formatDate(date);
+            const html = marked.parse(processShortcodes(bodyContent));
+            document.getElementById('preview-title').innerHTML = frontmatter.title || 'Untitled Post';
+            document.getElementById('preview-date').textContent = formatDate(frontmatter.date);
             document.getElementById('preview-content').innerHTML = html;
             
-            // External URL
-            const externalSpan = document.getElementById('preview-external');
-            if (external) {
-                externalSpan.innerHTML = ` • <a href="${external}" target="_blank">via</a>`;
-            } else {
-                externalSpan.innerHTML = '';
-            }
+            const ext = document.getElementById('preview-external');
+            ext.innerHTML = frontmatter.external_url ? ` • <a href="${frontmatter.external_url}" target="_blank">via</a>` : '';
             
-            // Stats
             const stats = getStats(bodyContent);
             document.getElementById('preview-words').textContent = stats.words;
             document.getElementById('preview-reading').textContent = stats.readingTime;
             document.getElementById('word-count').textContent = `${stats.words} words`;
             document.getElementById('reading-time').textContent = `${stats.readingTime} min read`;
             
-            // Render math if enabled
             if (frontmatter.math && typeof renderMathInElement === 'function') {
                 renderMathInElement(document.getElementById('preview-content'), {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false},
-                        {left: '\\[', right: '\\]', display: true},
-                        {left: '\\(', right: '\\)', display: false}
-                    ],
+                    delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}],
                     throwOnError: false
                 });
             }
             
-            // Re-highlight code blocks
-            document.querySelectorAll('#preview-content pre code').forEach((block) => {
-                hljs.highlightElement(block);
-            });
+            document.querySelectorAll('#preview-content pre code').forEach(block => hljs.highlightElement(block));
         }, 100);
         
-        // ===================================
-        // Actions
-        // ===================================
-        function copyMarkdown() {
-            const fm = generateFrontmatterYaml();
-            const full = fm + bodyContent;
+        // AI SEO Generation
+        async function generateSEO() {
+            const btn = document.getElementById('seo-btn');
+            const originalText = btn.innerHTML;
             
-            navigator.clipboard.writeText(full).then(() => {
-                showToast('Copied to clipboard!');
-            });
+            if (bodyContent.trim().length < 50) {
+                showToast('Write more content first (at least 50 characters)');
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span>Generating...';
+            
+            try {
+                const response = await fetch('/generate-seo', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: frontmatter.title || 'Untitled',
+                        content: bodyContent
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to generate SEO');
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                // Update fields
+                if (data.title && !frontmatter.title) {
+                    frontmatter.title = data.title;
+                }
+                if (data.description) {
+                    frontmatter.description = data.description;
+                }
+                if (data.keywords && Array.isArray(data.keywords)) {
+                    frontmatter.keywords = data.keywords;
+                }
+                
+                syncFieldsFromFrontmatter();
+                updatePreview();
+                saveToLocalStorage();
+                
+                // Open SEO section
+                document.getElementById('seo-section').classList.add('open');
+                
+                showToast('SEO metadata generated!');
+            } catch (error) {
+                console.error('SEO generation error:', error);
+                showToast('Failed to generate SEO: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+        
+        // Actions
+        function copyMarkdown() {
+            navigator.clipboard.writeText(generateFrontmatterYaml() + bodyContent).then(() => showToast('Copied to clipboard!'));
         }
         
         function downloadMarkdown() {
             const title = frontmatter.title || 'untitled';
             const date = frontmatter.date || new Date().toISOString().split('T')[0];
-            const fm = generateFrontmatterYaml();
-            const full = fm + bodyContent;
-            
-            // Generate filename
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
             const filename = `${date.replace(/-/g, '')}-${slug || 'post'}.md`;
             
-            const blob = new Blob([full], { type: 'text/markdown' });
-            const url = URL.createObjectURL(blob);
+            const blob = new Blob([generateFrontmatterYaml() + bodyContent], { type: 'text/markdown' });
             const a = document.createElement('a');
-            a.href = url;
+            a.href = URL.createObjectURL(blob);
             a.download = filename;
             a.click();
-            URL.revokeObjectURL(url);
-            
+            URL.revokeObjectURL(a.href);
             showToast(`Downloaded ${filename}`);
         }
         
         function clearAll() {
-            if (!confirm('Clear all content and start fresh?')) return;
-            
-            frontmatter = {
-                title: '',
-                date: new Date().toISOString().split('T')[0],
-                description: '',
-                keywords: [],
-                images: [],
-                external_url: '',
-                aliases: [],
-                draft: false,
-                math: false
-            };
+            if (!confirm('Clear all content?')) return;
+            frontmatter = { title: '', date: new Date().toISOString().split('T')[0], description: '', keywords: [], images: [], external_url: '', aliases: [], draft: false, math: false };
             bodyContent = '';
-            
             syncFieldsFromFrontmatter();
             document.getElementById('markdown-editor').value = '';
+            updateSyntaxHighlight();
             updatePreview();
             localStorage.removeItem('composer-draft');
             showToast('Cleared!');
         }
         
-        function toggleSection(sectionId) {
-            document.getElementById(sectionId).classList.toggle('open');
+        function toggleSection(id) { document.getElementById(id).classList.toggle('open'); }
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
         }
         
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2000);
-        }
-        
-        // ===================================
         // Storage
-        // ===================================
         function saveToLocalStorage() {
-            const data = {
-                frontmatter: frontmatter,
-                body: bodyContent
-            };
-            localStorage.setItem('composer-draft', JSON.stringify(data));
+            localStorage.setItem('composer-draft', JSON.stringify({ frontmatter, body: bodyContent }));
         }
         
         function loadFromLocalStorage() {
@@ -1240,29 +1164,17 @@ Use shortcodes:
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
-                    if (data.frontmatter) {
-                        frontmatter = { ...frontmatter, ...data.frontmatter };
-                    }
+                    if (data.frontmatter) frontmatter = { ...frontmatter, ...data.frontmatter };
                     bodyContent = data.body || '';
-                    
                     syncFieldsFromFrontmatter();
                     document.getElementById('markdown-editor').value = bodyContent;
-                } catch (e) {
-                    console.error('Error loading from localStorage:', e);
-                }
+                } catch (e) {}
             }
         }
         
-        // ===================================
         // Resizer
-        // ===================================
-        const resizer = document.getElementById('resizer');
-        const editorPanel = document.querySelector('.editor-panel');
-        const previewPanel = document.querySelector('.preview-panel');
-        
         let isResizing = false;
-        
-        resizer.addEventListener('mousedown', (e) => {
+        document.getElementById('resizer').addEventListener('mousedown', () => {
             isResizing = true;
             document.body.style.cursor = 'col-resize';
             document.body.style.userSelect = 'none';
@@ -1270,13 +1182,10 @@ Use shortcodes:
         
         document.addEventListener('mousemove', (e) => {
             if (!isResizing) return;
-            
-            const containerWidth = document.querySelector('.composer-container').offsetWidth;
-            const newEditorWidth = (e.clientX / containerWidth) * 100;
-            
-            if (newEditorWidth >= 20 && newEditorWidth <= 80) {
-                editorPanel.style.width = `${newEditorWidth}%`;
-                previewPanel.style.width = `${100 - newEditorWidth}%`;
+            const w = (e.clientX / document.querySelector('.composer-container').offsetWidth) * 100;
+            if (w >= 20 && w <= 80) {
+                document.querySelector('.editor-panel').style.width = `${w}%`;
+                document.querySelector('.preview-panel').style.width = `${100 - w}%`;
             }
         });
         
@@ -1286,47 +1195,26 @@ Use shortcodes:
             document.body.style.userSelect = '';
         });
         
-        // ===================================
-        // Keyboard Shortcuts
-        // ===================================
+        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.metaKey || e.ctrlKey) {
-                if (e.key === 's') {
-                    e.preventDefault();
-                    downloadMarkdown();
-                } else if (e.key === 'e') {
-                    e.preventDefault();
-                    copyMarkdown();
-                }
+                if (e.key === 's') { e.preventDefault(); downloadMarkdown(); }
+                else if (e.key === 'e') { e.preventDefault(); copyMarkdown(); }
             }
+            if (e.key === 'Escape' && isFocusMode) toggleFocusMode();
         });
         
-        // ===================================
-        // Initialize
-        // ===================================
+        // Init
         document.addEventListener('DOMContentLoaded', () => {
-            // Set default date
             frontmatter.date = new Date().toISOString().split('T')[0];
-            
-            // Load saved draft
             loadFromLocalStorage();
-            
-            // Sync fields
             syncFieldsFromFrontmatter();
             
-            // Set up editor listener
             const editor = document.getElementById('markdown-editor');
             editor.addEventListener('input', onEditorInput);
+            editor.addEventListener('paste', () => setTimeout(onEditorInput, 0));
             
-            // Listen for paste events to detect frontmatter
-            editor.addEventListener('paste', (e) => {
-                // Let the paste happen, then process
-                setTimeout(() => {
-                    onEditorInput();
-                }, 0);
-            });
-            
-            // Initial preview
+            updateSyntaxHighlight();
             updatePreview();
         });
     </script>
