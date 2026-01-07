@@ -33,6 +33,10 @@ package-lock.json
 social-automation/worker/node_modules/
 social-automation/worker/.wrangler/
 
+# Composer (deployed separately to Cloudflare Pages)
+composer/node_modules/
+composer/.wrangler/
+
 # Temporary files
 tmp/
 *.tmp
