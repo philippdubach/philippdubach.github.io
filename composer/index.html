@@ -706,6 +706,51 @@ def hello():
     <div class="toast" id="toast"></div>
     
     <script>
+        // DOM Element Cache (performance optimization)
+        const DOM = {
+            editor: null,
+            syntaxHighlight: null,
+            previewTitle: null,
+            previewDate: null,
+            previewContent: null,
+            previewExternal: null,
+            previewWords: null,
+            previewReading: null,
+            wordCount: null,
+            readingTime: null,
+            focusBtn: null,
+            seoBtn: null,
+            toast: null,
+            seoBadge: null,
+            advancedBadge: null
+        };
+        
+        // Initialize DOM cache
+        function initDOMCache() {
+            DOM.editor = document.getElementById('markdown-editor');
+            DOM.syntaxHighlight = document.getElementById('syntax-highlight');
+            DOM.previewTitle = document.getElementById('preview-title');
+            DOM.previewDate = document.getElementById('preview-date');
+            DOM.previewContent = document.getElementById('preview-content');
+            DOM.previewExternal = document.getElementById('preview-external');
+            DOM.previewWords = document.getElementById('preview-words');
+            DOM.previewReading = document.getElementById('preview-reading');
+            DOM.wordCount = document.getElementById('word-count');
+            DOM.readingTime = document.getElementById('reading-time');
+            DOM.focusBtn = document.getElementById('focus-btn');
+            DOM.seoBtn = document.getElementById('seo-btn');
+            DOM.toast = document.getElementById('toast');
+            DOM.seoBadge = document.getElementById('seo-badge');
+            DOM.advancedBadge = document.getElementById('advanced-badge');
+        }
+        
+        // Sanitize text for safe HTML display (XSS prevention)
+        function sanitizeText(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
         // State
         let frontmatter = { title: '', date: '', description: '', keywords: [], images: [], external_url: '', aliases: [], draft: false, math: false };
         let bodyContent = '';
@@ -776,23 +821,31 @@ def hello():
             return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
         
+        let syntaxHighlightPending = false;
+        
         function updateSyntaxHighlight() {
-            const editor = document.getElementById('markdown-editor');
-            const highlight = document.getElementById('syntax-highlight');
-            highlight.innerHTML = highlightSyntax(editor.value) + '\n';
-            highlight.scrollTop = editor.scrollTop;
+            if (syntaxHighlightPending) return;
+            syntaxHighlightPending = true;
+            
+            requestAnimationFrame(() => {
+                DOM.syntaxHighlight.innerHTML = highlightSyntax(DOM.editor.value) + '\n';
+                DOM.syntaxHighlight.scrollTop = DOM.editor.scrollTop;
+                syntaxHighlightPending = false;
+            });
         }
         
-        // Sync scroll
-        document.getElementById('markdown-editor').addEventListener('scroll', function() {
-            document.getElementById('syntax-highlight').scrollTop = this.scrollTop;
-        });
+        // Sync scroll (initialized after DOM cache)
+        function initScrollSync() {
+            DOM.editor.addEventListener('scroll', function() {
+                DOM.syntaxHighlight.scrollTop = this.scrollTop;
+            });
+        }
         
         // Focus mode
         function toggleFocusMode() {
             isFocusMode = !isFocusMode;
             document.body.classList.toggle('focus-mode', isFocusMode);
-            document.getElementById('focus-btn').textContent = isFocusMode ? 'Exit Focus' : 'Focus';
+            DOM.focusBtn.textContent = isFocusMode ? 'Exit Focus' : 'Focus';
         }
         
         // Frontmatter parsing
@@ -881,12 +934,12 @@ def hello():
             if (frontmatter.description) seoCount++;
             if (frontmatter.keywords && frontmatter.keywords.length > 0) seoCount++;
             if (frontmatter.images && frontmatter.images.length > 0) seoCount++;
-            document.getElementById('seo-badge').textContent = `${seoCount} field${seoCount !== 1 ? 's' : ''}`;
+            DOM.seoBadge.textContent = `${seoCount} field${seoCount !== 1 ? 's' : ''}`;
             
             let advCount = 0;
             if (frontmatter.external_url) advCount++;
             if (frontmatter.aliases && frontmatter.aliases.length > 0) advCount++;
-            document.getElementById('advanced-badge').textContent = `${advCount} field${advCount !== 1 ? 's' : ''}`;
+            DOM.advancedBadge.textContent = `${advCount} field${advCount !== 1 ? 's' : ''}`;
         }
         
         // Event handlers
@@ -897,8 +950,7 @@ def hello():
         }
         
         function onEditorInput() {
-            const editor = document.getElementById('markdown-editor');
-            const text = editor.value;
+            const text = DOM.editor.value;
             const parsed = parseFrontmatter(text);
             
             if (parsed.frontmatter) {
@@ -925,7 +977,7 @@ def hello():
                 
                 if (!isUpdatingFromPaste) {
                     isUpdatingFromPaste = true;
-                    editor.value = bodyContent;
+                    DOM.editor.value = bodyContent;
                     isUpdatingFromPaste = false;
                 }
             } else {
@@ -976,18 +1028,17 @@ def hello():
         }
         
         function insertShortcode(type) {
-            const editor = document.getElementById('markdown-editor');
-            const start = editor.selectionStart;
+            const start = DOM.editor.selectionStart;
             let shortcode = '';
             if (type === 'img') shortcode = '{{< img src="path/to/image.jpg" alt="Description" width="80%" >}}';
             else if (type === 'table') shortcode = '{{< table src="table.html" height="600px" >}}';
             else if (type === 'newsletter') shortcode = '{{< newsletter >}}';
             else if (type === 'disclaimer') shortcode = '{{< disclaimer type="finance" >}}';
             
-            editor.value = editor.value.substring(0, start) + shortcode + editor.value.substring(editor.selectionEnd);
-            editor.selectionStart = editor.selectionEnd = start + shortcode.length;
-            editor.focus();
-            bodyContent = editor.value;
+            DOM.editor.value = DOM.editor.value.substring(0, start) + shortcode + DOM.editor.value.substring(DOM.editor.selectionEnd);
+            DOM.editor.selectionStart = DOM.editor.selectionEnd = start + shortcode.length;
+            DOM.editor.focus();
+            bodyContent = DOM.editor.value;
             updateSyntaxHighlight();
             updatePreview();
             saveToLocalStorage();
@@ -1015,41 +1066,46 @@ def hello():
         
         const updatePreview = debounce(function() {
             const html = marked.parse(processShortcodes(bodyContent));
-            document.getElementById('preview-title').innerHTML = frontmatter.title || 'Untitled Post';
-            document.getElementById('preview-date').textContent = formatDate(frontmatter.date);
-            document.getElementById('preview-content').innerHTML = html;
+            // Use textContent for title to prevent XSS
+            DOM.previewTitle.textContent = frontmatter.title || 'Untitled Post';
+            DOM.previewDate.textContent = formatDate(frontmatter.date);
+            DOM.previewContent.innerHTML = html;
             
-            const ext = document.getElementById('preview-external');
-            ext.innerHTML = frontmatter.external_url ? ` • <a href="${frontmatter.external_url}" target="_blank">via</a>` : '';
+            // Sanitize external URL before display
+            if (frontmatter.external_url) {
+                const safeUrl = sanitizeText(frontmatter.external_url);
+                DOM.previewExternal.innerHTML = ` • <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">via</a>`;
+            } else {
+                DOM.previewExternal.innerHTML = '';
+            }
             
             const stats = getStats(bodyContent);
-            document.getElementById('preview-words').textContent = stats.words;
-            document.getElementById('preview-reading').textContent = stats.readingTime;
-            document.getElementById('word-count').textContent = `${stats.words} words`;
-            document.getElementById('reading-time').textContent = `${stats.readingTime} min read`;
+            DOM.previewWords.textContent = stats.words;
+            DOM.previewReading.textContent = stats.readingTime;
+            DOM.wordCount.textContent = `${stats.words} words`;
+            DOM.readingTime.textContent = `${stats.readingTime} min read`;
             
             if (frontmatter.math && typeof renderMathInElement === 'function') {
-                renderMathInElement(document.getElementById('preview-content'), {
+                renderMathInElement(DOM.previewContent, {
                     delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}],
                     throwOnError: false
                 });
             }
             
-            document.querySelectorAll('#preview-content pre code').forEach(block => hljs.highlightElement(block));
+            DOM.previewContent.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
         }, 100);
         
         // AI SEO Generation
         async function generateSEO() {
-            const btn = document.getElementById('seo-btn');
-            const originalText = btn.innerHTML;
+            const originalText = DOM.seoBtn.innerHTML;
             
             if (bodyContent.trim().length < 50) {
                 showToast('Write more content first (at least 50 characters)');
                 return;
             }
             
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span>Generating...';
+            DOM.seoBtn.disabled = true;
+            DOM.seoBtn.innerHTML = '<span class="spinner"></span>Generating...';
             
             try {
                 const response = await fetch('/generate-seo', {
@@ -1094,8 +1150,8 @@ def hello():
                 console.error('SEO generation error:', error);
                 showToast('Failed to generate SEO: ' + error.message);
             } finally {
-                btn.disabled = false;
-                btn.innerHTML = originalText;
+                DOM.seoBtn.disabled = false;
+                DOM.seoBtn.innerHTML = originalText;
             }
         }
         
@@ -1124,46 +1180,59 @@ def hello():
             frontmatter = { title: '', date: new Date().toISOString().split('T')[0], description: '', keywords: [], images: [], external_url: '', aliases: [], draft: false, math: false };
             bodyContent = '';
             syncFieldsFromFrontmatter();
-            document.getElementById('markdown-editor').value = '';
+            DOM.editor.value = '';
             updateSyntaxHighlight();
             updatePreview();
-            localStorage.removeItem('composer-draft');
+            try {
+                localStorage.removeItem('composer-draft');
+            } catch (e) {
+                console.warn('localStorage unavailable:', e);
+            }
             showToast('Cleared!');
         }
         
         function toggleSection(id) { document.getElementById(id).classList.toggle('open'); }
+        
         function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 2000);
+            DOM.toast.textContent = msg;
+            DOM.toast.classList.add('show');
+            setTimeout(() => DOM.toast.classList.remove('show'), 2000);
         }
         
-        // Storage
+        // Storage with error handling
         function saveToLocalStorage() {
-            localStorage.setItem('composer-draft', JSON.stringify({ frontmatter, body: bodyContent }));
+            try {
+                localStorage.setItem('composer-draft', JSON.stringify({ frontmatter, body: bodyContent }));
+            } catch (e) {
+                console.warn('Failed to save to localStorage:', e);
+            }
         }
         
         function loadFromLocalStorage() {
-            const saved = localStorage.getItem('composer-draft');
-            if (saved) {
-                try {
+            try {
+                const saved = localStorage.getItem('composer-draft');
+                if (saved) {
                     const data = JSON.parse(saved);
                     if (data.frontmatter) frontmatter = { ...frontmatter, ...data.frontmatter };
                     bodyContent = data.body || '';
                     syncFieldsFromFrontmatter();
-                    document.getElementById('markdown-editor').value = bodyContent;
-                } catch (e) {}
+                    DOM.editor.value = bodyContent;
+                }
+            } catch (e) {
+                console.warn('Failed to load from localStorage:', e);
             }
         }
         
         // Resizer
         let isResizing = false;
-        document.getElementById('resizer').addEventListener('mousedown', () => {
-            isResizing = true;
-            document.body.style.cursor = 'col-resize';
-            document.body.style.userSelect = 'none';
-        });
+        
+        function initResizer() {
+            document.getElementById('resizer').addEventListener('mousedown', () => {
+                isResizing = true;
+                document.body.style.cursor = 'col-resize';
+                document.body.style.userSelect = 'none';
+            });
+        }
         
         document.addEventListener('mousemove', (e) => {
             if (!isResizing) return;
@@ -1191,13 +1260,17 @@ def hello():
         
         // Init
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize DOM cache first
+            initDOMCache();
+            initScrollSync();
+            initResizer();
+            
             frontmatter.date = new Date().toISOString().split('T')[0];
             loadFromLocalStorage();
             syncFieldsFromFrontmatter();
             
-            const editor = document.getElementById('markdown-editor');
-            editor.addEventListener('input', onEditorInput);
-            editor.addEventListener('paste', () => setTimeout(onEditorInput, 0));
+            DOM.editor.addEventListener('input', onEditorInput);
+            DOM.editor.addEventListener('paste', () => setTimeout(onEditorInput, 0));
             
             updateSyntaxHighlight();
             updatePreview();
