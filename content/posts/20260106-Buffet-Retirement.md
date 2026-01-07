@@ -45,5 +45,4 @@ So what now? Abel inherits roughly $300 billion in cash and Treasury bills. The 
 
 If Buffett truly goes quiet, I hope he gets to experience not working at all, or at least the version that suits a man who prefers thinking to talking. The compounding may continue just fine.
 
-
-_<h6>This article is for informational purposes only, you should not consider any information or other material on this site as investment, financial, or other advice. There are risks associated with investing.</h6>_
+{{< disclaimer type="finance" >}}
