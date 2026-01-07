@@ -1,5 +1,5 @@
 ---
-title: "Praise by Name, Criticize by Category: On the Retirement of Warren Buffett"
+title: "Praise by Name, Criticize by Category: Warren Buffett Retires at 95"
 seoTitle: "Buffett Retires at 95: What 60 Years of Letters Taught"
 date: 2026-01-06
 lastmod: 2026-01-06
