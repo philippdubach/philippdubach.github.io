@@ -6,17 +6,17 @@
     {{- if $custom -}}
       <p>{{ $custom }}</p>
     {{- else if eq $type "finance" -}}
-      <p><strong>Disclaimer:</strong> This content is for informational and educational purposes only and does not constitute investment, financial, tax, or legal advice. Past performance is not indicative of future results. Always conduct your own research and consult with qualified professionals before making any investment decisions.</p>
+      <p><strong>Disclaimer:</strong> Personal opinions only, not professional advice. I write here in a private capacity, not as a financial professional. This is not investment, financial, tax, or legal advice. Past performance does not indicate future results. Do your own research and consult qualified professionals before making financial decisions. No liability accepted for any losses.</p>
     {{- else if eq $type "medical" -}}
-      <p><strong>Disclaimer:</strong> This content is for informational purposes only and does not constitute medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions regarding a medical condition.</p>
+      <p><strong>Disclaimer:</strong> For informational purposes only, not medical advice. Consult a qualified healthcare provider for any medical questions or conditions.</p>
     {{- else if eq $type "general" -}}
-      <p><strong>Disclaimer:</strong> The views expressed in this article are the author's own and do not represent professional advice. Information may be incomplete or outdated. Use at your own discretion.</p>
+      <p><strong>Disclaimer:</strong> Personal views only. Information may be incomplete or outdated. No warranties given. Use at your own risk.</p>
     {{- else if eq $type "ai" -}}
-      <p><strong>Disclaimer:</strong> This content discusses AI systems and their applications. AI capabilities evolve rapidly; information may become outdated. Any code or implementations are provided as-is without warranty.</p>
+      <p><strong>Disclaimer:</strong> AI capabilities evolve rapidly; information may become outdated. Code and implementations provided as-is without warranty.</p>
     {{- else if eq $type "research" -}}
-      <p><strong>Disclaimer:</strong> This content summarizes or references third-party research. The author is not affiliated with the researchers cited. Interpretations are the author's own and may not reflect the original researchers' views.</p>
+      <p><strong>Disclaimer:</strong> Summarizes third-party research. No affiliation with cited researchers. Interpretations are my own and may differ from original authors' views.</p>
     {{- else if eq $type "gambling" -}}
-      <p><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute financial or legal advice. Gambling carries significant risks; ensure you comply with local laws, age restrictions, and only wager responsibly. If you or someone you know is struggling with gambling, seek support at <a href="https://www.gambleaware.org" target="_blank" rel="noopener">BeGambleAware.org</a> or <a href="https://gamblersanonymous.org" target="_blank" rel="noopener">Gamblers Anonymous</a>.</p>
+      <p><strong>Disclaimer:</strong> For informational purposes only, not financial or legal advice. Gambling involves significant risk of loss. You are responsible for compliance with your local laws and age restrictions. Gamble responsibly. Support: <a href="https://www.gambleaware.org" target="_blank" rel="noopener">BeGambleAware.org</a>, <a href="https://gamblersanonymous.org" target="_blank" rel="noopener">Gamblers Anonymous</a>.</p>
     {{- end -}}
   </div>
 </aside>
