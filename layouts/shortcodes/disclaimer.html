@@ -1,0 +1,20 @@
+{{- $type := .Get "type" | default "finance" -}}
+{{- $custom := .Get "text" -}}
+
+<aside class="disclaimer" role="note" aria-label="Disclaimer">
+  <div class="disclaimer-content">
+    {{- if $custom -}}
+      <p>{{ $custom }}</p>
+    {{- else if eq $type "finance" -}}
+      <p><strong>Disclaimer:</strong> This content is for informational and educational purposes only and does not constitute investment, financial, tax, or legal advice. Past performance is not indicative of future results. Always conduct your own research and consult with qualified professionals before making any investment decisions.</p>
+    {{- else if eq $type "medical" -}}
+      <p><strong>Disclaimer:</strong> This content is for informational purposes only and does not constitute medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions regarding a medical condition.</p>
+    {{- else if eq $type "general" -}}
+      <p><strong>Disclaimer:</strong> The views expressed in this article are the author's own and do not represent professional advice. Information may be incomplete or outdated. Use at your own discretion.</p>
+    {{- else if eq $type "ai" -}}
+      <p><strong>Disclaimer:</strong> This content discusses AI systems and their applications. AI capabilities evolve rapidly; information may become outdated. Any code or implementations are provided as-is without warranty.</p>
+    {{- else if eq $type "research" -}}
+      <p><strong>Disclaimer:</strong> This content summarizes or references third-party research. The author is not affiliated with the researchers cited. Interpretations are the author's own and may not reflect the original researchers' views.</p>
+    {{- end -}}
+  </div>
+</aside>
