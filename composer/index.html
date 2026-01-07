@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Composer - philippdubach.com</title>
+    
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- js-yaml for YAML parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    
+    <style>
+        /* ===================================
+           Composer Layout
+           =================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+        
+        .composer-container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* Left: Editor Panel */
+        .editor-panel {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e0e0e0;
+            background: #fff;
+        }
+        
+        .editor-header {
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .editor-header h2 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .editor-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        
+        .btn:hover {
+            background: #f0f0f0;
+            border-color: #ccc;
+        }
+        
+        .btn-primary {
+            background: #333;
+            color: #fff;
+            border-color: #333;
+        }
+        
+        .btn-primary:hover {
+            background: #000;
+        }
+        
+        .btn-danger {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        
+        .btn-danger:hover {
+            background: #dc3545;
+            color: #fff;
+        }
+        
+        /* Frontmatter Section */
+        .frontmatter-section {
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .frontmatter-header {
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .frontmatter-header:hover {
+            background: #f0f0f0;
+        }
+        
+        .frontmatter-header h3 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .frontmatter-header h3::before {
+            content: '▶';
+            font-size: 0.6rem;
+            transition: transform 0.2s;
+        }
+        
+        .frontmatter-section.open .frontmatter-header h3::before {
+            transform: rotate(90deg);
+        }
+        
+        .frontmatter-badge {
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            background: #e9ecef;
+            border-radius: 10px;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .frontmatter-fields {
+            padding: 0 1rem 0.75rem 1rem;
+            display: none;
+        }
+        
+        .frontmatter-section.open .frontmatter-fields {
+            display: block;
+        }
+        
+        .field-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .field-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .field-group {
+            flex: 1;
+        }
+        
+        .field-group.small {
+            flex: 0 0 140px;
+        }
+        
+        .field-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .field-group input[type="text"],
+        .field-group input[type="url"],
+        .field-group input[type="date"],
+        .field-group textarea {
+            width: 100%;
+            padding: 0.4rem 0.5rem;
+            font-size: 0.85rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: inherit;
+        }
+        
+        .field-group textarea {
+            resize: vertical;
+            min-height: 60px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
+            font-size: 0.8rem;
+        }
+        
+        .field-group input:focus,
+        .field-group textarea:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            padding-top: 1.5rem;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            color: #555;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            cursor: pointer;
+        }
+        
+        /* Editor */
+        #markdown-editor {
+            flex: 1;
+            width: 100%;
+            border: none;
+            padding: 1.5rem;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            background: #fff;
+        }
+        
+        #markdown-editor::placeholder {
+            color: #999;
+        }
+        
+        /* Right: Preview Panel */
+        .preview-panel {
+            width: 50%;
+            overflow-y: auto;
+            background: #fff;
+        }
+        
+        .preview-header {
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .preview-header h2 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .preview-content {
+            padding: 2rem;
+            max-width: 800px;
+        }
+        
+        /* ===================================
+           Blog Styles (from custom.css)
+           =================================== */
+        
+        /* Post styles */
+        .post {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .post-title {
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .post-meta {
+            font-size: 0.85rem;
+            color: #595959;
+            margin-bottom: 1rem;
+        }
+        
+        .post-meta a {
+            color: #007acc;
+            text-decoration: none;
+        }
+        
+        .post-content {
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .post-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .post-content a {
+            color: #007acc;
+            text-decoration: none;
+        }
+        
+        .post-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .post-content h1,
+        .post-content h2,
+        .post-content h3,
+        .post-content h4,
+        .post-content h5,
+        .post-content h6 {
+            margin: 1.5rem 0 1rem 0;
+            line-height: 1.3;
+            color: #333;
+        }
+        
+        .post-content h1 { font-size: 1.75rem; }
+        .post-content h2 { font-size: 1.5rem; }
+        .post-content h3 { font-size: 1.25rem; }
+        .post-content h4 { font-size: 1.1rem; }
+        
+        .post-content ul,
+        .post-content ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .post-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Blockquote */
+        blockquote {
+            margin: 1em 0;
+            padding-left: 1em;
+            border-left: 2px solid #aaa;
+            color: #595959;
+        }
+        
+        blockquote p {
+            margin: 0.5em 0;
+        }
+        
+        /* Tables */
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .post-content th,
+        .post-content td {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .post-content th {
+            background: #f6f8fa;
+            font-weight: 600;
+        }
+        
+        /* Code */
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        p code,
+        li code,
+        td code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.875em;
+            color: #24292f;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.875rem;
+        }
+        
+        /* Images */
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
+            border-radius: 4px;
+        }
+        
+        /* Image shortcode container */
+        .img-container {
+            display: block;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+        
+        .img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        
+        .img-container img:hover {
+            opacity: 0.9;
+        }
+        
+        /* Table shortcode container */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        
+        .table-container iframe {
+            width: 100%;
+            border: none;
+            background: transparent;
+        }
+        
+        /* Newsletter shortcode */
+        .inline-newsletter {
+            margin: 2.5rem auto;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            border-left: 2px solid #333;
+            width: 80%;
+        }
+        
+        .inline-newsletter-headline {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #333;
+            margin: 0 0 1.25rem 0;
+        }
+        
+        .inline-newsletter-form {
+            display: flex;
+            gap: 0;
+            max-width: 90%;
+        }
+        
+        .inline-newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #333;
+            border-right: none;
+            background: #fff;
+        }
+        
+        .inline-newsletter-button {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: #333;
+            color: #fff;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+        
+        .inline-newsletter-privacy {
+            margin: 0.75rem 0 0 0;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Horizontal rule */
+        hr {
+            border: none;
+            border-top: 1px solid #e9ecef;
+            margin: 2rem 0;
+        }
+        
+        /* KaTeX display math */
+        .katex-display {
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        /* Feedback footer */
+        .feedback-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+            color: #595959;
+            font-size: 0.9rem;
+        }
+        
+        .feedback-footer p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .feedback-footer a {
+            color: #007acc;
+            text-decoration: none;
+        }
+        
+        /* Project tag */
+        .project-tag {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 9px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-left: 6px;
+            display: inline-block;
+            vertical-align: middle;
+            border: 1px solid #dee2e6;
+        }
+        
+        /* Status bar */
+        .status-bar {
+            padding: 0.4rem 1rem;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.75rem;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Resizer */
+        .resizer {
+            width: 4px;
+            background: #e0e0e0;
+            cursor: col-resize;
+            flex-shrink: 0;
+        }
+        
+        .resizer:hover {
+            background: #007acc;
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="composer-container">
+        <!-- Editor Panel -->
+        <div class="editor-panel">
+            <div class="editor-header">
+                <h2>Post Composer</h2>
+                <div class="editor-actions">
+                    <button class="btn" onclick="insertShortcode('img')">+ Image</button>
+                    <button class="btn" onclick="insertShortcode('table')">+ Table</button>
+                    <button class="btn" onclick="insertShortcode('newsletter')">+ Newsletter</button>
+                    <button class="btn btn-primary" onclick="copyMarkdown()">Copy</button>
+                    <button class="btn btn-primary" onclick="downloadMarkdown()">Download</button>
+                    <button class="btn btn-danger" onclick="clearAll()">Clear</button>
+                </div>
+            </div>
+            
+            <!-- Essential Fields (Always visible) -->
+            <div class="frontmatter-section open" id="essential-section">
+                <div class="frontmatter-header" onclick="toggleSection('essential-section')">
+                    <h3>Essential</h3>
+                </div>
+                <div class="frontmatter-fields">
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="post-title">Title</label>
+                            <input type="text" id="post-title" placeholder="Post title" oninput="onFieldChange()">
+                        </div>
+                        <div class="field-group small">
+                            <label for="post-date">Date</label>
+                            <input type="date" id="post-date" oninput="onFieldChange()">
+                        </div>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="post-draft" onchange="onFieldChange()"> Draft</label>
+                            <label><input type="checkbox" id="post-math" onchange="onFieldChange()"> Math</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEO & Metadata (Collapsible) -->
+            <div class="frontmatter-section" id="seo-section">
+                <div class="frontmatter-header" onclick="toggleSection('seo-section')">
+                    <h3>SEO & Metadata <span class="frontmatter-badge" id="seo-badge">0 fields</span></h3>
+                </div>
+                <div class="frontmatter-fields">
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="post-description">Description</label>
+                            <input type="text" id="post-description" placeholder="Meta description for SEO" oninput="onFieldChange()">
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="post-keywords">Keywords (comma-separated)</label>
+                            <input type="text" id="post-keywords" placeholder="keyword1, keyword2, keyword3" oninput="onFieldChange()">
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="post-images">OG Image URL</label>
+                            <input type="url" id="post-images" placeholder="https://static.philippdubach.com/ograph/..." oninput="onFieldChange()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced (Collapsible) -->
+            <div class="frontmatter-section" id="advanced-section">
+                <div class="frontmatter-header" onclick="toggleSection('advanced-section')">
+                    <h3>Advanced <span class="frontmatter-badge" id="advanced-badge">0 fields</span></h3>
+                </div>
+                <div class="frontmatter-fields">
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="post-external">External URL (via link)</label>
+                            <input type="url" id="post-external" placeholder="https://..." oninput="onFieldChange()">
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="post-aliases">Aliases (one per line)</label>
+                            <textarea id="post-aliases" placeholder="/2025/12/02/post-slug/" oninput="onFieldChange()"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <textarea id="markdown-editor" placeholder="Write your post content here...
+
+Paste a complete Hugo post with frontmatter (---) and it will be parsed automatically.
+
+Or just start writing markdown:
+
+> This is a blockquote
+
+Regular paragraph with **bold** and *italic* text.
+
+## Heading
+
+- List item 1  
+- List item 2
+
+Use shortcodes:
+{{< img src=&quot;path/to/image.jpg&quot; alt=&quot;Description&quot; width=&quot;80%&quot; >}}
+{{< newsletter >}}
+"></textarea>
+            
+            <div class="status-bar">
+                <span id="word-count">0 words</span>
+                <span id="reading-time">0 min read</span>
+            </div>
+        </div>
+        
+        <!-- Resizer -->
+        <div class="resizer" id="resizer"></div>
+        
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+            <div class="preview-header">
+                <h2>Preview</h2>
+            </div>
+            <div class="preview-content">
+                <article class="post single">
+                    <header class="post-header">
+                        <h1 class="post-title" id="preview-title">Untitled Post</h1>
+                        <div class="post-meta" id="preview-meta">
+                            <time id="preview-date">January 7, 2026</time>
+                            • <span id="preview-words">0</span> words
+                            • <span id="preview-reading">0</span> min read
+                            <span id="preview-external"></span>
+                            • <a href="#" title="Copy short link">∞</a>
+                        </div>
+                    </header>
+                    <div class="post-content" id="preview-content">
+                        <p>Start writing to see your preview...</p>
+                    </div>
+                </article>
+                
+                <footer class="feedback-footer">
+                    <p>Have feedback, comments, or ideas? <a href="mailto:info@philippdubach.com">I'd love to hear from you</a>.</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // ===================================
+        // State Management
+        // ===================================
+        let frontmatter = {
+            title: '',
+            date: '',
+            description: '',
+            keywords: [],
+            images: [],
+            external_url: '',
+            aliases: [],
+            draft: false,
+            math: false
+        };
+        
+        let bodyContent = '';
+        let isUpdatingFromPaste = false;
+        
+        // ===================================
+        // Configure Libraries
+        // ===================================
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            highlight: function(code, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return hljs.highlight(code, { language: lang }).value;
+                    } catch (e) {}
+                }
+                return hljs.highlightAuto(code).value;
+            }
+        });
+        
+        const STATIC_BASE = 'https://static.philippdubach.com';
+        
+        // ===================================
+        // Frontmatter Parsing
+        // ===================================
+        function parseFrontmatter(text) {
+            const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+            if (!match) {
+                return { frontmatter: null, body: text };
+            }
+            
+            try {
+                const parsed = jsyaml.load(match[1]);
+                return { frontmatter: parsed, body: match[2] };
+            } catch (e) {
+                console.error('YAML parse error:', e);
+                return { frontmatter: null, body: text };
+            }
+        }
+        
+        function generateFrontmatterYaml() {
+            let lines = ['---'];
+            
+            // Title
+            if (frontmatter.title) {
+                lines.push(`title: ${frontmatter.title}`);
+            }
+            
+            // Date
+            if (frontmatter.date) {
+                lines.push(`date: ${frontmatter.date}`);
+            }
+            
+            // Images
+            if (frontmatter.images && frontmatter.images.length > 0) {
+                lines.push('images:');
+                frontmatter.images.forEach(img => {
+                    lines.push(`- ${img}`);
+                });
+            } else {
+                lines.push('images:');
+                lines.push('- https://static.philippdubach.com/ograph/ograph-post.jpg');
+            }
+            
+            // Description
+            if (frontmatter.description) {
+                // Escape single quotes and wrap in quotes if contains special chars
+                const desc = frontmatter.description;
+                if (desc.includes(':') || desc.includes("'") || desc.includes('"')) {
+                    lines.push(`description: '${desc.replace(/'/g, "''")}'`);
+                } else {
+                    lines.push(`description: ${desc}`);
+                }
+            }
+            
+            // Keywords
+            if (frontmatter.keywords && frontmatter.keywords.length > 0) {
+                lines.push('keywords:');
+                frontmatter.keywords.forEach(kw => {
+                    lines.push(`- ${kw.trim()}`);
+                });
+            }
+            
+            // External URL
+            if (frontmatter.external_url) {
+                lines.push(`external_url: ${frontmatter.external_url}`);
+            }
+            
+            // Math
+            if (frontmatter.math) {
+                lines.push('math: true');
+            }
+            
+            // Draft
+            lines.push(`draft: ${frontmatter.draft ? 'true' : 'false'}`);
+            
+            // Aliases
+            if (frontmatter.aliases && frontmatter.aliases.length > 0) {
+                lines.push('aliases:');
+                frontmatter.aliases.forEach(alias => {
+                    if (alias.trim()) {
+                        lines.push(`- ${alias.trim()}`);
+                    }
+                });
+            }
+            
+            lines.push('---');
+            lines.push('');
+            
+            return lines.join('\n');
+        }
+        
+        // ===================================
+        // UI Sync Functions
+        // ===================================
+        function syncFieldsFromFrontmatter() {
+            document.getElementById('post-title').value = frontmatter.title || '';
+            document.getElementById('post-date').value = frontmatter.date || '';
+            document.getElementById('post-description').value = frontmatter.description || '';
+            document.getElementById('post-keywords').value = (frontmatter.keywords || []).join(', ');
+            document.getElementById('post-images').value = (frontmatter.images || [])[0] || '';
+            document.getElementById('post-external').value = frontmatter.external_url || '';
+            document.getElementById('post-aliases').value = (frontmatter.aliases || []).join('\n');
+            document.getElementById('post-draft').checked = frontmatter.draft || false;
+            document.getElementById('post-math').checked = frontmatter.math || false;
+            
+            updateBadges();
+        }
+        
+        function syncFrontmatterFromFields() {
+            frontmatter.title = document.getElementById('post-title').value;
+            frontmatter.date = document.getElementById('post-date').value;
+            frontmatter.description = document.getElementById('post-description').value;
+            
+            const keywordsStr = document.getElementById('post-keywords').value;
+            frontmatter.keywords = keywordsStr ? keywordsStr.split(',').map(k => k.trim()).filter(k => k) : [];
+            
+            const imageUrl = document.getElementById('post-images').value;
+            frontmatter.images = imageUrl ? [imageUrl] : [];
+            
+            frontmatter.external_url = document.getElementById('post-external').value;
+            
+            const aliasesStr = document.getElementById('post-aliases').value;
+            frontmatter.aliases = aliasesStr ? aliasesStr.split('\n').map(a => a.trim()).filter(a => a) : [];
+            
+            frontmatter.draft = document.getElementById('post-draft').checked;
+            frontmatter.math = document.getElementById('post-math').checked;
+            
+            updateBadges();
+        }
+        
+        function updateBadges() {
+            // SEO badge
+            let seoCount = 0;
+            if (frontmatter.description) seoCount++;
+            if (frontmatter.keywords && frontmatter.keywords.length > 0) seoCount++;
+            if (frontmatter.images && frontmatter.images.length > 0) seoCount++;
+            document.getElementById('seo-badge').textContent = `${seoCount} field${seoCount !== 1 ? 's' : ''}`;
+            
+            // Advanced badge
+            let advCount = 0;
+            if (frontmatter.external_url) advCount++;
+            if (frontmatter.aliases && frontmatter.aliases.length > 0) advCount++;
+            document.getElementById('advanced-badge').textContent = `${advCount} field${advCount !== 1 ? 's' : ''}`;
+        }
+        
+        // ===================================
+        // Event Handlers
+        // ===================================
+        function onFieldChange() {
+            syncFrontmatterFromFields();
+            updatePreview();
+            saveToLocalStorage();
+        }
+        
+        function onEditorInput() {
+            const editor = document.getElementById('markdown-editor');
+            const text = editor.value;
+            
+            // Check if content starts with frontmatter
+            const parsed = parseFrontmatter(text);
+            
+            if (parsed.frontmatter) {
+                // Update frontmatter from parsed content
+                frontmatter = {
+                    title: parsed.frontmatter.title || '',
+                    date: parsed.frontmatter.date || '',
+                    description: parsed.frontmatter.description || '',
+                    keywords: parsed.frontmatter.keywords || [],
+                    images: parsed.frontmatter.images || [],
+                    external_url: parsed.frontmatter.external_url || '',
+                    aliases: parsed.frontmatter.aliases || [],
+                    draft: parsed.frontmatter.draft || false,
+                    math: parsed.frontmatter.math || false
+                };
+                
+                // Format date if it's a Date object
+                if (frontmatter.date instanceof Date) {
+                    frontmatter.date = frontmatter.date.toISOString().split('T')[0];
+                } else if (typeof frontmatter.date === 'string' && frontmatter.date.includes('T')) {
+                    frontmatter.date = frontmatter.date.split('T')[0];
+                }
+                
+                bodyContent = parsed.body;
+                
+                // Update fields to match
+                syncFieldsFromFrontmatter();
+                
+                // Replace editor content with just the body (strip frontmatter)
+                // But only if this looks like a paste (content changed significantly)
+                if (!isUpdatingFromPaste) {
+                    isUpdatingFromPaste = true;
+                    const cursorPos = editor.selectionStart;
+                    editor.value = bodyContent;
+                    // Try to maintain cursor position
+                    const newPos = Math.min(cursorPos, bodyContent.length);
+                    editor.selectionStart = editor.selectionEnd = newPos;
+                    isUpdatingFromPaste = false;
+                }
+            } else {
+                bodyContent = text;
+            }
+            
+            updatePreview();
+            saveToLocalStorage();
+        }
+        
+        // ===================================
+        // Shortcodes
+        // ===================================
+        function processShortcodes(text) {
+            // {{< img src="..." alt="..." width="..." >}}
+            text = text.replace(/\{\{<\s*img\s+([^>]+)\s*>\}\}/g, (match, attrs) => {
+                const src = attrs.match(/src=["']([^"']+)["']/)?.[1] || '';
+                const alt = attrs.match(/alt=["']([^"']+)["']/)?.[1] || '';
+                const width = attrs.match(/width=["']([^"']+)["']/)?.[1] || '80%';
+                
+                const imgUrl = src.startsWith('http') ? src : `${STATIC_BASE}/${src}`;
+                
+                return `<div class="img-container" style="width: ${width}; margin: 0 auto;">
+                    <img src="${imgUrl}" alt="${alt}" loading="lazy">
+                </div>`;
+            });
+            
+            // {{< table src="..." height="..." >}}
+            text = text.replace(/\{\{<\s*table\s+([^>]+)\s*>\}\}/g, (match, attrs) => {
+                const src = attrs.match(/src=["']([^"']+)["']/)?.[1] || '';
+                const height = attrs.match(/height=["']([^"']+)["']/)?.[1] || '800px';
+                const alt = attrs.match(/alt=["']([^"']+)["']/)?.[1] || 'Embedded table';
+                
+                const tableUrl = `${STATIC_BASE}/html/${src}`;
+                
+                return `<div class="table-container">
+                    <iframe src="${tableUrl}" style="width: 100%; height: ${height}; border: none;" 
+                            title="${alt}" loading="lazy"></iframe>
+                </div>`;
+            });
+            
+            // {{< newsletter >}}
+            text = text.replace(/\{\{<\s*newsletter\s*>\}\}/g, () => {
+                return `<aside class="inline-newsletter">
+                    <div class="inline-newsletter-content">
+                        <p class="inline-newsletter-headline">Enjoy this writing? Get new posts, projects, and articles delivered monthly.</p>
+                        <form class="inline-newsletter-form">
+                            <input type="email" placeholder="your@email.com" class="inline-newsletter-input" disabled>
+                            <button type="button" class="inline-newsletter-button" disabled>Sign Up</button>
+                        </form>
+                        <p class="inline-newsletter-privacy">No tracking. Unsubscribe anytime.</p>
+                    </div>
+                </aside>`;
+            });
+            
+            return text;
+        }
+        
+        function insertShortcode(type) {
+            const editor = document.getElementById('markdown-editor');
+            const start = editor.selectionStart;
+            const end = editor.selectionEnd;
+            
+            let shortcode = '';
+            switch (type) {
+                case 'img':
+                    shortcode = '{{< img src="path/to/image.jpg" alt="Description" width="80%" >}}';
+                    break;
+                case 'table':
+                    shortcode = '{{< table src="table.html" height="600px" >}}';
+                    break;
+                case 'newsletter':
+                    shortcode = '{{< newsletter >}}';
+                    break;
+            }
+            
+            editor.value = editor.value.substring(0, start) + shortcode + editor.value.substring(end);
+            editor.selectionStart = editor.selectionEnd = start + shortcode.length;
+            editor.focus();
+            bodyContent = editor.value;
+            updatePreview();
+            saveToLocalStorage();
+        }
+        
+        // ===================================
+        // Preview
+        // ===================================
+        function getStats(text) {
+            const cleanText = text
+                .replace(/\{\{<[^>]+>\}\}/g, '')
+                .replace(/```[\s\S]*?```/g, '')
+                .replace(/`[^`]+`/g, '')
+                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+                .replace(/[#*_~]/g, '')
+                .trim();
+            
+            const words = cleanText.split(/\s+/).filter(w => w.length > 0).length;
+            const readingTime = Math.max(1, Math.ceil(words / 200));
+            
+            return { words, readingTime };
+        }
+        
+        function formatDate(dateStr) {
+            if (!dateStr) {
+                const now = new Date();
+                return now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            }
+            const date = new Date(dateStr + 'T12:00:00');
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        const updatePreview = debounce(function() {
+            const title = frontmatter.title || 'Untitled Post';
+            const date = frontmatter.date;
+            const external = frontmatter.external_url;
+            
+            // Process shortcodes
+            let processed = processShortcodes(bodyContent);
+            
+            // Convert markdown to HTML
+            const html = marked.parse(processed);
+            
+            // Update preview
+            document.getElementById('preview-title').innerHTML = title;
+            document.getElementById('preview-date').textContent = formatDate(date);
+            document.getElementById('preview-content').innerHTML = html;
+            
+            // External URL
+            const externalSpan = document.getElementById('preview-external');
+            if (external) {
+                externalSpan.innerHTML = ` • <a href="${external}" target="_blank">via</a>`;
+            } else {
+                externalSpan.innerHTML = '';
+            }
+            
+            // Stats
+            const stats = getStats(bodyContent);
+            document.getElementById('preview-words').textContent = stats.words;
+            document.getElementById('preview-reading').textContent = stats.readingTime;
+            document.getElementById('word-count').textContent = `${stats.words} words`;
+            document.getElementById('reading-time').textContent = `${stats.readingTime} min read`;
+            
+            // Render math if enabled
+            if (frontmatter.math && typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('preview-content'), {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\[', right: '\\]', display: true},
+                        {left: '\\(', right: '\\)', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+            
+            // Re-highlight code blocks
+            document.querySelectorAll('#preview-content pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        }, 100);
+        
+        // ===================================
+        // Actions
+        // ===================================
+        function copyMarkdown() {
+            const fm = generateFrontmatterYaml();
+            const full = fm + bodyContent;
+            
+            navigator.clipboard.writeText(full).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+        
+        function downloadMarkdown() {
+            const title = frontmatter.title || 'untitled';
+            const date = frontmatter.date || new Date().toISOString().split('T')[0];
+            const fm = generateFrontmatterYaml();
+            const full = fm + bodyContent;
+            
+            // Generate filename
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            const filename = `${date.replace(/-/g, '')}-${slug || 'post'}.md`;
+            
+            const blob = new Blob([full], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showToast(`Downloaded ${filename}`);
+        }
+        
+        function clearAll() {
+            if (!confirm('Clear all content and start fresh?')) return;
+            
+            frontmatter = {
+                title: '',
+                date: new Date().toISOString().split('T')[0],
+                description: '',
+                keywords: [],
+                images: [],
+                external_url: '',
+                aliases: [],
+                draft: false,
+                math: false
+            };
+            bodyContent = '';
+            
+            syncFieldsFromFrontmatter();
+            document.getElementById('markdown-editor').value = '';
+            updatePreview();
+            localStorage.removeItem('composer-draft');
+            showToast('Cleared!');
+        }
+        
+        function toggleSection(sectionId) {
+            document.getElementById(sectionId).classList.toggle('open');
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+        
+        // ===================================
+        // Storage
+        // ===================================
+        function saveToLocalStorage() {
+            const data = {
+                frontmatter: frontmatter,
+                body: bodyContent
+            };
+            localStorage.setItem('composer-draft', JSON.stringify(data));
+        }
+        
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('composer-draft');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    if (data.frontmatter) {
+                        frontmatter = { ...frontmatter, ...data.frontmatter };
+                    }
+                    bodyContent = data.body || '';
+                    
+                    syncFieldsFromFrontmatter();
+                    document.getElementById('markdown-editor').value = bodyContent;
+                } catch (e) {
+                    console.error('Error loading from localStorage:', e);
+                }
+            }
+        }
+        
+        // ===================================
+        // Resizer
+        // ===================================
+        const resizer = document.getElementById('resizer');
+        const editorPanel = document.querySelector('.editor-panel');
+        const previewPanel = document.querySelector('.preview-panel');
+        
+        let isResizing = false;
+        
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.body.style.cursor = 'col-resize';
+            document.body.style.userSelect = 'none';
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            
+            const containerWidth = document.querySelector('.composer-container').offsetWidth;
+            const newEditorWidth = (e.clientX / containerWidth) * 100;
+            
+            if (newEditorWidth >= 20 && newEditorWidth <= 80) {
+                editorPanel.style.width = `${newEditorWidth}%`;
+                previewPanel.style.width = `${100 - newEditorWidth}%`;
+            }
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.body.style.cursor = '';
+            document.body.style.userSelect = '';
+        });
+        
+        // ===================================
+        // Keyboard Shortcuts
+        // ===================================
+        document.addEventListener('keydown', (e) => {
+            if (e.metaKey || e.ctrlKey) {
+                if (e.key === 's') {
+                    e.preventDefault();
+                    downloadMarkdown();
+                } else if (e.key === 'e') {
+                    e.preventDefault();
+                    copyMarkdown();
+                }
+            }
+        });
+        
+        // ===================================
+        // Initialize
+        // ===================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set default date
+            frontmatter.date = new Date().toISOString().split('T')[0];
+            
+            // Load saved draft
+            loadFromLocalStorage();
+            
+            // Sync fields
+            syncFieldsFromFrontmatter();
+            
+            // Set up editor listener
+            const editor = document.getElementById('markdown-editor');
+            editor.addEventListener('input', onEditorInput);
+            
+            // Listen for paste events to detect frontmatter
+            editor.addEventListener('paste', (e) => {
+                // Let the paste happen, then process
+                setTimeout(() => {
+                    onEditorInput();
+                }, 0);
+            });
+            
+            // Initial preview
+            updatePreview();
+        });
+    </script>
+</body>
+</html>

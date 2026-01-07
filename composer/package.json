@@ -1,0 +1,10 @@
+{
+  "name": "post-composer",
+  "version": "1.0.0",
+  "description": "Markdown post composer with live preview",
+  "private": true,
+  "scripts": {
+    "dev": "npx wrangler pages dev . --port 8788",
+    "deploy": "npx wrangler pages deploy . --project-name post-composer"
+  }
+}
