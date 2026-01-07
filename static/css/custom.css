@@ -1300,6 +1300,65 @@ pre {
 .chroma .w { color: #f6f8fa; }
 
 /* ===================================
+   Disclaimer Component
+   =================================== */
+.disclaimer {
+    margin: 2.5rem 0 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border-left: 3px solid #d0d7de;
+    border-radius: 0 4px 4px 0;
+}
+
+.disclaimer-content {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #656d76;
+}
+
+.disclaimer-content p {
+    margin: 0;
+}
+
+.disclaimer-content strong {
+    color: #57606a;
+    font-weight: 600;
+}
+
+/* Subtle fade-in for visual hierarchy */
+@media (prefers-reduced-motion: no-preference) {
+    .disclaimer {
+        animation: disclaimer-fade 0.3s ease-out;
+    }
+}
+
+@keyframes disclaimer-fade {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .disclaimer {
+        margin: 2rem 0 1rem 0;
+        padding: 0.875rem 1rem;
+    }
+    
+    .disclaimer-content {
+        font-size: 0.75rem;
+    }
+}
+
+/* Print styles - ensure disclaimer is visible */
+@media print {
+    .disclaimer {
+        border: 1px solid #ccc;
+        background: #f9f9f9;
+        page-break-inside: avoid;
+    }
+}
+
+/* ===================================
    Responsive Code Blocks
    =================================== */
 @media screen and (max-width: 768px) {

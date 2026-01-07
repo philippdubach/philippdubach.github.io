@@ -43,3 +43,5 @@ First, I had to find "change points." The PELT algorithm efficiently identifies 
 I then implemented an automated mean reversion trading strategy following this logical flow: _Continuous monitoring → Signal detection → Buy execution → Hold period → Sell execution_. The script continuously monitored prices for certain cryptocurrencies on Kraken exchange. It executed buy orders when the price moved more than four standard deviations over a 2-hour period, then automatically sold after exactly 2 hours regardless of price movement. The strategy used fixed position sizes and limit orders to minimize fees. It assumed that large price drops represent temporary market overreactions that will reverse within the holding period.
 
 This little script earned some good change—but then again, it was 2021.
+
+{{< disclaimer type="finance" >}}

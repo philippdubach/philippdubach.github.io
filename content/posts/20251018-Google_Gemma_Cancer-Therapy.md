@@ -42,3 +42,5 @@ For a 27B model, that's really really neat! And on a more general note, scaling 
 On a more critical note, it would be interesting to see whether this model can perform any better than existing simple linear models for predicting gene expression interactions.
 
 _Original bioRxiv paper linked in this post's title._
+
+{{< disclaimer type="medical" >}}
