@@ -35,7 +35,17 @@ export default {
 
     if (url.pathname === '/status') {
       const posted = await env.POSTED_STATE.list();
-      return json({ posted: posted.keys.length });
+      return json({ posted: posted.keys.length, keys: posted.keys.map(k => k.name) });
+    }
+
+    // Backfill endpoint - mark all current RSS items as posted without actually posting
+    if (url.pathname === '/backfill') {
+      try {
+        const result = await backfillPostedState(env);
+        return json(result);
+      } catch (err) {
+        return json({ error: err.message }, 500);
+      }
     }
 
     return json({ error: 'not found' }, 404);
@@ -50,6 +60,48 @@ function json(data, status = 200) {
       'Cache-Control': 'no-store'
     } 
   });
+}
+
+/**
+ * Backfill KV state with all current RSS items to prevent re-posting
+ */
+async function backfillPostedState(env) {
+  const results = { marked: [], skipped: 0, errors: [] };
+
+  const rssResponse = await fetch(env.RSS_URL, {
+    headers: { 'User-Agent': 'SocialPoster/1.0' }
+  });
+  if (!rssResponse.ok) throw new Error(`RSS fetch failed: ${rssResponse.status}`);
+  
+  const rssText = await rssResponse.text();
+  const posts = parseRSS(rssText);
+
+  for (const post of posts) {
+    const info = extractPostInfo(post);
+    if (!info.link) continue;
+    
+    const id = info.link.match(/\/posts\/([^\/]+)\/?$/)?.[1] || 
+               info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
+
+    // Skip if already marked
+    if (await env.POSTED_STATE.get(id)) {
+      results.skipped++;
+      continue;
+    }
+
+    try {
+      await env.POSTED_STATE.put(id, JSON.stringify({ 
+        title: info.title, 
+        backfilled: true, 
+        at: new Date().toISOString() 
+      }));
+      results.marked.push({ id, title: info.title });
+    } catch (e) {
+      results.errors.push({ id, error: e.message });
+    }
+  }
+
+  return results;
 }
 
 async function processNewPosts(env, dryRun = false) {
@@ -90,12 +142,22 @@ async function processNewPosts(env, dryRun = false) {
     return results;
   }
 
+  // Only process posts from the last 7 days to avoid re-posting old content
+  const cutoffDate = new Date();
+  cutoffDate.setDate(cutoffDate.getDate() - 7);
+
   for (const post of posts) {
     const info = extractPostInfo(post);
     
     // Validate extracted info
     if (!info.link || !info.title) {
       results.errors.push({ error: 'Missing link or title', post: post.guid || 'unknown' });
+      continue;
+    }
+    
+    // Skip posts older than cutoff date
+    if (info.pubDate && info.pubDate < cutoffDate) {
+      results.skipped++;
       continue;
     }
     

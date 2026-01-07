@@ -8,9 +8,10 @@ A secure, performant markdown editor with live preview for philippdubach.com blo
 - **Live Preview** - Real-time rendering matching blog styling
 - **Syntax Highlighting** - Color-coded markdown in the editor (headings, code, links, etc.)
 - **Focus Mode** - Distraction-free writing with centered editor
-- **Shortcode Support** - Hugo shortcodes for images, tables, and newsletter signup
+- **Shortcode Support** - Hugo shortcodes for images, tables, newsletter signup, and disclaimers
 - **Math Rendering** - KaTeX support for LaTeX equations
 - **Auto-save** - Drafts saved to localStorage automatically
+- **Export** - Download as `.md` file or copy to clipboard
 
 ### Frontmatter Management
 - **YAML Parsing** - Paste complete Hugo posts and frontmatter is auto-parsed
@@ -23,7 +24,7 @@ A secure, performant markdown editor with live preview for philippdubach.com blo
 
 ## Architecture
 
-```
+\`\`\`
 composer/
 ├── index.html              # Single-page application (HTML/CSS/JS)
 ├── functions/
@@ -31,15 +32,15 @@ composer/
 ├── robots.txt              # Disallow all crawlers (private tool)
 ├── package.json            # Project metadata and scripts
 └── README.md               # This file
-```
+\`\`\`
 
 ## Security
 
-- **XSS Prevention** - User input sanitized via `textContent` and `sanitizeText()`
+- **XSS Prevention** - User input sanitized via \`textContent\` and \`sanitizeText()\`
 - **CORS Restriction** - API restricted to allowed origins only
 - **Input Validation** - Content length limits (50-50,000 chars)
 - **API Key Protection** - Anthropic key stored as Cloudflare Pages secret
-- **No Indexing** - `robots.txt` and meta tag prevent search indexing
+- **No Indexing** - \`robots.txt\` and meta tag prevent search indexing
 
 ## Performance
 
@@ -60,41 +61,41 @@ composer/
 
 | Variable | Description |
 |----------|-------------|
-| `ANTHROPIC_API_KEY` | API key for Claude SEO generation |
+| \`ANTHROPIC_API_KEY\` | API key for Claude SEO generation |
 
 Set via Cloudflare Dashboard or CLI:
-```bash
+\`\`\`bash
 npx wrangler pages secret put ANTHROPIC_API_KEY
-```
+\`\`\`
 
 ### Allowed CORS Origins
 
 The SEO function accepts requests from:
-- `https://post-composer.pages.dev` (production)
-- `http://localhost:8788` (local development)
-- `http://127.0.0.1:8788` (local development)
+- \`https://post-composer.pages.dev\` (production)
+- \`http://localhost:8788\` (local development)
+- \`http://127.0.0.1:8788\` (local development)
 
 ## Development
 
 ### Local Development
 
-```bash
+\`\`\`bash
 cd composer
 npx wrangler pages dev . --port 8788
-```
+\`\`\`
 
 Open http://localhost:8788
 
 ### Deploy to Production
 
-```bash
+\`\`\`bash
 cd composer
 npx wrangler pages deploy . --project-name post-composer
-```
+\`\`\`
 
 ## Shortcodes
 
-```markdown
+\`\`\`markdown
 # Image (uses static.philippdubach.com)
 {{< img src="path/to/image.jpg" alt="Description" width="80%" >}}
 
@@ -103,22 +104,25 @@ npx wrangler pages deploy . --project-name post-composer
 
 # Newsletter signup form
 {{< newsletter >}}
-```
+
+# Disclaimer (types: finance, medical, general, ai, research, gambling)
+{{< disclaimer type="finance" >}}
+\`\`\`
 
 ## Keyboard Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
-| `Cmd/Ctrl + S` | Download markdown file |
-| `Cmd/Ctrl + E` | Copy markdown to clipboard |
-| `Escape` | Exit focus mode |
+| \`Cmd/Ctrl + S\` | Download markdown file |
+| \`Cmd/Ctrl + E\` | Copy markdown to clipboard |
+| \`Escape\` | Exit focus mode |
 
 ## Export Formats
 
 Downloaded files follow Hugo naming convention:
-```
+\`\`\`
 YYYYMMDD-slug-from-title.md
-```
+\`\`\`
 
 ## Dependencies (CDN)
 
