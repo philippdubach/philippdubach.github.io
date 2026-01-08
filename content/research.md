@@ -29,4 +29,4 @@ Draft | ([Dataset](https://github.com/philippdubach/options-dataset-hist/blob/ma
 **2021**
 
 *A Python integration of practical asset allocation based on modern portfolio theory and its advancements*<br>
-[Abstract](https://digitalcollection.zhaw.ch/items/69a8ead0-acc2-4410-beca-d8637bf4027d) | [Article](/posts/my-first-optimal-portfolio/)
+[Abstract](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5915004) | [Article](/posts/my-first-optimal-portfolio/)
