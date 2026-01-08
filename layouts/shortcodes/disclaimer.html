@@ -6,11 +6,11 @@
     {{- if $custom -}}
       <p>{{ $custom }}</p>
     {{- else if eq $type "finance" -}}
-      <p><strong>Disclaimer:</strong> Personal opinions only, not professional advice. I write here in a private capacity, not as a financial professional. This is not investment, financial, tax, or legal advice. Past performance does not indicate future results. Do your own research and consult qualified professionals before making financial decisions. No liability accepted for any losses.</p>
+      <p><strong>Disclaimer:</strong> All opinions expressed are my own. This is not investment, financial, tax, or legal advice. Past performance does not indicate future results. Do your own research and consult qualified professionals before making financial decisions. No liability accepted for any losses.</p>
     {{- else if eq $type "medical" -}}
       <p><strong>Disclaimer:</strong> For informational purposes only, not medical advice. Consult a qualified healthcare provider for any medical questions or conditions.</p>
     {{- else if eq $type "general" -}}
-      <p><strong>Disclaimer:</strong> Personal views only. Information may be incomplete or outdated. No warranties given. Use at your own risk.</p>
+      <p><strong>Disclaimer:</strong> All opinions expressed are my own. Information may be incomplete or outdated. No warranties given. Use at your own risk.</p>
     {{- else if eq $type "ai" -}}
       <p><strong>Disclaimer:</strong> AI capabilities evolve rapidly; information may become outdated. Code and implementations provided as-is without warranty.</p>
     {{- else if eq $type "research" -}}
