@@ -1,0 +1,21 @@
+name = "twitter-poster"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Workers AI binding for LLM-generated posts
+[ai]
+binding = "AI"
+
+# KV namespace for tracking posted articles
+[[kv_namespaces]]
+binding = "POSTED_STATE"
+id = "7b241be9f8084a198debf4f391bf05ad"
+
+# Scheduled triggers - runs every 15 minutes
+[triggers]
+crons = ["*/15 * * * *"]
+
+# Environment variables (non-secret)
+[vars]
+RSS_URL = "https://philippdubach.com/posts/index.xml"
+SITE_NAME = "philippdubach.com"

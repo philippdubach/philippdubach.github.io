@@ -58,7 +58,14 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Setup IndexNow key file
-        run: echo "${{ secrets.INDEXNOW_KEY }}" > ./public/${{ secrets.INDEXNOW_KEY }}.txt
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          if [ -n "$INDEXNOW_KEY" ] && [ ${#INDEXNOW_KEY} -ge 8 ]; then
+            echo "$INDEXNOW_KEY" > "./public/${INDEXNOW_KEY}.txt"
+          else
+            echo "::warning::INDEXNOW_KEY secret not set or invalid, skipping verification file"
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

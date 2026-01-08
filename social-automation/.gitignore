@@ -1,10 +1,16 @@
-# Environment variables
+# Environment variables - NEVER commit!
 .env
+.env.*
 .env.local
 .env.*.local
+.dev.vars
 
 # Node modules
 node_modules/
+package-lock.json
+
+# Cloudflare Wrangler local state
+.wrangler/
 
 # Build outputs
 dist/

@@ -1,0 +1,14 @@
+{
+  "name": "twitter-poster",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker to auto-post RSS updates to Twitter",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
