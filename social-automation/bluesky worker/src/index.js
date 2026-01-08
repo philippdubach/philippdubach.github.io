@@ -1,4 +1,4 @@
-import { parseRSS, extractPostInfo, fetchOGMetadata } from './rss.js';
+import { parseRSS, extractPostInfo, fetchOGMetadata, fetchFullArticleText } from './rss.js';
 import { generatePostMessage } from './llm.js';
 import { postToBluesky } from './bluesky.js';
 
@@ -24,18 +24,26 @@ export default {
       return json({ error: 'unauthorized' }, 401);
     }
 
+    // Rate limit authenticated endpoints
+    const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+    if (!(await checkRateLimit(env, clientIP))) {
+      return json({ error: 'rate limit exceeded', retry_after: 60 }, 429);
+    }
+
     if (url.pathname === '/trigger') {
       const dryRun = url.searchParams.get('dry') === 'true';
       try {
         return json(await processNewPosts(env, dryRun));
       } catch (err) {
-        return json({ error: err.message }, 500);
+        console.error('Trigger error:', err);
+        return json({ error: 'Processing failed' }, 500);
       }
     }
 
     if (url.pathname === '/status') {
       const posted = await env.POSTED_STATE.list();
-      return json({ posted: posted.keys.length, keys: posted.keys.map(k => k.name) });
+      // Only return count, not keys (avoid information leakage)
+      return json({ posted: posted.keys.length });
     }
 
     // Backfill endpoint - mark all current RSS items as posted without actually posting
@@ -44,7 +52,23 @@ export default {
         const result = await backfillPostedState(env);
         return json(result);
       } catch (err) {
-        return json({ error: err.message }, 500);
+        console.error('Backfill error:', err);
+        return json({ error: 'Backfill failed' }, 500);
+      }
+    }
+
+    // Test endpoint - post a specific URL directly
+    if (url.pathname === '/test') {
+      const testUrl = url.searchParams.get('url');
+      if (!testUrl) {
+        return json({ error: 'url parameter required' }, 400);
+      }
+      try {
+        const result = await postSingleUrl(env, testUrl);
+        return json(result);
+      } catch (err) {
+        console.error('Test post error:', err);
+        return json({ error: 'Post failed' }, 500);
       }
     }
 
@@ -60,6 +84,39 @@ function json(data, status = 200) {
       'Cache-Control': 'no-store'
     } 
   });
+}
+
+/**
+ * Simple rate limiter using KV - allows 10 requests per minute per IP
+ */
+async function checkRateLimit(env, ip) {
+  const key = `ratelimit:${ip}`;
+  const now = Date.now();
+  const windowMs = 60000; // 1 minute
+  const maxRequests = 10;
+  
+  try {
+    const data = await env.POSTED_STATE.get(key, 'json');
+    const requests = data?.requests || [];
+    
+    // Filter to requests within the window
+    const recentRequests = requests.filter(ts => now - ts < windowMs);
+    
+    if (recentRequests.length >= maxRequests) {
+      return false; // Rate limited
+    }
+    
+    // Add current request and store
+    recentRequests.push(now);
+    await env.POSTED_STATE.put(key, JSON.stringify({ requests: recentRequests }), {
+      expirationTtl: 120 // Expire after 2 minutes
+    });
+    
+    return true;
+  } catch (e) {
+    console.warn('Rate limit check failed:', e);
+    return true; // Fail open to avoid blocking legitimate requests
+  }
 }
 
 /**
@@ -122,6 +179,12 @@ async function processNewPosts(env, dryRun = false) {
   if (rssUrl.protocol !== 'http:' && rssUrl.protocol !== 'https:') {
     throw new Error('RSS_URL must use http or https protocol');
   }
+  
+  // Security: Only allow fetching from trusted domains
+  const trustedDomains = ['philippdubach.com', 'www.philippdubach.com'];
+  if (!trustedDomains.includes(rssUrl.hostname)) {
+    throw new Error('RSS_URL must be from a trusted domain');
+  }
 
   const rssResponse = await fetch(rssUrl.toString(), {
     headers: { 'User-Agent': 'SocialPoster/1.0' }
@@ -174,7 +237,10 @@ async function processNewPosts(env, dryRun = false) {
       const og = await fetchOGMetadata(info.link);
       info.image = og.image;
       info.ogDescription = og.description || info.description;
-      const message = await generatePostMessage(env.AI, info.title, info.description);
+      
+      // Fetch full article text for better LLM context
+      const fullText = await fetchFullArticleText(info.link);
+      const message = await generatePostMessage(env.AI, info.title, info.description, fullText);
 
       if (dryRun) {
         results.posted.push({ id, title: info.title, message, image: info.image, description: info.ogDescription });
@@ -193,4 +259,58 @@ async function processNewPosts(env, dryRun = false) {
   }
 
   return results;
+}
+
+/**
+ * Post a single URL directly (for testing)
+ */
+async function postSingleUrl(env, url) {
+  // Fetch page metadata
+  const response = await fetch(url, { headers: { 'User-Agent': 'SocialPoster/1.0' } });
+  if (!response.ok) throw new Error(`Failed to fetch URL: ${response.status}`);
+  
+  const html = await response.text();
+  
+  // Extract title from og:title or <title>
+  let title = 'New Post';
+  const ogTitleMatch = html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i)
+    || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:title["']/i);
+  if (ogTitleMatch) {
+    title = ogTitleMatch[1];
+  } else {
+    const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
+    if (titleMatch) title = titleMatch[1];
+  }
+  
+  // Fetch OG metadata for image
+  const og = await fetchOGMetadata(url);
+  
+  // Fetch full article text
+  const fullText = await fetchFullArticleText(url);
+  
+  // Generate message with LLM
+  const message = await generatePostMessage(env.AI, title, '', fullText);
+  
+  // Validate credentials
+  if (!env.BLUESKY_HANDLE || !env.BLUESKY_APP_PASSWORD) {
+    throw new Error('BLUESKY_HANDLE and BLUESKY_APP_PASSWORD secrets are required');
+  }
+  
+  const bsky = await postToBluesky(
+    env.BLUESKY_HANDLE, 
+    env.BLUESKY_APP_PASSWORD, 
+    message, 
+    url, 
+    og.image, 
+    title, 
+    og.description || ''
+  );
+  
+  return {
+    success: true,
+    title,
+    message,
+    uri: bsky.uri,
+    fullTextLength: fullText.length,
+  };
 }

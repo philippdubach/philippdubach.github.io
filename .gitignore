@@ -20,25 +20,38 @@ logs/
 *~
 
 # Node.js (if using npm packages)
-node_modules/
-package-lock.json
+**/node_modules/
+**/package-lock.json
 
-# Environment files
-.env
-.venv
-.env.local
-.env.*.local
+# Environment and secret files - NEVER commit these!
+**/.env
+**/.env.*
+**/.env.local
+**/.env.*.local
+**/.dev.vars
+**/*.pem
+**/*.key
+**/secrets.json
+**/credentials.json
 
-# Social automation local development files (keep source, ignore build artifacts)
-social-automation/worker/node_modules/
-social-automation/worker/.wrangler/
+# Python virtual environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Cloudflare Wrangler (local dev state, caches, KV data)
+**/.wrangler/
+
+# Social automation build artifacts
+social-automation/**/dist/
 
 # Composer (deployed separately to Cloudflare Pages)
-composer/node_modules/
-composer/.wrangler/
+composer/dist/
 
 # Temporary files
 tmp/
+temp/
 *.tmp
 *.bak
 *.old

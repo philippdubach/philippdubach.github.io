@@ -13,6 +13,12 @@ compatibility_date = "2024-01-01"
 # YOURLS_API_URL - Your YOURLS API endpoint (e.g., https://pdub.click/yourls-api.php)
 # ALLOWED_ORIGINS - Comma-separated allowed origins (e.g., https://philippdubach.com)
 
+# Production environment variables
 [vars]
+YOURLS_API_URL = "https://pdub.click/yourls-api.php"
+ALLOWED_ORIGINS = "https://philippdubach.com,https://www.philippdubach.com"
+
+# Development environment (use: wrangler dev --env dev)
+[env.dev.vars]
 YOURLS_API_URL = "https://pdub.click/yourls-api.php"
 ALLOWED_ORIGINS = "https://philippdubach.com,https://www.philippdubach.com,http://localhost:1313,http://localhost:1317"
