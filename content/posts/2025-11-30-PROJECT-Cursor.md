@@ -14,6 +14,10 @@ keywords:
 - server setup
 tags:
 - Project
+categories:
+- AI
+- Tech
+type: Project
 draft: false
 aliases:
 - /2025/11/30/deploying-to-production-with-ai-agents-testing-cursor-on-azure/

@@ -4,6 +4,9 @@ date: 2025-10-25
 images:
 - https://static.philippdubach.com/ograph/ograph-mab.jpg
 external_url: https://arxiv.org/abs/1904.07272
+categories:
+- AI
+type: Review
 draft: true
 aliases:
 - /2025/10/25/introduction-to-multi-armed-bandits/

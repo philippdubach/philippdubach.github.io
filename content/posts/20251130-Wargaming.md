@@ -4,6 +4,9 @@ date: 2025-11-30
 images:
 - https://static.philippdubach.com/ograph/ograph-wargaming.jpg
 external_url: https://www.csis.org/topics/wargaming-and-scenarios
+categories:
+- Economics
+type: Commentary
 draft: true
 aliases:
 - /2025/11/30/lessons-from-wargaming-great-power-conflict/

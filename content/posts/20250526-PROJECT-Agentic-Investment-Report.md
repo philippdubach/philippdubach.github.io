@@ -23,6 +23,10 @@ keywords:
 - wealth management
 tags:
 - Project
+categories:
+- Finance
+- AI
+type: Project
 draft: true
 aliases:
 - /2025/06/26/ai-agents-build-my-investment-reports/

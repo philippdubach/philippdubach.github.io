@@ -23,6 +23,10 @@ keywords:
 - fintech machine learning
 tags:
 - Project
+categories:
+- Finance
+- AI
+type: Project
 draft: false
 aliases:
 - /2025/02/20/trading-on-market-sentiment/

@@ -22,6 +22,9 @@ keywords:
 - contemplative practice
 - mental health
 - conscious awareness
+categories:
+- Economics
+type: Commentary
 draft: false
 aliases:
 - /2025/12/01/gratitude/

@@ -18,6 +18,9 @@ keywords:
 - static site performance
 tags:
 - Project
+categories:
+- Tech
+type: Project
 aliases:
 - /2024/01/15/the-tech-behind-this-site/
 
@@ -30,6 +33,9 @@ Since the site runs on Hugo, I needed a solution that would work within this sta
 
 The solution I settled on was creating a [Hugo shortcode](https://gist.github.com/philippdubach/167189c7090c6813c5110c467cb5ebe9) that leverages Cloudflare's image transformations while maintaining a simple, markdown-like syntax. 
 The shortcode generates a ```<picture>``` element with multiple ```<source>``` tags, each targeting different screen sizes and serving WebP format. Here's how it works: instead of writing standard markdown image syntax, I use ```{{ img src="image.jpg" alt="Description" }}``` in my posts. Behind the scenes, the shortcode constructs URLs for different breakpoints. This means I upload one high-quality image, but users receive perfectly sized versions - a 320px wide WebP for mobile users, a 1600px version for desktop, and everything in between. The shortcode defaults to displaying images at 80% width and centered, but I can override this with a width parameter when needed. It's a nice compromise between the simplicity of markdown and the power of modern responsive image techniques. The syntax remains clean and the performance benefits are substantial - especially important since images are often the heaviest assets on any webpage.
+
+_(January 2026) Update IV:_
+Implemented a taxonomy system for content organization. Posts now have categories (Finance, AI, Medicine, Tech, Economics) and types (Project, Commentary, Essay, Review). Hugo generates browsable `/categories/` and `/types/` pages automatically. The existing `tags: ["Project"]` system remains for backward compatibility with the projects page.
 
 _(January 2026) Update III:_
 Created a reusable [disclaimer shortcode](https://gist.github.com/philippdubach/disclaimer-shortcode) for legal notices across posts. Six predefined types (finance, medical, general, AI, research, gambling) or custom text via parameter. Uses `{{</* disclaimer type="finance" */>}}` syntax with styled `<aside>` elements matching the site's design. Also built a [Post Composer](https://post-composer.pages.dev) tool on Cloudflare Pages—a private markdown editor with live preview, shortcode support (images, tables, newsletter, disclaimers), KaTeX math rendering, AI-powered SEO generation via Claude, and focus mode for distraction-free writing.

@@ -23,6 +23,9 @@ keywords:
 - wealth concentration
 - progressive taxation
 external_url: https://arxiv.org/abs/1604.02370
+categories:
+- Economics
+type: Commentary
 draft: false
 aliases:
 - /2025/08/30/agent-based-systems-for-modeling-wealth-distribution/

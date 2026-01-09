@@ -1,6 +1,10 @@
 ---
 title: Bitcoin Security
 date: 2026-01-02
+categories:
+- Finance
+- Tech
+type: Commentary
 images:
 - https://static.philippdubach.com/ograph/ograph-bitcoin-security.jpg
 external_url: https://hal.science/hal-04616643v1

@@ -23,6 +23,10 @@ keywords:
 - feature engineering
 tags:
 - Project
+categories:
+- Medicine
+- AI
+type: Project
 draft: false
 aliases:
 - /2025/05/30/modeling-glycemic-response-with-xgboost/

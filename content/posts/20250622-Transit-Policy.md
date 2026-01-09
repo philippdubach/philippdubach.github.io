@@ -22,6 +22,9 @@ keywords:
 - behavioral psychology
 - urban policy
 external_url: https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf
+categories:
+- Economics
+type: Commentary
 aliases:
 - /2025/06/22/behavioral-economics-transit-policy/
 

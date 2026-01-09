@@ -18,6 +18,9 @@ keywords:
 - computational social science
 tags:
 - Project
+categories:
+- Tech
+type: Project
 draft: true
 aliases:
 - /2025/12/19/what-100000-hacker-news-posts-reveal-about-online-attention/

@@ -22,6 +22,9 @@ keywords:
 - investment strategy
 - market dynamics
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263
+categories:
+- Finance
+type: Commentary
 aliases:
 - /2025/02/15/passive-investings-active-problem/
 

@@ -28,7 +28,7 @@ A secure, performant markdown editor with live preview for philippdubach.com blo
 composer/
 ├── index.html              # Single-page application (HTML/CSS/JS)
 ├── functions/
-│   └── generate-seo.js     # Cloudflare Pages Function (AI SEO endpoint)
+│   └── generate-seo.js     # Cloudflare Pages Function (Auto SEO endpoint)
 ├── robots.txt              # Disallow all crawlers (private tool)
 ├── package.json            # Project metadata and scripts
 └── README.md               # This file

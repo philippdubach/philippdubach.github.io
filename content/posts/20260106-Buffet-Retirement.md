@@ -3,6 +3,9 @@ title: "Praise by Name, Criticize by Category: Warren Buffett Retires at 95"
 seoTitle: "Buffett Retires at 95: What 60 Years of Letters Taught"
 date: 2026-01-06
 lastmod: 2026-01-06
+categories:
+- Finance
+type: Essay
 images:
 - https://static.philippdubach.com/ograph/ograph-buffet-retirement.jpg
 

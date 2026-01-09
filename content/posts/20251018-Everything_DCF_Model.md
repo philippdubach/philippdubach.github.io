@@ -22,6 +22,9 @@ keywords:
 - real estate valuation
 - corporate bonds
 external_url: https://www.morganstanley.com/content/dam/im/assets/publication/thought-leadership/consilient-observer/article_everythingisadcfmodel_us.pdf
+categories:
+- Finance
+type: Commentary
 draft: false
 aliases:
 - /2025/10/19/everything-is-a-dcf-model/

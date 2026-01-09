@@ -22,6 +22,10 @@ keywords:
 - foundation model
 - therapeutic discovery
 external_url: https://www.biorxiv.org/content/10.1101/2025.04.14.648850v3.full.pdf
+categories:
+- AI
+- Medicine
+type: Commentary
 draft: false
 aliases:
 - /2025/10/18/google-discovers-new-cancer-therapy-pathway/

@@ -19,6 +19,9 @@ keywords:
 - fat tail distributions
 - risk model failure
 - income inequality economics
+categories:
+- Finance
+type: Essay
 draft: true
 aliases:
 - /2025/12/05/power-laws-criticality-and-the-economics-of-extreme-events/

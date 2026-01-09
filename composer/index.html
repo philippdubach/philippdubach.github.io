@@ -569,7 +569,7 @@
                     <button class="btn" onclick="insertShortcode('table')">+ Table</button>
                     <button class="btn" onclick="insertShortcode('newsletter')">+ Newsletter</button>
                     <button class="btn" onclick="insertShortcode('disclaimer')">+ Disclaimer</button>
-                    <button class="btn btn-ai" onclick="generateSEO()" id="seo-btn">✨ AI SEO</button>
+                    <button class="btn btn-ai" onclick="generateSEO()" id="seo-btn">✨ Auto SEO</button>
                     <button class="btn btn-primary" onclick="copyMarkdown()">Copy</button>
                     <button class="btn btn-primary" onclick="downloadMarkdown()">Download</button>
                     <button class="btn btn-danger" onclick="clearAll()">Clear</button>
@@ -1095,7 +1095,7 @@ def hello():
             DOM.previewContent.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
         }, 100);
         
-        // AI SEO Generation
+        // Auto SEO Generation
         async function generateSEO() {
             const originalText = DOM.seoBtn.innerHTML;
             

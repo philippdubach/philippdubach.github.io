@@ -22,6 +22,9 @@ keywords:
 - AI competitive advantage
 - enterprise AI
 - AI commoditization
+categories:
+- AI
+type: Essay
 draft: false
 aliases:
 - /2025/11/24/is-ai-really-eating-the-world-agi-networks-value-2/2/

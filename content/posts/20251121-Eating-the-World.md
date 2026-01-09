@@ -22,6 +22,9 @@ keywords:
 - software development AI
 - AI consulting
 - technology disruption
+categories:
+- AI
+type: Essay
 draft: false
 aliases:
 - /2025/11/23/is-ai-really-eating-the-world-1/2/

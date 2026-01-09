@@ -22,6 +22,9 @@ keywords:
 - Thomas Ptacek
 - bicycle metaphor programming
 - AI behavior unpredictability
+categories:
+- AI
+type: Commentary
 draft: false
 aliases:
 - /2025/11/14/the-bicycle-needs-riding-to-be-understood/

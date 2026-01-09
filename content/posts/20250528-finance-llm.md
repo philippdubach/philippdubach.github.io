@@ -22,6 +22,10 @@ keywords:
 - decision-making transparency
 - financial sector AI
 external_url: https://arxiv.org/abs/2505.24650
+categories:
+- Finance
+- AI
+type: Commentary
 aliases:
 - /2025/05/28/the-model-said-so/
 

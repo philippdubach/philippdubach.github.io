@@ -6,6 +6,9 @@ images:
 external_url: https://gohugo.io/content-management/mathematics/
 math: true
 draft: true
+categories:
+- Tech
+type: Essay
 aliases:
 - /2024/01/01/math-template/
 

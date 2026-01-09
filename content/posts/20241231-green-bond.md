@@ -22,6 +22,9 @@ keywords:
 - bond market analysis
 - environmental impact
 external_url: https://www.nature.com/articles/s41599-024-04318-1
+categories:
+- Finance
+type: Commentary
 aliases:
 - /2024/12/31/the-green-bond-commitment-premium/
 
