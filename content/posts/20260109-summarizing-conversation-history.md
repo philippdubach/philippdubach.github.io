@@ -1,5 +1,6 @@
 ---
 title: Summarizing Conversation History...
+slug: summarizing-conversation-history
 date: 2026-01-09
 images:
 - https://static.philippdubach.com/ograph/ograph-llm-memory.jpg
@@ -11,9 +12,6 @@ keywords:
 - neural memory systems
 - chatbot memory
 draft: false
-aliases:
-- /posts/summarizing-conversation-history/
-- /posts/llm-memory/
 ---
 You've seen this message before. Copilot pausing; In long sessions, it happens often enough that I started wondering what's actually going on in there. Hence this post.
 
