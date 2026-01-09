@@ -595,6 +595,28 @@
                             <label><input type="checkbox" id="post-math" onchange="onFieldChange()"> Math</label>
                         </div>
                     </div>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="post-categories">Categories</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" id="cat-finance" onchange="onFieldChange()"> Finance</label>
+                                <label><input type="checkbox" id="cat-ai" onchange="onFieldChange()"> AI</label>
+                                <label><input type="checkbox" id="cat-tech" onchange="onFieldChange()"> Tech</label>
+                                <label><input type="checkbox" id="cat-medicine" onchange="onFieldChange()"> Medicine</label>
+                                <label><input type="checkbox" id="cat-economics" onchange="onFieldChange()"> Economics</label>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label for="post-type">Type</label>
+                            <select id="post-type" onchange="onFieldChange()">
+                                <option value="">Select type...</option>
+                                <option value="Commentary">Commentary</option>
+                                <option value="Essay">Essay</option>
+                                <option value="Project">Project</option>
+                                <option value="Review">Review</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -752,7 +774,7 @@ def hello():
         }
         
         // State
-        let frontmatter = { title: '', date: '', description: '', keywords: [], images: [], external_url: '', aliases: [], draft: false, math: false };
+        let frontmatter = { title: '', date: '', description: '', keywords: [], images: [], external_url: '', aliases: [], draft: false, math: false, categories: [], type: '' };
         let bodyContent = '';
         let isUpdatingFromPaste = false;
         let isFocusMode = false;
@@ -887,6 +909,14 @@ def hello():
             }
             
             if (frontmatter.external_url) lines.push(`external_url: ${frontmatter.external_url}`);
+            
+            if (frontmatter.categories && frontmatter.categories.length > 0) {
+                lines.push('categories:');
+                frontmatter.categories.forEach(cat => lines.push(`- ${cat}`));
+            }
+            
+            if (frontmatter.type) lines.push(`type: ${frontmatter.type}`);
+            
             if (frontmatter.math) lines.push('math: true');
             lines.push(`draft: ${frontmatter.draft ? 'true' : 'false'}`);
             
@@ -910,6 +940,18 @@ def hello():
             document.getElementById('post-aliases').value = (frontmatter.aliases || []).join('\n');
             document.getElementById('post-draft').checked = frontmatter.draft || false;
             document.getElementById('post-math').checked = frontmatter.math || false;
+            
+            // Categories
+            const cats = frontmatter.categories || [];
+            document.getElementById('cat-finance').checked = cats.includes('Finance');
+            document.getElementById('cat-ai').checked = cats.includes('AI');
+            document.getElementById('cat-tech').checked = cats.includes('Tech');
+            document.getElementById('cat-medicine').checked = cats.includes('Medicine');
+            document.getElementById('cat-economics').checked = cats.includes('Economics');
+            
+            // Type
+            document.getElementById('post-type').value = frontmatter.type || '';
+            
             updateBadges();
         }
         
@@ -926,6 +968,18 @@ def hello():
             frontmatter.aliases = al ? al.split('\n').map(a => a.trim()).filter(a => a) : [];
             frontmatter.draft = document.getElementById('post-draft').checked;
             frontmatter.math = document.getElementById('post-math').checked;
+            
+            // Categories
+            frontmatter.categories = [];
+            if (document.getElementById('cat-finance').checked) frontmatter.categories.push('Finance');
+            if (document.getElementById('cat-ai').checked) frontmatter.categories.push('AI');
+            if (document.getElementById('cat-tech').checked) frontmatter.categories.push('Tech');
+            if (document.getElementById('cat-medicine').checked) frontmatter.categories.push('Medicine');
+            if (document.getElementById('cat-economics').checked) frontmatter.categories.push('Economics');
+            
+            // Type
+            frontmatter.type = document.getElementById('post-type').value;
+            
             updateBadges();
         }
         
@@ -963,7 +1017,9 @@ def hello():
                     external_url: parsed.frontmatter.external_url || '',
                     aliases: parsed.frontmatter.aliases || [],
                     draft: parsed.frontmatter.draft || false,
-                    math: parsed.frontmatter.math || false
+                    math: parsed.frontmatter.math || false,
+                    categories: parsed.frontmatter.categories || [],
+                    type: parsed.frontmatter.type || ''
                 };
                 
                 if (frontmatter.date instanceof Date) {
