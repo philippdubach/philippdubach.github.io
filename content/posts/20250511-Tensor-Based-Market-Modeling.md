@@ -22,6 +22,10 @@ keywords:
 - UBS Investment Bank
 - algorithmic trading
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863
+categories:
+- Finance
+- AI
+type: Commentary
 aliases:
 - /2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/
 

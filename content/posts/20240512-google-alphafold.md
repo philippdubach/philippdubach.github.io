@@ -22,6 +22,10 @@ keywords:
 - Google cloud strategy
 - life sciences platform
 external_url: https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/
+categories:
+- AI
+- Medicine
+type: Commentary
 aliases:
 - /2024/05/12/alphafold-3-free-for-science/
 

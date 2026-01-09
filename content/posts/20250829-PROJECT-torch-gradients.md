@@ -23,6 +23,9 @@ keywords:
 - ML optimization
 tags:
 - Project
+categories:
+- AI
+type: Project
 draft: false
 aliases:
 - /2025/08/23/visualizing-gradients-with-pytorch/

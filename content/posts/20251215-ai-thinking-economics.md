@@ -19,6 +19,9 @@ keywords:
 - neuroscience AI
 - AI investment
 - large language models
+categories:
+- AI
+type: Essay
 draft: true
 aliases:
 - /2025/12/15/when-machines-think-the-economics-of-ai-understanding/

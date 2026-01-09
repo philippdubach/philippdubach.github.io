@@ -21,6 +21,9 @@ keywords:
 - clinical trials
 - healthcare solutions
 - GLP-1RA therapy
+categories:
+- Medicine
+type: Commentary
 draft: false
 aliases:
 - /2025/11/21/glp-1-receptor-agonists-in-asud-treatment/

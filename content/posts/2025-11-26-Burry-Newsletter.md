@@ -17,6 +17,9 @@ keywords:
 - artificial intelligence valuations
 - market prediction
 - tech bubble warning
+categories:
+- Finance
+type: Commentary
 draft: false
 aliases:
 - /2025/11/28/michael-burrys-379-newsletter/

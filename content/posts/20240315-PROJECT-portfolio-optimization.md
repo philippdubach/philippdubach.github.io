@@ -23,6 +23,9 @@ keywords:
 - portfolio management Python
 tags:
 - Project
+categories:
+- Finance
+type: Project
 aliases:
 - /2024/03/15/my-first-optimal-portfolio/
 

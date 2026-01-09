@@ -22,6 +22,9 @@ keywords:
 - immunology research
 - Nobel Prize popular information
 external_url: https://www.nobelprize.org/uploads/2025/10/popular-medicineprize2025-2.pdf
+categories:
+- Medicine
+type: Commentary
 draft: false
 aliases:
 - /2025/10/11/popular-science-nobel-prize/

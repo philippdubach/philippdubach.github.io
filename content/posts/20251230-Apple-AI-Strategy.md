@@ -21,6 +21,10 @@ keywords:
 - Apple cash reserves
 - AI model pricing collapse
 - Tim Cook AI strategy
+categories:
+- AI
+- Finance
+type: Commentary
 draft: false
 aliases:
 - /2025/12/30/apples-ai-bet-playing-the-long-game-or-missing-the-moment/

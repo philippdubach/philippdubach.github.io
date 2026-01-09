@@ -22,6 +22,9 @@ keywords:
 - asset pricing
 - investment framework
 external_url: https://aswathdamodaran.blogspot.com/2025/11/a-golden-year-2025-golds-price-surge.html
+categories:
+- Finance
+type: Commentary
 draft: false
 aliases:
 - /2025/11/16/damodaran-on-golds-2025-surge/

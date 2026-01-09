@@ -22,6 +22,10 @@ keywords:
 - time-in-range metrics
 tags:
 - Project
+categories:
+- Medicine
+- Tech
+type: Project
 draft: false
 aliases:
 - /2025/01/02/i-built-a-cgm-data-reader/

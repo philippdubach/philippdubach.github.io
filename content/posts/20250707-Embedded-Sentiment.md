@@ -22,6 +22,10 @@ keywords:
 - time-independent models
 - semantic analysis
 external_url: https://arxiv.org/abs/2507.01970
+categories:
+- Finance
+- AI
+type: Commentary
 draft: false
 aliases:
 - /2025/07/07/sentiment-trading-revisited/

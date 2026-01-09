@@ -22,6 +22,9 @@ keywords:
 - machine learning weather
 - atmospheric modeling
 - weather technology
+categories:
+- AI
+type: Commentary
 draft: false
 aliases:
 - /2025/11/22/weather-forecasts-have-improved-a-lot/

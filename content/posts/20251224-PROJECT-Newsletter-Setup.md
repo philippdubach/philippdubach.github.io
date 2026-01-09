@@ -20,6 +20,9 @@ keywords:
 - developer newsletter
 tags:
 - Project
+categories:
+- Tech
+type: Project
 draft: false
 aliases:
 - /2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/

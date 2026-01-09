@@ -22,6 +22,9 @@ keywords:
 - fund performance
 - market liquidity
 external_url: https://arxiv.org/abs/2405.12768
+categories:
+- Finance
+type: Commentary
 aliases:
 - /2024/06/21/how-some-active-funds-create-their-own-returns/
 

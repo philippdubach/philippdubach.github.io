@@ -22,6 +22,9 @@ keywords:
 - quantitative finance
 - empirical finance
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255
+categories:
+- Finance
+type: Commentary
 aliases:
 - /2025/06/15/it-just-aint-so/
 

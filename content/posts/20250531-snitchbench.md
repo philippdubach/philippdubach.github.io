@@ -22,6 +22,9 @@ keywords:
 - AI safety
 - AI assistance boundaries
 external_url: https://simonwillison.net/2025/May/31/snitchbench-with-llm/
+categories:
+- AI
+type: Commentary
 aliases:
 - /2025/05/31/your-ai-assistant-might-rat-you-out/
 

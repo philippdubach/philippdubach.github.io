@@ -22,6 +22,10 @@ keywords:
 - pharmaceutical manufacturing
 - Eli Lilly competition
 external_url: https://www.thelancet.com/journals/lancet/article/PIIS0140-6736%2825%2901185-7/
+categories:
+- Medicine
+- Finance
+type: Commentary
 aliases:
 - /2025/06/29/novo-nordisks-post-patent-strategy/
 

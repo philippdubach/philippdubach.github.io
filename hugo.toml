@@ -83,6 +83,11 @@ enableGitInfo = true
   priority = 0.8 
   filename = 'sitemap.xml'
 
+[taxonomies]
+  category = 'categories'
+  type = 'types'
+  tag = 'tags'
+
 [outputs]
   home = ['HTML', 'RSS', 'SiteMap']
   page = ['HTML']

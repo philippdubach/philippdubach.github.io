@@ -4,6 +4,9 @@ date: 2025-12-09
 images: ['https://static.philippdubach.com/ograph/ograph-warner-bidding.jpg']
 description: "Netflix's $72B Warner Bros. deal vs Paramount's hostile $30/share tender: streaming economics, deal mechanics, and antitrust uncertainty."
 keywords: ["Warner Bros Discovery", "Netflix acquisition", "Paramount hostile takeover", "streaming consolidation", "media M&A", "David Ellison", "antitrust review", "Hollywood dealmaking", "aggregation theory", "HBO Max", "entertainment economics", "hostile tender offer"]
+categories:
+- Finance
+type: Essay
 draft: false
 aliases:
 - /2025/12/09/not-logan-roy-netflix-vs.-paramounts-bidding-war/

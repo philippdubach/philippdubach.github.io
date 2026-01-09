@@ -22,6 +22,9 @@ keywords:
 - multi-gigawatt data centers
 - statistical significance
 external_url: https://docs.google.com/presentation/d/1xiLl0VdrlNMAei8pmaX4ojIOfej6lhvZbOIK7Z6C-Go/edit?usp=sharing
+categories:
+- AI
+type: Commentary
 draft: false
 aliases:
 - /2025/10/12/the-state-of-ai-report-2025/

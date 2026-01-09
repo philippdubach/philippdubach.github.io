@@ -23,6 +23,9 @@ keywords:
 - gaming AI
 tags:
 - Project
+categories:
+- AI
+type: Project
 draft: false
 aliases:
 - /2025/07/06/counting-cards-with-computer-vision/

@@ -11,6 +11,9 @@ keywords:
 - mathematics
 - neural networks
 - AI
+categories:
+- AI
+type: Review
 draft: false
 aliases:
 - /2025/12/27/book-review-why-machines-learn/

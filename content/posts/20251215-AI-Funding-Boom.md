@@ -18,6 +18,10 @@ keywords:
 - startup funding economics
 - tech investment cycle
 - AI capital allocation
+categories:
+- AI
+- Finance
+type: Essay
 draft: true
 aliases:
 - /2025/12/15/the-ai-funding-boom-what-70-billion-actually-means/

@@ -5,6 +5,9 @@ images:
 - https://static.philippdubach.com/ograph/ograph-project.jpg
 tags:
 - Project
+categories:
+- Finance
+type: Project
 draft: true
 aliases:
 - /2024/06/11/flirting-with-models-leveraged-buyout-lbo/

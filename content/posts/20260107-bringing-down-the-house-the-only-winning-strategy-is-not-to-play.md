@@ -1,6 +1,10 @@
 ---
 title: "Bringing Down the House: The Only Winning Strategy is Not to Play"
 date: 2026-01-07
+categories:
+- Finance
+- Tech
+type: Essay
 images:
 - https://static.philippdubach.com/ograph/ograph-post.jpg
 description: Statistical analysis of 20,000 crash game rounds reveals if provably fair gambling systems match theoretical RTP claims. Data-driven insights.

@@ -5,6 +5,9 @@ tags:
 - Project
 images:
 - https://static.philippdubach.com/ograph/ograph-project.jpg
+categories:
+- Finance
+type: Project
 draft: true
 aliases:
 - /2025/02/15/vibe-coding-a-robust-etf-portfolio/

@@ -22,6 +22,9 @@ keywords:
 - AI wars
 - frontier AI capabilities
 external_url: https://openai.com/index/hello-gpt-4o/
+categories:
+- AI
+type: Commentary
 aliases:
 - /2024/05/20/openai-cuts-prices-raises-stakes/
 

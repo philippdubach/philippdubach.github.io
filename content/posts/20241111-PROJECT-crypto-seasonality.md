@@ -23,6 +23,9 @@ keywords:
 - algorithmic trading
 tags:
 - Project
+categories:
+- Finance
+type: Project
 draft: false
 aliases:
 - /2024/11/11/crypto-mean-reversion-trading/

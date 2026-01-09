@@ -19,6 +19,9 @@ keywords:
 - business model innovation
 - trade policy economics
 - Porter competitive strategy
+categories:
+- Finance
+type: Essay
 draft: false
 aliases:
 - /2025/12/02/nikes-crisis-and-the-economics-of-brand-decay/

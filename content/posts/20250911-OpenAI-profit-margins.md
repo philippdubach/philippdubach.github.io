@@ -22,6 +22,10 @@ keywords:
 - AGI development
 - AI company valuation
 - artificial intelligence P&L
+categories:
+- AI
+- Finance
+type: Commentary
 draft: false
 aliases:
 - /2025/11/09/ai-models-as-standalone-pls/

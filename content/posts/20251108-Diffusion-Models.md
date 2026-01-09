@@ -22,6 +22,9 @@ keywords:
 - model development
 - data corruption
 - prior distribution
+categories:
+- AI
+type: Commentary
 draft: false
 aliases:
 - /2025/11/08/working-with-models/
