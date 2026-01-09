@@ -17,11 +17,7 @@ keywords:
 - chatbot memory
 draft: false
 ---
-You've seen this message before. Copilot pausing; In long sessions, it happens often enough that I started wondering what's actually going on in there. Hence this post.
-
->Summarizing Conversation History...
-
-The short answer: context windows grew larger. [Claude handles 200K tokens](https://platform.claude.com/docs/en/build-with-claude/context-windows), [Gemini claims a million](https://gemini.google/overview/long-context/). But bigger windows aren't memory. They're a larger napkin you throw away when dinner's over. 
+You've seen this message before. Copilot pausing; In long sessions, it happens often enough that I started wondering what's actually going on in there. Hence this post.{{< img src="Summarizing_conversation_history.png" alt="Hierarchical memory architecture for LLM applications" width="40%" >}}The short answer: context windows grew larger. [Claude handles 200K tokens](https://platform.claude.com/docs/en/build-with-claude/context-windows), [Gemini claims a million](https://gemini.google/overview/long-context/). But bigger windows aren't memory. They're a larger napkin you throw away when dinner's over. 
 
 For som time I was convinced that vector databases would solve this. Embed everything, store it geometrically, retrieve by similarity. Elegant in theory. Try encoding "first we did X, then Y happened, which caused Z." Sequences don't live naturally in vector space. Neither do facts that change over time. Your database might confidently tell you Bonn is Germany's capital if you fed it the wrong decade of documents.
 
