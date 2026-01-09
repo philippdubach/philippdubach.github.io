@@ -33,8 +33,9 @@
     var emailInput = document.getElementById(emailId);
     var privacyDiv = document.getElementById(privacyId);
     
-    // Fetch subscriber count and prepend to privacy text
-    if (privacyDiv) {
+    // Fetch subscriber count and prepend to privacy text (only once)
+    if (privacyDiv && !privacyDiv.dataset.countLoaded) {
+      privacyDiv.dataset.countLoaded = 'true';
       fetch('https://newsletter-api.philippd.workers.dev/api/subscriber-count')
         .then(function(r) { return r.json(); })
         .then(function(data) {
