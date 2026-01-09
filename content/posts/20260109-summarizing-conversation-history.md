@@ -3,7 +3,7 @@ title: Summarizing Conversation History...
 slug: summarizing-conversation-history
 date: 2026-01-09
 images:
-- https://static.philippdubach.com/ograph/ograph-llm-memory.jpg
+- https://static.philippdubach.com/ograph/ograph-llm-mem.jpg
 description: 'Explore cutting-edge approaches to LLM memory beyond context windows: from HeadKV attention optimization to EM-LLM''s brain-inspired architecture.'
 keywords:
 - LLM memory
