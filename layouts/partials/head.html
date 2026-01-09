@@ -5,14 +5,12 @@
     
     {{/* Content Security Policy - allows GoatCounter, MathJax CDN, and necessary scripts */}}
     {{/* Note: frame-ancestors directive only works via HTTP headers, not meta tags */}}
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://yourls-shortener-proxy.philippd.workers.dev https://gc.zgo.at https://static.zgo.at https://pdub.click https://cdn.jsdelivr.net; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; base-uri 'self';">
     
     {{/* Preconnect to external domains for faster resource loading */}}
     {{/* Note: preconnect implies dns-prefetch, so no need for both */}}
     <link rel="preconnect" href="https://static.zgo.at" crossorigin>
     <link rel="preconnect" href="https://static.philippdubach.com" crossorigin>
-    <link rel="preconnect" href="https://pdub.click" crossorigin>
-    <link rel="preconnect" href="https://yourls-shortener-proxy.philippd.workers.dev" crossorigin>
     <link rel="preconnect" href="https://newsletter-api.philippd.workers.dev" crossorigin>
     {{/* Preconnect to MathJax CDN */}}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
