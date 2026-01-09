@@ -48,8 +48,8 @@
       .catch(function() { container.remove(); });
   }
 
-  // Share link handler - copies short URL to clipboard
-  // Lightweight, works on all browsers (desktop + mobile)
+  // Share link handler - copies URL to clipboard
+  // Works on all browsers (desktop + mobile)
   var link = document.getElementById('share-link');
   var status = document.getElementById('share-status');
   if (!link) return;
@@ -89,48 +89,13 @@
   // Get canonical URL once
   var canonical = document.querySelector('link[rel="canonical"]');
   var pageUrl = (canonical ? canonical.href : location.href).replace(/\/+$/, '').split('?')[0];
-  var shortUrl = null; // Cache the short URL after first fetch
-  var storageKey = 'shorturl:' + pageUrl;
-  try { shortUrl = localStorage.getItem(storageKey) || null; } catch (e) {}
-
-  // Prefetch short URL early so the first click can copy synchronously.
-  var shortUrlPromise = null;
-  function fetchShortUrl() {
-    if (shortUrl) return Promise.resolve(shortUrl);
-    if (shortUrlPromise) return shortUrlPromise;
-
-    shortUrlPromise = fetch('https://yourls-shortener-proxy.philippd.workers.dev/shorten?url=' + encodeURIComponent(pageUrl))
-      .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
-      .then(function(d) {
-        if (d && d.shorturl) {
-          shortUrl = d.shorturl;
-          try { localStorage.setItem(storageKey, shortUrl); } catch (e) {}
-          return shortUrl;
-        }
-        throw new Error('No shorturl');
-      })
-      .catch(function() {
-        return null;
-      });
-
-    return shortUrlPromise;
-  }
-
-  // Kick off prefetch without blocking render.
-  fetchShortUrl();
 
   link.addEventListener('click', function(e) {
     e.preventDefault();
-
-    // Clipboard write must happen *now* (Safari): only use whatever is already cached.
-    var toCopy = shortUrl || pageUrl;
-    copyTextInGesture(toCopy, function(ok) {
-      status.textContent = ok ? (shortUrl ? 'short url copied' : 'url copied') : toCopy;
+    copyTextInGesture(pageUrl, function(ok) {
+      status.textContent = ok ? 'url copied' : pageUrl;
       setTimeout(function() { status.textContent = ''; }, 2500);
     });
-
-    // Ensure we prefetch for next clicks if not ready yet.
-    if (!shortUrl) fetchShortUrl();
   });
 })();
 </script>
