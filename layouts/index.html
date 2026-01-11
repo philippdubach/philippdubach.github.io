@@ -18,12 +18,13 @@
                 <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
                     {{ .Date.Format "January 2, 2006" }}
                 </time>
+                · {{ .ReadingTime }} min read
                 {{ if .Params.external_url }}
                     · <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>
                 {{ end }}
             </div>
         </header>
-        <div class="post-content">
+        <div class="post-content post-list-content">
             {{ .Content }}
         </div>
     </article>

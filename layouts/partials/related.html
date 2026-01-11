@@ -1,0 +1,10 @@
+{{/* Related Posts - shows posts with matching tags/categories */}}
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ if $related }}
+<aside class="related-posts" aria-labelledby="related-heading">
+    <span class="related-label" id="related-heading">Related:</span>
+    <span class="related-links">
+        {{ range $i, $post := $related }}{{ if $i }} · {{ end }}<a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>{{ end }}
+    </span>
+</aside>
+{{ end }}
