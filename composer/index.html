@@ -718,9 +718,16 @@ def hello():
                         <p>Start writing to see your preview...</p>
                     </div>
                 </article>
-                <footer class="feedback-footer">
-                    <p>Have feedback, comments, or ideas? <a href="mailto:info@philippdubach.com">I'd love to hear from you</a>.</p>
-                </footer>
+                <nav class="footer-links" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e9ecef; font-size: 0.85rem;">
+                    <a href="https://philippdubach.com/subscribe/">Newsletter</a>
+                    <span style="color: #ccc; margin: 0 0.5rem;">·</span>
+                    <a href="https://github.com/philippdubach" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <span style="color: #ccc; margin: 0 0.5rem;">·</span>
+                    <a href="https://bsky.app/profile/philippdubach.com" target="_blank" rel="noopener noreferrer">Bluesky</a>
+                    <span style="color: #ccc; margin: 0 0.5rem;">·</span>
+                    <a href="mailto:me@philippdubach.com">Email</a>
+                </nav>
+                <p class="copyright" style="margin-top: 0.5rem; font-size: 0.8rem; color: #999; text-align: center;">© 2026 Philipp Dubach</p>
             </div>
         </div>
     </div>
@@ -1305,6 +1312,24 @@ def hello():
             document.body.style.userSelect = '';
         });
         
+        // Auto-closing brackets
+        function handleAutoBracket(e) {
+            const brackets = { '[': ']', '(': ')', '{': '}' };
+            if (brackets[e.key]) {
+                e.preventDefault();
+                const start = DOM.editor.selectionStart;
+                const end = DOM.editor.selectionEnd;
+                const text = DOM.editor.value;
+                const selected = text.substring(start, end);
+                DOM.editor.value = text.substring(0, start) + e.key + selected + brackets[e.key] + text.substring(end);
+                DOM.editor.selectionStart = DOM.editor.selectionEnd = start + 1;
+                bodyContent = DOM.editor.value;
+                updateSyntaxHighlight();
+                updatePreview();
+                saveToLocalStorage();
+            }
+        }
+        
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.metaKey || e.ctrlKey) {
@@ -1327,6 +1352,7 @@ def hello():
             
             DOM.editor.addEventListener('input', onEditorInput);
             DOM.editor.addEventListener('paste', () => setTimeout(onEditorInput, 0));
+            DOM.editor.addEventListener('keydown', handleAutoBracket);
             
             updateSyntaxHighlight();
             updatePreview();

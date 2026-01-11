@@ -185,12 +185,11 @@ blockquote p {
 }
 
 .post {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    margin-bottom: 3.75rem;
 }
 
 .post:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .post-title {
@@ -1310,6 +1309,11 @@ pre {
     border-radius: 0 4px 4px 0;
 }
 
+/* Hide disclaimers on homepage/list pages */
+.post-list-content .disclaimer {
+    display: none;
+}
+
 .disclaimer-content {
     font-size: 0.8rem;
     line-height: 1.5;
@@ -1432,5 +1436,145 @@ pre {
     .category-post-count,
     .category-description {
         color: #999;
+    }
+}
+
+/* ===================================
+   Site Footer
+   =================================== */
+.site-footer {
+    margin-top: 0.25rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #595959;
+}
+
+.post-footer {
+    margin-bottom: 0;
+}
+
+/* Post Taxonomy (Categories & Tags) */
+.post-taxonomy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.taxonomy-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.taxonomy-icon {
+    color: #999;
+    flex-shrink: 0;
+}
+
+.taxonomy-group a {
+    color: #595959;
+    text-decoration: none;
+}
+
+/* Post Discovery (single link: Latest or Most Read) */
+.post-discovery {
+    margin: 0;
+    padding: 0 0 0.75rem 0;
+    font-size: 0.85rem;
+    color: #595959;
+    text-align: center;
+}
+
+.post-discovery a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.post-discovery a:hover {
+    text-decoration: underline;
+}
+
+/* Post Category in header */
+.post-category {
+    color: #595959;
+    text-decoration: none;
+}
+
+.post-category:hover {
+    color: #007acc;
+}
+
+/* Footer Links */
+.footer-links {
+    margin: 0;
+    padding: 0.75rem 0;
+    border-top: 1px solid #e9ecef;
+}
+
+.footer-links a {
+    color: #595959;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #007acc;
+}
+
+.footer-links .separator {
+    color: #ccc;
+    margin: 0 0.5rem;
+}
+
+.copyright {
+    margin: 0;
+    padding-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Mobile adjustments for footer */
+@media screen and (max-width: 768px) {
+    .site-footer {
+        margin-top: 0.25rem;
+    }
+    
+    .footer-links .separator {
+        margin: 0 0.35rem;
+    }
+}
+
+/* ===================================
+   Related Posts (centered, compact)
+   =================================== */
+.related-posts {
+    margin: 2rem 0 0.25rem 0;
+    padding: 0.75rem 0 0;
+    font-size: 0.85rem;
+    color: #595959;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.related-label {
+    color: #595959;
+}
+
+.related-posts a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.related-posts a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .related-posts {
+        padding: 0.75rem 0 0;
+        line-height: 1.5;
     }
 }

@@ -11,9 +11,8 @@
             </time>
             • {{ .FuzzyWordCount }} words
             • {{ .ReadingTime }} min read
-            {{ if .Params.external_url }}
-                • <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>
-            {{ end }}
+            {{- with .Params.categories }} • {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/" class="post-category">{{ $cat }}</a>{{ end }}{{ end }}
+            {{- if .Params.external_url }} • <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>{{ end }}
             • <a href="#" id="share-link" title="Copy short link" aria-label="Copy short link" style="text-decoration:none">∞</a>
             <span id="share-status"></span>
         </div>
@@ -24,80 +23,7 @@
     </div>
 </article>
 
-<footer class="feedback-footer">
-  <p>Have feedback, comments, or ideas? <a href="mailto:info@philippdubach.com">I'd love to hear from you</a>.</p>
-  <p class="latest-post">Latest: <a href="{{ (index (where .Site.RegularPages "Section" "posts") 0).RelPermalink }}">{{ (index (where .Site.RegularPages "Section" "posts") 0).Title }}</a></p>
-  <p class="most-read" id="top-post-week" style="min-height: 1.5em;">
-    <!-- Populated by JS -->
-  </p>
-</footer>
-
-<script>
-(function(){
-  // Fetch top post from GoatCounter
-  var container = document.getElementById('top-post-week');
-  if (container) {
-    fetch('https://weekly-top-goatcounter-api.philippd.workers.dev')
-      .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
-      .then(function(data) {
-        if (data.hits && data.hits.length > 0) {
-          var t = data.hits[0];
-          container.innerHTML = 'Most read: <a href="' + t.path + '">' + t.title.replace(' - philippdubach.com', '') + '</a>';
-        } else { container.remove(); }
-      })
-      .catch(function() { container.remove(); });
-  }
-
-  // Share link handler - copies URL to clipboard
-  // Works on all browsers (desktop + mobile)
-  var link = document.getElementById('share-link');
-  var status = document.getElementById('share-status');
-  if (!link) return;
-
-  // Clipboard copy must run during the click (user gesture), especially in Safari.
-  // So: prefer a synchronous execCommand() copy, with async clipboard API as backup.
-  function copyTextInGesture(text, cb) {
-    var ok = false;
-    try {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.setAttribute('readonly', '');
-      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      try { ta.setSelectionRange(0, ta.value.length); } catch (e) {}
-      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-      document.body.removeChild(ta);
-    } catch (e) {
-      ok = false;
-    }
-
-    if (ok) {
-      cb(true);
-      return;
-    }
-
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function() { cb(true); }, function() { cb(false); });
-      return;
-    }
-
-    cb(false);
-  }
-
-  // Get canonical URL once
-  var canonical = document.querySelector('link[rel="canonical"]');
-  var pageUrl = (canonical ? canonical.href : location.href).replace(/\/+$/, '').split('?')[0];
-
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    copyTextInGesture(pageUrl, function(ok) {
-      status.textContent = ok ? 'url copied' : pageUrl;
-      setTimeout(function() { status.textContent = ''; }, 2500);
-    });
-  });
-})();
-</script>
+{{/* Related Posts */}}
+{{ partial "related.html" . }}
 
 {{ end }}
