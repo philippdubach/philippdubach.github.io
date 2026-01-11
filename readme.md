@@ -6,9 +6,9 @@ Personal blog on quantitative finance, AI/ML, and technology. Built with Hugo, h
 
 ## Links
 
-- 📰 [RSS Feed](https://philippdubach.com/index.xml)
-- 🧭 [Bluesky](https://bsky.app/profile/philippdubach.com)
-- 📧 [Newsletter](https://philippdubach.com/newsletter/)
+- [RSS Feed](https://philippdubach.com/index.xml)
+- [Bluesky](https://bsky.app/profile/philippdubach.com)
+- [Newsletter](https://philippdubach.com/newsletter/)
 
 ---
 
