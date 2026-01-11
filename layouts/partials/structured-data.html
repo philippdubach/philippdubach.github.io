@@ -24,11 +24,10 @@
   "@type": "Person",
   "name": "{{ .Site.Params.author }}",
   "url": "{{ .Site.BaseURL }}about/",
-  "sameAs": [
-    {{ with .Site.Params.social.github }}"https://github.com/{{ . }}"{{ end }}
-    {{ with .Site.Params.social.bluesky }},
-    "https://bsky.app/profile/{{ . }}"{{ end }}
-  ],
+  {{- $sameAs := slice -}}
+  {{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+  {{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+  "sameAs": {{ $sameAs | jsonify }},
   "jobTitle": "Quantitative Finance & AI Strategy",
   "knowsAbout": {{ .Site.Params.keywords | jsonify }}
 }

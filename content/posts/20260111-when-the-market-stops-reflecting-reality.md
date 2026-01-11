@@ -22,7 +22,7 @@ I've written [about market concentration](https://philippdubach.com/posts/how-ai
 
 The disconnect shows up in daily American life. Healthcare costs continue rising, housing remains unaffordable for many, and grocery prices have yet to normalize. These are real pressures on real households. Yet the S&P 500 gained 16% in 2025, with the Nasdaq up 21%. The market doesn't care about rent or insurance premiums because the companies reflecting those costs barely register in the index anymore. As Eisman puts it:
 
->The market has become  unmoored from everyday life.
+>The market has become unmoored from everyday life.
 
 This creates a structural problem for active managers that compounds over time. When [NVIDIA alone represents 7.7% of the S&P 500](https://www.slickcharts.com/sp500), Apple 6.8%, and Microsoft 6.1%, most institutional mandates physically prevent managers from holding proportional positions. Risk limits cap initial positions at perhaps 5% of assets under management. Sector allocation rules require diversification across all eleven sectors. The result is systematic underweighting of the fastest-growing names. Meanwhile, the bottom five sectors combined represent just 14% of the index. Real estate, with 31 constituents, accounts for barely 2%. Why dedicate research resources to an entire sector that can only marginally move your portfolio?
 

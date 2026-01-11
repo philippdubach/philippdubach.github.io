@@ -2,13 +2,16 @@
 <footer class="site-footer" role="contentinfo">
     {{/* Post-specific footer content */}}
     {{ if .IsPage }}
-    {{- $latestPost := index (where .Site.RegularPages "Section" "posts") 0 -}}
+    {{- $posts := where .Site.RegularPages "Section" "posts" -}}
+    {{- if gt (len $posts) 0 -}}
+    {{- $latestPost := index $posts 0 -}}
     <p class="post-discovery" id="post-discovery"
        data-current-path="{{ .RelPermalink }}"
        data-latest-path="{{ $latestPost.RelPermalink }}"
        data-latest-title="{{ $latestPost.Title }}">
         <!-- Populated by JS: shows either Latest or Most Read -->
     </p>
+    {{- end -}}
     {{ end }}
 
     {{/* Social Links - appears on all pages */}}
@@ -52,20 +55,35 @@
                 var mostReadTitle = mostRead.title.replace(' - philippdubach.com', '');
                 var isOnMostRead = currentPath === mostReadPath || currentPath === mostReadPath + '/';
                 
+                // Helper to safely set post discovery content
+                function setDiscovery(label, path, title) {
+                    container.textContent = '';
+                    container.appendChild(document.createTextNode(label + ': '));
+                    var link = document.createElement('a');
+                    link.href = path;
+                    link.textContent = title;
+                    container.appendChild(link);
+                }
+                
                 // Logic: if on latest → show most read; if on most read → show latest; else → show most read
                 if (isOnLatest || !isOnMostRead) {
-                    container.innerHTML = 'Most read: <a href="' + mostReadPath + '">' + mostReadTitle + '</a>';
+                    setDiscovery('Most read', mostReadPath, mostReadTitle);
                 } else {
-                    container.innerHTML = 'Latest: <a href="' + latestPath + '">' + latestTitle + '</a>';
+                    setDiscovery('Latest', latestPath, latestTitle);
                 }
             } else {
                 // Fallback to latest if no most read data
-                container.innerHTML = 'Latest: <a href="' + latestPath + '">' + latestTitle + '</a>';
+                setDiscovery('Latest', latestPath, latestTitle);
             }
         })
         .catch(function() {
-            // Fallback to latest on error
-            container.innerHTML = 'Latest: <a href="' + latestPath + '">' + latestTitle + '</a>';
+            // Fallback to latest on error - use safe DOM manipulation
+            container.textContent = '';
+            container.appendChild(document.createTextNode('Latest: '));
+            var link = document.createElement('a');
+            link.href = latestPath;
+            link.textContent = latestTitle;
+            container.appendChild(link);
         });
 
     // Share link handler - copies URL to clipboard
