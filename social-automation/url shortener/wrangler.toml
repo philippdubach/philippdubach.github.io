@@ -1,0 +1,29 @@
+name = "pdub-shortener"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Custom domain - add via Cloudflare dashboard > Workers > pdub-shortener > Triggers > Custom Domains
+# Once pdub.click is added to your Cloudflare account, uncomment:
+# routes = [
+#   { pattern = "pdub.click/*", zone_name = "pdub.click" },
+#   { pattern = "pdub.click", zone_name = "pdub.click" }
+# ]
+
+# KV Namespace for URL storage
+[[kv_namespaces]]
+binding = "URLS"
+id = "15afebf6c68b4b07bc93b575d123f9cd"
+preview_id = "39208ef11e024d368ff3158e5ddee554"
+
+# D1 Database for analytics
+[[d1_databases]]
+binding = "DB"
+database_name = "pdub-analytics"
+database_id = "880814e2-8706-446d-858f-c0511e11a7be"
+
+# Environment variables (set via wrangler secret)
+# ADMIN_PASSWORD - Dashboard login password
+# API_KEY - API authentication key
+
+[vars]
+DASHBOARD_ORIGIN = "https://pdub.click"

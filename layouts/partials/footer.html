@@ -1,1 +1,136 @@
-{{/* Footer partial - copyright included in feedback footer on single pages */}}
+{{/* Site Footer - appears on all pages */}}
+<footer class="site-footer" role="contentinfo">
+    {{/* Post-specific footer content */}}
+    {{ if .IsPage }}
+    {{- $posts := where .Site.RegularPages "Section" "posts" -}}
+    {{- if gt (len $posts) 0 -}}
+    {{- $latestPost := index $posts 0 -}}
+    <p class="post-discovery" id="post-discovery"
+       data-current-path="{{ .RelPermalink }}"
+       data-latest-path="{{ $latestPost.RelPermalink }}"
+       data-latest-title="{{ $latestPost.Title }}">
+        <!-- Populated by JS: shows either Latest or Most Read -->
+    </p>
+    {{- end -}}
+    {{ end }}
+
+    {{/* Social Links - appears on all pages */}}
+    <nav class="footer-links" aria-label="Footer navigation">
+        <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
+        <span class="separator" aria-hidden="true">·</span>
+        {{ with .Site.Params.social.github }}
+        <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span class="separator" aria-hidden="true">·</span>
+        {{ end }}
+        {{ with .Site.Params.social.bluesky }}
+        <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
+        <span class="separator" aria-hidden="true">·</span>
+        {{ end }}
+        {{ with .Site.Params.social.email }}
+        <a href="mailto:{{ . }}">Email</a>
+        {{ end }}
+    </nav>
+
+    <p class="copyright">© {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}</p>
+</footer>
+
+{{ if .IsPage }}
+<script>
+(function(){
+    var container = document.getElementById('post-discovery');
+    if (!container) return;
+    
+    var currentPath = container.dataset.currentPath;
+    var latestPath = container.dataset.latestPath;
+    var latestTitle = container.dataset.latestTitle;
+    var isOnLatest = currentPath === latestPath;
+    
+    // Fetch most read from GoatCounter
+    fetch('https://weekly-top-goatcounter-api.philippd.workers.dev')
+        .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
+        .then(function(data) {
+            if (data.hits && data.hits.length > 0) {
+                var mostRead = data.hits[0];
+                var mostReadPath = mostRead.path;
+                var mostReadTitle = mostRead.title.replace(' - philippdubach.com', '');
+                var isOnMostRead = currentPath === mostReadPath || currentPath === mostReadPath + '/';
+                
+                // Helper to safely set post discovery content
+                function setDiscovery(label, path, title) {
+                    container.textContent = '';
+                    container.appendChild(document.createTextNode(label + ': '));
+                    var link = document.createElement('a');
+                    link.href = path;
+                    link.textContent = title;
+                    container.appendChild(link);
+                }
+                
+                // Logic: if on latest → show most read; if on most read → show latest; else → show most read
+                if (isOnLatest || !isOnMostRead) {
+                    setDiscovery('Most read', mostReadPath, mostReadTitle);
+                } else {
+                    setDiscovery('Latest', latestPath, latestTitle);
+                }
+            } else {
+                // Fallback to latest if no most read data
+                setDiscovery('Latest', latestPath, latestTitle);
+            }
+        })
+        .catch(function() {
+            // Fallback to latest on error - use safe DOM manipulation
+            container.textContent = '';
+            container.appendChild(document.createTextNode('Latest: '));
+            var link = document.createElement('a');
+            link.href = latestPath;
+            link.textContent = latestTitle;
+            container.appendChild(link);
+        });
+
+    // Share link handler - copies URL to clipboard
+    var link = document.getElementById('share-link');
+    var status = document.getElementById('share-status');
+    if (!link) return;
+
+    function copyTextInGesture(text, cb) {
+        var ok = false;
+        try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try { ta.setSelectionRange(0, ta.value.length); } catch (e) {}
+            try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+            document.body.removeChild(ta);
+        } catch (e) {
+            ok = false;
+        }
+
+        if (ok) {
+            cb(true);
+            return;
+        }
+
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(function() { cb(true); }, function() { cb(false); });
+            return;
+        }
+
+        cb(false);
+    }
+
+    var canonical = document.querySelector('link[rel="canonical"]');
+    var pageUrl = (canonical ? canonical.href : location.href).replace(/\/+$/, '').split('?')[0];
+
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        copyTextInGesture(pageUrl, function(ok) {
+            status.textContent = ok ? 'url copied' : pageUrl;
+            setTimeout(function() { status.textContent = ''; }, 2500);
+        });
+    });
+})();
+</script>
+{{ end }}

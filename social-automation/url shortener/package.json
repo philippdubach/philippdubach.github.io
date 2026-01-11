@@ -1,0 +1,22 @@
+{
+  "name": "pdub-shortener",
+  "version": "1.1.0",
+  "description": "Cloudflare-based URL shortener for pdub.click",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 execute pdub-analytics --local --file=./src/db/schema.sql",
+    "db:migrate:prod": "wrangler d1 execute pdub-analytics --file=./src/db/schema.sql",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit && echo 'Type check passed'"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^4.58.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,3 +1,39 @@
+{{/* WebSite Schema - Homepage only */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "inLanguage": "{{ .Site.Language.Lang | default "en" }}",
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author }}"
+  }
+}
+</script>
+{{ end }}
+
+{{/* Person Schema - About page for E-E-A-T signals */}}
+{{ if eq .RelPermalink "/about/" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ .Site.Params.author }}",
+  "url": "{{ .Site.BaseURL }}about/",
+  {{- $sameAs := slice -}}
+  {{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+  {{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+  "sameAs": {{ $sameAs | jsonify }},
+  "jobTitle": "Quantitative Finance & AI Strategy",
+  "knowsAbout": {{ .Site.Params.keywords | jsonify }}
+}
+</script>
+{{ end }}
+
 {{/* Breadcrumb Structured Data */}}
 {{ if .IsPage }}
 <script type="application/ld+json">
@@ -73,13 +109,16 @@
     "name": "{{ .Site.Title }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ .Site.BaseURL }}icons/favicon.ico"
+      "url": "{{ .Site.BaseURL }}icons/web-app-manifest-512x512.png",
+      "width": 512,
+      "height": 512
     }
   }
   {{ if .Site.Params.author }},
   "author": {
     "@type": "Person",
-    "name": "{{ .Site.Params.author }}"
+    "name": "{{ .Site.Params.author }}",
+    "url": "{{ .Site.BaseURL }}about/"
   }
   {{ end }}
 }

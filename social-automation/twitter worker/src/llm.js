@@ -31,7 +31,7 @@ export async function generatePostMessage(ai, title, description, fullText = '')
     const context = fullText || description;
     const contextPreview = context.length > 3000 ? context.substring(0, 3000) + '...' : context;
     
-    const response = await ai.run('@cf/meta/llama-3.1-8b-instruct', {
+    const response = await ai.run('@cf/meta/llama-3.3-70b-instruct-fp8-fast', {
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: `Write a post for: ${title}\n\nFull article:\n${contextPreview}\n\nOutput only the post text, under 200 characters.` },

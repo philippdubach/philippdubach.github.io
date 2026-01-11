@@ -23,9 +23,9 @@
         <main id="main-content" class="content" role="main">
             {{ partial "header.html" . }}
             {{ block "main" . }}{{ end }}
+            {{ partial "footer.html" . }}
         </main>
     </div>
-    {{ partial "footer.html" . }}
     
     {{- if .Param "math" -}}
         {{ partialCached "math.html" . }}

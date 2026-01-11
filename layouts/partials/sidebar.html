@@ -17,9 +17,6 @@
         
         {{ if .Site.Params.social }}
         <div class="social-links" aria-label="Social media links">
-            {{ with .Site.Params.social.linkedin }}
-            <a href="https://ch.linkedin.com/{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn profile (opens in new tab)">LinkedIn</a>
-            {{ end }}
             {{ with .Site.Params.social.github }}
             <a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub profile (opens in new tab)">GitHub</a>
             {{ end }}
