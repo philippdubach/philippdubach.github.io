@@ -1,13 +1,13 @@
 ---
-title: Summarizing Conversation History...
-slug: summarizing-conversation-history
+title: "Beyond Vector Search: Why LLMs Need Episodic Memory"
 date: 2026-01-09
+lastmod: 2026-01-12
 categories:
 - AI
 - Tech
 type: Essay
 images:
-- https://static.philippdubach.com/ograph/ograph-llm-mem.jpg
+- https://static.philippdubach.com/ograph/ograph-llm-memory2.jpg
 description: 'Explore cutting-edge approaches to LLM memory beyond context windows: from HeadKV attention optimization to EM-LLM''s brain-inspired architecture.'
 keywords:
 - LLM memory
