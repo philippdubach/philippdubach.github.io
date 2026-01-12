@@ -142,7 +142,7 @@ blockquote p {
 
 .navigation ul {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 }
 
 .navigation li {

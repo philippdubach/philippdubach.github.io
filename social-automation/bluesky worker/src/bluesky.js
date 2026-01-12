@@ -5,51 +5,81 @@
 const BLUESKY_API = 'https://bsky.social/xrpc';
 
 /**
+ * Retry wrapper with exponential backoff
+ * @param {Function} fn - Async function to retry
+ * @param {number} maxRetries - Maximum retry attempts (default 3)
+ * @param {number} baseDelay - Base delay in ms (default 1000)
+ */
+async function withRetry(fn, maxRetries = 3, baseDelay = 1000) {
+  let lastError;
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error;
+      const isRateLimit = error.message?.includes('429') || error.message?.includes('rate');
+      const isServerError = error.message?.includes('5');
+      
+      // Only retry on rate limits or server errors
+      if (!isRateLimit && !isServerError) throw error;
+      
+      // Exponential backoff with jitter
+      const delay = baseDelay * Math.pow(2, attempt) + Math.random() * 1000;
+      console.log(`Retry ${attempt + 1}/${maxRetries} after ${Math.round(delay)}ms`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  throw lastError;
+}
+
+/**
  * Post to Bluesky
  */
 export async function postToBluesky(handle, appPassword, message, url, imageUrl, title, description) {
-  const session = await createSession(handle, appPassword);
-  const { accessJwt, did } = session;
+  return withRetry(async () => {
+    const session = await createSession(handle, appPassword);
+    const { accessJwt, did } = session;
 
-  const MAX_POST_LENGTH = 300;
-  const fullText = url ? `${message}\n\n${url}` : message;
-  if (fullText.length > MAX_POST_LENGTH) {
-    throw new Error(`Bluesky post exceeds ${MAX_POST_LENGTH} characters (got ${fullText.length})`);
-  }
-  const facets = detectFacets(fullText);
+    const MAX_POST_LENGTH = 300;
+    const fullText = url ? `${message}\n\n${url}` : message;
+    if (fullText.length > MAX_POST_LENGTH) {
+      throw new Error(`Bluesky post exceeds ${MAX_POST_LENGTH} characters (got ${fullText.length})`);
+    }
+    const facets = detectFacets(fullText);
 
-  const record = {
-    $type: 'app.bsky.feed.post',
-    text: fullText,
-    createdAt: new Date().toISOString(),
-    facets,
-  };
+    const record = {
+      $type: 'app.bsky.feed.post',
+      text: fullText,
+      createdAt: new Date().toISOString(),
+      facets,
+    };
 
-  if (url) {
-    const embed = await createEmbed(url, imageUrl, title, description, accessJwt);
-    if (embed) record.embed = embed;
-  }
+    if (url) {
+      const embed = await createEmbed(url, imageUrl, title, description, accessJwt);
+      if (embed) record.embed = embed;
+    }
 
-  // Create the post
-  const response = await fetch(`${BLUESKY_API}/com.atproto.repo.createRecord`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${accessJwt}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      repo: did,
-      collection: 'app.bsky.feed.post',
-      record,
-    }),
-  });
+    // Create the post
+    const response = await fetch(`${BLUESKY_API}/com.atproto.repo.createRecord`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessJwt}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        repo: did,
+        collection: 'app.bsky.feed.post',
+        record,
+      }),
+    });
 
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Bluesky post error: ${response.status} - ${error}`);
-  }
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`Bluesky post error: ${response.status} - ${error}`);
+    }
 
-  return response.json();
+    return response.json();
+  }); // End withRetry
 }
 
 /**

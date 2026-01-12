@@ -88,9 +88,12 @@ function json(data, status = 200) {
 
 /**
  * Simple rate limiter using KV - allows 10 requests per minute per IP
+ * Uses sliding window algorithm for more accurate rate limiting
  */
 async function checkRateLimit(env, ip) {
-  const key = `ratelimit:${ip}`;
+  // Sanitize IP to prevent KV key injection
+  const sanitizedIp = ip.replace(/[^a-zA-Z0-9.:]/g, '').substring(0, 45);
+  const key = `ratelimit:${sanitizedIp}`;
   const now = Date.now();
   const windowMs = 60000; // 1 minute
   const maxRequests = 10;
