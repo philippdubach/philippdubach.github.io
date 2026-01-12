@@ -16,7 +16,7 @@ type: Project
 math: true
 draft: false
 ---
-Last week I published a [short Hacker News title sentiment analyzer](https://philippdubach.com/standalone/hn-sentiment/) based on the [Attention Dynamics in Online Communities](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5910263) paper. The [discussion on Hacker News](https://news.ycombinator.com/item?id=46512881) raised the obvious question: can you actually predict what will do well here?
+Last week I published a [short Hacker News title sentiment analysis](https://philippdubach.com/standalone/hn-sentiment/) based on the [Attention Dynamics in Online Communities](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5910263) paper. The following[discussion on Hacker News](https://news.ycombinator.com/item?id=46512881) itself raised the obvious question: can you actually predict what will do well here?
 
 > [Hacker News](https://news.ycombinator.com/news) (HN) is a social news website focusing on computer science and entrepreneurship. It is run by the investment fund and startup incubator [Y Combinator](https://www.ycombinator.com).
 
