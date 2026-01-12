@@ -6,6 +6,34 @@
 const TWITTER_API = 'https://api.twitter.com/2';
 
 /**
+ * Retry wrapper with exponential backoff
+ * @param {Function} fn - Async function to retry
+ * @param {number} maxRetries - Maximum retry attempts (default 3)
+ * @param {number} baseDelay - Base delay in ms (default 1000)
+ */
+async function withRetry(fn, maxRetries = 3, baseDelay = 1000) {
+  let lastError;
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error;
+      const isRateLimit = error.message?.includes('429') || error.message?.includes('rate');
+      const isServerError = error.message?.includes('5');
+      
+      // Only retry on rate limits or server errors
+      if (!isRateLimit && !isServerError) throw error;
+      
+      // Exponential backoff with jitter
+      const delay = baseDelay * Math.pow(2, attempt) + Math.random() * 1000;
+      console.log(`Retry ${attempt + 1}/${maxRetries} after ${Math.round(delay)}ms`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  throw lastError;
+}
+
+/**
  * Post a tweet to Twitter
  * @param {Object} credentials - Twitter API credentials
  * @param {string} text - Tweet text (max 280 characters)
@@ -20,38 +48,40 @@ export async function postToTwitter(credentials, text) {
     throw new Error(`Tweet exceeds ${MAX_TWEET_LENGTH} characters (got ${text.length})`);
   }
 
-  const url = `${TWITTER_API}/tweets`;
-  const method = 'POST';
-  const body = JSON.stringify({ text });
+  return withRetry(async () => {
+    const url = `${TWITTER_API}/tweets`;
+    const method = 'POST';
+    const body = JSON.stringify({ text });
 
-  // Generate OAuth 1.0a signature
-  const oauthParams = generateOAuthParams(apiKey, accessToken);
-  const signature = await generateSignature(
-    method,
-    url,
-    oauthParams,
-    apiSecret,
-    accessTokenSecret
-  );
-  oauthParams.oauth_signature = signature;
+    // Generate OAuth 1.0a signature
+    const oauthParams = generateOAuthParams(apiKey, accessToken);
+    const signature = await generateSignature(
+      method,
+      url,
+      oauthParams,
+      apiSecret,
+      accessTokenSecret
+    );
+    oauthParams.oauth_signature = signature;
 
-  const authHeader = buildAuthHeader(oauthParams);
+    const authHeader = buildAuthHeader(oauthParams);
 
-  const response = await fetch(url, {
-    method,
-    headers: {
-      'Authorization': authHeader,
-      'Content-Type': 'application/json',
-    },
-    body,
+    const response = await fetch(url, {
+      method,
+      headers: {
+        'Authorization': authHeader,
+        'Content-Type': 'application/json',
+      },
+      body,
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`Twitter post error: ${response.status} - ${error}`);
+    }
+
+    return response.json();
   });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Twitter post error: ${response.status} - ${error}`);
-  }
-
-  return response.json();
 }
 
 /**
