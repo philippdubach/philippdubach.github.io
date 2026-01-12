@@ -14,16 +14,5 @@
                 {{ end }}
             </ul>
         </nav>
-        
-        {{ if .Site.Params.social }}
-        <div class="social-links" aria-label="Social media links">
-            {{ with .Site.Params.social.github }}
-            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub profile (opens in new tab)">GitHub</a>
-            {{ end }}
-            {{ with .Site.Params.social.email }}
-            <a href="mailto:{{ . }}" aria-label="Send email">Email</a>
-            {{ end }}
-        </div>
-        {{ end }}
     </div>
 </aside>
