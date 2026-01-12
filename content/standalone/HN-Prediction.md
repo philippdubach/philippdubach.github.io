@@ -1,5 +1,5 @@
 ---
-title: "Hacker News Success Prediction: ML Models for HN Titles"
+title: "Hacker News Success Prediction: BERT Models for HN Titles"
 date: 2026-01-11
 images:
 - https://static.philippdubach.com/ograph/ograph-hn-predictor.jpg
