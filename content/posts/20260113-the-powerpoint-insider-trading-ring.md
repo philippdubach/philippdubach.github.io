@@ -2,7 +2,7 @@
 title: "$41 Million Insider Trading Case That Paid with a Rolex and a PowerPoint Deck"
 date: 2026-01-14
 images:
-- https://static.philippdubach.com/ograph/ograph-insider-trading-powerpoint.jpg
+- https://static.philippdubach.com/ograph/ograph-insider-trading-powerpoint1.jpg
 description: SEC charges three brothers with $41M insider trading. The payment? A Rolex and PowerPoint help. How fake doctors and stolen identities fueled fraud.
 keywords:
 - SEC insider trading case
