@@ -40,6 +40,3 @@ Kim now faces both criminal and regulatory charges. The DOJ unveiled fraud and i
 The Shoukat brothers also pulled off an [Opiant Pharmaceuticals scheme](https://www.fiercebiotech.com/biotech/6-people-charged-manipulating-stock-price-2-biotechs-41m-insider-trading-scheme) where they bought stock based on acquisition tips, then when the deal stalled, allegedly threatened company leadership and issued a fake press release announcing a fictitious partnership deal.  There's a lot of the creative energy here, if it weren't so obviously criminal. Impersonating doctors, fabricating clinical data, stealing cancer patient identities, threatening executives, issuing fake press releases. And yet the big money, the $41 million, came from the simplest possible scheme: a friend with a good job who texted them when deals were about to happen.
 
 Sometimes insider trading cases involve sophisticated financial engineering or complex offshore structures. This one involved pretending to be a doctor named "Dr. Safqat Anwwar" and asking for help with PowerPoint slides. 
-
-
-
