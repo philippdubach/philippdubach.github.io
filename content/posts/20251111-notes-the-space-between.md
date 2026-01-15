@@ -1,5 +1,5 @@
 ---
-title: Notes: The Space Between
+title: "Notes: The Space Between"
 date: 2025-11-11
 images:
 - https://static.philippdubach.com/ograph/ograph-notes.jpg
