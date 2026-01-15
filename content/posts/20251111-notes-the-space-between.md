@@ -13,7 +13,7 @@ keywords:
 categories:
 - Tech
 type: Essay
-draft: true
+draft: false
 ---
 I've been thinking about the gap between tweets and blog posts.
 
