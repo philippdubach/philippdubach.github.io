@@ -159,16 +159,16 @@ blockquote p {
     text-decoration: underline;
 }
 
-/* Subscribe link - subtle emphasis */
+/* Subscribe link - subtle pill style */
 .navigation a.nav-subscribe {
-    color: #333;
-    border-bottom: 1px solid #333;
-    padding-bottom: 1px;
+    background-color: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: -6px;
 }
 
 .navigation a.nav-subscribe:hover {
-    color: #007acc;
-    border-bottom-color: #007acc;
+    background-color: #e9ecef;
     text-decoration: none;
 }
 
