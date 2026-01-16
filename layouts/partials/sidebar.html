@@ -10,7 +10,7 @@
         <nav class="navigation" aria-label="Main navigation">
             <ul>
                 {{ range .Site.Data.navigation.main }}
-                <li><a href="{{ .url }}">{{ .name }}</a></li>
+                <li><a href="{{ .url }}"{{ if eq .name "Subscribe" }} class="nav-subscribe"{{ end }}>{{ .name }}</a></li>
                 {{ end }}
             </ul>
         </nav>

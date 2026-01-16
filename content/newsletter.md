@@ -1,11 +1,11 @@
 ---
 title: "Subscribe"
 slug: subscribe
-description: "Subscribe to receive monthly updates with new posts, projects, and interesting articles I've been reading."
+description: "Get monthly insights on quantitative finance, AI strategy, and macroeconomics delivered to your inbox."
 draft: false
 ---
 
-I send out a newsletter version of this blog, things I've been working on, and interesting articles once every month or so. You can subscribe to that here:
+A monthly email with my latest writing on quantitative finance, AI infrastructure, and macro strategy—plus interesting reads from around the web.
 
 <aside class="inline-newsletter no-border" aria-label="Newsletter signup">
   <div class="inline-newsletter-content">
