@@ -1,5 +1,5 @@
 ---
-title: Ozempic Reshaping the Fast Food Industry
+title: Ozempic is Reshaping the Fast Food Industry
 date: 2026-01-16
 images:
 - https://static.philippdubach.com/ograph/ograph-glp1-food.jpg
