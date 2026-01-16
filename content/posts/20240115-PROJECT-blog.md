@@ -30,9 +30,10 @@ This site runs on Hugo, deployed to GitHub Pages with Cloudflare CDN. Images are
 
 The core challenge was responsive images. Standard markdown `![alt](url)` doesn't support multiple sizes. I built a [Hugo shortcode](https://gist.github.com/philippdubach/167189c7090c6813c5110c467cb5ebe9) that generates `<picture>` elements with breakpoint-specific sources—upload once at full quality, serve optimized versions (320px mobile to 1600px desktop) automatically.
 
----
+<br>
+ 
 
-## Updates
+**Updates**
 
 > **January 2026**
 
