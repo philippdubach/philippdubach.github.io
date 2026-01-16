@@ -17,7 +17,7 @@ draft: false
 ---
 I've been thinking about the gap between tweets and blog posts.
 
-Tweets are ephemeral. You fire them off, they get buried in an algorithmic feed, and they're essentially designed to be forgotten. Blog posts are the opposite problem—they demand a certain weight. You don't write 200 words on a blog without feeling like you're wasting the format.{{< img src="notes_preview.png" alt="Overview of the fist Note on notes.philippdubach.com" width="80%" >}}
+Tweets are ephemeral. You fire them off, they get buried in an algorithmic feed, and they're essentially designed to be forgotten. Blog posts are the opposite problem—they demand a certain weight. You don't write 200 words on a blog without feeling like you're wasting the format.{{< img src="notes_preview1.png" alt="Overview of the fist Note on notes.philippdubach.com" width="80%" >}}
 So I built something in between. I'm calling it [Notes](https://github.com/philippdubach/notes), mine will live at [notes.philippdubach.com](https://notes.philippdubach.com).
 
 The concept is simple: numbered notes, starting at #0001. Each note has a title, some text, and no navigation just a links to the previous note. No archives. No categories. No RSS. No comments. You land on the latest note, and if you're curious, you can walk backwards through time.
