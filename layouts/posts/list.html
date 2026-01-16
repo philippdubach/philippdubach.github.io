@@ -1,0 +1,63 @@
+{{ define "main" }}
+<h1 class="visually-hidden">Latest Posts</h1>
+<div class="posts">
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $posts := $posts.ByDate.Reverse }}
+    {{ range (.Paginate $posts).Pages }}
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title">
+                <a href="{{ .Permalink }}">
+                    {{ .Title }}
+                </a>
+                {{ if in .Params.tags "Project" }}
+                    <span class="project-tag">PROJECT</span>
+                {{ end }}
+            </h2>
+            <div class="post-meta">
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                    {{ .Date.Format "January 2, 2006" }}
+                </time>
+                · {{ .ReadingTime }} min read
+                {{ if .Params.external_url }}
+                    · <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>
+                {{ end }}
+            </div>
+        </header>
+        <div class="post-content post-list-content">
+            {{ .Content }}
+        </div>
+    </article>
+    {{ end }}
+    
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="pagination" aria-label="Page navigation">
+        {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="pagination-btn prev">
+                <span class="pagination-arrow">←</span>
+                <span class="pagination-text">Newer</span>
+            </a>
+        {{ else }}
+            <span class="pagination-btn disabled" aria-hidden="true">
+                <span class="pagination-arrow">←</span>
+                <span class="pagination-text">Newer</span>
+            </span>
+        {{ end }}
+        
+        <span class="pagination-info">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
+        
+        {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="pagination-btn next">
+                <span class="pagination-text">Older</span>
+                <span class="pagination-arrow">→</span>
+            </a>
+        {{ else }}
+            <span class="pagination-btn disabled" aria-hidden="true">
+                <span class="pagination-text">Older</span>
+                <span class="pagination-arrow">→</span>
+            </span>
+        {{ end }}
+    </nav>
+    {{ end }}
+</div>
+{{ end }}
