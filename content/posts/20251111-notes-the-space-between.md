@@ -28,7 +28,7 @@ The format also changes how I think about writing. A note can be a paragraph. It
 
 There's something clarifying about constraints. Twitter gave us 140 characters and we got a new form of expression. Blogs gave us unlimited space and we got 3000-word posts that should have been 500. 
 
-As almost all of my projects it runs on Cloudflare Workers and KV storage. It's open source at [github.com/philippdubach/notes](https://github.com/philippdubach/notes) you can deploy your own in minutes. The technical choices are deliberately boring: no framework, no database, just a Worker serving HTML with a simple admin panel for writing in Markdown.
+As almost all of my projects it runs on Cloudflare Workers and KV storage. It's open source at [github.com/philippdubach/notes](https://github.com/philippdubach/notes) you can deploy your own in minutes. The technical choices are deliberately boring: no framework, no database, just a Worker serving HTML with a simple admin panel for writing in Markdown. You can also [add .txt to the end of any URL](https://notes.philippdubach.com/0001.txt) to get the note served as plain text.
 
 I don't know if this format will stick. Maybe I'll abandon it after a dozen notes. But I wanted a place to put thoughts that feel too substantial for social media and too slight for my blog.
 
