@@ -7,6 +7,8 @@ main:
     url: "/projects/"
   - name: "Research"
     url: "/research/"
+  - name: "Reading"
+    url: "https://reading.philippdubach.com/"
   - name: "About"
     url: "/about/"
   - name: "Subscribe"
