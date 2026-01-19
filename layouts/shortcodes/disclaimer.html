@@ -4,7 +4,7 @@
 <aside class="disclaimer" role="note" aria-label="Disclaimer">
   <div class="disclaimer-content">
     {{- if $custom -}}
-      <p>{{ $custom }}</p>
+      {{ $custom | markdownify }}
     {{- else if eq $type "finance" -}}
       <p><strong>Disclaimer:</strong> All opinions expressed are my own. This is not investment, financial, tax, or legal advice. Past performance does not indicate future results. Do your own research and consult qualified professionals before making financial decisions. No liability accepted for any losses.</p>
     {{- else if eq $type "medical" -}}
