@@ -3,6 +3,79 @@
  * Simple XML parsing without external dependencies
  */
 
+// Fetch timeout in milliseconds (30 seconds)
+const FETCH_TIMEOUT_MS = 30000;
+
+/**
+ * Fetch with timeout using AbortController
+ * @param {string} url - URL to fetch
+ * @param {Object} options - Fetch options
+ * @returns {Promise<Response>}
+ */
+async function fetchWithTimeout(url, options = {}) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+    return response;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+/**
+ * Safely strip HTML tags from text
+ * Handles nested tags and common attack patterns
+ * @param {string} html - HTML string to strip
+ * @returns {string} Plain text
+ */
+function stripHtmlTags(html) {
+  if (!html || typeof html !== 'string') return '';
+
+  // First remove script, style, and other dangerous tags with their content
+  let text = html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<noscript[^>]*>[\s\S]*?<\/noscript>/gi, '')
+    .replace(/<iframe[^>]*>[\s\S]*?<\/iframe>/gi, '')
+    .replace(/<object[^>]*>[\s\S]*?<\/object>/gi, '')
+    .replace(/<embed[^>]*>[\s\S]*?<\/embed>/gi, '');
+
+  // Remove all remaining HTML tags (loop to handle nested/malformed tags)
+  let prevText;
+  do {
+    prevText = text;
+    text = text.replace(/<[^>]*>/g, ' ');
+  } while (text !== prevText);
+
+  // Decode HTML entities
+  text = text
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
+
+  // Handle numeric entities safely (validate range)
+  text = text.replace(/&#(\d+);/g, (_, num) => {
+    const code = parseInt(num, 10);
+    return code > 0 && code < 65536 ? String.fromCharCode(code) : '';
+  });
+  text = text.replace(/&#x([0-9a-f]+);/gi, (_, hex) => {
+    const code = parseInt(hex, 16);
+    return code > 0 && code < 65536 ? String.fromCharCode(code) : '';
+  });
+
+  // Normalize whitespace
+  return text.replace(/\s+/g, ' ').trim();
+}
+
 /**
  * Parse RSS XML string into an array of items
  * @param {string} xml - RSS XML content
@@ -86,13 +159,11 @@ function decodeHTMLEntities(text) {
  * @returns {Object} Structured post info
  */
 export function extractPostInfo(item) {
-  // Strip HTML from description
-  const cleanDescription = item.description 
-    ? item.description.replace(/<[^>]*>/g, '').trim()
-    : '';
+  // Safely strip HTML from description
+  const cleanDescription = stripHtmlTags(item.description);
 
   return {
-    title: item.title || 'New Post',
+    title: stripHtmlTags(item.title) || 'New Post',
     link: item.link || '',
     description: cleanDescription.substring(0, 300),
     pubDate: item.pubDate ? new Date(item.pubDate) : null,
@@ -107,17 +178,17 @@ export function extractPostInfo(item) {
  */
 export async function fetchFullArticleText(url) {
   try {
-    const response = await fetch(url, {
+    const response = await fetchWithTimeout(url, {
       headers: { 'User-Agent': 'SocialPoster/1.0' },
     });
-    
+
     if (!response.ok) return '';
-    
+
     const html = await response.text();
-    
+
     // Try to find article content - common patterns
     let articleHtml = '';
-    
+
     // Try <article> tag first
     const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
     if (articleMatch) {
@@ -133,28 +204,17 @@ export async function fetchFullArticleText(url) {
         if (bodyMatch) articleHtml = bodyMatch[1];
       }
     }
-    
-    // Strip script, style, nav, header, footer tags
+
+    // Strip nav, header, footer, aside tags
     articleHtml = articleHtml
-      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
       .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '')
       .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, '')
       .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, '')
       .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, '');
-    
-    // Strip all HTML tags and decode entities
-    let text = articleHtml
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/&nbsp;/g, ' ')
-      .replace(/&amp;/g, '&')
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/\s+/g, ' ')
-      .trim();
-    
+
+    // Use safe HTML stripping
+    const text = stripHtmlTags(articleHtml);
+
     // Truncate to ~4000 chars for LLM context window
     return text.substring(0, 4000);
   } catch (e) {
@@ -169,12 +229,12 @@ export async function fetchFullArticleText(url) {
  */
 export async function fetchOGMetadata(url) {
   try {
-    const response = await fetch(url, {
+    const response = await fetchWithTimeout(url, {
       headers: { 'User-Agent': 'SocialPoster/1.0' },
     });
-    
+
     if (!response.ok) return { image: null, description: null };
-    
+
     const html = await response.text();
     
     // Extract og:image

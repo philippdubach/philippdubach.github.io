@@ -80,6 +80,21 @@ export default {
       if (!testUrl) {
         return json({ error: 'url parameter required' }, 400);
       }
+
+      // Validate URL is from trusted domain (prevent SSRF)
+      try {
+        const parsedUrl = new URL(testUrl);
+        const trustedDomains = ['philippdubach.com', 'www.philippdubach.com'];
+        if (!trustedDomains.includes(parsedUrl.hostname)) {
+          return json({ error: 'URL must be from trusted domain' }, 400);
+        }
+        if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
+          return json({ error: 'URL must use http or https protocol' }, 400);
+        }
+      } catch {
+        return json({ error: 'Invalid URL format' }, 400);
+      }
+
       try {
         const result = await postSingleUrl(env, testUrl);
         return json(result);
@@ -134,8 +149,8 @@ async function checkRateLimit(env, ip) {
     
     return true;
   } catch (e) {
-    console.warn('Rate limit check failed:', e);
-    return true; // Fail open to avoid blocking legitimate requests
+    console.error('Rate limit check failed:', e);
+    return false; // Fail closed for security - block request on error
   }
 }
 
