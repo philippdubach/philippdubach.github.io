@@ -151,8 +151,8 @@
                 <h3 class="item-title">
                   <a href="{link}"><xsl:value-of select="title"/></a>
                 </h3>
-                <p class="item-date"><xsl:value-of select="pubDate"/></p>
-                <p class="item-description"><xsl:value-of select="description"/></p>
+                <p class="item-date"><xsl:value-of select="substring(pubDate, 6, 11)"/></p>
+                <p class="item-description"><xsl:value-of select="description" disable-output-escaping="yes"/></p>
               </li>
             </xsl:for-each>
           </ul>
