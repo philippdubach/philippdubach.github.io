@@ -40,8 +40,9 @@
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (data.display) {
-            var currentHTML = privacyDiv.innerHTML;
-            privacyDiv.innerHTML = 'Join ' + data.display + ' readers. ' + currentHTML;
+            // Use textContent to prevent XSS from API response
+            var countText = document.createTextNode('Join ' + data.display + ' readers. ');
+            privacyDiv.insertBefore(countText, privacyDiv.firstChild);
           }
         })
         .catch(function() { /* Silent fail - shows default text */ });
@@ -90,7 +91,7 @@
     });
     
     function showMessage(text, type) {
-      messageDiv.innerHTML = text;
+      messageDiv.textContent = text;
       messageDiv.className = 'inline-newsletter-message inline-newsletter-message-' + type;
       messageDiv.style.display = 'block';
     }

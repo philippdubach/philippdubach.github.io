@@ -71,12 +71,44 @@ export function parseUserAgent(ua: string | null): {
 }
 
 /**
- * Validate URL format
+ * Check if hostname is a private/internal IP address
+ */
+function isPrivateHostname(hostname: string): boolean {
+  // Normalize hostname
+  const h = hostname.toLowerCase();
+
+  // Block localhost variants
+  if (h === 'localhost' || h === 'localhost.localdomain') return true;
+
+  // Block IPv4 loopback and private ranges
+  if (h.startsWith('127.')) return true;
+  if (h.startsWith('10.')) return true;
+  if (h.startsWith('192.168.')) return true;
+  if (/^172\.(1[6-9]|2[0-9]|3[01])\./.test(h)) return true;
+
+  // Block link-local
+  if (h.startsWith('169.254.')) return true;
+
+  // Block IPv6 loopback and link-local
+  if (h === '::1' || h === '[::1]') return true;
+  if (h.startsWith('fe80:') || h.startsWith('[fe80:')) return true;
+  if (h.startsWith('fc') || h.startsWith('fd')) return true; // IPv6 private
+
+  // Block 0.0.0.0
+  if (h.startsWith('0.')) return true;
+
+  return false;
+}
+
+/**
+ * Validate URL format and block private/internal addresses
  */
 export function isValidUrl(url: string): boolean {
   try {
     const parsed = new URL(url);
-    return ['http:', 'https:'].includes(parsed.protocol);
+    if (!['http:', 'https:'].includes(parsed.protocol)) return false;
+    if (isPrivateHostname(parsed.hostname)) return false;
+    return true;
   } catch {
     return false;
   }

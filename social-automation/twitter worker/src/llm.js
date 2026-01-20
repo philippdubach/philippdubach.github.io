@@ -2,6 +2,22 @@
  * LLM Integration using Cloudflare Workers AI
  */
 
+/**
+ * Sanitize user input before inserting into LLM prompts
+ * Prevents prompt injection attacks
+ */
+function sanitizeForPrompt(text) {
+  if (!text || typeof text !== 'string') return '';
+  return text
+    // Remove markdown code blocks that could contain injected prompts
+    .replace(/```[\s\S]*?```/g, '[code block removed]')
+    // Remove potential prompt escape sequences
+    .replace(/\n{3,}/g, '\n\n')
+    // Limit length to prevent context overflow attacks
+    .substring(0, 3000)
+    .trim();
+}
+
 const SYSTEM_PROMPT = `You write short social media posts for a finance and technology blog.
 
 Style rules:
@@ -27,14 +43,15 @@ Banned words (never use): delve, realm, harness, unlock, tapestry, paradigm, cut
 
 export async function generatePostMessage(ai, title, description, fullText = '') {
   try {
-    // Use full article text if available, otherwise fall back to description
+    // Sanitize inputs to prevent prompt injection
+    const safeTitle = sanitizeForPrompt(title);
     const context = fullText || description;
-    const contextPreview = context.length > 3000 ? context.substring(0, 3000) + '...' : context;
-    
+    const safeContext = sanitizeForPrompt(context);
+
     const response = await ai.run('@cf/meta/llama-3.3-70b-instruct-fp8-fast', {
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: `Write a post for: ${title}\n\nFull article:\n${contextPreview}\n\nOutput only the post text, under 200 characters.` },
+        { role: 'user', content: `Write a post for: ${safeTitle}\n\nFull article:\n${safeContext}\n\nOutput only the post text, under 200 characters.` },
       ],
       max_tokens: 80,
       temperature: 0.7,
@@ -46,7 +63,9 @@ export async function generatePostMessage(ai, title, description, fullText = '')
     }
     throw new Error('No response');
   } catch (e) {
-    const fallback = `New post: ${title}`;
+    // Use sanitized title in fallback
+    const safeTitle = sanitizeForPrompt(title);
+    const fallback = `New post: ${safeTitle}`;
     return fallback.length > 200 ? fallback.substring(0, 197) + '...' : fallback;
   }
 }
