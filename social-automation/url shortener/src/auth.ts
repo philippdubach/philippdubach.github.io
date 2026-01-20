@@ -100,7 +100,7 @@ export async function handleLogin(request: Request, env: Env): Promise<Response>
     const body = await request.json() as { password?: string };
     const { password } = body;
 
-    if (!password || password !== env.ADMIN_PASSWORD) {
+    if (!password || !env.ADMIN_PASSWORD || !timingSafeEqual(password, env.ADMIN_PASSWORD)) {
       return errorResponse('Invalid password', 401);
     }
 

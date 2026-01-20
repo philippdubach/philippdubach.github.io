@@ -2,6 +2,22 @@ import { parseRSS, extractPostInfo, fetchFullArticleText } from './rss.js';
 import { generatePostMessage } from './llm.js';
 import { postToTwitter } from './twitter.js';
 
+/**
+ * Timing-safe string comparison to prevent timing attacks
+ */
+function timingSafeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  if (a.length !== b.length) {
+    // Still do the comparison to maintain constant time
+    b = a;
+  }
+  let result = a.length === b.length ? 0 : 1;
+  for (let i = 0; i < a.length; i++) {
+    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return result === 0;
+}
+
 export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil(
@@ -20,7 +36,8 @@ export default {
       return json({ status: 'ok', timestamp: new Date().toISOString() });
     }
     
-    if (!env.API_SECRET || auth !== `Bearer ${env.API_SECRET}`) {
+    const expectedAuth = `Bearer ${env.API_SECRET || ''}`;
+    if (!env.API_SECRET || !auth || !timingSafeEqual(auth, expectedAuth)) {
       return json({ error: 'unauthorized' }, 401);
     }
 

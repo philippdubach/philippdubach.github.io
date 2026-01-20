@@ -55,3 +55,6 @@ temp/
 *.tmp
 *.bak
 *.old
+.claude/
+copilot-instructuins.md
+CLAUDE.md

@@ -1,18 +1,38 @@
+/**
+ * Sanitize user input before inserting into LLM prompts
+ * Prevents prompt injection attacks
+ */
+function sanitizeForPrompt(text) {
+    if (!text || typeof text !== 'string') return '';
+    return text
+        // Remove markdown code blocks that could contain injected prompts
+        .replace(/```[\s\S]*?```/g, '[code block removed]')
+        // Remove potential prompt escape sequences
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+}
+
 export async function onRequestPost(context) {
     const { request, env } = context;
-    
-    // Get origin for CORS - restrict to same origin in production
+
+    // Get origin for CORS - reject invalid origins
     const origin = request.headers.get('Origin') || '';
     const allowedOrigins = [
         'https://post-composer.pages.dev',
         'http://localhost:8788',
         'http://127.0.0.1:8788'
     ];
-    
-    const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
-    
+
+    // Reject requests from non-allowed origins
+    if (!allowedOrigins.includes(origin)) {
+        return new Response(JSON.stringify({ error: 'Origin not allowed' }), {
+            status: 403,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+
     const corsHeaders = {
-        'Access-Control-Allow-Origin': corsOrigin,
+        'Access-Control-Allow-Origin': origin,
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
     };
@@ -69,12 +89,16 @@ Respond ONLY with valid JSON in this exact format:
     "keywords": ["primary keyword", "secondary1", "secondary2"]
 }`;
 
+        // Sanitize inputs to prevent prompt injection
+        const safeTitle = sanitizeForPrompt(title || 'Untitled');
+        const safeContent = sanitizeForPrompt(content.substring(0, 8000));
+
         const userPrompt = `Generate SEO metadata for this blog post:
 
-Title: ${title || 'Untitled'}
+Title: ${safeTitle}
 
 Content:
-${content.substring(0, 8000)}
+${safeContent}
 
 Remember: Respond ONLY with the JSON object, no other text.`;
 
@@ -150,12 +174,15 @@ export async function onRequestOptions(context) {
         'http://localhost:8788',
         'http://127.0.0.1:8788'
     ];
-    
-    const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
-    
+
+    // Reject preflight requests from non-allowed origins
+    if (!allowedOrigins.includes(origin)) {
+        return new Response(null, { status: 403 });
+    }
+
     return new Response(null, {
         headers: {
-            'Access-Control-Allow-Origin': corsOrigin,
+            'Access-Control-Allow-Origin': origin,
             'Access-Control-Allow-Methods': 'POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type',
         }
