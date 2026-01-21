@@ -1,16 +1,14 @@
 main:
   - name: "Blog"
     url: "/"
-  - name: "Notes"
-    url: "https://notes.philippdubach.com/"
   - name: "Projects"
     url: "/projects/"
   - name: "Research"
     url: "/research/"
-  - name: "Reading"
-    url: "https://reading.philippdubach.com/"
   - name: "About"
     url: "/about/"
   - name: "Subscribe"
     url: "/subscribe"
+  - name: "Notes"
+    url: "https://notes.philippdubach.com/"
 

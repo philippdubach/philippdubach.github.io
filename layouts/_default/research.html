@@ -1,0 +1,35 @@
+{{ define "main" }}
+<article class="research-page">
+    <header class="research-header">
+        <h1>{{ .Title }}</h1>
+        {{ with .Site.Data.research.profiles }}
+        <p class="research-profiles">
+            {{ with .google_scholar }}<a href="{{ . }}" target="_blank" rel="noopener">Google Scholar</a>{{ end }}
+            {{ if and .google_scholar .researchgate }} · {{ end }}
+            {{ with .researchgate }}<a href="{{ . }}" target="_blank" rel="noopener">ResearchGate</a>{{ end }}
+            {{ if and .researchgate .reading_list }} · {{ end }}
+            {{ with .reading_list }}<a href="{{ . }}" target="_blank" rel="noopener">Reading List</a>{{ end }}
+        </p>
+        {{ end }}
+    </header>
+
+    {{ range $yearGroup := .Site.Data.research.publications }}
+    <section class="research-year">
+        <h2>{{ $yearGroup.year }}</h2>
+        {{ range $yearGroup.items }}
+        <div class="research-item">
+            <h3>{{ if .draft }}<span class="draft-label">Draft: </span>{{ end }}{{ .title }}</h3>
+            {{ with .publication }}<p class="research-publication">{{ . }}</p>{{ end }}
+            <p class="research-summary">{{ .summary }}</p>
+            <p class="research-links">
+                {{- $first := true -}}
+                {{ with .doi }}{{ if not $first }} · {{ end }}{{ $first = false }}doi: <a href="https://dx.doi.org/{{ . }}" target="_blank" rel="noopener">{{ . }}</a>{{ end }}
+                {{ with .article }}{{ if not $first }} · {{ end }}{{ $first = false }}<a href="{{ . }}">Article</a>{{ end }}
+                {{ with .dataset }}{{ if not $first }} · {{ end }}{{ $first = false }}<a href="{{ . }}" target="_blank" rel="noopener">Dataset</a>{{ end }}
+            </p>
+        </div>
+        {{ end }}
+    </section>
+    {{ end }}
+</article>
+{{ end }}

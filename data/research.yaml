@@ -1,0 +1,44 @@
+# Research Publications Data
+
+profiles:
+  google_scholar: "https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en"
+  researchgate: "https://www.researchgate.net/profile/Philipp-Dubach"
+  reading_list: "https://reading.philippdubach.com/"
+
+publications:
+  - year: 2026
+    items:
+      - title: "Volatility Regime Prediction via Causal Discovery in Option Markets"
+        draft: true
+        summary: "Applying causal discovery methods to high-frequency option market data to predict transitions between volatility regimes."
+        dataset: "https://github.com/philippdubach/vol-regime-prediction/blob/797c2af0296d1c2c21c96531db51b1ca6b293b97/reports/Volatility_Regime_Prediction_Dataset.pdf"
+
+      - title: "Option Order Flow Imbalances, Informed Trading, and Short-Term Market Returns"
+        draft: true
+        summary: "Analyzing 17 years of high-frequency SPY options data to identify informed trading patterns through order flow imbalances."
+        dataset: "https://github.com/philippdubach/options-dataset-hist/blob/main/reports/dataset_description.pdf"
+
+      - title: "Transformer Networks for Cross-Sectional and Temporal Option Chain Modeling with No-Arbitrage Guarantees"
+        draft: true
+        summary: "A transformer architecture for option chain data that maintains no-arbitrage constraints during inference."
+        dataset: "https://github.com/philippdubach/options-dataset-hist/blob/main/reports/dataset_description.pdf"
+
+  - year: 2025
+    items:
+      - title: "Attention Dynamics in Online Communities: Power Laws, Preferential Attachment, and Early Success Prediction on Hacker News"
+        summary: "Analyzing attention dynamics in online communities through 38 million Hacker News submissions, examining power laws in content visibility and early predictors of engagement."
+        doi: "10.2139/ssrn.5910263"
+        article: "/standalone/hn-research/"
+
+      - title: "Modeling Postprandial Glycemic Response in Non-Diabetic Adults Using XGBRegressor"
+        summary: "A machine learning approach to predict individual postprandial glycemic responses using continuous glucose monitoring data and meal composition."
+        doi: "10.2139/ssrn.5914902"
+        article: "/posts/modeling-glycemic-response-with-xgboost/"
+
+  - year: 2021
+    items:
+      - title: "A Python Integration of Practical Asset Allocation Based on Modern Portfolio Theory and Its Advancements"
+        summary: "An open-source Python implementation of modern portfolio theory and extensions including Black-Litterman, risk parity, and hierarchical risk parity."
+        doi: "10.2139/ssrn.5915004"
+        publication: "Econometric Modeling: Capital Markets - Asset Pricing eJournal, Vol. 15, No. 3"
+        article: "/posts/my-first-optimal-portfolio/"
