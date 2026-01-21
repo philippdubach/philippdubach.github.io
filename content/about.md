@@ -1,14 +1,20 @@
----
-title: "About"
-draft: false
----
-I started this site in 2024 as a simple way to collect interesting articles and papers that catch my attention. Each post includes a link, title, and my brief commentary or summary. I also share personal quantitative finance and data science projects.
++++
+title = "About"
+description = "Philipp D. Dubach is a strategy consultant and independent researcher in quantitative finance and machine learning."
+keywords = ["Philipp Dubach", "quantitative finance", "machine learning", "strategy consultant", "financial research"]
++++
+**Philipp D. Dubach** is a strategy consultant and independent researcher in quantitative finance and machine learning, bridging strategic advisory with technical depth.
 
-This collection helps me maintain a personal repository of articles and papers, practice my writing through short summaries, and motivate myself to complete personal projects by sharing them in a structured way. The opinions expressed under this domain are my own and do not reflect the view of my employer, sponsors or clients.
+This site started in 2024 as a way to collect articles and papers that catch my attention. Each post includes a link, title, and my brief commentary. I also share personal projects in quantitative finance and data science.  To get new posts delivered to your inbox, [subscribe here](/subscribe/).
 
-The website runs on Hugo and is hosted on GitHub Pages. For details on how the site is built, see [The Tech behind this Site](/posts/the-tech-behind-this-site/).
+Writing here helps me maintain a personal repository, practice articulating ideas, and complete projects by sharing them publicly. I also occasionally share shorter, less technical essays at [notes.philippdubach.com](https://notes.philippdubach.com/).
+
+The opinions expressed are my own and do not reflect the views of any employer, sponsors, or clients.
+
+The website runs on Hugo and is hosted on GitHub Pages. For details on how the site is built, see [the tech behind this site](/posts/the-tech-behind-this-site/).
+
 <div class="disclaimer">
 <div class="disclaimer-content">
-<p>This website complies with the GDPR by not collecting any personal information, and with the EU Cookie Directive by not using cookies for any purpose other than to provide service functionality. Anonymized logs are sometimes kept to help diagnose bugs (see <a href="https://www.goatcounter.com/help/privacy">Privacy Policy</a>).</p>
+<p>This site does not collect personal data or use tracking cookies. Anonymized access logs may be kept for performance improvements. <a href="https://www.goatcounter.com/help/privacy">Privacy Policy</a>.</p>
 </div>
 </div>
