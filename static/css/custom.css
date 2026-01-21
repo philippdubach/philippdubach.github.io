@@ -1612,3 +1612,96 @@ pre {
         line-height: 1.5;
     }
 }
+/* ===================================
+   Research Page Styles
+   =================================== */
+
+.research-header {
+    margin-bottom: 1rem;
+}
+
+.research-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.research-profiles {
+    font-size: 0.9rem;
+    color: #595959;
+}
+
+.research-profiles a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.research-profiles a:hover {
+    text-decoration: underline;
+}
+
+.research-year {
+    margin-bottom: 2rem;
+}
+
+.research-year h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.research-item {
+    margin-bottom: 1.5rem;
+}
+
+.research-item h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.4;
+}
+
+.draft-label {
+    font-weight: 400;
+    color: #595959;
+}
+
+.research-publication {
+    font-size: 0.85rem;
+    color: #595959;
+    margin: 0.2rem 0 0.35rem 0;
+}
+
+.research-summary {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #595959;
+    margin: 0 0 0.35rem 0;
+    line-height: 1.5;
+}
+
+.research-links {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.research-links a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.research-links a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .research-item h3 {
+        font-size: 0.95rem;
+    }
+
+    .research-summary {
+        font-size: 0.85rem;
+    }
+}

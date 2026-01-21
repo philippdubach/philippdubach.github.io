@@ -34,6 +34,50 @@
 </script>
 {{ end }}
 
+{{/* Research Page Schema - CollectionPage with ScholarlyArticle items */}}
+{{ if eq .RelPermalink "/research/" }}
+{{ with .Site.Data.research }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Research",
+  "description": "{{ $.Params.description }}",
+  "url": "{{ $.Permalink }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ $.Site.Params.author }}",
+    "url": "{{ $.Site.BaseURL }}about/",
+    "sameAs": [
+      {{ with .profiles.google_scholar }}"{{ . }}"{{ end }}{{ if and .profiles.google_scholar .profiles.researchgate }},{{ end }}
+      {{ with .profiles.researchgate }}"{{ . }}"{{ end }}
+    ]
+  },
+  "hasPart": [
+    {{- $first := true -}}
+    {{- range .publications -}}
+      {{- range .items -}}
+        {{- if not $first }},{{ end -}}
+        {{- $first = false }}
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "{{ .title }}",
+      "name": "{{ .title }}",
+      {{ with .summary }}"abstract": {{ . | jsonify }},{{ end }}
+      "author": {
+        "@type": "Person",
+        "name": "{{ $.Site.Params.author }}"
+      }
+      {{ with .doi }},"url": "https://dx.doi.org/{{ . }}"{{ end }}
+    }
+      {{- end -}}
+    {{- end }}
+  ]
+}
+</script>
+{{ end }}
+{{ end }}
+
 {{/* Breadcrumb Structured Data */}}
 {{ if .IsPage }}
 <script type="application/ld+json">
