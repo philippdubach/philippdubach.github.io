@@ -39,4 +39,4 @@ For investors, the practical question is positioning. Companies selling hyperpal
 
 The next few quarters of earnings calls will be interesting. At some point, an analyst will ask the GLP-1 question directly. The honest answer from management would be: we don't know the full impact yet, but 16% of households having a user, 8% declines in fast food spending, and the fastest-growing prescription category in the country is not something we can ignore. 
 
-{{< disclaimer type="finance" >}}
+{{< newsletter >}}
