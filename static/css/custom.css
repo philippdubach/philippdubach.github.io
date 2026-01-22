@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+/* Horizontal rule - matches footer divider style */
+hr {
+    border: none;
+    border-top: 1px solid #e9ecef;
+    margin: 2rem 0;
+}
+
 /* 404 Error page styles */
 .error-page {
     text-align: center;
