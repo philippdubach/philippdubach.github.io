@@ -15,8 +15,14 @@ categories:
 type: Project
 draft: false
 ---
-That's the claim by LinkedIn's very own Reid Hoffman. The claim is bold, so I went on a journey to find out if it's backed up by data.
+{{< img src="download_overview.png" alt="Report Header Overview" width="100%" >}}
 
+[> Download the full Report](https://static.philippdubach.com/pdf/Enterprise_AI_Strategy2026_philippdubach.pdf)
+<br>
+[> Download the accompanying Presentation](https://static.philippdubach.com/pdf/Enterprise_AI_Strategy2026_Deck_philippdubach.pdf)
+<br>
+<hr>
+<br>
 85% of AI projects never reach production or fail to deliver expected results. Meanwhile, global AI spending has surged to $13.8 billion; a six-fold increase since late 2023.
 
 Where's the disconnect? Today, most companies are hiring Chief AI Officers and running pilot programs. The actual value sits in the most boring place imaginable: meetings, notes, status updates, and action items.
@@ -25,12 +31,8 @@ The average employee spends 57% of their workday on coordination, communicating,
 
 Three observations:
 
-(1) Only 26% of companies have the maturity to translate AI pilots into outcomes. The rest are layering AI on legacy workflows instead of redesigning them.
-
-(2) Language models bridge the gap between messy human communication and structured data. Transcripts to CRM fields. Teams using these tools report 30% higher win rates and 80% less manual work.
-
+(1) Only 26% of companies have the maturity to translate AI pilots into outcomes. The rest are layering AI on legacy workflows instead of redesigning them.<br>
+(2) Language models bridge the gap between messy human communication and structured data. Transcripts to CRM fields. Teams using these tools report 30% higher win rates and 80% less manual work.<br>
 (3) AI gains compound when shareable. A summary helps one person. A system that captures and distributes knowledge helps everyone downstream.
 
 The winners won't be companies with great AI announcements. They'll be the ones building daily habits early enough for the gains to stack.
-
-{{< img src="overview_backwards.jpg" alt="GIF with interactive demo of the RSS Tinder App" width="80%" >}}
