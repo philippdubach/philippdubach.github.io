@@ -1,7 +1,7 @@
 {{ define "main" }}
 <h1 class="visually-hidden">Projects</h1>
 <div class="posts">
-    {{ $posts := where .Site.RegularPages "Params.tags" "intersect" (slice "Project") }}
+    {{ $posts := where .Site.RegularPages "Params.type" "Project" }}
     {{ $posts := $posts.ByDate.Reverse }}
     {{ range (.Paginate $posts).Pages }}
     <article class="post">
@@ -13,7 +13,7 @@
                 {{ if .Params.external_url }}
                     • <a href="{{ .Permalink }}" class="permalink">∞</a>
                 {{ end }}
-                {{ if in .Params.tags "Project" }}
+                {{ if eq .Params.type "Project" }}
                     •<span class="project-tag">PROJECT</span>
                 {{ end }}
             </div>
