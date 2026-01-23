@@ -23,7 +23,7 @@
             <div class="archive-title">
                 <a href="{{ .Permalink }}">
                     {{ .Title }}
-                    {{ if in .Params.tags "Project" }}
+                    {{ if eq .Params.type "Project" }}
                        <span class="project-tag">PROJECT</span>
                     {{ end }}
                 </a>
