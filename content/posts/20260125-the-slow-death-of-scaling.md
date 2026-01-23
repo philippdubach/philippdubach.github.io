@@ -1,6 +1,7 @@
 ---
 title: The Most Expensive Assumption in AI
-date: 2026-01-25
+date: 2026-01-26
+publishDate: 2026-01-26T00:10:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-scaling.jpg
 description: 'Sara Hooker''s research challenges the trillion-dollar scaling thesis. Compact models now outperform massive ones as diminishing returns hit AI.'

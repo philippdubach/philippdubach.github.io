@@ -1,6 +1,7 @@
 ---
 title: "Against All Odds: The Mathematics of a 'Provably Fair' Casino Game"
-date: 2026-01-22
+date: 2026-01-25
+publishDate: 2026-01-25T05:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-casino.jpg
 description: Statistical analysis of 20,000 crash game rounds reveals if provably fair gambling systems match theoretical RTP claims. Empirical verification and Monte Carlo simulations.

@@ -1,9 +1,10 @@
 ---
 title: "Pyrrhic Victory: Lessons From 70 Taiwan Wargames"
-date: 2026-01-25
+date: 2026-01-24
+publishDate: 2026-01-24T07:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-waregames.jpg
-description: 'CSIS ran 70+ wargame iterations of Taiwan conflict scenarios. The results are sobering regardless of which side you''re observing from.'
+description: 'CSIS ran 70+ wargame iterations of Taiwan conflict scenarios. The results are sobering regardless of which side you are observing from.'
 keywords:
 - Taiwan wargaming
 - CSIS Taiwan study
