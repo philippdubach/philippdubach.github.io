@@ -1,8 +1,8 @@
 ---
-title: The Slow Death of Scaling
+title: The Most Expensive Assumption in AI
 date: 2026-01-25
 images:
-- https://static.philippdubach.com/ograph/ograph-post.jpg
+- https://static.philippdubach.com/ograph/ograph-scaling.jpg
 description: 'Sara Hooker''s research challenges the trillion-dollar scaling thesis. Compact models now outperform massive ones as diminishing returns hit AI.'
 keywords:
 - AI scaling laws
@@ -16,7 +16,7 @@ categories:
 type: Commentary
 draft: true
 ---
-Sara Hooker's new paper arrives with impeccable timing. _[On the slow death of scaling](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5877662)_ drops just as hyperscalers are committing another $500 billion to GPU infrastructure, bringing total industry deployment into the scaling thesis somewhere north of a trillion dollars. I've been [tracking these capital flows](/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/) for my own portfolio, and the numbers are staggering. Either Hooker is early to a generational insight or she's about to be very publicly wrong.
+Sara Hooker's paper arrived with impeccable timing. _[On the slow death of scaling](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5877662)_ drops just as hyperscalers are committing another $500 billion to GPU infrastructure, bringing total industry deployment into the scaling thesis somewhere north of a trillion dollars. I've been [tracking these capital flows](/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/) for my own portfolio, and the numbers are staggering. Either Hooker is early to a generational insight or she's about to be very publicly wrong.
 
 The core argument is simple enough to fit on a napkin: bigger is not always better. Llama-3 8B outperforms Falcon 180B. Aya 23 8B beats BLOOM 176B despite having only 4.5% of the parameters. These are not isolated flukes. Hooker plots submissions to the Open LLM Leaderboard over two years and finds a systematic trend where compact models consistently outperform their bloated predecessors. The bitter lesson, as Rich Sutton framed it, was that brute force compute always wins. Hooker's counter is that maybe we've been held hostage to "a painfully simple formula" that's now breaking down.
 
