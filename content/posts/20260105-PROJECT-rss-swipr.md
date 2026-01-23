@@ -16,6 +16,7 @@ type: Project
 draft: false
 aliases:
 - /standalone/rss-tinder/
+- /posts/rss-swipr-find-your-blogs-like-you-find-your-dates/
 ---
 {{< img src="rss-tinder-demo2.gif" alt="GIF with interactive demo of the RSS Tinder App" width="80%" >}} Algorithmic timelines are everywhere now. But I still prefer the control of RSS. Readers are good at aggregating content but bad at filtering it. What I wanted was something borrowed from dating apps: instead of an infinite list, give me cards. Swipe right to like, left to dislike. Then train a model to surface what I actually want to read. So I built _RSS Swipr_. 
 
