@@ -1,5 +1,5 @@
 ---
-title: "RSS Swipr: Find Your Blogs Like You Find Your Dates"
+title: "RSS Swipr: Find Blogs Like You Find Your Dates"
 date: 2026-01-05
 images:
 - https://static.philippdubach.com/ograph/ograph-rss-swipr.jpg
