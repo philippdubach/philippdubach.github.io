@@ -1,6 +1,6 @@
 ---
-title: "Hacker News Success Prediction: BERT Models for HN Titles"
-date: 2026-01-11
+title: "Social Media Success Prediction: BERT Models for Post Titles"
+date: 2026-01-10
 images:
 - https://static.philippdubach.com/ograph/ograph-hn-predictor.jpg
 description: Training neural networks to predict Hacker News post success from titles. From DistilBERT to RoBERTa, and the temporal leakage that inflated my metrics.
@@ -12,6 +12,8 @@ keywords:
 - machine learning overfitting
 categories:
 - AI
+aliases:
+- /standalone/hn-prediction/
 type: Project
 math: true
 draft: false
