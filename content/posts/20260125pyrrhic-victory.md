@@ -14,7 +14,7 @@ categories:
 - Finance
 - Tech
 type: Commentary
-draft: true
+draft: false
 ---
 Wargaming is a peculiar discipline. [Serious people sit around tables](https://en.wikipedia.org/wiki/Wargame#/media/File:MCWC-wargame-Lacey-13-cropped.png) covered with 2,500 counters, roll dice, consult combat results tables, and watch simulated catastrophe unfold across a five-by-six-foot map. The Center for Strategic and International Studies [(CSIS)](https://www.csis.org) has been doing exactly this for Taiwan, running over 70 iterations of conflict scenarios across three studies.
 
@@ -45,6 +45,6 @@ The new US administration's policy signals remain mixed. Trade tensions have int
 
 The CSIS researchers note that wargames do not predict; they illuminate structure. The structure they illuminate here is sobering. High costs for everyone, escalation pressures that resist containment, no clean exits. The invasion scenarios produce "victory" that damages the victor. The blockade scenarios produce conflicts that spiral beyond initial intentions.
 
->The unexpected can happen, [...] Preparation is vital.
+>The unexpected can happen, [...] preparation is vital
 
 The authors write in their closing observations.

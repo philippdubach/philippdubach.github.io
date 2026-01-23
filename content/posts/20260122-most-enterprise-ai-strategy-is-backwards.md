@@ -1,5 +1,5 @@
 ---
-title: Most Enterprise AI Strategy is Backwards
+title: Enterprise AI Strategy is Backwards
 date: 2026-01-22
 images:
 - https://static.philippdubach.com/ograph/ograph-ai-strat-backwards.jpg
@@ -16,6 +16,7 @@ type: Essay
 draft: false
 aliases:
 - /backwards/
+- /posts/most-enterprise-ai-strategy-is-backwards/
 ---
 That’s the claim made by LinkedIn co-founder [Reid Hoffman](https://en.wikipedia.org/wiki/Reid_Hoffman). It’s a bold assertion, so I set out to investigate whether the data supports it.{{< img src="download_overview.png" alt="Report Header Overview" width="100%" >}}
 The result is a comprehensive report, backed by more than 30 sources. You can download [the full report](https://static.philippdubach.com/pdf/Enterprise_AI_Strategy2026_philippdubach.pdf)

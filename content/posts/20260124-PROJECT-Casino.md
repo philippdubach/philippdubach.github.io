@@ -1,5 +1,5 @@
 ---
-title: "Against All Odds: The Mathematics of a 'Provably Fair' Casino Game"
+title: "Against All Odds: The Mathematics of 'Provably Fair' Casino Games"
 date: 2026-01-25
 publishDate: 2026-01-25T05:00:00Z
 images:
@@ -16,9 +16,14 @@ categories:
 - Tech
 type: Project
 math: true
-draft: true
+draft: false
 ---
-{{< disclaimer type="gambling" >}}
+
+<br>
+
+>Gambling can be harmful and lead to significant losses. Participation is subject to local laws and age restrictions. Always gamble responsibly. Need help? Visit BeGambleAware.org
+
+<br>
 
 Crash games represent a category of online gambling where players place bets on an increasing multiplier that can _'crash'_ at any moment. The fundamental mechanic requires players to cash out before the crash occurs; successful cash-outs yield the bet amount multiplied by the current multiplier, while failure results in total loss of the wager.
 
@@ -30,7 +35,7 @@ The specific game I came across is a variant that employs an aircraft flight met
 
 The stated Return-to-Player (RTP) of that specific game is 97%, implying a 3% [house edge](https://www.investopedia.com/articles/personal-finance/110415/why-does-house-always-win-look-casino-profitability.asp). After watching a few rounds, the perceived probability felt off. And if there's something that gets my attention, it's [the combination of games and statistics](/posts/counting-cards-with-computer-vision/). So I did what any reasonable person would do: I watched another 20,000 rounds over six days (112 hours total) and wrote [a paper about it](https://static.philippdubach.com/pdf/202601_PD_DUBACH_The%20Online%20Gambling%20Fairness%20Paradox.pdf).{{< img src="crash_game_stats.png" alt="Script recording 20000 rounds over six days (112 hours total)" width="80%" >}} 
 
-The distribution below shows the classic heavy tail: most rounds crash quickly at low multipliers, while rare events produce 100x or even 1000x payouts. The maximum I observed was 10,000x. This extreme variance creates the illusion of big wins just around the corner while the house edge operates relentlessly over time.{{< img src="fig_distribution.png" alt="Heavy-tailed distribution of crash multipliers on log-log scale showing most rounds end at low multipliers while rare events exceed 100x or 1000x, with maximum observed at 10,000x" width="80%" >}}For a crash game with RTP = r (where 0 < r < 1), the crash multiplier M follows a specific probability distribution. The survival function is particularly relevant:
+The distribution below shows the classic heavy tail: most rounds crash quickly at low multipliers, while rare events produce 100x or even 1000x payouts. The maximum I observed was 10,000x. This extreme variance creates the illusion of big wins just around the corner while the house edge operates relentlessly over time.{{< img src="fig_distribution2.png" alt="Heavy-tailed distribution of crash multipliers on log-log scale showing most rounds end at low multipliers while rare events exceed 100x or 1000x, with maximum observed at 10,000x" width="80%" >}}For a crash game with RTP = r (where 0 < r < 1), the crash multiplier M follows a specific probability distribution. The survival function is particularly relevant:
 
 $$P(M \geq m) = \frac{r}{m}$$
 
