@@ -1,8 +1,8 @@
 ---
-title: Against All Odds: Six Days at The Casino
+title: "Against All Odds: The Mathematics of a 'Provably Fair' Casino Game"
 date: 2026-01-22
 images:
-- https://static.philippdubach.com/ograph/ograph-post.jpg
+- https://static.philippdubach.com/ograph/ograph-casino.jpg
 description: Statistical analysis of 20,000 crash game rounds reveals if provably fair gambling systems match theoretical RTP claims. Empirical verification and Monte Carlo simulations.
 keywords:
 - crash games analysis

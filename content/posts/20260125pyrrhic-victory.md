@@ -1,5 +1,5 @@
 ---
-title: Pyrrhic Victory: Lessons From 70 Taiwan Wargames
+title: "Pyrrhic Victory: Lessons From 70 Taiwan Wargames"
 date: 2026-01-25
 images:
 - https://static.philippdubach.com/ograph/ograph-waregames.jpg
