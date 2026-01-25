@@ -9,10 +9,6 @@ on:
     types:
       - completed
   
-  # Also run daily to catch any missed updates
-  schedule:
-    - cron: '0 6 * * *'  # 6 AM UTC daily
-  
   # Manual trigger for testing
   workflow_dispatch:
 
