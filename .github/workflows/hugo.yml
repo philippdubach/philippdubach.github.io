@@ -8,9 +8,7 @@ on:
 
   # Scheduled rebuild for future-dated posts
   schedule:
-    - cron: '27 0 * * *'   # Rebuilds daily at 00:27 UTC
-    - cron: '27 12 * * *'  # Rebuilds daily at 12:27 UTC
-    - cron: '27 19 * * *'  # Rebuilds daily at 19:27 UTC
+    - cron: '17 0,12,19 * * *'   # Rebuilds at 00:17, 12:17, 19:17 UTC daily
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
