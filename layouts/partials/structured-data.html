@@ -27,8 +27,10 @@
   {{- $sameAs := slice -}}
   {{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
   {{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+  {{- $sameAs = $sameAs | append "https://scholar.google.com/citations?user=-69oS2wAAAAJ" -}}
+  {{- $sameAs = $sameAs | append "https://www.researchgate.net/profile/Philipp-Dubach" -}}
   "sameAs": {{ $sameAs | jsonify }},
-  "jobTitle": "Quantitative Finance & AI Strategy",
+  "jobTitle": "Strategy Consultant & Independent Researcher",
   "knowsAbout": {{ .Site.Params.keywords | jsonify }}
 }
 </script>
@@ -110,12 +112,12 @@
 </script>
 {{ end }}
 
-{{/* Article Structured Data */}}
+{{/* Article Structured Data - Enhanced for GEO */}}
 {{ if .IsPage }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "{{ if eq .Type "post" }}BlogPosting{{ else }}Article{{ end }}",
+  "@type": "{{ if eq .Params.type "Project" }}TechArticle{{ else if eq .Type "post" }}BlogPosting{{ else }}Article{{ end }}",
   "headline": "{{ .Title }}",
   "name": "{{ .Title }}",
   "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
@@ -126,7 +128,24 @@
   {{ end }}
   "articleBody": {{ .Content | plainify | jsonify }},
   "wordCount": {{ .WordCount }},
+  "timeRequired": "PT{{ .ReadingTime }}M",
   "inLanguage": "{{ .Site.Language.Lang | default "en" }}",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".post-content > p:first-of-type", ".post-header h1"]
+  },
+  {{ if eq .Params.type "Project" }}
+  "proficiencyLevel": "Expert",
+  {{ end }}
+  {{ with .Params.external_url }}
+  "citation": {
+    "@type": "CreativeWork",
+    "url": "{{ . }}"
+  },
+  {{ end }}
+  {{ with .Params.doi }}
+  "sameAs": "https://doi.org/{{ . }}",
+  {{ end }}
   {{ $image := "" }}
   {{ if .Params.images }}
     {{ $image = index .Params.images 0 }}
@@ -140,7 +159,12 @@
     {{ $image = .Site.Params.default_image }}
   {{ end }}
   {{ if $image }}
-  "image": "{{ $image }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ $image }}",
+    "width": 1200,
+    "height": 630
+  },
   {{ end }}
   "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
   "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
@@ -162,7 +186,12 @@
   "author": {
     "@type": "Person",
     "name": "{{ .Site.Params.author }}",
-    "url": "{{ .Site.BaseURL }}about/"
+    "url": "{{ .Site.BaseURL }}about/",
+    "sameAs": [
+      "https://github.com/philippdubach",
+      "https://bsky.app/profile/philippdubach.com",
+      "https://scholar.google.com/citations?user=-69oS2wAAAAJ"
+    ]
   }
   {{ end }}
 }

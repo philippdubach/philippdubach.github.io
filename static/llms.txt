@@ -1,0 +1,41 @@
+# Philipp D. Dubach
+
+> Independent researcher and strategy consultant specializing in quantitative finance, AI infrastructure economics, and macroeconomic analysis. Published on SSRN with research on attention dynamics in online communities, glycemic response modeling, and portfolio optimization.
+
+This site contains original analysis, research papers, and technical projects at the intersection of finance, technology, and machine learning. Content is updated regularly with commentary on market dynamics, AI developments, and quantitative methods.
+
+## Research Publications
+
+- [Attention Dynamics in Online Communities](https://philippdubach.com/standalone/hn-research/): Power laws, preferential attachment, and early success prediction on Hacker News. DOI: 10.2139/ssrn.5910263
+- [Modeling Postprandial Glycemic Response](https://philippdubach.com/posts/modeling-glycemic-response-with-xgboost/): XGBoost-based prediction of glucose responses in non-diabetic adults. DOI: 10.2139/ssrn.5914902
+- [Portfolio Optimization with Modern Portfolio Theory](https://philippdubach.com/posts/my-first-optimal-portfolio/): Python implementation including Black-Litterman and hierarchical risk parity. DOI: 10.2139/ssrn.5915004
+
+## Featured Analysis
+
+- [Enterprise AI Strategy Analysis](https://philippdubach.com/posts/most-enterprise-ai-strategy-is-backwards/): Why 85% of AI projects fail to reach production
+- [AI Scaling Limitations](https://philippdubach.com/posts/the-slow-death-of-scaling/): Sara Hooker's research on diminishing returns in AI compute
+- [2026 Investment Allocation](https://philippdubach.com/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/): Macro thesis on hyperscaler capex and AI infrastructure
+
+## Technical Projects
+
+- [HN Sentiment Analysis](https://philippdubach.com/posts/65-percent-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/): NLP analysis of 32,000 Hacker News posts
+- [CGM Data Reader](https://philippdubach.com/posts/i-built-a-cgm-data-reader/): Continuous glucose monitoring Python library
+- [Crypto Seasonality Patterns](https://philippdubach.com/posts/crypto-seasonality-patterns/): Statistical analysis of cryptocurrency market patterns
+
+## About the Author
+
+- [About Page](https://philippdubach.com/about/): Professional background and site purpose
+- [Research Profile](https://philippdubach.com/research/): Academic publications and working papers
+- [Google Scholar](https://scholar.google.com/citations?user=-69oS2wAAAAJ): Citation record
+
+## API and Feeds
+
+- [RSS Feed](https://philippdubach.com/feed/index.xml): Full content RSS 2.0
+- [JSON Feed](https://philippdubach.com/feed.json): Structured JSON Feed 1.1
+- [Posts API](https://philippdubach.com/api/posts.json): Programmatic access to all posts
+- [Sitemap](https://philippdubach.com/sitemap.xml): Full site index
+
+## Optional
+
+- [All Posts Archive](https://philippdubach.com/posts/): Chronological post listing
+- [Categories](https://philippdubach.com/categories/): Content taxonomy (Finance, AI, Medicine, Tech)
