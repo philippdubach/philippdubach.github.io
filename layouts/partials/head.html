@@ -54,6 +54,11 @@
     <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}">
     {{- end }}
 
+    {{/* JSON Feed */}}
+    {{- with .OutputFormats.Get "JSONFeed" }}
+    <link href="{{ .RelPermalink }}" rel="alternate" type="application/feed+json" title="{{ $.Site.Title }}">
+    {{- end }}
+
 	<style>
 	{{ readFile "static/css/custom.css" | safeCSS }}
 	</style>

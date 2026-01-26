@@ -89,6 +89,24 @@ enableGitInfo = true
   type = 'types'
   tag = 'tags'
 
+# Custom media types for JSON Feed and API
+[mediaTypes]
+  [mediaTypes."application/feed+json"]
+    suffixes = ["json"]
+
+# Output formats for JSON Feed and Posts API
+[outputFormats]
+  [outputFormats.JSONFeed]
+    mediaType = "application/feed+json"
+    baseName = "feed"
+    isPlainText = true
+    notAlternative = false
+  [outputFormats.PostsAPI]
+    mediaType = "application/json"
+    baseName = "posts"
+    isPlainText = true
+    path = "api"
+
 [related]
   includeNewer = true
   threshold = 80
@@ -107,7 +125,7 @@ enableGitInfo = true
     weight = 10
 
 [outputs]
-  home = ['HTML', 'RSS', 'SiteMap']
+  home = ['HTML', 'RSS', 'JSONFeed', 'PostsAPI', 'SiteMap']
   page = ['HTML']
   section = ['HTML', 'RSS', 'SiteMap']
   
