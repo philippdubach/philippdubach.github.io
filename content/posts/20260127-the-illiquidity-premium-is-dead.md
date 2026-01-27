@@ -1,0 +1,35 @@
+---
+title: "Is Private Equity Just Beta With a Lockup?"
+seoTitle: "Private Equity Returns 2026: Analyzing the Vanishing Illiquidity Premium"
+date: 2026-01-29
+publishDate: 2026-01-29T03:00:00Z
+images:
+- https://static.philippdubach.com/ograph/ograph-illiquidity-premium.jpg
+description: 'AQR''s 2026 data shows private equity returning 4.2% versus 3.9% for public equities. The 30bp illiquidity premium barely justifies years of lockup.'
+keywords:
+- illiquidity premium
+- private equity returns 2026
+- AQR capital market assumptions
+- PE vs public equity
+- venture capital dispersion
+categories:
+- Finance
+- AI
+- Tech
+- Economics
+type: Commentary
+draft: false
+---
+The pitch used to be simple: accept illiquidity, get rewarded. Lock up your capital for seven years, tolerate capital calls and J-curves, and in exchange you'd earn returns that public markets couldn't touch. It was the defining bargain of institutional investing for two decades.
+
+[AQR's latest capital market assumptions](https://www.aqr.com/Insights/Research/Alternative-Thinking/2026-Capital-Market-Assumptions-for-Major-Asset-Classes) make for uncomfortable reading if you're an allocator to private markets. Their expected real return for U.S. buyouts over the next 5-10 years is **4.2%**. For U.S. large cap public equities, it's **3.9%**. That's a 30 basis point premium for accepting years of lockup, unpredictable capital calls, limited transparency, and the very real risk of picking the wrong manager.{{< img src="aqr-expected-returns-private-assets.png" alt="AQR Exhibit 6: Expected real returns for private assets showing U.S. Buyouts at 4.2%, U.S. Real Estate at 3.1%, and U.S. Private Credit at 2.6%" width="80%" >}}Private credit looks even worse. Expected returns dropped **0.5 percentage points** year over year as spreads narrowed and base rates came down. The asset class that was supposed to be the sensible alternative to stretched equity valuations now offers less compensation than it did twelve months ago.
+
+This isn't a temporary dislocation. It's the logical endpoint of too much capital chasing the same opportunities. When every pension fund, endowment, and sovereign wealth fund decides they need [20-30% allocation to alternatives](https://www.cbh.com/insights/reports/u.s.-alternative-investment-industry-report-2025), the returns that made alternatives attractive get arbitraged away. The money didn't find alpha. It became beta (with a lockup).
+
+I read more reports and the [a16z State of the Markets 2026](https://docs.google.com/presentation/d/e/2PACX-1vQXsMMv5ZCWm77za7oXJcz1X-Th5Mz15g5nYBxbUjnomStVcjn8lXPjE5LzAlvc_hg4yHKgwASWLo5a/pub?start=false&loop=false&delayms=3000&slide=id.g3b6e2578ab2_8_4858) isn't less interesting. The dispersion numbers tell an interesting story. In venture capital, top decile managers generate **31.7% IRR** while bottom decile managers return **negative 7%**. The spread between winners and losers is enormous. But that spread is precisely why average returns have compressed. Access to top-tier funds has always been limited, and everyone else is fighting over what's left.{{< img src="a16z-irr-dispersion-by-strategy.png" alt="Net IRR dispersion by strategy for 2002-2019 vintages showing venture capital with top decile at 31.7% and bottom decile at negative 7%" width="80%" >}} AQR's framework suggests something that few allocators want to hear: the illiquidity premium might be negative for most investors. If you're not in the top quartile of manager selection, you're accepting lockup risk for returns you could approximate in public markets with better liquidity and lower fees.
+
+The counterargument, and it's a reasonable one, is that private markets offer exposure to companies you simply can't access in public markets anymore. This part is true. **[87% of U.S. companies with more than $100 million in revenue are now private](https://www.apolloacademy.com/many-more-private-firms-in-the-us/)**. The top 10 private companies represent 38% of total unicorn valuation, and that share has nearly doubled since 2020. SpaceX, OpenAI, Anthropic, Databricks, Stripe: these are category-defining businesses, and they're not on any exchange.{{< img src="a16z-companies-public-vs-private.png" alt="Share of U.S. companies with annual revenue greater than $100M showing private companies dominate" width="80%" >}}{{< img src="a16z-top-10-private-companies.png" alt="Top 10 private companies represent 38% of total unicorn valuation in 2025, including SpaceX, OpenAI, Anthropic, Databricks, and Stripe" width="80%" >}}But access isn't the same as returns. You can have exposure to the most exciting companies in the world and still underperform a boring index fund if you pay too much or pick the wrong vintage. The S&P 500 minimum market cap eligibility has [tripled since 2019 to $22.7 billion](https://press.spglobal.com/2025-07-01-S-P-Dow-Jones-Indices-Announces-Update-to-S-P-Composite-1500-Market-Cap-Guidelines). Companies are staying private longer, which means more value creation happens before public investors get a chance. It also means private investors are paying up for that privilege.
+
+Value creation has moved earlier in the company lifecycle. For IPOs between 2014-2019, only **12% of median value** was created in private markets. For 2020-2023 IPOs, that number jumped to **55%**. If you want to capture returns from the next generation of important companies, you probably need private market exposure.{{< img src="a16z-value-creation-shift-private.png" alt="Return potential has shifted to private markets: median value created in private markets went from 12% for 2014-2019 IPOs to 55% for 2020-2023 IPOs" width="80%" >}}The question really is what you're paying for it.At 4.2% expected returns versus 3.9% for public equities, you're paying in liquidity and flexibility for almost nothing in expected return. The premium that justified the allocation model has been competed away. If you're in the top 5% of venture funds earning 60%+ IRR, none of this applies. For everyone else, the world has moved on.
+
+{{< disclaimer type="finance" >}}
