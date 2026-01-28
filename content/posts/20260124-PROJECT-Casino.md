@@ -51,4 +51,4 @@ The game is provably fair in the cryptographic sense. The mathematics check out.
 
 >The only winning strategy is not to play
 
-The [full paper with methodology and statistical details is available here](https://static.philippdubach.com/pdf/202601_PD_DUBACH_The%20Online%20Gambling%20Fairness%20Paradox.pdf). Code and data are on [GitHub](https://github.com/philippdubach/stats-gambling).
+The full paper preprint with methodology and statistical details is [available on SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6065213). Code and data are on [GitHub](https://github.com/philippdubach/stats-gambling).

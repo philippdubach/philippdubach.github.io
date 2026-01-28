@@ -8,6 +8,11 @@ profiles:
 publications:
   - year: 2026
     items:
+      - title: "The Online Gambling Fairness Paradox: Cryptographic Verification, Behavioral Harm, and Consumer Protection"
+        summary: "Statistical analysis of 20,038 cryptocurrency crash game rounds confirming cryptographic fairness while highlighting that mathematical fairness doesn't ensure consumer safety."
+        doi: "10.2139/ssrn.6065213"
+        article: "/posts/against-all-odds-the-mathematics-of-provably-fair-casino-games/"
+
       - title: "Volatility Regime Prediction via Causal Discovery in Option Markets"
         draft: true
         summary: "Applying causal discovery methods to high-frequency option market data to predict transitions between volatility regimes."
@@ -16,11 +21,6 @@ publications:
       - title: "Option Order Flow Imbalances, Informed Trading, and Short-Term Market Returns"
         draft: true
         summary: "Analyzing 17 years of high-frequency SPY options data to identify informed trading patterns through order flow imbalances."
-        dataset: "https://github.com/philippdubach/options-dataset-hist/blob/main/reports/dataset_description.pdf"
-
-      - title: "Transformer Networks for Cross-Sectional and Temporal Option Chain Modeling with No-Arbitrage Guarantees"
-        draft: true
-        summary: "A transformer architecture for option chain data that maintains no-arbitrage constraints during inference."
         dataset: "https://github.com/philippdubach/options-dataset-hist/blob/main/reports/dataset_description.pdf"
 
   - year: 2025
