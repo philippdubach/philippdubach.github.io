@@ -49,22 +49,30 @@
     fetch('https://weekly-top-goatcounter-api.philippd.workers.dev')
         .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
         .then(function(data) {
+            // Helper to safely set post discovery content
+            function setDiscovery(label, path, title) {
+                container.textContent = '';
+                container.appendChild(document.createTextNode(label + ': '));
+                var link = document.createElement('a');
+                link.href = path;
+                link.textContent = title;
+                container.appendChild(link);
+            }
+
             if (data.hits && data.hits.length > 0) {
-                var mostRead = data.hits[0];
+                // Filter to only blog posts (paths starting with /posts/) - belt & suspenders
+                var blogPosts = data.hits.filter(function(hit) {
+                    return hit.path && hit.path.startsWith('/posts/');
+                });
+                if (blogPosts.length === 0) {
+                    setDiscovery('Latest', latestPath, latestTitle);
+                    return;
+                }
+                var mostRead = blogPosts[0];
                 var mostReadPath = mostRead.path;
                 var mostReadTitle = mostRead.title.replace(' - philippdubach.com', '');
                 var isOnMostRead = currentPath === mostReadPath || currentPath === mostReadPath + '/';
-                
-                // Helper to safely set post discovery content
-                function setDiscovery(label, path, title) {
-                    container.textContent = '';
-                    container.appendChild(document.createTextNode(label + ': '));
-                    var link = document.createElement('a');
-                    link.href = path;
-                    link.textContent = title;
-                    container.appendChild(link);
-                }
-                
+
                 // Logic: if on latest → show most read; if on most read → show latest; else → show most read
                 if (isOnLatest || !isOnMostRead) {
                     setDiscovery('Most read', mostReadPath, mostReadTitle);
