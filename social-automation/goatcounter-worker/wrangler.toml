@@ -1,0 +1,10 @@
+name = "weekly-top-goatcounter-api"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Environment variables (non-secret)
+[vars]
+# None needed - all config is in code
+
+# Secrets (set via `wrangler secret put GOATCOUNTER_API_TOKEN`):
+# - GOATCOUNTER_API_TOKEN: GoatCounter API token from https://philippdubach.goatcounter.com/user/api
