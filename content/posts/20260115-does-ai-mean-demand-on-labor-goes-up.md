@@ -2,6 +2,7 @@
 title = "Does AI mean the demand on labor goes up?"
 date = 2026-01-15
 description = "The Jevons paradox suggests AI won't displace workers but expand what's possible. Capability growth raises expectations faster than it creates leisure."
+images = ["https://static.philippdubach.com/ograph/0005.png"]
 categories = ["Commentary"]
 type = "Commentary"
 +++

@@ -2,6 +2,7 @@
 title = "The Rise of Middle Power Realism"
 date = 2026-01-27
 description = "At Davos 2026, Carney told allies to take down the signs of the liberal order. Middle powers are learning to navigate between giants without illusions."
+images = ["https://static.philippdubach.com/ograph/0015.png"]
 categories = ["Commentary"]
 type = "Commentary"
 +++

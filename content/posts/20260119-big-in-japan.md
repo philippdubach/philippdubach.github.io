@@ -2,6 +2,7 @@
 title = "Big in Japan"
 date = 2026-01-19
 description = "Japan holds $5 trillion in foreign assets. With 30-year JGB yields now above 3%, the carry trade that defined Japanese investing for decades faces new friction."
+images = ["https://static.philippdubach.com/ograph/0014.png"]
 categories = ["Commentary"]
 type = "Commentary"
 +++

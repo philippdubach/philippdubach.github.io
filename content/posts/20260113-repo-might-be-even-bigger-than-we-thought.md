@@ -2,6 +2,7 @@
 title = "Repo might be even bigger than we thought"
 date = 2026-01-13
 description = "New OFR data reveals $12.6 trillion in daily repo exposures—$700 billion larger than previous estimates. The plumbing of modern money remains poorly understood."
+images = ["https://static.philippdubach.com/ograph/0012.png"]
 categories = ["Commentary"]
 type = "Commentary"
 +++
