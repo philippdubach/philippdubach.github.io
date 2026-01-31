@@ -5,10 +5,9 @@ main:
     url: "/projects/"
   - name: "Research"
     url: "/research/"
-  - name: "About"
-    url: "/about/"
   - name: "Subscribe"
     url: "/subscribe"
-  - name: "Notes"
-    url: "https://notes.philippdubach.com/"
+  - name: "About"
+    url: "/about/"
+
 
