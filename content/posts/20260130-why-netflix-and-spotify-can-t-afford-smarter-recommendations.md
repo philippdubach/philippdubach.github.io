@@ -26,7 +26,9 @@ The 2026 consensus is a hybrid architecture: use the cheap, fast models to retri
 
 What makes this work in practice goes back to a formalism from [1933](https://www.jstor.org/stable/2332286): the multi-armed bandit. Imagine a gambler facing a row of slot machines, each with an unknown payout rate. She wants to maximize her winnings over a night of play. If she always pulls the arm with the highest observed payout, she might miss a better machine she never tried. If she explores too much, she wastes money on losers. The mathematics of this tradeoff define *regret*:
 
-$$R(T) = μ* · T − Σ μ(aₜ)$$
+$$
+R(T) = \mu^* \cdot T - \sum_{t=1}^{T} \mu(a_t)
+$$
 
 Here μ* is the best possible average reward, and μ(aₜ) is the reward from whatever arm she actually pulled at time t. Total regret is how much she left on the table by not knowing the optimal choice in advance. {{< img src="slide10.png" alt="Bandit Algorithms Setting: diagram showing a Learner taking Actions and receiving Rewards from an Environment, with the goal to maximize cumulative reward or minimize cumulative regret" width="80%" >}} The three main exploration strategies each take a different approach: epsilon-greedy adds random noise to avoid getting stuck; Upper Confidence Bound (UCB) prefers actions with uncertain values; Thompson Sampling selects actions according to the probability they are optimal. {{< img src="slide12.png" alt="Principles of Exploration: Naive Exploration (ε-greedy), Optimism in the Face of Uncertainty (UCB), and Probability Matching (Thompson Sampling)" width="80%" >}} Every recommendation you see on [Netflix's homepage](https://research.netflix.com/publication/lessons-learnt-from-consolidating-ml-models-in-a-large-scale-recommendation) is the output of an algorithm trying to minimize exactly this quantity, whether it realizes it or not.
 

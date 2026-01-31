@@ -2,6 +2,7 @@
 title = "Britain's Strategic Limbo"
 date = 2026-01-28
 description = "The UK refused Trump's Board of Peace but remains locked out of EU defense. The mid-Atlantic bridge has nowhere to land. Principles without alternatives is isolation."
+images = ["https://static.philippdubach.com/ograph/0016.png"]
 categories = ["Commentary"]
 type = "Commentary"
 +++
