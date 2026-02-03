@@ -27,7 +27,7 @@
         </main>
     </div>
     
-    {{- if .Param "math" -}}
+    {{- if or (.Param "math") (and .IsSection (eq .Section "posts")) -}}
         {{ partialCached "math.html" . }}
     {{- end -}}
 
