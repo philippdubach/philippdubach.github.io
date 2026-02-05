@@ -1,16 +1,17 @@
 ---
 title: "Against All Odds: The Mathematics of 'Provably Fair' Casino Games"
+seoTitle: "Provably Fair Crash Games: 20,000 Rounds of Statistical Proof"
 date: 2026-01-25
 publishDate: 2026-01-25T05:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-casino.jpg
-description: Statistical analysis of 20,000 crash game rounds reveals if provably fair gambling systems match theoretical RTP claims. Empirical verification and Monte Carlo simulations.
+description: "Statistical analysis of 20,000 crash game rounds verifies the 97% RTP claim. But 179 rounds per hour means expected losses exceed 500% of wagers hourly."
 keywords:
-- crash games analysis
 - provably fair gambling
+- crash game mathematics
 - RTP statistical testing
-- gambling mathematics
-- house edge verification
+- gambling house edge
+- crash game strategy
 categories:
 - Finance
 - Tech
@@ -52,3 +53,19 @@ The game is provably fair in the cryptographic sense. The mathematics check out.
 >The only winning strategy is not to play
 
 The full paper preprint with methodology and statistical details is [available on SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6065213). Code and data are on [GitHub](https://github.com/philippdubach/stats-gambling).
+
+<!--
+FAQ Schema candidates:
+
+Q: Are provably fair crash games actually fair?
+A: Yes, in the cryptographic sense. Statistical analysis of 20,000 rounds confirms the random number generator produces fair outcomes matching the stated 97% RTP. However, mathematical fairness doesn't ensure consumer safety, as the rapid pace of 179 rounds per hour means expected losses exceed 500% of amounts wagered per hour.
+
+Q: Is there a winning strategy for crash games?
+A: No. Monte Carlo simulations of 10,000 betting sessions across four strategies (1.5x, 2x, 3x, and 5x cash-outs) confirm every single strategy produces negative expected returns. The game is mathematically "strategy-proof" because the expected value equals RTP minus 1 regardless of cash-out timing.
+
+Q: What are the odds of reaching a specific multiplier in crash games?
+A: For a 97% RTP crash game, the probability of reaching multiplier m before crashing equals 0.97/m. A 2x target succeeds about 48.5% of the time. A 10x target works only 9.7% of rounds. A 100x target succeeds just 1.1% of the time.
+
+Q: How much do players lose per hour in crash games?
+A: At 179 rounds per hour with 16-second median intervals and a 3% house edge per round, players face expected losses exceeding 500% of amounts wagered per hour of play. This is far faster than traditional casino games.
+-->

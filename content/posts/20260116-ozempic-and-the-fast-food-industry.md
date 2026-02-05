@@ -1,15 +1,16 @@
 ---
 title: Ozempic is Reshaping the Fast Food Industry
+seoTitle: "GLP-1 Food Industry Impact: Cornell Data Shows 8% Fast Food Drop"
 date: 2026-01-16
 images:
 - https://static.philippdubach.com/ograph/ograph-glp1-food.jpg
-description: New Cornell research shows GLP-1 users cut grocery spending 5.3% and fast food 8.0%. With 16% household adoption, food stocks face headwinds.
+description: "Cornell research: GLP-1 users cut grocery spending 5.3%, fast food 8%. With 16% household adoption and savory snacks down 10%, food stocks face headwinds."
 keywords:
 - GLP-1 food industry impact
 - Ozempic grocery spending
-- food stock analysis
-- pharmaceutical market disruption
-- consumer spending trends
+- food stocks GLP-1
+- Wegovy consumer behavior
+- weight loss drug food sales
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5073929
 categories:
 - Finance
@@ -40,3 +41,19 @@ For investors, the practical question is positioning. Companies selling hyperpal
 The next few quarters of earnings calls will be interesting. At some point, an analyst will ask the GLP-1 question directly. The honest answer from management would be: we don't know the full impact yet, but 16% of households having a user, 8% declines in fast food spending, and the fastest-growing prescription category in the country is not something we can ignore. 
 
 {{< newsletter >}}
+
+<!--
+FAQ Schema candidates:
+
+Q: How much do GLP-1 users reduce their food spending?
+A: Cornell research shows households with a GLP-1 user cut grocery spending by 5.3% within six months, with high-income households dropping 8.2%. Fast food spending falls 8.0%. These users aren't switching brands; they're simply eating less.
+
+Q: Which food categories are hit hardest by Ozempic and Wegovy?
+A: Savory snacks see the largest decline at 10.1%, followed by sweets, baked goods, and cookies. Even staples like meat, eggs, and bread decline. Yogurt is the only category showing a statistically significant increase, with fresh fruit and nutrition bars trending up slightly.
+
+Q: What happens when people stop taking GLP-1 medications?
+A: About 34% of users discontinue within the sample period. When they stop, spending doesn't just return to baseline; it becomes less healthy. Candy and chocolate purchases rise 11.4% above pre-adoption levels, suggesting the drugs suppress appetite biologically without teaching new habits.
+
+Q: Why are higher-income consumers more affected by GLP-1 drugs?
+A: Higher-income households show even steeper spending declines (8.2% vs 5.3% average) and are more likely to use GLP-1 medications for weight loss rather than diabetes. They're also the most profitable customers for fast food chains, creating a "double whammy" where companies lose their highest-margin customers.
+-->

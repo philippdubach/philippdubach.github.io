@@ -1,27 +1,17 @@
 ---
 title: Is AI Really Eating the World? [1/2]
+seoTitle: "Generative AI Platform Shift: Will Models Commoditize Like Cloud?"
 date: 2025-11-23
 images:
 - https://static.philippdubach.com/ograph/ograph-eatingtheworld1.jpg
 external_url: https://www.ben-evans.com/presentations/
-description: 'Benedict Evans'' analysis of generative AI as a platform shift: will
-  models commoditize like previous tech while value flows to applications?'
+description: "Benedict Evans' AI analysis argues 'we don't know how it matters.' But current evidence points to model commoditization: $400B capex, 97% price drops."
 keywords:
-- generative AI
-- artificial intelligence
-- platform shift
+- generative AI platform shift
+- AI model commoditization
 - enterprise AI adoption
-- AI infrastructure
-- machine learning models
-- digital transformation
-- AI integration
-- technology cycles
-- AI development
-- business automation
-- AI investment
-- software development AI
-- AI consulting
-- technology disruption
+- AI infrastructure spending
+- LLM pricing trends
 categories:
 - AI
 type: Essay
@@ -31,26 +21,42 @@ aliases:
 - /2025/11/23/is-ai-really-eating-the-world/
 
 ---
-In August 2011, Marc Andreessen wrote ["Why Software Is Eating the World"](https://a16z.com/why-software-is-eating-the-world/), an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, [Benedict Evans](https://www.ben-evans.com/benedictevans/2014/1/18/a16z), a former a16z partner, gave a presentation on generative AI three years after ChatGPT's launch. His argument in short: 
+In August 2011, Marc Andreessen wrote ["Why Software Is Eating the World"](https://a16z.com/why-software-is-eating-the-world/), an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, [Benedict Evans](https://www.ben-evans.com/benedictevans/2014/1/18/a16z), a former a16z partner, gave a presentation on generative AI three years after ChatGPT's launch. His argument in short:
 
 >we know this matters, but we don't know how.
 
 In this article I will try to explain why I find his framing fascinating but incomplete. Evans structures technology history in cycles. Every 10-15 years, the industry reorganizes around a new platform: [mainframes](https://en.wikipedia.org/wiki/Mainframe_computer) (1960s-70s), PCs (1980s), web (1990s), smartphones (2000s-2010s). Each shift pulls all innovation, investment, and company creation into its orbit. Generative AI appears to be the next platform shift, or it could break the cycle entirely. The range of outcomes spans from "just more software" to a single unified intelligence that handles everything. The pattern recognition is smart, but I think the current evidence points more clearly toward commoditization than Evans suggests, with value flowing up the stack rather than to model providers.
 
-The hyperscalers are spending historic amounts. In 2025, [Microsoft, Google, Amazon, and Meta will invest roughly $400 billion](https://techblog.comsoc.org/2025/11/01/ai-spending-boom-accelerates-big-tech-to-invest-invest-an-aggregate-of-400-billion-in-2025-more-in-2026/) in AI infrastructure, more than global telecommunications capex. Microsoft now spends over 30% of revenue on capex, double what Verizon spends. What has this produced? Models that are simultaneously more capable and less defensible. When ChatGPT launched in November 2022, OpenAI had a massive quality advantage. Today, dozens of models cluster around similar performance. [DeepSeek proved that anyone with $500 million can build a frontier model](https://newsletter.semianalysis.com/p/deepseek-debates). Costs have collapsed. [OpenAI's API pricing has dropped by 97% since GPT-3's launch](https://techcrunch.com/2025/08/08/openai-priced-gpt-5-so-low-it-may-spark-a-price-war/), and every year brings an order of magnitude decline in the price of a given output. 
+The hyperscalers are spending historic amounts. In 2025, [Microsoft, Google, Amazon, and Meta will invest roughly $400 billion](https://techblog.comsoc.org/2025/11/01/ai-spending-boom-accelerates-big-tech-to-invest-invest-an-aggregate-of-400-billion-in-2025-more-in-2026/) in AI infrastructure, more than global telecommunications capex. Microsoft now spends over 30% of revenue on capex, double what Verizon spends. What has this produced? Models that are simultaneously more capable and less defensible. When ChatGPT launched in November 2022, OpenAI had a massive quality advantage. Today, dozens of models cluster around similar performance. [DeepSeek proved that anyone with $500 million can build a frontier model](https://newsletter.semianalysis.com/p/deepseek-debates). Costs have collapsed. [OpenAI's API pricing has dropped by 97% since GPT-3's launch](https://techcrunch.com/2025/08/08/openai-priced-gpt-5-so-low-it-may-spark-a-price-war/), and every year brings an order of magnitude decline in the price of a given output.
 
 Now, $500 million is still an enormous barrier. Only a few dozen entities globally can deploy that capital with acceptable risk. [GPT-4's performance on complex reasoning tasks](https://arxiv.org/abs/2303.08774), [Claude's extended context windows of up to 200,000 tokens](https://www.anthropic.com/news/claude-2-1), [Gemini's multimodal capabilities](https://blog.google/technology/ai/google-gemini-ai/), these represent genuine breakthroughs. But the economic moat isn't obvious to me (yet).
 
-Evans uses an extended metaphor: automation that works disappears. In the 1950s, automatic elevators were AI. Today they're just elevators. As [Larry Tesler](https://en.wikipedia.org/wiki/Larry_Tesler) noted in 1970, 
+Evans uses an extended metaphor: automation that works disappears. In the 1950s, automatic elevators were AI. Today they're just elevators. As [Larry Tesler](https://en.wikipedia.org/wiki/Larry_Tesler) noted in 1970,
 
-> AI is whatever machines can't do yet. Once it works, it's just software. 
+> AI is whatever machines can't do yet. Once it works, it's just software.
 
-The question: will LLMs follow this pattern, or is this different? 
+The question: will LLMs follow this pattern, or is this different?
 
 Current deployment shows clear winners but also real constraints. Software development has seen massive adoption, with [GitHub reporting that 92% of developers now use AI coding tools](https://github.blog/news-insights/research/survey-ai-wave-grows/). Marketing has found immediate uses generating ad assets at scale. Customer support has attracted investment, though with the caveat that LLMs produce plausible answers, not necessarily correct ones. Beyond these areas, adoption looks scattered. [Deloitte surveys from June 2025 show that roughly 20% of U.S. consumers use generative AI chatbots daily](https://www.deloitte.com/us/en/insights/industry/telecommunications/connectivity-mobile-trends-survey.html), with another 34% using them weekly or monthly. Enterprise deployment is further behind. [McKinsey data shows most AI "agents" remain in pilot or experimental stages](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai). A quarter of CIOs have launched something. Forty percent don't expect production deployment until 2026 or later.
 
-But I think here's where Evans' "we don't know" approach misses something important. Consulting firms are booking billions in AI contracts right now. [Accenture alone expects $3 billion in GenAI bookings for fiscal 2025](https://www.crn.com/news/ai/2025/accenture-s-3b-ai-bet-is-paying-off-inside-a-massive-transformation-fueled-by-advanced-ai). The revenue isn't coming from the models. It's coming from integration projects, change management, and process redesign. The pitch is simple: your competitors are moving on this, you can't afford to wait. If your competitors are investing and you're not, you risk being left behind. If everyone invests and AI delivers modest gains, you've maintained relative position. If everyone invests and AI delivers nothing, you've wasted money but haven't lost competitive ground. Evans notes that cloud adoption took 20 years to reach 30% of enterprise workloads and is still growing. New technology always takes longer than advocates expect. His most useful analogy is spreadsheets. [VisiCalc](https://en.wikipedia.org/wiki/VisiCalc) in the late 1970s transformed accounting. If you were an accountant, you had to have it. If you were a lawyer, you thought "that's nice for my accountant." ChatGPT today has the same dynamic. Certain people with certain jobs find it immediately essential. Everyone else sees a demo and doesn't know what to do with the blank prompt. This is right, and it suggests we're early. But it doesn't tell us where value will accumulate. 
+But I think here's where Evans' "we don't know" approach misses something important. Consulting firms are booking billions in AI contracts right now. [Accenture alone expects $3 billion in GenAI bookings for fiscal 2025](https://www.crn.com/news/ai/2025/accenture-s-3b-ai-bet-is-paying-off-inside-a-massive-transformation-fueled-by-advanced-ai). The revenue isn't coming from the models. It's coming from integration projects, change management, and process redesign. The pitch is simple: your competitors are moving on this, you can't afford to wait. If your competitors are investing and you're not, you risk being left behind. If everyone invests and AI delivers modest gains, you've maintained relative position. If everyone invests and AI delivers nothing, you've wasted money but haven't lost competitive ground. Evans notes that cloud adoption took 20 years to reach 30% of enterprise workloads and is still growing. New technology always takes longer than advocates expect. His most useful analogy is spreadsheets. [VisiCalc](https://en.wikipedia.org/wiki/VisiCalc) in the late 1970s transformed accounting. If you were an accountant, you had to have it. If you were a lawyer, you thought "that's nice for my accountant." ChatGPT today has the same dynamic. Certain people with certain jobs find it immediately essential. Everyone else sees a demo and doesn't know what to do with the blank prompt. This is right, and it suggests we're early. But it doesn't tell us where value will accumulate.
 
-The standard pattern for deploying technology goes in stages: (1) Absorb it (make it a feature, automate obvious tasks). (2) Innovate (create new products, unbundle incumbents). (3) Disrupt (redefine what the market is). We're mostly in stage one. Stage two is happening in pockets. [Y Combinator's recent batches are overwhelmingly AI-focused](https://www.ycombinator.com/companies), betting on thousands of new companies unbundling existing software (startups are attacking specific enterprise problems like converting COBOL to Java or reconfiguring telco billing systems). Stage three remains speculative. From an economic perspective, there's the automation question: do you do the same work with fewer people, or more work with the same people? This echoes debates about [labor-augmenting technical change](https://en.wikipedia.org/wiki/Technological_change#Labor-augmenting_technological_change) in economics. Companies whose competitive advantage was "we can afford to hire enough people to do this" face real pressure. Companies whose advantage was unique data, customer relationships, or distribution may get stronger. This is standard economic analysis of labor-augmenting technical change, and it probably holds here too. 
+The standard pattern for deploying technology goes in stages: (1) Absorb it (make it a feature, automate obvious tasks). (2) Innovate (create new products, unbundle incumbents). (3) Disrupt (redefine what the market is). We're mostly in stage one. Stage two is happening in pockets. [Y Combinator's recent batches are overwhelmingly AI-focused](https://www.ycombinator.com/companies), betting on thousands of new companies unbundling existing software (startups are attacking specific enterprise problems like converting COBOL to Java or reconfiguring telco billing systems). Stage three remains speculative. From an economic perspective, there's the automation question: do you do the same work with fewer people, or more work with the same people? This echoes debates about [labor-augmenting technical change](https://en.wikipedia.org/wiki/Technological_change#Labor-augmenting_technological_change) in economics. Companies whose competitive advantage was "we can afford to hire enough people to do this" face real pressure. Companies whose advantage was unique data, customer relationships, or distribution may get stronger. This is standard economic analysis of labor-augmenting technical change, and it probably holds here too.
 
 _Continue reading [Is AI Really Eating the World? AGI, Networks, and Value [2/2]](/posts/is-ai-really-eating-the-world-agi-networks-value-2/2/)_
+
+<!--
+FAQ Schema candidates:
+
+Q: Is generative AI a true platform shift like mobile and cloud?
+A: Based on historical patterns, generative AI appears to be the next platform shift following mainframes (1960s-70s), PCs (1980s), web (1990s), and smartphones (2000s-2010s). However, the range of outcomes spans from "just more software" to something more fundamental. The hyperscalers are spending $400 billion in 2025 on AI infrastructure, more than global telecommunications capex, which signals they believe this is a platform shift.
+
+Q: Are AI models becoming commoditized?
+A: Evidence strongly suggests yes. When ChatGPT launched in November 2022, OpenAI had a massive quality advantage. Today, dozens of models cluster around similar performance. DeepSeek proved that $500 million can build a frontier model, and OpenAI's API pricing has dropped 97% since GPT-3's launch, with costs declining by an order of magnitude annually.
+
+Q: Where will value accrue in the AI stack?
+A: Current evidence points toward value flowing up the stack to applications rather than to model providers. Consulting firms are booking billions in AI contracts, but the revenue comes from integration, change management, and process redesign rather than from the models themselves. Accenture alone expects $3 billion in GenAI bookings for fiscal 2025.
+
+Q: What does enterprise AI adoption actually look like?
+A: Software development has seen massive adoption with 92% of developers using AI coding tools. Marketing generates ad assets at scale, and customer support has attracted investment. Beyond these areas, adoption is scattered. McKinsey data shows most AI agents remain in pilot stages, with 40% of CIOs not expecting production deployment until 2026 or later.
+-->

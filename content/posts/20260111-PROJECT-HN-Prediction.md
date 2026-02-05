@@ -1,15 +1,16 @@
 ---
 title: "Social Media Success Prediction: BERT Models for Post Titles"
+seoTitle: "Temporal Leakage in ML: Lessons From a Hacker News Predictor"
 date: 2026-01-10
 images:
 - https://static.philippdubach.com/ograph/ograph-hn-predictor.jpg
-description: Training neural networks to predict Hacker News post success from titles. From DistilBERT to RoBERTa, and the temporal leakage that inflated my metrics.
+description: Training RoBERTa to predict Hacker News success revealed temporal leakage inflating metrics. How temporal splits, calibration, and regularization fix it.
 keywords:
-- hacker news prediction
-- neural network title analysis
-- RoBERTa fine-tuning
-- temporal validation ML
-- machine learning overfitting
+- Hacker News prediction model
+- temporal train test split ML
+- RoBERTa text classification
+- model calibration isotonic regression
+- machine learning overfitting regularization
 categories:
 - AI
 aliases:
@@ -50,4 +51,20 @@ The model now runs, scoring articles in an [RSS reader pipeline](https://github.
 
 On a side note: The patterns here aren't specific to Hacker News or online communities. Temporal leakage shows up whenever you're predicting something that evolves over time: credit defaults, client churn, market regimes. The fix is the same: validate on future data, not random holdouts. Calibration matters anywhere probabilities drive decisions. A loan approval model that says "70% chance of repayment" needs that number to mean something. Overfitting to training data is how banks end up with models that look great in backtests and fail in production.
 
-I've built [similar systems for other domains](https://philippdubach.com/projects/): sentiment-based trading signals, glycemic response prediction, portfolio optimization. The ML fundamentals transfer. What changes is the domain knowledge needed to avoid the obvious mistakes, like training on data that wouldn't have been available at prediction time, or trusting metrics that don't reflect real-world performance. 
+I've built [similar systems for other domains](https://philippdubach.com/projects/): sentiment-based trading signals, glycemic response prediction, portfolio optimization. The ML fundamentals transfer. What changes is the domain knowledge needed to avoid the obvious mistakes, like training on data that wouldn't have been available at prediction time, or trusting metrics that don't reflect real-world performance.
+
+<!--
+FAQ Schema candidates:
+
+Q: What is temporal leakage in machine learning and how do you prevent it?
+A: Temporal leakage occurs when your train/test split allows the model to "see the future" through random sampling of time-ordered data. For time-dependent data like social media posts, a random split lets models match near-duplicate content across the split, inflating metrics. The fix is a strict temporal split: train on earlier data, test on later data. This reduced our ensemble's AUC from 0.714 to 0.693 but produced honest performance estimates.
+
+Q: How do you calibrate neural network probability predictions?
+A: Neural networks trained on cross-entropy produce overconfident probability estimates. Isotonic regression fits a monotonic mapping from raw predictions to calibrated probabilities using a held-out validation set. Expected Calibration Error (ECE) measures the gap between predicted confidence and actual accuracy across binned predictions. Isotonic calibration reduced our ECE from 0.089 to 0.043, meaning when the model says 0.4 probability, it's now accurate.
+
+Q: Can you predict Hacker News post success from the title alone?
+A: Partially. Timing, news cycles, and who submits matter but aren't captured in titles. A fine-tuned RoBERTa model achieves 0.685 AUC on temporal validation, meaning it provides meaningful signal but not certainty. The top 10% of predictions by score had 62% actual hits, roughly 1.9x better than random selection. The model learned intuitive patterns: "Show HN" titles score higher, deep technical content performs well, and optimal title length is 40-80 characters.
+
+Q: How do dropout and weight decay reduce overfitting in transformers?
+A: Increasing dropout from 0.1 to 0.2 and weight decay from 0.01 to 0.05, plus freezing the lower 6 transformer layers, collapsed the train-test AUC gap from 0.109 to 0.042, a 61% reduction in overfitting. The model got worse at fitting training data (train AUC dropped from 0.803 to 0.727) but generalized better. The key insight: reducing memorization capacity forces the model to learn transferable patterns.
+--> 

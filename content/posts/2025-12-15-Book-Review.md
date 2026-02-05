@@ -1,16 +1,16 @@
 ---
 title: 'Book Review: Why Machines Learn'
+seoTitle: "Why Machines Learn Review: Real Math, Not Just Metaphors"
 date: 2025-12-27
 images:
 - https://static.philippdubach.com/ograph/ograph-aibookreview.jpg
-description: 'A review of Ananthaswamy''s Why Machines Learn: A clear tour of the
-  math behind modern machine learning, with real derivations and geometry.'
+description: "Why Machines Learn explains ML math with real equations and geometric intuition. Review of Ananthaswamy's approach to neural networks, PCA, and GANs."
 keywords:
-- machine learning
-- book review
-- mathematics
-- neural networks
-- AI
+- Why Machines Learn book review
+- machine learning math books
+- linear algebra machine learning
+- neural network mathematics explained
+- AI math prerequisites
 categories:
 - AI
 type: Review
@@ -31,4 +31,17 @@ That framing is the book’s main strength. When it works, you get an intuition 
 
 The tour is broad. It moves from perceptrons to backpropagation, then through Principal Component Analysis and Support Vector Machines, and later into convolutional networks and generative models like GANs. There is history, but it is there to support the technical arc, not to replace it. The “graded ascent” idea mostly holds. Early chapters give you enough scaffolding to follow later ones. If you have not looked at derivatives or matrix calculus in a while, you will feel it, but you can still keep pace if you accept that this is a book you sometimes read with a pencil.
 
-Two things I liked in particular: (1) It does not pretend there is a single “deep learning trick” that explains everything. The methods are varied and the trade-offs are real. (2) It gives you enough math to see why some ideas scale and others do not, without turning into a textbook.
+Two things I liked in particular: (1) It does not pretend there is a single "deep learning trick" that explains everything. The methods are varied and the trade-offs are real. (2) It gives you enough math to see why some ideas scale and others do not, without turning into a textbook.
+
+<!--
+FAQ Schema candidates:
+
+Q: Is "Why Machines Learn" by Anil Ananthaswamy worth reading?
+A: Yes, particularly if you want to understand the math behind ML with real equations rather than metaphors. The book treats linear algebra geometrically, showing how dot products measure alignment and how neural network layers work as pipelines of linear maps plus nonlinearities. You should have some familiarity with derivatives and matrix calculus, though you can keep pace with a pencil and patience.
+
+Q: What math background do I need for "Why Machines Learn"?
+A: The book covers vectors, dot products, projections, perceptrons, backpropagation, PCA, SVMs, convolutional networks, and GANs. If you have not looked at derivatives or matrix calculus in a while, you will feel it, but the "graded ascent" structure means early chapters provide scaffolding for later ones. Be prepared to read slowly and work through derivations.
+
+Q: How does "Why Machines Learn" differ from typical AI books?
+A: Unlike books that focus on human drama stories about labs and researchers, or flatten the material into a few metaphors, Ananthaswamy actually explains the math with equations and derivations. The geometric framing of linear algebra is the main strength: a neural network layer reads less like mysticism and more like a pipeline of linear transformations.
+-->

@@ -1,22 +1,17 @@
 ---
 title: Michael Burry's $379 Newsletter
+seoTitle: "Michael Burry's AI Bubble Warning: Why He Says Nvidia Is Cisco"
 date: 2025-11-28
 images:
 - https://static.philippdubach.com/ograph/ograph-burry-newsletter.jpg
 external_url: https://michaeljburry.substack.com
-description: Michael Burry launches a Substack after deregistering his hedge fund,
-  warning AI markets are in bubble territory like the 1999 dot-com crash.
+description: "Michael Burry launches Substack warning AI markets mirror 1999. His Nvidia-Cisco comparison, the GPU depreciation debate, and what hyperscalers need to justify capex."
 keywords:
-- Michael Burry
-- Substack newsletter
-- AI bubble
-- Nvidia criticism
-- dot-com crash comparison
-- Big Short investor
-- GPU depreciation
-- artificial intelligence valuations
-- market prediction
-- tech bubble warning
+- Michael Burry Substack newsletter
+- Michael Burry AI bubble warning
+- Nvidia Cisco comparison dot-com
+- GPU depreciation accounting AI
+- AI infrastructure spending bubble
 categories:
 - Finance
 type: Commentary
@@ -44,3 +39,19 @@ He argues Nvidia now occupies the exact position Cisco held in 1999-2000. It's t
 In my opinion the technical argument around depreciation matters more than it might appear. If hyperscalers must depreciate GPUs over three years instead of six, companies like Alphabet would see roughly a 10% hit to net profit. More importantly, it would signal that the economic returns on AI infrastructure spending are weaker than advertised. Alphabet, for example, is currently guiding $90 billion-plus of AI spending this year. Using 5-year straight line depreciation, you get $18 billion per year in expenses. Add $9 billion for a conservative 10% WACC. That's $27 billion, and assuming a 70% blended margin, you need about $40 billion per year in incremental revenue directly attributable to AI to make the infrastructure spending justifiable. Therefore, the question remains: how much of Alphabet's $60 billion annualized revenue increase is actually attributable to AI versus normal growth? Burry closes his first newsletter with characteristic understatement: 
 
 >I doubted if I should ever come back. I'm back.
+
+<!--
+FAQ Schema candidates:
+
+Q: What is Michael Burry's AI bubble thesis?
+A: Burry argues that today's AI boom mirrors the late 1990s dot-com bubble, with Nvidia playing the same role Cisco did then as the "picks and shovels" supplier. He believes AI infrastructure is being overbuilt relative to actual demand, just as fiber optic capacity was in 2000. He contends that hyperscalers are using aggressive depreciation schedules to mask the true cost of their AI investments.
+
+Q: Why does Burry say Nvidia is like Cisco?
+A: Burry draws a parallel between Cisco's role in the 1999-2000 telecom buildout and Nvidia's position in today's AI infrastructure cycle. Cisco's stock surged during the fiber optic boom, then collapsed 80% when demand failed to materialize. Burry's key point: "I am not claiming Nvidia is Enron. It is clearly Cisco." One difference he acknowledges: Cisco's forward P/E in 2000 was around 200; Nvidia's is under 40.
+
+Q: What is the GPU depreciation controversy?
+A: Burry contends that hyperscalers overstate GPU useful lives to justify massive capex. He argues GPUs become obsolete in 2-3 years, but companies depreciate them over 4-6 years. If hyperscalers shortened depreciation schedules, companies like Alphabet would see roughly a 10% hit to net profit. Nvidia responded with a memo arguing that A100 GPUs from 2020 still run at high utilization with "meaningful economic value."
+
+Q: How much revenue do hyperscalers need to justify AI spending?
+A: Using Alphabet's $90B+ annual AI capex guidance, 5-year depreciation ($18B/year), and 10% WACC ($9B), the threshold is roughly $27B in annual costs. Assuming 70% blended margins, Alphabet needs about $40B per year in incremental AI-attributable revenue to justify the infrastructure investment.
+-->

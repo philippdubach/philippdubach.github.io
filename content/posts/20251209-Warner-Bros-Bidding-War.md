@@ -1,9 +1,15 @@
 ---
 title: "Not Logan Roy: Netflix vs. Paramount's Bidding War"
+seoTitle: "Netflix vs Paramount: Warner Bros Bidding War and Streaming Economics"
 date: 2025-12-09
 images: ['https://static.philippdubach.com/ograph/ograph-warner-bidding.jpg']
-description: "Netflix's $72B Warner Bros. deal vs Paramount's hostile $30/share tender: streaming economics, deal mechanics, and antitrust uncertainty."
-keywords: ["Warner Bros Discovery", "Netflix acquisition", "Paramount hostile takeover", "streaming consolidation", "media M&A", "David Ellison", "antitrust review", "Hollywood dealmaking", "aggregation theory", "HBO Max", "entertainment economics", "hostile tender offer"]
+description: "Netflix's $72B Warner Bros deal vs Paramount's hostile $30/share tender. Deal mechanics, aggregation theory, and why internet distributors win streaming."
+keywords:
+- Netflix Warner Bros acquisition
+- Paramount hostile takeover Warner Bros
+- streaming consolidation 2025
+- media M&A deal analysis
+- aggregation theory streaming
 categories:
 - Finance
 type: Essay
@@ -46,3 +52,19 @@ Warner's stock trading below both offers reflects the compounded uncertainties: 
 What happens next is procedurally straightforward. Warner's board will respond to Paramount's tender offer within 10 business days. Netflix will likely raise its bid; Ellison signaled Monday that $30 "wasn't best and final." The arbs will push for whichever deal offers better risk-adjusted value. Whoever wins will spend the next year in [antitrust review](https://www.ftc.gov/legal-library/browse/statutes/hart-scott-rodino-antitrust-improvements-act-1976) while the other side's lawyers look for grounds to challenge.
 
 Hollywood's century-old industrial structure is unwinding regardless of which bid prevails. The studio system emerged when controlling both production and distribution created durable advantages. The internet dissolved those advantages by making distribution essentially free and universally accessible. Warner Bros. spent a century building an integrated media empire; Netflix spent two decades proving that owning the customer relationship matters more than owning the soundstages. The question isn't whether legacy media consolidates into tech platforms. It's which platform, at what price, and whether inherited wealth can rewrite the outcome. I doubt it. On the internet, aggregators tend to win, and Netflix is the aggregator in video.
+
+<!--
+FAQ Schema candidates:
+
+Q: What is Netflix paying for Warner Bros Discovery?
+A: Netflix is acquiring Warner Bros for $72 billion in equity value ($82.7 billion enterprise value). The deal breaks down to $23.25 per share in cash, $4.50 in Netflix stock, and shares in a spun-off entity called Discovery Global containing CNN and cable networks. Paramount's competing hostile offer is $30 per share all-cash for the entire company.
+
+Q: How does a hostile tender offer work?
+A: In a hostile tender, the acquirer bypasses the target's board and goes directly to shareholders with a public offer. The target's board has 10 business days to respond with a recommendation. Defense mechanisms like poison pills exist but invite litigation. The best defense is typically more money from the preferred bidder.
+
+Q: What is aggregation theory and why does it explain Netflix's value?
+A: Aggregation theory explains why internet platforms that own customer relationships capture more value than content suppliers. Physical distribution has capacity constraints while internet distribution has none. Netflix commands a $425 billion market cap while combined legacy studios are worth a fraction because Netflix aggregates attention at zero marginal cost.
+
+Q: What is a breakup fee and how large are they in this deal?
+A: Breakup fees compensate a jilted bidder for deal expenses and create hurdles for competing offers. If Warner shareholders take Paramount's offer, Warner owes Netflix $2.8 billion. If Netflix's deal collapses after review, Netflix owes Warner $5.8 billion, one of the largest reverse breakup fees on record.
+-->
