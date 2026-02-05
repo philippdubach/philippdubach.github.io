@@ -19,7 +19,8 @@ enableGitInfo = true
   # SEO Description
   description = "Exploring the intersection of Macroeconomics, Quantitative Finance, and AI infrastructure. Analysis of LLM unit economics, global monetary frameworks, and systemic liquidity."
   keywords = ["Quantitative Finance", "Macro Strategy", "AI Infrastructure", "Machine Learning", "Asset Allocation", "Bretton Woods III", "Python for Finance"]
-  
+  rssFeedDescription = "full"
+
   # VISUAL SETTINGS 
   sidebar_title = "philippdubach"
   sidebar_description = "Blog about Personal Projects, Articles and Papers on Economics, Finance and Technology"
@@ -37,6 +38,7 @@ enableGitInfo = true
     github = "philippdubach"
     email = "me@philippdubach.com"
     bluesky = "philippdubach.com"
+    twitter = "philippdubach"
 
 [markup]
   [markup.highlight]
@@ -106,6 +108,16 @@ enableGitInfo = true
     baseName = "posts"
     isPlainText = true
     path = "api"
+  [outputFormats.LLMSTxt]
+    mediaType = "text/plain"
+    baseName = "llms"
+    isPlainText = true
+    notAlternative = true
+  [outputFormats.LLMSFullTxt]
+    mediaType = "text/plain"
+    baseName = "llms-full"
+    isPlainText = true
+    notAlternative = true
 
 [related]
   includeNewer = true
@@ -125,7 +137,7 @@ enableGitInfo = true
     weight = 10
 
 [outputs]
-  home = ['HTML', 'RSS', 'JSONFeed', 'PostsAPI', 'SiteMap']
+  home = ['HTML', 'RSS', 'JSONFeed', 'PostsAPI', 'LLMSTxt', 'LLMSFullTxt', 'SiteMap']
   page = ['HTML']
   section = ['HTML', 'RSS', 'SiteMap']
   

@@ -18,6 +18,15 @@ draft: false
 aliases:
 - /2025/12/02/nikes-crisis-and-the-economics-of-brand-decay/
 
+faq:
+- question: Why did Nike's direct-to-consumer strategy fail?
+  answer: Nike terminated hundreds of wholesale accounts to capture higher margins from direct sales (50% vs 30-35% through retailers). But retail shelf space is zero-sum. When Nike pulled out, competitors like On and Hoka immediately filled the void. Nike assumed consumers would follow it online, but many discovered alternatives in physical stores instead. Digital sales fell 20% and the company lost both wholesale and direct revenue.
+- question: What are complementary assets and how did Nike destroy them?
+  answer: 'Complementary assets are interconnected capabilities that create value only when working together. Nike''s three were product development, athlete partnerships, and premium marketing. Under CEO John Donahoe, all three weakened simultaneously: sport-specific product teams were merged into generic categories, top athletes like Federer and Tiger Woods left, and marketing shifted from aggressive winning themes to softer messaging. When you weaken one pillar, you weaken all of them.'
+- question: How did On and Hoka gain market share from Nike?
+  answer: On developed CloudTec sole technology and signed Roger Federer, growing from $330 million to $1.8 billion revenue between 2020 and 2025. Hoka's maximalist cushioning appealed to runners Nike had neglected, growing from $352 million to $1.4 billion. Both brands gained prime retail real estate when Nike vacated wholesale channels, and both invested in genuine product innovation while Nike relied on retro basketball shoes.
+- question: Can Nike recover its competitive advantage?
+  answer: Recovery will be difficult because the structural advantages that made Nike dominant may no longer exist. Smaller brands can now compete effectively through social media and direct-to-consumer platforms. Nike replaced Donahoe with company veteran Elliott Hill and launched a "Sport Offense" strategy focused on product development, but competitors have used the past four years to build stronger positions. The company's $157 billion cash reserves provide resources to respond, but regaining dominance requires rebuilding capabilities that took decades to develop.
 ---
 > What it sounds like is that the CEO has the wrong people making the wrong decisions across the strongest brand or one of the strongest brands in consumer history.
 
@@ -52,19 +61,3 @@ Nike's competitors have used the past few years to build stronger positions. On 
 Nike's crisis wasn't caused by a single mistake or even a series of mistakes. It was caused by a fundamental misunderstanding of how competitive advantages work. The company treated its brand, its products, and its athlete partnerships as separate assets that could be managed independently. But they're not separate. They're complementary assets that create value only when they work together. When you weaken one, you weaken all of them. When you weaken all of them simultaneously, the advantage collapses completely. The direct-to-consumer transition, organizational restructuring, and marketing shift each made sense in isolation. But together, they destroyed the system that created Nike's competitive advantage.
 
 The company focused on efficiency and margins while ignoring the fact that its real advantage came from being the best at product development, athlete relationships, and brand positioning at the same time. The tariffs added pressure at the worst possible time, but they're not the root cause. Nike systematically weakened its competitive advantages and then tried to maintain premium pricing without the product foundation to support it. The market responded predictably and retailers quickly filled shelf space with other brands. Athletes left for companies that were actually developing new products. Recovery will be harder than the decline because the structural advantages that made Nike dominant might no longer exist.
-
-<!--
-FAQ Schema candidates:
-
-Q: Why did Nike's direct-to-consumer strategy fail?
-A: Nike terminated hundreds of wholesale accounts to capture higher margins from direct sales (50% vs 30-35% through retailers). But retail shelf space is zero-sum. When Nike pulled out, competitors like On and Hoka immediately filled the void. Nike assumed consumers would follow it online, but many discovered alternatives in physical stores instead. Digital sales fell 20% and the company lost both wholesale and direct revenue.
-
-Q: What are complementary assets and how did Nike destroy them?
-A: Complementary assets are interconnected capabilities that create value only when working together. Nike's three were product development, athlete partnerships, and premium marketing. Under CEO John Donahoe, all three weakened simultaneously: sport-specific product teams were merged into generic categories, top athletes like Federer and Tiger Woods left, and marketing shifted from aggressive winning themes to softer messaging. When you weaken one pillar, you weaken all of them.
-
-Q: How did On and Hoka gain market share from Nike?
-A: On developed CloudTec sole technology and signed Roger Federer, growing from $330 million to $1.8 billion revenue between 2020 and 2025. Hoka's maximalist cushioning appealed to runners Nike had neglected, growing from $352 million to $1.4 billion. Both brands gained prime retail real estate when Nike vacated wholesale channels, and both invested in genuine product innovation while Nike relied on retro basketball shoes.
-
-Q: Can Nike recover its competitive advantage?
-A: Recovery will be difficult because the structural advantages that made Nike dominant may no longer exist. Smaller brands can now compete effectively through social media and direct-to-consumer platforms. Nike replaced Donahoe with company veteran Elliott Hill and launched a "Sport Offense" strategy focused on product development, but competitors have used the past four years to build stronger positions. The company's $157 billion cash reserves provide resources to respond, but regaining dominance requires rebuilding capabilities that took decades to develop.
--->

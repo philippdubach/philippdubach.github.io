@@ -1712,3 +1712,176 @@ pre {
         font-size: 0.85rem;
     }
 }
+
+/* ========================
+   FAQ Page Styles
+   ======================== */
+
+.faq-page,
+.faq-hub {
+    max-width: 100%;
+}
+
+.faq-header {
+    margin-bottom: 2rem;
+}
+
+.faq-breadcrumb {
+    font-size: 0.85rem;
+    color: #595959;
+    margin-bottom: 1rem;
+}
+
+.faq-breadcrumb a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.faq-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.faq-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+}
+
+.faq-meta {
+    font-size: 0.9rem;
+    color: #595959;
+    margin: 0 0 0.5rem 0;
+}
+
+.faq-description {
+    font-size: 1rem;
+    color: #595959;
+    margin: 0;
+}
+
+/* FAQ List */
+.faq-list {
+    margin: 2rem 0;
+}
+
+.faq-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.faq-item:target {
+    background-color: #fffde7;
+    border-left: 3px solid #007acc;
+    padding-left: 12px;
+    scroll-margin-top: 80px;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.faq-question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.4;
+}
+
+.faq-answer {
+    margin-bottom: 0.75rem;
+}
+
+.faq-answer p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.faq-source {
+    font-size: 0.85rem;
+    color: #595959;
+    margin: 0;
+}
+
+.faq-source a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.faq-source a:hover {
+    text-decoration: underline;
+}
+
+/* FAQ Hub Page */
+.faq-categories {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.faq-category-card {
+    padding: 1.5rem;
+    background: #fafafa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+}
+
+.faq-category-card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+}
+
+.faq-category-card h2 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.faq-category-card h2 a:hover {
+    color: #007acc;
+}
+
+.faq-category-meta {
+    font-size: 0.85rem;
+    color: #595959;
+    margin: 0 0 0.5rem 0;
+}
+
+.faq-category-description {
+    font-size: 0.9rem;
+    color: #595959;
+    margin: 0;
+}
+
+.faq-hub-stats {
+    font-size: 0.9rem;
+    color: #595959;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+/* FAQ Mobile Styles */
+@media screen and (max-width: 768px) {
+    .faq-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+    }
+
+    .faq-category-card {
+        padding: 1rem;
+    }
+
+    .faq-category-card h2 {
+        font-size: 1.1rem;
+    }
+}

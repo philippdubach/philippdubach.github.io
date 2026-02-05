@@ -18,6 +18,16 @@ draft: false
 aliases:
 - /standalone/hn-sentiment/
 - /standalone/hackerbook-stats/
+
+faq:
+- question: What percentage of Hacker News posts have negative sentiment?
+  answer: Analysis of 32,000 Hacker News posts found that nearly 65% register as negative. This pattern persists across six different sentiment models including DistilBERT, BERT Multi, RoBERTa, Llama 3.1 8B, Mistral 3.1 24B, and Gemma 3 12B, suggesting it reflects genuine community behavior rather than classifier bias.
+- question: Do negative posts get more engagement on Hacker News?
+  answer: Yes, negative posts average 35.6 points compared to the overall average of 28 points, representing a 27% performance premium for negativity. This aligns with broader research on negativity bias in social media, where negative content consistently generates higher engagement.
+- question: How do BERT and RoBERTa compare for sentiment analysis?
+  answer: Both produce similar negative-skewed distributions when applied to Hacker News data. The negative pattern holds across all six models tested, suggesting the finding is robust to model choice. DistilBERT was used for production due to its efficiency in Cloudflare-based pipelines.
+- question: What is attention inequality in social media?
+  answer: Attention inequality measures how unevenly engagement is distributed across content. On Hacker News, score distribution follows a power-law with high Gini coefficients, meaning a small number of posts receive disproportionate attention while most receive minimal engagement. This mirrors patterns found on Twitter where Gini coefficients exceed 0.9.
 ---
 Posts with negative sentiment average 35.6 points on [Hacker News](https://news.ycombinator.com). The overall average is 28 points. That's a 27% performance premium for negativity. {{< img src="hn-sentiment.png" alt="Distribution of sentiment scores across 32,000 Hacker News posts" width="80%" >}} This finding comes from an empirical study I've been running on HN attention dynamics, covering decay curves, preferential attachment, survival probability, and early-engagement prediction. The preprint is [available on SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5910263). I already had a gut feeling. Across 32,000 posts and 340,000 comments, nearly 65% register as negative. This might be a feature of my classifier being miscalibrated toward negativity; yet the pattern holds across six different models. {{< img src="sentiment_models_comparison_6models.png" alt="Sentiment distribution comparison across DistilBERT, BERT Multi, RoBERTa, Llama 3.1 8B, Mistral 3.1 24B, and Gemma 3 12B" width="80%" >}} I tested three transformer-based classifiers (DistilBERT, BERT Multi, RoBERTa) and three LLMs (Llama 3.1 8B, Mistral 3.1 24B, Gemma 3 12B). The distributions vary, but the negative skew persists across all of them (inverted scale for 2-6). The results I use in my dashboard are from DistilBERT because it runs efficiently in my Cloudflare-based pipeline.
 
@@ -48,19 +58,3 @@ _Caveat: HackerBook is a single static snapshot (no time-series data). Therefore
 
 **Mean score vs direct comments (binned, proxy)**
 {{< img src="mean_score_vs_direct_comments_binned_hackerbook2.png" alt="Mean score vs direct comments (proxy), binned in log-spaced buckets" width="80%" >}}
-
-<!--
-FAQ Schema candidates:
-
-Q: What percentage of Hacker News posts have negative sentiment?
-A: Analysis of 32,000 Hacker News posts found that nearly 65% register as negative. This pattern persists across six different sentiment models including DistilBERT, BERT Multi, RoBERTa, Llama 3.1 8B, Mistral 3.1 24B, and Gemma 3 12B, suggesting it reflects genuine community behavior rather than classifier bias.
-
-Q: Do negative posts get more engagement on Hacker News?
-A: Yes, negative posts average 35.6 points compared to the overall average of 28 points, representing a 27% performance premium for negativity. This aligns with broader research on negativity bias in social media, where negative content consistently generates higher engagement.
-
-Q: How do BERT and RoBERTa compare for sentiment analysis?
-A: Both produce similar negative-skewed distributions when applied to Hacker News data. The negative pattern holds across all six models tested, suggesting the finding is robust to model choice. DistilBERT was used for production due to its efficiency in Cloudflare-based pipelines.
-
-Q: What is attention inequality in social media?
-A: Attention inequality measures how unevenly engagement is distributed across content. On Hacker News, score distribution follows a power-law with high Gini coefficients, meaning a small number of posts receive disproportionate attention while most receive minimal engagement. This mirrors patterns found on Twitter where Gini coefficients exceed 0.9.
--->

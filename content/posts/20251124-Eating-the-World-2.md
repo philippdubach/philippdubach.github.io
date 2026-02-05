@@ -19,6 +19,15 @@ draft: false
 aliases:
 - /2025/11/24/is-ai-really-eating-the-world-agi-networks-value-2/2/
 
+faq:
+- question: Where does value flow in the AI value chain?
+  answer: Evidence suggests value flows to the applications layer rather than to model providers. Foundation models are rapidly commoditizing, with multiple frontier models clustering around similar performance and prices dropping 97% since GPT-3's launch. The real competitive advantage comes from applications, customer relationships, and distribution rather than from having the best model.
+- question: Will AGI create lasting monopolies for AI companies?
+  answer: Even if AGI arrives by 2028, multiple competing players will likely reach it at roughly the same time given how quickly capabilities diffuse. Multiple competing AGIs means price competition, and price competition in a product with near-zero marginal cost means prices collapse toward marginal cost. Value would flow to users of AI (engineering firms, pharmaceutical companies, retailers) rather than to providers.
+- question: Can LLMs replace traditional data network effects for recommendation systems?
+  answer: The answer depends on whether LLMs truly reason or merely pattern-match at a sophisticated level. If LLMs are sophisticated pattern-matchers (which current evidence suggests), they still need massive datasets and traditional network effects apply. If they can reason over conceptual spaces, that would unbundle data network effects from recommendation quality and shift value to whoever owns customer relationships.
+- question: What is the vertical integration strategy for AI value capture?
+  answer: The AWS playbook suggests hyperscalers can capture value even if models commoditize by controlling cloud infrastructure plus model development plus customer relationships plus application distribution. Microsoft is pursuing this with Azure plus OpenAI plus Copilot plus Office integration. This strategy is about controlling distribution and bundling, not about having the best model.
 ---
 _Start by reading [Is AI Really Eating the World? What we've Learned [1/2]](/posts/is-ai-really-eating-the-world-1/2/)_
 
@@ -35,19 +44,3 @@ Evans shows a scatter plot (Slide 34) of model benchmark scores from [standard e
 So where does this leave us? The technology exists and the underlying capabilities are real. But I think the current evidence points toward a world where value flows to applications and customer relationships, and where the $400 billion the hyperscalers are spending buys them competitive positioning rather than monopoly. The integrators are making money now by helping enterprises navigate uncertainty. Some of that will produce real productivity gains. Much of it is expensive signaling and competitive positioning. The startups unbundling existing software will see mixed results, the ones that succeed will do so by owning distribution or solving really specific problems where switching costs are high, not by having better access to AI. The biggest uncertainty is whether the hyperscalers can use vertical integration to capture value anyway, or whether the applications layer fragments and value flows to thousands of specialized companies. That depends less on AI capabilities and more on competitive dynamics, regulation, and whether enterprises prefer integrated platforms or best-of-breed solutions. My guess is we end up somewhere in between. The hyperscalers maintain strong positions through bundling and infrastructure control. A long tail of specialized applications captures value in specific verticals. The model providers themselves, unless they're also infrastructure providers, struggle to capture value proportional to the capability they're creating. But I'm genuinely uncertain, and that uncertainty is where the interesting bets are.
 
 What makes Evans' presentation valuable is precisely what frustrated me about it initially: his refusal to collapse uncertainty prematurely. I've spent this entire post arguing for a specific view of how value will flow in AI markets, but Evans is right that we're pattern-matching from incomplete data. Every previous platform shift looked obvious in retrospect and uncertain in real time. The PC revolution, the internet boom, mobile, they all had credible skeptics who turned out wrong and credible bulls who were right for the wrong reasons. Evans' discipline in laying out the full range of possibilities, from commodity to monopoly to something entirely new, is the intellectually honest position. I've made specific bets here because that's useful for readers trying to navigate the space, but I'm more confident in my framework than in my conclusions.
-
-<!--
-FAQ Schema candidates:
-
-Q: Where does value flow in the AI value chain?
-A: Evidence suggests value flows to the applications layer rather than to model providers. Foundation models are rapidly commoditizing, with multiple frontier models clustering around similar performance and prices dropping 97% since GPT-3's launch. The real competitive advantage comes from applications, customer relationships, and distribution rather than from having the best model.
-
-Q: Will AGI create lasting monopolies for AI companies?
-A: Even if AGI arrives by 2028, multiple competing players will likely reach it at roughly the same time given how quickly capabilities diffuse. Multiple competing AGIs means price competition, and price competition in a product with near-zero marginal cost means prices collapse toward marginal cost. Value would flow to users of AI (engineering firms, pharmaceutical companies, retailers) rather than to providers.
-
-Q: Can LLMs replace traditional data network effects for recommendation systems?
-A: The answer depends on whether LLMs truly reason or merely pattern-match at a sophisticated level. If LLMs are sophisticated pattern-matchers (which current evidence suggests), they still need massive datasets and traditional network effects apply. If they can reason over conceptual spaces, that would unbundle data network effects from recommendation quality and shift value to whoever owns customer relationships.
-
-Q: What is the vertical integration strategy for AI value capture?
-A: The AWS playbook suggests hyperscalers can capture value even if models commoditize by controlling cloud infrastructure plus model development plus customer relationships plus application distribution. Microsoft is pursuing this with Azure plus OpenAI plus Copilot plus Office integration. This strategy is about controlling distribution and bundling, not about having the best model.
--->

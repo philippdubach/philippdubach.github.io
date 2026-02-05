@@ -17,6 +17,18 @@ categories:
 type: Essay
 math: true
 draft: false
+
+faq:
+- question: What is variance drain (volatility drag)?
+  answer: Variance drain is the gap between an investment's arithmetic mean return and its compound (geometric) growth rate. It equals approximately ½σ², where σ is the volatility of returns. Higher volatility means a larger gap between the average return you see reported and the actual wealth you accumulate.
+- question: How does leverage amplify volatility drag?
+  answer: Leverage L scales arithmetic return linearly (Lμ) but scales variance drain quadratically (½L²σ²). Doubling leverage quadruples the drag. This is why leveraged ETFs can underperform their target multiple over time, especially in volatile markets.
+- question: What is the Kelly criterion and how does it relate to variance drain?
+  answer: 'The Kelly criterion gives the leverage ratio that maximizes compound growth: L* = (μ − r) / σ². It falls directly out of the variance drain formula — it is the point where the marginal return from additional leverage exactly equals the marginal cost of additional variance drain.'
+- question: Why do practitioners use half-Kelly?
+  answer: Full Kelly assumes perfect knowledge of expected return (μ) and volatility (σ). In practice, both are estimated with error. Half-Kelly — sizing at L*/2 — sacrifices about 25% of theoretical growth but dramatically reduces the risk of overleveraging due to estimation error.
+- question: Is volatility drag a real force or a mathematical artifact?
+  answer: 'It is a mathematical relationship, not a physical force — the geometric mean is always less than or equal to the arithmetic mean (AM-GM inequality). But the P&L consequences are entirely real: two portfolios with the same average return but different volatilities will produce different terminal wealth.'
 ---
 
 Let's say your portfolio returned +60% in 2024, then fell 40% in 2025. That's an annualized average return of +10%. Actual return after two years: minus 4% (i.e $100 * 1.6 * 0.6 = $96).
@@ -42,22 +54,3 @@ For the S&P 500 with roughly 7% excess return and 16% vol, L* comes out to about
 {{< img src="UPRO_factsheet.png" alt="Extract of ProShares UltraPro S&P 500 Factsheet Total Return" width="80%" >}}You can see this play out in practice. [ProShares UPRO](https://www.proshares.com/our-etfs/leveraged-and-inverse/upro), the 3x S&P 500 ETF, has returned roughly 28% annualized over the past decade during one of the strongest bull markets in history. The S&P 500 compounded at about 10% over the same period. Linear 3x leverage would imply roughly 30%. Variance drain accounts for the gap, and that was in a favorable environment. In 2022, when the S&P fell about 19%, UPRO dropped 70%. The effect is even starker in higher-volatility underlyings: [ProShares TQQQ](https://www.proshares.com/our-etfs/leveraged-and-inverse/tqqq), the 3x Nasdaq-100 ETF, sat roughly flat from its 2021 highs through early 2025 while the unlevered QQQ had long since recovered — a textbook case of variance drain overwhelming the leverage premium in a choppy market. 
 
 The same half-sigma-squared shows up across finance. It is why stock prices follow [log-normal distributions](https://en.wikipedia.org/wiki/Log-normal_distribution), not normal ones. Why put options cost more than equidistant calls. Why the [Black-Scholes](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model) d₁ and d₂ terms carry a ½σ²t adjustment. Why a $100 stock's true geometric midpoint between $150 up and $50 down is not $100 but $86.60, because ln(150/100) = ln(100/66.67). Wherever returns compound and volatility is nonzero, the variance tax is being collected.
-
-<!--
-FAQ Schema candidates (implement via Hugo shortcode or partial):
-
-Q: What is variance drain (volatility drag)?
-A: Variance drain is the gap between an investment's arithmetic mean return and its compound (geometric) growth rate. It equals approximately ½σ², where σ is the volatility of returns. Higher volatility means a larger gap between the average return you see reported and the actual wealth you accumulate.
-
-Q: How does leverage amplify volatility drag?
-A: Leverage L scales arithmetic return linearly (Lμ) but scales variance drain quadratically (½L²σ²). Doubling leverage quadruples the drag. This is why leveraged ETFs can underperform their target multiple over time, especially in volatile markets.
-
-Q: What is the Kelly criterion and how does it relate to variance drain?
-A: The Kelly criterion gives the leverage ratio that maximizes compound growth: L* = (μ − r) / σ². It falls directly out of the variance drain formula — it is the point where the marginal return from additional leverage exactly equals the marginal cost of additional variance drain.
-
-Q: Why do practitioners use half-Kelly?
-A: Full Kelly assumes perfect knowledge of expected return (μ) and volatility (σ). In practice, both are estimated with error. Half-Kelly — sizing at L*/2 — sacrifices about 25% of theoretical growth but dramatically reduces the risk of overleveraging due to estimation error.
-
-Q: Is volatility drag a real force or a mathematical artifact?
-A: It is a mathematical relationship, not a physical force — the geometric mean is always less than or equal to the arithmetic mean (AM-GM inequality). But the P&L consequences are entirely real: two portfolios with the same average return but different volatilities will produce different terminal wealth.
--->

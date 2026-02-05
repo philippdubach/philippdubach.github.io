@@ -16,6 +16,16 @@ keywords:
 - Greg Abel Berkshire CEO
 - Berkshire capital allocation strategy
 draft: false
+
+faq:
+- question: How does Berkshire Hathaway's insurance float strategy work?
+  answer: Property-casualty insurers collect premiums upfront and pay claims years or decades later. This gap creates investable capital at zero or negative cost. In 2024, Berkshire's insurance operations generated $9 billion in underwriting profit and $13.7 billion in investment income. As Buffett puts it, the "moment of truth" for insurance claims can be delayed 30 or more years.
+- question: Why did Warren Buffett use "mistake" so often in shareholder letters?
+  answer: Between 2019 and 2023, Buffett used "mistake" or "error" 16 times in his letters, while many Fortune 500 companies never used either word. Buffett believes banning the word "mistake" doesn't make risk vanish; it goes off balance sheet until it detonates. He has noted that the taboo "implying managerial perfection, always made me nervous."
+- question: Why does Berkshire Hathaway have over $300 billion in cash?
+  answer: 'The cash pile is not a preference for cash over good businesses. As Buffett''s 2024 letter states: "Berkshire will never prefer ownership of cash-equivalent assets over the ownership of good businesses." The cash is a byproduct of not finding anything worth buying at current prices, leaving Greg Abel''s first large capital move as a key signal for Berkshire''s future.'
+- question: What did Warren Buffett's Apple investment teach about concentration risk?
+  answer: At its peak, Apple represented roughly 40-50% of Berkshire's public equity holdings. The 2024 portfolio stood at $272 billion, down from $354 billion after significant Apple sales. While the Apple thesis was correct, a single stock bought mostly between 2016-2018 drove a substantial portion of portfolio returns over the past decade.
 ---
 
 [Warren Buffett](https://en.wikipedia.org/wiki/Warren_Buffett) has stepped down as CEO at 95. [Greg Abel](https://en.wikipedia.org/wiki/Greg_Abel) inherits a company that paid [$26.8 billion in federal income taxes](https://www.berkshirehathaway.com/letters/2024ltr.pdf) last year, roughly 5% of what all of corporate America paid combined. I do not have [much in common with Buffett](/posts/damodaran-on-golds-2025-surge/), but I will miss his shareholder letters. Berkshire's archive is a rare case of a public company explaining decisions candidly to its owners.
@@ -43,19 +53,3 @@ So what now? Abel inherits roughly $300 billion in cash and Treasury bills. The 
 If Buffett truly goes quiet, I hope he gets to experience not working at all, or at least the version that suits a man who prefers thinking to talking. The compounding may continue just fine.
 
 {{< disclaimer type="finance" >}}
-
-<!--
-FAQ Schema candidates:
-
-Q: How does Berkshire Hathaway's insurance float strategy work?
-A: Property-casualty insurers collect premiums upfront and pay claims years or decades later. This gap creates investable capital at zero or negative cost. In 2024, Berkshire's insurance operations generated $9 billion in underwriting profit and $13.7 billion in investment income. As Buffett puts it, the "moment of truth" for insurance claims can be delayed 30 or more years.
-
-Q: Why did Warren Buffett use "mistake" so often in shareholder letters?
-A: Between 2019 and 2023, Buffett used "mistake" or "error" 16 times in his letters, while many Fortune 500 companies never used either word. Buffett believes banning the word "mistake" doesn't make risk vanish; it goes off balance sheet until it detonates. He has noted that the taboo "implying managerial perfection, always made me nervous."
-
-Q: Why does Berkshire Hathaway have over $300 billion in cash?
-A: The cash pile is not a preference for cash over good businesses. As Buffett's 2024 letter states: "Berkshire will never prefer ownership of cash-equivalent assets over the ownership of good businesses." The cash is a byproduct of not finding anything worth buying at current prices, leaving Greg Abel's first large capital move as a key signal for Berkshire's future.
-
-Q: What did Warren Buffett's Apple investment teach about concentration risk?
-A: At its peak, Apple represented roughly 40-50% of Berkshire's public equity holdings. The 2024 portfolio stood at $272 billion, down from $354 billion after significant Apple sales. While the Apple thesis was correct, a single stock bought mostly between 2016-2018 drove a substantial portion of portfolio returns over the past decade.
--->

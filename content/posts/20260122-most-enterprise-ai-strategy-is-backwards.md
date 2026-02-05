@@ -19,6 +19,16 @@ draft: false
 aliases:
 - /backwards/
 - /posts/most-enterprise-ai-strategy-is-backwards/
+
+faq:
+- question: Why do 85% of enterprise AI projects fail?
+  answer: Most enterprises layer AI on legacy workflows instead of redesigning them. Only 26% of companies have the maturity to translate AI pilots into production outcomes. The remaining 74% focus on chatbots and board presentations while ignoring the coordination layer where employees spend 57% of their workday.
+- question: What is the coordination layer in enterprise work?
+  answer: The coordination layer consists of transcripts, status updates, action items, CRM entries, and administrative tasks required to get work done with other people. It's almost entirely composed of language, making it ideal for language models, yet most AI strategies ignore it entirely.
+- question: How much does workplace coordination cost?
+  answer: The average employee spends 57% of their workday on coordination tasks including communicating, updating, and aligning. Meetings alone cost the US economy $532 billion per year. This is where organizations quietly bleed productivity and where AI can deliver measurable returns.
+- question: What do successful enterprise AI strategies focus on?
+  answer: Winning companies use AI to extract structured data from messy human communication, converting meeting transcripts to CRM fields with 99% accuracy. Sales teams using these tools report 30% higher win rates and 80% less manual work. AI gains compound when knowledge capture becomes shareable across the organization.
 ---
 That’s the claim made by LinkedIn co-founder [Reid Hoffman](https://en.wikipedia.org/wiki/Reid_Hoffman). It’s a bold assertion, so I set out to investigate whether the data supports it.{{< img src="download_overview.png" alt="Report Header Overview" width="100%" >}}
 The result is a comprehensive report, backed by more than 30 sources. You can download [the full report](https://static.philippdubach.com/pdf/Enterprise_AI_Strategy2026_philippdubach.pdf)
@@ -41,19 +51,3 @@ Three observations:
 The coordination layer isn't glamorous. It's transcripts, status updates, action items, CRM entries. It's the administrative exhaust of getting anything done with other people. And it's almost entirely composed of language. We have language models now. Models that extract structured data from messy transcripts, convert meeting notes into CRM fields with 99% accuracy. Sales teams using these tools report 30% higher win rates and 80% less manual work.
 
 Yet most enterprise AI strategies ignore this entirely. They're focused on chatbots and demos for board presentations. Meanwhile, the language processing that constitutes the primary workload of any modern business remains stuck in the same recursive loops. The winners won't be companies with great AI announcements. They'll be the ones building daily habits early enough for the gains to stack.
-
-<!--
-FAQ Schema candidates:
-
-Q: Why do 85% of enterprise AI projects fail?
-A: Most enterprises layer AI on legacy workflows instead of redesigning them. Only 26% of companies have the maturity to translate AI pilots into production outcomes. The remaining 74% focus on chatbots and board presentations while ignoring the coordination layer where employees spend 57% of their workday.
-
-Q: What is the coordination layer in enterprise work?
-A: The coordination layer consists of transcripts, status updates, action items, CRM entries, and administrative tasks required to get work done with other people. It's almost entirely composed of language, making it ideal for language models, yet most AI strategies ignore it entirely.
-
-Q: How much does workplace coordination cost?
-A: The average employee spends 57% of their workday on coordination tasks including communicating, updating, and aligning. Meetings alone cost the US economy $532 billion per year. This is where organizations quietly bleed productivity and where AI can deliver measurable returns.
-
-Q: What do successful enterprise AI strategies focus on?
-A: Winning companies use AI to extract structured data from messy human communication, converting meeting transcripts to CRM fields with 99% accuracy. Sales teams using these tools report 30% higher win rates and 80% less manual work. AI gains compound when knowledge capture becomes shareable across the organization.
--->

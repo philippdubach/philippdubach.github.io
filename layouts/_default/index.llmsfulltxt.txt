@@ -1,0 +1,29 @@
+{{- $baseURL := .Site.BaseURL -}}
+{{- $allPosts := where .Site.RegularPages "Section" "posts" -}}
+{{- $displayNames := dict "ai" "AI" "commentary" "Commentary" "economics" "Economics" "finance" "Finance" "medicine" "Medicine" "tech" "Tech" -}}
+{{- $categoryOrder := slice "ai" "commentary" "economics" "finance" "medicine" "tech" -}}
+# Philipp D. Dubach - Full Content Index
+
+> This is the extended version of llms.txt with full article summaries inline. For the compact version, see [llms.txt]({{ $baseURL }}llms.txt).
+
+Independent researcher and strategy consultant specializing in quantitative finance, AI infrastructure economics, and macroeconomic analysis.
+
+- Last Updated: {{ now.Format "2006-01-02" }}
+- Total Articles: {{ len $allPosts }}
+- Site: {{ $baseURL }}
+{{ range $categoryOrder }}
+{{- $term := . -}}
+{{- $taxonomy := index $.Site.Taxonomies.categories $term -}}
+{{- if $taxonomy -}}
+{{- $name := index $displayNames $term | default (humanize $term) }}
+
+## {{ $name }} ({{ len $taxonomy }} articles)
+{{ range sort $taxonomy "Page.Date" "desc" }}
+### [{{ .Page.Title }}]({{ .Page.Permalink }})
+Published: {{ .Page.Date.Format "2006-01-02" }}
+Description: {{ .Page.Params.description }}
+Summary: {{ .Page.Summary | plainify | strings.TrimSpace }}
+
+{{ end }}
+{{- end -}}
+{{- end -}}

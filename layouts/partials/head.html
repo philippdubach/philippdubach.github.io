@@ -59,6 +59,9 @@
     <link href="{{ .RelPermalink }}" rel="alternate" type="application/feed+json" title="{{ $.Site.Title }}">
     {{- end }}
 
+    {{/* LLMs.txt - AI crawler discovery */}}
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt">
+
 	<style>
 	{{ readFile "static/css/custom.css" | safeCSS }}
 	</style>

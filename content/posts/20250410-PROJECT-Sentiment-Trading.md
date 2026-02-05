@@ -3,24 +3,14 @@ title: Trading on Market Sentiment
 date: 2025-02-20
 images:
 - https://static.philippdubach.com/ograph/ograph-sentiment.jpg
-description: Using GPT-3.5 for sentiment analysis in financial markets, comparing
-  performance against RavenPack for predicting movements from headlines.
+seoTitle: "GPT-3.5 vs RavenPack: Sentiment Analysis Trading Strategy"
+description: "GPT-3.5 matched RavenPack's 41% returns in a sentiment analysis trading strategy using 2,072 news headlines. See the full backtest results and comparison."
 keywords:
-- market sentiment trading
-- GPT-3.5 sentiment analysis
-- financial NLP
-- RavenPack benchmark
-- algorithmic trading
-- news headline analysis
-- large language models finance
-- sentiment-based trading strategy
-- OpenAI financial applications
-- quantitative trading
-- market prediction
-- financial sentiment scoring
-- trading automation
-- investment strategy
-- fintech machine learning
+- sentiment analysis trading strategy
+- GPT sentiment analysis stock market
+- LLM financial sentiment analysis
+- news headline sentiment trading
+- RavenPack vs GPT sentiment
 tags:
 - Project
 categories:
@@ -31,6 +21,17 @@ draft: false
 aliases:
 - /2025/02/20/trading-on-market-sentiment/
 
+faq:
+- question: Can GPT match commercial sentiment analysis tools like RavenPack for trading?
+  answer: In a backtest using 2,072 Dow Jones Newswire headlines from 2018 to 2022, GPT-3.5 generated 41.02% returns compared to RavenPack's 40.99%, essentially matching the industry benchmark. The two models showed a 0.59 correlation in their sentiment scores, agreeing on direction while differing in granularity. This suggests general-purpose LLMs can compete with expensive proprietary systems for sentiment-based trading.
+- question: Does sentiment trading outperform buy-and-hold investing?
+  answer: It depends on the market environment. Over the full 2018-2022 period, both GPT-3.5 and RavenPack sentiment strategies underperformed a simple buy-and-hold approach (58.13%) in what was generally a bullish market. However, during the more volatile 2020-2022 period, the sentiment strategy outperformed buy-and-hold (22.83% vs 21.00%). Sentiment-based approaches tend to work better in choppy, news-driven markets rather than sustained bull runs.
+- question: What are the main limitations of using LLMs for real-time sentiment trading?
+  answer: Three practical challenges stand out. First, high-quality real-time news feeds are expensive and often restricted. Second, frequent trading driven by sentiment signals generates substantial transaction costs that eat into returns. Third, the processing time required for LLMs to analyze headlines cannot compete with high-frequency traders who act on news within milliseconds.
+- question: How does GPT-3.5 score financial news sentiment compared to traditional NLP models?
+  answer: Unlike traditional models such as FinBERT that provide only discrete positive, neutral, or negative classifications, GPT-3.5 can generate continuous sentiment scores from -1 to 1 with decimal precision. This finer granularity allows for more nuanced trading signals. In short-term holding periods of 1 and 10 days, GPT-3.5 scores outperformed the RavenPack benchmark for positive sentiment, while for negative sentiment, GPT-3.5 showed stronger performance over 90-day windows.
+- question: When does a sentiment-based trading strategy work best?
+  answer: Sentiment strategies perform best during volatile, news-driven market environments where price movements are less directional. During the turbulent 2020-2022 period, which included COVID-19 volatility and rising interest rates, the sentiment strategy outperformed passive investing. In calmer bull markets, sentiment strategies often remain uninvested for long stretches due to the absence of strong signals, causing them to miss steady upward moves.
 ---
 _This post is based in part on a 2022 presentation I gave for the [ICBS Student Investment Fund](https://www.ft.com/content/3bd45acd-b323-3c6b-ba98-ac78b456f308) and my seminar work at Imperial College London._
 

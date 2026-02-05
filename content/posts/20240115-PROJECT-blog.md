@@ -3,19 +3,14 @@ title: The Tech behind this Site
 date: 2024-01-15
 images:
 - https://static.philippdubach.com/ograph/ograph-projects.jpg
-description: Technical guide to implementing responsive images in Hugo using Cloudflare's
-  CDN and custom shortcodes for optimized WebP delivery.
+seoTitle: "Hugo Blog Tech Stack: GitHub Pages, Cloudflare R2 & Workers"
+description: "A Hugo blog tech stack with Cloudflare R2 image hosting, responsive WebP shortcodes, Workers AI social automation, and GitHub Pages CI/CD deployment."
 keywords:
-- Hugo static site
-- GitHub Pages deployment
-- Hugo GitHub Actions workflow
-- Cloudflare image resizing
-- responsive images shortcode
-- WebP optimization
-- Open Graph metadata SEO
-- Content Security Policy (CSP)
-- IndexNow integration
-- static site performance
+- Hugo blog tech stack
+- Hugo GitHub Pages Cloudflare
+- Hugo responsive images shortcode
+- Hugo Cloudflare R2 images
+- Hugo site automation Cloudflare Workers
 tags:
 - Project
 categories:
@@ -24,6 +19,15 @@ type: Project
 aliases:
 - /2024/01/15/the-tech-behind-this-site/
 
+faq:
+- question: How do you serve responsive images from Cloudflare R2 in Hugo?
+  answer: You build a custom Hugo shortcode that generates <picture> elements with breakpoint-specific sources. Upload images at full quality to Cloudflare R2, then use Cloudflare's image resizing service to serve optimized versions (320px for mobile up to 1600px for desktop) with automatic WebP conversion. This way you maintain a single source image but deliver the right size to each device.
+- question: What tech stack does this Hugo blog use?
+  answer: The site runs on Hugo deployed to GitHub Pages, with Cloudflare as CDN and images hosted on Cloudflare R2. Social media automation is handled by Cloudflare Workers using Llama 3.3 70B for AI-generated posts to Bluesky and Twitter. A newsletter system uses Cloudflare Workers + KV with Resend for email delivery.
+- question: How do you automate social media posting from a Hugo blog?
+  answer: Cloudflare Workers monitor the Hugo site's feed and automatically generate social media posts using Workers AI (Llama 3.3 70B). The workers create neutral, non-clickbait posts with banned word filtering, posting to both Bluesky and Twitter/X without manual intervention.
+- question: How does IndexNow work with Hugo for faster indexing?
+  answer: IndexNow integration is automated through GitHub Actions. When content changes, the workflow checks which URLs have been recently modified based on the lastmod frontmatter field and submits only those URLs to search engines, resulting in faster discovery and indexing of new or updated content.
 ---
 
 This site runs on Hugo, deployed to GitHub Pages with Cloudflare CDN. Images are hosted on R2 (`static.philippdubach.com`) with automatic resizing and WebP conversion.

@@ -3,24 +3,14 @@ title: Passive Investing's Active Problem
 date: 2025-02-15
 images:
 - https://static.philippdubach.com/ograph/ograph-post.jpg
-description: New research reveals passive investing may increase market volatility
-  as index fund dominance amplifies individual trade impacts on prices.
+seoTitle: Passive Investing Is Making Markets More Volatile
+description: Research shows passive investing makes markets more volatile as index fund growth amplifies each trade's price impact while active managers lag behind.
 keywords:
-- passive investing
-- market volatility
-- index funds
-- active managers
-- American Economic Review
-- benchmark-tracking funds
-- Big Passive
-- equity gyrations
-- intrinsic worth
-- financial markets
-- trading behavior
-- stock prices
-- AI market swings
-- investment strategy
-- market dynamics
+- passive investing market volatility
+- index funds increasing volatility
+- passive investing risks
+- index fund market impact
+- active vs passive investing volatility
 external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263
 categories:
 - Finance
@@ -28,6 +18,15 @@ type: Commentary
 aliases:
 - /2025/02/15/passive-investings-active-problem/
 
+faq:
+- question: Does passive investing make the stock market more volatile?
+  answer: Research published in the American Economic Review suggests that it does. Because active managers are slow to buy stocks when prices deviate from their intrinsic worth, the growing dominance of benchmark-tracking index funds means each individual trade has a larger impact on prices. This amplification effect can turn ordinary sell orders into broader market swings.
+- question: How do index funds amplify market sell-offs?
+  answer: When most investors are on autopilot through index funds, the few remaining active traders exert disproportionate influence on prices. Researchers from UCLA, Stockholm School of Economics, and the University of Minnesota found that lethargic trading behavior among active managers, combined with the boom in index funds, amplifies the impact of each trade, allowing sell orders to cascade into wider market gyrations.
+- question: 'What is "Big Passive" and why does it matter for investors?'
+  answer: '"Big Passive" is a term used by researchers to describe the current market structure where the majority of investment flows into benchmark-tracking funds. It matters because this shift has made markets less dynamic and more prone to sudden volatility. While passive investing still offers lower costs and strong long-term returns for most investors, its dominance creates unintended systemic consequences.'
+- question: Should I stop investing in index funds because of volatility concerns?
+  answer: Not necessarily. The research does not invalidate passive investing's core benefits, including lower fees and better long-term returns for most investors. However, it does suggest that the increasingly passive financial system has unintended consequences, such as amplified short-term volatility. Investors should be aware of these dynamics, especially during periods of market stress.
 ---
 (1) A new academic paper suggests the rise of passive investing may be fueling fragile market moves.
 (2) According to a study to be published in the American Economic Review, evidence is building that active managers are slow to scoop up stocks en masse when prices move away from their intrinsic worth.
@@ -39,4 +38,4 @@ Justina Lee for Bloomberg writes that this week's AI-fueled market swings perfec
 >Thanks to this lethargic trading behavior and the relentless boom in benchmark-tracking index funds, the impact of each trade on prices gets amplified.
 
 The researchers from UCLA, Stockholm School of Economics, and University of Minnesota have identified what they call "Big Passive"—a financial landscape that's proving less dynamic and more volatile. When most investors are on autopilot, the few remaining active traders have disproportionate influence.
-This doesn't invalidate passive investing's core benefits—lower costs and better long-term returns for most investors remain compelling. But it does suggest that our increasingly passive financial system has some unintended consequences. 
+This doesn't invalidate passive investing's core benefits—lower costs and better long-term returns for most investors remain compelling. But it does suggest that our increasingly passive financial system has some unintended consequences.

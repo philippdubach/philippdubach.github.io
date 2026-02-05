@@ -18,6 +18,16 @@ draft: false
 aliases:
 - /standalone/rss-tinder/
 - /posts/rss-swipr-find-your-blogs-like-you-find-your-dates/
+
+faq:
+- question: How does machine learning improve RSS readers?
+  answer: Traditional RSS readers show all articles chronologically without filtering. An ML-powered RSS reader uses sentence embeddings (like MPNet) to understand article content semantically, then trains on your swipe behavior to predict preferences. This achieves 75.4% ROC-AUC accuracy in surfacing content you actually want to read.
+- question: What is Thompson sampling in recommendation systems?
+  answer: Thompson sampling balances exploration and exploitation in recommendations. It shows predicted-good content 80% of the time (exploit) while randomly introducing unexpected articles 20% of the time (explore). This prevents filter bubbles and lets the model discover when your interests change.
+- question: Can you build a personalized RSS reader in Python?
+  answer: Yes. Using Flask, SQLite, and sentence-transformers (MPNet), you can build a local RSS reader that learns preferences from swipe interactions. Training happens on Google Colab's free GPU tier. The entire system runs locally with zero infrastructure cost and no cloud dependencies.
+- question: How do sentence embeddings work for content recommendation?
+  answer: Sentence embeddings convert article titles and descriptions into 768-dimensional vectors that capture semantic meaning. Similar articles cluster together in this vector space. A Hybrid Random Forest classifier then learns which regions of this space match your preferences based on your voting history.
 ---
 {{< img src="rss-tinder-demo2.gif" alt="GIF with interactive demo of the RSS Tinder App" width="80%" >}} Algorithmic timelines are everywhere now. But I still prefer the control of RSS. Readers are good at aggregating content but bad at filtering it. What I wanted was something borrowed from dating apps: instead of an infinite list, give me cards. Swipe right to like, left to dislike. Then train a model to surface what I actually want to read. So I built _RSS Swipr_. 
 
@@ -82,19 +92,3 @@ python app.py
 ```
 
 The [full source](https://github.com/philippdubach/rss-swipr) and [Colab notebook](https://colab.research.google.com/drive/1XjnAuwF3naPElKH9yZ3UEdslzN7qAUrQ?usp=sharing) are available on GitHub.
-
-<!--
-FAQ Schema candidates:
-
-Q: How does machine learning improve RSS readers?
-A: Traditional RSS readers show all articles chronologically without filtering. An ML-powered RSS reader uses sentence embeddings (like MPNet) to understand article content semantically, then trains on your swipe behavior to predict preferences. This achieves 75.4% ROC-AUC accuracy in surfacing content you actually want to read.
-
-Q: What is Thompson sampling in recommendation systems?
-A: Thompson sampling balances exploration and exploitation in recommendations. It shows predicted-good content 80% of the time (exploit) while randomly introducing unexpected articles 20% of the time (explore). This prevents filter bubbles and lets the model discover when your interests change.
-
-Q: Can you build a personalized RSS reader in Python?
-A: Yes. Using Flask, SQLite, and sentence-transformers (MPNet), you can build a local RSS reader that learns preferences from swipe interactions. Training happens on Google Colab's free GPU tier. The entire system runs locally with zero infrastructure cost and no cloud dependencies.
-
-Q: How do sentence embeddings work for content recommendation?
-A: Sentence embeddings convert article titles and descriptions into 768-dimensional vectors that capture semantic meaning. Similar articles cluster together in this vector space. A Hybrid Random Forest classifier then learns which regions of this space match your preferences based on your voting history.
--->

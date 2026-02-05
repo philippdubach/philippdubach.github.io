@@ -8,6 +8,21 @@ images = ["https://static.philippdubach.com/ograph/0014.png"]
 categories = ["Commentary"]
 type = "Commentary"
 draft = false
+[[faq]]
+question = "How much does Japan hold in foreign assets?"
+answer = "Japan holds roughly $5 trillion in foreign assets, making it the world's largest creditor nation. The US alone accounts for approximately ¥342 trillion in bonds and equities, with Japan being the largest foreign holder of US Treasuries at over $1.1 trillion."
+
+[[faq]]
+question = "Why are Japanese investors considering repatriating capital?"
+answer = "Japanese 30-year government bond yields have risen from below 1% (where they sat from 2019 through early 2024) to above 3%. This has collapsed the yield spread between developed market bonds and JGBs from 400 basis points to roughly 100, reducing the incentive to hold foreign assets for yield."
+
+[[faq]]
+question = "What's the difference between a carry trade unwind and capital repatriation?"
+answer = "A carry trade unwind involves speculative positions being rapidly closed, as happened in August 2024 when the S&P dropped 6% in three days. Capital repatriation is the slower but larger process of institutional investors like pension funds and life insurers actually selling foreign assets and bringing capital home."
+
+[[faq]]
+question = "How would Japanese selling affect the Treasury market?"
+answer = "Treasury market depth has deteriorated since 2020, with primary dealers holding smaller inventories and thinner liquidity provision. A sustained seller of size would arrive into a market less equipped to absorb flow than at any point since the Global Financial Crisis."
 +++
 
 Japan holds roughly [$5 trillion in foreign assets](https://pbs.twimg.com/media/G_j8tfLXEAA1djy?format=jpg&name=medium). The US alone accounts for [¥342 trillion](https://pbs.twimg.com/media/G_j8tfKWwAAesgX?format=jpg&name=medium) in bonds and equities.
@@ -25,19 +40,3 @@ The consensus view remains that Japan is trapped. Any meaningful tightening impl
 The yen carry trade unwound violently in August 2024 and the S&P dropped 6% in three days. That was positioning adjustment. Repatriation of actual assets would be slower but larger.
 
 When a $5 trillion portfolio starts rebalancing toward domestic assets, you don't need to predict the timing. You need to be positioned for a situation where the marginal Treasury buyer becomes a marginal seller. What happens in Japan doesn't stay in Japan.
-
-<!--
-FAQ Schema candidates:
-
-Q: How much does Japan hold in foreign assets?
-A: Japan holds roughly $5 trillion in foreign assets, making it the world's largest creditor nation. The US alone accounts for approximately ¥342 trillion in bonds and equities, with Japan being the largest foreign holder of US Treasuries at over $1.1 trillion.
-
-Q: Why are Japanese investors considering repatriating capital?
-A: Japanese 30-year government bond yields have risen from below 1% (where they sat from 2019 through early 2024) to above 3%. This has collapsed the yield spread between developed market bonds and JGBs from 400 basis points to roughly 100, reducing the incentive to hold foreign assets for yield.
-
-Q: What's the difference between a carry trade unwind and capital repatriation?
-A: A carry trade unwind involves speculative positions being rapidly closed, as happened in August 2024 when the S&P dropped 6% in three days. Capital repatriation is the slower but larger process of institutional investors like pension funds and life insurers actually selling foreign assets and bringing capital home.
-
-Q: How would Japanese selling affect the Treasury market?
-A: Treasury market depth has deteriorated since 2020, with primary dealers holding smaller inventories and thinner liquidity provision. A sustained seller of size would arrive into a market less equipped to absorb flow than at any point since the Global Financial Crisis.
--->

@@ -16,6 +16,16 @@ categories:
 - Economics
 type: Commentary
 draft: false
+
+faq:
+- question: Why has the stock market decoupled from the economy?
+  answer: 'The S&P 500 has structurally decoupled from everyday economic reality through two mechanisms: concentration (top 10 stocks now represent 40% of the index) and passive investing (60% of flows are mechanical, price-insensitive index fund purchases). Consumer-exposed sectors fell from 38% to 25% of the index since 2015, even though 70% of U.S. GDP is consumer-driven.'
+- question: What are the risks of S&P 500 concentration?
+  answer: With NVIDIA at 7.7%, Apple at 6.8%, and Microsoft at 6.1% of the S&P 500, most institutional mandates prevent managers from holding proportional positions due to risk limits and diversification rules. This creates systematic underweighting of the fastest-growing names and structural headwinds for active management regardless of manager skill.
+- question: How does passive investing affect market corrections?
+  answer: In a passive-dominated market (60% of flows), corrections trigger mechanical selling rather than value-based buying. Index funds sell proportionally to their holdings without evaluating whether prices have become attractive. This reduces the stabilizing bid that active managers traditionally provided, potentially making corrections steeper and faster.
+- question: What is the K-shaped economy and how does it affect markets?
+  answer: The K-shaped economy describes a bifurcated recovery where some segments thrive while others struggle. This produces a K-shaped market where median household experience diverges from median stock index performance. Consumer welfare can deteriorate materially through rising healthcare costs, unaffordable housing, and high grocery prices without meaningfully impacting index returns.
 ---
 A friend recently recommended [Steve Eisman](https://en.wikipedia.org/wiki/Steve_Eisman)'s podcast to me. Eisman, you might recall, is the hedge fund manager portrayed in The Big Short who famously bet against subprime mortgages before the 2008 crisis. In his [most recent episode](https://www.youtube.com/@RealEismanPlaybook), Eisman laid out a thesis for something that made me uncomfortable ever since the [Covid-19 stock market crash](https://en.wikipedia.org/wiki/2020_stock_market_crash) recovery: the U.S. equity market has structurally decoupled from everyday economic reality.
 
@@ -38,19 +48,3 @@ There's also a tax dimension creating behavioral lock-in. Years of technology ou
 What does this mean for portfolio construction? First, understand that traditional cap-weighted benchmarks now represent a concentrated bet on technology and AI capital expenditure. Second, active management faces structural headwinds that have nothing to do with manager skill. Third, liquidity assumptions that held in previous corrections may not hold in the next one. And fourth, consumer welfare can deteriorate materially without meaningfully impacting index returns. The K-shaped economy produces a K-shaped market, where the experience of median households and the experience of median stock index performance have genuinely diverged.
 
 {{< disclaimer type="finance" >}}
-
-<!--
-FAQ Schema candidates:
-
-Q: Why has the stock market decoupled from the economy?
-A: The S&P 500 has structurally decoupled from everyday economic reality through two mechanisms: concentration (top 10 stocks now represent 40% of the index) and passive investing (60% of flows are mechanical, price-insensitive index fund purchases). Consumer-exposed sectors fell from 38% to 25% of the index since 2015, even though 70% of U.S. GDP is consumer-driven.
-
-Q: What are the risks of S&P 500 concentration?
-A: With NVIDIA at 7.7%, Apple at 6.8%, and Microsoft at 6.1% of the S&P 500, most institutional mandates prevent managers from holding proportional positions due to risk limits and diversification rules. This creates systematic underweighting of the fastest-growing names and structural headwinds for active management regardless of manager skill.
-
-Q: How does passive investing affect market corrections?
-A: In a passive-dominated market (60% of flows), corrections trigger mechanical selling rather than value-based buying. Index funds sell proportionally to their holdings without evaluating whether prices have become attractive. This reduces the stabilizing bid that active managers traditionally provided, potentially making corrections steeper and faster.
-
-Q: What is the K-shaped economy and how does it affect markets?
-A: The K-shaped economy describes a bifurcated recovery where some segments thrive while others struggle. This produces a K-shaped market where median household experience diverges from median stock index performance. Consumer welfare can deteriorate materially through rising healthcare costs, unaffordable housing, and high grocery prices without meaningfully impacting index returns.
--->

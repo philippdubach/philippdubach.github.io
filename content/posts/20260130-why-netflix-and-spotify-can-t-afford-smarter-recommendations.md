@@ -24,6 +24,18 @@ categories:
 - Tech
 math: true
 draft: false
+
+faq:
+- question: What is a hybrid recommender system?
+  answer: A hybrid recommender system combines multiple recommendation approaches, typically using fast, cheap methods like collaborative filtering for candidate generation from millions of items, then invoking expensive LLM reasoning only for the final items users see. This funnel pattern balances recommendation quality against inference costs.
+- question: How does Netflix's recommendation algorithm work?
+  answer: 'Netflix uses a three-layer architecture: offline systems train deep collaborative filtering models on viewing history, nearline systems update user embeddings seconds after interactions, and online systems respond in milliseconds using multi-armed bandits to balance exploration of new content against exploitation of known preferences.'
+- question: What is the exploration-exploitation tradeoff in recommendations?
+  answer: The exploration-exploitation tradeoff is the balance between recommending items users will likely enjoy (exploitation) versus surfacing new content they might not discover otherwise (exploration). Netflix measures this through "incrementality"—the causal effect of showing a recommendation compared to not showing it.
+- question: Why can't streaming services afford smarter AI recommendations?
+  answer: LLM-based recommendations cost orders of magnitude more than classical methods. A single LLM recommendation can consume thousands of tokens, while traditional collaborative filtering uses simple dot products costing fractions of a cent. At Netflix and Spotify scale, this cost difference makes full LLM inference economically impossible for every recommendation.
+- question: How does Spotify's AI DJ work?
+  answer: Spotify's AI DJ uses an "agentic router" that decides whether to invoke expensive LLM reasoning or fall back to fast keyword matching against collaborative filtering embeddings. Complex queries get the big model while simple ones get the fast path. Underneath sits a bandit framework called BaRT that balances familiar and new music recommendations.
 ---
 Hyperscalers spent over [$350 billion on AI infrastructure](https://www.goldmansachs.com/insights/articles/why-ai-companies-may-invest-more-than-500-billion-in-2026) in 2025 alone, with projections exceeding $500 billion in 2026. The trillion-dollar question is not whether machines can reason, but whether anyone can afford to let them. Hybrid recommender systems sit at the center of this tension. Large Language Models promised to transform how Netflix suggests your next show or how Spotify curates your morning playlist. Instead, the industry has split into two parallel universes, divided not by capability but by cost.
 
@@ -46,22 +58,3 @@ Not everyone is convinced the algorithms are making us better off. My own [analy
 The risk is that we build hybrid recommender systems that are technically brilliant but experientially hollow, engineering away the serendipity that made discovery meaningful in the first place. The recommender is becoming a curator, and the curator is becoming an agent. The architecture will keep evolving — foundation models for recommendations, reinforcement learning from human feedback applied to discovery, inference costs that continue their [10× annual decline](https://a16z.com/llmflation-llm-inference-cost/) — but the open question for 2026 is whether we want to be the curators of our own lives, or merely consumers of an optimized feed.
 
 _Slides courtesy of "[A Multi-Armed Bandit Framework for Recommendations at Netflix](https://www.slideshare.net/slideshow/a-multiarmed-bandit-framework-for-recommendations-at-netflix/102629078)" by Jaya Kawale, Netflix._
-
-<!--
-FAQ Schema candidates:
-
-Q: What is a hybrid recommender system?
-A: A hybrid recommender system combines multiple recommendation approaches, typically using fast, cheap methods like collaborative filtering for candidate generation from millions of items, then invoking expensive LLM reasoning only for the final items users see. This funnel pattern balances recommendation quality against inference costs.
-
-Q: How does Netflix's recommendation algorithm work?
-A: Netflix uses a three-layer architecture: offline systems train deep collaborative filtering models on viewing history, nearline systems update user embeddings seconds after interactions, and online systems respond in milliseconds using multi-armed bandits to balance exploration of new content against exploitation of known preferences.
-
-Q: What is the exploration-exploitation tradeoff in recommendations?
-A: The exploration-exploitation tradeoff is the balance between recommending items users will likely enjoy (exploitation) versus surfacing new content they might not discover otherwise (exploration). Netflix measures this through "incrementality"—the causal effect of showing a recommendation compared to not showing it.
-
-Q: Why can't streaming services afford smarter AI recommendations?
-A: LLM-based recommendations cost orders of magnitude more than classical methods. A single LLM recommendation can consume thousands of tokens, while traditional collaborative filtering uses simple dot products costing fractions of a cent. At Netflix and Spotify scale, this cost difference makes full LLM inference economically impossible for every recommendation.
-
-Q: How does Spotify's AI DJ work?
-A: Spotify's AI DJ uses an "agentic router" that decides whether to invoke expensive LLM reasoning or fall back to fast keyword matching against collaborative filtering embeddings. Complex queries get the big model while simple ones get the fast path. Underneath sits a bandit framework called BaRT that balances familiar and new music recommendations.
--->
