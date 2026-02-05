@@ -1,23 +1,17 @@
 ---
 title: Building a No-Tracking Newsletter from Markdown to Distribution
-seoTitle: Building a No-Tracking Newsletter System
+seoTitle: "Build a No-Tracking Newsletter: Markdown to Email with Cloudflare"
 date: 2025-12-24
 lastmod: 2026-01-03
 images:
 - https://static.philippdubach.com/ograph/ograph-newsletter-setup.jpg
-description: Building a privacy-focused newsletter from Markdown to HTML with Cloudflare
-  Workers, KV storage, and Resend API.
+description: "Build a privacy-focused newsletter with Python, Cloudflare Workers KV, and Resend API. Zero tracking, zero cost, full control. Open source code included."
 keywords:
-- newsletter system
-- Cloudflare Workers
-- email API
-- privacy-focused email
-- markdown to html
-- KV storage
-- Resend API
 - self-hosted newsletter
-- no-tracking email
-- developer newsletter
+- Cloudflare Workers newsletter
+- no tracking newsletter email
+- Resend API email tutorial
+- markdown to HTML email Python
 tags:
 - Project
 categories:
@@ -179,3 +173,19 @@ You can find [my first newsletter here](https://static.philippdubach.com/newslet
   }
 })();
 </script>
+
+<!--
+FAQ Schema candidates:
+
+Q: How do I build a no-tracking newsletter?
+A: Build a Python script that renders Markdown to email-safe HTML, use Cloudflare Workers KV for subscriber storage, and send via Resend API. The email contains no tracking pixels and no click tracking. The HTML goes straight into the email body with only preview thumbnails hosted externally.
+
+Q: What does a self-hosted newsletter cost?
+A: Zero with free tiers. Cloudflare Workers has a generous free tier, Cloudflare R2 offers 10GB free storage, and Resend provides 3,000 emails per month free. The Python script runs locally or on any server you control.
+
+Q: How do I convert Markdown to HTML email?
+A: Use Python libraries like markdown2 and Beautiful Soup to render Markdown, fetch OpenGraph metadata for links, and generate table-based HTML (required for email client compatibility). Inline all CSS and optimize images for email (240px width for retina displays).
+
+Q: How do I store newsletter subscribers without a database?
+A: Cloudflare Workers KV provides key-value storage ideal for subscriber lists. POST to a /api/subscribe endpoint, validate the email address (RFC-compliant), apply rate limiting and honeypot spam protection, and store the email with timestamp in KV.
+-->

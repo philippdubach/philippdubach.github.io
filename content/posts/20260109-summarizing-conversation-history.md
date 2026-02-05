@@ -1,5 +1,6 @@
 ---
 title: "Beyond Vector Search: Why LLMs Need Episodic Memory"
+seoTitle: "LLM Memory Beyond Context Windows: Episodic and Graph Approaches"
 date: 2026-01-09
 lastmod: 2026-01-12
 categories:
@@ -8,13 +9,13 @@ categories:
 type: Essay
 images:
 - https://static.philippdubach.com/ograph/ograph-llm-memory2.jpg
-description: 'Explore cutting-edge approaches to LLM memory beyond context windows: from HeadKV attention optimization to EM-LLM''s brain-inspired architecture.'
+description: "Context windows aren't memory. Explore EM-LLM's episodic architecture, knowledge graph tools like Mem0 and Letta, and why vectors fail for sequential data."
 keywords:
-- LLM memory
-- AI conversation history
-- context window limitations
-- neural memory systems
-- chatbot memory
+- LLM memory architecture
+- episodic memory AI
+- knowledge graph LLM memory
+- vector database limitations RAG
+- KV cache optimization transformer
 draft: false
 ---
 You've seen this message before. Copilot pausing; In long sessions, it happens often enough that I started wondering what's actually going on in there. Hence this post.{{< img src="Summarizing_conversation_history.png" alt="Hierarchical memory architecture for LLM applications" width="40%" >}}The short answer: context windows grew larger. [Claude handles 200K tokens](https://platform.claude.com/docs/en/build-with-claude/context-windows), [Gemini claims a million](https://gemini.google/overview/long-context/). But bigger windows aren't memory. They're a larger napkin you throw away when dinner's over. 
@@ -28,3 +29,19 @@ What caught my attention is [EM-LLM](https://openreview.net/forum?id=BI2int5SAC)
 Here's what I keep coming back to: in any mature system, most of the graph will be memories of memories. You ask me my favorite restaurants, I think about it, answer, and now "that list I made" becomes its own retrievable thing. Next time someone asks about dinner plans, I don't re-derive preferences from first principles. I remember what I concluded last time. Psychologists say [this is how human recall actually works](https://www.taylorfrancis.com/books/mono/10.4324/9781315755854/working-memory-pierre-barrouillet-valérie-camos); you're not accessing the original, you're accessing the last retrieval. Gets a little distorted each time.
 
 Should the model control its own memory? Give it a "remember this" tool? I don't think so, not yet. [These things are overconfident](https://arxiv.org/abs/2505.02151). Maybe that changes. For now, memory probably needs to happen around the model, not through it. Eventually some learned architecture will make all this scaffolding obsolete. Train memory into the weights directly. I have no idea what that looks like. Sparse mixture of experts with overnight updates? Some forgotten recurrent trick? Right now it's all duct tape and cognitive science papers.{{< newsletter >}}
+
+<!--
+FAQ Schema candidates:
+
+Q: Why aren't bigger context windows true LLM memory?
+A: Context windows grew larger (Claude handles 200K tokens, Gemini claims a million), but bigger windows aren't memory. They're a larger napkin you throw away when dinner's over. True memory requires persistence across sessions, temporal awareness, and the ability to update facts over time, none of which context windows provide.
+
+Q: Why do vector databases fail for sequential conversation data?
+A: Vector databases embed content geometrically and retrieve by similarity, but sequences don't live naturally in vector space. Try encoding "first we did X, then Y happened, which caused Z." Additionally, facts that change over time cause problems: your database might confidently tell you Bonn is Germany's capital if you fed it the wrong decade of documents.
+
+Q: What is EM-LLM and how does it implement episodic memory?
+A: EM-LLM segments conversation into episodes using surprise detection: when something unexpected happens, that's a memory boundary. Retrieval pulls not just similar content but temporally adjacent content too. You don't just remember what you're looking for; you remember what happened next. Their event boundaries actually correlate with where humans perceive breaks in experience.
+
+Q: Should you give an LLM control of its own memory?
+A: Not yet. LLMs are overconfident, making them unreliable judges of what to remember. Memory probably needs to happen around the model, not through it. Eventually some learned architecture will make this scaffolding obsolete by training memory into the weights directly.
+-->

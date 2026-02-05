@@ -1,16 +1,16 @@
 ---
 title: "The Variance Tax"
-seoTitle: "The Variance Tax: How Variance Drain & Volatility Drag Erode Compound Returns"
+seoTitle: "The Variance Tax: How Volatility Drag Erodes Compound Returns"
 date: 2026-02-06
 publishDate: 2026-02-06T03:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-variance-tax.jpg
-description: 'Variance drain (volatility drag) is the hidden cost of volatility: why a portfolio averaging +10% can lose money. One formula — ½σ² — explains the gap between paper returns and real wealth.'
+description: "Variance drain is the hidden cost of volatility: why a portfolio averaging +10% can lose money. The ½σ² formula explains the gap between paper and real returns."
 keywords:
 - variance drain
 - volatility drag
 - geometric vs arithmetic returns
-- leveraged ETFs
+- leveraged ETF decay
 - Kelly criterion
 categories:
 - Finance

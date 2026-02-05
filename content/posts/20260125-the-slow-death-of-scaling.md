@@ -1,16 +1,17 @@
 ---
 title: The Most Expensive Assumption in AI
+seoTitle: "AI Scaling Laws Hit Diminishing Returns: The Trillion-Dollar Bet"
 date: 2026-01-26
 publishDate: 2026-01-26T00:10:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-scaling.jpg
-description: 'Sara Hooker''s research challenges the trillion-dollar scaling thesis. Compact models now outperform massive ones as diminishing returns hit AI.'
+description: "Sara Hooker's research challenges the trillion-dollar scaling thesis. Compact models now outperform massive ones as diminishing returns hit AI."
 keywords:
 - AI scaling laws
 - diminishing returns AI
-- LLM efficiency
-- compute scaling limits
+- small vs large language models
 - Sara Hooker scaling
+- AI infrastructure investing
 categories:
 - Finance
 - Tech
@@ -36,3 +37,19 @@ Shorting the scaling thesis has been a widow-maker trade for the better part of 
 >We can only see a short distance ahead, but we can see plenty there that needs to be done.
 
 As Alan Turing put it, and Hooker quotes approvingly. The scaling era produced real capabilities alongside real capital misallocation. What comes next is genuinely uncertain. That uncertainty cuts both ways.
+
+<!--
+FAQ Schema candidates:
+
+Q: Are AI scaling laws showing diminishing returns?
+A: Evidence suggests yes. Sara Hooker's research shows that compact models like Llama-3 8B now outperform massive predecessors like Falcon 180B. Scaling laws only reliably predict pre-training test loss, not actual downstream performance. The jump from GPT-4 to GPT-5 shows marginal improvements requiring careful measurement, unlike the obvious qualitative leaps from GPT-1 to GPT-4.
+
+Q: Can smaller AI models outperform larger ones?
+A: Yes. Llama-3 8B outperforms Falcon 180B, and Aya 23 8B beats BLOOM 176B despite having only 4.5% of the parameters. This is not an isolated fluke but a systematic trend visible in Open LLM Leaderboard submissions over two years.
+
+Q: What are hedge funds betting on AI scaling?
+A: Hedge fund short interest in utilities now sits at the 99th percentile relative to the past five years, according to Goldman Sachs data. The bet appears to be that AI data center demand may not materialize as expected. Names like Bloom Energy, Oracle, and various AI-adjacent plays are showing up on heavily-shorted lists.
+
+Q: What comes after the AI scaling era?
+A: As scaling hits diminishing returns, the skills that matter shift toward algorithmic cleverness, data quality, and architectural innovation rather than brute-force compute. Frontier labs are incorporating classical symbolic tools that run on CPUs, not GPUs. Ilya Sutskever has publicly stated that "we need to go back to the age of research."
+-->

@@ -2,11 +2,12 @@
 title = "Does AI mean the demand on labor goes up?"
 seoTitle = "The AI Productivity Paradox: Why Efficiency Makes Us Work More"
 date = 2026-01-15
-description = "AI was supposed to free us. Instead, the Jevons paradox is playing out in real time—efficiency expands the workload, not the leisure. The AI productivity paradox, explained."
-keywords = ["AI productivity paradox", "Jevons paradox artificial intelligence", "AI increasing workload", "AI augmented work productivity", "future of work AI efficiency", "Parkinson's law AI", "Keynes 15 hour work week"]
+description = "AI was supposed to free us. The Jevons paradox plays out in real time: efficiency expands workload, not leisure. 77% of workers say AI added to their work."
+keywords = ["AI productivity paradox", "Jevons paradox AI", "AI increasing workload", "future of work AI", "Parkinson's law AI"]
 images = ["https://static.philippdubach.com/ograph/0005.png"]
 categories = ["AI"]
 type = "Commentary"
+draft = false
 +++
 
 [Joe Weisenthal](https://x.com/TheStalwart/status/2011418760813629738) from Bloomberg, this week:
@@ -26,3 +27,19 @@ Keynes predicted a [15-hour work week](http://www.econ.yale.edu/smith/econ116a/k
 If AI makes me 10x more productive, that's not 10x more free time. That's 10x more I *could* be doing. In a competitive environment—founding, climbing, anything with stakes—someone who uses that 10x while I rest will outrun me. The fear was displacement. The reality might be inescapability.
 
 [Parkinson's Law](https://en.wikipedia.org/wiki/Parkinson%27s_law#First_meaning): work expands to fill time available. The AI corollary: work expands to fill capabilities available. More capability means more possibility—and more obligation. We should know where this points.
+
+<!--
+FAQ Schema candidates:
+
+Q: What is the AI productivity paradox?
+A: The AI productivity paradox describes how tools that make individual tasks faster often increase total workload rather than freeing up time. Research shows 77% of employees say AI tools have added to their workload, and workers in AI-exposed occupations now work roughly 3 extra hours per week while leisure time has dropped by the same amount.
+
+Q: How does the Jevons paradox apply to AI?
+A: The Jevons paradox, observed in 1865 when more efficient steam engines increased coal consumption rather than reducing it, applies to AI in that efficiency expands what we're expected to do. When you can build an app in a weekend that used to take months, you don't build one—you build six. The friction that once protected us from infinite expectations evaporates.
+
+Q: Why didn't AI give us the shorter work week economists predicted?
+A: Keynes predicted a 15-hour work week by now, and we got the productivity gains he anticipated—yet we work longer hours than ever. Only 21% of employees use time saved by AI for personal life; the rest reinvest it into work. When capability expands, so does the definition of "enough," and the bar rises accordingly.
+
+Q: What is Parkinson's Law for AI?
+A: Parkinson's Law states that work expands to fill the time available. The AI corollary is that work expands to fill capabilities available. More capability means more possibility—and more obligation. In competitive environments, someone who uses that expanded capability while you rest will outrun you.
+-->

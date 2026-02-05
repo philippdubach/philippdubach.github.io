@@ -1,15 +1,16 @@
 ---
 title: "RSS Swipr: Find Blogs Like You Find Your Dates"
+seoTitle: "ML-Powered RSS Reader: Thompson Sampling Beats the Filter Bubble"
 date: 2026-01-05
 images:
 - https://static.philippdubach.com/ograph/ograph-rss-swipr.jpg
-description: Build a swipe-based RSS reader that learns your preferences. Open-source app using MPNet embeddings and Thompson sampling for personalized content discovery.
+description: "Build an open-source ML RSS reader with swipe interface. Uses MPNet embeddings and Thompson sampling for personalized feeds that escape the filter bubble."
 keywords:
-- RSS reader machine learning
-- content filtering algorithm
-- MPNet embeddings
-- Thompson sampling
-- personalized news feed
+- machine learning RSS reader
+- Thompson sampling recommendation
+- MPNet sentence embeddings
+- personalized RSS Python open source
+- filter bubble RSS alternative
 categories:
 - AI
 type: Project
@@ -81,3 +82,19 @@ python app.py
 ```
 
 The [full source](https://github.com/philippdubach/rss-swipr) and [Colab notebook](https://colab.research.google.com/drive/1XjnAuwF3naPElKH9yZ3UEdslzN7qAUrQ?usp=sharing) are available on GitHub.
+
+<!--
+FAQ Schema candidates:
+
+Q: How does machine learning improve RSS readers?
+A: Traditional RSS readers show all articles chronologically without filtering. An ML-powered RSS reader uses sentence embeddings (like MPNet) to understand article content semantically, then trains on your swipe behavior to predict preferences. This achieves 75.4% ROC-AUC accuracy in surfacing content you actually want to read.
+
+Q: What is Thompson sampling in recommendation systems?
+A: Thompson sampling balances exploration and exploitation in recommendations. It shows predicted-good content 80% of the time (exploit) while randomly introducing unexpected articles 20% of the time (explore). This prevents filter bubbles and lets the model discover when your interests change.
+
+Q: Can you build a personalized RSS reader in Python?
+A: Yes. Using Flask, SQLite, and sentence-transformers (MPNet), you can build a local RSS reader that learns preferences from swipe interactions. Training happens on Google Colab's free GPU tier. The entire system runs locally with zero infrastructure cost and no cloud dependencies.
+
+Q: How do sentence embeddings work for content recommendation?
+A: Sentence embeddings convert article titles and descriptions into 768-dimensional vectors that capture semantic meaning. Similar articles cluster together in this vector space. A Hybrid Random Forest classifier then learns which regions of this space match your preferences based on your voting history.
+-->

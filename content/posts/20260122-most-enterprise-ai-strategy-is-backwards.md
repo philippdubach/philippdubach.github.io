@@ -1,14 +1,16 @@
 ---
 title: Enterprise AI Strategy is Backwards
+seoTitle: "Why 85% of Enterprise AI Projects Fail: The Coordination Layer"
 date: 2026-01-22
 images:
 - https://static.philippdubach.com/ograph/ograph-ai-strat-backwards.jpg
-description: 85% of AI projects fail to reach production. New data reveals why enterprise AI strategy is backwards and what winners do differently.
+description: "85% of AI projects fail. Only 26% translate pilots to production. The winners automate the coordination layer where employees spend 57% of their workday."
 keywords:
-- enterprise AI strategy
-- AI implementation failure
-- coordination layer automation
-- business process AI
+- enterprise AI failure
+- AI implementation strategy
+- coordination layer AI
+- AI pilot to production
+- workplace AI productivity
 categories:
 - AI
 - Economics
@@ -39,3 +41,19 @@ Three observations:
 The coordination layer isn't glamorous. It's transcripts, status updates, action items, CRM entries. It's the administrative exhaust of getting anything done with other people. And it's almost entirely composed of language. We have language models now. Models that extract structured data from messy transcripts, convert meeting notes into CRM fields with 99% accuracy. Sales teams using these tools report 30% higher win rates and 80% less manual work.
 
 Yet most enterprise AI strategies ignore this entirely. They're focused on chatbots and demos for board presentations. Meanwhile, the language processing that constitutes the primary workload of any modern business remains stuck in the same recursive loops. The winners won't be companies with great AI announcements. They'll be the ones building daily habits early enough for the gains to stack.
+
+<!--
+FAQ Schema candidates:
+
+Q: Why do 85% of enterprise AI projects fail?
+A: Most enterprises layer AI on legacy workflows instead of redesigning them. Only 26% of companies have the maturity to translate AI pilots into production outcomes. The remaining 74% focus on chatbots and board presentations while ignoring the coordination layer where employees spend 57% of their workday.
+
+Q: What is the coordination layer in enterprise work?
+A: The coordination layer consists of transcripts, status updates, action items, CRM entries, and administrative tasks required to get work done with other people. It's almost entirely composed of language, making it ideal for language models, yet most AI strategies ignore it entirely.
+
+Q: How much does workplace coordination cost?
+A: The average employee spends 57% of their workday on coordination tasks including communicating, updating, and aligning. Meetings alone cost the US economy $532 billion per year. This is where organizations quietly bleed productivity and where AI can deliver measurable returns.
+
+Q: What do successful enterprise AI strategies focus on?
+A: Winning companies use AI to extract structured data from messy human communication, converting meeting transcripts to CRM fields with 99% accuracy. Sales teams using these tools report 30% higher win rates and 80% less manual work. AI gains compound when knowledge capture becomes shareable across the organization.
+-->

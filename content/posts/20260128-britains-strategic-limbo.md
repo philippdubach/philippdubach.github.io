@@ -1,6 +1,6 @@
 ---
 title: "Britain's Strategic Limbo"
-seoTitle: "UK Defense Dilemma: Locked Out of US and EU Coalitions"
+seoTitle: "UK Defense Post-Brexit: Locked Out of US and EU Coalitions"
 date: 2026-01-28
 publishDate: 2026-01-28T03:00:00Z
 images:
@@ -35,3 +35,22 @@ The [IISS analysis](https://www.iiss.org/research-paper/2025/12/the-safe-regulat
 [Canada's pivot](https://philippdubach.com/posts/the-rise-of-middle-power-realism/) is instructive. Facing similar pressure from Washington, Carney diversified, joining SAFE, negotiating with Beijing, building horizontal coalitions with other middle powers. Britain has done none of this. It refused the Board of Peace on principle but hasn't found an alternative structure to join on pragmatism.
 
 Principles without alternatives is just isolation. The UK is learning what it means to be a middle power without a coalition, morally opposed to the new American order but structurally excluded from the European one.
+
+<!--
+FAQ Schema candidates:
+
+Q: Why is Britain excluded from the EU SAFE defense fund?
+A: The UK rejected SAFE membership in late 2025 over cost and sovereignty concerns. The EU demanded €6-6.5 billion in participation fees, plus strict limits on non-EU subcontractors (15-35% of contract value). London viewed these requirements as an infringement on sovereignty, the same concerns that drove Brexit now locking Britain out of European defense architecture.
+
+Q: What is Britain's strategic position after Brexit?
+A: Britain finds itself without a bloc. It refused Trump's transactional "Board of Peace" on principle while remaining excluded from EU defense cooperation. The "mid-Atlantic bridge" strategy assumed both the US and EU wanted Britain as an intermediary, but now the US treats allies as protection rackets and the EU is building walls around its defense industrial base.
+
+Q: Can UK defense companies still access EU contracts after SAFE rejection?
+A: UK firms retain limited "third country" access to SAFE-funded projects, capped at 35% of component value as minority subcontractors. However, procurement cycles last decades, so structural exclusion now means the gap widens with each passing year. The IISS analysis warns this will erode the UK defense industrial base over time.
+
+Q: Why did Canada get SAFE access but not the UK?
+A: Canada negotiated SAFE participation successfully in late 2025, gaining preferential treatment on par with EU firms. The UK's negotiations broke down because London refused the sovereignty constraints that Canada accepted. This contrast highlights how "principles without alternatives is just isolation."
+
+Q: What are Britain's alternatives to EU defense cooperation?
+A: Britain's options are limited. It can align with Washington and accept Trump's transactional terms, align with Brussels and accept sovereignty constraints, or go it alone with a defense budget that cannot sustain independent capability against peer competitors. NATO membership remains, but the alliance faces its own tensions with US leadership.
+-->

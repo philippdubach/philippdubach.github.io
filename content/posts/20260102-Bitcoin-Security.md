@@ -1,5 +1,6 @@
 ---
 title: Bitcoin Security
+seoTitle: "Bitcoin 51% Attack: $6.77B Cost and the Derivatives Loophole"
 date: 2026-01-02
 categories:
 - Finance
@@ -8,19 +9,13 @@ type: Commentary
 images:
 - https://static.philippdubach.com/ograph/ograph-bitcoin-security.jpg
 external_url: https://hal.science/hal-04616643v1
-description: A 2024 paper calculates $6.77B buys majority hash power. Bitcoin derivatives
-  create profit incentives for block-reverting attacks.
+description: "Academic paper finds Bitcoin 51% attack costs $6.77B. Derivatives enable attack profits via shorting. Analysis of why attacks haven't happened yet."
 keywords:
-- Bitcoin
-- 51% attack
-- cryptocurrency security
-- Bitcoin derivatives
-- proof of work
-- selfish mining
-- blockchain security
-- hash rate
-- Bitcoin futures
-- crypto trading
+- Bitcoin 51% attack cost
+- Bitcoin derivatives security risk
+- proof of work security economics
+- cryptocurrency double spend attack
+- Bitcoin hash rate attack
 draft: false
 aliases:
 - /2026/01/02/bitcoin-security/
@@ -46,4 +41,20 @@ The paper's contribution, in my opinion, is making explicit what the derivatives
 {{< img src="bitcoin_attack_scale1.png" alt="Log scale comparison showing attack costs of $2.9-6.8B versus $2T monthly derivatives volume and $1.78T market cap" width="80%" >}}
 The next halving arrives in April 2028. Mining rewards drop to 1.5625 BTC per block. Miners whose equipment is fully depreciated might view an attack as an exit strategy, particularly if they can monetize it through derivatives. Some large miners are already [pivoting to AI data center hosting](https://www.wsj.com/tech/ai/bitcoin-miners-thrive-off-a-new-side-hustle-retooling-their-data-centers-for-ai-bdc408a9), suggesting they see diminishing returns from mining alone. Core Scientific plans to exit Bitcoin mining entirely by 2028.
 
-What actually prevents this attack? Probably the practical difficulties Rosenthal identifies rather than any fundamental economic barrier. The market should price these risks but appears not to. Bitcoin trades as if 51% attacks are theoretical rather than economically viable. That may remain true as long as practical obstacles hold. 
+What actually prevents this attack? Probably the practical difficulties Rosenthal identifies rather than any fundamental economic barrier. The market should price these risks but appears not to. Bitcoin trades as if 51% attacks are theoretical rather than economically viable. That may remain true as long as practical obstacles hold.
+
+<!--
+FAQ Schema candidates:
+
+Q: How much would a 51% attack on Bitcoin cost?
+A: According to a 2024 paper by Farokhnia and Goharshady, acquiring over 50% of Bitcoin's hash rate would cost approximately $6.77 billion in hardware. With only 30% of hash power, an attacker could achieve 95% success probability within 34 days at a cost of about $2.9 billion. These figures represent less than 0.5% of Bitcoin's market cap.
+
+Q: Can someone profit from attacking Bitcoin through derivatives?
+A: Yes, theoretically. The attack pays for itself if an attacker shorts Bitcoin through futures or options before crashing its price. Monthly Bitcoin derivatives volume on unregulated exchanges exceeds $2 trillion, providing sufficient liquidity to monetize a price crash. However, practical obstacles exist: a leveraged short held for 34 days has high probability of liquidation given Bitcoin's volatility.
+
+Q: Do you need 51% of hash power to attack Bitcoin successfully?
+A: No. The 2024 paper challenges this common assumption. With 30% of Bitcoin's hash power, an attacker has over 95% probability of reverting six blocks within 34 days. Six confirmations is the finality standard most practitioners rely on, meaning less than majority control can still compromise transaction finality.
+
+Q: What actually prevents a 51% attack on Bitcoin?
+A: Practical obstacles rather than fundamental economic barriers. Acquiring 43% of the pre-attack hash rate requires roughly two years of Bitmain's production capacity. Power requirements approach 9.5 gigawatts. Short positions face liquidation risk during the weeks-long attack period. The market appears to rely on these practical constraints rather than the theoretical unprofitability of attacks.
+--> 
