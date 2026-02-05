@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{/* FAQ Category Page - aggregates FAQs from posts in a specific category */}}
+{{ $category := .Params.category }}
+{{ $categoryLower := $category | lower }}
+
+{{/* Get all posts from the specified category that have FAQ data, sorted newest first */}}
+{{ $postsWithFAQ := slice }}
+{{ range where .Site.RegularPages "Section" "posts" }}
+    {{ if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) }}
+        {{ $postsWithFAQ = $postsWithFAQ | append . }}
+    {{ end }}
+{{ end }}
+{{ $postsWithFAQ = sort $postsWithFAQ ".Date" "desc" }}
+
+{{/* Build list of all FAQs with source attribution (newest posts first) */}}
+{{ $allFAQs := slice }}
+{{ range $postsWithFAQ }}
+    {{ $post := . }}
+    {{ range .Params.faq }}
+        {{ $faqItem := dict "question" .question "answer" .answer "sourceURL" $post.Permalink "sourceTitle" $post.Title "sourceDate" $post.Date }}
+        {{ $allFAQs = $allFAQs | append $faqItem }}
+    {{ end }}
+{{ end }}
+
+{{/* Cap at 20 FAQs for page performance and indexing */}}
+{{ $faqCount := len $allFAQs }}
+{{ $postCount := len $postsWithFAQ }}
+{{ $displayFAQs := first 20 $allFAQs }}
+{{ $displayCount := len $displayFAQs }}
+
+<article class="faq-page">
+    <header class="faq-header">
+        <nav class="faq-breadcrumb" aria-label="Breadcrumb">
+            <a href="{{ "/" | relURL }}">Home</a> &rsaquo;
+            <a href="{{ "/faq/" | relURL }}">FAQ</a> &rsaquo;
+            <span>{{ .Title }}</span>
+        </nav>
+        <h1>{{ .Title }}</h1>
+        {{ if gt $faqCount $displayCount }}
+        <p class="faq-meta">{{ $displayCount }} most recent of {{ $faqCount }} questions from {{ $postCount }} posts about {{ $category | lower }}</p>
+        {{ else }}
+        <p class="faq-meta">{{ $displayCount }} questions from {{ $postCount }} posts about {{ $category | lower }}</p>
+        {{ end }}
+        {{ with .Params.description }}
+        <p class="faq-description">{{ . }}</p>
+        {{ end }}
+    </header>
+
+    <div class="faq-list">
+        {{ range $displayFAQs }}
+        {{- $slug := .question | anchorize }}
+        <div id="{{ $slug }}" class="faq-item">
+            <h2 class="faq-question">{{ .question }}</h2>
+            <div class="faq-answer">
+                <p>{{ .answer | truncate 200 }}</p>
+            </div>
+            <p class="faq-source">
+                <a href="{{ .sourceURL }}">Read full answer in: {{ .sourceTitle }}</a>
+            </p>
+        </div>
+        {{ end }}
+    </div>
+</article>
+
+{{/* FAQPage Schema - JSON-LD structured data (full answers for AI search) */}}
+{{ if gt $displayCount 0 }}
+{{- $pageURL := .Permalink }}
+{{- $mainEntity := slice }}
+{{- range $displayFAQs }}
+{{- $slug := .question | anchorize }}
+{{- $questionItem := dict "@type" "Question" "name" .question "url" (printf "%s#%s" $pageURL $slug) "acceptedAnswer" (dict "@type" "Answer" "text" .answer) }}
+{{- $mainEntity = $mainEntity | append $questionItem }}
+{{- end }}
+{{- $schema := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $mainEntity }}
+<script type="application/ld+json">
+{{ $schema | jsonify | safeJS }}
+</script>
+{{ end }}
+
+{{ end }}

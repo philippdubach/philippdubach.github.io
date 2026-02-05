@@ -1,26 +1,17 @@
 ---
 title: Novo Nordisk's Post-Patent Strategy
 date: 2025-06-29
+draft: false
 images:
 - https://static.philippdubach.com/ograph/ograph-post.jpg
-description: 'Novo Nordisk''s post-Ozempic strategy: promising Phase 1 results for
-  amycretin showing 24.3% weight loss and a diversified pipeline approach.'
+seoTitle: "Amycretin Weight Loss Results: Novo Nordisk After Ozempic"
+description: "Amycretin's Phase 1 data shows 24.3% weight loss, beating Wegovy and Zepbound. How Novo Nordisk plans to replace its $20B Ozempic franchise before 2031."
 keywords:
-- Novo Nordisk
+- amycretin weight loss
+- Novo Nordisk pipeline
 - Ozempic patent expiration
-- amycretin
-- weight loss drug
-- semaglutide
-- GLP-1 receptor
-- pharmaceutical pipeline
-- drug development
-- Wegovy
-- obesity treatment
-- Phase 1 results
-- patent cliff
-- biotech investment
-- pharmaceutical manufacturing
-- Eli Lilly competition
+- amycretin vs Wegovy
+- Novo Nordisk stock analysis
 external_url: https://www.thelancet.com/journals/lancet/article/PIIS0140-6736%2825%2901185-7/
 categories:
 - Medicine
@@ -29,6 +20,17 @@ type: Commentary
 aliases:
 - /2025/06/29/novo-nordisks-post-patent-strategy/
 
+faq:
+- question: How much weight loss does amycretin achieve compared to Wegovy and Zepbound?
+  answer: In Phase 1b/2a trials published in The Lancet, injectable amycretin delivered 24.3% average weight loss at the highest dose over 36 weeks, compared to 1.1% for placebo. This outperforms both Wegovy (approximately 15% weight loss) and Eli Lilly's Zepbound (approximately 22.5%). The oral version achieved 13.1% weight loss in just 12 weeks, with patients still losing weight when the trial ended.
+- question: How does amycretin work differently from semaglutide (Ozempic/Wegovy)?
+  answer: 'Amycretin is a dual-pathway drug that combines semaglutide''s GLP-1 receptor activation with amylin receptor agonism. While semaglutide alone slows gastric emptying and reduces appetite through GLP-1 signaling, amycretin adds amylin''s complementary satiety signals, meaning both the gut and the brain''s appetite control center receive simultaneous "stop eating" messages. This dual mechanism explains the greater weight loss observed in trials.'
+- question: When will amycretin be FDA approved and available?
+  answer: Amycretin's injectable version completed Phase 1b/2a trials in 2025, with Phase 3 trials expected to begin in 2026. Based on typical drug development timelines, FDA approval could come around 2030-2031, aligning with the expiration of Ozempic's core US patent in December 2031. Novo Nordisk has not announced a specific target approval date.
+- question: What happens to Novo Nordisk when the Ozempic patent expires?
+  answer: Ozempic's core US patent expires in December 2031, but Novo Nordisk has multiple defenses. Manufacturing GLP-1 compounds requires specialized peptide production capabilities and patented injection devices that create a significant capacity constraint. Even after patent expiration, generic manufacturers would need years to build sufficient manufacturing infrastructure, giving Novo time to transition patients to next-generation drugs like amycretin while potentially lowering prices to maintain market share.
+- question: What does amycretin's dose-response data tell us about future trials?
+  answer: 'The Phase 1b/2a data showed overlapping weight-loss curves across different dose groups (20 mg: -22.0%, 5 mg: -16.2%, 1.25 mg: -9.7%), suggesting amycretin may reach its maximum effect at relatively low doses. Since gastrointestinal side effects were dose-dependent but efficacy curves overlapped, this supports using the lowest effective dose in Phase 3 trials, which could improve tolerability while maintaining strong weight-loss results.'
 ---
 Novo Nordisk, a long time member of my "regrets" stock list, has become [reasonably affordable lately (-48% yoy)](https://finance.yahoo.com/quote/NVO/chart/). Part of the reason being that they currently sit atop a ~$20 billion Ozempic/Wegovy franchise that faces [patent expiration in 2031](https://journals.library.columbia.edu/index.php/stlr/blog/view/653). That's roughly seven years to replace their blockbuster drug. We revisit them today, since per [newly published Lancet data](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)01185-7/fulltext), Novo's lead replacement candidate—amycretin—just posted some genuinely impressive Phase 1 results. The injectable version delivered [24.3% average weight loss versus 1.1% for placebo](https://www.thelancet.com/cms/10.1016/S0140-6736(25)01185-7/asset/6f4ec048-c12e-4185-a860-a2dc988746c4/main.assets/gr3_lrg.jpg), beating both current market leaders (Wegovy at 15% and Lilly's Zepbound at 22.5%). Even the oral version hit 13.1% weight loss in just 12 weeks, with patients still losing weight when the trial ended.
 

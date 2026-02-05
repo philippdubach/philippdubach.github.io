@@ -8,6 +8,25 @@ keywords = ["Mark Carney Davos 2026 speech", "middle power foreign policy", "Don
 categories = ["Commentary"]
 type = "Commentary"
 draft = false
+[[faq]]
+question = "What is middle power realism?"
+answer = "Middle power realism is a foreign policy framework articulated by Canadian PM Mark Carney at Davos 2026. It's built on three observations: the US is no longer a reliable partner, nostalgia for the pre-2016 order is dangerous, and sovereignty requires the capacity to say no. Middle powers must build domestic strength, diversify partnerships even with rivals, and form horizontal coalitions to avoid being \"on the menu.\""
+
+[[faq]]
+question = "What did Mark Carney say at Davos 2026?"
+answer = "Using Václav Havel's greengrocer parable, Carney argued that US allies have been displaying signs of a liberal order that doesn't actually exist. He declared the world has experienced \"a rupture, not a transition,\" and called on middle powers to stop pretending and instead build autonomous capacity. The speech received a rare standing ovation."
+
+[[faq]]
+question = "What is the Donroe Doctrine?"
+answer = "The Donroe Doctrine is a portmanteau of \"Donald\" and \"Monroe,\" describing Trump's policy of asserting American hegemony over the Western Hemisphere through economic coercion, military pressure, and territorial ambitions. It treats allies as protection rackets and international law as an impediment to American interests."
+
+[[faq]]
+question = "Why did Canada join the EU SAFE defense fund?"
+answer = "Canada became the first non-European G7 nation to join SAFE, the EU's €150 billion joint defense procurement fund. Canadian firms now have preferential access to the European defense market, treated on par with EU companies. The move exemplifies middle power realism: diversifying partnerships to maintain leverage and sovereignty."
+
+[[faq]]
+question = "Why is the UK excluded from SAFE while Canada was accepted?"
+answer = "The UK remains excluded from SAFE due to post-Brexit negotiating failures and sovereignty concerns over the strict \"Buy European\" provisions. Canada accepted the constraints; the UK didn't. Britain now finds itself in strategic limbo: alienated from Washington's transactional approach, locked out of European defense architecture."
 +++
 
 At Davos 2026, Canadian Prime Minister [Mark Carney](https://en.wikipedia.org/wiki/Mark_Carney) delivered a speech that received something rare at these gatherings: a standing ovation. Carney told the assembled elites what they already knew but hadn't said aloud: [the world is not in a "transition" but a "rupture."](https://www.weforum.org/stories/2026/01/davos-2026-special-address-by-mark-carney-prime-minister-of-canada/)
@@ -35,22 +54,3 @@ There's a strange inversion happening in the international system. At Davos, [Ch
 The term _"middle power"_ has always been slightly embarrassing, an admission of limits, a confession that you're not at the top table. But there's a realism emerging in these countries that the great powers lack. They can't afford illusions about the international system because they don't control it. They have to see clearly or get crushed.
 
 Carney's greengrocer metaphor cuts both ways. Yes, taking down the sign exposes the illusion. But it also means operating without the protection the illusion provided. The grocer who removes the slogan faces consequences. So do countries. Canada is betting it can navigate between giants, trading with China, defending alongside Europe, maintaining what leverage it has with Washington. The EU is betting it can build autonomous defense capacity fast enough to matter. Japan, Australia, and others are making similar calculations, hedging relationships that used to be taken for granted.
-
-<!--
-FAQ Schema candidates:
-
-Q: What is middle power realism?
-A: Middle power realism is a foreign policy framework articulated by Canadian PM Mark Carney at Davos 2026. It's built on three observations: the US is no longer a reliable partner, nostalgia for the pre-2016 order is dangerous, and sovereignty requires the capacity to say no. Middle powers must build domestic strength, diversify partnerships even with rivals, and form horizontal coalitions to avoid being "on the menu."
-
-Q: What did Mark Carney say at Davos 2026?
-A: Using Václav Havel's greengrocer parable, Carney argued that US allies have been displaying signs of a liberal order that doesn't actually exist. He declared the world has experienced "a rupture, not a transition," and called on middle powers to stop pretending and instead build autonomous capacity. The speech received a rare standing ovation.
-
-Q: What is the Donroe Doctrine?
-A: The Donroe Doctrine is a portmanteau of "Donald" and "Monroe," describing Trump's policy of asserting American hegemony over the Western Hemisphere through economic coercion, military pressure, and territorial ambitions. It treats allies as protection rackets and international law as an impediment to American interests.
-
-Q: Why did Canada join the EU SAFE defense fund?
-A: Canada became the first non-European G7 nation to join SAFE, the EU's €150 billion joint defense procurement fund. Canadian firms now have preferential access to the European defense market, treated on par with EU companies. The move exemplifies middle power realism: diversifying partnerships to maintain leverage and sovereignty.
-
-Q: Why is the UK excluded from SAFE while Canada was accepted?
-A: The UK remains excluded from SAFE due to post-Brexit negotiating failures and sovereignty concerns over the strict "Buy European" provisions. Canada accepted the constraints; the UK didn't. Britain now finds itself in strategic limbo: alienated from Washington's transactional approach, locked out of European defense architecture.
--->

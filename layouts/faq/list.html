@@ -1,0 +1,52 @@
+{{ define "main" }}
+{{/* FAQ Hub Page - lists all FAQ categories */}}
+
+<article class="faq-hub">
+    <header class="faq-header">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.description }}
+        <p class="faq-description">{{ . }}</p>
+        {{ end }}
+    </header>
+
+    <div class="faq-categories">
+        {{ range .Pages }}
+        {{ $category := .Params.category }}
+        {{ $categoryLower := $category | lower }}
+
+        {{/* Count FAQs for this category */}}
+        {{ $faqCount := 0 }}
+        {{ $postCount := 0 }}
+        {{ range where $.Site.RegularPages "Section" "posts" }}
+            {{ if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) }}
+                {{ $postCount = add $postCount 1 }}
+                {{ $faqCount = add $faqCount (len .Params.faq) }}
+            {{ end }}
+        {{ end }}
+
+        <div class="faq-category-card">
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <p class="faq-category-meta">{{ $faqCount }} questions from {{ $postCount }} posts</p>
+            {{ with .Params.description }}
+            <p class="faq-category-description">{{ . }}</p>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+
+    {{/* Show total stats */}}
+    {{ $totalFAQs := 0 }}
+    {{ $totalPosts := 0 }}
+    {{ range where .Site.RegularPages "Section" "posts" }}
+        {{ if .Params.faq }}
+            {{ $totalPosts = add $totalPosts 1 }}
+            {{ $totalFAQs = add $totalFAQs (len .Params.faq) }}
+        {{ end }}
+    {{ end }}
+
+    <p class="faq-hub-stats">
+        Browse {{ $totalFAQs }} frequently asked questions from {{ $totalPosts }} posts across all topics.
+    </p>
+</article>
+
+{{ end }}

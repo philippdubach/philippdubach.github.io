@@ -21,6 +21,15 @@ draft: false
 aliases:
 - /2025/12/30/apples-ai-bet-playing-the-long-game-or-missing-the-moment/
 
+faq:
+- question: Why is Apple using Google Gemini instead of building its own AI model?
+  answer: Apple views large language models as commodities not worth proprietary development costs. The revamped Siri will be powered by Google's Gemini through a deal worth $1 billion annually, running on Apple's Private Cloud Compute servers. This reflects Apple's bet that value flows to distribution and customer relationships rather than to model developers.
+- question: How does Apple's AI spending compare to other Big Tech companies?
+  answer: While Microsoft, Google, Amazon, and Meta are spending approximately $400 billion collectively on AI infrastructure in 2025, Apple has kept its powder dry with $157 billion in cash reserves. Apple's capital expenditure remains a fraction of competitors, betting that the AI spending bubble may deflate.
+- question: What is Apple's AI distribution advantage?
+  answer: Apple can push AI features through software updates to over 2.3 billion active devices. When Apple Intelligence features ship, they appear automatically across the installed base. This is the same advantage that made Apple Music competitive against Spotify and keeps Safari relevant despite Chrome's benchmarks.
+- question: Is Apple behind in AI or playing a long game?
+  answer: Evidence suggests Apple is making a calculated bet on LLM commoditization. API pricing has dropped 97% since GPT-3's launch, and DeepSeek proved frontier models can be built for a fraction of OpenAI's cost. Apple's $157 billion cash pile provides optionality to acquire capability if AI startups face funding crunches or to respond if someone achieves a breakthrough.
 ---
 [The Information](https://www.theinformation.com/articles/2026-predictions-apple-will-reverse-ai-slump) published a piece today arguing that Apple's restrained AI approach may finally pay off in 2026. The thesis: while OpenAI, Google, and Meta pour hundreds of billions into data centers and model training, Apple has kept its powder dry, sitting on [$157 billion in cash and marketable securities](https://www.apple.com/newsroom/2025/10/apple-reports-fourth-quarter-results/) as of Q4 2025. If the AI spending bubble deflates, Apple's position looks rather clever. This piqued my interest, from a strategy point of view: Apple hasn't been absent from AI. They've been making a specific bet that large language models will commoditize, and that value will flow to distribution and customer relationships rather than to whoever has the best model. The revamped Siri expected in spring 2026 will reportedly be powered by [Google's Gemini through a deal worth $1 billion annually](https://www.bloomberg.com/news/articles/2025-11-05/apple-plans-to-use-1-2-trillion-parameter-google-gemini-model-to-power-new-siri). The custom Gemini model will run on Apple's Private Cloud Compute servers.
 {{< img src="ai_capex_comparison.png" alt="Big Tech AI Capital Expenditure 2023-2025" width="80%" >}}
@@ -37,19 +46,3 @@ But the AI investment boom resembles previous cycles. Enormous capital flowing i
 The spring Siri update will matter. Reports that [Apple employees have concerns about performance in early iOS 26.4 builds](https://9to5mac.com/2025/10/19/apple-employees-concerned-by-early-ios-26-4-apple-intelligence-sir-version/) aren't encouraging. But Apple delayed the launch multiple times, suggesting they're trying to get it right rather than shipping half-baked.
 
 Apple's $157 billion cash pile provides optionality. If AI startups face a funding crunch, Apple can acquire capability. If someone achieves a breakthrough, Apple has resources to respond. Apple has preserved its options.
-
-<!--
-FAQ Schema candidates:
-
-Q: Why is Apple using Google Gemini instead of building its own AI model?
-A: Apple views large language models as commodities not worth proprietary development costs. The revamped Siri will be powered by Google's Gemini through a deal worth $1 billion annually, running on Apple's Private Cloud Compute servers. This reflects Apple's bet that value flows to distribution and customer relationships rather than to model developers.
-
-Q: How does Apple's AI spending compare to other Big Tech companies?
-A: While Microsoft, Google, Amazon, and Meta are spending approximately $400 billion collectively on AI infrastructure in 2025, Apple has kept its powder dry with $157 billion in cash reserves. Apple's capital expenditure remains a fraction of competitors, betting that the AI spending bubble may deflate.
-
-Q: What is Apple's AI distribution advantage?
-A: Apple can push AI features through software updates to over 2.3 billion active devices. When Apple Intelligence features ship, they appear automatically across the installed base. This is the same advantage that made Apple Music competitive against Spotify and keeps Safari relevant despite Chrome's benchmarks.
-
-Q: Is Apple behind in AI or playing a long game?
-A: Evidence suggests Apple is making a calculated bet on LLM commoditization. API pricing has dropped 97% since GPT-3's launch, and DeepSeek proved frontier models can be built for a fraction of OpenAI's cost. Apple's $157 billion cash pile provides optionality to acquire capability if AI startups face funding crunches or to respond if someone achieves a breakthrough.
--->

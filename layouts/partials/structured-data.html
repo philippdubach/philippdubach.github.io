@@ -27,6 +27,7 @@
   {{- $sameAs := slice -}}
   {{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
   {{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+  {{- with .Site.Params.social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
   {{- $sameAs = $sameAs | append "https://scholar.google.com/citations?user=-69oS2wAAAAJ" -}}
   {{- $sameAs = $sameAs | append "https://www.researchgate.net/profile/Philipp-Dubach" -}}
   "sameAs": {{ $sameAs | jsonify }},
@@ -190,10 +191,24 @@
     "sameAs": [
       "https://github.com/philippdubach",
       "https://bsky.app/profile/philippdubach.com",
+      "https://x.com/philippdubach",
       "https://scholar.google.com/citations?user=-69oS2wAAAAJ"
     ]
   }
   {{ end }}
 }
 </script>
+
+{{/* FAQPage Schema - for posts with FAQ frontmatter */}}
+{{ with .Params.faq }}
+{{- $mainEntity := slice }}
+{{- range . }}
+{{- $questionItem := dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer) }}
+{{- $mainEntity = $mainEntity | append $questionItem }}
+{{- end }}
+{{- $schema := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $mainEntity }}
+<script type="application/ld+json">
+{{ $schema | jsonify | safeJS }}
+</script>
+{{ end }}
 {{ end }}

@@ -40,7 +40,6 @@ a^*=x-b^*
 $$
 
 Full block:
-
 \[
 \begin{aligned}
 KL(\hat{y} || y) &= \sum_{c=1}^{M}\hat{y}_c \log{\frac{\hat{y}_c}{y_c}} \\

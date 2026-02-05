@@ -20,6 +20,15 @@ aliases:
 - /2025/11/23/is-ai-really-eating-the-world-1/2/
 - /2025/11/23/is-ai-really-eating-the-world/
 
+faq:
+- question: Is generative AI a true platform shift like mobile and cloud?
+  answer: Based on historical patterns, generative AI appears to be the next platform shift following mainframes (1960s-70s), PCs (1980s), web (1990s), and smartphones (2000s-2010s). However, the range of outcomes spans from "just more software" to something more fundamental. The hyperscalers are spending $400 billion in 2025 on AI infrastructure, more than global telecommunications capex, which signals they believe this is a platform shift.
+- question: Are AI models becoming commoditized?
+  answer: Evidence strongly suggests yes. When ChatGPT launched in November 2022, OpenAI had a massive quality advantage. Today, dozens of models cluster around similar performance. DeepSeek proved that $500 million can build a frontier model, and OpenAI's API pricing has dropped 97% since GPT-3's launch, with costs declining by an order of magnitude annually.
+- question: Where will value accrue in the AI stack?
+  answer: Current evidence points toward value flowing up the stack to applications rather than to model providers. Consulting firms are booking billions in AI contracts, but the revenue comes from integration, change management, and process redesign rather than from the models themselves. Accenture alone expects $3 billion in GenAI bookings for fiscal 2025.
+- question: What does enterprise AI adoption actually look like?
+  answer: Software development has seen massive adoption with 92% of developers using AI coding tools. Marketing generates ad assets at scale, and customer support has attracted investment. Beyond these areas, adoption is scattered. McKinsey data shows most AI agents remain in pilot stages, with 40% of CIOs not expecting production deployment until 2026 or later.
 ---
 In August 2011, Marc Andreessen wrote ["Why Software Is Eating the World"](https://a16z.com/why-software-is-eating-the-world/), an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, [Benedict Evans](https://www.ben-evans.com/benedictevans/2014/1/18/a16z), a former a16z partner, gave a presentation on generative AI three years after ChatGPT's launch. His argument in short:
 
@@ -44,19 +53,3 @@ But I think here's where Evans' "we don't know" approach misses something import
 The standard pattern for deploying technology goes in stages: (1) Absorb it (make it a feature, automate obvious tasks). (2) Innovate (create new products, unbundle incumbents). (3) Disrupt (redefine what the market is). We're mostly in stage one. Stage two is happening in pockets. [Y Combinator's recent batches are overwhelmingly AI-focused](https://www.ycombinator.com/companies), betting on thousands of new companies unbundling existing software (startups are attacking specific enterprise problems like converting COBOL to Java or reconfiguring telco billing systems). Stage three remains speculative. From an economic perspective, there's the automation question: do you do the same work with fewer people, or more work with the same people? This echoes debates about [labor-augmenting technical change](https://en.wikipedia.org/wiki/Technological_change#Labor-augmenting_technological_change) in economics. Companies whose competitive advantage was "we can afford to hire enough people to do this" face real pressure. Companies whose advantage was unique data, customer relationships, or distribution may get stronger. This is standard economic analysis of labor-augmenting technical change, and it probably holds here too.
 
 _Continue reading [Is AI Really Eating the World? AGI, Networks, and Value [2/2]](/posts/is-ai-really-eating-the-world-agi-networks-value-2/2/)_
-
-<!--
-FAQ Schema candidates:
-
-Q: Is generative AI a true platform shift like mobile and cloud?
-A: Based on historical patterns, generative AI appears to be the next platform shift following mainframes (1960s-70s), PCs (1980s), web (1990s), and smartphones (2000s-2010s). However, the range of outcomes spans from "just more software" to something more fundamental. The hyperscalers are spending $400 billion in 2025 on AI infrastructure, more than global telecommunications capex, which signals they believe this is a platform shift.
-
-Q: Are AI models becoming commoditized?
-A: Evidence strongly suggests yes. When ChatGPT launched in November 2022, OpenAI had a massive quality advantage. Today, dozens of models cluster around similar performance. DeepSeek proved that $500 million can build a frontier model, and OpenAI's API pricing has dropped 97% since GPT-3's launch, with costs declining by an order of magnitude annually.
-
-Q: Where will value accrue in the AI stack?
-A: Current evidence points toward value flowing up the stack to applications rather than to model providers. Consulting firms are booking billions in AI contracts, but the revenue comes from integration, change management, and process redesign rather than from the models themselves. Accenture alone expects $3 billion in GenAI bookings for fiscal 2025.
-
-Q: What does enterprise AI adoption actually look like?
-A: Software development has seen massive adoption with 92% of developers using AI coding tools. Marketing generates ad assets at scale, and customer support has attracted investment. Beyond these areas, adoption is scattered. McKinsey data shows most AI agents remain in pilot stages, with 40% of CIOs not expecting production deployment until 2026 or later.
--->

@@ -19,6 +19,18 @@ categories:
 - Economics
 type: Commentary
 draft: false
+
+faq:
+- question: Is the illiquidity premium in private equity still worth it?
+  answer: AQR's 2026 capital market assumptions show U.S. buyouts returning 4.2% versus 3.9% for public equities. That's a 30 basis point premium for accepting years of lockup, unpredictable capital calls, and manager selection risk. For most investors outside top-quartile funds, the premium that justified alternatives allocation has been competed away.
+- question: What are expected private equity returns in 2026?
+  answer: According to AQR's 2026 capital market assumptions, expected real returns for U.S. buyouts are 4.2% over the next 5-10 years. Private credit is even lower at 2.6%, down 0.5 percentage points year-over-year as spreads narrowed. These returns barely exceed public market alternatives when adjusted for illiquidity and fees.
+- question: How much does manager selection matter in private equity?
+  answer: 'Manager selection is critical. In venture capital, top decile managers generate 31.7% IRR while bottom decile managers return negative 7%. The spread between winners and losers is enormous. But this dispersion is precisely why average returns have compressed: access to top-tier funds is limited, and everyone else fights over what remains.'
+- question: Why has the private equity return premium compressed?
+  answer: Too much capital chased the same opportunities. When every pension fund, endowment, and sovereign wealth fund allocates 20-30% to alternatives, the returns that made them attractive get arbitraged away. The money didn't find alpha; it became beta with a lockup.
+- question: Why do institutional investors still allocate to private equity?
+  answer: 'Access to companies you can''t reach in public markets. 87% of U.S. companies with more than $100 million in revenue are now private. Value creation has shifted earlier: for 2020-2023 IPOs, 55% of median value was created in private markets versus just 12% for 2014-2019 IPOs. But access isn''t the same as returns.'
 ---
 The pitch used to be simple: accept illiquidity, get rewarded. Lock up your capital for seven years, tolerate capital calls and J-curves, and in exchange you'd earn returns that public markets couldn't touch. It was the defining bargain of institutional investing for two decades.
 
@@ -33,22 +45,3 @@ The counterargument, and it's a reasonable one, is that private markets offer ex
 Value creation has moved earlier in the company lifecycle. For IPOs between 2014-2019, only **12% of median value** was created in private markets. For 2020-2023 IPOs, that number jumped to **55%**. If you want to capture returns from the next generation of important companies, you probably need private market exposure.{{< img src="a16z-value-creation-shift-private.png" alt="Return potential has shifted to private markets: median value created in private markets went from 12% for 2014-2019 IPOs to 55% for 2020-2023 IPOs" width="80%" >}}The question really is what you're paying for it.At 4.2% expected returns versus 3.9% for public equities, you're paying in liquidity and flexibility for almost nothing in expected return. The premium that justified the allocation model has been competed away. If you're in the top 5% of venture funds earning 60%+ IRR, none of this applies. For everyone else, the world has moved on.
 
 {{< disclaimer type="finance" >}}
-
-<!--
-FAQ Schema candidates:
-
-Q: Is the illiquidity premium in private equity still worth it?
-A: AQR's 2026 capital market assumptions show U.S. buyouts returning 4.2% versus 3.9% for public equities. That's a 30 basis point premium for accepting years of lockup, unpredictable capital calls, and manager selection risk. For most investors outside top-quartile funds, the premium that justified alternatives allocation has been competed away.
-
-Q: What are expected private equity returns in 2026?
-A: According to AQR's 2026 capital market assumptions, expected real returns for U.S. buyouts are 4.2% over the next 5-10 years. Private credit is even lower at 2.6%, down 0.5 percentage points year-over-year as spreads narrowed. These returns barely exceed public market alternatives when adjusted for illiquidity and fees.
-
-Q: How much does manager selection matter in private equity?
-A: Manager selection is critical. In venture capital, top decile managers generate 31.7% IRR while bottom decile managers return negative 7%. The spread between winners and losers is enormous. But this dispersion is precisely why average returns have compressed: access to top-tier funds is limited, and everyone else fights over what remains.
-
-Q: Why has the private equity return premium compressed?
-A: Too much capital chased the same opportunities. When every pension fund, endowment, and sovereign wealth fund allocates 20-30% to alternatives, the returns that made them attractive get arbitraged away. The money didn't find alpha; it became beta with a lockup.
-
-Q: Why do institutional investors still allocate to private equity?
-A: Access to companies you can't reach in public markets. 87% of U.S. companies with more than $100 million in revenue are now private. Value creation has shifted earlier: for 2020-2023 IPOs, 55% of median value was created in private markets versus just 12% for 2014-2019 IPOs. But access isn't the same as returns.
--->
