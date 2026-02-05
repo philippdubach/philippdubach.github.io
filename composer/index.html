@@ -1199,14 +1199,10 @@ def hello():
                     })
                 });
                 
-                if (!response.ok) {
-                    throw new Error('Failed to generate SEO');
-                }
-                
                 const data = await response.json();
-                
-                if (data.error) {
-                    throw new Error(data.error);
+
+                if (!response.ok || data.error) {
+                    throw new Error(data.error || 'Unknown error occurred');
                 }
                 
                 // Update fields
