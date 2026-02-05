@@ -51,5 +51,3 @@ Allow: /
 # Sitemap
 Sitemap: {{ .Site.BaseURL }}sitemap.xml
 
-# LLMs.txt
-LLMsTxt: {{ .Site.BaseURL }}llms.txt
