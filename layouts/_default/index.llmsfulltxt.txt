@@ -22,7 +22,7 @@ Independent researcher and strategy consultant specializing in quantitative fina
 ### [{{ .Page.Title }}]({{ .Page.Permalink }})
 Published: {{ .Page.Date.Format "2006-01-02" }}
 Description: {{ .Page.Params.description }}
-Summary: {{ .Page.Summary | plainify | strings.TrimSpace }}
+Summary: {{ .Page.Summary | plainify | chomp }}
 
 {{ end }}
 {{- end -}}
