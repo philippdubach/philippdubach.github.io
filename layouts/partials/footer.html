@@ -60,9 +60,9 @@
             }
 
             if (data.hits && data.hits.length > 0) {
-                // Filter to only blog posts (paths starting with /posts/) - belt & suspenders
+                // Filter to only blog posts with valid titles - belt & suspenders
                 var blogPosts = data.hits.filter(function(hit) {
-                    return hit.path && hit.path.startsWith('/posts/');
+                    return hit.path && hit.path.startsWith('/posts/') && hit.title && hit.title.trim() !== '';
                 });
                 if (blogPosts.length === 0) {
                     setDiscovery('Latest', latestPath, latestTitle);
