@@ -1180,53 +1180,76 @@ def hello():
         // Auto SEO Generation
         async function generateSEO() {
             const originalText = DOM.seoBtn.innerHTML;
-            
+
             if (bodyContent.trim().length < 50) {
                 showToast('Write more content first (at least 50 characters)');
                 return;
             }
-            
+
             DOM.seoBtn.disabled = true;
             DOM.seoBtn.innerHTML = '<span class="spinner"></span>Generating...';
-            
-            try {
-                const response = await fetch('/generate-seo', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        title: frontmatter.title || 'Untitled',
-                        content: bodyContent
-                    })
-                });
-                
-                const data = await response.json();
 
-                if (!response.ok || data.error) {
-                    throw new Error(data.error || 'Unknown error occurred');
+            try {
+                let response;
+                try {
+                    response = await fetch('/generate-seo', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            title: frontmatter.title || 'Untitled',
+                            content: bodyContent
+                        })
+                    });
+                } catch (networkError) {
+                    throw new Error('Network error. Check your connection.');
                 }
-                
-                // Update fields
-                if (data.title && !frontmatter.title) {
+
+                // Try to parse JSON response
+                let data;
+                try {
+                    data = await response.json();
+                } catch (parseError) {
+                    // CORS block or non-JSON response
+                    if (!response.ok) {
+                        if (response.status === 403) {
+                            throw new Error('Access denied. Try refreshing.');
+                        } else if (response.status === 429) {
+                            throw new Error('Rate limit exceeded. Try again later.');
+                        } else if (response.status >= 500) {
+                            throw new Error('Server error. Try again later.');
+                        }
+                        throw new Error(`Request failed (${response.status})`);
+                    }
+                    throw new Error('Invalid response from server');
+                }
+
+                // Check for error in response body
+                if (!response.ok || data.error) {
+                    throw new Error(data.error || `Request failed (${response.status})`);
+                }
+
+                // Update fields with validated data
+                if (data.title && typeof data.title === 'string' && !frontmatter.title) {
                     frontmatter.title = data.title;
                 }
-                if (data.description) {
+                if (data.description && typeof data.description === 'string') {
                     frontmatter.description = data.description;
                 }
                 if (data.keywords && Array.isArray(data.keywords)) {
-                    frontmatter.keywords = data.keywords;
+                    frontmatter.keywords = data.keywords.filter(k => typeof k === 'string');
                 }
-                
+
                 syncFieldsFromFrontmatter();
                 updatePreview();
                 saveToLocalStorage();
-                
+
                 // Open SEO section
                 document.getElementById('seo-section').classList.add('open');
-                
+
                 showToast('SEO metadata generated!');
             } catch (error) {
                 console.error('SEO generation error:', error);
-                showToast('Failed to generate SEO: ' + error.message);
+                showToast('SEO failed: ' + error.message);
             } finally {
                 DOM.seoBtn.disabled = false;
                 DOM.seoBtn.innerHTML = originalText;

@@ -87,6 +87,9 @@ async function fetchTopPosts(env) {
     const path = hit.path;
     if (!path) return false;
 
+    // Must have a valid title (GoatCounter sometimes returns empty titles)
+    if (!hit.title || hit.title.trim() === '') return false;
+
     // Must be a blog post
     if (!path.startsWith('/posts/')) return false;
 
