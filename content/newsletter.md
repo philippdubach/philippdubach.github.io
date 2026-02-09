@@ -110,4 +110,4 @@ A monthly email with my latest writing on quantitative finance, AI infrastructur
 })();
 </script>
 
-Alternatively, you can also subscribe to the [RSS feed](/index.xml) or get updates on [Bluesky](https://bsky.app/profile/philippdubach.com) or [X (Twitter)](https://x.com/philippdubach).
+Alternatively, you can also subscribe to the [RSS feed](/index.xml) or get updates on [Bluesky](https://bsky.app/profile/philippdubach.com).

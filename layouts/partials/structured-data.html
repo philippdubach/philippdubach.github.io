@@ -10,29 +10,33 @@
   "inLanguage": "{{ .Site.Language.Lang | default "en" }}",
   "publisher": {
     "@type": "Person",
-    "name": "{{ .Site.Params.author }}"
+    "name": "{{ .Site.Params.author }}",
+    "url": "{{ .Site.BaseURL }}about/"
   }
 }
 </script>
 {{ end }}
 
-{{/* Person Schema - About page for E-E-A-T signals */}}
+{{/* ProfilePage + Person Schema - About page for E-E-A-T signals */}}
 {{ if eq .RelPermalink "/about/" }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "{{ .Site.Params.author }}",
-  "url": "{{ .Site.BaseURL }}about/",
-  {{- $sameAs := slice -}}
-  {{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
-  {{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
-  {{- with .Site.Params.social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
-  {{- $sameAs = $sameAs | append "https://scholar.google.com/citations?user=-69oS2wAAAAJ" -}}
-  {{- $sameAs = $sameAs | append "https://www.researchgate.net/profile/Philipp-Dubach" -}}
-  "sameAs": {{ $sameAs | jsonify }},
-  "jobTitle": "Strategy Consultant & Independent Researcher",
-  "knowsAbout": {{ .Site.Params.keywords | jsonify }}
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author }}",
+    "url": "{{ .Site.BaseURL }}about/",
+    {{- $sameAs := slice -}}
+    {{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+    {{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+    {{- with .Site.Params.social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
+    {{- $sameAs = $sameAs | append "https://scholar.google.com/citations?user=-69oS2wAAAAJ" -}}
+    {{- $sameAs = $sameAs | append "https://www.researchgate.net/profile/Philipp-Dubach" -}}
+    "sameAs": {{ $sameAs | jsonify }},
+    "jobTitle": "Strategy Consultant & Independent Researcher",
+    "knowsAbout": {{ .Site.Params.keywords | jsonify }}
+  }
 }
 </script>
 {{ end }}
@@ -113,14 +117,43 @@
 </script>
 {{ end }}
 
+{{/* BreadcrumbList for section and taxonomy pages */}}
+{{ if and (not .IsPage) (not .IsHome) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}
+
 {{/* Article Structured Data - Enhanced for GEO */}}
 {{ if .IsPage }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "{{ if eq .Params.type "Project" }}TechArticle{{ else if eq .Type "post" }}BlogPosting{{ else }}Article{{ end }}",
+  "@type": "{{ if eq .Params.type "Project" }}TechArticle{{ else if eq .Params.type "Essay" }}Article{{ else if eq .Params.type "Review" }}Review{{ else }}BlogPosting{{ end }}",
   "headline": "{{ .Title }}",
   "name": "{{ .Title }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
   "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
   {{ if .Params.keywords }}
   "keywords": [{{ range $i, $keyword := .Params.keywords }}{{ if $i }}, {{ end }}"{{ $keyword }}"{{ end }}],
@@ -188,6 +221,7 @@
     "@type": "Person",
     "name": "{{ .Site.Params.author }}",
     "url": "{{ .Site.BaseURL }}about/",
+    "knowsAbout": {{ .Site.Params.keywords | jsonify }},
     "sameAs": [
       "https://github.com/philippdubach",
       "https://bsky.app/profile/philippdubach.com",

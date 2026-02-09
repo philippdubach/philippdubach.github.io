@@ -4,7 +4,7 @@
 {{- $class := .Get "class" | default "" -}}
 {{- $width := .Get "width" | default "80%" -}}
 {{- $imgWidth := .Get "imgWidth" | default "1200" -}}
-{{- $imgHeight := .Get "imgHeight" | default "auto" -}}
+{{- $imgHeight := .Get "imgHeight" | default "630" -}}
 {{- $priority := .Get "priority" | default "false" -}}
 {{- $id := printf "%s-%d" (replace (replace $src "/" "-") "." "-") .Ordinal -}}
 {{- $sizes := $width -}}

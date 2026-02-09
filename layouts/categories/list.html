@@ -31,8 +31,12 @@
     {{ else }}
     {{/* Individual category page */}}
     <h1>{{ .Title }}</h1>
-    
-    <p class="category-description">{{ len .Pages }} posts</p>
+
+    {{ with .Content }}
+    <div class="archive-description">{{ . }}</div>
+    {{ end }}
+
+    <p class="category-post-count">{{ len .Pages }} posts</p>
     
     {{ $posts := .Pages.ByDate.Reverse }}
     {{ range $posts.GroupByDate "2006" }}
@@ -57,6 +61,14 @@
         {{ end }}
     </section>
     {{ end }}
+    {{/* Cross-category navigation */}}
+    <nav class="category-nav" aria-label="Browse other categories">
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        {{ if ne $taxonomy.Page.Title $.Title }}
+        <a href="{{ $taxonomy.Page.Permalink }}">{{ $taxonomy.Page.Title }}</a>
+        {{ end }}
+        {{ end }}
+    </nav>
     {{ end }}
 </div>
 {{ end }}

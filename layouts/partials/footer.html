@@ -1,7 +1,7 @@
 {{/* Site Footer - appears on all pages */}}
 <footer class="site-footer" role="contentinfo">
     {{/* Post-specific footer content */}}
-    {{ if .IsPage }}
+    {{ if and .IsPage (not hugo.IsServer) }}
     {{- $posts := where .Site.RegularPages "Section" "posts" -}}
     {{- if gt (len $posts) 0 -}}
     {{- $latestPost := index $posts 0 -}}

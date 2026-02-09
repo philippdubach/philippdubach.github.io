@@ -10,7 +10,8 @@
         <nav class="navigation" aria-label="Main navigation">
             <ul>
                 {{ range .Site.Data.navigation.main }}
-                <li><a href="{{ .url }}"{{ if eq .name "Subscribe" }} class="nav-subscribe"{{ end }}>{{ .name }}</a></li>
+                {{ $isActive := or (eq $.RelPermalink .url) (and (ne .url "/") (hasPrefix $.RelPermalink .url)) }}
+                <li><a href="{{ .url }}"{{ if $isActive }} class="nav-active" aria-current="page"{{ else if eq .name "Subscribe" }} class="nav-subscribe"{{ end }}>{{ .name }}</a></li>
                 {{ end }}
             </ul>
         </nav>

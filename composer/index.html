@@ -1068,7 +1068,7 @@ def hello():
             text = text.replace(/\{\{<\s*table\s+([^>]+)\s*>\}\}/g, (match, attrs) => {
                 const src = attrs.match(/src=["']([^"']+)["']/)?.[1] || '';
                 const height = attrs.match(/height=["']([^"']+)["']/)?.[1] || '800px';
-                return `<div class="table-container"><iframe src="${STATIC_BASE}/html/${src}" style="width: 100%; height: ${height}; border: none;" loading="lazy"></iframe></div>`;
+                return `<div class="table-container"><iframe src="${STATIC_BASE}/html/${src}" style="width: 100%; height: ${height}; border: none;" loading="lazy" sandbox="allow-scripts"></iframe></div>`;
             });
             
             text = text.replace(/\{\{<\s*newsletter\s*>\}\}/g, () => {

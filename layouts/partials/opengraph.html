@@ -1,5 +1,6 @@
 {{/* Open Graph implementation */}}
-<meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+{{- $ogTitle := .Params.seoTitle | default .Title | default .Site.Title -}}
+<meta property="og:title" content="{{ $ogTitle }}">
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
