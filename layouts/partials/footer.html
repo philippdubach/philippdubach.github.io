@@ -1,7 +1,7 @@
 {{/* Site Footer - appears on all pages */}}
 <footer class="site-footer" role="contentinfo">
     {{/* Post-specific footer content */}}
-    {{ if and .IsPage (not hugo.IsServer) }}
+    {{ if and .IsPage (eq .Section "posts") (not hugo.IsServer) }}
     {{- $posts := where .Site.RegularPages "Section" "posts" -}}
     {{- if gt (len $posts) 0 -}}
     {{- $latestPost := index $posts 0 -}}
@@ -12,6 +12,10 @@
         <!-- Populated by JS: shows either Latest or Most Read -->
     </p>
     {{- end -}}
+    {{ end }}
+
+    {{ if not (and .IsPage (eq .Section "posts")) }}
+    <hr class="footer-divider" aria-hidden="true">
     {{ end }}
 
     {{/* Social Links - appears on all pages */}}
