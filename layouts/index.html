@@ -5,7 +5,7 @@
 {{ $posts := where $allPosts ".Params.type" "!=" "Project" }}
 {{ $posts := $posts.ByDate.Reverse }}
 
-<div class="home-test">
+<div class="home">
 
     <h1 class="home-heading">Quantitative Finance, AI & Technology</h1>
     <p class="home-intro">{{ .Site.Params.sidebar_description | default "Writing about quantitative finance, AI, and technology." }}</p>

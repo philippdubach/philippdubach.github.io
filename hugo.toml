@@ -62,9 +62,6 @@ enableGitInfo = true
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
 
-#[permalinks]
-#  posts = "/:year/:month/:day/:slug/"
-  
 [permalinks]
   posts = "/posts/:slug/"
 

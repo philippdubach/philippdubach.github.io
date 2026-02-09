@@ -186,19 +186,6 @@ blockquote p {
     text-decoration: none;
 }
 
-/* Subscribe link - subtle pill style */
-.navigation a.nav-subscribe {
-    background-color: #f5f5f5;
-    padding: 2px 6px;
-    border-radius: 3px;
-    margin-left: -6px;
-}
-
-.navigation a.nav-subscribe:hover {
-    background-color: #e9ecef;
-    text-decoration: none;
-}
-
 .social-links a {
     display: inline-block;
     margin-right: 1rem;
@@ -951,7 +938,7 @@ a.lightbox-overlay:target {
 
     .navigation a {
         display: block;
-        padding: 0.625rem 0;
+        padding: 0.35rem 0;
     }
 
     .navigation li {
@@ -1011,9 +998,9 @@ a.lightbox-overlay:target {
     }
     
     .navigation li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.15rem;
     }
-    
+
     .navigation a {
         font-size: 1rem;
     }
@@ -1392,11 +1379,6 @@ pre {
     border-radius: 0 4px 4px 0;
 }
 
-/* Hide disclaimers on homepage/list pages */
-.post-list-content .disclaimer {
-    display: none;
-}
-
 .disclaimer-content {
     font-size: 0.8rem;
     line-height: 1.5;
@@ -1531,17 +1513,6 @@ pre {
     text-decoration: underline;
 }
 
-@media (prefers-color-scheme: dark) {
-    .category-heading {
-        border-bottom-color: #333;
-    }
-    
-    .category-post-count,
-    .category-description {
-        color: #767676;
-    }
-}
-
 /* ===================================
    Site Footer
    =================================== */
@@ -1550,10 +1521,6 @@ pre {
     text-align: center;
     font-size: 0.9rem;
     color: #595959;
-}
-
-.post-footer {
-    margin-bottom: 0;
 }
 
 /* Post Taxonomy (Categories & Tags) */
@@ -1570,11 +1537,6 @@ pre {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-}
-
-.taxonomy-icon {
-    color: #767676;
-    flex-shrink: 0;
 }
 
 .taxonomy-group a {
@@ -1963,7 +1925,7 @@ pre {
    Home Test — Tab List Layout
    =================================== */
 
-.home-test {
+.home {
     padding-top: 0.25rem;
 }
 
@@ -2190,7 +2152,7 @@ pre {
    Home Test — Mobile
    =================================== */
 @media screen and (max-width: 768px) {
-    .container:has(.home-test) .site-description {
+    .container:has(.home) .site-description {
         display: none;
     }
 
