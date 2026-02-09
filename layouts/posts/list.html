@@ -24,9 +24,9 @@
                 {{ end }}
             </div>
         </header>
-        <div class="post-content post-list-content">
-            {{ .Content }}
-        </div>
+        {{ with .Description }}
+        <p class="post-excerpt">{{ . }}</p>
+        {{ end }}
     </article>
     {{ end }}
     

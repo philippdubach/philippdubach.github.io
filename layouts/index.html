@@ -1,31 +1,177 @@
 {{ define "main" }}
-<div class="archive">
-    <h1>Blog</h1>
-    <p class="archive-description">Go to <a href="/posts/">/posts/</a> for a paginated layout.</p>
-    
-    {{ $posts := where .Site.RegularPages "Section" "posts" }}
-    {{ $posts := $posts.ByDate.Reverse }}
-    {{ range $posts.GroupByDate "2006" }}
-    <section class="year">
-        <h2>{{ .Key }}</h2>
-        {{ range .Pages }}
-        <article class="archive-item">
-            <div class="archive-meta">
-                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                    {{ .Date.Format "Jan 2" }}
-                </time>
-            </div>
-            <div class="archive-title">
-                <a href="{{ .Permalink }}">
-                    {{ .Title }}
-                    {{ if eq .Params.type "Project" }}
-                       <span class="project-tag">PROJECT</span>
+{{ $allPosts := where .Site.RegularPages "Section" "posts" }}
+{{ $projects := where $allPosts ".Params.type" "Project" }}
+{{ $projects := $projects.ByDate.Reverse }}
+{{ $posts := where $allPosts ".Params.type" "!=" "Project" }}
+{{ $posts := $posts.ByDate.Reverse }}
+
+<div class="home-test">
+
+    <h1 class="home-heading">Quantitative Finance, AI & Technology</h1>
+    <p class="home-intro">{{ .Site.Params.sidebar_description | default "Writing about quantitative finance, AI, and technology." }}</p>
+
+    {{/* ===== TAB NAVIGATION ===== */}}
+    <nav class="home-tabs" role="tablist" aria-label="Content sections">
+        <button class="home-tab home-tab--active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="feed-blog"
+                data-target="feed-blog"
+                id="tab-blog">Articles ({{ len $posts }})</button>
+        <button class="home-tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="feed-projects"
+                data-target="feed-projects"
+                id="tab-projects">Projects ({{ len $projects }})</button>
+    </nav>
+
+    {{/* ===== BLOG FEED ===== */}}
+    <section class="home-feed home-feed--active"
+             id="feed-blog"
+             role="tabpanel"
+             aria-labelledby="tab-blog">
+        <div class="home-feed-list" id="blog-list" aria-live="polite">
+            {{ $blogScratch := newScratch }}
+            {{ $blogScratch.Set "prevYear" 0 }}
+            {{ range $i, $page := $posts }}
+            {{ $yearChanged := and (gt $i 0) (ne ($page.Date.Year) ($blogScratch.Get "prevYear")) }}
+            <article class="home-row" data-index="{{ $i }}">
+                <a href="{{ $page.Permalink }}" class="home-row-link">
+                    <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
+                    {{ with $page.Params.images }}
+                    <div class="home-row-thumb">
+                        <img src="{{ index . 0 }}"
+                             alt="{{ $page.Title }}"
+                             loading="{{ if lt $i 6 }}eager{{ else }}lazy{{ end }}"
+                             width="1200" height="630"
+                             decoding="async">
+                    </div>
                     {{ end }}
+                    <div class="home-row-body">
+                        <h2 class="home-row-title">{{ $page.Title }}</h2>
+                        {{ with $page.Params.description }}
+                        <p class="home-row-desc">{{ . }}</p>
+                        {{ end }}
+                        <span class="home-row-date-mobile">
+                            <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
+                        </span>
+                        <span class="home-row-reading">{{ $page.ReadingTime }} min read</span>
+                        {{ with $page.Params.categories }}<span class="home-row-cat">{{ index . 0 }}</span>{{ end }}
+                    </div>
                 </a>
-            </div>
-        </article>
+            </article>
+            {{ $blogScratch.Set "prevYear" ($page.Date.Year) }}
+            {{ end }}
+        </div>
+        {{ if gt (len $posts) 6 }}
+        <div class="home-divider" id="blog-divider">
+            <button class="home-divider-btn" data-target="blog-list" data-step="6">Load more posts</button>
+        </div>
         {{ end }}
     </section>
-    {{ end }}
+
+    {{/* ===== PROJECTS FEED ===== */}}
+    <section class="home-feed"
+             id="feed-projects"
+             role="tabpanel"
+             aria-labelledby="tab-projects">
+        <div class="home-feed-list" id="projects-list" aria-live="polite">
+            {{ $projScratch := newScratch }}
+            {{ $projScratch.Set "prevYear" 0 }}
+            {{ range $i, $page := $projects }}
+            {{ $yearChanged := and (gt $i 0) (ne ($page.Date.Year) ($projScratch.Get "prevYear")) }}
+            <article class="home-row" data-index="{{ $i }}">
+                <a href="{{ $page.Permalink }}" class="home-row-link">
+                    <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
+                    {{ with $page.Params.images }}
+                    <div class="home-row-thumb">
+                        <img src="{{ index . 0 }}"
+                             alt="{{ $page.Title }}"
+                             loading="lazy"
+                             width="1200" height="630"
+                             decoding="async">
+                    </div>
+                    {{ end }}
+                    <div class="home-row-body">
+                        <h2 class="home-row-title">{{ $page.Title }}</h2>
+                        {{ with $page.Params.description }}
+                        <p class="home-row-desc">{{ . }}</p>
+                        {{ end }}
+                        <span class="home-row-date-mobile">
+                            <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
+                        </span>
+                        <span class="home-row-reading">{{ $page.ReadingTime }} min read</span>
+                        {{ with $page.Params.categories }}<span class="home-row-cat">{{ index . 0 }}</span>{{ end }}
+                    </div>
+                </a>
+            </article>
+            {{ $projScratch.Set "prevYear" ($page.Date.Year) }}
+            {{ end }}
+        </div>
+        {{ if gt (len $projects) 6 }}
+        <div class="home-divider" id="projects-divider">
+            <button class="home-divider-btn" data-target="projects-list" data-step="6">Load more projects</button>
+        </div>
+        {{ end }}
+    </section>
+
 </div>
+
+<script>
+(function () {
+    'use strict';
+
+    /* Progressive disclosure: hide rows beyond first 6 via JS (SEO: all rows visible to crawlers) */
+    var lists = document.querySelectorAll('.home-feed-list');
+    for (var l = 0; l < lists.length; l++) {
+        var rows = lists[l].querySelectorAll('.home-row');
+        for (var r = 6; r < rows.length; r++) {
+            rows[r].classList.add('home-row--hidden');
+        }
+    }
+
+    /* Tab switching */
+    var tabs = document.querySelectorAll('.home-tab');
+    for (var t = 0; t < tabs.length; t++) {
+        tabs[t].addEventListener('click', function () {
+            for (var j = 0; j < tabs.length; j++) {
+                tabs[j].classList.remove('home-tab--active');
+                tabs[j].setAttribute('aria-selected', 'false');
+            }
+            this.classList.add('home-tab--active');
+            this.setAttribute('aria-selected', 'true');
+
+            var feeds = document.querySelectorAll('.home-feed');
+            var target = document.getElementById(this.getAttribute('data-target'));
+            for (var k = 0; k < feeds.length; k++) {
+                feeds[k].classList.remove('home-feed--active');
+            }
+            if (target) {
+                target.classList.add('home-feed--active');
+            }
+        });
+    }
+
+    /* Load more */
+    var dividers = document.querySelectorAll('.home-divider-btn');
+    for (var d = 0; d < dividers.length; d++) {
+        dividers[d].addEventListener('click', function () {
+            var list = document.getElementById(this.getAttribute('data-target'));
+            if (!list) return;
+            var step = parseInt(this.getAttribute('data-step'), 10);
+            var hidden = list.querySelectorAll('.home-row--hidden');
+            var count = Math.min(step, hidden.length);
+
+            for (var i = 0; i < count; i++) {
+                hidden[i].classList.remove('home-row--hidden');
+            }
+
+            if (list.querySelectorAll('.home-row--hidden').length === 0) {
+                this.parentElement.style.display = 'none';
+            }
+        });
+    }
+})();
+</script>
 {{ end }}

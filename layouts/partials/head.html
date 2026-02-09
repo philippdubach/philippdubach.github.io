@@ -6,10 +6,14 @@
     {{/* Content Security Policy - allows GoatCounter, MathJax CDN, and necessary scripts */}}
     {{/* Note: frame-ancestors directive only works via HTTP headers, not meta tags */}}
     {{/* Synced with static/_headers CSP - keep both in sync when updating */}}
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; base-uri 'self'; form-action 'self' https://newsletter-api.philippd.workers.dev; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; object-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self' https://newsletter-api.philippd.workers.dev; upgrade-insecure-requests;">
     
     {{/* Preconnect to external domains for faster resource loading */}}
     {{/* Note: preconnect implies dns-prefetch, so no need for both */}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&display=swap"></noscript>
     <link rel="preconnect" href="https://static.zgo.at" crossorigin>
     <link rel="preconnect" href="https://static.philippdubach.com" crossorigin>
     <link rel="preconnect" href="https://newsletter-api.philippd.workers.dev" crossorigin>

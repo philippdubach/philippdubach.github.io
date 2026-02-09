@@ -28,9 +28,9 @@
                 {{ end }}
             </h2>
         </header>
-        <div class="post-content">
-            {{ .Content }}
-        </div>
+        {{ with .Description }}
+        <p class="post-excerpt">{{ . }}</p>
+        {{ end }}
     </article>
     {{ end }}
     

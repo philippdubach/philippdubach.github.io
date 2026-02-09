@@ -52,7 +52,7 @@
         <div id="{{ $slug }}" class="faq-item">
             <h2 class="faq-question">{{ .question }}</h2>
             <div class="faq-answer">
-                <p>{{ .answer | truncate 200 }}</p>
+                <p>{{ .answer }}</p>
             </div>
             <p class="faq-source">
                 <a href="{{ .sourceURL }}">Read full answer in: {{ .sourceTitle }}</a>

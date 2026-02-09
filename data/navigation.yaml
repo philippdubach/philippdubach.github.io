@@ -1,12 +1,10 @@
 main:
-  - name: "Blog"
+  - name: "Articles"
     url: "/"
-  - name: "Projects"
-    url: "/projects/"
   - name: "Research"
     url: "/research/"
   - name: "Subscribe"
-    url: "/subscribe"
+    url: "/subscribe/"
   - name: "About"
     url: "/about/"
 

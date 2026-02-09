@@ -1,12 +1,13 @@
 {{ define "main" }}
-<article class="post single">
+<article class="post single{{ with .Section }} {{ . }}{{ end }}">
     <header class="post-header">
         <h1 class="post-title">
             {{ .Title }}
         </h1>
         {{ if not .Date.IsZero }}
         <div class="post-meta">
-            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            By <a href="/about/" class="post-author">{{ .Site.Params.author }}</a>
+            • <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
                 {{ .Date.Format "January 2, 2006" }}
             </time>
             • {{ .FuzzyWordCount }} words
@@ -25,5 +26,10 @@
 
 {{/* Related Posts */}}
 {{ partial "related.html" . }}
+
+{{/* Newsletter CTA */}}
+<aside class="post-newsletter-cta" aria-label="Newsletter signup">
+    <p>Enjoy this article? <a href="/subscribe/">Get new posts delivered monthly</a> — no tracking, unsubscribe anytime.</p>
+</aside>
 
 {{ end }}

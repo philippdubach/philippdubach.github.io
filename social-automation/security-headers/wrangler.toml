@@ -1,0 +1,9 @@
+name = "security-headers"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+# Route: all requests to philippdubach.com
+# More specific routes (e.g. /api/unsubscribe*) take precedence
+routes = [
+  { pattern = "philippdubach.com/*", zone_id = "196e2d71114ade4f3a276715b5bd1c8d" }
+]

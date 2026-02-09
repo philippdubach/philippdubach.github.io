@@ -5,6 +5,9 @@
     <span class="related-label" id="related-heading">Related:</span>
     <span class="related-links">
         {{ range $i, $post := $related }}{{ if $i }} · {{ end }}<a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>{{ end }}
+        {{ with $.Params.categories }}{{ $cat := index . 0 }}
+        <span class="related-category"> · <a href="/categories/{{ $cat | urlize }}/">More in {{ $cat }}</a></span>
+        {{ end }}
     </span>
 </aside>
 {{ end }}
