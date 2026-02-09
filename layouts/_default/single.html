@@ -24,12 +24,16 @@
     </div>
 </article>
 
-{{/* Related Posts */}}
-{{ partial "related.html" . }}
+{{ if eq .Section "posts" }}
+<hr class="footer-divider" aria-hidden="true">
 
 {{/* Newsletter CTA */}}
 <aside class="post-newsletter-cta" aria-label="Newsletter signup">
     <p>Enjoy this article? <a href="/subscribe/">Get new posts delivered monthly</a> — no tracking, unsubscribe anytime.</p>
 </aside>
+
+{{/* Related Posts */}}
+{{ partial "related.html" . }}
+{{ end }}
 
 {{ end }}
