@@ -10,11 +10,11 @@ const SECURITY_HEADERS = {
   // CSP with frame-ancestors (only works via HTTP header, not <meta>)
   'Content-Security-Policy':
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; " +
+    "script-src 'self' 'unsafe-inline' https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net https://static.cloudflareinsights.com; " +
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; " +
     "font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; " +
-    "connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net; " +
+    "connect-src 'self' https://philippdubach.goatcounter.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://static.zgo.at https://cdn.jsdelivr.net https://cloudflareinsights.com; " +
     "object-src 'none'; " +
     "worker-src 'self'; " +
     "manifest-src 'self'; " +
