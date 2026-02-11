@@ -1,10 +1,11 @@
 ---
 title: "The Long Volatility Premium"
 seoTitle: "Long Volatility Premium: Beta-Adjusted Tail Hedging as a Compensated Factor"
-date: 2026-02-10
-lastmod: 2026-02-10
+date: 2026-02-14
+lastmod: 2026-02-14
+publishDate: 2026-02-14T03:00:00Z
 images:
-- https://static.philippdubach.com/ograph/ograph-long-volatility-premium.jpg
+- https://static.philippdubach.com/ograph/ograph-long-volatility-premium3.jpg
 description: "One River's data shows beta-adjusted long volatility outperformed the S&P 500 over 40 years. Goldman, AQR, and Universa agree on the mechanism but disagree on implementation. A synthesis of the evidence."
 keywords:
 - long volatility premium
@@ -19,7 +20,7 @@ keywords:
 - Goldman Sachs tail risk
 - AQR tortoise hare hedging
 - CAIA tail risk comparison
-draft: true
+draft: false
 faq:
 - question: "What is the long volatility premium?"
   answer: "The long volatility premium is the claim that buying put options, when beta-adjusted to neutralize their embedded short-equity exposure, delivers a positive return over time rather than the negative return associated with raw put buying. Patrick Causley at One River Asset Management documented this over approximately 40 years of data, showing that a beta-1 portfolio with long volatility outperformed the S&P 500 while producing lower volatility and shallower drawdowns."
