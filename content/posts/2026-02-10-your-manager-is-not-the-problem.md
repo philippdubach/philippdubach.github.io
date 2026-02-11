@@ -1,10 +1,11 @@
 ---
 title: "Your Manager Is Not the Problem"
 seoTitle: "Why Managers Sabotage Top Talent: Harvard Study on Incentive Design and Status Threat"
-date: 2026-02-10
-lastmod: 2026-02-10
+date: 2026-02-15
+lastmod: 2026-02-15
+publishDate: 2026-02-15T03:00:00Z
 images:
-- https://static.philippdubach.com/ograph/ograph-manager-sabotage.jpg
+- https://static.philippdubach.com/ograph/ograph-manager-sabotage3.jpg
 description: "71% of executives have witnessed managers sabotaging talented employees. Harvard research shows status threat, not money, is the primary driver, and subjective evaluation discretion nearly doubles sabotage rates. The problem is incentive design, not character."
 keywords:
 - managerial sabotage research
@@ -17,7 +18,7 @@ keywords:
 - abusive supervision high performers
 - manager undermining talented employees
 - psychological safety workplace
-draft: true
+draft: false
 faq:
 - question: "How common is top-down sabotage by managers?"
   answer: "According to a 2024 Harvard Business School study by Zaman and Lakhani surveying 335 U.S. executives, 71% had witnessed top-down sabotage during their careers, 30% observed it in their current organization, 28% had been victims, and 5% admitted to sabotaging their own direct reports."
