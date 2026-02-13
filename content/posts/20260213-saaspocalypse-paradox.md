@@ -3,7 +3,6 @@ title: "The SaaSpocalypse Paradox"
 seoTitle: 'February 2026 Software Sell-Off: Why the SaaSpocalypse Is a Pricing Error'
 date: 2026-02-13
 lastmod: 2026-02-13
-publishDate: 2026-02-13T03:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-saaspocalypse-paradox3.jpg
 description: "The market is simultaneously pricing AI capex failure and AI destroying all software. Both cannot be true. A data-driven analysis of the February 2026 enterprise software sell-off, the hyperscaler sustainability question, and why Goldman Sachs, a16z, and the All-In pod see a 20x TAM expansion where the market sees extinction."
