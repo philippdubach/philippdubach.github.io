@@ -18,7 +18,7 @@ keywords:
 - GLP-1 wanting versus liking
 - Hendershot semaglutide AUD trial
 - Swedish registry GLP-1 alcohol study
-draft: false
+draft: true
 faq:
 - question: "Can GLP-1 drugs like Ozempic treat alcohol addiction?"
   answer: "Early evidence is promising. A Phase 2 RCT published in JAMA Psychiatry (Hendershot et al., 2025) found that semaglutide produced medium-to-large effect sizes for reduced alcohol consumption and cravings in 48 adults with alcohol use disorder, even at sub-therapeutic doses. A separate trial by Joseph Schacht found that participants on semaglutide halved their daily intake. However, no Phase 3 trials have been completed, and the longest RCT to date lasted only 9 weeks."
