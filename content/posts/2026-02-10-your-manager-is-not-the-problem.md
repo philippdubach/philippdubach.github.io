@@ -35,7 +35,7 @@ faq:
 
 Most people who've worked in a large organization have a story about a boss who buried a talented report. Withheld credit. Blocked a transfer. Gave the plum assignment to someone less capable. The standard explanation is character: some managers are insecure, petty, or incompetent. [New research from Harvard Business School](https://www.library.hbs.edu/working-knowledge/what-drives-managers-to-sabotage-talented-employees) suggests the standard explanation is wrong. The problem isn't bad people. It's rational behavior inside badly designed systems.
 
-## The Harvard study that put numbers on it
+## The Harvard study 
 
 [Hashim Zaman and Karim Lakhani](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941749) surveyed 335 U.S. corporate executives and ran a behavioral experiment. The headline numbers: **71%** had witnessed top-down sabotage during their careers. **30%** observed it in their current organization. **28%** had been victims. And **5%** openly admitted to doing it themselves, a number that, given the social desirability of not confessing to professional sabotage in a survey, almost certainly understates reality.
 
@@ -45,15 +45,15 @@ The behavioral experiment sharpened the finding. Under absolute performance pay,
 
 Here's where it gets structural. In firms using [relative performance evaluations](https://en.wikipedia.org/wiki/Relative_performance_evaluation) (RPEs) where managers had significant subjective discretion over identifying outperformers, the sabotage rate hit **46.8%**. In RPE firms without that discretion, it fell to **26.9%**. Giving managers the power to decide who counts as a top performer nearly doubles the rate at which they sabotage those performers. The discretion designed to make evaluation flexible becomes the weapon used to distort it. {{< img src="discretion-doubles-sabotage.png" alt="Side-by-side comparison showing sabotage rates in RPE firms: 26.9% with standardized criteria versus 46.8% with subjective managerial discretion, a 74% increase. Discretion nearly doubles sabotage." width="80%" >}}
 
-## The Salieri Syndrome is older than the data and worse than you think
+## The Salieri Syndrome 
 
 This isn't a new phenomenon, just a newly quantified one. [Duffy and Shaw (2000)](https://journals.sagepub.com/doi/abs/10.1177/104649640003100101) named it the Salieri Syndrome, after the court composer who, in the dramatized telling at least, recognized Mozart's genius and systematically undermined it while posing as a mentor. Their longitudinal study of 143 groups found that envy directly reduced group performance. More recently, [Yu, Duffy, and Tepper (2018)](https://www.researchgate.net/publication/320201015_Consequences_of_Downward_Envy_A_Model_of_Self-esteem_Threat_Abusive_Supervision_and_Supervisory_Leader_Self-improvement) demonstrated something previously assumed impossible: downward envy, where supervisors envy their own subordinates. Whether that envy became destructive or constructive depended on a single variable: whether the supervisor perceived the subordinate as warm or cold. Warmth channeled envy into self-improvement. Coldness channeled it into abuse.
 
-## The best people leave first, and the math is brutal
+## The best people leave first
 
 The organizational costs are not subtle. [Gallup](https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx) estimates that poor management costs the U.S. economy between **$960 billion and $1.2 trillion per year**, and that **75%** of voluntary turnover traces to managerial issues. The mechanism is selective attrition: talented employees have options and exercise them first. The mediocre stay. [Ingrid Hägele's research](https://www.brianheger.com/talent-hoarding-in-organizations-two-researched-based-studies/) at LMU Munich found that when managers are temporarily rotated out, applications for internal promotions from their teams jump **123%**. That number implies a vast, ongoing suppression of mobility that's invisible until you remove the bottleneck. {{< img src="sabotage-organizational-cost.png" alt="Data table showing organizational costs of managerial sabotage: $960B–1.2T annual U.S. cost, 75% of turnover manager-driven, 123% jump in internal applications when hoarding managers rotate out, and managers who develop talent attract 8.9% more applications" width="80%" >}}
 
-## What actually works: structure, not inspiration
+## Structure vs inspiration
 
 The contrarian read on all of this: we've spent decades building management training programs, leadership development curricula, and corporate values posters that treat sabotage as a character deficiency. The data says it's an incentive problem. You don't fix incentive problems with inspirational messaging.
 
