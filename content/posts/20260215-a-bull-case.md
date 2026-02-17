@@ -3,7 +3,6 @@ title: "The Impossible Backhand"
 seoTitle: "The AI Quality Ceiling: Why Domain Expertise Is Appreciating"
 date: 2026-02-17
 lastmod: 2026-02-17
-publishDate: 2026-02-17T03:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-ai-scaling-walls1.jpg
 description: "AI converges to the mean by design. On Humanity's Last Exam, top AI scores 37.5% vs human experts at 90%. The data says domain expertise is appreciating."
