@@ -30,7 +30,7 @@ keywords:
 - net job creation AI
 - AI-native companies San Francisco
 - white collar job displacement AI
-draft: false
+draft: true
 faq:
 - question: "Will AI create more jobs than it destroys?"
   answer: "History suggests yes. Goldman Sachs research based on Autor, Chin, Salomons, and Seegmiller shows over 60% of current US employment is in occupations that did not exist in 1940. SVB data confirms the pattern across every major platform shift: internet and email, smartphones, and e-commerce each displaced one set of tasks while creating demand for new ones. The AI transition appears to follow the same pattern, with $650 billion in hyperscaler capex and a 24% increase in San Francisco startup formation signaling where new jobs are forming."
