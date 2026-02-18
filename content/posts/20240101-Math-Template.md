@@ -6,6 +6,11 @@ images:
 external_url: https://gohugo.io/content-management/mathematics/
 math: true
 draft: true
+keywords:
+- MathJax Hugo setup
+- LaTeX equations Hugo
+- math rendering static site
+- KaTeX MathJax comparison
 categories:
 - Tech
 type: Essay

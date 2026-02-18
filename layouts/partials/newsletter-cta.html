@@ -1,0 +1,104 @@
+{{/* Newsletter CTA - inline signup form for post pages */}}
+<aside class="inline-newsletter" aria-label="Newsletter signup">
+  <div class="inline-newsletter-content">
+    <p class="inline-newsletter-headline">Enjoy this writing? Get new posts delivered monthly.</p>
+    <form id="post-newsletter-form" class="inline-newsletter-form">
+      <label for="post-newsletter-email" class="visually-hidden">Email address</label>
+      <input
+        type="email"
+        id="post-newsletter-email"
+        name="email"
+        placeholder="your@email.com"
+        required
+        class="inline-newsletter-input"
+        aria-label="Email address"
+      />
+      <button type="submit" class="inline-newsletter-button">Sign Up</button>
+    </form>
+    <p id="post-newsletter-privacy" class="inline-newsletter-privacy"><a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">No tracking</a>. Unsubscribe anytime.</p>
+    <div id="post-newsletter-message" class="inline-newsletter-message" style="display: none;"></div>
+  </div>
+</aside>
+
+<script>
+(function() {
+  var formId = 'post-newsletter-form';
+  var messageId = 'post-newsletter-message';
+  var emailId = 'post-newsletter-email';
+  var privacyId = 'post-newsletter-privacy';
+
+  function init() {
+    var form = document.getElementById(formId);
+    var messageDiv = document.getElementById(messageId);
+    var emailInput = document.getElementById(emailId);
+    var privacyDiv = document.getElementById(privacyId);
+
+    if (privacyDiv && !privacyDiv.dataset.countLoaded) {
+      privacyDiv.dataset.countLoaded = 'true';
+      fetch('https://newsletter-api.philippd.workers.dev/api/subscriber-count')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.display) {
+            var countText = document.createTextNode('Join ' + data.display + ' readers. ');
+            privacyDiv.insertBefore(countText, privacyDiv.firstChild);
+          }
+        })
+        .catch(function() { /* Silent fail */ });
+    }
+
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var email = emailInput.value.trim();
+      if (!email) return;
+
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showMessage('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      var submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Subscribing...';
+
+      fetch('https://newsletter-api.philippd.workers.dev/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function(response) { return response.json(); })
+      .then(function(data) {
+        if (data.success) {
+          form.style.display = 'none';
+          privacyDiv.style.display = 'none';
+          showMessage('Thanks for subscribing! You\'ll receive the next newsletter in your inbox.', 'success');
+        } else {
+          showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+          submitButton.disabled = false;
+          submitButton.textContent = 'Sign Up';
+        }
+      })
+      .catch(function() {
+        showMessage('Something went wrong. Please try again later.', 'error');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Sign Up';
+      });
+    });
+
+    function showMessage(text, type) {
+      messageDiv.textContent = text;
+      messageDiv.className = 'inline-newsletter-message inline-newsletter-message-' + type;
+      messageDiv.style.display = 'block';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

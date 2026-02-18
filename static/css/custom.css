@@ -247,11 +247,30 @@ blockquote p {
 
 .post-meta a {
     color: #007acc;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 122, 204, 0.3);
+    text-underline-offset: 2px;
 }
 
 .post-meta a:hover {
     text-decoration: underline;
+    text-decoration-color: #007acc;
+}
+
+.share-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: #007acc;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 122, 204, 0.3);
+    text-underline-offset: 2px;
+}
+
+.share-btn:hover {
+    text-decoration-color: #007acc;
 }
 
 .post-content {
@@ -286,11 +305,14 @@ blockquote p {
 
 .post-content a {
     color: #007acc;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 122, 204, 0.3);
+    text-underline-offset: 2px;
 }
 
 .post-content a:hover {
     text-decoration: underline;
+    text-decoration-color: #007acc;
 }
 
 /* Project Post Tag */
@@ -508,7 +530,7 @@ a.lightbox-overlay:target {
 
 /* Inline newsletter signup (shortcode) */
 .inline-newsletter {
-    margin: 2.5rem auto;
+    margin: 2.5rem auto 2.5rem;
     padding: 0.5rem 0 0.5rem 1.5rem;
     border-left: 2px solid #333;
     width: 80%;
@@ -1576,6 +1598,11 @@ pre {
 .footer-links {
     margin: 0;
     padding: 0.75rem 0;
+    text-align: center;
+}
+
+.footer-row {
+    line-height: 1.8;
 }
 
 .footer-links a {
@@ -1584,7 +1611,8 @@ pre {
 }
 
 .footer-links a:hover {
-    color: #007acc;
+    color: #333;
+    text-decoration: underline;
 }
 
 .footer-links .separator {
@@ -1612,59 +1640,132 @@ pre {
 
 /* Footer divider - single line between article and footer zone */
 .footer-divider {
-    margin: 2rem 0 0;
+    margin: 0;
     border: none;
     border-top: 1px solid #e9ecef;
 }
 
 /* ===================================
-   Related Posts (centered, compact)
+   Related Posts (list with descriptions)
    =================================== */
 .related-posts {
-    margin: 0 0 0.25rem 0;
-    padding: 0.75rem 0 0;
+    margin: 1.5rem 0 0.5rem 0;
+    padding: 0;
+}
+
+.related-heading {
     font-size: 0.85rem;
+    font-weight: 600;
     color: #595959;
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.75rem 0;
+}
+
+.related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.related-item {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.related-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.related-link {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.related-link:hover {
+    text-decoration: underline;
+}
+
+.related-desc {
+    margin: 0.2rem 0 0;
+    font-size: 0.8rem;
+    color: #595959;
     line-height: 1.4;
 }
 
-.related-label {
-    color: #595959;
+.related-meta {
+    font-size: 0.75rem;
+    color: #767676;
 }
 
-.related-posts a {
-    color: #007acc;
-    text-decoration: none;
-}
-
-.related-posts a:hover {
-    text-decoration: underline;
-}
-
-@media screen and (max-width: 768px) {
-    .related-posts {
-        padding: 0.75rem 0 0;
-        line-height: 1.5;
-    }
-}
-
-/* Newsletter CTA (article footer) */
-.post-newsletter-cta {
+.related-more {
     margin: 0.75rem 0 0;
-    padding: 0;
-    font-size: 0.85rem;
-    color: #595959;
-    text-align: center;
+    font-size: 0.8rem;
 }
 
-.post-newsletter-cta a {
-    color: #007acc;
+.related-more a {
+    color: #595959;
     text-decoration: none;
 }
 
-.post-newsletter-cta a:hover {
+.related-more a:hover {
     text-decoration: underline;
+}
+
+/* ===================================
+   Inline Related (readnext shortcode)
+   =================================== */
+.readnext {
+    margin: 2.5rem auto;
+    padding: 0;
+    text-align: center;
+    max-width: 80%;
+}
+
+.readnext::before,
+.readnext::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: #ccc;
+    margin: 0 auto;
+}
+
+.readnext::before {
+    margin-bottom: 1rem;
+}
+
+.readnext::after {
+    margin-top: 1rem;
+}
+
+.readnext-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #767676;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.readnext a {
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.readnext a:hover {
+    color: #007acc;
 }
 
 /* ===================================

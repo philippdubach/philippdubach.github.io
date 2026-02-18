@@ -34,6 +34,8 @@ The demographics are interesting: AI app users look nothing like the broader int
 
 This explains where AI companies advertise: {{< img src="ai_advertising_skew.png" alt="Horizontal bar chart showing AI companies over-index on LinkedIn (+45%) and under-index on Pinterest (-13%) and YouTube (-9%)" width="80%" >}} LinkedIn gets 45% more GenAI ad impressions than its share of the general population would suggest. Pinterest and YouTube get less. The AI marketing playbook is simple: find professionals, not consumers.
 
+{{< readnext slug="europes-24-trillion-payment-breakup-is-really-a-bet-on-infrastructure-arbitrage" >}}
+
 One place where AI has found consumers: shopping. {{< img src="ai_retail_referrals.png" alt="Stacked area chart showing GenAI referral traffic to major retailers growing from ~$5M to ~$51M between Oct 2024 and Dec 2025" width="80%" >}} Referral traffic from AI tools to major retailers grew roughly 7x between October 2024 and December 2025. People are asking ChatGPT what to buy, and then buying it. Amazon captures the largest share, but Walmart, Target, and Home Depot have all seen triple-digit percentage growth in AI-driven traffic. Still less than 1% of total retail traffic. But growing fast.
 
 One pattern stands out: {{< img src="youtube_dominance.png" alt="Table showing YouTube is the #1 app across every age group in the US (18-24, 25-34, 35-44, 45+)" width="80%" >}} YouTube is the top app across every age demographic. Every single one. 18-24, 25-34, 35-44, 45+. No other app has achieved this. Not TikTok (appears for youngest and oldest, vanishes in the middle). Not Instagram (fades with age). Not Facebook (rises with age). YouTube alone spans generations.

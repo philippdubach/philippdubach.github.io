@@ -41,6 +41,8 @@ Cumulative hyperscaler capex is projected to reach **$4.8 trillion by 2030**. To
 
 I find myself uncertain, which feels like the more honest position. Neither source is disinterested. a16z manages billions in venture capital and growth equity; bullish AI narratives support their portfolio valuations and fundraising. AQR runs systematic strategies that benefit when investors diversify away from concentrated U.S. tech exposure toward international equities and alternatives. Both are talking their book, which doesn't make either wrong, but it's worth noting.
 
+{{< readnext slug="the-variance-tax" >}}
+
 The a16z data on utilization and revenue growth is hard to dismiss. 80% GPU utilization isn't vaporware. Harvey users nearly tripled their time on the platform in nine months. Navan's AI handles half of all customer interactions at satisfaction levels matching human agents. These are real products generating real engagement. But AQR's valuation work has a longer track record. Their models don't care about narratives, and historically that discipline has been valuable. When they say U.S. equities offer the lowest expected returns among major markets, that's not pessimism. It's arithmetic.
 
 The reconciliation might be this: AI winners could thrive spectacularly while broad market indices disappoint. a16z's portfolio companies operate in a different universe than the average S&P 500 constituent. Compressed risk premia can coexist with individual companies generating enormous returns. The question is whether you're buying the index or picking the winners.

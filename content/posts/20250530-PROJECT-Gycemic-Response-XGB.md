@@ -65,6 +65,8 @@ The Gaussian approximation worked surprisingly well for characterizing most gluc
 
 I then trained an XGBoost regressor with 27 engineered features including meal composition, participant characteristics, and interaction terms. XGBoost was chosen for its ability to handle mixed data types, built-in feature importance, and strong performance on tabular data. The pipeline included hyperparameter tuning with 5-fold cross-validation to optimize learning rate, tree depth, and regularization parameters. Rather than relying solely on basic meal macronutrients, I engineered features across multiple categories and implemented CGM statistical features calculated over different time windows (24-hour and 4-hour periods), including time-in-range and glucose variability metrics. Architecture-wise, I trained three separate XGBoost regressors, one for each Gaussian parameter.
 
+{{< readnext slug="i-built-a-cgm-data-reader" >}}
+
 ## Results
 
 The model could predict *how high* my blood sugar rises after a meal with moderate accuracy (R² = 0.46, correlation = 0.73, p < 0.001). Not good enough for clinical guidance, which typically requires R² > 0.7, but meaningfully better than the multi-linear regression baseline (R² = 0.24).

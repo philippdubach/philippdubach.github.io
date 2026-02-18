@@ -65,6 +65,8 @@ async loadNextBatch() {
 
 Article selection uses Thompson Sampling: 80% of the time it shows what the model thinks you'll like (exploit), 20% it throws in something unexpected (explore). This prevents the filter bubble problem and lets the model discover if your tastes have changed.
 
+{{< readnext slug="bandits-and-agents-netflix-and-spotify-recommender-stacks-in-2026" >}}
+
 The whole system is designed as a closed loop:
 
 1. **Swipe** → votes get stored in SQLite

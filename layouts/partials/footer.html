@@ -18,21 +18,34 @@
     <hr class="footer-divider" aria-hidden="true">
     {{ end }}
 
-    {{/* Social Links - appears on all pages */}}
+    {{/* Footer Links */}}
     <nav class="footer-links" aria-label="Footer navigation">
-        <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
-        <span class="separator" aria-hidden="true">·</span>
-        {{ with .Site.Params.social.github }}
-        <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <span class="separator" aria-hidden="true">·</span>
+        {{ if and .IsPage (eq .Section "posts") }}
+        <div class="footer-row">
+            <a href="/research/">Research</a>
+            <span class="separator" aria-hidden="true">·</span>
+            <a href="/projects/">Projects</a>
+            <span class="separator" aria-hidden="true">·</span>
+            <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
+        </div>
         {{ end }}
-        {{ with .Site.Params.social.bluesky }}
-        <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
-        <span class="separator" aria-hidden="true">·</span>
-        {{ end }}
-        {{ with .Site.Params.social.email }}
-        <a href="mailto:{{ . }}">Email</a>
-        {{ end }}
+        <div class="footer-row">
+            {{ if not (and .IsPage (eq .Section "posts")) }}
+            <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
+            <span class="separator" aria-hidden="true">·</span>
+            {{ end }}
+            {{ with .Site.Params.social.github }}
+            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <span class="separator" aria-hidden="true">·</span>
+            {{ end }}
+            {{ with .Site.Params.social.bluesky }}
+            <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
+            <span class="separator" aria-hidden="true">·</span>
+            {{ end }}
+            {{ with .Site.Params.social.email }}
+            <a href="mailto:{{ . }}">Email</a>
+            {{ end }}
+        </div>
     </nav>
 
     <p class="copyright">© {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}</p>
@@ -136,8 +149,7 @@
     var canonical = document.querySelector('link[rel="canonical"]');
     var pageUrl = (canonical ? canonical.href : location.href).replace(/\/+$/, '').split('?')[0];
 
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
+    link.addEventListener('click', function() {
         copyTextInGesture(pageUrl, function(ok) {
             status.textContent = ok ? 'url copied' : pageUrl;
             setTimeout(function() { status.textContent = ''; }, 2500);

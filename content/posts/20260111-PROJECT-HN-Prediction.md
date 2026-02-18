@@ -33,6 +33,8 @@ Last week I published a [Hacker News title sentiment analysis](https://philippdu
 
 > [Hacker News](https://news.ycombinator.com/news) (HN) is a social news website focusing on computer science and entrepreneurship. It is run by the investment fund and startup incubator [Y Combinator](https://www.ycombinator.com).
 
+{{< readnext slug="65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform" >}}
+
 This isn't new territory. [Max Woolf built a Reddit submission predictor](https://minimaxir.com/2017/06/reddit-deep-learning/) back in 2017, and [ontology2 trained an HN classifier](https://ontology2.com/essays/ClassifyingHackerNewsArticles/) using logistic regression on title words. Both found similar ceilings; around 0.76 AUC with classical approaches. I wanted to see what modern transformers could add.
 
 The baseline was DistilBERT, fine-tuned on 90,000 HN posts. ROC AUC of 0.654, trained in about 20 minutes on a T4 GPU. Not bad for something that only sees titles. Then RoBERTa with label smoothing pushed it to 0.692. Progress felt easy.{{< img src="03_roc_curve.png" alt="ROC curve comparing model versions" width="70%" >}}What if sentence embeddings captured something classification heads missed? I built an ensemble: [SBERT](https://www.sbert.net/) for semantic features, RoBERTa for discrimination, weighted average at the end. The validation AUC jumped to 0.714. 

@@ -1,13 +1,19 @@
-{{/* Related Posts - shows posts with matching tags/categories */}}
+{{/* Related Posts - shows posts with matching categories/keywords */}}
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ if $related }}
 <aside class="related-posts" aria-labelledby="related-heading">
-    <span class="related-label" id="related-heading">Related:</span>
-    <span class="related-links">
-        {{ range $i, $post := $related }}{{ if $i }} · {{ end }}<a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>{{ end }}
-        {{ with $.Params.categories }}{{ $cat := index . 0 }}
-        <span class="related-category"> · <a href="/categories/{{ $cat | urlize }}/">More in {{ $cat }}</a></span>
+    <h2 class="related-heading" id="related-heading">Related</h2>
+    <ul class="related-list">
+        {{ range $related }}
+        <li class="related-item">
+            <a href="{{ .RelPermalink }}" class="related-link">{{ .Title }}</a>
+            {{ with .Params.description }}<p class="related-desc">{{ . | truncate 120 }}</p>{{ end }}
+            <span class="related-meta">{{ .ReadingTime }} min read</span>
+        </li>
         {{ end }}
-    </span>
+    </ul>
+    {{ with $.Params.categories }}{{ $cat := index . 0 }}
+    <p class="related-more"><a href="/categories/{{ $cat | urlize }}/">More in {{ $cat }}</a></p>
+    {{ end }}
 </aside>
 {{ end }}

@@ -14,7 +14,7 @@
             • {{ .ReadingTime }} min read
             {{- with .Params.categories }} • {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/" class="post-category">{{ $cat }}</a>{{ end }}{{ end }}
             {{- if .Params.external_url }} • <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>{{ end }}
-            • <a href="#" id="share-link" title="Copy short link" aria-label="Copy short link" style="text-decoration:none">∞</a>
+            • <button type="button" id="share-link" title="Copy short link" aria-label="Copy short link" class="share-btn">∞</button>
             <span id="share-status"></span>
         </div>
         {{ end }}
@@ -25,12 +25,11 @@
 </article>
 
 {{ if eq .Section "posts" }}
-<hr class="footer-divider" aria-hidden="true">
 
-{{/* Newsletter CTA */}}
-<aside class="post-newsletter-cta" aria-label="Newsletter signup">
-    <p>Enjoy this article? <a href="/subscribe/">Get new posts delivered monthly</a> — no tracking, unsubscribe anytime.</p>
-</aside>
+{{/* Newsletter CTA - inline signup form */}}
+{{ partial "newsletter-cta.html" . }}
+
+<hr class="footer-divider" aria-hidden="true">
 
 {{/* Related Posts */}}
 {{ partial "related.html" . }}

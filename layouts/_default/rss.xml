@@ -44,7 +44,7 @@
       {{ if eq $rssFeedDescription "summary"}}
       <description>{{ .Summary | html }}</description>
       {{ else if (eq $rssFeedDescription "full")}}
-      <description>{{ .Content | replaceRE `(?s)<a[^>]*class="lightbox-overlay"[^>]*>.*?</a>` "" | html }}</description>
+      <description>{{ .Content | replaceRE `(?s)<a[^>]*class="lightbox-overlay"[^>]*>.*?</a>` "" | replaceRE `(?s)<aside[^>]*class="readnext"[^>]*>.*?</aside>` "" | html }}</description>
       {{ else }} {{ errorf "Error in RSS feed generation %q" .Path }}
       {{ end }}
     </item>

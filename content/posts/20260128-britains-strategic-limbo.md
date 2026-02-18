@@ -40,6 +40,8 @@ Talks broke down in late 2025. London viewed the EU's requirements for third-cou
 
 What does the Starmer government do? The choices were supposed to be theoretical. Align with Washington and accept the transactional terms of the [Donroe Doctrine](https://en.wikipedia.org/wiki/Donroe_Doctrine). Align with Brussels and accept the sovereignty constraints of SAFE participation. Or go it alone, with a defense budget that can't sustain independent capability against peer competitors.
 
+{{< readnext slug="the-rise-of-middle-power-realism" >}}
+
 The [IISS analysis](https://www.iiss.org/research-paper/2025/12/the-safe-regulation-and-its-implications-for-non-eu-defence-suppliers/) of SAFE's implications for non-EU suppliers is blunt: firms outside the bloc face structural disadvantages that compound over time. Procurement cycles last decades. If British defense firms are locked out of European contracts now, the gap widens with each passing year. The industrial base erodes.
 
 "Global Britain" was the slogan after Brexit, a vision of nimble bilateral relationships unconstrained by Brussels bureaucracy. The reality is that global influence requires either hard power or bloc membership. Britain has neither the military budget for the former nor the political will for the latter.

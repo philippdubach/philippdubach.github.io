@@ -42,6 +42,8 @@ If you're running a snack company, the math might look survivable: lose customer
 
 [Scott Galloway](https://youtu.be/JTG5uMWDKXk) has called the food industry an "obesity index" and predicted a "tsunami of shareholder destruction." The Cornell data suggests he's directionally right but possibly too aggressive on timing. The industry has a built-in buffer: medication discontinuation. The question is whether that buffer lasts as drugs get cheaper, side effects improve, and insurance coverage expands.
 
+{{< readnext slug="glp-1-receptor-agonists-in-asud-treatment" >}}
+
 The deeper issue is about the persistence of dietary change. [Previous studies found](https://jn.nutrition.org/article/S0022-3166(25)00647-9/fulltext) that even major life events, a diabetes diagnosis, job loss, childbirth, produce only modest and short-lived changes in diet. Information campaigns and price nudges have mixed results at best. GLP-1 medications work differently because they alter the biological reward system directly. Users describe the experience as "silencing food noise," a constant background hum of cravings that simply disappears.
 
 But this biological dependence cuts both ways. The changes don't stick without the drug. Stopping medication means losing both the appetite suppression and whatever habits might have formed during treatment. The Cornell team notes that "GLP-1s could complement existing nutritional interventions" but cautions that "their broader public health relevance ultimately depends on sustained adherence."

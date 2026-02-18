@@ -61,6 +61,8 @@ He also acknowledges there are inference costs (the actual computing expenses of
 
 This is essentially an argument that AI companies are building a portfolio of profitable products, but the accounting makes it look terrible because each successive "product" costs 10x more than the last to develop. The losses stem from overlapping these profitable cycles while exponentially increasing investment scale. But this framework only works if two critical assumptions hold: (1) Each model consistently returns roughly 2x its training cost in revenue, and (2) The improvements from spending 10x more justify that investment—meaning customers will pay enough more for the better model to maintain that 2x return.
 
+{{< readnext slug="buying-the-haystack-might-not-work-this-year" >}}
+
 Amodei outlines two ways this resolves: 
 >So the way that it's going to shake out is this will keep going up until the numbers go very large and the models can't get larger, and, you know, then it'll be a large, very profitable business.
 

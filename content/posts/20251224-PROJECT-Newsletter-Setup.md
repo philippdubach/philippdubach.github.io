@@ -46,6 +46,8 @@ I built a [Python engine](https://github.com/philippdubach/newsletter-generator)
 {{< img src="Newsletter_Overview.png" alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions" width="80%" >}}
 Originally I intended to manually copy-paste the HTML into an email and send it out since I did not expect many subscribers at first (or at all). But I had another challenge at hand: how do people sign up?
 
+{{< readnext slug="the-tech-behind-this-site" >}}
+
 Since I had already been using [Cloudflare Workers KV](https://developers.cloudflare.com/kv/) to build an API with historic values of my temperature and humidity sensor at home, I resorted to that. The API is simple. POST to `/api/subscribe` with an email address, and it gets stored in KV with a timestamp and some metadata.
 
 After some Copilot iterations (I'm not a security guy, so not sure how I feel about handing all the security and testing to an agent, please reach out if you can help) the Worker includes rate limiting, honeypot fields for spam protection, proper CORS headers, and RFC-compliant email validation. 

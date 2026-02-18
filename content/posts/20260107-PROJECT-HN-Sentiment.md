@@ -47,6 +47,8 @@ _Caveat: HackerBook is a single static snapshot (no time-series data). Therefore
 **Attention inequality (Lorenz curve + Gini)**
 {{< img src="attention_inequality_hackerbook2.png" alt="Lorenz curve of story scores (attention inequality) with sample Gini" width="80%" >}}
 
+{{< readnext slug="social-media-success-prediction-bert-models-for-post-titles" >}}
+
 **Circadian patterns (volume vs mean score, UTC)**
 {{< img src="circadian_patterns_hackerbook2.png" alt="Circadian patterns on Hacker News (UTC): posting volume vs mean score" width="80%" >}}
 

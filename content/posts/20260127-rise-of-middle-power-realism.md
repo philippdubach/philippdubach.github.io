@@ -43,6 +43,8 @@ The intellectual framework Carney articulated has a name now: "middle power real
 
 (2) Nostalgia is dangerous. The pre-2016 order isn't coming back. Waiting for "normal" to return is a strategy for decline. Middle powers that don't build domestic strength and horizontal coalitions will find themselves, as Carney put it invoking Thucydides, ["on the menu."](https://www.theguardian.com/business/live/2026/jan/20/davos-von-der-leyen-he-macron-carney-wef-greenland-trump-uk-unemployment-business-live-news-updates)
 
+{{< readnext slug="britains-strategic-limbo" >}}
+
 (3) Sovereignty requires the capacity to say no. That means diversified partnerships, even with rivals. Canada's China deal infuriated Trump, who [accused Carney of allowing a "Trojan Horse"](https://www.washingtonexaminer.com/news/world/4433043/carney-no-intention-signing-free-trade-deal-china/) into the continent. But from Ottawa's perspective, the ability to trade with Beijing is precisely what makes Canadian sovereignty credible. You can't negotiate from strength if you have no alternatives.
 
 The European response follows similar logic. During the Greenland crisis, when Trump threatened tariffs on eight European nations and refused to rule out military force to "secure" the island, the EU [threatened to deploy its Anti-Coercion Instrument](https://www.theguardian.com/commentisfree/2026/jan/23/europe-trump-climbdown-genuflecting-tacos-greenland) against the United States. For the first time, the bloc signaled willingness to engage in a trade war with its primary security guarantor to protect the sovereignty of a member state.

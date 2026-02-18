@@ -45,6 +45,8 @@ The key insight is that what counts as "money" depends on where you sit in this 
 
 Pozsar called these institutions "cash pools"—the corporate treasuries, sovereign wealth funds, and asset managers whose cash balances are too large to fit within the insured deposit system. They need money-like instruments, but the supply of truly safe assets (Treasury bills, insured deposits) is inelastic. So they reach for the next best thing: shadow money claims backed by private collateral and private liquidity puts.
 
+{{< readnext slug="the-long-volatility-premium" >}}
+
 Now, the new OFR data reveals that $5 trillion of daily repo activity, roughly 40% of the market, occurs in bilateral arrangements that, until recently, were largely opaque to regulators. The collateral backing this activity is 61.8% Treasuries, but that leaves substantial room for corporate bonds, agency MBS, and other assets that can gap in value during stress.
 
 Pozsar's 2019 Global Money Notes described the repo market as a hierarchy with dealers at the center and the Fed at the top, operating as a "dealer of last resort" when private balance sheets reach their limits. The Standing Repo Facility was supposed to institutionalize this role, providing a ceiling on overnight rates by offering funding at a known price.

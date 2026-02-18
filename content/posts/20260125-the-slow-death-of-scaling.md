@@ -34,6 +34,8 @@ Sara Hooker's paper arrived with impeccable timing. _[On the slow death of scali
 
 The market signals are worth watching. According to [Goldman Sachs data](https://www.ft.com/content/a081aa60-eaca-4413-ba15-489762154c57), hedge fund short interest in utilities now sits at the 99th percentile relative to the past five years. Utilities. The bet appears to be that AI data center demand, the premise on which [American Electric Power trades at $65 billion](https://www.reuters.com/business/energy/american-electric-power-signs-265-billion-deal-fuel-cells-2026-01-08/), may not materialize as expected. Meanwhile, names like Bloom Energy, Oracle, and various AI-adjacent plays are showing up on heavily-shorted lists. Hedge funds aren't yet betting against Nvidia directly, but they're circling the weaker members of the herd.
 
+{{< readnext slug="buying-the-haystack-might-not-work-this-year" >}}
+
 There's a certain irony here that Hooker captures well. Academia was effectively priced out of meaningful AI research by the compute arms race. The explosion in necessary compute "marginalized academia from meaningfully participating in AI progress." Industry labs stopped publishing to preserve commercial advantage. Now, as scaling hits diminishing returns, the skills that matter shift back toward algorithmic cleverness, data quality, and architectural innovation. Things that don't require a billion-dollar data center. If you got priced out of the game, the game may be coming back to you. Hooker writes,
 
 >The less reliable gains from compute makes our purview as computer scientists interesting again

@@ -75,6 +75,8 @@ ECB President Christine Lagarde has become the initiative's most vocal political
 
 Trump's second term has sharpened these concerns considerably. EPI CEO Martina Weimert [told the Financial Times](https://www.irishtimes.com/business/2026/02/09/european-alternatives-to-visa-and-mastercard-urgently-needed-says-banking-chief/) that the problem with the digital euro is that it will arrive in a few years, perhaps after Trump's term ends, so she thinks Europe is somewhat short on time. Tariff threats, territorial claims over Greenland, and a pro-crypto, anti-CBDC US policy agenda have turned European payment sovereignty from a technocratic aspiration into something closer to a defense priority. And European defense spending is the one area where political consensus currently exists across virtually all member states.
 
+{{< readnext slug="where-mobile-money-goes-now" >}}
+
 This framing is important for understanding why Wero might succeed where its predecessors failed. The Monnet Project collapsed in 2012 when the European Commission refused to support multilateral interchange fees. The original EPI card-scheme vision was abandoned after the bank withdrawals. The Nordic P27 initiative collapsed in 2023. Each failure happened in a geopolitical context where the urgency was abstract. The urgency is no longer abstract. When 70 economists including Thomas Piketty published an [open letter in January 2026](https://eutoday.net/parliament-pivotal-decision-on-ecb-digital-euro/) calling the digital euro "the only defence" against dependence on US payment systems, that represents a shift in the Overton window that did not exist even two years ago.
 
 ## IV. Profitability 
@@ -98,6 +100,8 @@ Europe has none of these conditions. Card penetration is high. Consumer habits a
 What Europe does have, and this is the part most analysts underweight, is a functioning SEPA infrastructure that already connects every bank account in the eurozone. Wero does not need to build new rails. It needs to build a user interface and merchant acceptance layer on top of rails that already exist and that already process trillions of euros annually. The [SEPA Instant Credit Transfer regulation](https://www.europeanpaymentscouncil.eu/news-insights/insight/wero-shaping-future-european-payments) that became mandatory in 2025 means every eurozone bank must support real-time payments. Europe's governments have already paid for the highway. Wero is building the on-ramps.
 
 The other underappreciated advantage is regulatory asymmetry. The EU's July 2024 ruling forcing [Apple to open iPhone NFC access](https://www.macrumors.com/2024/07/11/apple-opens-iphone-nfc-access-eu/) to third-party wallets means Wero can offer tap-to-pay on iPhones without going through Apple Pay. PSD3, expected in 2026, will likely further strengthen open banking requirements. The European Commission has [active investigations](https://www.pymnts.com/news/regulation/2025/report-european-commission-looking-into-visa-and-mastercard-fees/) into Visa and Mastercard's fee structures. In the UK, the [Competition Appeal Tribunal](https://www.rte.ie/news/business/2025/0526/1514937-visa-mastercard-probe/) ruled unanimously in June 2025 that the networks' interchange fee structures breach competition law. Europe is not just building an alternative. It is simultaneously making the incumbent's business model harder to sustain.
+
+{{< readnext slug="repo-might-be-even-bigger-than-we-thought" >}}
 
 ## VI. Visa and Mastercard
 
