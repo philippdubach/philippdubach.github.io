@@ -31,14 +31,9 @@
     {{- end -}}
 
     {{ if not hugo.IsServer }}
-    {{/* GoatCounter Analytics - v5 with SRI and fallback */}}
-    <script data-goatcounter="https://philippdubach.goatcounter.com/count"
-            async src="https://static.zgo.at/count.v5.js"
-            crossorigin="anonymous"
-            integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"
-            referrerpolicy="no-referrer"
-            onerror="(function(){var i=new Image();i.src='https://philippdubach.goatcounter.com/count?p='+encodeURIComponent(location.pathname)+'&t='+encodeURIComponent(document.title)+'&r='+encodeURIComponent(document.referrer)+'&rnd='+Math.random().toString(36).substr(2,5);})()"></script>
-    <noscript><img src="https://philippdubach.goatcounter.com/count?p={{ .RelPermalink }}" alt="" aria-hidden="true" style="position:absolute;bottom:0;width:1px;height:1px"></noscript>
+    {{/* GoatCounter Analytics via custom domain */}}
+    <script data-goatcounter="https://stats.philippdubach.com/count"
+            async src="//gc.zgo.at/count.js"></script>
     {{ end }}
 </body>
 </html>
