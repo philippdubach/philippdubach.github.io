@@ -4,6 +4,7 @@
 {{ $projects := $projects.ByDate.Reverse }}
 {{ $posts := where $allPosts ".Params.type" "!=" "Project" }}
 {{ $posts := $posts.ByDate.Reverse }}
+{{ $cdnBase := "https://static.philippdubach.com" }}
 
 <div class="home">
 
@@ -39,12 +40,16 @@
             <article class="home-row" data-index="{{ $i }}">
                 <a href="{{ $page.Permalink }}" class="home-row-link">
                     <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
-                    {{ with $page.Params.images }}
+                    {{ with $page.Params.images }}{{ $imgPath := replace (index . 0) "https://static.philippdubach.com/" "" }}
                     <div class="home-row-thumb">
-                        <img src="{{ index . 0 }}"
+                        <img src="{{ $cdnBase }}/cdn-cgi/image/width=360,quality=80,format=auto/{{ $imgPath }}"
+                             srcset="{{ $cdnBase }}/cdn-cgi/image/width=200,quality=80,format=webp/{{ $imgPath }} 200w,
+                                     {{ $cdnBase }}/cdn-cgi/image/width=360,quality=80,format=webp/{{ $imgPath }} 360w,
+                                     {{ $cdnBase }}/cdn-cgi/image/width=540,quality=80,format=webp/{{ $imgPath }} 540w"
+                             sizes="(max-width: 768px) 100px, 180px"
                              alt="{{ $page.Title }}"
                              loading="{{ if lt $i 6 }}eager{{ else }}lazy{{ end }}"
-                             width="1200" height="630"
+                             width="360" height="189"
                              decoding="async">
                     </div>
                     {{ end }}
@@ -84,12 +89,16 @@
             <article class="home-row" data-index="{{ $i }}">
                 <a href="{{ $page.Permalink }}" class="home-row-link">
                     <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
-                    {{ with $page.Params.images }}
+                    {{ with $page.Params.images }}{{ $imgPath := replace (index . 0) "https://static.philippdubach.com/" "" }}
                     <div class="home-row-thumb">
-                        <img src="{{ index . 0 }}"
+                        <img src="{{ $cdnBase }}/cdn-cgi/image/width=360,quality=80,format=auto/{{ $imgPath }}"
+                             srcset="{{ $cdnBase }}/cdn-cgi/image/width=200,quality=80,format=webp/{{ $imgPath }} 200w,
+                                     {{ $cdnBase }}/cdn-cgi/image/width=360,quality=80,format=webp/{{ $imgPath }} 360w,
+                                     {{ $cdnBase }}/cdn-cgi/image/width=540,quality=80,format=webp/{{ $imgPath }} 540w"
+                             sizes="(max-width: 768px) 100px, 180px"
                              alt="{{ $page.Title }}"
                              loading="lazy"
-                             width="1200" height="630"
+                             width="360" height="189"
                              decoding="async">
                     </div>
                     {{ end }}
