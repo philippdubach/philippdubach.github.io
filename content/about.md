@@ -7,7 +7,7 @@ keywords = ["Philipp Dubach", "quantitative finance", "machine learning", "strat
 
 This site started in 2024 as a way to collect articles and papers that catch my attention. Each post includes a link, title, and my brief commentary. I also share personal projects in quantitative finance and data science.  To get new posts delivered to your inbox, [subscribe here](/subscribe/).
 
-Writing here helps me maintain a personal repository, practice articulating ideas, and complete projects by sharing them publicly. I also occasionally share shorter, less technical essays at [notes.philippdubach.com](https://notes.philippdubach.com/).
+Writing here helps me maintain a personal repository, practice [articulating ideas](https://www.nature.com/articles/s44222-025-00323-4), and complete projects by sharing them publicly. 
 
 The opinions expressed are my own and do not reflect the views of any employer, sponsors, or clients.
 
