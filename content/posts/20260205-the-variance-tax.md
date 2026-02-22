@@ -33,7 +33,7 @@ faq:
 
 Let's say your portfolio returned +60% in 2024, then fell 40% in 2025. That's an annualized average return of +10%. Actual return after two years: minus 4% (i.e $100 * 1.6 * 0.6 = $96).
 
-That 14-point gap is what we call the variance tax aka [variance drain](https://www.bogleheads.org/wiki/Variance_drain) or volatility drag and it's probably one of the most underappreciated forces in investing.
+That 14-point gap is what we call the variance tax aka [variance drain](https://www.bogleheads.org/wiki/Variance_drain) or volatility drag and it's one of the least intuitive forces in investing.
 
 Take any series of returns with arithmetic mean μ and volatility σ. The compound growth rate, the one that actually determines your wealth, is approximately:
 

@@ -17,12 +17,12 @@ Personal blog on quantitative finance, AI/ML, and technology.
 
 | Layer | Technology |
 |-------|------------|
-| **Site Generator** | Hugo v0.149.0 Extended |
+| **Site Generator** | Hugo v0.128.0 Extended |
 | **Hosting** | GitHub Pages |
 | **CDN** | Cloudflare |
 | **Images** | Cloudflare R2 (`static.philippdubach.com`) |
 | **Analytics** | GoatCounter (privacy-first, no cookies) |
-| **Math** | KaTeX |
+| **Math** | MathJax 3.2.2 |
 | **Code Highlighting** | Chroma (Hugo built-in) |
 | **Social Automation** | Cloudflare Workers + Workers AI |
 | **Composer Tool** | Cloudflare Pages |
@@ -62,17 +62,17 @@ hugo --minify            # Production build
 
 ### Post Frontmatter
 
-```yaml
----
-title: "Post Title"
-date: 2026-01-11
-description: "SEO description (150-160 chars)"
-keywords: ["keyword1", "keyword2"]
-categories: ["Finance", "Technology", "AI"]
-type: "Article"          # Article | Commentary | Analysis | Project
-draft: false
-math: true               # Enable KaTeX
----
+```toml
++++
+title = "Post Title"
+date = 2026-01-11
+description = "SEO description (150-160 chars)"
+keywords = ["keyword1", "keyword2"]
+categories = ["Finance", "Technology"]
+type = "Article"          # Article | Commentary | Analysis | Project
+draft = false
+math = true               # Enable MathJax
++++
 ```
 
 ### Custom Shortcodes
