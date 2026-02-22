@@ -273,9 +273,9 @@ async function processNewPosts(env, dryRun = false) {
       info.image = og.image;
       info.ogDescription = og.description || info.description;
       
-      // Fetch full article text for better LLM context
-      const fullText = await fetchFullArticleText(info.link);
-      const message = await generatePostMessage(env.AI, info.title, info.description, fullText);
+      // Fetch full article text and takeaways for LLM context
+      const { text: fullText, takeaways } = await fetchFullArticleText(info.link);
+      const message = await generatePostMessage(env.AI, info.title, info.description, fullText, takeaways);
 
       if (dryRun) {
         results.posted.push({ id, title: info.title, message, image: info.image, description: info.ogDescription });
@@ -320,11 +320,11 @@ async function postSingleUrl(env, url) {
   // Fetch OG metadata for image
   const og = await fetchOGMetadata(url);
   
-  // Fetch full article text
-  const fullText = await fetchFullArticleText(url);
-  
+  // Fetch full article text and takeaways
+  const { text: fullText, takeaways } = await fetchFullArticleText(url);
+
   // Generate message with LLM
-  const message = await generatePostMessage(env.AI, title, '', fullText);
+  const message = await generatePostMessage(env.AI, title, '', fullText, takeaways);
   
   // Validate credentials
   if (!env.BLUESKY_HANDLE || !env.BLUESKY_APP_PASSWORD) {

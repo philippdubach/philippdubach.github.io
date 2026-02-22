@@ -171,9 +171,28 @@ export function extractPostInfo(item) {
 }
 
 /**
+ * Extract key takeaways from article HTML
+ * These are the author's own summary points, ideal for social posts
+ * @param {string} html - Raw article HTML
+ * @returns {string} Takeaway points as newline-separated text, or empty string
+ */
+function extractTakeaways(html) {
+  const takeawayMatch = html.match(/<aside[^>]*class="key-takeaways"[^>]*>([\s\S]*?)<\/aside>/i);
+  if (!takeawayMatch) return '';
+
+  const items = [];
+  const liRegex = /<li[^>]*>([\s\S]*?)<\/li>/gi;
+  let match;
+  while ((match = liRegex.exec(takeawayMatch[1])) !== null) {
+    items.push(stripHtmlTags(match[1]).trim());
+  }
+  return items.join('\n');
+}
+
+/**
  * Fetch full article text from a post's HTML page
  * @param {string} url - Post URL
- * @returns {Promise<string>} Article text (truncated to ~4000 chars for LLM context)
+ * @returns {Promise<{text: string, takeaways: string}>} Article text and key takeaways
  */
 export async function fetchFullArticleText(url) {
   try {
@@ -181,28 +200,26 @@ export async function fetchFullArticleText(url) {
       headers: { 'User-Agent': 'TwitterPoster/1.0' },
     });
 
-    if (!response.ok) return '';
+    if (!response.ok) return { text: '', takeaways: '' };
 
     const html = await response.text();
 
-    // Try to find article content - common patterns
+    // Extract takeaways before stripping aside tags
     let articleHtml = '';
-
-    // Try <article> tag first
     const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
     if (articleMatch) {
       articleHtml = articleMatch[1];
     } else {
-      // Try main content area
       const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
       if (mainMatch) {
         articleHtml = mainMatch[1];
       } else {
-        // Fallback to body
         const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
         if (bodyMatch) articleHtml = bodyMatch[1];
       }
     }
+
+    const takeaways = extractTakeaways(articleHtml);
 
     // Strip nav, header, footer, aside tags
     articleHtml = articleHtml
@@ -214,9 +231,8 @@ export async function fetchFullArticleText(url) {
     // Use safe HTML stripping
     const text = stripHtmlTags(articleHtml);
 
-    // Truncate to ~4000 chars for LLM context window
-    return text.substring(0, 4000);
+    return { text: text.substring(0, 2000), takeaways };
   } catch (e) {
-    return '';
+    return { text: '', takeaways: '' };
   }
 }
