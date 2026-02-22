@@ -1,50 +1,29 @@
----
-title: "AI Can Now Design Drugs in Seconds; We Still Can't Tell You If They Work."
-seoTitle: "AI Can Design Drugs in Seconds — But Do They Work? IsoDDE vs Reality"
-date: 2026-02-13
-lastmod: 2026-02-13
-publishDate: 2026-02-13T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-isomorphic-labs-isodde.jpg
-description: "IsoDDE doubles AlphaFold 3 on hard benchmarks and beats physics-based gold standards. But no AI drug has FDA approval. What the $4B in pharma deals actually mean."
-keywords:
-- Isomorphic Labs IsoDDE
-- AI drug discovery clinical trials success rate
-- IsoDDE vs AlphaFold 3
-- Isomorphic Labs Eli Lilly Novartis partnership
-- AI designed drug FDA approval
-- computational drug design
-- AI drug discovery 2026
-- Alphabet Other Bets Isomorphic Labs
-- Phase II efficacy AI drugs
-- Insilico Medicine rentosertib
-- Recursion Exscientia merger
-- binding affinity prediction FEP+
-- in silico drug discovery
-- undruggable targets AI
-- Demis Hassabis drug design
-- Chai Discovery Boltz AI biotech
-- Google DeepMind drug discovery spinoff
-- AI pharma deal structure biobucks
-- generative chemistry drug design
-- AI drug discovery Phase II wall
-draft: true
-faq:
-- question: "What is IsoDDE and how does it compare to AlphaFold 3?"
-  answer: "IsoDDE (Isomorphic Drug Design Engine) is a unified computational drug design system released by Isomorphic Labs on February 10, 2026. It runs protein structure prediction, ligand binding, affinity estimation, and pocket identification in concert. On the hardest protein-ligand prediction tasks, IsoDDE achieves a 50% success rate versus roughly 23% for AlphaFold 3. On antibody-antigen modeling it exceeds AlphaFold 3 by 2.3× and Boltz-2 by 19.8×. On binding affinity prediction it achieves a Pearson correlation of 0.85, beating the physics-based gold standard FEP+ at 0.78."
-- question: "Has any AI-discovered drug received FDA approval?"
-  answer: "No. As of February 2026, no AI-discovered drug has received FDA approval. The most advanced AI-discovered candidate is Insilico Medicine's rentosertib (ISM001-055), which reached Phase IIa with positive results published in Nature Medicine in June 2025. Isomorphic Labs targets its first clinical candidates for late 2026."
-- question: "How successful are AI-discovered drugs in clinical trials?"
-  answer: "AI-discovered molecules show 80-90% Phase I success rates, well above the historical 40-65% average, indicating AI designs safe, tolerable molecules. However, Phase II success rates remain roughly 40%, the same as traditionally discovered drugs. AI has not yet demonstrated it can predict clinical efficacy, only safety and pharmacokinetic properties. If both trends hold, end-to-end success rates could roughly double from 5-10% to 9-18%."
-- question: "How much are Isomorphic Labs' pharma partnerships worth?"
-  answer: "Isomorphic has signed partnerships with Eli Lilly ($45M upfront, $1.7B in milestones), Novartis ($37.5M upfront, $1.2B+ in milestones, expanded February 2025), and Johnson & Johnson (terms undisclosed, announced January 2026). Total disclosed value exceeds $4 billion, but the 50:1 ratio between milestone promises and actual upfront cash reflects pharma's caution about AI drug discovery outcomes."
-- question: "How does Isomorphic Labs compare to Insilico Medicine and Recursion?"
-  answer: "Isomorphic leads on computational benchmarks but trails on clinical progress. Insilico Medicine has 10+ IND approvals across 31 programs and the most advanced clinical candidate (rentosertib, Phase IIa). Recursion, which absorbed Exscientia in a $688M merger, takes a phenomics-first approach with 65 petabytes of biological imaging data. Both own wet-lab infrastructure that Isomorphic lacks. Isomorphic's advantages are Alphabet-scale compute, the AlphaFold lineage, and its unified architecture."
-- question: "What is Alphabet's financial exposure to Isomorphic Labs?"
-  answer: "Isomorphic sits within Alphabet's Other Bets segment, which posted a $3.6 billion operating loss in 2025 against Alphabet's $132 billion net income. Isomorphic raised a $600 million external round led by Thrive Capital in March 2025. Alphabet can sustain this investment indefinitely, which is itself a competitive advantage over cash-constrained biotech startups."
-- question: "When will Isomorphic Labs drugs enter clinical trials?"
-  answer: "Isomorphic Labs CEO Demis Hassabis said at Davos 2026 that the company expects its first AI-designed drugs to enter clinical trials by the end of 2026, pushing back an earlier target of 2025. The company hired Dr. Ben Wolf as CMO in June 2025 and opened a Cambridge, Massachusetts office, signaling clinical-stage staffing."
----
++++
+title = "AI Can Now Design Drugs in Seconds; We Still Can't Tell You If They Work."
+seoTitle = "AI Can Design Drugs in Seconds — But Do They Work? IsoDDE vs Reality"
+date = 2026-02-13
+lastmod = 2026-02-13
+publishDate = 2026-02-13T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-isomorphic-labs-isodde.jpg"]
+description = "IsoDDE doubles AlphaFold 3 on hard benchmarks and beats physics-based gold standards. But no AI drug has FDA approval. What the $4B in pharma deals actually mean."
+keywords = ["Isomorphic Labs IsoDDE", "AI drug discovery clinical trials success rate", "IsoDDE vs AlphaFold 3", "Isomorphic Labs Eli Lilly Novartis partnership", "AI designed drug FDA approval", "computational drug design", "AI drug discovery 2026", "Alphabet Other Bets Isomorphic Labs", "Phase II efficacy AI drugs", "Insilico Medicine rentosertib", "Recursion Exscientia merger", "binding affinity prediction FEP+", "in silico drug discovery", "undruggable targets AI", "Demis Hassabis drug design", "Chai Discovery Boltz AI biotech", "Google DeepMind drug discovery spinoff", "AI pharma deal structure biobucks", "generative chemistry drug design", "AI drug discovery Phase II wall"]
+draft = true
+takeaways = [
+  "IsoDDE hits 50% on the hardest protein-ligand prediction benchmark versus 23% for AlphaFold 3 and beats the physics-based gold standard FEP+ on binding affinity with a 0.85 Pearson correlation",
+  "AI-discovered drugs show 80-90% Phase I success rates versus a 40-65% historical average, but Phase II efficacy rates remain roughly 40% for both AI and traditional drugs",
+  "Isomorphic's pharma deals total over $4 billion in headline value but only $82.5 million in upfront cash, a 50:1 ratio that reflects how much pharma is betting on contingent outcomes",
+  "No AI-discovered drug has received FDA approval as of February 2026, and Isomorphic targets its first clinical candidates for late 2026",
+]
+faq = [
+  {question = "What is IsoDDE and how does it compare to AlphaFold 3?", answer = "IsoDDE (Isomorphic Drug Design Engine) is a unified computational drug design system released by Isomorphic Labs on February 10, 2026. It runs protein structure prediction, ligand binding, affinity estimation, and pocket identification in concert. On the hardest protein-ligand prediction tasks, IsoDDE achieves a 50% success rate versus roughly 23% for AlphaFold 3. On antibody-antigen modeling it exceeds AlphaFold 3 by 2.3× and Boltz-2 by 19.8×. On binding affinity prediction it achieves a Pearson correlation of 0.85, beating the physics-based gold standard FEP+ at 0.78."},
+  {question = "Has any AI-discovered drug received FDA approval?", answer = "No. As of February 2026, no AI-discovered drug has received FDA approval. The most advanced AI-discovered candidate is Insilico Medicine's rentosertib (ISM001-055), which reached Phase IIa with positive results published in Nature Medicine in June 2025. Isomorphic Labs targets its first clinical candidates for late 2026."},
+  {question = "How successful are AI-discovered drugs in clinical trials?", answer = "AI-discovered molecules show 80-90% Phase I success rates, well above the historical 40-65% average, indicating AI designs safe, tolerable molecules. However, Phase II success rates remain roughly 40%, the same as traditionally discovered drugs. AI has not yet demonstrated it can predict clinical efficacy, only safety and pharmacokinetic properties. If both trends hold, end-to-end success rates could roughly double from 5-10% to 9-18%."},
+  {question = "How much are Isomorphic Labs' pharma partnerships worth?", answer = "Isomorphic has signed partnerships with Eli Lilly ($45M upfront, $1.7B in milestones), Novartis ($37.5M upfront, $1.2B+ in milestones, expanded February 2025), and Johnson & Johnson (terms undisclosed, announced January 2026). Total disclosed value exceeds $4 billion, but the 50:1 ratio between milestone promises and actual upfront cash reflects pharma's caution about AI drug discovery outcomes."},
+  {question = "How does Isomorphic Labs compare to Insilico Medicine and Recursion?", answer = "Isomorphic leads on computational benchmarks but trails on clinical progress. Insilico Medicine has 10+ IND approvals across 31 programs and the most advanced clinical candidate (rentosertib, Phase IIa). Recursion, which absorbed Exscientia in a $688M merger, takes a phenomics-first approach with 65 petabytes of biological imaging data. Both own wet-lab infrastructure that Isomorphic lacks. Isomorphic's advantages are Alphabet-scale compute, the AlphaFold lineage, and its unified architecture."},
+  {question = "What is Alphabet's financial exposure to Isomorphic Labs?", answer = "Isomorphic sits within Alphabet's Other Bets segment, which posted a $3.6 billion operating loss in 2025 against Alphabet's $132 billion net income. Isomorphic raised a $600 million external round led by Thrive Capital in March 2025. Alphabet can sustain this investment indefinitely, which is itself a competitive advantage over cash-constrained biotech startups."},
+  {question = "When will Isomorphic Labs drugs enter clinical trials?", answer = "Isomorphic Labs CEO Demis Hassabis said at Davos 2026 that the company expects its first AI-designed drugs to enter clinical trials by the end of 2026, pushing back an earlier target of 2025. The company hired Dr. Ben Wolf as CMO in June 2025 and opened a Cambridge, Massachusetts office, signaling clinical-stage staffing."},
+]
++++
 >No AI-discovered drug has ever received FDA approval. That sentence should sit uncomfortably next to every headline about Alphabet's drug discovery spinoff.
 
 On February 10, [Isomorphic Labs](https://www.isomorphiclabs.com/articles/the-isomorphic-labs-drug-design-engine-unlocks-a-new-frontier), the Google DeepMind spinoff focused on computational drug design, released IsoDDE: its Drug Design Engine. Not a model. Not an AlphaFold upgrade. A unified in silico drug discovery system that runs protein structure prediction, ligand binding, affinity estimation, and pocket identification in concert, generating in seconds what used to take days of physics-based simulation. On the hardest molecular prediction tasks, the "Runs N' Poses" benchmark designed to test generalization to unfamiliar proteins, IsoDDE hits a **50%** success rate. AlphaFold 3 manages roughly **23%**. On antibody-antigen modeling, IsoDDE beats AlphaFold 3 by 2.3× and the open-source Boltz-2 by 19.8×. On binding affinity prediction, it achieves a Pearson correlation of 0.85, beating the physics-based gold standard FEP+ at 0.78.

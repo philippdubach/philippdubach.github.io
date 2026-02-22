@@ -1,36 +1,28 @@
----
-title: Building a No-Tracking Newsletter from Markdown to Distribution
-seoTitle: "Build a No-Tracking Newsletter: Markdown to Email with Cloudflare"
-date: 2025-12-24
-lastmod: 2026-01-03
-images:
-- https://static.philippdubach.com/ograph/ograph-newsletter-setup.jpg
-description: "Build a privacy-focused newsletter with Python, Cloudflare Workers KV, and Resend API. Zero tracking, zero cost, full control. Open source code included."
-keywords:
-- self-hosted newsletter
-- Cloudflare Workers newsletter
-- no tracking newsletter email
-- Resend API email tutorial
-- markdown to HTML email Python
-tags:
-- Project
-categories:
-- Tech
-type: Project
-draft: false
-aliases:
-- /2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/
-
-faq:
-- question: How do I build a no-tracking newsletter?
-  answer: Build a Python script that renders Markdown to email-safe HTML, use Cloudflare Workers KV for subscriber storage, and send via Resend API. The email contains no tracking pixels and no click tracking. The HTML goes straight into the email body with only preview thumbnails hosted externally.
-- question: What does a self-hosted newsletter cost?
-  answer: Zero with free tiers. Cloudflare Workers has a generous free tier, Cloudflare R2 offers 10GB free storage, and Resend provides 3,000 emails per month free. The Python script runs locally or on any server you control.
-- question: How do I convert Markdown to HTML email?
-  answer: Use Python libraries like markdown2 and Beautiful Soup to render Markdown, fetch OpenGraph metadata for links, and generate table-based HTML (required for email client compatibility). Inline all CSS and optimize images for email (240px width for retina displays).
-- question: How do I store newsletter subscribers without a database?
-  answer: Cloudflare Workers KV provides key-value storage ideal for subscriber lists. POST to a /api/subscribe endpoint, validate the email address (RFC-compliant), apply rate limiting and honeypot spam protection, and store the email with timestamp in KV.
----
++++
+title = "Building a No-Tracking Newsletter from Markdown to Distribution"
+seoTitle = "Build a No-Tracking Newsletter: Markdown to Email with Cloudflare"
+date = 2025-12-24
+lastmod = 2026-01-03
+images = ["https://static.philippdubach.com/ograph/ograph-newsletter-setup.jpg"]
+description = "Build a privacy-focused newsletter with Python, Cloudflare Workers KV, and Resend API. Zero tracking, zero cost, full control. Open source code included."
+keywords = ["self-hosted newsletter", "Cloudflare Workers newsletter", "no tracking newsletter email", "Resend API email tutorial", "markdown to HTML email Python"]
+categories = ["Tech"]
+tags = ["Project"]
+type = "Project"
+draft = false
+aliases = ["/2025/12/24/building-a-no-tracking-newsletter-from-markdown-to-distribution/"]
+takeaways = [
+  "The entire newsletter pipeline runs at zero cost using Cloudflare Workers KV for subscribers, R2 for hosting, and Resend's free tier for 3,000 emails per month.",
+  "The system sends no tracking pixels, no click tracking, and no external analytics, just rendered HTML from Markdown with table-based layout for email client compatibility.",
+  "A Python engine fetches OpenGraph metadata, generates LinkedIn-style preview cards, and optimizes images at 240px width for retina displays, all automated from a single .md file.",
+]
+faq = [
+  {question = "How do I build a no-tracking newsletter?", answer = "Build a Python script that renders Markdown to email-safe HTML, use Cloudflare Workers KV for subscriber storage, and send via Resend API. The email contains no tracking pixels and no click tracking. The HTML goes straight into the email body with only preview thumbnails hosted externally."},
+  {question = "What does a self-hosted newsletter cost?", answer = "Zero with free tiers. Cloudflare Workers has a generous free tier, Cloudflare R2 offers 10GB free storage, and Resend provides 3,000 emails per month free. The Python script runs locally or on any server you control."},
+  {question = "How do I convert Markdown to HTML email?", answer = "Use Python libraries like markdown2 and Beautiful Soup to render Markdown, fetch OpenGraph metadata for links, and generate table-based HTML (required for email client compatibility). Inline all CSS and optimize images for email (240px width for retina displays)."},
+  {question = "How do I store newsletter subscribers without a database?", answer = "Cloudflare Workers KV provides key-value storage ideal for subscriber lists. POST to a /api/subscribe endpoint, validate the email address (RFC-compliant), apply rate limiting and honeypot spam protection, and store the email with timestamp in KV."},
+]
++++
 {{< img src="Newsletter_Overview2.jpg" alt="Screenshot of rendered newsletter showing article preview cards with images and descriptions" width="80%" >}}
 Friends have been asking how they can stay up to date with what I'm working on and keep track of the things I read, write, and share. RSS feeds don't seem to be en vogue anymore, apparently. So I built a mailing list. What else would you do over the Christmas break?
 

@@ -1,33 +1,27 @@
----
-title: "It Just Ain\u2019t So"
-date: 2025-06-15
-images:
-- https://static.philippdubach.com/ograph/ograph-gaussian.jpg
-seoTitle: "Why Stock Returns Aren't Normally Distributed"
-description: "Are stock returns normally distributed? Formal normality tests reject this assumption for most equity indices, with major implications for risk management."
-keywords:
-- normal distribution stock returns
-- fat tails finance
-- are stock returns normally distributed
-- portfolio optimization fat tails
-- normality tests financial data
-external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255
-categories:
-- Finance
-type: Commentary
-aliases:
-- /2025/06/15/it-just-aint-so/
-
-faq:
-- question: Are stock returns normally distributed?
-  answer: No. Empirical testing using formal statistical tests like Shapiro-Wilk, D'Agostino's K-squared, and Anderson-Darling consistently rejects the normal distribution hypothesis for equity index returns. Stock returns exhibit fat tails and higher kurtosis than a normal distribution predicts, meaning extreme price movements occur far more frequently than standard models expect.
-- question: Why do financial models still assume normal distributions if returns aren't normal?
-  answer: The normal distribution assumption persists because it simplifies mathematical analysis considerably. Models like Black-Scholes and Modern Portfolio Theory were built on this assumption because it allows for closed-form solutions. Additionally, the Central Limit Theorem is often invoked to argue that aggregated returns converge to normality, but empirical evidence from large datasets suggests this convergence is much weaker than commonly believed.
-- question: What are fat tails in finance and why should investors care?
-  answer: Fat tails describe a probability distribution where extreme outcomes occur more frequently than a normal distribution would predict. In financial markets, this means large crashes and rallies happen more often than standard risk models anticipate. Investors should care because portfolios built on normal distribution assumptions systematically underestimate downside risk, potentially leading to catastrophic losses during market stress events.
-- question: What alternatives exist to mean-variance portfolio optimization?
-  answer: Alternatives include Monte Carlo simulation combined with Conditional Value-at-Risk (CVaR) optimization, which explicitly accounts for the shape of the left tail rather than relying solely on variance as a risk measure. Other approaches include regime-switching models that account for different market environments, and heavy-tailed distribution models such as Student-t or stable distributions that better capture observed return characteristics.
----
++++
+title = "It Just Ain’t So"
+seoTitle = "Why Stock Returns Aren't Normally Distributed"
+date = 2025-06-15
+images = ["https://static.philippdubach.com/ograph/ograph-gaussian.jpg"]
+description = "Are stock returns normally distributed? Formal normality tests reject this assumption for most equity indices, with major implications for risk management."
+keywords = ["normal distribution stock returns", "fat tails finance", "are stock returns normally distributed", "portfolio optimization fat tails", "normality tests financial data"]
+categories = ["Finance"]
+type = "Commentary"
+external_url = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255"
+aliases = ["/2025/06/15/it-just-aint-so/"]
+takeaways = [
+  "Formal normality tests (Shapiro-Wilk, Anderson-Darling) reject the normal distribution hypothesis for most U.S. equity indices across 26 years of data",
+  "Fat tails mean extreme price movements occur far more often than standard models predict, so portfolios built on Gaussian assumptions systematically underestimate downside risk",
+  "The Central Limit Theorem defense for normality is mostly wishful thinking enabled by small sample sizes, not supported by large empirical datasets",
+  "CVaR optimization with Monte Carlo simulation offers a practical alternative that accounts for the actual shape of left tails rather than assuming them away",
+]
+faq = [
+  {question = "Are stock returns normally distributed?", answer = "No. Empirical testing using formal statistical tests like Shapiro-Wilk, D'Agostino's K-squared, and Anderson-Darling consistently rejects the normal distribution hypothesis for equity index returns. Stock returns exhibit fat tails and higher kurtosis than a normal distribution predicts, meaning extreme price movements occur far more frequently than standard models expect."},
+  {question = "Why do financial models still assume normal distributions if returns aren't normal?", answer = "The normal distribution assumption persists because it simplifies mathematical analysis considerably. Models like Black-Scholes and Modern Portfolio Theory were built on this assumption because it allows for closed-form solutions. Additionally, the Central Limit Theorem is often invoked to argue that aggregated returns converge to normality, but empirical evidence from large datasets suggests this convergence is much weaker than commonly believed."},
+  {question = "What are fat tails in finance and why should investors care?", answer = "Fat tails describe a probability distribution where extreme outcomes occur more frequently than a normal distribution would predict. In financial markets, this means large crashes and rallies happen more often than standard risk models anticipate. Investors should care because portfolios built on normal distribution assumptions systematically underestimate downside risk, potentially leading to catastrophic losses during market stress events."},
+  {question = "What alternatives exist to mean-variance portfolio optimization?", answer = "Alternatives include Monte Carlo simulation combined with Conditional Value-at-Risk (CVaR) optimization, which explicitly accounts for the shape of the left tail rather than relying solely on variance as a risk measure. Other approaches include regime-switching models that account for different market environments, and heavy-tailed distribution models such as Student-t or stable distributions that better capture observed return characteristics."},
+]
++++
 > It ain't what you don't know that gets you into trouble. It's what you know for sure that just ain't so.
 
 This (not actually) Mark Twain quote from [The Big Short](https://en.wikipedia.org/wiki/The_Big_Short_(film)) captures the sentiment of realizing that some foundational assumptions might be empirically wrong. 

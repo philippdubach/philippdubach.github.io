@@ -1,44 +1,28 @@
----
-title: "The SaaSpocalypse Paradox"
-seoTitle: 'February 2026 Software Sell-Off: Why the SaaSpocalypse Is a Pricing Error'
-date: 2026-02-13
-lastmod: 2026-02-13
-images:
-- https://static.philippdubach.com/ograph/ograph-saaspocalypse-paradox3.jpg
-description: "The market is simultaneously pricing AI capex failure and AI destroying all software. Both cannot be true. A data-driven analysis of the February 2026 enterprise software sell-off, the hyperscaler sustainability question, and why Goldman Sachs, a16z, and the All-In pod see a 20x TAM expansion where the market sees extinction."
-keywords:
-- SaaSpocalypse 2026
-- IGV software ETF crash February 2026
-- Anthropic Claude Cowork Plugins sell-off
-- enterprise software AI disruption
-- hyperscaler capex sustainability 2026
-- software valuation inversion semiconductors
-- SaaS per-seat pricing AI agents
-- BofA AI paradox
-- JP Morgan software sell-off
-- systems of record vs systems of engagement
-- software bifurcation AI risk
-- Microsoft Azure AI capex
-- Goldman Sachs AI agent TAM 2030
-- a16z white collar services AI expansion
-- value-based pricing AI software
-draft: false
-faq:
-- question: "What caused the February 2026 enterprise software sell-off?"
-  answer: "The immediate catalyst was Anthropic releasing 11 open-source plugins for Claude Cowork on January 30, 2026, covering Legal, Sales, Marketing, Finance, and other departments. Thomson Reuters fell 16% and LegalZoom fell 20% in a single session. The broader IGV software ETF dropped 32% from its September 2025 peak to a low of $79.65, with roughly $2 trillion in market cap destroyed."
-- question: "What is the BofA paradox in the software sell-off?"
-  answer: "Bank of America's Vivek Arya identified a logical inconsistency where investors are simultaneously punishing hyperscaler stocks because AI capex might generate weak returns, while destroying software stocks because AI will be so pervasive it replaces all existing software. Both cannot be true. If AI tools are not generating ROI, they are not replacing enterprise software. If they are replacing enterprise software, the hyperscalers are earning extraordinary returns."
-- question: "Why does software now trade cheaper than semiconductors?"
-  answer: "The Russell 1000 Software subsector trades at 32.4x forward earnings versus 43.6x for Semiconductors, an 11.2x gap that has not persisted historically. Recurring-revenue businesses with 90%+ gross margins and 95%+ renewal rates now carry a lower multiple than cyclical chipmakers with 40-60% margins and concentrated customer bases."
-- question: "Which hyperscaler can fund AI capex from operating cash flow?"
-  answer: "Only Microsoft generates cash from operations (net of dividends and buybacks) in excess of capital expenditure in FY2026, with roughly $110B in cash versus $105B in capex. Alphabet, Amazon, Meta, and Oracle are all capex-negative, with Oracle showing the widest gap at $20B cash versus $50B capex."
-- question: "Is all enterprise software equally at risk from AI disruption?"
-  answer: "No. The risk varies widely by category. Deterministic, mission-critical systems like ERP, cybersecurity, and observability face low disruption risk and will likely absorb AI as additive capability. Probabilistic workflow tools like content creation, tier-1 support, and basic analytics face genuine existential risk. The market is pricing the entire software stack as if every category faces the same threat, which is a category error."
-- question: "Are enterprise software earnings actually declining?"
-  answer: "No. Q4 2025 earnings showed resilient or accelerating growth across major software names. ServiceNow grew subscription revenue 21%, Palantir grew 70.5%, Datadog grew 29%, and the sector is delivering 17% aggregate earnings growth in 2026. Every major name beat consensus estimates."
-- question: "Could AI actually expand the software market rather than shrink it?"
-  answer: "Goldman Sachs Research projects the application software market growing to $780 billion by 2030 at a 13% CAGR, with agents accounting for over 60% of the total. a16z argues the addressable market expands from roughly $350 billion in enterprise software spend to the $6 trillion white-collar services market if AI transitions from productivity tools to completing work itself, a roughly 20x TAM expansion."
----
++++
+title = "The SaaSpocalypse Paradox"
+seoTitle = "February 2026 Software Sell-Off: Why the SaaSpocalypse Is a Pricing Error"
+date = 2026-02-13
+lastmod = 2026-02-13
+images = ["https://static.philippdubach.com/ograph/ograph-saaspocalypse-paradox3.jpg"]
+description = "The market is simultaneously pricing AI capex failure and AI destroying all software. Both cannot be true. A data-driven analysis of the February 2026 enterprise software sell-off, the hyperscaler sustainability question, and why Goldman Sachs, a16z, and the All-In pod see a 20x TAM expansion where the market sees extinction."
+keywords = ["SaaSpocalypse 2026", "IGV software ETF crash February 2026", "Anthropic Claude Cowork Plugins sell-off", "enterprise software AI disruption", "hyperscaler capex sustainability 2026", "software valuation inversion semiconductors", "SaaS per-seat pricing AI agents", "BofA AI paradox", "JP Morgan software sell-off", "systems of record vs systems of engagement", "software bifurcation AI risk", "Microsoft Azure AI capex", "Goldman Sachs AI agent TAM 2030", "a16z white collar services AI expansion", "value-based pricing AI software"]
+draft = false
+takeaways = [
+  "The market is simultaneously punishing hyperscalers for weak AI capex returns and destroying software stocks because AI adoption is so strong it replaces all software, both cannot be true",
+  "The IGV software ETF fell 32% to an RSI of 18, the most oversold reading since 1990, while the sector delivered 17% aggregate earnings growth and every major name beat Q4 2025 estimates",
+  "Recurring-revenue software with 90%+ gross margins now trades at 32.4x forward earnings versus 43.6x for cyclical semiconductors, an 11.2x inversion that has not persisted historically",
+  "Goldman Sachs projects the application software market growing to $780 billion by 2030, with a16z arguing AI expands the addressable market from $350 billion in software to $6 trillion in white-collar services",
+]
+faq = [
+  {question = "What caused the February 2026 enterprise software sell-off?", answer = "The immediate catalyst was Anthropic releasing 11 open-source plugins for Claude Cowork on January 30, 2026, covering Legal, Sales, Marketing, Finance, and other departments. Thomson Reuters fell 16% and LegalZoom fell 20% in a single session. The broader IGV software ETF dropped 32% from its September 2025 peak to a low of $79.65, with roughly $2 trillion in market cap destroyed."},
+  {question = "What is the BofA paradox in the software sell-off?", answer = "Bank of America's Vivek Arya identified a logical inconsistency where investors are simultaneously punishing hyperscaler stocks because AI capex might generate weak returns, while destroying software stocks because AI will be so pervasive it replaces all existing software. Both cannot be true. If AI tools are not generating ROI, they are not replacing enterprise software. If they are replacing enterprise software, the hyperscalers are earning extraordinary returns."},
+  {question = "Why does software now trade cheaper than semiconductors?", answer = "The Russell 1000 Software subsector trades at 32.4x forward earnings versus 43.6x for Semiconductors, an 11.2x gap that has not persisted historically. Recurring-revenue businesses with 90%+ gross margins and 95%+ renewal rates now carry a lower multiple than cyclical chipmakers with 40-60% margins and concentrated customer bases."},
+  {question = "Which hyperscaler can fund AI capex from operating cash flow?", answer = "Only Microsoft generates cash from operations (net of dividends and buybacks) in excess of capital expenditure in FY2026, with roughly $110B in cash versus $105B in capex. Alphabet, Amazon, Meta, and Oracle are all capex-negative, with Oracle showing the widest gap at $20B cash versus $50B capex."},
+  {question = "Is all enterprise software equally at risk from AI disruption?", answer = "No. The risk varies widely by category. Deterministic, mission-critical systems like ERP, cybersecurity, and observability face low disruption risk and will likely absorb AI as additive capability. Probabilistic workflow tools like content creation, tier-1 support, and basic analytics face genuine existential risk. The market is pricing the entire software stack as if every category faces the same threat, which is a category error."},
+  {question = "Are enterprise software earnings actually declining?", answer = "No. Q4 2025 earnings showed resilient or accelerating growth across major software names. ServiceNow grew subscription revenue 21%, Palantir grew 70.5%, Datadog grew 29%, and the sector is delivering 17% aggregate earnings growth in 2026. Every major name beat consensus estimates."},
+  {question = "Could AI actually expand the software market rather than shrink it?", answer = "Goldman Sachs Research projects the application software market growing to $780 billion by 2030 at a 13% CAGR, with agents accounting for over 60% of the total. a16z argues the addressable market expands from roughly $350 billion in enterprise software spend to the $6 trillion white-collar services market if AI transitions from productivity tools to completing work itself, a roughly 20x TAM expansion."},
+]
++++
 >The market is simultaneously pricing AI capex failure and AI destroying all software. Both cannot be true.
 
 {{< img src="jpm-murphy-note-spread.png" alt="JP Morgan North America Equity Research note dated February 3 2026 by Mark R Murphy titled Software Collapse Broadens with Nowhere to Hide, arguing it feels like an illogical leap to extrapolate Claude Cowork Plugins to replacing every layer of mission-critical enterprise software" width="80%" >}}

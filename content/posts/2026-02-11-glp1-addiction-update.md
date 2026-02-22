@@ -1,38 +1,30 @@
----
-title: "GLP-1 Receptor Agonists and Addiction: The Evidence Is Moving Fast"
-seoTitle: 'GLP-1 Ozempic Semaglutide Addiction Treatment: From Preclinical to Phase 2 RCTs'
-date: 2026-02-17
-lastmod: 2026-02-17
-publishDate: 2026-02-17T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-glp1-addiction-update3.jpg
-description: "The evidence for GLP-1 receptor agonists in addiction treatment has expanded rapidly. A first Phase 2 RCT, the largest registry study to date, and new opioid craving data all point in the same direction — but critical gaps remain."
-keywords:
-- GLP-1 receptor agonists addiction
-- semaglutide alcohol use disorder
-- Ozempic addiction treatment
-- GLP-1 opioid cravings
-- semaglutide alcohol moderation
-- liraglutide opioid use disorder
-- GLP-1 mesolimbic dopamine pathway
-- GLP-1 wanting versus liking
-- Hendershot semaglutide AUD trial
-- Swedish registry GLP-1 alcohol study
-draft: true
-faq:
-- question: "Can GLP-1 drugs like Ozempic treat alcohol addiction?"
-  answer: "Early evidence is promising. A Phase 2 RCT published in JAMA Psychiatry (Hendershot et al., 2025) found that semaglutide produced medium-to-large effect sizes for reduced alcohol consumption and cravings in 48 adults with alcohol use disorder, even at sub-therapeutic doses. A separate trial by Joseph Schacht found that participants on semaglutide halved their daily intake. However, no Phase 3 trials have been completed, and the longest RCT to date lasted only 9 weeks."
-- question: "Do GLP-1 drugs make people stop drinking entirely?"
-  answer: "No. The most striking finding across trials is that GLP-1 receptor agonists induce moderation rather than abstinence. In Schacht's trial, participants on semaglutide were not more likely to abstain from alcohol. They simply drank less. Heavy drinking days fell from roughly two-thirds to one-quarter, but participants continued drinking at lower levels."
-- question: "What is the largest study of GLP-1s for alcohol use disorder?"
-  answer: "The largest study is a Swedish national registry analysis by Lähteenvuo et al., published in JAMA Psychiatry in November 2024. It tracked 227,868 individuals with alcohol use disorder over a median of 8.8 years using a within-individual design. Semaglutide was associated with a 36% reduction in AUD-related hospitalization (aHR 0.64). Standard approved AUD medications showed no statistically significant effect in the same analysis."
-- question: "Can GLP-1 drugs help with opioid addiction?"
-  answer: "Preclinical evidence is strong. Penn State researchers found that liraglutide reduced fentanyl-seeking behavior in rats and suppressed withdrawal signaling in the locus coeruleus. A small human trial (n=20) showed 40% fewer opioid cravings with liraglutide versus placebo. A larger trial combining semaglutide with methadone or buprenorphine is currently underway."
-- question: "How do GLP-1 drugs work on addiction in the brain?"
-  answer: "GLP-1 receptor agonists appear to act on the mesolimbic dopamine pathway, the brain's reward system. They limit dopamine spikes triggered by addictive substances without reducing baseline dopamine levels. In neuroscience terms, they may dampen 'wanting' (compulsive drive) without diminishing 'liking' (capacity for pleasure), explaining why users report reduced cravings rather than anhedonia."
-- question: "What are the risks of using GLP-1 drugs for addiction?"
-  answer: "Key concerns include potential anhedonia (reduced capacity for pleasure) in a small minority, possible tolerance development observed in animal studies, unknown long-term durability, and significant weight loss in patients who may not need it. The European Medicines Agency found no causal link between GLP-1s and suicidal ideation, and the FDA in January 2026 requested that suicide warnings be removed from GLP-1 labels."
----
++++
+title = "GLP-1 Receptor Agonists and Addiction: The Evidence Is Moving Fast"
+seoTitle = "GLP-1 Ozempic Semaglutide Addiction Treatment: From Preclinical to Phase 2 RCTs"
+date = 2026-02-17
+lastmod = 2026-02-17
+publishDate = 2026-02-17T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-glp1-addiction-update3.jpg"]
+description = "The evidence for GLP-1 receptor agonists in addiction treatment has expanded rapidly. A first Phase 2 RCT, the largest registry study to date, and new opioid craving data all point in the same direction — but critical gaps remain."
+keywords = ["GLP-1 receptor agonists addiction", "semaglutide alcohol use disorder", "Ozempic addiction treatment", "GLP-1 opioid cravings", "semaglutide alcohol moderation", "liraglutide opioid use disorder", "GLP-1 mesolimbic dopamine pathway", "GLP-1 wanting versus liking", "Hendershot semaglutide AUD trial", "Swedish registry GLP-1 alcohol study"]
+categories = ["Medicine"]
+type = "Analysis"
+draft = true
+takeaways = [
+  "A Swedish registry study of 227,868 individuals found semaglutide associated with a 36% reduction in AUD hospitalization, while standard approved AUD medications showed no significant effect in the same analysis.",
+  "The first Phase 2 RCT of semaglutide for alcohol use disorder produced medium-to-large effect sizes even at sub-therapeutic doses, with some effects exceeding those of naltrexone.",
+  "GLP-1 receptor agonists appear to induce moderation rather than abstinence: participants halved their alcohol intake but were no more likely to stop drinking entirely.",
+  "Liraglutide reduced opioid cravings by 40% in a small human trial, and preclinical work shows it suppresses both fentanyl-seeking behavior and withdrawal signaling in the brain.",
+]
+faq = [
+  {question = "Can GLP-1 drugs like Ozempic treat alcohol addiction?", answer = "Early evidence is promising. A Phase 2 RCT published in JAMA Psychiatry (Hendershot et al., 2025) found that semaglutide produced medium-to-large effect sizes for reduced alcohol consumption and cravings in 48 adults with alcohol use disorder, even at sub-therapeutic doses. A separate trial by Joseph Schacht found that participants on semaglutide halved their daily intake. However, no Phase 3 trials have been completed, and the longest RCT to date lasted only 9 weeks."},
+  {question = "Do GLP-1 drugs make people stop drinking entirely?", answer = "No. The most striking finding across trials is that GLP-1 receptor agonists induce moderation rather than abstinence. In Schacht's trial, participants on semaglutide were not more likely to abstain from alcohol. They simply drank less. Heavy drinking days fell from roughly two-thirds to one-quarter, but participants continued drinking at lower levels."},
+  {question = "What is the largest study of GLP-1s for alcohol use disorder?", answer = "The largest study is a Swedish national registry analysis by Lähteenvuo et al., published in JAMA Psychiatry in November 2024. It tracked 227,868 individuals with alcohol use disorder over a median of 8.8 years using a within-individual design. Semaglutide was associated with a 36% reduction in AUD-related hospitalization (aHR 0.64). Standard approved AUD medications showed no statistically significant effect in the same analysis."},
+  {question = "Can GLP-1 drugs help with opioid addiction?", answer = "Preclinical evidence is strong. Penn State researchers found that liraglutide reduced fentanyl-seeking behavior in rats and suppressed withdrawal signaling in the locus coeruleus. A small human trial (n=20) showed 40% fewer opioid cravings with liraglutide versus placebo. A larger trial combining semaglutide with methadone or buprenorphine is currently underway."},
+  {question = "How do GLP-1 drugs work on addiction in the brain?", answer = "GLP-1 receptor agonists appear to act on the mesolimbic dopamine pathway, the brain's reward system. They limit dopamine spikes triggered by addictive substances without reducing baseline dopamine levels. In neuroscience terms, they may dampen 'wanting' (compulsive drive) without diminishing 'liking' (capacity for pleasure), explaining why users report reduced cravings rather than anhedonia."},
+  {question = "What are the risks of using GLP-1 drugs for addiction?", answer = "Key concerns include potential anhedonia (reduced capacity for pleasure) in a small minority, possible tolerance development observed in animal studies, unknown long-term durability, and significant weight loss in patients who may not need it. The European Medicines Agency found no causal link between GLP-1s and suicidal ideation, and the FDA in January 2026 requested that suicide warnings be removed from GLP-1 labels."},
+]
++++
 >The converging evidence is unusual and difficult to dismiss. But nearly all positive human data still comes from small, short trials or observational studies. This is an update, not a conclusion.
 
 Three months ago I wrote about the [early evidence for GLP-1 receptor agonists as potential treatments for alcohol and substance use disorders](/posts/glp-1-receptor-agonists-in-asud-treatment/). At the time, the data amounted to a single small Phase 2 trial, preclinical work in rodents, and a promising but limited set of observational findings. Since then the evidence base has expanded meaningfully, and a [New Yorker article by Dhruv Khullar](https://www.newyorker.com/magazine/2026/02/16/can-ozempic-cure-addiction) brings together the latest research with personal accounts that illustrate what these drugs might actually be doing in the brain. There is a lot to unpack.

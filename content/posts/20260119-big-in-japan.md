@@ -8,6 +8,12 @@ images = ["https://static.philippdubach.com/ograph/0014.png"]
 categories = ["Commentary"]
 type = "Commentary"
 draft = false
+takeaways = [
+  "Japan holds roughly $5 trillion in foreign assets and is the largest foreign holder of U.S. Treasuries at over $1.1 trillion",
+  "Japanese 30-year government bond yields rose from below 1% through early 2024 to above 3%, collapsing the yield spread versus developed market bonds from 400 basis points to roughly 100",
+  "The August 2024 yen carry trade unwind dropped the S&P 6% in three days, and that was just positioning adjustment, not actual repatriation of Japan's institutional foreign holdings",
+  "Treasury market depth has deteriorated since 2020, meaning a sustained seller of size would arrive into a market less equipped to absorb flow than at any point since the GFC",
+]
 [[faq]]
 question = "How much does Japan hold in foreign assets?"
 answer = "Japan holds roughly $5 trillion in foreign assets, making it the world's largest creditor nation. The US alone accounts for approximately ¥342 trillion in bonds and equities, with Japan being the largest foreign holder of US Treasuries at over $1.1 trillion."

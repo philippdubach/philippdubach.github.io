@@ -1,38 +1,28 @@
----
-title: I Built a CGM Data Reader
-seoTitle: "CGM Data Analysis with Python: Freestyle Libre 3 Dashboard"
-date: 2025-01-02
-images:
-- https://static.philippdubach.com/ograph/ograph-cgm.jpg
-description: "Built a CGM data analysis tool with Python to visualize Freestyle Libre 3 glucose data alongside nutrition, workouts, and sleep for endurance cycling."
-keywords:
-- CGM data analysis Python
-- Freestyle Libre 3 data export
-- continuous glucose monitor dashboard
-- CGM for endurance athletes
-- glucose tracking Python visualization
-tags:
-- Project
-categories:
-- Medicine
-- Tech
-type: Project
-draft: false
-aliases:
-- /2025/01/02/i-built-a-cgm-data-reader/
-
-faq:
-- question: How do I export Freestyle Libre 3 glucose data for custom analysis?
-  answer: 'You cannot export data directly from the LibreLink app, but LibreView (Abbott''s web platform) lets you download your glucose history as a CSV file. Log in at libreview.com, navigate to your glucose history, and select "Download Glucose Data." From there you can load the CSV into Python with pandas for further analysis.'
-- question: Can I combine CGM data with nutrition and workout data in Python?
-  answer: Yes. By normalizing timestamps across data sources, you can merge glucose readings from LibreView with nutrition data from MacroFactor, sleep data from Sleep Cycle, and workout data from Garmin or Hevy into a single pandas DataFrame. This lets you overlay workout periods, meal events, and sleep phases onto your glucose trace to spot correlations.
-- question: What glucose metrics are useful for endurance athletes?
-  answer: Key metrics include time-in-range (the percentage of time glucose stays within a target zone), coefficient of variation (a measure of glycemic variability), and pattern analysis around meals and workouts. These help athletes understand how fueling strategies affect blood sugar during training and recovery.
-- question: Is a CGM useful for non-diabetic athletes?
-  answer: For endurance athletes, a CGM can reveal how specific foods, training loads, and sleep quality affect blood sugar patterns. The Abbott Freestyle Libre 3 is available without a prescription in many countries, making it accessible for athletes who want to fine-tune their nutrition strategy for competition.
-- question: What are the limitations of Abbott's LibreLink app for data analysis?
-  answer: The LibreLink app provides basic glucose readings but lacks the ability to integrate data from other sources like nutrition trackers, sleep apps, or workout logs. LibreView offers downloadable PDF reports, but these are static and not suitable for dynamic analysis. Building a custom dashboard with Python gives you far more flexibility to correlate glucose with lifestyle factors.
----
++++
+title = "I Built a CGM Data Reader"
+seoTitle = "CGM Data Analysis with Python: Freestyle Libre 3 Dashboard"
+date = 2025-01-02
+images = ["https://static.philippdubach.com/ograph/ograph-cgm.jpg"]
+description = "Built a CGM data analysis tool with Python to visualize Freestyle Libre 3 glucose data alongside nutrition, workouts, and sleep for endurance cycling."
+keywords = ["CGM data analysis Python", "Freestyle Libre 3 data export", "continuous glucose monitor dashboard", "CGM for endurance athletes", "glucose tracking Python visualization"]
+categories = ["Medicine", "Tech"]
+tags = ["Project"]
+type = "Project"
+draft = false
+aliases = ["/2025/01/02/i-built-a-cgm-data-reader/"]
+takeaways = [
+  "Abbott's LibreLink app has a 2.9/5.0 rating from 3,250 reviews, so I built a Python dashboard that merges Libre 3 glucose data with nutrition, workout, and sleep data from five sources",
+  "The dashboard overlays workout traces, meal macros, and sleep phases onto continuous glucose readings, letting you spot correlations the stock app cannot surface",
+  "Key metrics for endurance athletes include time-in-range, coefficient of variation, and pattern analysis around meals and training loads",
+]
+faq = [
+  {question = "How do I export Freestyle Libre 3 glucose data for custom analysis?", answer = "You cannot export data directly from the LibreLink app, but LibreView (Abbott's web platform) lets you download your glucose history as a CSV file. Log in at libreview.com, navigate to your glucose history, and select \"Download Glucose Data.\" From there you can load the CSV into Python with pandas for further analysis."},
+  {question = "Can I combine CGM data with nutrition and workout data in Python?", answer = "Yes. By normalizing timestamps across data sources, you can merge glucose readings from LibreView with nutrition data from MacroFactor, sleep data from Sleep Cycle, and workout data from Garmin or Hevy into a single pandas DataFrame. This lets you overlay workout periods, meal events, and sleep phases onto your glucose trace to spot correlations."},
+  {question = "What glucose metrics are useful for endurance athletes?", answer = "Key metrics include time-in-range (the percentage of time glucose stays within a target zone), coefficient of variation (a measure of glycemic variability), and pattern analysis around meals and workouts. These help athletes understand how fueling strategies affect blood sugar during training and recovery."},
+  {question = "Is a CGM useful for non-diabetic athletes?", answer = "For endurance athletes, a CGM can reveal how specific foods, training loads, and sleep quality affect blood sugar patterns. The Abbott Freestyle Libre 3 is available without a prescription in many countries, making it accessible for athletes who want to fine-tune their nutrition strategy for competition."},
+  {question = "What are the limitations of Abbott's LibreLink app for data analysis?", answer = "The LibreLink app provides basic glucose readings but lacks the ability to integrate data from other sources like nutrition trackers, sleep apps, or workout logs. LibreView offers downloadable PDF reports, but these are static and not suitable for dynamic analysis. Building a custom dashboard with Python gives you far more flexibility to correlate glucose with lifestyle factors."},
+]
++++
 >_If you're reading this, you might also be interested in: [Modeling Glycemic Response with XGBoost](/posts/modeling-glycemic-response-with-xgboost/)_
 
 Last year I put a Continuous Glucose Monitor (CGM) sensor, specifically the [Abbott Freestyle Libre 3](https://www.freestyle.abbott), on my left arm. Why? I wanted to optimize my nutrition for endurance cycling competitions. Where I live, the sensor is easy to get—without any medical prescription—and even easier to use. Unfortunately, Abbott's [FreeStyle LibreLink](https://apps.apple.com/us/app/freestyle-librelink-us/id1325992472) app is less than optimal (3,250 other people with an average rating of 2.9/5.0 seem to agree). In their defense, the web app LibreView does offer some nice reports which can be generated as PDFs—not very dynamic, but still something! What I had in mind was more in the fashion of the [Ultrahuman M1 dashboard](https://ultrahuman.com/m1). Unfortunately, I wasn't allowed to use my Libre sensor (EU firmware) with their app (yes, I spoke to customer service).

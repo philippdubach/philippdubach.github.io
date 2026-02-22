@@ -1,38 +1,28 @@
----
-title: Behavioral Economics & Transit Policy
-date: 2025-06-22
-draft: false
-images:
-- https://static.philippdubach.com/ograph/ograph-TransitPolicy.jpg
-seoTitle: "Why Free Transit Feels Revolutionary: The Zero Price Effect"
-description: "The zero price effect explains why politicians love free transit proposals. But making buses free might weaken the rider advocacy that protects service quality."
-keywords:
-- free public transit
-- zero price effect
-- fare-free transit pros and cons
-- behavioral economics transit policy
-- congestion pricing
-- pricing psychology economics
-- zero price behavioral economics
-- public subsidy economics
-- pricing policy design
-external_url: https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf
-categories:
-- Economics
-type: Analysis
-aliases:
-- /2025/06/22/behavioral-economics-transit-policy/
-
-faq:
-- question: What is the zero price effect and how does it apply to transit policy?
-  answer: 'The zero price effect is a behavioral economics finding showing that people don''t treat "free" as just another low price. When something costs zero, it receives a psychological boost that inflates perceived value beyond what cost-benefit analysis would predict. Applied to transit, this means the gap between a $2.75 fare and $0 feels far larger than the gap between $2.75 and $0.75, even though the dollar difference is smaller.'
-- question: Why does free public transit feel different from cheap public transit?
-  answer: 'Free transit activates social norms like gratitude, civic participation, and shared ownership, making riders feel they''re receiving a gift from the city. Cheap transit activates market norms, where riders think about cost-benefit trade-offs and whether the service is worth the price. This distinction, rooted in Dan Ariely''s research on zero pricing, explains why politicians find "free" so much more compelling than "affordable."'
-- question: Could free transit make it easier for politicians to cut funding?
-  answer: Potentially yes. When riders pay fares, they become customers with expectations and standing to complain about service quality. Fare-paying riders create a natural constituency that defends transit budgets during cuts. When transit is free, riders become passive beneficiaries with lower expectations, and it becomes politically easier to reduce late-night service, lengthen wait times, or defer maintenance without significant backlash.
-- question: How does congestion pricing relate to behavioral economics?
-  answer: 'Congestion pricing works by forcing drivers into analytical, cost-benefit thinking about each trip. When driving feels "free" (ignoring gas, parking, and insurance), people follow habit rather than reason. Adding even a modest charge, like $5 to enter Manhattan, shifts people from automatic behavior to deliberate calculation, making them much more likely to consider alternatives like public transit.'
----
++++
+title = "Behavioral Economics & Transit Policy"
+seoTitle = "Why Free Transit Feels Revolutionary: The Zero Price Effect"
+date = 2025-06-22
+images = ["https://static.philippdubach.com/ograph/ograph-TransitPolicy.jpg"]
+description = "The zero price effect explains why politicians love free transit proposals. But making buses free might weaken the rider advocacy that protects service quality."
+keywords = ["free public transit", "zero price effect", "fare-free transit pros and cons", "behavioral economics transit policy", "congestion pricing", "pricing psychology economics", "zero price behavioral economics", "public subsidy economics", "pricing policy design"]
+categories = ["Economics"]
+type = "Analysis"
+draft = false
+external_url = "https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf"
+aliases = ["/2025/06/22/behavioral-economics-transit-policy/"]
+takeaways = [
+  "The zero price effect means the gap between $2.75 and free feels far larger than $2.75 and $0.75, even though the dollar savings is smaller.",
+  "Free transit activates social norms like gratitude and civic participation, while any positive price forces cost-benefit thinking that makes riders demand accountability.",
+  "Fare-paying riders create a natural constituency that defends transit budgets during cuts, meaning free transit could make it politically easier to slash service quality.",
+  "Congestion pricing works because even a modest $5 charge shifts drivers from automatic habit to deliberate calculation about each trip.",
+]
+faq = [
+  {question = "What is the zero price effect and how does it apply to transit policy?", answer = "The zero price effect is a behavioral economics finding showing that people don't treat \"free\" as just another low price. When something costs zero, it receives a psychological boost that inflates perceived value beyond what cost-benefit analysis would predict. Applied to transit, this means the gap between a $2.75 fare and $0 feels far larger than the gap between $2.75 and $0.75, even though the dollar difference is smaller."},
+  {question = "Why does free public transit feel different from cheap public transit?", answer = "Free transit activates social norms like gratitude, civic participation, and shared ownership, making riders feel they're receiving a gift from the city. Cheap transit activates market norms, where riders think about cost-benefit trade-offs and whether the service is worth the price. This distinction, rooted in Dan Ariely's research on zero pricing, explains why politicians find \"free\" so much more compelling than \"affordable.\""},
+  {question = "Could free transit make it easier for politicians to cut funding?", answer = "Potentially yes. When riders pay fares, they become customers with expectations and standing to complain about service quality. Fare-paying riders create a natural constituency that defends transit budgets during cuts. When transit is free, riders become passive beneficiaries with lower expectations, and it becomes politically easier to reduce late-night service, lengthen wait times, or defer maintenance without significant backlash."},
+  {question = "How does congestion pricing relate to behavioral economics?", answer = "Congestion pricing works by forcing drivers into analytical, cost-benefit thinking about each trip. When driving feels \"free\" (ignoring gas, parking, and insurance), people follow habit rather than reason. Adding even a modest charge, like $5 to enter Manhattan, shifts people from automatic behavior to deliberate calculation, making them much more likely to consider alternatives like public transit."},
+]
++++
 Over the weekend a [WSJ editorial on the 2025 New York City mayoral election](https://www.wsj.com/opinion/new-yorks-choice-cuomo-or-socialism-election-mayor-race-vote-mamdani-ede84c75) called one of the potential Democratic candidates Zohran Mamdani "a literal socialist" for - among other things - running on the promise of [free bus rides for all](https://www.thenation.com/article/society/new-york-city-bus-free-fare/):
 
 > Zohran won New York's first fare-free bus pilot on five lines across the city. As Mayor, he'll permanently eliminate the fare on every city bus [...] Fast and free buses will not only make buses reliable and accessible but will improve safety for riders and operators – creating the world-class service New Yorkers deserve.

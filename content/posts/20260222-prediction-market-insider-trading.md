@@ -1,43 +1,28 @@
----
-title: "The Absolute Insider Mess of Prediction Markets"
-seoTitle: "Prediction Market Insider Trading: Why Polymarket and Kalshi Need Regulation"
-date: 2026-02-22
-lastmod: 2026-02-22
-publishDate: 2026-02-22T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-prediction-market-insider-trading.jpg
-description: "A suspected Google insider made $1.15M in 24 hours on Polymarket. Israeli soldiers bet classified strike timing. A mystery trader netted $436K on Maduro's capture. Prediction markets have an insider trading problem, and the economics of why it matters go deeper than fairness."
-keywords:
-- Polymarket insider trading 2026
-- Kalshi regulation CFTC 2026
-- AlphaRacoon Polymarket Google insider
-- prediction market insider trading legal
-- Israeli soldiers Polymarket bets
-- Maduro Polymarket trade Venezuela
-- CFTC prediction market rulemaking
-- adverse selection prediction markets
-- Matt Levine prediction markets insider trading
-- Compound AI Polymarket insider detection
-- Federal Reserve Kalshi macro markets paper
-- Diercks Katz Wright prediction markets
-- prediction market regulation economics
-- Kalshi vs Polymarket regulation
-- George Akerlof market for lemons prediction markets
-draft: true
-faq:
-- question: "Is insider trading on Polymarket illegal?"
-  answer: "The legal status is genuinely unsettled. SEC Rule 10b-5 does not apply because prediction market contracts are swaps, not securities. CFTC Rule 180.1 prohibits trading on material nonpublic information but requires proof of a breached pre-existing duty, which maps awkwardly onto prediction markets. The strongest enforcement tool may be criminal wire fraud (18 U.S.C. § 1343). At the Securities Enforcement Forum in February 2026, SDNY U.S. Attorney Jay Clayton said prediction market participants are not beyond fraud statutes and to expect enforcement actions."
-- question: "How much did the suspected Google insider make on Polymarket?"
-  answer: "A wallet called AlphaRacoon deposited $3 million on December 3, 2025, went 22 for 23 on Google Year in Search predictions, and made $1.15 million in under 24 hours. The same wallet previously made over $150,000 correctly predicting the exact launch window of Google's Gemini 3.0. The wallet was later renamed to 0xafEe but was re-identified by Compound AI's detection system."
-- question: "What happened with the Israeli soldiers Polymarket case?"
-  answer: "In February 2026, Israeli authorities indicted two people, a military reservist and a civilian, for using classified intelligence to bet on Polymarket during Israel's 12-day war with Iran in June 2025. An account called ricosuave666 placed seven bets on strike timing and got every one correct, earning approximately $150,000. This is the first criminal prosecution tied to prediction market insider trading."
-- question: "Did the Federal Reserve endorse prediction markets?"
-  answer: "A February 2026 FEDS working paper by Diercks, Katz, and Wright titled 'Kalshi and the Rise of Macro Markets' found that Kalshi's macro markets perform as well as or better than traditional forecasting tools like fed funds futures and professional surveys, with a perfect modal forecast record on the day before every FOMC meeting since 2022. The paper describes prediction markets as a complement to existing tools, not a replacement, and does not represent official Federal Reserve policy."
-- question: "Why does insider trading hurt prediction markets even if it makes prices more accurate?"
-  answer: "Insider trading creates adverse selection: if insiders consistently win, uninformed participants recognize they are systematically losing to better-informed counterparties and withdraw. Market makers widen spreads or exit. This reduces liquidity, which reduces the market's ability to aggregate information. The accuracy gain from one insider's trade is more than offset by the participation loss from the traders who leave. This is George Akerlof's 'market for lemons' dynamic applied to financial markets."
-- question: "Which Wall Street firms are building prediction market desks?"
-  answer: "DRW is building a dedicated prediction markets desk with base salaries of $175,000-$200,000. Susquehanna became Kalshi's first official market maker. Jump Trading is taking equity stakes in both Kalshi and Polymarket for liquidity provision. Goldman Sachs CEO David Solomon disclosed meeting leadership of both platforms. Tyr Capital, a Swiss crypto hedge fund, is hiring prediction market traders."
----
++++
+title = "The Absolute Insider Mess of Prediction Markets"
+seoTitle = "Prediction Market Insider Trading: Why Polymarket and Kalshi Need Regulation"
+date = 2026-02-22
+lastmod = 2026-02-22
+publishDate = 2026-02-22T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-prediction-market-insider-trading.jpg"]
+description = "A suspected Google insider made $1.15M in 24 hours on Polymarket. Israeli soldiers bet classified strike timing. A mystery trader netted $436K on Maduro's capture. Prediction markets have an insider trading problem, and the economics of why it matters go deeper than fairness."
+keywords = ["Polymarket insider trading 2026", "Kalshi regulation CFTC 2026", "AlphaRacoon Polymarket Google insider", "prediction market insider trading legal", "Israeli soldiers Polymarket bets", "Maduro Polymarket trade Venezuela", "CFTC prediction market rulemaking", "adverse selection prediction markets", "Matt Levine prediction markets insider trading", "Compound AI Polymarket insider detection", "Federal Reserve Kalshi macro markets paper", "Diercks Katz Wright prediction markets", "prediction market regulation economics", "Kalshi vs Polymarket regulation", "George Akerlof market for lemons prediction markets"]
+draft = true
+takeaways = [
+  "A suspected Google insider went 22-for-23 on Polymarket, turning $3M into $4.15M in under 24 hours, and no U.S. regulator has acted on any of the three major cases since December 2025",
+  "A Fed working paper found Kalshi's macro markets matched the actual FOMC rate outcome on the day before every meeting since 2022, outperforming traditional forecasting tools in certain windows",
+  "Combined prediction market volume hit $44B in 2025, roughly 300x the level from early 2024, while the CFTC has brought zero insider trading enforcement actions",
+  "Unchecked insider trading triggers Akerlof's lemons dynamic: market makers widen spreads, uninformed participants leave, and the accuracy gains from one insider's trade are offset by the liquidity collapse that follows",
+]
+faq = [
+  {question = "Is insider trading on Polymarket illegal?", answer = "The legal status is genuinely unsettled. SEC Rule 10b-5 does not apply because prediction market contracts are swaps, not securities. CFTC Rule 180.1 prohibits trading on material nonpublic information but requires proof of a breached pre-existing duty, which maps awkwardly onto prediction markets. The strongest enforcement tool may be criminal wire fraud (18 U.S.C. § 1343). At the Securities Enforcement Forum in February 2026, SDNY U.S. Attorney Jay Clayton said prediction market participants are not beyond fraud statutes and to expect enforcement actions."},
+  {question = "How much did the suspected Google insider make on Polymarket?", answer = "A wallet called AlphaRacoon deposited $3 million on December 3, 2025, went 22 for 23 on Google Year in Search predictions, and made $1.15 million in under 24 hours. The same wallet previously made over $150,000 correctly predicting the exact launch window of Google's Gemini 3.0. The wallet was later renamed to 0xafEe but was re-identified by Compound AI's detection system."},
+  {question = "What happened with the Israeli soldiers Polymarket case?", answer = "In February 2026, Israeli authorities indicted two people, a military reservist and a civilian, for using classified intelligence to bet on Polymarket during Israel's 12-day war with Iran in June 2025. An account called ricosuave666 placed seven bets on strike timing and got every one correct, earning approximately $150,000. This is the first criminal prosecution tied to prediction market insider trading."},
+  {question = "Did the Federal Reserve endorse prediction markets?", answer = "A February 2026 FEDS working paper by Diercks, Katz, and Wright titled 'Kalshi and the Rise of Macro Markets' found that Kalshi's macro markets perform as well as or better than traditional forecasting tools like fed funds futures and professional surveys, with a perfect modal forecast record on the day before every FOMC meeting since 2022. The paper describes prediction markets as a complement to existing tools, not a replacement, and does not represent official Federal Reserve policy."},
+  {question = "Why does insider trading hurt prediction markets even if it makes prices more accurate?", answer = "Insider trading creates adverse selection: if insiders consistently win, uninformed participants recognize they are systematically losing to better-informed counterparties and withdraw. Market makers widen spreads or exit. This reduces liquidity, which reduces the market's ability to aggregate information. The accuracy gain from one insider's trade is more than offset by the participation loss from the traders who leave. This is George Akerlof's 'market for lemons' dynamic applied to financial markets."},
+  {question = "Which Wall Street firms are building prediction market desks?", answer = "DRW is building a dedicated prediction markets desk with base salaries of $175,000-$200,000. Susquehanna became Kalshi's first official market maker. Jump Trading is taking equity stakes in both Kalshi and Polymarket for liquidity provision. Goldman Sachs CEO David Solomon disclosed meeting leadership of both platforms. Tyr Capital, a Swiss crypto hedge fund, is hiring prediction market traders."},
+]
++++
 
 Someone at Google, or close enough to Google, [deposited $3 million into Polymarket](https://www.inc.com/ava-levinson/polymarket-million-dollar-google-win-raises-questions/91274626) on December 3, 2025, bet on 23 separate "Google Year in Search" outcomes, [got 22 right](https://gizmodo.com/polymarket-user-accused-of-1-million-insider-trade-on-google-search-markets-2000696258), and walked away with **$1.15 million** in profit in under 24 hours. One of those bets: that [d4vd would be the most-searched person of 2025](https://thedefiant.io/news/defi/polymarket-users-suspect-insider-trading-after-google-trend-markets-crown-surprise-winner), purchased at roughly 5 cents when the market gave it a 0.2% probability.
 

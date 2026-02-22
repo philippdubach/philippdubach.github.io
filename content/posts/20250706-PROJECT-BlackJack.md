@@ -1,38 +1,28 @@
----
-title: Counting Cards with Computer Vision
-date: 2025-07-06
-seoTitle: Blackjack Card Detection with YOLOv11 and Monte Carlo Odds
-images:
-- https://static.philippdubach.com/ograph/ograph-blackjack.jpg
-description: How I trained a YOLOv11 model to detect playing cards at 99.5% accuracy
-  and built a real-time Monte Carlo blackjack odds calculator using computer vision.
-keywords:
-- blackjack card detection computer vision
-- YOLOv11 custom object detection training
-- real-time playing card recognition
-- train YOLO model playing cards
-- Monte Carlo blackjack odds Python
-tags:
-- Project
-categories:
-- AI
-type: Project
-draft: false
-aliases:
-- /2025/07/06/counting-cards-with-computer-vision/
-
-faq:
-- question: How many annotated images do you need to train a YOLO model for card detection?
-  answer: For this project, 409 annotated playing cards across 117 images achieved 99.5% mAP@50 after iterating on data quality. The initial smaller dataset of roughly half that size produced decent results at 80.5% mAP, but doubling the annotations and fixing bounding polygon errors was what pushed accuracy to near-perfect levels.
-- question: Is OCR a viable alternative to object detection for recognizing playing cards?
-  answer: In testing, OCR proved unreliable for this use case. While the Claude Vision API achieved 99.9% accuracy as a secondary verification layer, it was too slow for real-time use. EasyOCR, running locally, could identify card numbers when it detected them but failed to recognize roughly half the cards entirely, making it unsuitable for consistent card recognition.
-- question: How fast is local YOLO inference compared to a cloud-hosted API?
-  answer: The difference is substantial. Roboflow's hosted API took around 4 seconds per inference, while running the same YOLOv11 model locally on a laptop achieved inference times under 0.1 seconds per image (approximately 45.5ms for inference alone). This 40x speed improvement made real-time card detection practical.
-- question: What is transfer learning and why use it for card detection?
-  answer: Transfer learning means starting from a model pre-trained on millions of general images rather than training from scratch. For card detection with YOLOv11, this approach lets the model apply visual patterns it already understands (edges, shapes, textures) to the specific task of identifying playing cards, requiring far less training data and time than building a model from zero.
-- question: Can you combine computer vision with Monte Carlo simulation for blackjack?
-  answer: Yes. This project feeds detected card values from the YOLOv11 model directly into a Monte Carlo simulation that calculates real-time blackjack odds. The system captures the browser window, identifies all visible cards, and runs thousands of simulated hands to display hit/stand probabilities on screen.
----
++++
+title = "Counting Cards with Computer Vision"
+seoTitle = "Blackjack Card Detection with YOLOv11 and Monte Carlo Odds"
+date = 2025-07-06
+images = ["https://static.philippdubach.com/ograph/ograph-blackjack.jpg"]
+description = "How I trained a YOLOv11 model to detect playing cards at 99.5% accuracy and built a real-time Monte Carlo blackjack odds calculator using computer vision."
+keywords = ["blackjack card detection computer vision", "YOLOv11 custom object detection training", "real-time playing card recognition", "train YOLO model playing cards", "Monte Carlo blackjack odds Python"]
+categories = ["AI"]
+tags = ["Project"]
+type = "Project"
+draft = false
+aliases = ["/2025/07/06/counting-cards-with-computer-vision/"]
+takeaways = [
+  "YOLOv11 trained on 409 annotated playing cards achieved 99.5% mAP@50, up from 80.5% after doubling annotations and fixing bounding polygon errors.",
+  "Local YOLO inference runs at 45.5ms per image, roughly 40x faster than Roboflow's hosted API at 4 seconds, making real-time card detection practical.",
+  "Claude's Vision API achieved 99.9% accuracy on card recognition but was too slow for gameplay, while EasyOCR failed to detect roughly half the cards entirely.",
+]
+faq = [
+  {question = "How many annotated images do you need to train a YOLO model for card detection?", answer = "For this project, 409 annotated playing cards across 117 images achieved 99.5% mAP@50 after iterating on data quality. The initial smaller dataset of roughly half that size produced decent results at 80.5% mAP, but doubling the annotations and fixing bounding polygon errors was what pushed accuracy to near-perfect levels."},
+  {question = "Is OCR a viable alternative to object detection for recognizing playing cards?", answer = "In testing, OCR proved unreliable for this use case. While the Claude Vision API achieved 99.9% accuracy as a secondary verification layer, it was too slow for real-time use. EasyOCR, running locally, could identify card numbers when it detected them but failed to recognize roughly half the cards entirely, making it unsuitable for consistent card recognition."},
+  {question = "How fast is local YOLO inference compared to a cloud-hosted API?", answer = "The difference is substantial. Roboflow's hosted API took around 4 seconds per inference, while running the same YOLOv11 model locally on a laptop achieved inference times under 0.1 seconds per image (approximately 45.5ms for inference alone). This 40x speed improvement made real-time card detection practical."},
+  {question = "What is transfer learning and why use it for card detection?", answer = "Transfer learning means starting from a model pre-trained on millions of general images rather than training from scratch. For card detection with YOLOv11, this approach lets the model apply visual patterns it already understands (edges, shapes, textures) to the specific task of identifying playing cards, requiring far less training data and time than building a model from zero."},
+  {question = "Can you combine computer vision with Monte Carlo simulation for blackjack?", answer = "Yes. This project feeds detected card values from the YOLOv11 model directly into a Monte Carlo simulation that calculates real-time blackjack odds. The system captures the browser window, identifies all visible cards, and runs thousands of simulated hands to display hit/stand probabilities on screen."},
+]
++++
 After installing [Claude Code](https://www.anthropic.com/claude-code)
 >the agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster through natural language commands
 

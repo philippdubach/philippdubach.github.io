@@ -1,37 +1,28 @@
----
-title: "Buying the Haystack Might Not Work This Year"
-seoTitle: "AI Bubble 2026: Comparing a16z and AQR Market Views"
-date: 2026-01-31
-publishDate: 2026-01-31T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-two-ways-ai.jpg
-description: a16z sees AI fundamentals thriving with 80% GPU utilization. AQR sees the CAPE at the 96th percentile. Both have data. Both may be right.
-keywords:
-- AI bubble 2026
-- CAPE ratio stock market
-- AI valuation 2026
-- a16z state of markets
-- expected stock returns 2026
-categories:
-- Finance
-- AI
-- Tech
-- Economics
-type: Commentary
-draft: false
-
-faq:
-- question: Is the AI market a bubble in 2026?
-  answer: The answer depends on which metrics you prioritize. a16z points to 80% GPU utilization and $40.6 billion in annual revenue from top AI companies as evidence of real demand. AQR counters that the U.S. CAPE ratio sits at the 96th percentile since 1980, historically associated with low future returns. Both have data supporting their view.
-- question: What does the CAPE ratio tell us about expected stock returns?
-  answer: The CAPE ratio measures price relative to 10-year average inflation-adjusted earnings. At current levels around 40x, it suggests U.S. large cap equities may return roughly 3.9% annually over the next 5-10 years, well below the long-term average of 5% since 1900, according to AQR's capital market assumptions.
-- question: Can AI companies thrive while the overall market disappoints?
-  answer: Yes, this is one way to reconcile the bullish and bearish views. Individual AI winners generating real revenue and high utilization could deliver spectacular returns even as broad market indices produce below-average results due to compressed risk premia. The question becomes whether you're buying the index or picking the winners.
-- question: Why do a16z and AQR have such different views on AI valuations?
-  answer: Both sources have financial incentives influencing their perspectives. a16z manages billions in venture capital and growth equity, so bullish AI narratives support their portfolio valuations. AQR runs systematic strategies that benefit when investors diversify away from concentrated U.S. tech exposure toward international equities and alternatives.
-- question: How do current tech valuations compare to the dotcom bubble?
-  answer: Tech P/E multiples currently sit around 30-35x, elevated but nowhere near the 70-80x of 2000. More importantly, GPU utilization runs at 80% compared to just 7% for fiber optic cables during the dotcom era. The fundamentals appear stronger, though valuations remain historically high.
----
++++
+title = "Buying the Haystack Might Not Work This Year"
+seoTitle = "AI Bubble 2026: Comparing a16z and AQR Market Views"
+date = 2026-01-31
+publishDate = 2026-01-31T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-two-ways-ai.jpg"]
+description = "a16z sees AI fundamentals thriving with 80% GPU utilization. AQR sees the CAPE at the 96th percentile. Both have data. Both may be right."
+keywords = ["AI bubble 2026", "CAPE ratio stock market", "AI valuation 2026", "a16z state of markets", "expected stock returns 2026"]
+categories = ["Finance", "AI", "Tech", "Economics"]
+type = "Commentary"
+draft = false
+takeaways = [
+  "GPU utilization runs at 80% versus 7% for fiber optic cables during the dotcom era, but the U.S. CAPE ratio sits at the 96th percentile since 1980, historically associated with low future returns",
+  "Cumulative hyperscaler capex is projected to hit $4.8 trillion by 2030, requiring roughly $1 trillion in annual AI revenue to clear a 10% hurdle rate",
+  "Non-U.S. developed markets offer expected returns around 5% versus 3.9% for U.S. large caps, a valuation gap that holds even if the AI story is true",
+  "AQR estimates a 50% probability that realized equity returns will miss estimates by more than 3 percentage points annually over the next decade",
+]
+faq = [
+  {question = "Is the AI market a bubble in 2026?", answer = "The answer depends on which metrics you prioritize. a16z points to 80% GPU utilization and $40.6 billion in annual revenue from top AI companies as evidence of real demand. AQR counters that the U.S. CAPE ratio sits at the 96th percentile since 1980, historically associated with low future returns. Both have data supporting their view."},
+  {question = "What does the CAPE ratio tell us about expected stock returns?", answer = "The CAPE ratio measures price relative to 10-year average inflation-adjusted earnings. At current levels around 40x, it suggests U.S. large cap equities may return roughly 3.9% annually over the next 5-10 years, well below the long-term average of 5% since 1900, according to AQR's capital market assumptions."},
+  {question = "Can AI companies thrive while the overall market disappoints?", answer = "Yes, this is one way to reconcile the bullish and bearish views. Individual AI winners generating real revenue and high utilization could deliver spectacular returns even as broad market indices produce below-average results due to compressed risk premia. The question becomes whether you're buying the index or picking the winners."},
+  {question = "Why do a16z and AQR have such different views on AI valuations?", answer = "Both sources have financial incentives influencing their perspectives. a16z manages billions in venture capital and growth equity, so bullish AI narratives support their portfolio valuations. AQR runs systematic strategies that benefit when investors diversify away from concentrated U.S. tech exposure toward international equities and alternatives."},
+  {question = "How do current tech valuations compare to the dotcom bubble?", answer = "Tech P/E multiples currently sit around 30-35x, elevated but nowhere near the 70-80x of 2000. More importantly, GPU utilization runs at 80% compared to just 7% for fiber optic cables during the dotcom era. The fundamentals appear stronger, though valuations remain historically high."},
+]
++++
 
 I've been reading the January 2026 state of markets reports from [Andreessen Horowitz](https://docs.google.com/presentation/d/e/2PACX-1vQXsMMv5ZCWm77za7oXJcz1X-Th5Mz15g5nYBxbUjnomStVcjn8lXPjE5LzAlvc_hg4yHKgwASWLo5a/pub?start=false&loop=false&delayms=3000&slide=id.g3b6e2578ab2_8_4858) and [AQR](https://www.aqr.com/Insights/Research/Alternative-Thinking/2026-Capital-Market-Assumptions-for-Major-Asset-Classes), and their conclusions on the AI bubble question in 2026 are almost impossible to reconcile.
 

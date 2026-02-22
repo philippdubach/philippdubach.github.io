@@ -1,44 +1,30 @@
----
-title: "Europe's $24 Trillion Payment Breakup Is Really a Bet on Infrastructure Arbitrage"
-seoTitle: 'European Payments Initiative Wero: EPI vs Visa Mastercard A2A Infrastructure Arbitrage'
-date: 2026-02-16
-lastmod: 2026-02-16
-publishDate: 2026-02-16T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-european-payments-arbitrage3.jpg
-description: "The EuroPA alliance connected 130 million users across 13 countries overnight. But this isn't really about sovereignty. It's an infrastructure arbitrage exploiting a 100-120bps spread between card network fees and SEPA Instant rails, accidentally protected by the EU's own regulation."
-keywords:
-- European Payments Initiative EPI
-- Wero payment system
-- Visa Mastercard European market
-- SEPA Instant Credit Transfer
-- payment sovereignty Europe
-- account-to-account payments A2A
-- EuroPA alliance Bizum Bancomat
-- interchange fee regulation EU
-- digital euro ECB
-- India UPI Brazil Pix comparison
-- European payment infrastructure
-- scheme fees Visa Mastercard
-draft: false
-faq:
-- question: "What is the European Payments Initiative and how does Wero work?"
-  answer: "The European Payments Initiative (EPI) is a consortium of 16 major European banks that built Wero, a digital wallet operating on SEPA Instant Credit Transfer infrastructure. Payments move directly between bank accounts in under 10 seconds using a phone number, email, or QR code, bypassing card networks entirely. EPI has committed roughly €500 million in capital and expanded to over 1,100 member institutions."
-- question: "What is the EuroPA alliance and why does it matter?"
-  answer: "The EuroPA alliance, formalized via a February 2, 2026 Memorandum of Understanding, connects EPI's Wero system with Spain's Bizum (30.6M users), Italy's Bancomat, Portugal's SIBS, and the Nordic Vipps MobilePay (12.5M users) through a hub model. This created a 130-million-user network across 13 countries overnight, covering 72% of the EU population and giving Wero the scale to force merchant adoption."
-- question: "How much cheaper is Wero than Visa or Mastercard for merchants?"
-  answer: "A card transaction through Visa or Mastercard can cost European merchants up to 2% when interchange, scheme fees, and processing are included. Wero's proposed merchant pricing in Germany is 0.77% plus gateway charges. That spread of roughly 100 to 120 basis points per transaction is the core infrastructure arbitrage, because account-to-account payments skip the card network intermediation layer entirely."
-- question: "Why did the EU's Interchange Fee Regulation accidentally help Visa and Mastercard?"
-  answer: "The 2015 IFR capped consumer debit interchange at 0.2% and credit at 0.3%. Visa and Mastercard responded by raising unregulated scheme fees by 33.9% between 2018 and 2022. The net merchant service charge nearly doubled from 0.27% to 0.44%, neutralizing the regulatory benefit. Meanwhile, the capped interchange compressed the revenue pool available to fund new payment networks, inadvertently strengthening the duopoly's competitive moat."
-- question: "How does Wero compare to India's UPI and Brazil's Pix?"
-  answer: "UPI processed 228.3 billion transactions worth $3.6 trillion in 2025. Pix reached 175 million users and $4.6 trillion in 2024. Both achieved massive scale within years of launch. However, India had low card penetration (filling a vacuum rather than displacing incumbents) and Brazil mandated participation via central bank authority. Europe has high card penetration, entrenched consumer habits, and 27 regulatory jurisdictions, making direct comparison misleading."
-- question: "What is the digital euro and how does it relate to Wero?"
-  answer: "The digital euro is an ECB central bank digital currency project. The EU Council agreed its negotiating position in December 2025, with a Parliament vote expected H1 2026 and potential first issuance around 2029. EPI positions Wero as complementary, but both are competing bets on European payment sovereignty. Wero is the pragmatic private-sector version. The digital euro is the maximalist public-sector version. Banks funding EPI also face estimated implementation costs of €4 to 5.8 billion for the digital euro."
-- question: "What are the biggest risks to Wero's success?"
-  answer: "Consumer inertia is the primary risk. Mastercard alone has over 900 million branded cards in EU circulation versus Wero's 47 million users. Credit cards offer credit facilities, rewards, and purchase protection that Wero cannot yet match. German adoption has been notably sluggish at only 5% of transaction volume despite being the first launch country. Dutch merchants have pushed back on the shift from iDEAL's flat €0.29 fee to Wero's percentage-based pricing model."
-- question: "How are Visa and Mastercard responding to the European payment sovereignty push?"
-  answer: "Both companies are executing a quiet multi-rail pivot. Visa acquired European open banking leader Tink for $2.2 billion in 2022, gaining account-to-account payment capability. Mastercard acquired cybersecurity firm Recorded Future for $2.65 billion in 2024 and expanded European operations. Both are positioning as payment technology platforms rather than pure card networks, aiming to process A2A payments if card volumes shift."
----
++++
+title = "Europe's $24 Trillion Payment Breakup Is Really a Bet on Infrastructure Arbitrage"
+seoTitle = "European Payments Initiative Wero: EPI vs Visa Mastercard A2A Infrastructure Arbitrage"
+date = 2026-02-16
+lastmod = 2026-02-16
+publishDate = 2026-02-16T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-european-payments-arbitrage3.jpg"]
+description = "The EuroPA alliance connected 130 million users across 13 countries overnight. But this isn't really about sovereignty. It's an infrastructure arbitrage exploiting a 100-120bps spread between card network fees and SEPA Instant rails, accidentally protected by the EU's own regulation."
+keywords = ["European Payments Initiative EPI", "Wero payment system", "Visa Mastercard European market", "SEPA Instant Credit Transfer", "payment sovereignty Europe", "account-to-account payments A2A", "EuroPA alliance Bizum Bancomat", "interchange fee regulation EU", "digital euro ECB", "India UPI Brazil Pix comparison", "European payment infrastructure", "scheme fees Visa Mastercard"]
+draft = false
+takeaways = [
+  "The EuroPA alliance connected 130 million users across 13 countries overnight, giving Wero the scale to challenge Visa and Mastercard's $4.7 trillion European transaction volume",
+  "Card transactions cost European merchants up to 2% versus Wero's proposed 0.77%, a 100-120 basis point structural arbitrage because account-to-account payments skip the card network layer entirely",
+  "The EU's 2015 interchange cap backfired: Visa and Mastercard shifted revenue to unregulated scheme fees that rose 33.9% between 2018 and 2022, nearly doubling the net merchant service charge",
+  "Mastercard has over 900 million branded cards in EU circulation versus Wero's 47 million users, and German adoption sits at only 5% of transaction volume despite being the first launch country",
+]
+faq = [
+  {question = "What is the European Payments Initiative and how does Wero work?", answer = "The European Payments Initiative (EPI) is a consortium of 16 major European banks that built Wero, a digital wallet operating on SEPA Instant Credit Transfer infrastructure. Payments move directly between bank accounts in under 10 seconds using a phone number, email, or QR code, bypassing card networks entirely. EPI has committed roughly €500 million in capital and expanded to over 1,100 member institutions."},
+  {question = "What is the EuroPA alliance and why does it matter?", answer = "The EuroPA alliance, formalized via a February 2, 2026 Memorandum of Understanding, connects EPI's Wero system with Spain's Bizum (30.6M users), Italy's Bancomat, Portugal's SIBS, and the Nordic Vipps MobilePay (12.5M users) through a hub model. This created a 130-million-user network across 13 countries overnight, covering 72% of the EU population and giving Wero the scale to force merchant adoption."},
+  {question = "How much cheaper is Wero than Visa or Mastercard for merchants?", answer = "A card transaction through Visa or Mastercard can cost European merchants up to 2% when interchange, scheme fees, and processing are included. Wero's proposed merchant pricing in Germany is 0.77% plus gateway charges. That spread of roughly 100 to 120 basis points per transaction is the core infrastructure arbitrage, because account-to-account payments skip the card network intermediation layer entirely."},
+  {question = "Why did the EU's Interchange Fee Regulation accidentally help Visa and Mastercard?", answer = "The 2015 IFR capped consumer debit interchange at 0.2% and credit at 0.3%. Visa and Mastercard responded by raising unregulated scheme fees by 33.9% between 2018 and 2022. The net merchant service charge nearly doubled from 0.27% to 0.44%, neutralizing the regulatory benefit. Meanwhile, the capped interchange compressed the revenue pool available to fund new payment networks, inadvertently strengthening the duopoly's competitive moat."},
+  {question = "How does Wero compare to India's UPI and Brazil's Pix?", answer = "UPI processed 228.3 billion transactions worth $3.6 trillion in 2025. Pix reached 175 million users and $4.6 trillion in 2024. Both achieved massive scale within years of launch. However, India had low card penetration (filling a vacuum rather than displacing incumbents) and Brazil mandated participation via central bank authority. Europe has high card penetration, entrenched consumer habits, and 27 regulatory jurisdictions, making direct comparison misleading."},
+  {question = "What is the digital euro and how does it relate to Wero?", answer = "The digital euro is an ECB central bank digital currency project. The EU Council agreed its negotiating position in December 2025, with a Parliament vote expected H1 2026 and potential first issuance around 2029. EPI positions Wero as complementary, but both are competing bets on European payment sovereignty. Wero is the pragmatic private-sector version. The digital euro is the maximalist public-sector version. Banks funding EPI also face estimated implementation costs of €4 to 5.8 billion for the digital euro."},
+  {question = "What are the biggest risks to Wero's success?", answer = "Consumer inertia is the primary risk. Mastercard alone has over 900 million branded cards in EU circulation versus Wero's 47 million users. Credit cards offer credit facilities, rewards, and purchase protection that Wero cannot yet match. German adoption has been notably sluggish at only 5% of transaction volume despite being the first launch country. Dutch merchants have pushed back on the shift from iDEAL's flat €0.29 fee to Wero's percentage-based pricing model."},
+  {question = "How are Visa and Mastercard responding to the European payment sovereignty push?", answer = "Both companies are executing a quiet multi-rail pivot. Visa acquired European open banking leader Tink for $2.2 billion in 2022, gaining account-to-account payment capability. Mastercard acquired cybersecurity firm Recorded Future for $2.65 billion in 2024 and expanded European operations. Both are positioning as payment technology platforms rather than pure card networks, aiming to process A2A payments if card volumes shift."},
+]
++++
 <br>
 
 On February 2, 2026, the European Payments Initiative signed a [Memorandum of Understanding](https://epicompany.eu/media-insights/bancomat-bizum-epi-sibs-and-vipps-mobilepay-sign-mou-to-accelerate-the-rollout-of-sovereign-pan-european-payment-solutions) with the Alliance EuroPA, a consortium linking Spain's Bizum, Italy's Bancomat, Portugal's SIBS, and the Nordic Vipps MobilePay system. The deal connects 130 million users across 13 countries into a single interoperable payment network. Headlines framed it as Europe breaking up with Visa and Mastercard. The actual story is more interesting: Europe is attempting an infrastructure arbitrage that, if it works, could reprice how money moves across the continent.

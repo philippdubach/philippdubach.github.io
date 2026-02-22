@@ -1,38 +1,29 @@
----
-title: Trading on Market Sentiment
-date: 2025-02-20
-images:
-- https://static.philippdubach.com/ograph/ograph-sentiment.jpg
-seoTitle: "GPT-3.5 vs RavenPack: Sentiment Analysis Trading Strategy"
-description: "GPT-3.5 matched RavenPack's 41% returns in a sentiment analysis trading strategy using 2,072 news headlines. See the full backtest results and comparison."
-keywords:
-- sentiment analysis trading strategy
-- GPT sentiment analysis stock market
-- LLM financial sentiment analysis
-- news headline sentiment trading
-- RavenPack vs GPT sentiment
-tags:
-- Project
-categories:
-- Finance
-- AI
-type: Project
-draft: false
-aliases:
-- /2025/02/20/trading-on-market-sentiment/
-
-faq:
-- question: Can GPT match commercial sentiment analysis tools like RavenPack for trading?
-  answer: In a backtest using 2,072 Dow Jones Newswire headlines from 2018 to 2022, GPT-3.5 generated 41.02% returns compared to RavenPack's 40.99%, essentially matching the industry benchmark. The two models showed a 0.59 correlation in their sentiment scores, agreeing on direction while differing in granularity. This suggests general-purpose LLMs can compete with expensive proprietary systems for sentiment-based trading.
-- question: Does sentiment trading outperform buy-and-hold investing?
-  answer: It depends on the market environment. Over the full 2018-2022 period, both GPT-3.5 and RavenPack sentiment strategies underperformed a simple buy-and-hold approach (58.13%) in what was generally a bullish market. However, during the more volatile 2020-2022 period, the sentiment strategy outperformed buy-and-hold (22.83% vs 21.00%). Sentiment-based approaches tend to work better in choppy, news-driven markets rather than sustained bull runs.
-- question: What are the main limitations of using LLMs for real-time sentiment trading?
-  answer: Three practical challenges stand out. First, high-quality real-time news feeds are expensive and often restricted. Second, frequent trading driven by sentiment signals generates substantial transaction costs that eat into returns. Third, the processing time required for LLMs to analyze headlines cannot compete with high-frequency traders who act on news within milliseconds.
-- question: How does GPT-3.5 score financial news sentiment compared to traditional NLP models?
-  answer: Unlike traditional models such as FinBERT that provide only discrete positive, neutral, or negative classifications, GPT-3.5 can generate continuous sentiment scores from -1 to 1 with decimal precision. This finer granularity allows for more nuanced trading signals. In short-term holding periods of 1 and 10 days, GPT-3.5 scores outperformed the RavenPack benchmark for positive sentiment, while for negative sentiment, GPT-3.5 showed stronger performance over 90-day windows.
-- question: When does a sentiment-based trading strategy work best?
-  answer: Sentiment strategies perform best during volatile, news-driven market environments where price movements are less directional. During the turbulent 2020-2022 period, which included COVID-19 volatility and rising interest rates, the sentiment strategy outperformed passive investing. In calmer bull markets, sentiment strategies often remain uninvested for long stretches due to the absence of strong signals, causing them to miss steady upward moves.
----
++++
+title = "Trading on Market Sentiment"
+seoTitle = "GPT-3.5 vs RavenPack: Sentiment Analysis Trading Strategy"
+date = 2025-02-20
+images = ["https://static.philippdubach.com/ograph/ograph-sentiment.jpg"]
+description = "GPT-3.5 matched RavenPack's 41% returns in a sentiment analysis trading strategy using 2,072 news headlines. See the full backtest results and comparison."
+keywords = ["sentiment analysis trading strategy", "GPT sentiment analysis stock market", "LLM financial sentiment analysis", "news headline sentiment trading", "RavenPack vs GPT sentiment"]
+categories = ["Finance", "AI"]
+tags = ["Project"]
+type = "Project"
+draft = false
+aliases = ["/2025/02/20/trading-on-market-sentiment/"]
+takeaways = [
+  "GPT-3.5 returned 41.02% vs RavenPack's 40.99% on 2,072 Dow Jones Newswire headlines from 2018-2022, matching the commercial benchmark at a fraction of the cost",
+  "Both sentiment strategies underperformed buy-and-hold (58.13%) in the full bullish period, but outperformed during the volatile 2020-2022 window (22.83% vs 21.00%)",
+  "The two models showed a 0.59 sentiment score correlation, agreeing on direction but differing in granularity because GPT provides continuous scores while traditional NLP gives discrete labels",
+  "Real-world deployment faces a latency problem: GPT needs seconds to score a headline, while HFT firms act on news within milliseconds",
+]
+faq = [
+  {question = "Can GPT match commercial sentiment analysis tools like RavenPack for trading?", answer = "In a backtest using 2,072 Dow Jones Newswire headlines from 2018 to 2022, GPT-3.5 generated 41.02% returns compared to RavenPack's 40.99%, essentially matching the industry benchmark. The two models showed a 0.59 correlation in their sentiment scores, agreeing on direction while differing in granularity. This suggests general-purpose LLMs can compete with expensive proprietary systems for sentiment-based trading."},
+  {question = "Does sentiment trading outperform buy-and-hold investing?", answer = "It depends on the market environment. Over the full 2018-2022 period, both GPT-3.5 and RavenPack sentiment strategies underperformed a simple buy-and-hold approach (58.13%) in what was generally a bullish market. However, during the more volatile 2020-2022 period, the sentiment strategy outperformed buy-and-hold (22.83% vs 21.00%). Sentiment-based approaches tend to work better in choppy, news-driven markets rather than sustained bull runs."},
+  {question = "What are the main limitations of using LLMs for real-time sentiment trading?", answer = "Three practical challenges stand out. First, high-quality real-time news feeds are expensive and often restricted. Second, frequent trading driven by sentiment signals generates substantial transaction costs that eat into returns. Third, the processing time required for LLMs to analyze headlines cannot compete with high-frequency traders who act on news within milliseconds."},
+  {question = "How does GPT-3.5 score financial news sentiment compared to traditional NLP models?", answer = "Unlike traditional models such as FinBERT that provide only discrete positive, neutral, or negative classifications, GPT-3.5 can generate continuous sentiment scores from -1 to 1 with decimal precision. This finer granularity allows for more nuanced trading signals. In short-term holding periods of 1 and 10 days, GPT-3.5 scores outperformed the RavenPack benchmark for positive sentiment, while for negative sentiment, GPT-3.5 showed stronger performance over 90-day windows."},
+  {question = "When does a sentiment-based trading strategy work best?", answer = "Sentiment strategies perform best during volatile, news-driven market environments where price movements are less directional. During the turbulent 2020-2022 period, which included COVID-19 volatility and rising interest rates, the sentiment strategy outperformed passive investing. In calmer bull markets, sentiment strategies often remain uninvested for long stretches due to the absence of strong signals, causing them to miss steady upward moves."},
+]
++++
 _This post is based in part on a 2022 presentation I gave for the [ICBS Student Investment Fund](https://www.ft.com/content/3bd45acd-b323-3c6b-ba98-ac78b456f308) and my seminar work at Imperial College London._
 
 As we were looking for new investment strategies for our Macro Sentiment Trading team, OpenAI had just published their [GPT-3.5 Model](https://platform.openai.com/docs/models/gpt-3-5-turbo). After first experiments with the model, we asked ourselves: How would large language models like GPT-3.5 perform in predicting sentiment in financial markets, where the signal-to-noise ratio is notoriously low? And could they potentially even outperform industry benchmarks at interpreting market sentiment from news headlines? The idea wasn't entirely new. [Studies](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3389884) [[2]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1702854) [[3]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=685145) have shown that investor sentiment, extracted from news and social media, can forecast market movements. But most approaches rely on traditional NLP models or proprietary systems like [RavenPack](https://www.ravenpack.com). With the recent advances in large language models, I wanted to test whether these more sophisticated models could provide a competitive edge in sentiment-based trading. Before looking at model selection, it's worth understanding what makes trading on sentiment so challenging. News headlines present two fundamental problems that any robust system must address.

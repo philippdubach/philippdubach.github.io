@@ -1,42 +1,28 @@
----
-title: "Bandits and Agents: Netflix and Spotify Recommender Stacks in 2026"
-seoTitle: "Hybrid Recommender Systems 2026: Bandits vs LLM Costs"
-date: 2026-01-30
-publishDate: 2026-01-30T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-recommender-architecture.jpg
-description: "How hybrid recommender systems balance multi-armed bandits against LLM inference cost economics in 2026. A deep dive into Netflix recommendation algorithm architecture and Spotify's AI DJ recommender system."
-keywords:
-- hybrid recommender systems 2026
-- multi-armed bandits recommender systems
-- LLM inference cost economics
-- Netflix recommendation algorithm architecture
-- Spotify AI DJ recommender system
-- recommender systems 2026
-- inference economics
-- contextual bandits
-- exploration exploitation tradeoff
-- Thompson Sampling
-- candidate generation ranking
-- personalization at scale
-categories:
-- AI
-- Tech
-math: true
-draft: false
-
-faq:
-- question: What is a hybrid recommender system?
-  answer: A hybrid recommender system combines multiple recommendation approaches, typically using fast, cheap methods like collaborative filtering for candidate generation from millions of items, then invoking expensive LLM reasoning only for the final items users see. This funnel pattern balances recommendation quality against inference costs.
-- question: How does Netflix's recommendation algorithm work?
-  answer: 'Netflix uses a three-layer architecture: offline systems train deep collaborative filtering models on viewing history, nearline systems update user embeddings seconds after interactions, and online systems respond in milliseconds using multi-armed bandits to balance exploration of new content against exploitation of known preferences.'
-- question: What is the exploration-exploitation tradeoff in recommendations?
-  answer: The exploration-exploitation tradeoff is the balance between recommending items users will likely enjoy (exploitation) versus surfacing new content they might not discover otherwise (exploration). Netflix measures this through "incrementality"—the causal effect of showing a recommendation compared to not showing it.
-- question: Why can't streaming services afford smarter AI recommendations?
-  answer: LLM-based recommendations cost orders of magnitude more than classical methods. A single LLM recommendation can consume thousands of tokens, while traditional collaborative filtering uses simple dot products costing fractions of a cent. At Netflix and Spotify scale, this cost difference makes full LLM inference economically impossible for every recommendation.
-- question: How does Spotify's AI DJ work?
-  answer: Spotify's AI DJ uses an "agentic router" that decides whether to invoke expensive LLM reasoning or fall back to fast keyword matching against collaborative filtering embeddings. Complex queries get the big model while simple ones get the fast path. Underneath sits a bandit framework called BaRT that balances familiar and new music recommendations.
----
++++
+title = "Bandits and Agents: Netflix and Spotify Recommender Stacks in 2026"
+seoTitle = "Hybrid Recommender Systems 2026: Bandits vs LLM Costs"
+date = 2026-01-30
+publishDate = 2026-01-30T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-recommender-architecture.jpg"]
+description = "How hybrid recommender systems balance multi-armed bandits against LLM inference cost economics in 2026. A deep dive into Netflix recommendation algorithm architecture and Spotify's AI DJ recommender system."
+keywords = ["hybrid recommender systems 2026", "multi-armed bandits recommender systems", "LLM inference cost economics", "Netflix recommendation algorithm architecture", "Spotify AI DJ recommender system", "recommender systems 2026", "inference economics", "contextual bandits", "exploration exploitation tradeoff", "Thompson Sampling", "candidate generation ranking", "personalization at scale"]
+categories = ["AI", "Tech"]
+math = true
+draft = false
+takeaways = [
+  "A single LLM recommendation consumes thousands of tokens while a collaborative filtering dot product costs a fraction of a cent, making full LLM inference economically impossible at Netflix or Spotify scale",
+  "Netflix measures recommendation value by incrementality, the causal lift of showing a title versus not showing it, because a greedy algorithm that always surfaces high-probability titles collapses the discovery space",
+  "Spotify's AI DJ uses an agentic router that decides per-query whether to invoke the expensive LLM or fall back to fast keyword matching, an inference cost optimizer disguised as a product feature",
+  "Hyperscalers spent over $350 billion on AI infrastructure in 2025, but the industry consensus is a hybrid funnel: cheap models for millions of candidates, expensive reasoning only for the final dozen items a user sees",
+]
+faq = [
+  {question = "What is a hybrid recommender system?", answer = "A hybrid recommender system combines multiple recommendation approaches, typically using fast, cheap methods like collaborative filtering for candidate generation from millions of items, then invoking expensive LLM reasoning only for the final items users see. This funnel pattern balances recommendation quality against inference costs."},
+  {question = "How does Netflix's recommendation algorithm work?", answer = "Netflix uses a three-layer architecture: offline systems train deep collaborative filtering models on viewing history, nearline systems update user embeddings seconds after interactions, and online systems respond in milliseconds using multi-armed bandits to balance exploration of new content against exploitation of known preferences."},
+  {question = "What is the exploration-exploitation tradeoff in recommendations?", answer = "The exploration-exploitation tradeoff is the balance between recommending items users will likely enjoy (exploitation) versus surfacing new content they might not discover otherwise (exploration). Netflix measures this through \"incrementality\"—the causal effect of showing a recommendation compared to not showing it."},
+  {question = "Why can't streaming services afford smarter AI recommendations?", answer = "LLM-based recommendations cost orders of magnitude more than classical methods. A single LLM recommendation can consume thousands of tokens, while traditional collaborative filtering uses simple dot products costing fractions of a cent. At Netflix and Spotify scale, this cost difference makes full LLM inference economically impossible for every recommendation."},
+  {question = "How does Spotify's AI DJ work?", answer = "Spotify's AI DJ uses an \"agentic router\" that decides whether to invoke expensive LLM reasoning or fall back to fast keyword matching against collaborative filtering embeddings. Complex queries get the big model while simple ones get the fast path. Underneath sits a bandit framework called BaRT that balances familiar and new music recommendations."},
+]
++++
 Hyperscalers spent over [$350 billion on AI infrastructure](https://www.goldmansachs.com/insights/articles/why-ai-companies-may-invest-more-than-500-billion-in-2026) in 2025 alone, with projections exceeding $500 billion in 2026. The trillion-dollar question is not whether machines can reason, but whether anyone can afford to let them. Hybrid recommender systems sit at the center of this tension. Large Language Models promised to transform how Netflix suggests your next show or how Spotify curates your morning playlist. Instead, the industry has split into two parallel universes, divided not by capability but by cost.
 
 On one side sits what engineers call the "classical stack": matrix factorization, two-tower embedding models, and contextual bandits. These methods respond in microseconds, scale linearly with users, and run on nothing more complicated than dot products. A query costs a fraction of a cent. On the other side is the "agentic stack": LLM-based reasoning engines that can handle requests like "find me a sci-fi movie that feels like Blade Runner but was made in the 90s." This second approach consumes thousands of tokens per recommendation. The cost difference is not incremental; it is [orders of magnitude](https://www.softwareseni.com/understanding-inference-economics-and-why-ai-costs-spiral-beyond-proof-of-concept/). LLM inference cost economics, more than any algorithmic breakthrough, is now the dominant force shaping recommender architecture.

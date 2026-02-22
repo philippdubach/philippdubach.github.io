@@ -1,40 +1,28 @@
----
-title: "The Long Volatility Premium"
-seoTitle: "Long Volatility Premium: Beta-Adjusted Tail Hedging as a Compensated Factor"
-date: 2026-02-14
-lastmod: 2026-02-14
-publishDate: 2026-02-14T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-long-volatility-premium3.jpg
-description: "One River's data shows beta-adjusted long volatility outperformed the S&P 500 over 40 years. Goldman, AQR, and Universa agree on the mechanism but disagree on implementation. A synthesis of the evidence."
-keywords:
-- long volatility premium
-- beta-adjusted tail hedging
-- volatility risk premium
-- tail risk hedging portfolio construction
-- variance tax compounding
-- put options convexity gamma
-- trend following vs put hedging
-- Universa Investments Spitznagel
-- rebalancing premium volatility
-- Goldman Sachs tail risk
-- AQR tortoise hare hedging
-- CAIA tail risk comparison
-draft: false
-faq:
-- question: "What is the long volatility premium?"
-  answer: "The long volatility premium is the claim that buying put options, when beta-adjusted to neutralize their embedded short-equity exposure, delivers a positive return over time rather than the negative return associated with raw put buying. Patrick Causley at One River Asset Management documented this over approximately 40 years of data, showing that a beta-1 portfolio with long volatility outperformed the S&P 500 while producing lower volatility and shallower drawdowns."
-- question: "How does beta-adjusting change the economics of buying puts?"
-  answer: "Raw put options embed a large short-beta position that bleeds value whenever the market rises. Beta-adjusting neutralizes this directional exposure by adding long equity to offset the put's delta, isolating the convexity (gamma) and volatility sensitivity (vega) components. The result is a position that still delivers explosive payoffs during crashes but no longer fights the equity risk premium during normal markets."
-- question: "What is the variance tax and how does it relate to tail hedging?"
-  answer: "The variance tax is the hidden drag on compound returns caused by volatility. The compound growth rate is approximately the arithmetic mean minus half the variance (G ≈ μ − ½σ²). Because this penalty is quadratic, reducing drawdown severity has a nonlinear effect on terminal wealth. A portfolio that falls 50% needs 100% to recover. By truncating left-tail outcomes, even a costly tail hedge can increase compound wealth over time."
-- question: "Should investors use puts or trend-following for tail hedging?"
-  answer: "AQR's research shows the two approaches are complementary. Put strategies deliver spectacular returns in sudden crashes like COVID-19 but are expensive to maintain with negative long-run expected returns. Trend-following earns positive long-run returns and excels in protracted bear markets like the dot-com bust. Academic work combining both via portable alpha found statistically significant alpha of 0.25% per month after controlling for equity factors."
-- question: "How much should a portfolio allocate to tail hedging?"
-  answer: "Most practitioners suggest 1 to 5% of portfolio value. The Wall Street Journal reported that a 3.3% allocation to Universa Investments with the rest in the S&P 500 achieved a 12.3% compound annual return over 10 years, beating the index itself. The optimal size is ultimately psychological rather than mathematical: it must be small enough to tolerate years of negative carry without abandoning the strategy."
-- question: "Why do most tail-risk strategies fail?"
-  answer: "A CAIA Association study found that several popular tail-risk strategies, including short-dated VIX futures and 1-month variance swaps, failed to beat a simple cash benchmark, with performance drags of 355 and 203 basis points respectively. The specific implementation matters a lot, and many approaches are structurally flawed by contango decay in the VIX term structure."
----
++++
+title = "The Long Volatility Premium"
+seoTitle = "Long Volatility Premium: Beta-Adjusted Tail Hedging as a Compensated Factor"
+date = 2026-02-14
+lastmod = 2026-02-14
+publishDate = 2026-02-14T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-long-volatility-premium3.jpg"]
+description = "One River's data shows beta-adjusted long volatility outperformed the S&P 500 over 40 years. Goldman, AQR, and Universa agree on the mechanism but disagree on implementation. A synthesis of the evidence."
+keywords = ["long volatility premium", "beta-adjusted tail hedging", "volatility risk premium", "tail risk hedging portfolio construction", "variance tax compounding", "put options convexity gamma", "trend following vs put hedging", "Universa Investments Spitznagel", "rebalancing premium volatility", "Goldman Sachs tail risk", "AQR tortoise hare hedging", "CAIA tail risk comparison"]
+draft = false
+takeaways = [
+  "One River's 40-year data shows a beta-adjusted long volatility overlay improved S&P 500 total returns while reducing drawdowns, because neutralizing the put's short-delta isolates convexity that pays off in crashes",
+  "A 3.3% allocation to Universa with the rest in the S&P 500 compounded at 12.3% annually over 10 years, beating the index by truncating the variance tax on compound returns",
+  "AQR finds puts and trend-following are complementary: puts returned over 42% during the sudden COVID crash while trend-following excelled in protracted bear markets like the dot-com bust",
+  "Several popular tail-risk strategies including short-dated VIX futures underperformed a simple cash allocation by 355 basis points, proving implementation matters more than the concept",
+]
+faq = [
+  {question = "What is the long volatility premium?", answer = "The long volatility premium is the claim that buying put options, when beta-adjusted to neutralize their embedded short-equity exposure, delivers a positive return over time rather than the negative return associated with raw put buying. Patrick Causley at One River Asset Management documented this over approximately 40 years of data, showing that a beta-1 portfolio with long volatility outperformed the S&P 500 while producing lower volatility and shallower drawdowns."},
+  {question = "How does beta-adjusting change the economics of buying puts?", answer = "Raw put options embed a large short-beta position that bleeds value whenever the market rises. Beta-adjusting neutralizes this directional exposure by adding long equity to offset the put's delta, isolating the convexity (gamma) and volatility sensitivity (vega) components. The result is a position that still delivers explosive payoffs during crashes but no longer fights the equity risk premium during normal markets."},
+  {question = "What is the variance tax and how does it relate to tail hedging?", answer = "The variance tax is the hidden drag on compound returns caused by volatility. The compound growth rate is approximately the arithmetic mean minus half the variance (G ≈ μ − ½σ²). Because this penalty is quadratic, reducing drawdown severity has a nonlinear effect on terminal wealth. A portfolio that falls 50% needs 100% to recover. By truncating left-tail outcomes, even a costly tail hedge can increase compound wealth over time."},
+  {question = "Should investors use puts or trend-following for tail hedging?", answer = "AQR's research shows the two approaches are complementary. Put strategies deliver spectacular returns in sudden crashes like COVID-19 but are expensive to maintain with negative long-run expected returns. Trend-following earns positive long-run returns and excels in protracted bear markets like the dot-com bust. Academic work combining both via portable alpha found statistically significant alpha of 0.25% per month after controlling for equity factors."},
+  {question = "How much should a portfolio allocate to tail hedging?", answer = "Most practitioners suggest 1 to 5% of portfolio value. The Wall Street Journal reported that a 3.3% allocation to Universa Investments with the rest in the S&P 500 achieved a 12.3% compound annual return over 10 years, beating the index itself. The optimal size is ultimately psychological rather than mathematical: it must be small enough to tolerate years of negative carry without abandoning the strategy."},
+  {question = "Why do most tail-risk strategies fail?", answer = "A CAIA Association study found that several popular tail-risk strategies, including short-dated VIX futures and 1-month variance swaps, failed to beat a simple cash benchmark, with performance drags of 355 and 203 basis points respectively. The specific implementation matters a lot, and many approaches are structurally flawed by contango decay in the VIX term structure."},
+]
++++
 >The real value of tail hedging is not in the hedge itself. It's in what the hedge enables.
 
 In [The Variance Tax](/posts/the-variance-tax/) I wrote about the ½σ² formula: compound returns equal arithmetic returns minus half the variance, and because the penalty is quadratic, large drawdowns destroy wealth in ways that are hard to recover from. A portfolio that falls 50% needs 100% just to break even. That piece was about the problem. This one is about a potential solution, and about whether paying for crash protection can actually improve total returns rather than drag them.

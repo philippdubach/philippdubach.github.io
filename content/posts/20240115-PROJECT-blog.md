@@ -1,38 +1,28 @@
----
-title: The Tech behind this Site
-date: 2024-01-15
-images:
-- https://static.philippdubach.com/ograph/ograph-projects.jpg
-seoTitle: "Hugo Blog Tech Stack: GitHub Pages, Cloudflare R2 & Workers"
-description: "A Hugo blog tech stack with Cloudflare R2 image hosting, responsive WebP shortcodes, Workers AI social automation, and GitHub Pages CI/CD deployment."
-keywords:
-- Hugo blog tech stack
-- Hugo GitHub Pages Cloudflare
-- Hugo responsive images shortcode
-- Hugo Cloudflare R2 images
-- Hugo site automation Cloudflare Workers
-tags:
-- Project
-categories:
-- Tech
-type: Project
-aliases:
-- /2024/01/15/the-tech-behind-this-site/
-
-faq:
-- question: How do you serve responsive images from Cloudflare R2 in Hugo?
-  answer: You build a custom Hugo shortcode that generates <picture> elements with breakpoint-specific sources. Upload images at full quality to Cloudflare R2, then use Cloudflare's image resizing service to serve optimized versions (320px for mobile up to 1600px for desktop) with automatic WebP conversion. This way you maintain a single source image but deliver the right size to each device.
-- question: What tech stack does this Hugo blog use?
-  answer: The site runs on Hugo deployed to GitHub Pages, with Cloudflare as CDN and images hosted on Cloudflare R2. Social media automation is handled by Cloudflare Workers using Llama 3.3 70B for AI-generated posts to Bluesky and Twitter. A newsletter system uses Cloudflare Workers + KV with Resend for email delivery.
-- question: How do you automate social media posting from a Hugo blog?
-  answer: Cloudflare Workers monitor the Hugo site's feed and automatically generate social media posts using Workers AI (Llama 3.3 70B). The workers create neutral, non-clickbait posts with banned word filtering, posting to both Bluesky and Twitter/X without manual intervention.
-- question: How does IndexNow work with Hugo for faster indexing?
-  answer: IndexNow integration is automated through GitHub Actions. When content changes, the workflow checks which URLs have been recently modified based on the lastmod frontmatter field and submits only those URLs to search engines, resulting in faster discovery and indexing of new or updated content.
-- question: How do you add security headers to a GitHub Pages site?
-  answer: GitHub Pages doesn't process _headers files, so a Cloudflare Worker intercepts all requests on the domain and injects HTTP security headers including HSTS, Content-Security-Policy with frame-ancestors, Cross-Origin-Embedder-Policy, Cross-Origin-Opener-Policy, and Permissions-Policy. The CSP must be kept in sync across the Worker, head.html meta tag, and _headers reference file.
-- question: How do you show most-read posts on a Hugo static site?
-  answer: A Cloudflare Worker proxy queries the GoatCounter analytics API for the top 10 posts over the past 7 days. The Hugo site footer fetches this data client-side and renders a "Most Read" section. The Worker adds CORS headers and caches responses for 1 hour.
----
++++
+title = "The Tech behind this Site"
+seoTitle = "Hugo Blog Tech Stack: GitHub Pages, Cloudflare R2 & Workers"
+date = 2024-01-15
+images = ["https://static.philippdubach.com/ograph/ograph-projects.jpg"]
+description = "A Hugo blog tech stack with Cloudflare R2 image hosting, responsive WebP shortcodes, Workers AI social automation, and GitHub Pages CI/CD deployment."
+keywords = ["Hugo blog tech stack", "Hugo GitHub Pages Cloudflare", "Hugo responsive images shortcode", "Hugo Cloudflare R2 images", "Hugo site automation Cloudflare Workers"]
+categories = ["Tech"]
+tags = ["Project"]
+type = "Project"
+aliases = ["/2024/01/15/the-tech-behind-this-site/"]
+takeaways = [
+  "The site runs on Hugo with Cloudflare R2 image hosting, serving responsive WebP images from 320px to 1600px via a custom shortcode that generates picture elements from a single upload",
+  "Social media posts to Bluesky and Twitter are generated automatically by Cloudflare Workers running Llama 3.3 70B, with no manual intervention",
+  "A security headers Worker on Cloudflare injects HSTS, CSP, and COEP headers because GitHub Pages does not process _headers files natively",
+]
+faq = [
+  {question = "How do you serve responsive images from Cloudflare R2 in Hugo?", answer = "You build a custom Hugo shortcode that generates <picture> elements with breakpoint-specific sources. Upload images at full quality to Cloudflare R2, then use Cloudflare's image resizing service to serve optimized versions (320px for mobile up to 1600px for desktop) with automatic WebP conversion. This way you maintain a single source image but deliver the right size to each device."},
+  {question = "What tech stack does this Hugo blog use?", answer = "The site runs on Hugo deployed to GitHub Pages, with Cloudflare as CDN and images hosted on Cloudflare R2. Social media automation is handled by Cloudflare Workers using Llama 3.3 70B for AI-generated posts to Bluesky and Twitter. A newsletter system uses Cloudflare Workers + KV with Resend for email delivery."},
+  {question = "How do you automate social media posting from a Hugo blog?", answer = "Cloudflare Workers monitor the Hugo site's feed and automatically generate social media posts using Workers AI (Llama 3.3 70B). The workers create neutral, non-clickbait posts with banned word filtering, posting to both Bluesky and Twitter/X without manual intervention."},
+  {question = "How does IndexNow work with Hugo for faster indexing?", answer = "IndexNow integration is automated through GitHub Actions. When content changes, the workflow checks which URLs have been recently modified based on the lastmod frontmatter field and submits only those URLs to search engines, resulting in faster discovery and indexing of new or updated content."},
+  {question = "How do you add security headers to a GitHub Pages site?", answer = "GitHub Pages doesn't process _headers files, so a Cloudflare Worker intercepts all requests on the domain and injects HTTP security headers including HSTS, Content-Security-Policy with frame-ancestors, Cross-Origin-Embedder-Policy, Cross-Origin-Opener-Policy, and Permissions-Policy. The CSP must be kept in sync across the Worker, head.html meta tag, and _headers reference file."},
+  {question = "How do you show most-read posts on a Hugo static site?", answer = "A Cloudflare Worker proxy queries the GoatCounter analytics API for the top 10 posts over the past 7 days. The Hugo site footer fetches this data client-side and renders a \"Most Read\" section. The Worker adds CORS headers and caches responses for 1 hour."},
+]
++++
 
 This site runs on Hugo, deployed to GitHub Pages with Cloudflare CDN. Images are hosted on R2 (`static.philippdubach.com`) with automatic resizing and WebP conversion.
 
@@ -44,6 +34,10 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 **Updates**
 
 > **February 2026**
+
+*Frontmatter Unification* — Converted all 70 YAML frontmatter posts to TOML and added Key Takeaways to all 73 posts. Takeaways render as a visible summary box between the post header and content body, optimized for Generative Engine Optimization (GEO) so AI search engines can extract citation-ready passages.
+
+*Design Streamlining* — Unified left-bordered aside components (key takeaways, newsletter CTA, disclaimer) to consistent 3px borders and aligned padding. Established a vertical spacing rhythm across post zones: key takeaways, content body, newsletter CTA, footer divider, related posts. Added breathing room around images (1.5rem padding). Refined key takeaways heading to 0.85rem uppercase label with square bullets.
 
 *Homepage Redesign* — Rebuilt the homepage with a tabbed layout (Articles/Projects), year dividers, and thumbnail images served via Cloudflare Image Resizing. Consolidated navigation into a unified sidebar.
 

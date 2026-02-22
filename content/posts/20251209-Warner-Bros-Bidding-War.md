@@ -1,36 +1,26 @@
----
-title: "Not Logan Roy: Netflix vs. Paramount's Bidding War"
-seoTitle: "Netflix vs Paramount: Warner Bros Bidding War and Streaming Economics"
-date: 2025-12-09
-images: ['https://static.philippdubach.com/ograph/ograph-warner-bidding.jpg']
-description: "Netflix's $72B Warner Bros deal vs Paramount's hostile $30/share tender. Deal mechanics, aggregation theory, and why internet distributors win streaming."
-keywords:
-- Netflix Warner Bros acquisition
-- Paramount hostile takeover Warner Bros
-- streaming consolidation 2025
-- media M&A deal analysis
-- aggregation theory streaming
-- hostile tender offer mechanics
-- breakup fee economics
-- platform economics aggregation theory
-- M&A valuation analysis
-categories:
-- Finance
-type: Analysis
-draft: false
-aliases:
-- /2025/12/09/not-logan-roy-netflix-vs.-paramounts-bidding-war/
-
-faq:
-- question: What is Netflix paying for Warner Bros Discovery?
-  answer: Netflix is acquiring Warner Bros for $72 billion in equity value ($82.7 billion enterprise value). The deal breaks down to $23.25 per share in cash, $4.50 in Netflix stock, and shares in a spun-off entity called Discovery Global containing CNN and cable networks. Paramount's competing hostile offer is $30 per share all-cash for the entire company.
-- question: How does a hostile tender offer work?
-  answer: In a hostile tender, the acquirer bypasses the target's board and goes directly to shareholders with a public offer. The target's board has 10 business days to respond with a recommendation. Defense mechanisms like poison pills exist but invite litigation. The best defense is typically more money from the preferred bidder.
-- question: What is aggregation theory and why does it explain Netflix's value?
-  answer: Aggregation theory explains why internet platforms that own customer relationships capture more value than content suppliers. Physical distribution has capacity constraints while internet distribution has none. Netflix commands a $425 billion market cap while combined legacy studios are worth a fraction because Netflix aggregates attention at zero marginal cost.
-- question: What is a breakup fee and how large are they in this deal?
-  answer: Breakup fees compensate a jilted bidder for deal expenses and create hurdles for competing offers. If Warner shareholders take Paramount's offer, Warner owes Netflix $2.8 billion. If Netflix's deal collapses after review, Netflix owes Warner $5.8 billion, one of the largest reverse breakup fees on record.
----
++++
+title = "Not Logan Roy: Netflix vs. Paramount's Bidding War"
+seoTitle = "Netflix vs Paramount: Warner Bros Bidding War and Streaming Economics"
+date = 2025-12-09
+images = ["https://static.philippdubach.com/ograph/ograph-warner-bidding.jpg"]
+description = "Netflix's $72B Warner Bros deal vs Paramount's hostile $30/share tender. Deal mechanics, aggregation theory, and why internet distributors win streaming."
+keywords = ["Netflix Warner Bros acquisition", "Paramount hostile takeover Warner Bros", "streaming consolidation 2025", "media M&A deal analysis", "aggregation theory streaming", "hostile tender offer mechanics", "breakup fee economics", "platform economics aggregation theory", "M&A valuation analysis"]
+categories = ["Finance"]
+type = "Analysis"
+draft = false
+aliases = ["/2025/12/09/not-logan-roy-netflix-vs.-paramounts-bidding-war/"]
+takeaways = [
+  "Netflix is acquiring Warner Bros for $72B in equity value while Paramount launched a hostile $30/share all-cash tender offer, backed by $54B in debt and Larry Ellison's $252B Oracle stake.",
+  "Netflix commands a $425B market cap because internet distribution has zero marginal cost, while combined legacy studios are worth a fraction, a textbook case of aggregation theory.",
+  "If Warner shareholders take Paramount's offer, Warner owes Netflix a $2.8B breakup fee; if Netflix's deal collapses, Netflix owes $5.8B, one of the largest reverse breakup fees on record.",
+]
+faq = [
+  {question = "What is Netflix paying for Warner Bros Discovery?", answer = "Netflix is acquiring Warner Bros for $72 billion in equity value ($82.7 billion enterprise value). The deal breaks down to $23.25 per share in cash, $4.50 in Netflix stock, and shares in a spun-off entity called Discovery Global containing CNN and cable networks. Paramount's competing hostile offer is $30 per share all-cash for the entire company."},
+  {question = "How does a hostile tender offer work?", answer = "In a hostile tender, the acquirer bypasses the target's board and goes directly to shareholders with a public offer. The target's board has 10 business days to respond with a recommendation. Defense mechanisms like poison pills exist but invite litigation. The best defense is typically more money from the preferred bidder."},
+  {question = "What is aggregation theory and why does it explain Netflix's value?", answer = "Aggregation theory explains why internet platforms that own customer relationships capture more value than content suppliers. Physical distribution has capacity constraints while internet distribution has none. Netflix commands a $425 billion market cap while combined legacy studios are worth a fraction because Netflix aggregates attention at zero marginal cost."},
+  {question = "What is a breakup fee and how large are they in this deal?", answer = "Breakup fees compensate a jilted bidder for deal expenses and create hurdles for competing offers. If Warner shareholders take Paramount's offer, Warner owes Netflix $2.8 billion. If Netflix's deal collapses after review, Netflix owes Warner $5.8 billion, one of the largest reverse breakup fees on record."},
+]
++++
 
 In the [HBO series Succession](https://en.wikipedia.org/wiki/Succession_(TV_series)), billionaire Logan Roy's children spent four seasons scheming, backstabbing, and making offers to inherit a media empire. This week, the real version played out with more zeros and a $252 billion Oracle stake. Time for a closer look:
 

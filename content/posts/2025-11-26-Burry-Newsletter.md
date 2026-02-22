@@ -1,34 +1,28 @@
----
-title: Michael Burry's $379 Newsletter
-seoTitle: "Michael Burry's AI Bubble Warning: Why He Says Nvidia Is Cisco"
-date: 2025-11-28
-images:
-- https://static.philippdubach.com/ograph/ograph-burry-newsletter.jpg
-external_url: https://michaeljburry.substack.com
-description: "Michael Burry launches Substack warning AI markets mirror 1999. His Nvidia-Cisco comparison, the GPU depreciation debate, and what hyperscalers need to justify capex."
-keywords:
-- Michael Burry Substack newsletter
-- Michael Burry AI bubble warning
-- Nvidia Cisco comparison dot-com
-- GPU depreciation accounting AI
-- AI infrastructure spending bubble
-categories:
-- Finance
-type: Commentary
-draft: false
-aliases:
-- /2025/11/28/michael-burrys-379-newsletter/
-
-faq:
-- question: What is Michael Burry's AI bubble thesis?
-  answer: Burry argues that today's AI boom mirrors the late 1990s dot-com bubble, with Nvidia playing the same role Cisco did then as the "picks and shovels" supplier. He believes AI infrastructure is being overbuilt relative to actual demand, just as fiber optic capacity was in 2000. He contends that hyperscalers are using aggressive depreciation schedules to mask the true cost of their AI investments.
-- question: Why does Burry say Nvidia is like Cisco?
-  answer: 'Burry draws a parallel between Cisco''s role in the 1999-2000 telecom buildout and Nvidia''s position in today''s AI infrastructure cycle. Cisco''s stock surged during the fiber optic boom, then collapsed 80% when demand failed to materialize. Burry''s key point: "I am not claiming Nvidia is Enron. It is clearly Cisco." One difference he acknowledges: Cisco''s forward P/E in 2000 was around 200; Nvidia''s is under 40.'
-- question: What is the GPU depreciation controversy?
-  answer: Burry contends that hyperscalers overstate GPU useful lives to justify massive capex. He argues GPUs become obsolete in 2-3 years, but companies depreciate them over 4-6 years. If hyperscalers shortened depreciation schedules, companies like Alphabet would see roughly a 10% hit to net profit. Nvidia responded with a memo arguing that A100 GPUs from 2020 still run at high utilization with "meaningful economic value."
-- question: How much revenue do hyperscalers need to justify AI spending?
-  answer: Using Alphabet's $90B+ annual AI capex guidance, 5-year depreciation ($18B/year), and 10% WACC ($9B), the threshold is roughly $27B in annual costs. Assuming 70% blended margins, Alphabet needs about $40B per year in incremental AI-attributable revenue to justify the infrastructure investment.
----
++++
+title = "Michael Burry's $379 Newsletter"
+seoTitle = "Michael Burry's AI Bubble Warning: Why He Says Nvidia Is Cisco"
+date = 2025-11-28
+images = ["https://static.philippdubach.com/ograph/ograph-burry-newsletter.jpg"]
+description = "Michael Burry launches Substack warning AI markets mirror 1999. His Nvidia-Cisco comparison, the GPU depreciation debate, and what hyperscalers need to justify capex."
+keywords = ["Michael Burry Substack newsletter", "Michael Burry AI bubble warning", "Nvidia Cisco comparison dot-com", "GPU depreciation accounting AI", "AI infrastructure spending bubble"]
+categories = ["Finance"]
+type = "Commentary"
+draft = false
+external_url = "https://michaeljburry.substack.com"
+aliases = ["/2025/11/28/michael-burrys-379-newsletter/"]
+takeaways = [
+  "Burry argues Nvidia is Cisco circa 2000: the picks-and-shovels supplier at the center of an infrastructure cycle built on demand forecasts that may not materialize",
+  "If hyperscalers shortened GPU depreciation from 6 years to 3, companies like Alphabet would take roughly a 10% hit to net profit, exposing weaker economics behind AI capex",
+  "At $90B+ annual AI capex with 5-year depreciation and 10% WACC, Alphabet needs about $40B per year in incremental AI-attributable revenue just to break even on infrastructure spend",
+  "One key difference from 2000: Cisco's forward P/E was around 200 at its peak, while Nvidia's is under 40",
+]
+faq = [
+  {question = "What is Michael Burry's AI bubble thesis?", answer = "Burry argues that today's AI boom mirrors the late 1990s dot-com bubble, with Nvidia playing the same role Cisco did then as the \"picks and shovels\" supplier. He believes AI infrastructure is being overbuilt relative to actual demand, just as fiber optic capacity was in 2000. He contends that hyperscalers are using aggressive depreciation schedules to mask the true cost of their AI investments."},
+  {question = "Why does Burry say Nvidia is like Cisco?", answer = "Burry draws a parallel between Cisco's role in the 1999-2000 telecom buildout and Nvidia's position in today's AI infrastructure cycle. Cisco's stock surged during the fiber optic boom, then collapsed 80% when demand failed to materialize. Burry's key point: \"I am not claiming Nvidia is Enron. It is clearly Cisco.\" One difference he acknowledges: Cisco's forward P/E in 2000 was around 200; Nvidia's is under 40."},
+  {question = "What is the GPU depreciation controversy?", answer = "Burry contends that hyperscalers overstate GPU useful lives to justify massive capex. He argues GPUs become obsolete in 2-3 years, but companies depreciate them over 4-6 years. If hyperscalers shortened depreciation schedules, companies like Alphabet would see roughly a 10% hit to net profit. Nvidia responded with a memo arguing that A100 GPUs from 2020 still run at high utilization with \"meaningful economic value.\""},
+  {question = "How much revenue do hyperscalers need to justify AI spending?", answer = "Using Alphabet's $90B+ annual AI capex guidance, 5-year depreciation ($18B/year), and 10% WACC ($9B), the threshold is roughly $27B in annual costs. Assuming 70% blended margins, Alphabet needs about $40B per year in incremental AI-attributable revenue to justify the infrastructure investment."},
+]
++++
 [Michael Burry](https://en.wikipedia.org/wiki/Michael_Burry) (who in your head probably looks like [Christian Bale thanks to The Big Short](https://www.historyvshollywood.com/reelfaces/big-short/)), the investor who famously predicted the 2008 housing crash, has launched a Substack newsletter after [deregistering his hedge fund](https://www.bloomberg.com/news/articles/2025-11-18/burry-says-he-s-active-in-markets-after-fund-is-deregistered). The $379 annual subscription capitalizes on the 1.6 million followers he's built on [X](https://twitter.com/michaeljburry), offering what he describes as his "sole focus" going forward.
 
 The newsletter's [inaugural post takes](https://michaeljburry.substack.com/p/foundations-my-1999-and-part-of-2000) (which he kindly enough made accessible for free as a Thanksgiving gift today) readers back to 1999, when Burry was a 27-year-old neurology resident at Stanford making $33'000 annually while carrying $150'000 in medical school debt. There he wrote his [Valuestocks.net article "Buffett Revisited"](https://michaeljburry.substack.com/api/v1/file/a7e6acc6-aeac-460a-a26a-5fbe43e50d19.pdf). A fellow resident casually mentioned making $1.5 million on Polycom stock. Physicians crowded around terminals checking stocks while patients waited. In that environment, Burry was writing investment analysis late at night, getting paid $1 per word by MSN Money under the pen name "Value Doc." His VSN Fund returned 68.1% in 1999, and by February 2000, the [San Francisco Chronicle](https://michaeljburry.substack.com/api/v1/file/7e7cf8c7-2cd5-4bc1-8e36-0f7354ae04d6.pdf) noted he had shorted Amazon. Fourteen days after that article appeared, the NASDAQ topped. It was a peak it wouldn't revisit for 15 years.

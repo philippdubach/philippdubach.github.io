@@ -1,43 +1,29 @@
----
-title: "Don't Go Monolithic; The Agent Stack Is Stratifying"
-seoTitle: 'Enterprise AI Agent Stack: Agentic AI Architecture Where Context Beats Models'
-date: 2026-02-10
-lastmod: 2026-02-10
-images:
-- https://static.philippdubach.com/ograph/ograph-enterprise-agent-stack1.jpg
-description: "The enterprise AI agent stack is stratifying into six layers with different winners at each. Models commoditize; context — your organizational world model — compounds. A framework for agentic AI architecture decisions."
-keywords:
-- enterprise AI agent stack
-- agentic AI architecture enterprise
-- AI model commoditization
-- organizational world model
-- organizational context AI defensibility
-- multi-model AI strategy
-- enterprise AI context layer
-- agent orchestration
-- AI governance enterprise
-- context graph enterprise AI
-- multi-agent systems enterprise
-- AI agent stack defensibility
-draft: false
-faq:
-- question: "What are the six layers of the enterprise AI agent stack?"
-  answer: "The enterprise AI agent stack decomposes into six specialized layers: security, context, models, orchestration, agents, and interfaces. Each layer has different economics, rates of change, and sources of lock-in, which is why specialists tend to outperform monolithic platforms that try to own every layer."
-- question: "Why are AI models becoming commodities in enterprise settings?"
-  answer: "Foundation models are converging toward commodity infrastructure because training costs scale roughly 2.4x per year, limiting frontier development to a handful of hyperscale organizations. With 37% of enterprises already using five or more models in production, different tasks demand different models, making single-provider lock-in the new version of single-cloud risk."
-- question: "What is an organizational world model in AI?"
-  answer: "An organizational world model is a learned representation of how a specific company operates, built from accumulated process knowledge, interaction histories, and workflow patterns. Unlike model weights that any well-funded lab can approximate, this process-level understanding is genuinely unique to each organization and compounds in value with every agent execution."
-- question: "Why do many enterprise AI agent deployments fail?"
-  answer: "Most enterprise AI failures stem from shallow context rather than poor models. Agents with access only to systems of record can retrieve the right documents but cannot reconstruct the reasoning processes humans follow. Without process knowledge capturing how decisions are made, agents produce outputs that are technically plausible but operationally useless."
-- question: "How should enterprises avoid vendor lock-in in the AI agent stack?"
-  answer: "Enterprises should insist on open interoperability standards like Anthropic's Model Context Protocol (MCP) and Google's Agent-to-Agent protocol (A2A), treat their accumulated organizational context as portable IP not locked to any vendor, and architect each stack layer independently since they evolve at different rates."
-- question: "What is the enterprise AI context layer and why does it matter?"
-  answer: "The enterprise AI context layer is the infrastructure that gives agents organizational understanding beyond raw data retrieval. It operates at two depths. Layer 1 connects data sources and retrieval pipelines (increasingly commoditized), while Layer 2 captures process-level knowledge like decision-making patterns, workflow sequences, and informal coordination. Layer 2 is where defensibility lives because it encodes how an organization actually operates, not just what it has recorded."
-- question: "How does a multi-model AI strategy reduce enterprise risk?"
-  answer: "A multi-model strategy reduces enterprise risk by avoiding single-provider dependency, which is the new version of single-cloud risk. With 37% of enterprises already using five or more models, different tasks demand different models. Reasoning, code generation, low-latency routing, and embeddings each have optimal providers. Open standards like Model Context Protocol (MCP) and Agent-to-Agent protocol (A2A) make multi-model architectures practically interoperable."
-- question: "What is the compounding flywheel in enterprise AI agent architecture?"
-  answer: "The compounding flywheel is a reinforcement loop where agent deployments generate execution traces, which enrich the organizational context graph, which improves future agent decisions, which builds trust, which drives more deployment. This is structurally identical to the data flywheel that powers recommendation engines and autonomous driving, except the asset being built is an organizational world model rather than a product feature."
----
++++
+title = "Don't Go Monolithic; The Agent Stack Is Stratifying"
+seoTitle = "Enterprise AI Agent Stack: Agentic AI Architecture Where Context Beats Models"
+date = 2026-02-10
+lastmod = 2026-02-10
+images = ["https://static.philippdubach.com/ograph/ograph-enterprise-agent-stack1.jpg"]
+description = "The enterprise AI agent stack is stratifying into six layers with different winners at each. Models commoditize; context — your organizational world model — compounds. A framework for agentic AI architecture decisions."
+keywords = ["enterprise AI agent stack", "agentic AI architecture enterprise", "AI model commoditization", "organizational world model", "organizational context AI defensibility", "multi-model AI strategy", "enterprise AI context layer", "agent orchestration", "AI governance enterprise", "context graph enterprise AI", "multi-agent systems enterprise", "AI agent stack defensibility"]
+draft = false
+takeaways = [
+  "37% of enterprises now use five or more AI models in production, making single-provider lock-in the new version of single-cloud risk.",
+  "The enterprise AI agent stack is stratifying into six layers with different winners at each, and context, not models, sits in the highest lock-in and hardest-to-rebuild zone.",
+  "Most enterprise AI failures stem from shallow context: agents can retrieve the right documents but cannot reconstruct the reasoning processes humans follow to make decisions.",
+  "Gartner predicts 40% of enterprise apps will feature AI agents by 2026 but warns over 40% of agentic AI projects will be canceled by end of 2027 due to unclear business value.",
+]
+faq = [
+  {question = "What are the six layers of the enterprise AI agent stack?", answer = "The enterprise AI agent stack decomposes into six specialized layers: security, context, models, orchestration, agents, and interfaces. Each layer has different economics, rates of change, and sources of lock-in, which is why specialists tend to outperform monolithic platforms that try to own every layer."},
+  {question = "Why are AI models becoming commodities in enterprise settings?", answer = "Foundation models are converging toward commodity infrastructure because training costs scale roughly 2.4x per year, limiting frontier development to a handful of hyperscale organizations. With 37% of enterprises already using five or more models in production, different tasks demand different models, making single-provider lock-in the new version of single-cloud risk."},
+  {question = "What is an organizational world model in AI?", answer = "An organizational world model is a learned representation of how a specific company operates, built from accumulated process knowledge, interaction histories, and workflow patterns. Unlike model weights that any well-funded lab can approximate, this process-level understanding is genuinely unique to each organization and compounds in value with every agent execution."},
+  {question = "Why do many enterprise AI agent deployments fail?", answer = "Most enterprise AI failures stem from shallow context rather than poor models. Agents with access only to systems of record can retrieve the right documents but cannot reconstruct the reasoning processes humans follow. Without process knowledge capturing how decisions are made, agents produce outputs that are technically plausible but operationally useless."},
+  {question = "How should enterprises avoid vendor lock-in in the AI agent stack?", answer = "Enterprises should insist on open interoperability standards like Anthropic's Model Context Protocol (MCP) and Google's Agent-to-Agent protocol (A2A), treat their accumulated organizational context as portable IP not locked to any vendor, and architect each stack layer independently since they evolve at different rates."},
+  {question = "What is the enterprise AI context layer and why does it matter?", answer = "The enterprise AI context layer is the infrastructure that gives agents organizational understanding beyond raw data retrieval. It operates at two depths. Layer 1 connects data sources and retrieval pipelines (increasingly commoditized), while Layer 2 captures process-level knowledge like decision-making patterns, workflow sequences, and informal coordination. Layer 2 is where defensibility lives because it encodes how an organization actually operates, not just what it has recorded."},
+  {question = "How does a multi-model AI strategy reduce enterprise risk?", answer = "A multi-model strategy reduces enterprise risk by avoiding single-provider dependency, which is the new version of single-cloud risk. With 37% of enterprises already using five or more models, different tasks demand different models. Reasoning, code generation, low-latency routing, and embeddings each have optimal providers. Open standards like Model Context Protocol (MCP) and Agent-to-Agent protocol (A2A) make multi-model architectures practically interoperable."},
+  {question = "What is the compounding flywheel in enterprise AI agent architecture?", answer = "The compounding flywheel is a reinforcement loop where agent deployments generate execution traces, which enrich the organizational context graph, which improves future agent decisions, which builds trust, which drives more deployment. This is structurally identical to the data flywheel that powers recommendation engines and autonomous driving, except the asset being built is an organizational world model rather than a product feature."},
+]
++++
 >The defensible asset in enterprise AI is not the model. It's the organizational world model.
 
 Every major compute era decomposes into specialized layers with different winners at each level. Cloud split into IaaS, PaaS, and SaaS. The modern data stack split into ingestion, warehousing, transformation, and BI. Each time, specialists beat the generalists because the layers have fundamentally different economics: different rates of change, different capital requirements, different sources of lock-in.

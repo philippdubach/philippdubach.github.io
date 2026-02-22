@@ -1,51 +1,29 @@
----
-title: "The Impossible Backhand"
-aliases:
-- /posts/a-bull-case/
-seoTitle: "The AI Quality Ceiling: Why Domain Expertise Is Appreciating"
-date: 2026-02-17
-lastmod: 2026-02-17
-images:
-- https://static.philippdubach.com/ograph/ograph-ai-scaling-walls1.jpg
-description: "AI converges to the mean by design. On Humanity's Last Exam, top AI scores 37.5% vs human experts at 90%. The data says domain expertise is appreciating."
-keywords:
-- AI quality ceiling domain expertise
-- human AI collaboration centaur model
-- Humanity's Last Exam AI benchmark 2026
-- AI hallucination rates legal medical
-- AI deskilling risk workforce
-- AI convergence to mean RLHF typicality
-- AI scaling laws diminishing returns
-- centaur model AI augmentation vs replacement
-- jagged technological frontier Harvard BCG
-- model collapse Shumailov Nature 2024
-- ninth power compute scaling AI
-- AI overconfidence calibration error
-- Ben Affleck AI Joe Rogan quality
-- domain expert AI competitive advantage
-- AI skill erosion professional knowledge
-- Harvard BCG GPT-4 consultant study
-- AI video generation quality limits
-- Sara Hooker scaling laws compute cost
-- AI blind delegation risk centaur
-- enterprise AI strategy domain knowledge
-draft: false
-faq:
-- question: "Why does AI output converge to the mean?"
-  answer: "Three structural forces drive convergence. LLMs generate the most statistically probable next token, which trends toward average output. RLHF training compounds this with a typicality weight of α=0.57, literally training models to produce familiar-sounding responses. And model collapse, documented in Nature by Shumailov et al. (2024), shows models training on AI-generated content lose distributional tails and converge to point estimates with minimal variance."
-- question: "What is the ninth-power scaling curve for AI?"
-  answer: "MIT researchers Thompson, Greenewald, Lee, and Manso found computational cost scales with at least the fourth power of improvement in theory and the ninth power in practice. To halve an AI error rate requires more than 500x the computational resources. AlexNet trained on two GPUs in six days in 2012; NASNet-A halved the error rate in 2018 using over 1,000x the compute."
-- question: "How do AI models perform on Humanity's Last Exam in 2026?"
-  answer: "As of February 2026, the top-performing AI model (Gemini 3 Pro Preview) scores 37.5% on Humanity's Last Exam, a benchmark of 2,500 expert-crafted questions across 100+ academic domains. Most models score below 30%. Human domain experts average roughly 90%, revealing a 53-point gap. Calibration errors range from 34% to 89%, meaning models are systematically overconfident."
-- question: "What is the centaur model for human-AI collaboration?"
-  answer: "The centaur model describes human-AI collaboration where each handles what they do best. The Harvard/BCG study of 758 consultants found AI users completed 12.2% more tasks, 25.1% faster, at 40% higher quality within AI's capability frontier. But on tasks outside AI's frontier, AI users were 19 percentage points less likely to get correct answers. The centaur divides tasks by strengths; blind delegators adopt AI output without interrogation."
-- question: "Does AI replace or augment domain expertise?"
-  answer: "The empirical evidence favors augmentation. Oxford researchers found complementary effects of AI on jobs are 1.7x larger than substitution effects. The World Economic Forum projects a net gain of 78 million jobs by 2030. The centaur model, where human experts collaborate with AI, consistently outperforms either alone across finance, consulting, and clinical decision-making."
-- question: "Will AI make human experts obsolete?"
-  answer: "No. The Harvard/BCG study, LSU Finance centaur analyst study, and Mayo Clinic clinical experiments all show human-AI collaboration outperforms AI alone. But the quality of the human contribution matters a lot: professionals who blindly trust AI outside its frontier perform worse than those without AI. Domain expertise is the irreducible ingredient that makes the centaur model work."
-- question: "What are AI hallucination rates in professional domains?"
-  answer: "Yale researcher Matthew Dahl found AI hallucination rates of 69-88% on specific legal queries. Stanford HAI found even specialized legal AI tools hallucinate 17-34% of the time. Damien Charlotin's database tracks 914 cases of hallucinated content in legal filings worldwide. Medical AI hallucinations are especially dangerous because subtle clinical errors may not raise immediate suspicion."
----
++++
+title = "The Impossible Backhand"
+seoTitle = "The AI Quality Ceiling: Why Domain Expertise Is Appreciating"
+date = 2026-02-17
+lastmod = 2026-02-17
+images = ["https://static.philippdubach.com/ograph/ograph-ai-scaling-walls1.jpg"]
+description = "AI converges to the mean by design. On Humanity's Last Exam, top AI scores 37.5% vs human experts at 90%. The data says domain expertise is appreciating."
+keywords = ["AI quality ceiling domain expertise", "human AI collaboration centaur model", "Humanity's Last Exam AI benchmark 2026", "AI hallucination rates legal medical", "AI deskilling risk workforce", "AI convergence to mean RLHF typicality", "AI scaling laws diminishing returns", "centaur model AI augmentation vs replacement", "jagged technological frontier Harvard BCG", "model collapse Shumailov Nature 2024", "ninth power compute scaling AI", "AI overconfidence calibration error", "Ben Affleck AI Joe Rogan quality", "domain expert AI competitive advantage", "AI skill erosion professional knowledge", "Harvard BCG GPT-4 consultant study", "AI video generation quality limits", "Sara Hooker scaling laws compute cost", "AI blind delegation risk centaur", "enterprise AI strategy domain knowledge"]
+draft = false
+aliases = ["/posts/a-bull-case/"]
+takeaways = [
+  "Computational cost scales with the ninth power of improvement in practice: halving an AI error rate requires more than 500x the computational resources",
+  "On Humanity's Last Exam, top AI scores 37.5% versus human domain experts at roughly 90%, a 53-point gap, with AI calibration errors ranging from 34% to 89%",
+  "The Harvard/BCG study of 758 consultants found AI users produced 40% higher quality work within AI's frontier but were 19 percentage points less accurate outside it when they blindly trusted the output",
+  "Oxford researchers found complementary effects of AI on jobs are 1.7x larger than substitution effects, supporting augmentation over replacement",
+]
+faq = [
+  {question = "Why does AI output converge to the mean?", answer = "Three structural forces drive convergence. LLMs generate the most statistically probable next token, which trends toward average output. RLHF training compounds this with a typicality weight of α=0.57, literally training models to produce familiar-sounding responses. And model collapse, documented in Nature by Shumailov et al. (2024), shows models training on AI-generated content lose distributional tails and converge to point estimates with minimal variance."},
+  {question = "What is the ninth-power scaling curve for AI?", answer = "MIT researchers Thompson, Greenewald, Lee, and Manso found computational cost scales with at least the fourth power of improvement in theory and the ninth power in practice. To halve an AI error rate requires more than 500x the computational resources. AlexNet trained on two GPUs in six days in 2012; NASNet-A halved the error rate in 2018 using over 1,000x the compute."},
+  {question = "How do AI models perform on Humanity's Last Exam in 2026?", answer = "As of February 2026, the top-performing AI model (Gemini 3 Pro Preview) scores 37.5% on Humanity's Last Exam, a benchmark of 2,500 expert-crafted questions across 100+ academic domains. Most models score below 30%. Human domain experts average roughly 90%, revealing a 53-point gap. Calibration errors range from 34% to 89%, meaning models are systematically overconfident."},
+  {question = "What is the centaur model for human-AI collaboration?", answer = "The centaur model describes human-AI collaboration where each handles what they do best. The Harvard/BCG study of 758 consultants found AI users completed 12.2% more tasks, 25.1% faster, at 40% higher quality within AI's capability frontier. But on tasks outside AI's frontier, AI users were 19 percentage points less likely to get correct answers. The centaur divides tasks by strengths; blind delegators adopt AI output without interrogation."},
+  {question = "Does AI replace or augment domain expertise?", answer = "The empirical evidence favors augmentation. Oxford researchers found complementary effects of AI on jobs are 1.7x larger than substitution effects. The World Economic Forum projects a net gain of 78 million jobs by 2030. The centaur model, where human experts collaborate with AI, consistently outperforms either alone across finance, consulting, and clinical decision-making."},
+  {question = "Will AI make human experts obsolete?", answer = "No. The Harvard/BCG study, LSU Finance centaur analyst study, and Mayo Clinic clinical experiments all show human-AI collaboration outperforms AI alone. But the quality of the human contribution matters a lot: professionals who blindly trust AI outside its frontier perform worse than those without AI. Domain expertise is the irreducible ingredient that makes the centaur model work."},
+  {question = "What are AI hallucination rates in professional domains?", answer = "Yale researcher Matthew Dahl found AI hallucination rates of 69-88% on specific legal queries. Stanford HAI found even specialized legal AI tools hallucinate 17-34% of the time. Damien Charlotin's database tracks 914 cases of hallucinated content in legal filings worldwide. Medical AI hallucinations are especially dangerous because subtle clinical errors may not raise immediate suspicion."},
+]
++++
 In the latest issue of [The AI Lab Newsletter](https://lab.philippdubach.com), I featured a ByteDance [Seedance 2.0](https://x.com/AngryTomtweets/status/2021194266517832057) clip: two men playing tennis at what looked like an ATP tournament. Photorealistic. I probably wouldn't be able to tell it wasn't real footage if I didn't know. A co-worker who played junior pro-am tennis watched the same clip and said: "That backhand doesn't exist. Nobody plays it like that." His domain expertise spotted an error that probably fooled everyone else.
 
 We ended up in a long conversation about what that means. AI can get to maybe the 95th or 98th percentile of creating something that looks perfect, but then it isn't, and if you have deep knowledge you can spot it immediately. The consensus narrative treats this as a temporary limitation. But it might be structural. And I think the evidence, once you lay it out, points to a genuinely contrarian conclusion: domain expertise is appreciating in value, not depreciating, precisely because AI can't easily replicate it.

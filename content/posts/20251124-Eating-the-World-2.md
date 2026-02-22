@@ -1,34 +1,28 @@
----
-title: Is AI Really Eating the World? AGI, Networks, Value [2/2]
-seoTitle: "AI Value Chain: Why Models Commoditize But Applications Win"
-date: 2025-11-24
-images:
-- https://static.philippdubach.com/ograph/ograph-eatingtheworld2.jpg
-external_url: https://www.ben-evans.com/presentations/
-description: "AGI predictions miss the point. Multiple competing models means price war. Value flows to applications, customer relationships, and vertical integrators."
-keywords:
-- AI value chain
-- AGI timeline predictions
-- AI model commoditization
-- AI competitive advantage
-- LLM data moats
-categories:
-- AI
-type: Essay
-draft: false
-aliases:
-- /2025/11/24/is-ai-really-eating-the-world-agi-networks-value-2/2/
-
-faq:
-- question: Where does value flow in the AI value chain?
-  answer: Evidence suggests value flows to the applications layer rather than to model providers. Foundation models are rapidly commoditizing, with multiple frontier models clustering around similar performance and prices dropping 97% since GPT-3's launch. The real competitive advantage comes from applications, customer relationships, and distribution rather than from having the best model.
-- question: Will AGI create lasting monopolies for AI companies?
-  answer: Even if AGI arrives by 2028, multiple competing players will likely reach it at roughly the same time given how quickly capabilities diffuse. Multiple competing AGIs means price competition, and price competition in a product with near-zero marginal cost means prices collapse toward marginal cost. Value would flow to users of AI (engineering firms, pharmaceutical companies, retailers) rather than to providers.
-- question: Can LLMs replace traditional data network effects for recommendation systems?
-  answer: The answer depends on whether LLMs truly reason or merely pattern-match at a sophisticated level. If LLMs are sophisticated pattern-matchers (which current evidence suggests), they still need massive datasets and traditional network effects apply. If they can reason over conceptual spaces, that would unbundle data network effects from recommendation quality and shift value to whoever owns customer relationships.
-- question: What is the vertical integration strategy for AI value capture?
-  answer: The AWS playbook suggests hyperscalers can capture value even if models commoditize by controlling cloud infrastructure plus model development plus customer relationships plus application distribution. Microsoft is pursuing this with Azure plus OpenAI plus Copilot plus Office integration. This strategy is about controlling distribution and bundling, not about having the best model.
----
++++
+title = "Is AI Really Eating the World? AGI, Networks, Value [2/2]"
+seoTitle = "AI Value Chain: Why Models Commoditize But Applications Win"
+date = 2025-11-24
+images = ["https://static.philippdubach.com/ograph/ograph-eatingtheworld2.jpg"]
+description = "AGI predictions miss the point. Multiple competing models means price war. Value flows to applications, customer relationships, and vertical integrators."
+keywords = ["AI value chain", "AGI timeline predictions", "AI model commoditization", "AI competitive advantage", "LLM data moats"]
+categories = ["AI"]
+type = "Essay"
+draft = false
+external_url = "https://www.ben-evans.com/presentations/"
+aliases = ["/2025/11/24/is-ai-really-eating-the-world-agi-networks-value-2/2/"]
+takeaways = [
+  "Even if AGI arrives by 2028, multiple competing providers will likely reach it simultaneously, meaning prices collapse toward marginal cost and value flows to AI users, not providers.",
+  "GPT-4 launched with a substantial capability lead in March 2023, but within six months Claude 2 was comparable, suggesting frontier leads are measured in months, not years.",
+  "LLMs likely remain sophisticated pattern-matchers rather than true reasoners, which means traditional data network effects still apply and recommendation incumbents keep their moats.",
+  "The hyperscaler playbook (infrastructure + model + distribution + bundling) is more plausible for value capture than the 'best model wins' thesis, mirroring how AWS, not databases, captured cloud value.",
+]
+faq = [
+  {question = "Where does value flow in the AI value chain?", answer = "Evidence suggests value flows to the applications layer rather than to model providers. Foundation models are rapidly commoditizing, with multiple frontier models clustering around similar performance and prices dropping 97% since GPT-3's launch. The real competitive advantage comes from applications, customer relationships, and distribution rather than from having the best model."},
+  {question = "Will AGI create lasting monopolies for AI companies?", answer = "Even if AGI arrives by 2028, multiple competing players will likely reach it at roughly the same time given how quickly capabilities diffuse. Multiple competing AGIs means price competition, and price competition in a product with near-zero marginal cost means prices collapse toward marginal cost. Value would flow to users of AI (engineering firms, pharmaceutical companies, retailers) rather than to providers."},
+  {question = "Can LLMs replace traditional data network effects for recommendation systems?", answer = "The answer depends on whether LLMs truly reason or merely pattern-match at a sophisticated level. If LLMs are sophisticated pattern-matchers (which current evidence suggests), they still need massive datasets and traditional network effects apply. If they can reason over conceptual spaces, that would unbundle data network effects from recommendation quality and shift value to whoever owns customer relationships."},
+  {question = "What is the vertical integration strategy for AI value capture?", answer = "The AWS playbook suggests hyperscalers can capture value even if models commoditize by controlling cloud infrastructure plus model development plus customer relationships plus application distribution. Microsoft is pursuing this with Azure plus OpenAI plus Copilot plus Office integration. This strategy is about controlling distribution and bundling, not about having the best model."},
+]
++++
 _Start by reading [Is AI Really Eating the World? What we've Learned [1/2]](/posts/is-ai-really-eating-the-world-1/2/)_
 
 All current [recommendation systems](https://en.wikipedia.org/wiki/Recommender_system) work by capturing and analyzing user behavior at scale. Netflix needs millions of users watching millions of hours to train its recommendation algorithm. Amazon needs billions of purchases. The [network effect](https://en.wikipedia.org/wiki/Network_effect) comes from data scale. What if LLMs can bypass this? What if an LLM can provide useful recommendations by reasoning about conceptual relationships rather than requiring massive behavioral datasets? If I ask for "books like Pirsig's Zen and the Art of Motorcycle Maintenance but more focused on Eastern philosophy," a sufficiently capable LLM might answer well without needing to observe 100 million readers. It understands (or appears to understand) the conceptual space. I'm uncertain whether LLMs can do this reliably by the end of 2025. The fundamental question is whether they reason or pattern-match at a very sophisticated level. [Recent research suggests LLMs may rely more on statistical correlations than true reasoning](https://arxiv.org/abs/2308.03762). If it's mostly pattern-matching, they still need the massive datasets and we're back to conventional network effects. If they can actually reason over conceptual spaces, that's different. That would unbundle data network effects from recommendation quality. Recommendation quality would depend on model capability, not data scale. And if model capability is commoditizing, then the value in recommendations flows to whoever owns customer relationships and distribution, not to whoever has the most data or the best model. I lean toward thinking LLMs are sophisticated pattern-matchers rather than reasoners, which means traditional network effects still apply. But this is one area where I'm genuinely waiting to see more evidence.

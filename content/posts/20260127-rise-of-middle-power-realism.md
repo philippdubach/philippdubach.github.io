@@ -8,6 +8,12 @@ keywords = ["Mark Carney Davos 2026 speech", "middle power foreign policy", "Don
 categories = ["Economics"]
 type = "Analysis"
 draft = false
+takeaways = [
+  "At Davos 2026, Carney declared the world has experienced 'a rupture, not a transition' and used Havel's greengrocer parable to argue that allies have been displaying signs of a liberal order that no longer exists",
+  "Canada joined the EU's SAFE defense fund, a 150 billion euro procurement program, becoming the first non-European G7 nation with preferential access to European defense markets",
+  "Canada secured a preliminary trade deal with China on 49,000 EVs at 6.1% tariff, compared to the 100% tariff the U.S. imposes, demonstrating the leverage that comes from diversified partnerships",
+  "The EU threatened to deploy its Anti-Coercion Instrument against the United States during the Greenland crisis, the first time the bloc signaled willingness to trade-war its primary security guarantor",
+]
 [[faq]]
 question = "What is middle power realism?"
 answer = "Middle power realism is a foreign policy framework articulated by Canadian PM Mark Carney at Davos 2026. It's built on three observations: the US is no longer a reliable partner, nostalgia for the pre-2016 order is dangerous, and sovereignty requires the capacity to say no. Middle powers must build domestic strength, diversify partnerships even with rivals, and form horizontal coalitions to avoid being \"on the menu.\""

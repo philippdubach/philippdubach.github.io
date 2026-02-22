@@ -1,33 +1,27 @@
----
-title: Ozempic is Reshaping the Fast Food Industry
-seoTitle: "GLP-1 Food Industry Impact: Cornell Data Shows 8% Fast Food Drop"
-date: 2026-01-16
-images:
-- https://static.philippdubach.com/ograph/ograph-glp1-food.jpg
-description: "Cornell research: GLP-1 users cut grocery spending 5.3%, fast food 8%. With 16% household adoption and savory snacks down 10%, food stocks face headwinds."
-keywords:
-- GLP-1 food industry impact
-- Ozempic grocery spending
-- food stocks GLP-1
-- Wegovy consumer behavior
-- weight loss drug food sales
-external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5073929
-categories:
-- Finance
-- Economics
-type: Commentary
-draft: false
-
-faq:
-- question: How much do GLP-1 users reduce their food spending?
-  answer: Cornell research shows households with a GLP-1 user cut grocery spending by 5.3% within six months, with high-income households dropping 8.2%. Fast food spending falls 8.0%. These users aren't switching brands; they're simply eating less.
-- question: Which food categories are hit hardest by Ozempic and Wegovy?
-  answer: Savory snacks see the largest decline at 10.1%, followed by sweets, baked goods, and cookies. Even staples like meat, eggs, and bread decline. Yogurt is the only category showing a statistically significant increase, with fresh fruit and nutrition bars trending up slightly.
-- question: What happens when people stop taking GLP-1 medications?
-  answer: About 34% of users discontinue within the sample period. When they stop, spending doesn't just return to baseline; it becomes less healthy. Candy and chocolate purchases rise 11.4% above pre-adoption levels, suggesting the drugs suppress appetite biologically without teaching new habits.
-- question: Why are higher-income consumers more affected by GLP-1 drugs?
-  answer: Higher-income households show even steeper spending declines (8.2% vs 5.3% average) and are more likely to use GLP-1 medications for weight loss rather than diabetes. They're also the most profitable customers for fast food chains, creating a "double whammy" where companies lose their highest-margin customers.
----
++++
+title = "Ozempic is Reshaping the Fast Food Industry"
+seoTitle = "GLP-1 Food Industry Impact: Cornell Data Shows 8% Fast Food Drop"
+date = 2026-01-16
+images = ["https://static.philippdubach.com/ograph/ograph-glp1-food.jpg"]
+description = "Cornell research: GLP-1 users cut grocery spending 5.3%, fast food 8%. With 16% household adoption and savory snacks down 10%, food stocks face headwinds."
+keywords = ["GLP-1 food industry impact", "Ozempic grocery spending", "food stocks GLP-1", "Wegovy consumer behavior", "weight loss drug food sales"]
+categories = ["Finance", "Economics"]
+type = "Commentary"
+draft = false
+external_url = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5073929"
+takeaways = [
+  "Cornell research on 150,000 households shows GLP-1 users cut grocery spending 5.3% within six months, with fast food down 8.0% and savory snacks hit hardest at 10.1%",
+  "16.3% of U.S. households already have at least one GLP-1 user as of July 2024, with nearly half taking the medication for weight loss rather than diabetes",
+  "About 34% of users discontinue GLP-1 medications, and when they stop, candy and chocolate purchases rise 11.4% above pre-adoption levels, suggesting the drugs suppress appetite without teaching new habits",
+  "High-income households show steeper spending declines at 8.2%, and these are the most profitable fast food customers, creating a double loss of volume and margin",
+]
+faq = [
+  {question = "How much do GLP-1 users reduce their food spending?", answer = "Cornell research shows households with a GLP-1 user cut grocery spending by 5.3% within six months, with high-income households dropping 8.2%. Fast food spending falls 8.0%. These users aren't switching brands; they're simply eating less."},
+  {question = "Which food categories are hit hardest by Ozempic and Wegovy?", answer = "Savory snacks see the largest decline at 10.1%, followed by sweets, baked goods, and cookies. Even staples like meat, eggs, and bread decline. Yogurt is the only category showing a statistically significant increase, with fresh fruit and nutrition bars trending up slightly."},
+  {question = "What happens when people stop taking GLP-1 medications?", answer = "About 34% of users discontinue within the sample period. When they stop, spending doesn't just return to baseline; it becomes less healthy. Candy and chocolate purchases rise 11.4% above pre-adoption levels, suggesting the drugs suppress appetite biologically without teaching new habits."},
+  {question = "Why are higher-income consumers more affected by GLP-1 drugs?", answer = "Higher-income households show even steeper spending declines (8.2% vs 5.3% average) and are more likely to use GLP-1 medications for weight loss rather than diabetes. They're also the most profitable customers for fast food chains, creating a \"double whammy\" where companies lose their highest-margin customers."},
+]
++++
 Something strange is happening in the food industry. [New US dietary guidelines call for more protein and less sugar](https://www.wsj.com/health/wellness/us-dietary-food-guidelines-trump-rfk-jr-aaf51714). Greggs, the UK bakery chain, just warned of ["flatlining profits"](https://www.ft.com/content/7ab5e9b8-45fe-4ba2-97f2-41d417561ce3) in the food-to-go market. Food companies are racing to overhaul their brands, ditching artificial dyes and packing protein into products. Earnings calls across the sector blame "inflation" and "subdued consumer confidence." Nobody mentions the elephant in the room: GLP-1 medications.
 
 New [research from Cornell](https://doi.org/10.1177/00222437251412834) finally puts numbers to what the food industry doesn't want to discuss. Using transaction data from 150,000 households linked to survey responses on medication adoption, Sylvia Hristakeva, Jūra Liaukonytė, and Leo Feler tracked exactly how Ozempic and Wegovy users change their spending. The results deserve attention from anyone holding food stocks.

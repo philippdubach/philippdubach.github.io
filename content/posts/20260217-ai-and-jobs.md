@@ -1,50 +1,28 @@
----
-title: "The Reckoning Has a Second Act"
-seoTitle: "AI Job Displacement in 2026: Destruction, Then Creation"
-date: 2026-02-16
-lastmod: 2026-02-16
-publishDate: 2026-02-16T12:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-reckoning-second-act.jpg
-description: "AI is destroying jobs right now: Pave data shows customer support hiring down 65%. But 60% of today's jobs didn't exist in 1940. Here's what comes next."
-keywords:
-- AI job displacement 2026
-- AI replacing jobs 2026
-- AI creating new jobs
-- customer support AI automation
-- will AI create more jobs than it destroys
-- hyperscaler capex 2026
-- San Francisco AI startups
-- technology job creation history
-- AI customer service jobs lost
-- venture capital 2026
-- Pave Data Lab customer support hiring
-- Autor Chin Salomons new occupations 1940
-- Goldman Sachs AI workforce research
-- SVB State of Market 2026
-- a16z Charts of the Week customer service
-- creative destruction AI
-- occupational churn AI automation
-- AI infrastructure buildout 2026
-- knowledge work automation
-- net job creation AI
-- AI-native companies San Francisco
-- white collar job displacement AI
-draft: true
-faq:
-- question: "Will AI create more jobs than it destroys?"
-  answer: "History suggests yes. Goldman Sachs research based on Autor, Chin, Salomons, and Seegmiller shows over 60% of current US employment is in occupations that did not exist in 1940. SVB data confirms the pattern across every major platform shift: internet and email, smartphones, and e-commerce each displaced one set of tasks while creating demand for new ones. The AI transition appears to follow the same pattern, with $650 billion in hyperscaler capex and a 24% increase in San Francisco startup formation signaling where new jobs are forming."
-- question: "How many customer support jobs has AI replaced?"
-  answer: "According to Pave Data Lab, customer support's share of new hires fell from 8.3% in Q4 2023 to 2.88% in Q3 2025, a 65% decline in eight quarters across 386,500 tracked new hires. The steepest single drop occurred between Q2 and Q3 2025, when the share fell from 5.81% to 2.88%. This makes customer support one of the first white-collar categories to show measurable AI job displacement in real-time hiring data."
-- question: "How much are hyperscalers spending on AI infrastructure in 2026?"
-  answer: "Combined capital expenditure guidance from Microsoft, Meta, Alphabet, Amazon, and Oracle approaches $650 billion in 2026, roughly triple the $220 billion spent in 2024. Amazon leads at approximately $38 billion per quarter (up 42% YoY), followed by Microsoft at $30 billion (up 89% YoY). This AI infrastructure buildout creates downstream labor demand in data center construction, power generation, chip design, and the AI application layer."
-- question: "What percentage of today's jobs didn't exist in 1940?"
-  answer: "Over 60%, according to Goldman Sachs research citing Autor, Chin, Salomons, and Seegmiller. The largest expansion is in 'Professionals' and 'Managers,' categories that barely existed as formal occupations before the postwar knowledge economy. This research suggests technology generates entirely new categories of economic activity that absorb more labor than the categories it compresses."
-- question: "Why is San Francisco the only tech hub with growing startup formation?"
-  answer: "According to SVB's State of Market 1H 2026 report, San Francisco is the only major US tech hub where VC-backed company formation has grown since 2022, up 24%. Every other hub has contracted, with Los Angeles down 48%, Atlanta down 47%, and Miami down 34%. Carta's State of Startups 2025 confirms the Bay Area captured 40.3% of all early-stage venture capital and 50.6% of AI-specific funding, driven by AI-native startups clustering around infrastructure and talent."
-- question: "Is AI permanently eliminating customer service jobs?"
-  answer: "The data points to displacement of specific tasks, not wholesale elimination. Pave Data Lab shows a 65% decline in customer support's share of new hires between Q4 2023 and Q3 2025. But historical precedent from SVB and Goldman Sachs data shows every prior platform shift (internet, smartphones, e-commerce) displaced one category of work while creating new categories elsewhere. The question is whether the new roles emerge fast enough to absorb displaced workers."
----
++++
+title = "The Reckoning Has a Second Act"
+seoTitle = "AI Job Displacement in 2026: Destruction, Then Creation"
+date = 2026-02-16
+lastmod = 2026-02-16
+publishDate = 2026-02-16T12:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-reckoning-second-act.jpg"]
+description = "AI is destroying jobs right now: Pave data shows customer support hiring down 65%. But 60% of today's jobs didn't exist in 1940. Here's what comes next."
+keywords = ["AI job displacement 2026", "AI replacing jobs 2026", "AI creating new jobs", "customer support AI automation", "will AI create more jobs than it destroys", "hyperscaler capex 2026", "San Francisco AI startups", "technology job creation history", "AI customer service jobs lost", "venture capital 2026", "Pave Data Lab customer support hiring", "Autor Chin Salomons new occupations 1940", "Goldman Sachs AI workforce research", "SVB State of Market 2026", "a16z Charts of the Week customer service", "creative destruction AI", "occupational churn AI automation", "AI infrastructure buildout 2026", "knowledge work automation", "net job creation AI", "AI-native companies San Francisco", "white collar job displacement AI"]
+draft = true
+takeaways = [
+  "Customer support's share of new hires fell from 8.3% to 2.88% in eight quarters, a 65% decline measured in real hiring data across 386,500 tracked hires",
+  "Over 60% of current US employment is in occupations that did not exist in 1940, according to Autor, Chin, Salomons, and Seegmiller",
+  "Hyperscaler AI capex approaches $650 billion for 2026, roughly triple the $220 billion spent in 2024",
+  "San Francisco is the only major US tech hub with growing startup formation since 2022, up 24% while every other hub contracted",
+]
+faq = [
+  {question = "Will AI create more jobs than it destroys?", answer = "History suggests yes. Goldman Sachs research based on Autor, Chin, Salomons, and Seegmiller shows over 60% of current US employment is in occupations that did not exist in 1940. SVB data confirms the pattern across every major platform shift: internet and email, smartphones, and e-commerce each displaced one set of tasks while creating demand for new ones. The AI transition appears to follow the same pattern, with $650 billion in hyperscaler capex and a 24% increase in San Francisco startup formation signaling where new jobs are forming."},
+  {question = "How many customer support jobs has AI replaced?", answer = "According to Pave Data Lab, customer support's share of new hires fell from 8.3% in Q4 2023 to 2.88% in Q3 2025, a 65% decline in eight quarters across 386,500 tracked new hires. The steepest single drop occurred between Q2 and Q3 2025, when the share fell from 5.81% to 2.88%. This makes customer support one of the first white-collar categories to show measurable AI job displacement in real-time hiring data."},
+  {question = "How much are hyperscalers spending on AI infrastructure in 2026?", answer = "Combined capital expenditure guidance from Microsoft, Meta, Alphabet, Amazon, and Oracle approaches $650 billion in 2026, roughly triple the $220 billion spent in 2024. Amazon leads at approximately $38 billion per quarter (up 42% YoY), followed by Microsoft at $30 billion (up 89% YoY). This AI infrastructure buildout creates downstream labor demand in data center construction, power generation, chip design, and the AI application layer."},
+  {question = "What percentage of today's jobs didn't exist in 1940?", answer = "Over 60%, according to Goldman Sachs research citing Autor, Chin, Salomons, and Seegmiller. The largest expansion is in 'Professionals' and 'Managers,' categories that barely existed as formal occupations before the postwar knowledge economy. This research suggests technology generates entirely new categories of economic activity that absorb more labor than the categories it compresses."},
+  {question = "Why is San Francisco the only tech hub with growing startup formation?", answer = "According to SVB's State of Market 1H 2026 report, San Francisco is the only major US tech hub where VC-backed company formation has grown since 2022, up 24%. Every other hub has contracted, with Los Angeles down 48%, Atlanta down 47%, and Miami down 34%. Carta's State of Startups 2025 confirms the Bay Area captured 40.3% of all early-stage venture capital and 50.6% of AI-specific funding, driven by AI-native startups clustering around infrastructure and talent."},
+  {question = "Is AI permanently eliminating customer service jobs?", answer = "The data points to displacement of specific tasks, not wholesale elimination. Pave Data Lab shows a 65% decline in customer support's share of new hires between Q4 2023 and Q3 2025. But historical precedent from SVB and Goldman Sachs data shows every prior platform shift (internet, smartphones, e-commerce) displaced one category of work while creating new categories elsewhere. The question is whether the new roles emerge fast enough to absorb displaced workers."},
+]
++++
 
 Customer support's share of new hires just fell off a cliff: from 8.3% to 2.88% in eight quarters, according to [Pave Data Lab](https://www.pave.com/data-lab). That's a **65%** decline. The steepest single drop happened between Q2 and Q3 2025, when the number cratered. This is AI job displacement measured not in forecasts or projections, but in actual hiring data.
 

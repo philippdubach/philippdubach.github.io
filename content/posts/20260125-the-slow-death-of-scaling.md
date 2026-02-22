@@ -1,37 +1,27 @@
----
-title: The Most Expensive Assumption in AI
-seoTitle: "AI Scaling Laws Hit Diminishing Returns: The Trillion-Dollar Bet"
-date: 2026-01-26
-publishDate: 2026-01-26T00:10:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-scaling.jpg
-description: "Sara Hooker's research challenges the trillion-dollar scaling thesis. Compact models now outperform massive ones as diminishing returns hit AI."
-keywords:
-- AI scaling laws
-- diminishing returns AI
-- small vs large language models
-- Sara Hooker scaling
-- AI infrastructure investing
-categories:
-- Finance
-- Tech
-type: Commentary
-draft: false
-takeaways:
-- "Compact models now outperform massive predecessors: Llama-3 8B beats Falcon 180B, Aya 23 8B beats BLOOM 176B at 4.5% of parameters"
-- "Scaling laws only reliably predict pre-training loss, not downstream performance — emergent properties masks our inability to predict what's next"
-- "Hedge fund short interest in AI-adjacent utilities sits at the 99th percentile vs. the past 5 years"
-- "Frontier labs are incorporating classical symbolic tools on CPUs — the age of brute-force scaling may be ending"
-faq:
-- question: Are AI scaling laws showing diminishing returns?
-  answer: Evidence suggests yes. Sara Hooker's research shows that compact models like Llama-3 8B now outperform massive predecessors like Falcon 180B. Scaling laws only reliably predict pre-training test loss, not actual downstream performance. The jump from GPT-4 to GPT-5 shows marginal improvements requiring careful measurement, unlike the obvious qualitative leaps from GPT-1 to GPT-4.
-- question: Can smaller AI models outperform larger ones?
-  answer: Yes. Llama-3 8B outperforms Falcon 180B, and Aya 23 8B beats BLOOM 176B despite having only 4.5% of the parameters. This is not an isolated fluke but a systematic trend visible in Open LLM Leaderboard submissions over two years.
-- question: What are hedge funds betting on AI scaling?
-  answer: Hedge fund short interest in utilities now sits at the 99th percentile relative to the past five years, according to Goldman Sachs data. The bet appears to be that AI data center demand may not materialize as expected. Names like Bloom Energy, Oracle, and various AI-adjacent plays are showing up on heavily-shorted lists.
-- question: What comes after the AI scaling era?
-  answer: As scaling hits diminishing returns, the skills that matter shift toward algorithmic cleverness, data quality, and architectural innovation rather than brute-force compute. Frontier labs are incorporating classical symbolic tools that run on CPUs, not GPUs. Ilya Sutskever has publicly stated that "we need to go back to the age of research."
----
++++
+title = "The Most Expensive Assumption in AI"
+seoTitle = "AI Scaling Laws Hit Diminishing Returns: The Trillion-Dollar Bet"
+date = 2026-01-26
+publishDate = 2026-01-26T00:10:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-scaling.jpg"]
+description = "Sara Hooker's research challenges the trillion-dollar scaling thesis. Compact models now outperform massive ones as diminishing returns hit AI."
+keywords = ["AI scaling laws", "diminishing returns AI", "small vs large language models", "Sara Hooker scaling", "AI infrastructure investing"]
+categories = ["Finance", "Tech"]
+type = "Commentary"
+draft = false
+takeaways = [
+  "Compact models now outperform massive predecessors: Llama-3 8B beats Falcon 180B, Aya 23 8B beats BLOOM 176B at 4.5% of parameters",
+  "Scaling laws only reliably predict pre-training loss, not downstream performance, because emergent properties mask our inability to predict what's next",
+  "Hedge fund short interest in AI-adjacent utilities sits at the 99th percentile vs. the past 5 years",
+  "Frontier labs are incorporating classical symbolic tools on CPUs, meaning the age of brute-force scaling may be ending",
+]
+faq = [
+  {question = "Are AI scaling laws showing diminishing returns?", answer = "Evidence suggests yes. Sara Hooker's research shows that compact models like Llama-3 8B now outperform massive predecessors like Falcon 180B. Scaling laws only reliably predict pre-training test loss, not actual downstream performance. The jump from GPT-4 to GPT-5 shows marginal improvements requiring careful measurement, unlike the obvious qualitative leaps from GPT-1 to GPT-4."},
+  {question = "Can smaller AI models outperform larger ones?", answer = "Yes. Llama-3 8B outperforms Falcon 180B, and Aya 23 8B beats BLOOM 176B despite having only 4.5% of the parameters. This is not an isolated fluke but a systematic trend visible in Open LLM Leaderboard submissions over two years."},
+  {question = "What are hedge funds betting on AI scaling?", answer = "Hedge fund short interest in utilities now sits at the 99th percentile relative to the past five years, according to Goldman Sachs data. The bet appears to be that AI data center demand may not materialize as expected. Names like Bloom Energy, Oracle, and various AI-adjacent plays are showing up on heavily-shorted lists."},
+  {question = "What comes after the AI scaling era?", answer = "As scaling hits diminishing returns, the skills that matter shift toward algorithmic cleverness, data quality, and architectural innovation rather than brute-force compute. Frontier labs are incorporating classical symbolic tools that run on CPUs, not GPUs. Ilya Sutskever has publicly stated that \"we need to go back to the age of research.\""},
+]
++++
 Sara Hooker's paper arrived with impeccable timing. _[On the slow death of scaling](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5877662)_ dropped just as hyperscalers are committing another $500 billion to GPU infrastructure, bringing total industry deployment into the scaling thesis somewhere north of a trillion dollars. I've been [tracking these capital flows](/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/) for my own portfolio. Either Hooker is early to a generational insight or she's about to be very publicly wrong.{{< img src="hyperscaler_capex2.png" alt="Hyperscaler AI capital expenditure 2019-2025" width="100%" >}}The core argument is very simple: bigger is not always better. [Llama-3 8B outperforms Falcon 180B](https://www.tii.ae/news/falcon-2-uaes-technology-innovation-institute-releases-new-ai-model-series-outperforming-metas). [Aya 23 8B beats BLOOM 176B](https://arxiv.org/abs/2211.05100) despite having only 4.5% of the parameters. These are not isolated flukes. Hooker plots submissions to the Open LLM Leaderboard over two years and finds a systematic trend where compact models consistently outperform their bloated predecessors. The bitter lesson, as Rich Sutton framed it, was that brute force compute always wins. Hooker's counter is that maybe we've been held hostage to "a painfully simple formula" that's now breaking down.{{< img src="model_size_vs_performance2.png" alt="Model size vs benchmark performance showing smaller models outperforming larger ones" width="100%" >}}Scaling laws, she notes, only reliably predict pre-training test loss. When you look at actual downstream performance, the results are "murky or inconsistent." The term "emergent properties" gets thrown around to describe capabilities that appear suddenly at scale, but Hooker points out this is really just a fancy way of admitting we have no idea what's coming. If your scaling law can't predict emergence, it's not much of a law.
 
 [Gary Marcus](https://en.wikipedia.org/wiki/Gary_Marcus) has been making a related argument from a different angle. The cognitive scientist, whose 2001 book predicted hallucination problems, calls LLMs "glorified memorization machines" that work because the internet contains answers to most common queries. His framing is less academic and more market-oriented: the jump from GPT-1 to GPT-4 showed obvious qualitative leaps requiring no benchmarks. The jump from GPT-4 to GPT-5? Marginal improvements requiring careful measurement. The textbook definition of diminishing returns.

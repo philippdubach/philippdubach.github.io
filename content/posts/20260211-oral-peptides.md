@@ -1,50 +1,30 @@
----
-title: "The Pill That Wastes 99% of Itself"
-seoTitle: "Oral GLP-1 Drugs 2026: The Pill That Wastes 99% of Itself"
-date: 2026-02-15
-lastmod: 2026-02-15
-publishDate: 2026-02-15T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-oral-peptides.jpg
-description: "Oral semaglutide destroys 99% of its active ingredient per dose. Eli Lilly's orforglipron skips the problem. Inside the $70B GLP-1 pill race."
-keywords:
-- orforglipron vs oral semaglutide
-- oral GLP-1 drugs 2026
-- Novo Nordisk vs Eli Lilly GLP-1 market share
-- oral semaglutide bioavailability SNAC
-- GLP-1 market expansion obesity drug
-- orforglipron FDA approval 2026
-- oral weight loss pill GLP-1
-- small molecule GLP-1 receptor agonist
-- oral semaglutide Wegovy pill
-- GLP-1 manufacturing cost COGS
-- semaglutide patent expiry 2031
-- oral GLP-1 pipeline Viking Structure
-- GLP-1 adherence persistence rates
-- Hims compounded semaglutide
-- anti-obesity medication market size 2030
-- oral amycretin Phase 2
-- Jevons Paradox statin analogy market expansion
-draft: true
-takeaways:
-- "Oral semaglutide has ~1% bioavailability — each pill destroys 99% of its active ingredient, requiring 280x more API than the equivalent injection"
-- "Eli Lilly's orforglipron is a small molecule, not a peptide, bypassing the oral delivery problem that cost Novo decades and $1.8B"
-- "The GLP-1 market hit $70B in 2025; oral pills are expected to expand the market, not cannibalize injections (statin precedent: 197% user growth)"
-- "Current GLP-1 penetration is under 5% of eligible US adults vs. 35%+ for statins, implying massive expansion ahead"
-faq:
-- question: "How does oral semaglutide work if only 1% is absorbed?"
-  answer: "Oral semaglutide uses the permeation enhancer SNAC (salcaprozate sodium) to temporarily buffer stomach acid and fluidize gastric cell membranes, allowing a small fraction of the peptide to cross into the bloodstream. The resulting bioavailability is roughly 0.4 to 1%, meaning over 99% of each pill is destroyed. The oral 25mg daily dose requires approximately 280x more active ingredient than the equivalent weekly injection."
-- question: "Is orforglipron better than oral semaglutide for weight loss?"
-  answer: "In the ACHIEVE-3 head-to-head trial, orforglipron was superior to oral semaglutide on both HbA1c reduction and weight loss at 52 weeks. Orforglipron is also a small molecule rather than a peptide, meaning it requires no SNAC enhancer, no 30-minute fasting window, and no cold chain storage. However, ACHIEVE-3 compared orforglipron against semaglutide 7mg and 14mg doses, not the higher 25mg Wegovy pill dose approved for obesity."
-- question: "What is the current GLP-1 market size and who is winning?"
-  answer: "Combined Novo Nordisk and Eli Lilly GLP-1 revenue reached approximately $70 billion in 2025. Lilly's tirzepatide franchise (Mounjaro + Zepbound) generated $36.5 billion, surpassing Novo's semaglutide franchise at roughly $33 billion. Lilly holds 57% US GLP-1 market share as of mid-2025."
-- question: "Will oral GLP-1 pills expand the obesity market or replace injections?"
-  answer: "The statin precedent suggests oral pills will expand the market rather than cannibalize it. After generic atorvastatin launched in 2011, total statin use expanded from 31 million to 92 million Americans by 2019, a 197% increase. Current GLP-1 penetration is under 5% of eligible US adults versus 35%+ for statins, implying substantial expansion as oral delivery lowers barriers to initiation and improves persistence."
-- question: "When does semaglutide's patent expire?"
-  answer: "Semaglutide's core US patent expires December 5, 2031, with formulation patents extending to 2033. International patents in Canada, China, India, and Brazil are expiring in 2026. Tirzepatide patents extend into the mid-2030s, giving Eli Lilly a structural advantage in the oral GLP-1 market."
-- question: "What oral GLP-1 weight loss pills are coming in 2026?"
-  answer: "Novo Nordisk launched the oral Wegovy pill (semaglutide 25mg) in January 2026. Eli Lilly's orforglipron has an FDA target date of April 2026. Behind them, Novo's oral amycretin enters Phase 3 in 2026, Structure Therapeutics' aleniglipron targets mid-2026 Phase 3 start, and Viking Therapeutics' VK2735 oral showed promising Phase 2 data but had high discontinuation rates."
----
++++
+title = "The Pill That Wastes 99% of Itself"
+seoTitle = "Oral GLP-1 Drugs 2026: The Pill That Wastes 99% of Itself"
+date = 2026-02-15
+lastmod = 2026-02-15
+publishDate = 2026-02-15T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-oral-peptides.jpg"]
+description = "Oral semaglutide destroys 99% of its active ingredient per dose. Eli Lilly's orforglipron skips the problem. Inside the $70B GLP-1 pill race."
+keywords = ["orforglipron vs oral semaglutide", "oral GLP-1 drugs 2026", "Novo Nordisk vs Eli Lilly GLP-1 market share", "oral semaglutide bioavailability SNAC", "GLP-1 market expansion obesity drug", "orforglipron FDA approval 2026", "oral weight loss pill GLP-1", "small molecule GLP-1 receptor agonist", "oral semaglutide Wegovy pill", "GLP-1 manufacturing cost COGS", "semaglutide patent expiry 2031", "oral GLP-1 pipeline Viking Structure", "GLP-1 adherence persistence rates", "Hims compounded semaglutide", "anti-obesity medication market size 2030", "oral amycretin Phase 2", "Jevons Paradox statin analogy market expansion"]
+categories = ["Medicine", "Finance"]
+type = "Analysis"
+draft = true
+takeaways = [
+  "Oral semaglutide has ~1% bioavailability, meaning each pill destroys 99% of its active ingredient, requiring 280x more API than the equivalent injection",
+  "Eli Lilly's orforglipron is a small molecule, not a peptide, bypassing the oral delivery problem that cost Novo decades and $1.8B",
+  "The GLP-1 market hit $70B in 2025; oral pills are expected to expand the market, not cannibalize injections (statin precedent: 197% user growth)",
+  "Current GLP-1 penetration is under 5% of eligible US adults vs. 35%+ for statins, implying massive expansion ahead",
+]
+faq = [
+  {question = "How does oral semaglutide work if only 1% is absorbed?", answer = "Oral semaglutide uses the permeation enhancer SNAC (salcaprozate sodium) to temporarily buffer stomach acid and fluidize gastric cell membranes, allowing a small fraction of the peptide to cross into the bloodstream. The resulting bioavailability is roughly 0.4 to 1%, meaning over 99% of each pill is destroyed. The oral 25mg daily dose requires approximately 280x more active ingredient than the equivalent weekly injection."},
+  {question = "Is orforglipron better than oral semaglutide for weight loss?", answer = "In the ACHIEVE-3 head-to-head trial, orforglipron was superior to oral semaglutide on both HbA1c reduction and weight loss at 52 weeks. Orforglipron is also a small molecule rather than a peptide, meaning it requires no SNAC enhancer, no 30-minute fasting window, and no cold chain storage. However, ACHIEVE-3 compared orforglipron against semaglutide 7mg and 14mg doses, not the higher 25mg Wegovy pill dose approved for obesity."},
+  {question = "What is the current GLP-1 market size and who is winning?", answer = "Combined Novo Nordisk and Eli Lilly GLP-1 revenue reached approximately $70 billion in 2025. Lilly's tirzepatide franchise (Mounjaro + Zepbound) generated $36.5 billion, surpassing Novo's semaglutide franchise at roughly $33 billion. Lilly holds 57% US GLP-1 market share as of mid-2025."},
+  {question = "Will oral GLP-1 pills expand the obesity market or replace injections?", answer = "The statin precedent suggests oral pills will expand the market rather than cannibalize it. After generic atorvastatin launched in 2011, total statin use expanded from 31 million to 92 million Americans by 2019, a 197% increase. Current GLP-1 penetration is under 5% of eligible US adults versus 35%+ for statins, implying substantial expansion as oral delivery lowers barriers to initiation and improves persistence."},
+  {question = "When does semaglutide's patent expire?", answer = "Semaglutide's core US patent expires December 5, 2031, with formulation patents extending to 2033. International patents in Canada, China, India, and Brazil are expiring in 2026. Tirzepatide patents extend into the mid-2030s, giving Eli Lilly a structural advantage in the oral GLP-1 market."},
+  {question = "What oral GLP-1 weight loss pills are coming in 2026?", answer = "Novo Nordisk launched the oral Wegovy pill (semaglutide 25mg) in January 2026. Eli Lilly's orforglipron has an FDA target date of April 2026. Behind them, Novo's oral amycretin enters Phase 3 in 2026, Structure Therapeutics' aleniglipron targets mid-2026 Phase 3 start, and Viking Therapeutics' VK2735 oral showed promising Phase 2 data but had high discontinuation rates."},
+]
++++
 
 >Novo Nordisk spent decades and $1.8 billion learning how to get a peptide past the gut. Eli Lilly looked at the same problem and decided to skip it entirely.
 

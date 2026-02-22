@@ -80,6 +80,10 @@ categories = ["Finance", "Technology"]
 type = "Article"          # Article | Commentary | Analysis | Project
 draft = false
 math = true               # Enable MathJax
+takeaways = [             # Key Takeaways box (GEO)
+  "Data-first takeaway with specific numbers",
+  "Second takeaway, no em dashes",
+]
 +++
 ```
 
@@ -162,7 +166,7 @@ Markdown editor for writing blog posts with live preview.
 ### Features
 
 - Live preview matching blog CSS
-- YAML frontmatter editor
+- TOML frontmatter editor
 - AI-powered SEO metadata generation
 - Hugo shortcode rendering
 - KaTeX math support
@@ -233,6 +237,9 @@ Context-aware disclaimers that:
 ## Changelog
 
 ### February 2026
+- Unified all 73 posts to TOML frontmatter (converted 70 from YAML)
+- Added Key Takeaways (GEO) to all 73 posts for AI search citation
+- Streamlined post layout: unified left-bordered asides (3px), consistent vertical spacing rhythm, image breathing room
 - Redesigned homepage with tabbed Articles/Projects layout and thumbnail images via Cloudflare Image Resizing
 - Deployed security headers Cloudflare Worker (HSTS, CSP, COEP, COOP, Permissions-Policy)
 - Added JSON Feed 1.1, Posts API, and llms.txt/llms-full.txt output formats

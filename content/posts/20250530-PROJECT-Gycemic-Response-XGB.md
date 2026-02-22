@@ -1,39 +1,30 @@
----
-title: Modeling Glycemic Response with XGBoost
-date: 2025-05-30
-lastmod: 2026-02-10
-images:
-- https://static.philippdubach.com/ograph/ograph-xgboost.jpg
-seoTitle: "Predicting Glycemic Response with XGBoost and CGM Data"
-description: "A hands-on project predicting postprandial glucose curves with XGBoost, Gaussian curve fitting, and 27 engineered features from CGM data. Code on GitHub."
-keywords:
-- predict glycemic response machine learning
-- XGBoost glucose prediction
-- postprandial glucose response prediction
-- CGM data machine learning
-- precision nutrition glucose prediction
-tags:
-- Project
-categories:
-- Medicine
-- AI
-type: Project
-draft: false
-aliases:
-- /2025/05/30/modeling-glycemic-response-with-xgboost/
-
-faq:
-- question: Can machine learning predict blood sugar responses to individual meals?
-  answer: Machine learning models like XGBoost can predict certain aspects of postprandial glucose response, particularly the amplitude (how high blood sugar rises after eating). Using features such as meal macronutrients, individual characteristics, and CGM-derived metrics, the model achieved an R-squared of 0.46 for amplitude prediction. However, predicting the timing and duration of the glucose response proved far more difficult, suggesting that meal composition alone provides limited information about when and how long blood sugar stays elevated.
-- question: Why use Gaussian curve fitting for glucose response modeling?
-  answer: 'Fitting each postprandial glucose response to a normalized Gaussian function simplifies the prediction problem from modeling an entire glucose curve to predicting just three parameters: amplitude (how high glucose rises), time-to-peak (when it peaks), and curve width (how long the response lasts). This approximation works well for most glucose responses in non-diabetic individuals, though some curves fit better than others due to variation between individuals and meals.'
-- question: How much data do you need to predict glycemic responses accurately?
-  answer: Sample size is one of the most critical factors in glucose prediction accuracy. A model trained on 112 standardized meals from 19 non-diabetic subjects achieved moderate amplitude prediction (R-squared of 0.46). In comparison, the EPFL Food and You study with over 1,000 participants achieved a correlation of 0.71. Studies that reach R-squared values above 0.7 typically require datasets with more than 1,000 participants, showing that individual glycemic prediction at scale demands large and diverse training data.
-- question: What features matter most for predicting postprandial glucose response?
-  answer: 'In XGBoost-based glucose prediction, 27 engineered features were used across multiple categories: meal composition (carbohydrates, protein, fat, and their interaction terms), participant characteristics (age, BMI), and CGM statistical features calculated over 24-hour and 4-hour windows, including time-in-range and glucose variability metrics. While macronutrients are primary drivers, pre-meal glucose state and individual metabolic characteristics provide additional predictive signal for amplitude prediction.'
-- question: What is the best machine learning model for predicting glucose levels from meal data?
-  answer: XGBoost is a strong choice for tabular health data because it handles mixed data types, provides built-in feature importance, and performs well without requiring massive datasets. For postprandial glucose prediction specifically, XGBoost with hyperparameter tuning and cross-validation is widely used in the literature. Newer deep learning approaches and foundation models are showing promise for larger-scale glucose prediction tasks, particularly when richer temporal data from continuous glucose monitors is available.
----
++++
+title = "Modeling Glycemic Response with XGBoost"
+seoTitle = "Predicting Glycemic Response with XGBoost and CGM Data"
+date = 2025-05-30
+lastmod = 2026-02-10
+images = ["https://static.philippdubach.com/ograph/ograph-xgboost.jpg"]
+description = "A hands-on project predicting postprandial glucose curves with XGBoost, Gaussian curve fitting, and 27 engineered features from CGM data. Code on GitHub."
+keywords = ["predict glycemic response machine learning", "XGBoost glucose prediction", "postprandial glucose response prediction", "CGM data machine learning", "precision nutrition glucose prediction"]
+categories = ["Medicine", "AI"]
+tags = ["Project"]
+type = "Project"
+draft = false
+aliases = ["/2025/05/30/modeling-glycemic-response-with-xgboost/"]
+takeaways = [
+  "XGBoost with 27 engineered features predicted glucose spike amplitude at R-squared 0.46, nearly double the linear regression baseline of 0.24, but time-to-peak prediction was worse than guessing the average.",
+  "Meal composition tells you something about how high your blood sugar will rise but almost nothing about when it peaks or how long it stays elevated.",
+  "EPFL's Food and You study with 1,000+ participants achieved a correlation of 0.71 using the same XGBoost approach, confirming that data quantity matters more than model complexity.",
+  "Adding gut microbiome data increased explained variance in glucose peaks from 34% to 42%, showing how much meal composition alone leaves on the table.",
+]
+faq = [
+  {question = "Can machine learning predict blood sugar responses to individual meals?", answer = "Machine learning models like XGBoost can predict certain aspects of postprandial glucose response, particularly the amplitude (how high blood sugar rises after eating). Using features such as meal macronutrients, individual characteristics, and CGM-derived metrics, the model achieved an R-squared of 0.46 for amplitude prediction. However, predicting the timing and duration of the glucose response proved far more difficult, suggesting that meal composition alone provides limited information about when and how long blood sugar stays elevated."},
+  {question = "Why use Gaussian curve fitting for glucose response modeling?", answer = "Fitting each postprandial glucose response to a normalized Gaussian function simplifies the prediction problem from modeling an entire glucose curve to predicting just three parameters: amplitude (how high glucose rises), time-to-peak (when it peaks), and curve width (how long the response lasts). This approximation works well for most glucose responses in non-diabetic individuals, though some curves fit better than others due to variation between individuals and meals."},
+  {question = "How much data do you need to predict glycemic responses accurately?", answer = "Sample size is one of the most critical factors in glucose prediction accuracy. A model trained on 112 standardized meals from 19 non-diabetic subjects achieved moderate amplitude prediction (R-squared of 0.46). In comparison, the EPFL Food and You study with over 1,000 participants achieved a correlation of 0.71. Studies that reach R-squared values above 0.7 typically require datasets with more than 1,000 participants, showing that individual glycemic prediction at scale demands large and diverse training data."},
+  {question = "What features matter most for predicting postprandial glucose response?", answer = "In XGBoost-based glucose prediction, 27 engineered features were used across multiple categories: meal composition (carbohydrates, protein, fat, and their interaction terms), participant characteristics (age, BMI), and CGM statistical features calculated over 24-hour and 4-hour windows, including time-in-range and glucose variability metrics. While macronutrients are primary drivers, pre-meal glucose state and individual metabolic characteristics provide additional predictive signal for amplitude prediction."},
+  {question = "What is the best machine learning model for predicting glucose levels from meal data?", answer = "XGBoost is a strong choice for tabular health data because it handles mixed data types, provides built-in feature importance, and performs well without requiring massive datasets. For postprandial glucose prediction specifically, XGBoost with hyperparameter tuning and cross-validation is widely used in the literature. Newer deep learning approaches and foundation models are showing promise for larger-scale glucose prediction tasks, particularly when richer temporal data from continuous glucose monitors is available."},
+]
++++
 <br>
 
 Earlier this year I wrote how [I built a CGM data reader](/posts/i-built-a-cgm-data-reader/) after wearing a continuous glucose monitor myself. Since I was already logging my macronutrients and learning more about molecular biology in an [MIT MOOC](https://ocw.mit.edu/courses/res-7-008-7-28x-molecular-biology/), I became curious: given a meal's macronutrients (carbs, protein, fat) and some basic individual characteristics (age, BMI), could a machine learning model predict the shape of my postprandial glucose curve? I came across [Zeevi et al.](https://www.cell.com/cell/fulltext/S0092-8674(15)01481-6)'s paper on Personalized Nutrition by Prediction of Glycemic Responses, which used machine learning to predict individual glycemic responses from meal data. Exactly what I had in mind. Unfortunately, neither the data nor the code were publicly available. So I decided to build my own model. In the process I wrote this [working paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5914902).

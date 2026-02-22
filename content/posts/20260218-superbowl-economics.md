@@ -1,60 +1,30 @@
----
-title: "The Economics of a Super Bowl Ad"
-seoTitle: "Super Bowl Ad Economics 2026: The $8M Prisoner's Dilemma"
-date: 2026-02-20
-lastmod: 2026-02-20
-publishDate: 2026-02-20T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-super-bowl-economics1.jpg
-description: "A 30-second Super Bowl spot costs $8M. The real price is $16–23M. The ROI evidence is mixed. A deep look at the pricing, the prisoner's dilemma, and the NFL."
-categories:
-- Finance
-keywords:
-- Super Bowl ad cost 2026
-- Super Bowl advertising ROI
-- do Super Bowl ads work
-- Super Bowl commercial cost breakdown
-- NFL Super Bowl advertising economics
-- Super Bowl prisoner dilemma game theory
-- Hartmann Klapper Stanford Super Bowl study
-- Super Bowl ad attribution problem
-- Super Bowl CPM analysis
-- Anheuser-Busch Super Bowl exclusivity
-- Super Bowl viewership 2026
-- Super Bowl ad production cost
-- Super Bowl ad effectiveness research
-- NFL advertising monopoly pricing
-- monoculture advertising Super Bowl
-- Super Bowl ad brand recall
-- Super Bowl streaming viewership Tubi
-- EDO Super Bowl engagement metric
-- Super Bowl 30-second spot price history
-- marketing attribution advertising measurement
-- game theory pricing economics
-- monopoly pricing power
-- advertising ROI measurement
-- prisoner's dilemma business strategy
-type: Analysis
-draft: false
-takeaways:
-- "A 30-second Super Bowl spot costs $8M but $16–23M fully loaded with production, talent, and mandatory companion buys"
-- "Stanford research shows competing brands both advertising cancels out the benefit — a prisoner's dilemma the NFL exploits for rising prices"
-- "The NFL is the last monoculture in American media: 84 of the top 100 most-watched US telecasts in 2025"
-- "A single Super Bowl ad generates the same brand-search engagement as 1,056 typical primetime ads"
-faq:
-- question: "How much does a 2026 Super Bowl ad really cost?"
-  answer: "The sticker price is $8 million for a 30-second spot, with premium positions reaching $10 million. But the fully loaded cost is $16–23 million once you add production ($1–4M), celebrity talent ($1–5M), and mandatory companion buys on the same network ($7–10M). Some estimates reach $40–50 million when including agency fees, music licensing, and digital activation."
-- question: "Do Super Bowl ads actually increase sales?"
-  answer: "The evidence is genuinely mixed. Stanford researchers Hartmann and Klapper found Budweiser earned a 172% ROI from its Super Bowl ads. But Bridgewise found that a portfolio of Super Bowl advertisers underperformed the S&P 500 by 9.2% after six months. Kantar reports $4.60–$5.20 return per dollar invested. The answer depends heavily on category exclusivity: when two competing brands both advertise, neither gains incremental profit."
-- question: "What is the prisoner's dilemma in Super Bowl advertising?"
-  answer: "Stanford research showed that when two competing brands both advertise in the same Super Bowl, neither gains incremental profit because the effects cancel out. Yet both rationally choose to spend because opting out concedes the benefit to a competitor. This creates a collectively suboptimal but individually rational equilibrium that the NFL exploits to command rising prices."
-- question: "What is the Super Bowl's CPM compared to other TV advertising?"
-  answer: "At $8 million reaching roughly 125 million viewers, the Super Bowl's effective CPM is around $63–65. Standard primetime TV runs $20–30, streaming TV runs $15–35, and TikTok runs $5–10. The premium buys the engagement factor: EDO estimates a single Super Bowl ad generates the same brand-search engagement as 1,056 typical primetime ads."
-- question: "Why are Super Bowl ads so expensive?"
-  answer: "The NFL controls a structural scarcity: the Super Bowl is the last true monoculture event in American media, reaching 125+ million simultaneous viewers in an era of fragmented attention. Inventory sells out months in advance. The prisoner's dilemma among advertisers prevents collective price resistance. And the price itself signals legitimacy, creating a Veblen good dynamic where high cost is part of the value proposition."
-- question: "Why is the Super Bowl called the last monoculture in American media?"
-  answer: "In 2025, NFL games accounted for 83–84 of the top 100 most-watched U.S. telecasts. The Super Bowl drew 127.7 million average viewers, roughly 2x the most-watched presidential debate and 6x the Oscars. No other single moment reaches such a broad cross-section of America simultaneously, making it the last true mass-reach event in an increasingly fragmented media environment."
----
++++
+title = "The Economics of a Super Bowl Ad"
+seoTitle = "Super Bowl Ad Economics 2026: The $8M Prisoner's Dilemma"
+date = 2026-02-20
+lastmod = 2026-02-20
+publishDate = 2026-02-20T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-super-bowl-economics1.jpg"]
+description = "A 30-second Super Bowl spot costs $8M. The real price is $16–23M. The ROI evidence is mixed. A deep look at the pricing, the prisoner's dilemma, and the NFL."
+keywords = ["Super Bowl ad cost 2026", "Super Bowl advertising ROI", "do Super Bowl ads work", "Super Bowl commercial cost breakdown", "NFL Super Bowl advertising economics", "Super Bowl prisoner dilemma game theory", "Hartmann Klapper Stanford Super Bowl study", "Super Bowl ad attribution problem", "Super Bowl CPM analysis", "Anheuser-Busch Super Bowl exclusivity", "Super Bowl viewership 2026", "Super Bowl ad production cost", "Super Bowl ad effectiveness research", "NFL advertising monopoly pricing", "monoculture advertising Super Bowl", "Super Bowl ad brand recall", "Super Bowl streaming viewership Tubi", "EDO Super Bowl engagement metric", "Super Bowl 30-second spot price history", "marketing attribution advertising measurement", "game theory pricing economics", "monopoly pricing power", "advertising ROI measurement", "prisoner's dilemma business strategy"]
+categories = ["Finance"]
+type = "Analysis"
+draft = false
+takeaways = [
+  "A 30-second Super Bowl spot costs $8M but $16–23M fully loaded with production, talent, and mandatory companion buys",
+  "Stanford research shows competing brands both advertising cancels out the benefit, a prisoner's dilemma the NFL exploits for rising prices",
+  "The NFL is the last monoculture in American media: 84 of the top 100 most-watched US telecasts in 2025",
+  "A single Super Bowl ad generates the same brand-search engagement as 1,056 typical primetime ads",
+]
+faq = [
+  {question = "How much does a 2026 Super Bowl ad really cost?", answer = "The sticker price is $8 million for a 30-second spot, with premium positions reaching $10 million. But the fully loaded cost is $16–23 million once you add production ($1–4M), celebrity talent ($1–5M), and mandatory companion buys on the same network ($7–10M). Some estimates reach $40–50 million when including agency fees, music licensing, and digital activation."},
+  {question = "Do Super Bowl ads actually increase sales?", answer = "The evidence is genuinely mixed. Stanford researchers Hartmann and Klapper found Budweiser earned a 172% ROI from its Super Bowl ads. But Bridgewise found that a portfolio of Super Bowl advertisers underperformed the S&P 500 by 9.2% after six months. Kantar reports $4.60–$5.20 return per dollar invested. The answer depends heavily on category exclusivity: when two competing brands both advertise, neither gains incremental profit."},
+  {question = "What is the prisoner's dilemma in Super Bowl advertising?", answer = "Stanford research showed that when two competing brands both advertise in the same Super Bowl, neither gains incremental profit because the effects cancel out. Yet both rationally choose to spend because opting out concedes the benefit to a competitor. This creates a collectively suboptimal but individually rational equilibrium that the NFL exploits to command rising prices."},
+  {question = "What is the Super Bowl's CPM compared to other TV advertising?", answer = "At $8 million reaching roughly 125 million viewers, the Super Bowl's effective CPM is around $63–65. Standard primetime TV runs $20–30, streaming TV runs $15–35, and TikTok runs $5–10. The premium buys the engagement factor: EDO estimates a single Super Bowl ad generates the same brand-search engagement as 1,056 typical primetime ads."},
+  {question = "Why are Super Bowl ads so expensive?", answer = "The NFL controls a structural scarcity: the Super Bowl is the last true monoculture event in American media, reaching 125+ million simultaneous viewers in an era of fragmented attention. Inventory sells out months in advance. The prisoner's dilemma among advertisers prevents collective price resistance. And the price itself signals legitimacy, creating a Veblen good dynamic where high cost is part of the value proposition."},
+  {question = "Why is the Super Bowl called the last monoculture in American media?", answer = "In 2025, NFL games accounted for 83–84 of the top 100 most-watched U.S. telecasts. The Super Bowl drew 127.7 million average viewers, roughly 2x the most-watched presidential debate and 6x the Oscars. No other single moment reaches such a broad cross-section of America simultaneously, making it the last true mass-reach event in an increasingly fragmented media environment."},
+]
++++
 
 A 30-second Super Bowl ad costs **$8 million**. That's $267,000 per second, roughly the median U.S. home price for every tick of the clock. Super Bowl LX drew [124.9 million average viewers with a peak of 137.8 million](https://www.nielsen.com/news-center/2026/super-bowl-lx-delivers-124-9-million-viewers/), the highest peak audience in American television history. The NFL accounted for [84 of the top 100 most-watched U.S. telecasts](https://www.sportico.com/business/media/2026/sportico-top-100-nfl-towers-over-us-media-landscape-1234880235/) in 2025. The Oscars, by comparison, managed 19.7 million.
 

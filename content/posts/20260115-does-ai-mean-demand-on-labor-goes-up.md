@@ -8,6 +8,12 @@ images = ["https://static.philippdubach.com/ograph/0005.png"]
 categories = ["AI"]
 type = "Commentary"
 draft = false
+takeaways = [
+  "Workers in AI-exposed occupations now work roughly 3 extra hours per week, and leisure time has dropped by the same amount, according to NBER research",
+  "77% of employees say AI tools have added to their workload, not reduced it, per Upwork's survey data",
+  "Only 21% of employees use time saved by AI for personal life, with the rest reinvesting it directly back into work",
+  "The Jevons paradox from 1865 predicted this: more efficient steam engines increased coal consumption, and more efficient AI tools are increasing work output expectations the same way",
+]
 [[faq]]
 question = "What is the AI productivity paradox?"
 answer = "The AI productivity paradox describes how tools that make individual tasks faster often increase total workload rather than freeing up time. Research shows 77% of employees say AI tools have added to their workload, and workers in AI-exposed occupations now work roughly 3 extra hours per week while leisure time has dropped by the same amount."

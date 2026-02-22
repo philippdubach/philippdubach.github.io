@@ -1,46 +1,27 @@
----
-title: "Peter Thiel's Physics Department"
-seoTitle: "Peter Thiel's Stagnation Thesis Meets AI for Science"
-date: 2026-02-16
-lastmod: 2026-02-16
-publishDate: 2026-02-16T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-physics-department.jpg
-description: "Peter Thiel says physics stalled in 1972. Then GPT-5.2 proved a new result in theoretical physics. The 75:1 AI compute gap between commerce and science."
-keywords:
-- AI scientific discovery
-- Peter Thiel stagnation thesis
-- GPT-5.2 gluon discovery
-- AI breakthrough physics 2026
-- AI compute gap science
-- Great Stagnation physics
-- total factor productivity decline
-- AlphaFold Nobel Prize 2024
-- AI for science
-- DeepMind GNoME materials discovery
-- AI fusion energy plasma control
-- dual-use AI technology
-- scientific progress stagnation
-- bits vs atoms innovation
-- research productivity decline
-- computational irreducibility physics
-- AI drug discovery clinical trials
-- scattering amplitudes theoretical physics
-- federal AI R&D spending
-- Demis Hassabis radical abundance
-draft: true
-faq:
-- question: "What did GPT-5.2 discover in theoretical physics?"
-  answer: "On February 13, 2026, GPT-5.2 derived and formally proved that single-minus gluon tree amplitudes are nonzero in the half-collinear regime, overturning a decades-old assumption in scattering amplitude theory. Researchers from the Institute for Advanced Study, Vanderbilt, Cambridge, Harvard, and OpenAI co-authored the paper."
-- question: "Is AI ending the Great Stagnation in physics?"
-  answer: "Partially. AI has produced results in protein folding (AlphaFold, Nobel Prize 2024), materials science (GNoME, 2.2 million crystal structures), fusion plasma control, and now theoretical physics (GPT-5.2 gluon discovery). But critics like Noam Chomsky and Peter Woit argue AI does pattern matching, not the conceptual revolution that drives fundamental physics forward."
-- question: "How much does industry spend on AI versus government science?"
-  answer: "The ratio is roughly 75:1. Big Tech spent over $250 billion on AI infrastructure in 2024-2025. Total US federal AI R&D is $3.3 billion per year. The DOE Genesis Mission's $320 million first round is less than Meta spends on AI infrastructure in a single week."
-- question: "Why has physics progress slowed down since the 1970s?"
-  answer: "Total factor productivity growth fell from 1.7% annually in 1947-1973 to 0.4% since 2004. The Standard Model was complete by the early 1970s. Since then, physics has confirmed predictions (Higgs boson, gravitational waves) but produced no new fundamental theories. String theory has zero experimental confirmations after 55 years."
-- question: "What are the dual-use risks of AI-accelerated physics?"
-  answer: "Every physics breakthrough is inherently dual-use. Fission was discovered in 1938 and weaponized by 1945. The same AI-driven fusion advances that could deliver clean energy could optimize weapons physics. The same materials science that could produce room-temperature superconductors could produce materials for autonomous weapons systems."
----
++++
+title = "Peter Thiel's Physics Department"
+seoTitle = "Peter Thiel's Stagnation Thesis Meets AI for Science"
+date = 2026-02-16
+lastmod = 2026-02-16
+publishDate = 2026-02-16T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-physics-department.jpg"]
+description = "Peter Thiel says physics stalled in 1972. Then GPT-5.2 proved a new result in theoretical physics. The 75:1 AI compute gap between commerce and science."
+keywords = ["AI scientific discovery", "Peter Thiel stagnation thesis", "GPT-5.2 gluon discovery", "AI breakthrough physics 2026", "AI compute gap science", "Great Stagnation physics", "total factor productivity decline", "AlphaFold Nobel Prize 2024", "AI for science", "DeepMind GNoME materials discovery", "AI fusion energy plasma control", "dual-use AI technology", "scientific progress stagnation", "bits vs atoms innovation", "research productivity decline", "computational irreducibility physics", "AI drug discovery clinical trials", "scattering amplitudes theoretical physics", "federal AI R&D spending", "Demis Hassabis radical abundance"]
+draft = true
+takeaways = [
+  "Total factor productivity growth fell from 1.7% annually (1947-1973) to 0.4% since 2004, a 76% decline that underpins Thiel's stagnation thesis",
+  "Big Tech spends 75x more on AI than the entire US federal science budget: $250 billion versus $3.3 billion per year",
+  "GPT-5.2 derived a new result in theoretical physics on February 13, 2026, overturning a decades-old assumption about gluon scattering amplitudes",
+  "AI progressed from Olympiad geometry to IMO gold to a theoretical physics proof in 25 months, all on less than 1.3% of commercial AI compute",
+]
+faq = [
+  {question = "What did GPT-5.2 discover in theoretical physics?", answer = "On February 13, 2026, GPT-5.2 derived and formally proved that single-minus gluon tree amplitudes are nonzero in the half-collinear regime, overturning a decades-old assumption in scattering amplitude theory. Researchers from the Institute for Advanced Study, Vanderbilt, Cambridge, Harvard, and OpenAI co-authored the paper."},
+  {question = "Is AI ending the Great Stagnation in physics?", answer = "Partially. AI has produced results in protein folding (AlphaFold, Nobel Prize 2024), materials science (GNoME, 2.2 million crystal structures), fusion plasma control, and now theoretical physics (GPT-5.2 gluon discovery). But critics like Noam Chomsky and Peter Woit argue AI does pattern matching, not the conceptual revolution that drives fundamental physics forward."},
+  {question = "How much does industry spend on AI versus government science?", answer = "The ratio is roughly 75:1. Big Tech spent over $250 billion on AI infrastructure in 2024-2025. Total US federal AI R&D is $3.3 billion per year. The DOE Genesis Mission's $320 million first round is less than Meta spends on AI infrastructure in a single week."},
+  {question = "Why has physics progress slowed down since the 1970s?", answer = "Total factor productivity growth fell from 1.7% annually in 1947-1973 to 0.4% since 2004. The Standard Model was complete by the early 1970s. Since then, physics has confirmed predictions (Higgs boson, gravitational waves) but produced no new fundamental theories. String theory has zero experimental confirmations after 55 years."},
+  {question = "What are the dual-use risks of AI-accelerated physics?", answer = "Every physics breakthrough is inherently dual-use. Fission was discovered in 1938 and weaponized by 1945. The same AI-driven fusion advances that could deliver clean energy could optimize weapons physics. The same materials science that could produce room-temperature superconductors could produce materials for autonomous weapons systems."},
+]
++++
 
 > "Everything else in science is stamp collecting. Physics is the real thing. That gave us everything."
 > -- Jimmy Carr, channeling Ernest Rutherford on the TRIGGERnometry podcast, December 11, 2025

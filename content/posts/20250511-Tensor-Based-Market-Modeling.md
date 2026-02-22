@@ -1,35 +1,26 @@
----
-title: 'Beyond Monte Carlo: Tensor-Based Market Modeling'
-date: 2025-05-11
-seoTitle: 'Tensor-Based Market Modeling: A Monte Carlo Alternative'
-images:
-- https://static.philippdubach.com/ograph/ograph-post.jpg
-description: UBS paper uses Transition Probability Tensors to bridge machine learning
-  and arbitrage-free derivatives pricing, offering a faster alternative to Monte Carlo.
-keywords:
-- machine learning derivatives pricing
-- Monte Carlo simulation alternatives finance
-- attention mechanisms quantitative finance
-- arbitrage-free pricing machine learning
-- transition probability tensors
-external_url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863
-categories:
-- Finance
-- AI
-type: Commentary
-aliases:
-- /2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/
-
-faq:
-- question: What are Transition Probability Tensors and how do they relate to attention mechanisms in AI?
-  answer: Transition Probability Tensors (TPTs) are a mathematical framework proposed by researchers at UBS Investment Bank that function similarly to attention mechanisms in neural networks. Rather than learning from historical price data, TPTs dynamically weight relationships between financial risk factors in real time, capturing context-aware dependencies across multiple dimensions while preserving the mathematical rigor required for arbitrage-free pricing.
-- question: Why do traditional machine learning models conflict with arbitrage-free pricing theory?
-  answer: 'Machine learning models rely on historical data to identify recurring patterns, but the First Fundamental Theorem of Finance requires that arbitrage-free market prices be independent of past information. This creates a fundamental tension: the very data-dependence that makes ML effective for pattern recognition violates the theoretical foundation of fair financial pricing.'
-- question: How does tensor-based market modeling improve on Monte Carlo simulation?
-  answer: Tensor-based modeling can simulate large numbers of market scenarios far more efficiently than traditional Monte Carlo methods. In the UBS paper's proof-of-concept, the framework simulated 210 quantitative investment strategies across 100,000 market scenarios in just 70 seconds, while also identifying optimal hedging strategies and stress-testing future market conditions across different volatility regimes.
-- question: How do tensor-based models adapt to different market volatility regimes?
-  answer: The tensor framework shifts its focus dynamically depending on market conditions, paying greater attention to tail events during high-volatility periods, much like how attention mechanisms in AI prioritize the most relevant context. This regime-adaptive behavior allows the model to better capture risk during market stress while maintaining standard operation in calm markets.
----
++++
+title = "Beyond Monte Carlo: Tensor-Based Market Modeling"
+seoTitle = "Tensor-Based Market Modeling: A Monte Carlo Alternative"
+date = 2025-05-11
+images = ["https://static.philippdubach.com/ograph/ograph-post.jpg"]
+description = "UBS paper uses Transition Probability Tensors to bridge machine learning and arbitrage-free derivatives pricing, offering a faster alternative to Monte Carlo."
+keywords = ["machine learning derivatives pricing", "Monte Carlo simulation alternatives finance", "attention mechanisms quantitative finance", "arbitrage-free pricing machine learning", "transition probability tensors"]
+categories = ["Finance", "AI"]
+type = "Commentary"
+external_url = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863"
+aliases = ["/2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/"]
+takeaways = [
+  "UBS's Transition Probability Tensors simulated 210 investment strategies across 100,000 market scenarios in 70 seconds, offering a tractable alternative to Monte Carlo.",
+  "Machine learning models learn from historical data, but the First Fundamental Theorem of Finance requires arbitrage-free prices to be independent of past information.",
+  "The tensor framework adapts dynamically to volatility regimes, shifting attention toward tail events during market stress, similar to attention mechanisms in transformers.",
+]
+faq = [
+  {question = "What are Transition Probability Tensors and how do they relate to attention mechanisms in AI?", answer = "Transition Probability Tensors (TPTs) are a mathematical framework proposed by researchers at UBS Investment Bank that function similarly to attention mechanisms in neural networks. Rather than learning from historical price data, TPTs dynamically weight relationships between financial risk factors in real time, capturing context-aware dependencies across multiple dimensions while preserving the mathematical rigor required for arbitrage-free pricing."},
+  {question = "Why do traditional machine learning models conflict with arbitrage-free pricing theory?", answer = "Machine learning models rely on historical data to identify recurring patterns, but the First Fundamental Theorem of Finance requires that arbitrage-free market prices be independent of past information. This creates a fundamental tension: the very data-dependence that makes ML effective for pattern recognition violates the theoretical foundation of fair financial pricing."},
+  {question = "How does tensor-based market modeling improve on Monte Carlo simulation?", answer = "Tensor-based modeling can simulate large numbers of market scenarios far more efficiently than traditional Monte Carlo methods. In the UBS paper's proof-of-concept, the framework simulated 210 quantitative investment strategies across 100,000 market scenarios in just 70 seconds, while also identifying optimal hedging strategies and stress-testing future market conditions across different volatility regimes."},
+  {question = "How do tensor-based models adapt to different market volatility regimes?", answer = "The tensor framework shifts its focus dynamically depending on market conditions, paying greater attention to tail events during high-volatility periods, much like how attention mechanisms in AI prioritize the most relevant context. This regime-adaptive behavior allows the model to better capture risk during market stress while maintaining standard operation in calm markets."},
+]
++++
 A fascinating new paper from Stefano Iabichino at UBS Investment Bank explores what happens when you take the attention mechanisms powering modern AI and apply them to Wall Street's most fundamental pricing problems, tackling what might be quantitative finance's most intractable challenge.
 
 The problem is elegantly simple yet profound: machine learning models are great at finding patterns in historical data, but financial theory demands that arbitrage-free prices be independent of past information. As the authors put it:

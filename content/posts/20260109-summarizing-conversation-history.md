@@ -1,33 +1,27 @@
----
-title: "Beyond Vector Search: Why LLMs Need Episodic Memory"
-seoTitle: "LLM Memory Beyond Context Windows: Episodic and Graph Approaches"
-date: 2026-01-09
-lastmod: 2026-01-12
-categories:
-- AI
-- Tech
-type: Essay
-images:
-- https://static.philippdubach.com/ograph/ograph-llm-memory2.jpg
-description: "Context windows aren't memory. Explore EM-LLM's episodic architecture, knowledge graph tools like Mem0 and Letta, and why vectors fail for sequential data."
-keywords:
-- LLM memory architecture
-- episodic memory AI
-- knowledge graph LLM memory
-- vector database limitations RAG
-- KV cache optimization transformer
-draft: false
-
-faq:
-- question: Why aren't bigger context windows true LLM memory?
-  answer: Context windows grew larger (Claude handles 200K tokens, Gemini claims a million), but bigger windows aren't memory. They're a larger napkin you throw away when dinner's over. True memory requires persistence across sessions, temporal awareness, and the ability to update facts over time, none of which context windows provide.
-- question: Why do vector databases fail for sequential conversation data?
-  answer: 'Vector databases embed content geometrically and retrieve by similarity, but sequences don''t live naturally in vector space. Try encoding "first we did X, then Y happened, which caused Z." Additionally, facts that change over time cause problems: your database might confidently tell you Bonn is Germany''s capital if you fed it the wrong decade of documents.'
-- question: What is EM-LLM and how does it implement episodic memory?
-  answer: 'EM-LLM segments conversation into episodes using surprise detection: when something unexpected happens, that''s a memory boundary. Retrieval pulls not just similar content but temporally adjacent content too. You don''t just remember what you''re looking for; you remember what happened next. Their event boundaries actually correlate with where humans perceive breaks in experience.'
-- question: Should you give an LLM control of its own memory?
-  answer: Not yet. LLMs are overconfident, making them unreliable judges of what to remember. Memory probably needs to happen around the model, not through it. Eventually some learned architecture will make this scaffolding obsolete by training memory into the weights directly.
----
++++
+title = "Beyond Vector Search: Why LLMs Need Episodic Memory"
+seoTitle = "LLM Memory Beyond Context Windows: Episodic and Graph Approaches"
+date = 2026-01-09
+lastmod = 2026-01-12
+images = ["https://static.philippdubach.com/ograph/ograph-llm-memory2.jpg"]
+description = "Context windows aren't memory. Explore EM-LLM's episodic architecture, knowledge graph tools like Mem0 and Letta, and why vectors fail for sequential data."
+keywords = ["LLM memory architecture", "episodic memory AI", "knowledge graph LLM memory", "vector database limitations RAG", "KV cache optimization transformer"]
+categories = ["AI", "Tech"]
+type = "Essay"
+draft = false
+takeaways = [
+  "Context windows grew to 200K tokens (Claude) and 1M (Gemini), but bigger windows are not memory because they lack persistence, temporal awareness, and the ability to update facts across sessions",
+  "EM-LLM segments conversation into episodes using surprise detection, and its event boundaries correlate with where humans perceive breaks in experience",
+  "HeadKV found you can discard 98.5% of a transformer's key-value cache by keeping only the attention heads that matter for memory, with almost no quality loss",
+  "Mem0 reports 80-90% token cost reduction with a 26% quality improvement by replacing raw chat history with structured memory, though the claim is unvalidated",
+]
+faq = [
+  {question = "Why aren't bigger context windows true LLM memory?", answer = "Context windows grew larger (Claude handles 200K tokens, Gemini claims a million), but bigger windows aren't memory. They're a larger napkin you throw away when dinner's over. True memory requires persistence across sessions, temporal awareness, and the ability to update facts over time, none of which context windows provide."},
+  {question = "Why do vector databases fail for sequential conversation data?", answer = "Vector databases embed content geometrically and retrieve by similarity, but sequences don't live naturally in vector space. Try encoding \"first we did X, then Y happened, which caused Z.\" Additionally, facts that change over time cause problems: your database might confidently tell you Bonn is Germany's capital if you fed it the wrong decade of documents."},
+  {question = "What is EM-LLM and how does it implement episodic memory?", answer = "EM-LLM segments conversation into episodes using surprise detection: when something unexpected happens, that's a memory boundary. Retrieval pulls not just similar content but temporally adjacent content too. You don't just remember what you're looking for; you remember what happened next. Their event boundaries actually correlate with where humans perceive breaks in experience."},
+  {question = "Should you give an LLM control of its own memory?", answer = "Not yet. LLMs are overconfident, making them unreliable judges of what to remember. Memory probably needs to happen around the model, not through it. Eventually some learned architecture will make this scaffolding obsolete by training memory into the weights directly."},
+]
++++
 You've seen this message before. Copilot pausing; In long sessions, it happens often enough that I started wondering what's actually going on in there. Hence this post.{{< img src="Summarizing_conversation_history.png" alt="Hierarchical memory architecture for LLM applications" width="40%" >}}The short answer: context windows grew larger. [Claude handles 200K tokens](https://platform.claude.com/docs/en/build-with-claude/context-windows), [Gemini claims a million](https://gemini.google/overview/long-context/). But bigger windows aren't memory. They're a larger napkin you throw away when dinner's over. 
 
 For som time I was convinced that vector databases would solve this. Embed everything, store it geometrically, retrieve by similarity. Elegant in theory. Try encoding "first we did X, then Y happened, which caused Z." Sequences don't live naturally in vector space. Neither do facts that change over time. Your database might confidently tell you Bonn is Germany's capital if you fed it the wrong decade of documents.

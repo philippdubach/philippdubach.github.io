@@ -1,34 +1,26 @@
----
-title: My First 'Optimal' Portfolio
-date: 2024-03-15
-images:
-- https://static.philippdubach.com/ograph/ograph-portfolio.jpg
-seoTitle: "Python Portfolio Optimization: From Theory to Publication"
-description: "How I built Python portfolio optimization tools, tripled the Sharpe ratio from 0.65 to 1.68, and published the results as an academic paper on MPT."
-keywords:
-- Python portfolio optimization
-- efficient frontier
-- Modern Portfolio Theory
-- Sharpe ratio
-- out-of-sample testing
-tags:
-- Project
-categories:
-- Finance
-type: Project
-aliases:
-- /2024/03/15/my-first-optimal-portfolio/
-
-faq:
-- question: Can portfolio optimization actually improve the Sharpe ratio?
-  answer: Yes. In this project, applying mean-variance optimization to a multi-asset portfolio improved the Sharpe ratio from 0.650 to 1.684 while reducing volatility from 14.4% to 5.6%. The return was maintained at 9.4%. These results were validated through out-of-sample testing across both the 2018 bear market and 2019 bull market.
-- question: How do you validate portfolio optimization with out-of-sample testing?
-  answer: Out-of-sample testing involves optimizing portfolio weights on historical data and then evaluating performance on a separate time period the model has never seen. This project tested optimized portfolios across diverse market conditions, demonstrating consistent CVaR reduction and improved risk-adjusted returns even in high-correlation environments.
-- question: What Python libraries are available for portfolio optimization?
-  answer: The main open-source options today include PyPortfolioOpt (mean-variance, Black-Litterman, Hierarchical Risk Parity), Riskfolio-Lib (24 convex risk measures, Kelly Criterion optimization), and skfolio (built on scikit-learn). Before these libraries existed, practitioners had to build their own tools using SciPy and CVXPY, which is what motivated this project's original publication.
-- question: What role does the risk aversion parameter play in portfolio optimization?
-  answer: The risk aversion parameter (gamma) controls how aggressively or conservatively the optimizer allocates assets. A higher gamma produces more conservative portfolios concentrated in lower-volatility assets, while a lower gamma allows the optimizer to take on more risk for higher expected returns. Varying gamma traces out different points along the efficient frontier, allowing the framework to adapt to different investor profiles.
----
++++
+title = "My First 'Optimal' Portfolio"
+seoTitle = "Python Portfolio Optimization: From Theory to Publication"
+date = 2024-03-15
+images = ["https://static.philippdubach.com/ograph/ograph-portfolio.jpg"]
+description = "How I built Python portfolio optimization tools, tripled the Sharpe ratio from 0.65 to 1.68, and published the results as an academic paper on MPT."
+keywords = ["Python portfolio optimization", "efficient frontier", "Modern Portfolio Theory", "Sharpe ratio", "out-of-sample testing"]
+categories = ["Finance"]
+tags = ["Project"]
+type = "Project"
+aliases = ["/2024/03/15/my-first-optimal-portfolio/"]
+takeaways = [
+  "Mean-variance optimization tripled the Sharpe ratio from 0.65 to 1.68 while cutting volatility from 14.4% to 5.6% at the same 9.4% return",
+  "Out-of-sample testing across the 2018 bear market and 2019 bull market showed consistent CVaR reduction and improved risk-adjusted returns",
+  "The project was published as an academic paper to fill the gap between established MPT theory and the lack of accessible open-source Python optimization tools at the time",
+]
+faq = [
+  {question = "Can portfolio optimization actually improve the Sharpe ratio?", answer = "Yes. In this project, applying mean-variance optimization to a multi-asset portfolio improved the Sharpe ratio from 0.650 to 1.684 while reducing volatility from 14.4% to 5.6%. The return was maintained at 9.4%. These results were validated through out-of-sample testing across both the 2018 bear market and 2019 bull market."},
+  {question = "How do you validate portfolio optimization with out-of-sample testing?", answer = "Out-of-sample testing involves optimizing portfolio weights on historical data and then evaluating performance on a separate time period the model has never seen. This project tested optimized portfolios across diverse market conditions, demonstrating consistent CVaR reduction and improved risk-adjusted returns even in high-correlation environments."},
+  {question = "What Python libraries are available for portfolio optimization?", answer = "The main open-source options today include PyPortfolioOpt (mean-variance, Black-Litterman, Hierarchical Risk Parity), Riskfolio-Lib (24 convex risk measures, Kelly Criterion optimization), and skfolio (built on scikit-learn). Before these libraries existed, practitioners had to build their own tools using SciPy and CVXPY, which is what motivated this project's original publication."},
+  {question = "What role does the risk aversion parameter play in portfolio optimization?", answer = "The risk aversion parameter (gamma) controls how aggressively or conservatively the optimizer allocates assets. A higher gamma produces more conservative portfolios concentrated in lower-volatility assets, while a lower gamma allows the optimizer to take on more risk for higher expected returns. Varying gamma traces out different points along the efficient frontier, allowing the framework to adapt to different investor profiles."},
+]
++++
 My introduction to quantitative portfolio optimization happened during my undergraduate years, inspired by Attilio Meucci's [Risk and Asset Allocation](https://link.springer.com/book/10.1007/978-3-540-27904-4) and the convex optimization [teachings of Diamond and Boyd at Stanford](https://web.stanford.edu/~boyd/teaching.html). With enthusiasm and perhaps more confidence than expertise, I created my first "optimal" portfolio. What struck me most was the disconnect between theory and accessibility. Modern Portfolio Theory had been established since 1990, yet the optimization tools remained largely locked behind proprietary software. 
 
 >Nevertheless, only a few comprehensive software models are available publicly to use, study, or modify. We tackle this issue by engineering practical tools for asset allocation and implementing them in the Python programming language.

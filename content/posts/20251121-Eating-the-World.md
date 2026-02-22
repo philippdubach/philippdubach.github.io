@@ -1,35 +1,28 @@
----
-title: Is AI Really Eating the World? [1/2]
-seoTitle: "Generative AI Platform Shift: Will Models Commoditize Like Cloud?"
-date: 2025-11-23
-images:
-- https://static.philippdubach.com/ograph/ograph-eatingtheworld1.jpg
-external_url: https://www.ben-evans.com/presentations/
-description: "Benedict Evans' AI analysis argues 'we don't know how it matters.' But current evidence points to model commoditization: $400B capex, 97% price drops."
-keywords:
-- generative AI platform shift
-- AI model commoditization
-- enterprise AI adoption
-- AI infrastructure spending
-- LLM pricing trends
-categories:
-- AI
-type: Essay
-draft: false
-aliases:
-- /2025/11/23/is-ai-really-eating-the-world-1/2/
-- /2025/11/23/is-ai-really-eating-the-world/
-
-faq:
-- question: Is generative AI a true platform shift like mobile and cloud?
-  answer: Based on historical patterns, generative AI appears to be the next platform shift following mainframes (1960s-70s), PCs (1980s), web (1990s), and smartphones (2000s-2010s). However, the range of outcomes spans from "just more software" to something more fundamental. The hyperscalers are spending $400 billion in 2025 on AI infrastructure, more than global telecommunications capex, which signals they believe this is a platform shift.
-- question: Are AI models becoming commoditized?
-  answer: Evidence strongly suggests yes. When ChatGPT launched in November 2022, OpenAI had a massive quality advantage. Today, dozens of models cluster around similar performance. DeepSeek proved that $500 million can build a frontier model, and OpenAI's API pricing has dropped 97% since GPT-3's launch, with costs declining by an order of magnitude annually.
-- question: Where will value accrue in the AI stack?
-  answer: Current evidence points toward value flowing up the stack to applications rather than to model providers. Consulting firms are booking billions in AI contracts, but the revenue comes from integration, change management, and process redesign rather than from the models themselves. Accenture alone expects $3 billion in GenAI bookings for fiscal 2025.
-- question: What does enterprise AI adoption actually look like?
-  answer: Software development has seen massive adoption with 92% of developers using AI coding tools. Marketing generates ad assets at scale, and customer support has attracted investment. Beyond these areas, adoption is scattered. McKinsey data shows most AI agents remain in pilot stages, with 40% of CIOs not expecting production deployment until 2026 or later.
----
++++
+title = "Is AI Really Eating the World? [1/2]"
+seoTitle = "Generative AI Platform Shift: Will Models Commoditize Like Cloud?"
+date = 2025-11-23
+images = ["https://static.philippdubach.com/ograph/ograph-eatingtheworld1.jpg"]
+description = "Benedict Evans' AI analysis argues 'we don't know how it matters.' But current evidence points to model commoditization: $400B capex, 97% price drops."
+keywords = ["generative AI platform shift", "AI model commoditization", "enterprise AI adoption", "AI infrastructure spending", "LLM pricing trends"]
+categories = ["AI"]
+type = "Essay"
+draft = false
+external_url = "https://www.ben-evans.com/presentations/"
+aliases = ["/2025/11/23/is-ai-really-eating-the-world-1/2/", "/2025/11/23/is-ai-really-eating-the-world/"]
+takeaways = [
+  "Hyperscalers are spending $400B on AI infrastructure in 2025, more than global telecom capex, while API pricing has dropped 97% since GPT-3, pointing to rapid commoditization.",
+  "92% of developers now use AI coding tools, but 40% of CIOs do not expect production AI agent deployment until 2026 or later, showing adoption is deep in pockets but shallow overall.",
+  "Consulting firms like Accenture are booking $3B+ in GenAI revenue, but the money comes from integration and process redesign, not from the models themselves.",
+  "DeepSeek proved a frontier model can be built for $500M, collapsing the assumption that only the richest labs can compete at the capability frontier.",
+]
+faq = [
+  {question = "Is generative AI a true platform shift like mobile and cloud?", answer = "Based on historical patterns, generative AI appears to be the next platform shift following mainframes (1960s-70s), PCs (1980s), web (1990s), and smartphones (2000s-2010s). However, the range of outcomes spans from \"just more software\" to something more fundamental. The hyperscalers are spending $400 billion in 2025 on AI infrastructure, more than global telecommunications capex, which signals they believe this is a platform shift."},
+  {question = "Are AI models becoming commoditized?", answer = "Evidence strongly suggests yes. When ChatGPT launched in November 2022, OpenAI had a massive quality advantage. Today, dozens of models cluster around similar performance. DeepSeek proved that $500 million can build a frontier model, and OpenAI's API pricing has dropped 97% since GPT-3's launch, with costs declining by an order of magnitude annually."},
+  {question = "Where will value accrue in the AI stack?", answer = "Current evidence points toward value flowing up the stack to applications rather than to model providers. Consulting firms are booking billions in AI contracts, but the revenue comes from integration, change management, and process redesign rather than from the models themselves. Accenture alone expects $3 billion in GenAI bookings for fiscal 2025."},
+  {question = "What does enterprise AI adoption actually look like?", answer = "Software development has seen massive adoption with 92% of developers using AI coding tools. Marketing generates ad assets at scale, and customer support has attracted investment. Beyond these areas, adoption is scattered. McKinsey data shows most AI agents remain in pilot stages, with 40% of CIOs not expecting production deployment until 2026 or later."},
+]
++++
 In August 2011, Marc Andreessen wrote ["Why Software Is Eating the World"](https://a16z.com/why-software-is-eating-the-world/), an essay about how software was transforming industries, disrupting traditional businesses, and revolutionizing the global economy. Recently, [Benedict Evans](https://www.ben-evans.com/benedictevans/2014/1/18/a16z), a former a16z partner, gave a presentation on generative AI three years after ChatGPT's launch. His argument in short:
 
 >we know this matters, but we don't know how.

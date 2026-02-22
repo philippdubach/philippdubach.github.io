@@ -1,34 +1,26 @@
----
-title: "RSS Swipr: Find Blogs Like You Find Your Dates"
-seoTitle: "ML-Powered RSS Reader: Thompson Sampling Beats the Filter Bubble"
-date: 2026-01-05
-images:
-- https://static.philippdubach.com/ograph/ograph-rss-swipr.jpg
-description: "Build an open-source ML RSS reader with swipe interface. Uses MPNet embeddings and Thompson sampling for personalized feeds that escape the filter bubble."
-keywords:
-- machine learning RSS reader
-- Thompson sampling recommendation
-- MPNet sentence embeddings
-- personalized RSS Python open source
-- filter bubble RSS alternative
-categories:
-- AI
-type: Project
-draft: false
-aliases:
-- /standalone/rss-tinder/
-- /posts/rss-swipr-find-your-blogs-like-you-find-your-dates/
-
-faq:
-- question: How does machine learning improve RSS readers?
-  answer: Traditional RSS readers show all articles chronologically without filtering. An ML-powered RSS reader uses sentence embeddings (like MPNet) to understand article content semantically, then trains on your swipe behavior to predict preferences. This achieves 75.4% ROC-AUC accuracy in surfacing content you actually want to read.
-- question: What is Thompson sampling in recommendation systems?
-  answer: Thompson sampling balances exploration and exploitation in recommendations. It shows predicted-good content 80% of the time (exploit) while randomly introducing unexpected articles 20% of the time (explore). This prevents filter bubbles and lets the model discover when your interests change.
-- question: Can you build a personalized RSS reader in Python?
-  answer: Yes. Using Flask, SQLite, and sentence-transformers (MPNet), you can build a local RSS reader that learns preferences from swipe interactions. Training happens on Google Colab's free GPU tier. The entire system runs locally with zero infrastructure cost and no cloud dependencies.
-- question: How do sentence embeddings work for content recommendation?
-  answer: Sentence embeddings convert article titles and descriptions into 768-dimensional vectors that capture semantic meaning. Similar articles cluster together in this vector space. A Hybrid Random Forest classifier then learns which regions of this space match your preferences based on your voting history.
----
++++
+title = "RSS Swipr: Find Blogs Like You Find Your Dates"
+seoTitle = "ML-Powered RSS Reader: Thompson Sampling Beats the Filter Bubble"
+date = 2026-01-05
+images = ["https://static.philippdubach.com/ograph/ograph-rss-swipr.jpg"]
+description = "Build an open-source ML RSS reader with swipe interface. Uses MPNet embeddings and Thompson sampling for personalized feeds that escape the filter bubble."
+keywords = ["machine learning RSS reader", "Thompson sampling recommendation", "MPNet sentence embeddings", "personalized RSS Python open source", "filter bubble RSS alternative"]
+categories = ["AI"]
+type = "Project"
+draft = false
+aliases = ["/standalone/rss-tinder/", "/posts/rss-swipr-find-your-blogs-like-you-find-your-dates/"]
+takeaways = [
+  "MPNet embeddings combined with a Hybrid Random Forest achieve 75.4% ROC-AUC on article preference prediction, up from 66% with hand-engineered features alone.",
+  "Thompson sampling allocates 80% of shown articles to predicted preferences and 20% to random exploration, preventing filter bubbles while keeping recommendations useful.",
+  "The entire system runs locally at zero cost: Python/Flask backend, vanilla JS frontend, SQLite storage, and free-tier Google Colab for GPU training.",
+]
+faq = [
+  {question = "How does machine learning improve RSS readers?", answer = "Traditional RSS readers show all articles chronologically without filtering. An ML-powered RSS reader uses sentence embeddings (like MPNet) to understand article content semantically, then trains on your swipe behavior to predict preferences. This achieves 75.4% ROC-AUC accuracy in surfacing content you actually want to read."},
+  {question = "What is Thompson sampling in recommendation systems?", answer = "Thompson sampling balances exploration and exploitation in recommendations. It shows predicted-good content 80% of the time (exploit) while randomly introducing unexpected articles 20% of the time (explore). This prevents filter bubbles and lets the model discover when your interests change."},
+  {question = "Can you build a personalized RSS reader in Python?", answer = "Yes. Using Flask, SQLite, and sentence-transformers (MPNet), you can build a local RSS reader that learns preferences from swipe interactions. Training happens on Google Colab's free GPU tier. The entire system runs locally with zero infrastructure cost and no cloud dependencies."},
+  {question = "How do sentence embeddings work for content recommendation?", answer = "Sentence embeddings convert article titles and descriptions into 768-dimensional vectors that capture semantic meaning. Similar articles cluster together in this vector space. A Hybrid Random Forest classifier then learns which regions of this space match your preferences based on your voting history."},
+]
++++
 {{< img src="rss-tinder-demo2.gif" alt="GIF with interactive demo of the RSS Tinder App" width="80%" >}} Algorithmic timelines are everywhere now. But I still prefer the control of RSS. Readers are good at aggregating content but bad at filtering it. What I wanted was something borrowed from dating apps: instead of an infinite list, give me cards. Swipe right to like, left to dislike. Then train a model to surface what I actually want to read. So I built _RSS Swipr_. 
 
 The frontend is vanilla JavaScript—no React, no build steps, just DOM manipulation and CSS transitions. You drag a card, it follows your finger, and snaps away with a satisfying animation. Behind the scenes, the app tracks everything: votes (like/neutral/dislike), time spent viewing each card, and whether you actually opened the link. If I swipe right but don't click through, that's a signal. If I spend 0.3 seconds on a card before swiping left, that's a signal too.{{< img src="screenshot_feed_import1.png" alt="Feed management interface showing 1084 imported RSS feeds with 9327 total entries" width="80%" >}}Feed management happens through a simple CSV import. Paste a list of `name,url` pairs, click refresh, and the fetcher pulls articles with proper HTTP caching (ETag/Last-Modified) to avoid hammering servers. You can use your own feed list or load a predefined list. Thanks to Manuel Moreale who created [blogroll](https://blogroll.org/) I was able to get an OPML export and load all curated RSS feeds directly. Something similar works with [minifeed](https://minifeed.net/global) or [Kagi's smallweb](https://kagi.com/api/v1/smallweb/feed). Or you use one of the [Hacker News RSS](https://hnrss.github.io) feeds. If that feels too adventurous, I created [curated feeds](https://rss-aggregator.philippd.workers.dev) for the most popular HN bloggers.

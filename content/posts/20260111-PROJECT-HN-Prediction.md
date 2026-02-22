@@ -1,34 +1,28 @@
----
-title: "Social Media Success Prediction: BERT Models for Post Titles"
-seoTitle: "Temporal Leakage in ML: Lessons From a Hacker News Predictor"
-date: 2026-01-10
-images:
-- https://static.philippdubach.com/ograph/ograph-hn-predictor.jpg
-description: Training RoBERTa to predict Hacker News success revealed temporal leakage inflating metrics. How temporal splits, calibration, and regularization fix it.
-keywords:
-- Hacker News prediction model
-- temporal train test split ML
-- RoBERTa text classification
-- model calibration isotonic regression
-- machine learning overfitting regularization
-categories:
-- AI
-aliases:
-- /standalone/hn-prediction/
-type: Project
-math: true
-draft: false
-
-faq:
-- question: What is temporal leakage in machine learning and how do you prevent it?
-  answer: 'Temporal leakage occurs when your train/test split allows the model to "see the future" through random sampling of time-ordered data. For time-dependent data like social media posts, a random split lets models match near-duplicate content across the split, inflating metrics. The fix is a strict temporal split: train on earlier data, test on later data. This reduced our ensemble''s AUC from 0.714 to 0.693 but produced honest performance estimates.'
-- question: How do you calibrate neural network probability predictions?
-  answer: Neural networks trained on cross-entropy produce overconfident probability estimates. Isotonic regression fits a monotonic mapping from raw predictions to calibrated probabilities using a held-out validation set. Expected Calibration Error (ECE) measures the gap between predicted confidence and actual accuracy across binned predictions. Isotonic calibration reduced our ECE from 0.089 to 0.043, meaning when the model says 0.4 probability, it's now accurate.
-- question: Can you predict Hacker News post success from the title alone?
-  answer: 'Partially. Timing, news cycles, and who submits matter but aren''t captured in titles. A fine-tuned RoBERTa model achieves 0.685 AUC on temporal validation, meaning it provides meaningful signal but not certainty. The top 10% of predictions by score had 62% actual hits, roughly 1.9x better than random selection. The model learned intuitive patterns: "Show HN" titles score higher, deep technical content performs well, and optimal title length is 40-80 characters.'
-- question: How do dropout and weight decay reduce overfitting in transformers?
-  answer: 'Increasing dropout from 0.1 to 0.2 and weight decay from 0.01 to 0.05, plus freezing the lower 6 transformer layers, collapsed the train-test AUC gap from 0.109 to 0.042, a 61% reduction in overfitting. The model got worse at fitting training data (train AUC dropped from 0.803 to 0.727) but generalized better. The key insight: reducing memorization capacity forces the model to learn transferable patterns.'
----
++++
+title = "Social Media Success Prediction: BERT Models for Post Titles"
+seoTitle = "Temporal Leakage in ML: Lessons From a Hacker News Predictor"
+date = 2026-01-10
+images = ["https://static.philippdubach.com/ograph/ograph-hn-predictor.jpg"]
+description = "Training RoBERTa to predict Hacker News success revealed temporal leakage inflating metrics. How temporal splits, calibration, and regularization fix it."
+keywords = ["Hacker News prediction model", "temporal train test split ML", "RoBERTa text classification", "model calibration isotonic regression", "machine learning overfitting regularization"]
+categories = ["AI"]
+type = "Project"
+math = true
+draft = false
+aliases = ["/standalone/hn-prediction/"]
+takeaways = [
+  "A fine-tuned RoBERTa model achieves 0.685 AUC predicting Hacker News success from titles alone, with the top 10% of predictions hitting at 1.9x the random baseline",
+  "Switching from random to temporal train/test splits dropped the ensemble AUC from 0.714 to 0.693 and collapsed SBERT's contribution from 0.35 weight to 0.10, exposing temporal leakage",
+  "Increasing dropout to 0.2, weight decay to 0.05, and freezing 6 lower transformer layers cut the train-test overfitting gap by 61% while barely affecting test performance",
+  "Isotonic calibration reduced Expected Calibration Error from 0.089 to 0.043, meaning predicted probabilities now match observed hit rates",
+]
+faq = [
+  {question = "What is temporal leakage in machine learning and how do you prevent it?", answer = "Temporal leakage occurs when your train/test split allows the model to \"see the future\" through random sampling of time-ordered data. For time-dependent data like social media posts, a random split lets models match near-duplicate content across the split, inflating metrics. The fix is a strict temporal split: train on earlier data, test on later data. This reduced our ensemble's AUC from 0.714 to 0.693 but produced honest performance estimates."},
+  {question = "How do you calibrate neural network probability predictions?", answer = "Neural networks trained on cross-entropy produce overconfident probability estimates. Isotonic regression fits a monotonic mapping from raw predictions to calibrated probabilities using a held-out validation set. Expected Calibration Error (ECE) measures the gap between predicted confidence and actual accuracy across binned predictions. Isotonic calibration reduced our ECE from 0.089 to 0.043, meaning when the model says 0.4 probability, it's now accurate."},
+  {question = "Can you predict Hacker News post success from the title alone?", answer = "Partially. Timing, news cycles, and who submits matter but aren't captured in titles. A fine-tuned RoBERTa model achieves 0.685 AUC on temporal validation, meaning it provides meaningful signal but not certainty. The top 10% of predictions by score had 62% actual hits, roughly 1.9x better than random selection. The model learned intuitive patterns: \"Show HN\" titles score higher, deep technical content performs well, and optimal title length is 40-80 characters."},
+  {question = "How do dropout and weight decay reduce overfitting in transformers?", answer = "Increasing dropout from 0.1 to 0.2 and weight decay from 0.01 to 0.05, plus freezing the lower 6 transformer layers, collapsed the train-test AUC gap from 0.109 to 0.042, a 61% reduction in overfitting. The model got worse at fitting training data (train AUC dropped from 0.803 to 0.727) but generalized better. The key insight: reducing memorization capacity forces the model to learn transferable patterns."},
+]
++++
 Last week I published a [Hacker News title sentiment analysis](https://philippdubach.com/standalone/hn-sentiment/) based on the [Attention Dynamics in Online Communities](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5910263) paper I have been working on. The [discussion on Hacker News](https://news.ycombinator.com/item?id=46512881) raised the obvious question: can you actually predict what will do well here?{{< img src="https://static.philippdubach.com/hn_post_frontpage2.png" alt="Hacker News Frontpage" width="70%" >}}The honest answer is: partially. Timing matters. News cycles matter. Who submits matters. Weekend versus Monday morning matters. Most of these factors aren't in the title. But titles aren't nothing either. "Show HN" signals something. So does phrasing, length, and topic selection. The question becomes: how much signal can you extract from 80 characters?
 
 > [Hacker News](https://news.ycombinator.com/news) (HN) is a social news website focusing on computer science and entrepreneurship. It is run by the investment fund and startup incubator [Y Combinator](https://www.ycombinator.com).

@@ -8,6 +8,12 @@ images = ["https://static.philippdubach.com/ograph/0012.png"]
 categories = ["Commentary"]
 type = "Commentary"
 draft = false
+takeaways = [
+  "New OFR data puts the U.S. repo market at $12.6 trillion in daily exposures, $700 billion larger than previous estimates, a measurement gap roughly the size of the Swiss banking system",
+  "Bilateral repo accounts for $5 trillion of daily activity, roughly 40% of the market, and was essentially invisible to regulators until OFR transaction-level collection reached full implementation in July 2025",
+  "The Fed's Standing Repo Facility hit record usage of $74.6B on December 31, 2025, while reserves fell to $2.8 trillion, their lowest in four years",
+  "Only 61.8% of repo collateral is Treasuries, leaving substantial room for corporate bonds and agency MBS that can gap in value during stress",
+]
 [[faq]]
 question = "How big is the U.S. repo market?"
 answer = "According to new OFR data from Q3 2025, the U.S. repo market averages $12.6 trillion in daily exposures. This is roughly $700 billion larger than previous estimates, with the difference coming from bilateral repo activity that was previously invisible to regulators."

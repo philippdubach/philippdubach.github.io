@@ -1,39 +1,29 @@
----
-title: "The Variance Tax"
-seoTitle: "The Variance Tax: How Volatility Drag Erodes Compound Returns"
-date: 2026-02-06
-publishDate: 2026-02-06T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-variance-tax.jpg
-description: "Variance drain is the hidden cost of volatility: why a portfolio averaging +10% can lose money. The ½σ² formula explains the gap between paper and real returns."
-keywords:
-- variance drain
-- volatility drag
-- geometric vs arithmetic returns
-- leveraged ETF decay
-- Kelly criterion
-categories:
-- Finance
-type: Essay
-math: true
-draft: false
-takeaways:
-- "Variance drain equals ½σ² — doubling volatility quadruples the cost to compound returns"
-- "The Kelly criterion (L* = (μ-r)/σ²) falls directly out of the variance drain formula, giving the leverage that maximizes compound growth"
-- "Half-Kelly sizing sacrifices ~25% of theoretical growth but dramatically reduces drawdown risk from estimation error"
-- "Same 10% arithmetic return at 50% vol loses more than half your money over 30 years; at 0% vol it reaches $1,745"
-faq:
-- question: What is variance drain (volatility drag)?
-  answer: Variance drain is the gap between an investment's arithmetic mean return and its compound (geometric) growth rate. It equals approximately ½σ², where σ is the volatility of returns. Higher volatility means a larger gap between the average return you see reported and the actual wealth you accumulate.
-- question: How does leverage amplify volatility drag?
-  answer: Leverage L scales arithmetic return linearly (Lμ) but scales variance drain quadratically (½L²σ²). Doubling leverage quadruples the drag. This is why leveraged ETFs can underperform their target multiple over time, especially in volatile markets.
-- question: What is the Kelly criterion and how does it relate to variance drain?
-  answer: 'The Kelly criterion gives the leverage ratio that maximizes compound growth: L* = (μ − r) / σ². It falls directly out of the variance drain formula — it is the point where the marginal return from additional leverage exactly equals the marginal cost of additional variance drain.'
-- question: Why do practitioners use half-Kelly?
-  answer: Full Kelly assumes perfect knowledge of expected return (μ) and volatility (σ). In practice, both are estimated with error. Half-Kelly — sizing at L*/2 — sacrifices about 25% of theoretical growth but dramatically reduces the risk of overleveraging due to estimation error.
-- question: Is volatility drag a real force or a mathematical artifact?
-  answer: 'It is a mathematical relationship, not a physical force — the geometric mean is always less than or equal to the arithmetic mean (AM-GM inequality). But the P&L consequences are entirely real: two portfolios with the same average return but different volatilities will produce different terminal wealth.'
----
++++
+title = "The Variance Tax"
+seoTitle = "The Variance Tax: How Volatility Drag Erodes Compound Returns"
+date = 2026-02-06
+publishDate = 2026-02-06T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-variance-tax.jpg"]
+description = "Variance drain is the hidden cost of volatility: why a portfolio averaging +10% can lose money. The ½σ² formula explains the gap between paper and real returns."
+keywords = ["variance drain", "volatility drag", "geometric vs arithmetic returns", "leveraged ETF decay", "Kelly criterion"]
+categories = ["Finance"]
+type = "Essay"
+math = true
+draft = false
+takeaways = [
+  "Variance drain equals ½σ²: doubling volatility quadruples the cost to compound returns",
+  "The Kelly criterion (L* = (μ-r)/σ²) falls directly out of the variance drain formula, giving the leverage that maximizes compound growth",
+  "Half-Kelly sizing sacrifices ~25% of theoretical growth but dramatically reduces drawdown risk from estimation error",
+  "Same 10% arithmetic return at 50% vol loses more than half your money over 30 years; at 0% vol it reaches $1,745",
+]
+faq = [
+  {question = "What is variance drain (volatility drag)?", answer = "Variance drain is the gap between an investment's arithmetic mean return and its compound (geometric) growth rate. It equals approximately ½σ², where σ is the volatility of returns. Higher volatility means a larger gap between the average return you see reported and the actual wealth you accumulate."},
+  {question = "How does leverage amplify volatility drag?", answer = "Leverage L scales arithmetic return linearly (Lμ) but scales variance drain quadratically (½L²σ²). Doubling leverage quadruples the drag. This is why leveraged ETFs can underperform their target multiple over time, especially in volatile markets."},
+  {question = "What is the Kelly criterion and how does it relate to variance drain?", answer = "The Kelly criterion gives the leverage ratio that maximizes compound growth: L* = (μ − r) / σ². It falls directly out of the variance drain formula — it is the point where the marginal return from additional leverage exactly equals the marginal cost of additional variance drain."},
+  {question = "Why do practitioners use half-Kelly?", answer = "Full Kelly assumes perfect knowledge of expected return (μ) and volatility (σ). In practice, both are estimated with error. Half-Kelly — sizing at L*/2 — sacrifices about 25% of theoretical growth but dramatically reduces the risk of overleveraging due to estimation error."},
+  {question = "Is volatility drag a real force or a mathematical artifact?", answer = "It is a mathematical relationship, not a physical force — the geometric mean is always less than or equal to the arithmetic mean (AM-GM inequality). But the P&L consequences are entirely real: two portfolios with the same average return but different volatilities will produce different terminal wealth."},
+]
++++
 
 Let's say your portfolio returned +60% in 2024, then fell 40% in 2025. That's an annualized average return of +10%. Actual return after two years: minus 4% (i.e $100 * 1.6 * 0.6 = $96).
 

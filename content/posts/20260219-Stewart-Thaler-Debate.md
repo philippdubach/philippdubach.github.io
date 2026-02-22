@@ -1,53 +1,29 @@
----
-title: "The Stewart-Thaler Debate and the Levels-vs-Rates Problem"
-seoTitle: "The Levels vs Rates Problem: Why the Economy Feels Bad"
-date: 2026-02-18
-lastmod: 2026-02-18
-publishDate: 2026-02-18T03:00:00Z
-images:
-- https://static.philippdubach.com/ograph/ograph-stewart-thaler-debate.jpg
-description: "Prices rose 25% since 2020 and won't come back. The levels-vs-rates problem explains the vibecession, the Stewart-Thaler debate, and why nobody trusts economists."
-keywords:
-- levels vs rates problem inflation
-- vibepression 2026
-- economics communication failure
-- Jon Stewart Richard Thaler debate 2026
-- why economy feels bad when data is good
-- cumulative inflation since 2020
-- K-shaped economy wages 2026
-- vibecession 2026 explained
-- nudge theory effectiveness meta-analysis
-- prices still high inflation down
-- economic perception gap
-- real wage growth by income level
-- consumer sentiment disconnect
-- grocery prices since pandemic
-- behavioral economics trust crisis
-- essentials squeeze affordability
-- Jon Stewart economics wrong
-- housing affordability crisis 2026
-takeaways:
-- "Cumulative CPI is up ~25% since 2020 — groceries up 29.4%, housing up 30-45% — and none of it reverses when inflation falls to 2.4%"
-- "Bottom-quartile wage growth collapsed from 7.5% to 3.5% in 2025, reversing pandemic-era compression that had closed a third of the post-1979 inequality gap"
-- "Consumer sentiment is at the 3rd percentile of its historical range despite 4.4% GDP growth — not irrational pessimism, a measurement problem"
-- "Stewart reinvented the carbon tax while arguing against the economist who proposed it — the economics communication problem in 92 minutes"
-draft: true
-faq:
-- question: "Why does the economy feel bad when data says it's good?"
-  answer: "The economy feels bad because people experience price levels, not rates of change. Inflation fell from 9% to 2.4%, but cumulative prices rose roughly 25% since 2020, with groceries up 29.4% and housing affordability at its lowest since the 1980s. Economists celebrate the rate normalizing; consumers live with the permanent level shift. This levels-vs-rates disconnect is the structural explanation for the vibecession."
-- question: "What is the levels-vs-rates problem in economics?"
-  answer: "The levels-vs-rates problem describes a disconnect between how economists measure inflation (year-over-year rate of change) and how consumers experience it (cumulative price level). Inflation falling to 2.4% means prices are rising slowly again. It does not mean the 25% cumulative increase since 2020 reverses. A grocery bill that cost $150 in 2020 costs $194 today and will never cost $150 again."
-- question: "What happened in the Jon Stewart and Richard Thaler debate?"
-  answer: "On February 4, 2026, Stewart hosted Nobel laureate Thaler on 'The Weekly Show' to discuss behavioral economics. Stewart argued that economics exists to maximize shareholder value and dismissed nudge theory as inadequate for systemic problems. He then unknowingly proposed a carbon tax, the exact policy he had just rejected, while believing he was contradicting Thaler. The episode triggered a fierce backlash from economists including Jason Furman and Jerusalem Demsas."
-- question: "What is vibepression and how does it relate to the vibecession?"
-  answer: "Vibepression is a term coined by Charles Schwab's Kevin Gordon in December 2025 to describe the deepening of the vibecession, a concept Kyla Scanlon introduced in June 2022. As of February 2026, the University of Michigan consumer sentiment index sits at 57.3, the 3rd percentile of its historical range, despite GDP growth of 4.4% and unemployment of 4.3%. The vibecession never resolved; it got a bleaker name."
-- question: "Are real wages outpacing inflation in 2026?"
-  answer: "In aggregate, yes, since June 2023. But the distribution is K-shaped: high earners held 4.5% wage growth while the bottom quartile fell from 7.5% to roughly 3.5%. The Economic Policy Institute reported in February 2026 that low-wage workers' real wages actually declined in 2025, reversing pandemic-era compression that had closed up to one-third of the post-1979 wage gap."
-- question: "Will prices go back to pre-pandemic levels?"
-  answer: "No. Prices will not return to pre-pandemic levels. Cumulative CPI is up roughly 25% since early 2020, with food-at-home up 29.4% and housing costs up 30-45%. Reversing this would require sustained deflation, which central banks actively prevent because falling price levels cause recessions. The inflation rate has normalized at 2.4%, but the level shift is permanent."
-- question: "How effective are behavioral nudges according to research?"
-  answer: "Less effective than widely believed. A meta-analysis by Maier et al. found that after correcting for publication bias, real-world nudges increase desired behavior by just 1.4 percentage points, compared to 8.7 in lab settings. A 2025 second-order meta-analysis by Hu found nudge effects drop to near zero (d=0.004) after full bias correction. Specific applications like pension auto-enrollment show larger effects, but the average impact is far smaller than proponents claim."
----
++++
+title = "The Stewart-Thaler Debate and the Levels-vs-Rates Problem"
+seoTitle = "The Levels vs Rates Problem: Why the Economy Feels Bad"
+date = 2026-02-18
+lastmod = 2026-02-18
+publishDate = 2026-02-18T03:00:00Z
+images = ["https://static.philippdubach.com/ograph/ograph-stewart-thaler-debate.jpg"]
+description = "Prices rose 25% since 2020 and won't come back. The levels-vs-rates problem explains the vibecession, the Stewart-Thaler debate, and why nobody trusts economists."
+keywords = ["levels vs rates problem inflation", "vibepression 2026", "economics communication failure", "Jon Stewart Richard Thaler debate 2026", "why economy feels bad when data is good", "cumulative inflation since 2020", "K-shaped economy wages 2026", "vibecession 2026 explained", "nudge theory effectiveness meta-analysis", "prices still high inflation down", "economic perception gap", "real wage growth by income level", "consumer sentiment disconnect", "grocery prices since pandemic", "behavioral economics trust crisis", "essentials squeeze affordability", "Jon Stewart economics wrong", "housing affordability crisis 2026"]
+draft = true
+takeaways = [
+  "Cumulative CPI is up ~25% since 2020 (groceries up 29.4%, housing up 30-45%) and none of it reverses when inflation falls to 2.4%",
+  "Bottom-quartile wage growth collapsed from 7.5% to 3.5% in 2025, reversing pandemic-era compression that had closed a third of the post-1979 inequality gap",
+  "Consumer sentiment is at the 3rd percentile of its historical range despite 4.4% GDP growth, not irrational pessimism but a measurement problem",
+  "Stewart reinvented the carbon tax while arguing against the economist who proposed it, the economics communication problem in 92 minutes",
+]
+faq = [
+  {question = "Why does the economy feel bad when data says it's good?", answer = "The economy feels bad because people experience price levels, not rates of change. Inflation fell from 9% to 2.4%, but cumulative prices rose roughly 25% since 2020, with groceries up 29.4% and housing affordability at its lowest since the 1980s. Economists celebrate the rate normalizing; consumers live with the permanent level shift. This levels-vs-rates disconnect is the structural explanation for the vibecession."},
+  {question = "What is the levels-vs-rates problem in economics?", answer = "The levels-vs-rates problem describes a disconnect between how economists measure inflation (year-over-year rate of change) and how consumers experience it (cumulative price level). Inflation falling to 2.4% means prices are rising slowly again. It does not mean the 25% cumulative increase since 2020 reverses. A grocery bill that cost $150 in 2020 costs $194 today and will never cost $150 again."},
+  {question = "What happened in the Jon Stewart and Richard Thaler debate?", answer = "On February 4, 2026, Stewart hosted Nobel laureate Thaler on 'The Weekly Show' to discuss behavioral economics. Stewart argued that economics exists to maximize shareholder value and dismissed nudge theory as inadequate for systemic problems. He then unknowingly proposed a carbon tax, the exact policy he had just rejected, while believing he was contradicting Thaler. The episode triggered a fierce backlash from economists including Jason Furman and Jerusalem Demsas."},
+  {question = "What is vibepression and how does it relate to the vibecession?", answer = "Vibepression is a term coined by Charles Schwab's Kevin Gordon in December 2025 to describe the deepening of the vibecession, a concept Kyla Scanlon introduced in June 2022. As of February 2026, the University of Michigan consumer sentiment index sits at 57.3, the 3rd percentile of its historical range, despite GDP growth of 4.4% and unemployment of 4.3%. The vibecession never resolved; it got a bleaker name."},
+  {question = "Are real wages outpacing inflation in 2026?", answer = "In aggregate, yes, since June 2023. But the distribution is K-shaped: high earners held 4.5% wage growth while the bottom quartile fell from 7.5% to roughly 3.5%. The Economic Policy Institute reported in February 2026 that low-wage workers' real wages actually declined in 2025, reversing pandemic-era compression that had closed up to one-third of the post-1979 wage gap."},
+  {question = "Will prices go back to pre-pandemic levels?", answer = "No. Prices will not return to pre-pandemic levels. Cumulative CPI is up roughly 25% since early 2020, with food-at-home up 29.4% and housing costs up 30-45%. Reversing this would require sustained deflation, which central banks actively prevent because falling price levels cause recessions. The inflation rate has normalized at 2.4%, but the level shift is permanent."},
+  {question = "How effective are behavioral nudges according to research?", answer = "Less effective than widely believed. A meta-analysis by Maier et al. found that after correcting for publication bias, real-world nudges increase desired behavior by just 1.4 percentage points, compared to 8.7 in lab settings. A 2025 second-order meta-analysis by Hu found nudge effects drop to near zero (d=0.004) after full bias correction. Specific applications like pension auto-enrollment show larger effects, but the average impact is far smaller than proponents claim."},
+]
++++
 
 >Economics doesn't take into account what's best for society. The goal of economics in a capitalist system is to make the most amount of money for your shareholders.
 

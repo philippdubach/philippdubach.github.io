@@ -1,37 +1,28 @@
----
-title: AI Models as Standalone P&Ls
-date: 2025-11-09
-images:
-- https://static.philippdubach.com/ograph/ograph-aipnl.jpg
-external_url: https://www.theregister.com/2025/10/29/microsoft_earnings_q1_26_openai_loss/
-seoTitle: "Why OpenAI Loses Billions But Each AI Model May Profit"
-description: "OpenAI lost $11.5B in one quarter. But Anthropic CEO Dario Amodei argues each AI model is independently profitable. Here's why the math is complicated."
-keywords:
-- OpenAI losses
-- AI model profitability
-- AI training costs
-- OpenAI business model
-- Dario Amodei profitability
-categories:
-- AI
-- Finance
-type: Commentary
-draft: false
-aliases:
-- /2025/11/09/ai-models-as-standalone-pls/
-
-faq:
-- question: Why is OpenAI losing billions despite growing revenue?
-  answer: OpenAI reported a net loss of $11.5 billion in a single quarter because for every dollar of revenue, they spend roughly $5 to deliver the product. The losses stem from overlapping profitable model cycles while exponentially increasing investment in each successive generation, where each new model costs approximately 10x more than the last to train.
-- question: Are individual AI models actually profitable?
-  answer: According to Anthropic CEO Dario Amodei, if you treat each AI model as an independent business unit, the picture looks different from conventional accounting. A model trained for $100 million that generates $200 million in revenue is profitable on its own. The company-level losses come from simultaneously investing in the next, far more expensive model generation.
-- question: What are the two ways AI company economics could resolve?
-  answer: Dario Amodei outlines two scenarios. First, scaling hits physical or practical limits, training costs plateau, and companies harvest profits from their final-generation models. Second, if model improvements stop delivering proportional returns before reaching natural limits, companies face a one-time loss from the overhang of unrecovered investment, then the business stabilizes at whatever scale it had reached.
-- question: How does open-source AI threaten frontier model profitability?
-  answer: If training a frontier model costs $10 billion but open-source alternatives reach comparable performance six months later, the revenue window to recoup that investment may not materialize. The entire per-model profitability argument depends on maintaining a significant capability lead that customers are willing to pay premium prices for.
-- question: What assumptions must hold for the per-model profitability framework to work?
-  answer: Two critical assumptions must hold. First, each model must consistently return roughly 2x its training cost in revenue. Second, the improvements from spending 10x more on the next model must justify that investment, meaning customers will pay enough more for the better model to maintain that 2x return ratio even as absolute costs grow from millions to billions.
----
++++
+title = "AI Models as Standalone P&Ls"
+seoTitle = "Why OpenAI Loses Billions But Each AI Model May Profit"
+date = 2025-11-09
+images = ["https://static.philippdubach.com/ograph/ograph-aipnl.jpg"]
+description = "OpenAI lost $11.5B in one quarter. But Anthropic CEO Dario Amodei argues each AI model is independently profitable. Here's why the math is complicated."
+keywords = ["OpenAI losses", "AI model profitability", "AI training costs", "OpenAI business model", "Dario Amodei profitability"]
+categories = ["AI", "Finance"]
+type = "Commentary"
+draft = false
+external_url = "https://www.theregister.com/2025/10/29/microsoft_earnings_q1_26_openai_loss/"
+aliases = ["/2025/11/09/ai-models-as-standalone-pls/"]
+takeaways = [
+  "OpenAI lost $11.5B in one quarter, spending roughly $5 for every $1 of revenue because each new model generation costs about 10x more to train.",
+  "Dario Amodei argues each AI model is independently profitable: a $100M training run generating $200M in revenue looks like a 2x return when isolated from the next investment cycle.",
+  "The per-model profitability thesis breaks down if open-source alternatives close the capability gap within months, compressing the revenue window before training costs are recouped.",
+]
+faq = [
+  {question = "Why is OpenAI losing billions despite growing revenue?", answer = "OpenAI reported a net loss of $11.5 billion in a single quarter because for every dollar of revenue, they spend roughly $5 to deliver the product. The losses stem from overlapping profitable model cycles while exponentially increasing investment in each successive generation, where each new model costs approximately 10x more than the last to train."},
+  {question = "Are individual AI models actually profitable?", answer = "According to Anthropic CEO Dario Amodei, if you treat each AI model as an independent business unit, the picture looks different from conventional accounting. A model trained for $100 million that generates $200 million in revenue is profitable on its own. The company-level losses come from simultaneously investing in the next, far more expensive model generation."},
+  {question = "What are the two ways AI company economics could resolve?", answer = "Dario Amodei outlines two scenarios. First, scaling hits physical or practical limits, training costs plateau, and companies harvest profits from their final-generation models. Second, if model improvements stop delivering proportional returns before reaching natural limits, companies face a one-time loss from the overhang of unrecovered investment, then the business stabilizes at whatever scale it had reached."},
+  {question = "How does open-source AI threaten frontier model profitability?", answer = "If training a frontier model costs $10 billion but open-source alternatives reach comparable performance six months later, the revenue window to recoup that investment may not materialize. The entire per-model profitability argument depends on maintaining a significant capability lead that customers are willing to pay premium prices for."},
+  {question = "What assumptions must hold for the per-model profitability framework to work?", answer = "Two critical assumptions must hold. First, each model must consistently return roughly 2x its training cost in revenue. Second, the improvements from spending 10x more on the next model must justify that investment, meaning customers will pay enough more for the better model to maintain that 2x return ratio even as absolute costs grow from millions to billions."},
+]
++++
 > Microsoft reported earnings for the quarter ended Sept. [...] buried in its financial filings were a couple of passages suggesting that OpenAI suffered a net loss of $11.5 billion or more during the quarter.
 
 For every dollar of revenue, they're allegedly spending roughly $5 to deliver the product. These OpenAI losses initially sound like a joke about "making it up on volume," but they point to a more fundamental problem facing OpenAI and its competitors. AI companies are locked into continuously releasing more powerful (and expensive) models. If they stop, [open-source alternatives will catch up](https://arxiv.org/abs/2311.16989) and offer equivalent capabilities at substantially lower costs. This creates an uncomfortable dynamic. If your current model requires spending more than you earn just to fund the next generation, the path to profitability becomes unclear—perhaps impossible.
