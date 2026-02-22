@@ -1,5 +1,7 @@
 ---
 title: "The Impossible Backhand"
+aliases:
+- /posts/a-bull-case/
 seoTitle: "The AI Quality Ceiling: Why Domain Expertise Is Appreciating"
 date: 2026-02-17
 lastmod: 2026-02-17
