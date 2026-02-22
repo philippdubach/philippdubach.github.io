@@ -7,8 +7,10 @@ publishDate = 2026-02-22T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-prediction-market-insider-trading.jpg"]
 description = "A Google insider made $1.15M on Polymarket in 24 hours. Israeli soldiers bet classified strike timing. Why prediction markets need insider trading regulation."
 keywords = ["Polymarket insider trading", "prediction market regulation", "prediction market insider trading legal", "Kalshi vs Polymarket", "adverse selection prediction markets"]
+categories = ["Finance", "Economics"]
+type = "Analysis"
 draft = false
-unlisted = false
+unlisted = true
 takeaways = [
   "A suspected Google insider went 22-for-23 on Polymarket, turning $3M into $4.15M in under 24 hours, and no U.S. regulator has acted on any of the three major cases since December 2025",
   "A Fed working paper found Kalshi's macro markets matched the actual FOMC rate outcome on the day before every meeting since 2022, outperforming traditional forecasting tools in certain windows",
