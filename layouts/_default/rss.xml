@@ -4,7 +4,7 @@
 {{- $pages := slice -}}
 {{- if or $.IsHome $.IsSection -}}
 {{- $pages = $pctx.RegularPages -}}
-{{- $pages = where $pages "Section" "posts" -}}
+{{- $pages = where (where $pages "Section" "posts") ".Params.unlisted" "ne" true -}}
 {{- else -}}
 {{- $pages = $pctx.Pages -}}
 {{- end -}}

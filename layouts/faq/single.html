@@ -5,7 +5,7 @@
 
 {{/* Get all posts from the specified category that have FAQ data, sorted newest first */}}
 {{ $postsWithFAQ := slice }}
-{{ range where .Site.RegularPages "Section" "posts" }}
+{{ range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
     {{ if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) }}
         {{ $postsWithFAQ = $postsWithFAQ | append . }}
     {{ end }}

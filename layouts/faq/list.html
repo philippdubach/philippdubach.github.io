@@ -17,7 +17,7 @@
         {{/* Count FAQs for this category */}}
         {{ $faqCount := 0 }}
         {{ $postCount := 0 }}
-        {{ range where $.Site.RegularPages "Section" "posts" }}
+        {{ range where (where $.Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
             {{ if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) }}
                 {{ $postCount = add $postCount 1 }}
                 {{ $faqCount = add $faqCount (len .Params.faq) }}
@@ -37,7 +37,7 @@
     {{/* Show total stats */}}
     {{ $totalFAQs := 0 }}
     {{ $totalPosts := 0 }}
-    {{ range where .Site.RegularPages "Section" "posts" }}
+    {{ range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
         {{ if .Params.faq }}
             {{ $totalPosts = add $totalPosts 1 }}
             {{ $totalFAQs = add $totalFAQs (len .Params.faq) }}

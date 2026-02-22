@@ -6,8 +6,9 @@
     
     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
     <section class="category-section">
-        <h2 class="category-heading">{{ $taxonomy.Page.Title }} <span class="category-post-count">({{ len $taxonomy.Pages }})</span></h2>
-        {{ $posts := $taxonomy.Pages.ByDate.Reverse }}
+        {{ $catPosts := where $taxonomy.Pages ".Params.unlisted" "ne" true }}
+        <h2 class="category-heading">{{ $taxonomy.Page.Title }} <span class="category-post-count">({{ len $catPosts }})</span></h2>
+        {{ $posts := $catPosts.ByDate.Reverse }}
         {{ range $posts }}
         <article class="archive-item">
             <div class="archive-meta">
@@ -36,9 +37,10 @@
     <div class="archive-description">{{ . }}</div>
     {{ end }}
 
-    <p class="category-post-count">{{ len .Pages }} posts</p>
-    
-    {{ $posts := .Pages.ByDate.Reverse }}
+    {{ $filteredPages := where .Pages ".Params.unlisted" "ne" true }}
+    <p class="category-post-count">{{ len $filteredPages }} posts</p>
+
+    {{ $posts := $filteredPages.ByDate.Reverse }}
     {{ range $posts.GroupByDate "2006" }}
     <section class="year">
         <h2>{{ .Key }}</h2>
@@ -72,11 +74,11 @@
 
     {{/* CollectionPage JSON-LD for category pillar pages */}}
     {{- $hasPart := slice -}}
-    {{- range .Pages.ByDate.Reverse -}}
+    {{- range $filteredPages.ByDate.Reverse -}}
       {{- $hasPart = $hasPart | append (dict "@id" (printf "%s#article" .Permalink)) -}}
     {{- end }}
     <script type="application/ld+json">
-    {{ dict "@context" "https://schema.org" "@type" "CollectionPage" "name" .Title "description" (.Description | default (printf "Articles on %s" .Title)) "url" .Permalink "about" (dict "@type" "Thing" "name" .Title) "numberOfItems" (len .Pages) "hasPart" $hasPart "author" (dict "@id" (printf "%s#person" .Site.BaseURL)) | jsonify | safeJS }}
+    {{ dict "@context" "https://schema.org" "@type" "CollectionPage" "name" .Title "description" (.Description | default (printf "Articles on %s" .Title)) "url" .Permalink "about" (dict "@type" "Thing" "name" .Title) "numberOfItems" (len $filteredPages) "hasPart" $hasPart "author" (dict "@id" (printf "%s#person" .Site.BaseURL)) | jsonify | safeJS }}
     </script>
     {{ end }}
 </div>

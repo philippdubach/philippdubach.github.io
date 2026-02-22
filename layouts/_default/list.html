@@ -8,7 +8,7 @@
     </div>
     {{ end }}
     
-    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $posts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
     {{ $posts := $posts.ByDate.Reverse }}
     {{ range $posts.GroupByDate "2006" }}
     <section class="year">

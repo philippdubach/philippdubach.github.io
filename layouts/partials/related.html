@@ -1,5 +1,5 @@
 {{/* Related Posts - shows posts with matching categories/keywords */}}
-{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ $related := where (.Site.RegularPages.Related . | first 5) ".Params.unlisted" "ne" true | first 3 }}
 {{ if $related }}
 <aside class="related-posts" aria-labelledby="related-heading">
     <h2 class="related-heading" id="related-heading">Related</h2>

@@ -1,7 +1,7 @@
 {{ define "main" }}
 <h1 class="visually-hidden">Latest Posts</h1>
 <div class="posts">
-    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $posts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
     {{ $posts := $posts.ByDate.Reverse }}
     {{ range (.Paginate $posts).Pages }}
     <article class="post">

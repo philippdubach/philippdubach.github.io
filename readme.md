@@ -26,7 +26,7 @@ Personal blog on quantitative finance, AI/ML, and technology.
 | **Security Headers** | Cloudflare Worker (HSTS, CSP, COEP, COOP) |
 | **Math** | MathJax 3.2.2 (SRI-verified) |
 | **Code Highlighting** | Chroma (Hugo built-in) |
-| **Social Automation** | Cloudflare Workers + Workers AI (Llama 3.3 70B) |
+| **Social Automation** | Cloudflare Workers + Workers AI (Llama 4 Scout 17B) |
 | **Composer Tool** | Cloudflare Pages |
 | **URL Shortener** | Cloudflare Workers + KV + D1 |
 
@@ -114,7 +114,7 @@ RSS Feed → Worker (cron/manual) → Workers AI → Social Platform
 |---|---|
 | URL | `social-poster.philippd.workers.dev` |
 | Trigger | Cron schedule or `POST /trigger` |
-| AI Model | `@cf/meta/llama-3.3-70b-instruct-fp8-fast` |
+| AI Model | `@cf/meta/llama-4-scout-17b-16e-instruct` |
 | Features | RSS parsing, AI post generation, link card embedding |
 
 ### Twitter Worker
@@ -123,7 +123,7 @@ RSS Feed → Worker (cron/manual) → Workers AI → Social Platform
 |---|---|
 | URL | `twitter-poster.philippd.workers.dev` |
 | Trigger | Cron schedule or `POST /trigger` |
-| AI Model | `@cf/meta/llama-3.3-70b-instruct-fp8-fast` |
+| AI Model | `@cf/meta/llama-4-scout-17b-16e-instruct` |
 | Auth | OAuth 1.0a |
 
 ### AI Post Generation

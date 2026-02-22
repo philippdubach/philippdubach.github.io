@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $allPosts := where .Site.RegularPages "Section" "posts" }}
+{{ $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
 {{ $projects := where $allPosts ".Params.type" "Project" }}
 {{ $projects := $projects.ByDate.Reverse }}
 {{ $posts := where $allPosts ".Params.type" "!=" "Project" }}

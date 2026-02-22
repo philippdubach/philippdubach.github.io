@@ -1,4 +1,4 @@
-{{- $pages := where .Site.RegularPages "Section" "posts" -}}
+{{- $pages := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
 {{- $pages = $pages | first 50 -}}
 {
   "version": "https://jsonfeed.org/version/1.1",

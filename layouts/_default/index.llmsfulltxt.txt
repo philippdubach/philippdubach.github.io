@@ -1,5 +1,5 @@
 {{- $baseURL := .Site.BaseURL -}}
-{{- $allPosts := where .Site.RegularPages "Section" "posts" -}}
+{{- $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
 {{- $displayNames := dict "ai" "AI" "commentary" "Commentary" "economics" "Economics" "finance" "Finance" "medicine" "Medicine" "tech" "Tech" -}}
 {{- $categoryOrder := slice "ai" "commentary" "economics" "finance" "medicine" "tech" -}}
 # Philipp D. Dubach - Full Content Index
