@@ -19,6 +19,14 @@
         </div>
         {{ end }}
     </header>
+    {{ with .Params.takeaways }}
+    <aside class="key-takeaways" aria-label="Key takeaways">
+        <h2>Key Takeaways</h2>
+        <ul>
+            {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+        </ul>
+    </aside>
+    {{ end }}
     <div class="post-content">
         {{ .Content }}
     </div>

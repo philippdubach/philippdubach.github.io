@@ -43,3 +43,5 @@ Reading this piece gave me a few ideas for extensions I might want to explore in
 (2) Global Market Coverage: Extending the geographic scope to include developed, emerging, and frontier markets would illuminate whether the documented deviations from normality represent universal phenomena or are specific to US market structures. Cross-regional analysis could reveal important insights about market development, regulatory frameworks, and institutional differences.
 (3) Building upon Vorobets' foundation, there are opportunities to incorporate multivariate normality testing, regime-dependent analysis, and time-varying parameter models. Additionally, investigating the power and robustness of different statistical tests across various market conditions would strengthen the methodological contribution.
 (4) Examining different time horizons, market regimes (pre- and post-financial crisis, COVID period), and potentially higher-frequency data could provide deeper insights into when and why distributional assumptions break down.
+
+{{< readnext slug="the-variance-tax" >}}

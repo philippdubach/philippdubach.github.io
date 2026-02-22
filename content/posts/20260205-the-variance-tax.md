@@ -17,7 +17,11 @@ categories:
 type: Essay
 math: true
 draft: false
-
+takeaways:
+- "Variance drain equals ½σ² — doubling volatility quadruples the cost to compound returns"
+- "The Kelly criterion (L* = (μ-r)/σ²) falls directly out of the variance drain formula, giving the leverage that maximizes compound growth"
+- "Half-Kelly sizing sacrifices ~25% of theoretical growth but dramatically reduces drawdown risk from estimation error"
+- "Same 10% arithmetic return at 50% vol loses more than half your money over 30 years; at 0% vol it reaches $1,745"
 faq:
 - question: What is variance drain (volatility drag)?
   answer: Variance drain is the gap between an investment's arithmetic mean return and its compound (geometric) growth rate. It equals approximately ½σ², where σ is the volatility of returns. Higher volatility means a larger gap between the average return you see reported and the actual wealth you accumulate.

@@ -39,3 +39,5 @@ Justina Lee for Bloomberg writes that this week's AI-fueled market swings perfec
 
 The researchers from UCLA, Stockholm School of Economics, and University of Minnesota have identified what they call "Big Passive"—a financial landscape that's proving less dynamic and more volatile. When most investors are on autopilot, the few remaining active traders have disproportionate influence.
 This doesn't invalidate passive investing's core benefits—lower costs and better long-term returns for most investors remain compelling. But it does suggest that our increasingly passive financial system has some unintended consequences.
+
+{{< readnext slug="the-market-can-stay-irrational-longer-than-you-can-stay-solvent" >}}

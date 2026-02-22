@@ -26,6 +26,11 @@ keywords:
 - essentials squeeze affordability
 - Jon Stewart economics wrong
 - housing affordability crisis 2026
+takeaways:
+- "Cumulative CPI is up ~25% since 2020 — groceries up 29.4%, housing up 30-45% — and none of it reverses when inflation falls to 2.4%"
+- "Bottom-quartile wage growth collapsed from 7.5% to 3.5% in 2025, reversing pandemic-era compression that had closed a third of the post-1979 inequality gap"
+- "Consumer sentiment is at the 3rd percentile of its historical range despite 4.4% GDP growth — not irrational pessimism, a measurement problem"
+- "Stewart reinvented the carbon tax while arguing against the economist who proposed it — the economics communication problem in 92 minutes"
 draft: true
 faq:
 - question: "Why does the economy feel bad when data says it's good?"

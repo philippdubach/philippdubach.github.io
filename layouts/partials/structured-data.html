@@ -1,47 +1,69 @@
-{{/* WebSite Schema - Homepage only */}}
+{{/* ============================================================
+  Structured Data — @graph pattern with @id cross-references
+
+  Entities:
+  - Person (@id: #person) — author identity, E-E-A-T signals
+  - WebSite (@id: #website) — site-level metadata
+  - BlogPosting/TechArticle/Article (@id: #article) — per-page content
+  - BreadcrumbList — navigation hierarchy
+  - ProfilePage — about page
+  - CollectionPage — research page
+  - FAQPage — posts with FAQ frontmatter
+============================================================ */}}
+
+{{/* Build unified sameAs array from hugo.toml params */}}
+{{- $sameAs := slice -}}
+{{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+{{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
+{{- with .Site.Params.social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
+{{- with .Site.Params.social.linkedin }}{{ $sameAs = $sameAs | append (printf "https://www.linkedin.com/in/%s/" .) }}{{ end -}}
+{{- with .Site.Params.academic.google_scholar }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with .Site.Params.academic.researchgate }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with .Site.Params.academic.orcid }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+
+{{/* Reusable @id references */}}
+{{- $personId := printf "%s#person" .Site.BaseURL -}}
+{{- $websiteId := printf "%s#website" .Site.BaseURL -}}
+
+{{/* Person entity — consistent across all pages */}}
+{{- $person := dict
+  "@type" "Person"
+  "@id" $personId
+  "name" .Site.Params.author
+  "url" (printf "%sabout/" .Site.BaseURL)
+  "jobTitle" "Strategy Consultant & Independent Researcher"
+  "description" "Strategy consultant and independent researcher in quantitative finance and machine learning."
+  "alumniOf" (dict "@type" "CollegeOrUniversity" "name" "Imperial College London")
+  "knowsAbout" .Site.Params.keywords
+  "sameAs" $sameAs
+-}}
+
+{{/* WebSite entity */}}
+{{- $website := dict
+  "@type" "WebSite"
+  "@id" $websiteId
+  "name" .Site.Title
+  "url" (print .Site.BaseURL)
+  "description" .Site.Params.description
+  "inLanguage" (.Site.Language.Lang | default "en")
+  "publisher" (dict "@id" $personId)
+-}}
+
+{{/* ===== HOMEPAGE: Person + WebSite ===== */}}
 {{ if .IsHome }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "{{ .Site.Title }}",
-  "url": "{{ .Site.BaseURL }}",
-  "description": "{{ .Site.Params.description }}",
-  "inLanguage": "{{ .Site.Language.Lang | default "en" }}",
-  "publisher": {
-    "@type": "Person",
-    "name": "{{ .Site.Params.author }}",
-    "url": "{{ .Site.BaseURL }}about/"
-  }
-}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website) | jsonify | safeJS }}
 </script>
 {{ end }}
 
-{{/* ProfilePage + Person Schema - About page for E-E-A-T signals */}}
+{{/* ===== ABOUT PAGE: Person + ProfilePage ===== */}}
 {{ if eq .RelPermalink "/about/" }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "mainEntity": {
-    "@type": "Person",
-    "name": "{{ .Site.Params.author }}",
-    "url": "{{ .Site.BaseURL }}about/",
-    {{- $sameAs := slice -}}
-    {{- with .Site.Params.social.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
-    {{- with .Site.Params.social.bluesky }}{{ $sameAs = $sameAs | append (printf "https://bsky.app/profile/%s" .) }}{{ end -}}
-    {{- with .Site.Params.social.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
-    {{- $sameAs = $sameAs | append "https://scholar.google.com/citations?user=-69oS2wAAAAJ" -}}
-    {{- $sameAs = $sameAs | append "https://www.researchgate.net/profile/Philipp-Dubach" -}}
-    "sameAs": {{ $sameAs | jsonify }},
-    "jobTitle": "Strategy Consultant & Independent Researcher",
-    "knowsAbout": {{ .Site.Params.keywords | jsonify }}
-  }
-}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person (dict "@type" "ProfilePage" "mainEntity" (dict "@id" $personId))) | jsonify | safeJS }}
 </script>
 {{ end }}
 
-{{/* Research Page Schema - CollectionPage with ScholarlyArticle items */}}
+{{/* ===== RESEARCH PAGE: CollectionPage with ScholarlyArticle items ===== */}}
 {{ if eq .RelPermalink "/research/" }}
 {{ with .Site.Data.research }}
 <script type="application/ld+json">
@@ -52,13 +74,7 @@
   "description": "{{ $.Params.description }}",
   "url": "{{ $.Permalink }}",
   "author": {
-    "@type": "Person",
-    "name": "{{ $.Site.Params.author }}",
-    "url": "{{ $.Site.BaseURL }}about/",
-    "sameAs": [
-      {{ with .profiles.google_scholar }}"{{ . }}"{{ end }}{{ if and .profiles.google_scholar .profiles.researchgate }},{{ end }}
-      {{ with .profiles.researchgate }}"{{ . }}"{{ end }}
-    ]
+    "@id": "{{ $personId }}"
   },
   "hasPart": [
     {{- $first := true -}}
@@ -72,8 +88,7 @@
       "name": "{{ .title }}",
       {{ with .summary }}"abstract": {{ . | jsonify }},{{ end }}
       "author": {
-        "@type": "Person",
-        "name": "{{ $.Site.Params.author }}"
+        "@id": "{{ $personId }}"
       }
       {{ with .doi }},"url": "https://dx.doi.org/{{ . }}"{{ end }}
     }
@@ -85,7 +100,7 @@
 {{ end }}
 {{ end }}
 
-{{/* Breadcrumb Structured Data */}}
+{{/* ===== BREADCRUMBS: Single pages ===== */}}
 {{ if .IsPage }}
 <script type="application/ld+json">
 {
@@ -117,7 +132,7 @@
 </script>
 {{ end }}
 
-{{/* BreadcrumbList for section and taxonomy pages */}}
+{{/* ===== BREADCRUMBS: Section and taxonomy pages ===== */}}
 {{ if and (not .IsPage) (not .IsHome) }}
 <script type="application/ld+json">
 {
@@ -141,99 +156,85 @@
 </script>
 {{ end }}
 
-{{/* Article Structured Data - Enhanced for GEO */}}
-{{ if .IsPage }}
+{{/* ===== ARTICLE PAGES: Person + WebSite + Article @graph ===== */}}
+{{ if and .IsPage (ne .RelPermalink "/about/") }}
+{{- $articleType := "BlogPosting" -}}
+{{- if eq .Params.type "Project" }}{{ $articleType = "TechArticle" }}{{ end -}}
+{{- if eq .Params.type "Essay" }}{{ $articleType = "Article" }}{{ end -}}
+{{- if eq .Params.type "Review" }}{{ $articleType = "Review" }}{{ end -}}
+
+{{- $desc := .Description -}}
+{{- if not $desc }}{{ $desc = .Summary | plainify | truncate 160 }}{{ end -}}
+
+{{- $article := dict
+  "@type" $articleType
+  "@id" (printf "%s#article" .Permalink)
+  "headline" .Title
+  "name" .Title
+  "description" $desc
+  "articleBody" (.Content | plainify)
+  "wordCount" .WordCount
+  "timeRequired" (printf "PT%dM" .ReadingTime)
+  "inLanguage" (.Site.Language.Lang | default "en")
+  "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+  "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+  "author" (dict "@id" $personId)
+  "publisher" (dict "@id" $personId)
+  "isPartOf" (dict "@id" $websiteId)
+  "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+  "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".post-content > p:first-of-type" ".post-header h1"))
+-}}
+
+{{/* Conditional: keywords */}}
+{{- if .Params.keywords }}
+  {{- $article = merge $article (dict "keywords" .Params.keywords) -}}
+{{- else if .Params.tags }}
+  {{- $article = merge $article (dict "keywords" .Params.tags) -}}
+{{- end }}
+
+{{/* Conditional: about (from categories) */}}
+{{- if .Params.categories }}
+  {{- $aboutList := slice -}}
+  {{- range .Params.categories }}
+    {{- $aboutList = $aboutList | append (dict "@type" "Thing" "name" .) -}}
+  {{- end }}
+  {{- $article = merge $article (dict "about" $aboutList) -}}
+{{- end }}
+
+{{/* Conditional: Project proficiency */}}
+{{- if eq .Params.type "Project" }}
+  {{- $article = merge $article (dict "proficiencyLevel" "Expert") -}}
+{{- end }}
+
+{{/* Conditional: external source citation */}}
+{{- with .Params.external_url }}
+  {{- $article = merge $article (dict "citation" (dict "@type" "CreativeWork" "url" .)) -}}
+{{- end }}
+
+{{/* Conditional: DOI sameAs */}}
+{{- with .Params.doi }}
+  {{- $article = merge $article (dict "sameAs" (printf "https://doi.org/%s" .)) -}}
+{{- end }}
+
+{{/* Conditional: image */}}
+{{- $image := "" -}}
+{{- if .Params.images }}
+  {{- $image = index .Params.images 0 -}}
+  {{- if not (hasPrefix $image "http") }}{{ $image = $image | absURL }}{{ end -}}
+{{- else if .Params.image }}
+  {{- $image = .Params.image | absURL -}}
+{{- else if .Site.Params.default_image }}
+  {{- $image = .Site.Params.default_image -}}
+{{- end }}
+{{- if $image }}
+  {{- $article = merge $article (dict "image" (dict "@type" "ImageObject" "url" $image "width" 1200 "height" 630)) -}}
+{{- end }}
+
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "{{ if eq .Params.type "Project" }}TechArticle{{ else if eq .Params.type "Essay" }}Article{{ else if eq .Params.type "Review" }}Review{{ else }}BlogPosting{{ end }}",
-  "headline": "{{ .Title }}",
-  "name": "{{ .Title }}",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "{{ .Site.Title }}",
-    "url": "{{ .Site.BaseURL }}"
-  },
-  "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
-  {{ if .Params.keywords }}
-  "keywords": [{{ range $i, $keyword := .Params.keywords }}{{ if $i }}, {{ end }}"{{ $keyword }}"{{ end }}],
-  {{ else if .Params.tags }}
-  "keywords": [{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}"{{ $tag }}"{{ end }}],
-  {{ end }}
-  "articleBody": {{ .Content | plainify | jsonify }},
-  "wordCount": {{ .WordCount }},
-  "timeRequired": "PT{{ .ReadingTime }}M",
-  "inLanguage": "{{ .Site.Language.Lang | default "en" }}",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [".post-content > p:first-of-type", ".post-header h1"]
-  },
-  {{ if eq .Params.type "Project" }}
-  "proficiencyLevel": "Expert",
-  {{ end }}
-  {{ with .Params.external_url }}
-  "citation": {
-    "@type": "CreativeWork",
-    "url": "{{ . }}"
-  },
-  {{ end }}
-  {{ with .Params.doi }}
-  "sameAs": "https://doi.org/{{ . }}",
-  {{ end }}
-  {{ $image := "" }}
-  {{ if .Params.images }}
-    {{ $image = index .Params.images 0 }}
-    {{/* Ensure absolute URL for structured data */}}
-    {{ if not (hasPrefix $image "http") }}
-      {{ $image = $image | absURL }}
-    {{ end }}
-  {{ else if .Params.image }}
-    {{ $image = .Params.image | absURL }}
-  {{ else if .Site.Params.default_image }}
-    {{ $image = .Site.Params.default_image }}
-  {{ end }}
-  {{ if $image }}
-  "image": {
-    "@type": "ImageObject",
-    "url": "{{ $image }}",
-    "width": 1200,
-    "height": 630
-  },
-  {{ end }}
-  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
-  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ .Permalink }}"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ .Site.Title }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ .Site.BaseURL }}icons/web-app-manifest-512x512.png",
-      "width": 512,
-      "height": 512
-    }
-  }
-  {{ if .Site.Params.author }},
-  "author": {
-    "@type": "Person",
-    "name": "{{ .Site.Params.author }}",
-    "url": "{{ .Site.BaseURL }}about/",
-    "knowsAbout": {{ .Site.Params.keywords | jsonify }},
-    "sameAs": [
-      "https://github.com/philippdubach",
-      "https://bsky.app/profile/philippdubach.com",
-      "https://x.com/philippdubach",
-      "https://scholar.google.com/citations?user=-69oS2wAAAAJ"
-    ]
-  }
-  {{ end }}
-}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $article) | jsonify | safeJS }}
 </script>
 
-{{/* FAQPage Schema - for posts with FAQ frontmatter */}}
+{{/* FAQPage Schema — for posts with FAQ frontmatter */}}
 {{ with .Params.faq }}
 {{- $mainEntity := slice }}
 {{- range . }}

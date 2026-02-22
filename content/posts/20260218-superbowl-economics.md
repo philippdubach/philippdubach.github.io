@@ -7,6 +7,8 @@ publishDate: 2026-02-20T03:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-super-bowl-economics1.jpg
 description: "A 30-second Super Bowl spot costs $8M. The real price is $16–23M. The ROI evidence is mixed. A deep look at the pricing, the prisoner's dilemma, and the NFL."
+categories:
+- Finance
 keywords:
 - Super Bowl ad cost 2026
 - Super Bowl advertising ROI
@@ -28,7 +30,17 @@ keywords:
 - EDO Super Bowl engagement metric
 - Super Bowl 30-second spot price history
 - marketing attribution advertising measurement
+- game theory pricing economics
+- monopoly pricing power
+- advertising ROI measurement
+- prisoner's dilemma business strategy
+type: Analysis
 draft: false
+takeaways:
+- "A 30-second Super Bowl spot costs $8M but $16–23M fully loaded with production, talent, and mandatory companion buys"
+- "Stanford research shows competing brands both advertising cancels out the benefit — a prisoner's dilemma the NFL exploits for rising prices"
+- "The NFL is the last monoculture in American media: 84 of the top 100 most-watched US telecasts in 2025"
+- "A single Super Bowl ad generates the same brand-search engagement as 1,056 typical primetime ads"
 faq:
 - question: "How much does a 2026 Super Bowl ad really cost?"
   answer: "The sticker price is $8 million for a 30-second spot, with premium positions reaching $10 million. But the fully loaded cost is $16–23 million once you add production ($1–4M), celebrity talent ($1–5M), and mandatory companion buys on the same network ($7–10M). Some estimates reach $40–50 million when including agency fees, music licensing, and digital activation."

@@ -6,12 +6,20 @@ publishDate: 2026-02-07T03:00:00Z
 images:
 - https://static.philippdubach.com/ograph/ograph-state-of-mobile.jpg
 description: 'Apps beat games in mobile revenue for the first time in 2025. GenAI led the charge with $3.5B in growth. Eight charts show who controls the app economy.'
+categories:
+- AI
 keywords:
 - state of mobile 2026
 - mobile app revenue vs games
 - GenAI app revenue
 - app economy trends
 - ChatGPT app revenue
+- AI consumer revenue
+- GenAI market size
+- AI app economy
+- generative AI business model
+- AI advertising demographics
+type: Analysis
 draft: false
 
 faq:

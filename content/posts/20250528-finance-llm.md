@@ -38,3 +38,5 @@ and explainable decision-making—requirements that sit uncomfortably with neura
 The research highlights a fundamental tension that's about to reshape fintech: 
 the same complexity that makes LLMs powerful at parsing market sentiment or generating investment reports also makes them regulatory nightmares 
 in a sector where you need to explain every decision to examiners.
+
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}

@@ -12,9 +12,12 @@ keywords:
 - weather forecast improvement history
 - neural weather prediction models
 - CRPS loss weather forecasting
+- AI inference cost economics
+- AI replacing traditional systems
+- AI disruption real-world applications
 categories:
 - AI
-type: Commentary
+type: Analysis
 draft: false
 aliases:
 - /2025/11/22/weather-forecasts-have-improved-a-lot/

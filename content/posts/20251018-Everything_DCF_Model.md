@@ -35,3 +35,5 @@ A brilliant piece of writing from [Michael Mauboussin](https://www.morganstanley
 
 > […] we want to suggest the mantra "everything is a DCF model." The point is that whenever investors value a stake in a cash-generating asset, they should recognize that they are using a discounted cash flow (DCF) model. […] The value of those businesses is the present value of the cash they can distribute to their owners. This suggests a mindset that is very different from that of a speculator, who buys a stock in anticipation that it will go up without reference to its value. Investors and speculators have always coexisted in markets, and the behavior of many market participants is a blend of the two.
 
+{{< readnext slug="the-variance-tax" >}}
+

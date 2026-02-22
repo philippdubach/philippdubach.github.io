@@ -12,9 +12,12 @@ keywords:
 - SAFE fund exclusion
 - Britain strategic isolation
 - post-Brexit foreign policy
+- defense procurement economics
+- trade bloc exclusion
+- economic isolation
 categories:
-- Commentary
-type: Commentary
+- Economics
+type: Analysis
 draft: false
 
 faq:

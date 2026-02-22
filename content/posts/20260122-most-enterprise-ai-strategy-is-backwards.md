@@ -16,6 +16,11 @@ categories:
 - Economics
 type: Essay
 draft: false
+takeaways:
+- "85% of enterprise AI projects fail; only 26% of companies translate pilots to production"
+- "Employees spend 57% of their workday on coordination — the layer AI should target first"
+- "Language models bridge messy communication to structured data: transcripts to CRM fields at 99% accuracy, 30% higher win rates"
+- "AI gains compound when knowledge capture becomes shareable across the organization"
 aliases:
 - /backwards/
 - /posts/most-enterprise-ai-strategy-is-backwards/
@@ -51,3 +56,5 @@ Three observations:
 The coordination layer isn't glamorous. It's transcripts, status updates, action items, CRM entries. It's the administrative exhaust of getting anything done with other people. And it's almost entirely composed of language. We have language models now. Models that extract structured data from messy transcripts, convert meeting notes into CRM fields with 99% accuracy. Sales teams using these tools report 30% higher win rates and 80% less manual work.
 
 Yet most enterprise AI strategies ignore this entirely. They're focused on chatbots and demos for board presentations. Meanwhile, the language processing that constitutes the primary workload of any modern business remains stuck in the same recursive loops. The winners won't be companies with great AI announcements. They'll be the ones building daily habits early enough for the gains to stack.
+
+{{< readnext slug="the-saaspocalypse-paradox" >}}

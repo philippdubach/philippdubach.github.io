@@ -98,3 +98,5 @@ This is where the Pave customer support data and the company formation data conn
 
 The question I can't answer, and I'm not sure anyone can, is whether the "elsewhere" absorbs enough people fast enough. The internet transition took roughly 15 years to net out positively in aggregate employment. The smartphone transition was faster. AI job displacement has the steepest curve yet, with customer support hiring falling 65% in two years, not fifteen. The infrastructure investment is enormous, the historical pattern is consistent, and the geographic concentration of new company formation is real. But there is nothing in the data that guarantees the second act of this workforce transformation arrives on the same schedule as the first.
 
+{{< readnext slug="the-impossible-backhand" >}}
+

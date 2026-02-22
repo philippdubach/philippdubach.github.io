@@ -28,6 +28,10 @@ faq:
   answer: Cloudflare Workers monitor the Hugo site's feed and automatically generate social media posts using Workers AI (Llama 3.3 70B). The workers create neutral, non-clickbait posts with banned word filtering, posting to both Bluesky and Twitter/X without manual intervention.
 - question: How does IndexNow work with Hugo for faster indexing?
   answer: IndexNow integration is automated through GitHub Actions. When content changes, the workflow checks which URLs have been recently modified based on the lastmod frontmatter field and submits only those URLs to search engines, resulting in faster discovery and indexing of new or updated content.
+- question: How do you add security headers to a GitHub Pages site?
+  answer: GitHub Pages doesn't process _headers files, so a Cloudflare Worker intercepts all requests on the domain and injects HTTP security headers including HSTS, Content-Security-Policy with frame-ancestors, Cross-Origin-Embedder-Policy, Cross-Origin-Opener-Policy, and Permissions-Policy. The CSP must be kept in sync across the Worker, head.html meta tag, and _headers reference file.
+- question: How do you show most-read posts on a Hugo static site?
+  answer: A Cloudflare Worker proxy queries the GoatCounter analytics API for the top 10 posts over the past 7 days. The Hugo site footer fetches this data client-side and renders a "Most Read" section. The Worker adds CORS headers and caches responses for 1 hour.
 ---
 
 This site runs on Hugo, deployed to GitHub Pages with Cloudflare CDN. Images are hosted on R2 (`static.philippdubach.com`) with automatic resizing and WebP conversion.
@@ -38,6 +42,26 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
  
 
 **Updates**
+
+> **February 2026**
+
+*Homepage Redesign* — Rebuilt the homepage with a tabbed layout (Articles/Projects), year dividers, and thumbnail images served via Cloudflare Image Resizing. Consolidated navigation into a unified sidebar.
+
+*Security Headers Worker* — Deployed a dedicated Cloudflare Worker on `philippdubach.com/*` that injects HSTS, CSP with `frame-ancestors`, COEP, COOP, and `Permissions-Policy` headers. GitHub Pages doesn't process `_headers` files, so the Worker fills that gap. SHA-pinned all GitHub Actions and added Hugo binary checksum verification in CI.
+
+*Machine-Readable Feeds* — Added [JSON Feed 1.1](/feed.json) alongside RSS, a [Posts API](/api/posts.json) for programmatic access, and `llms.txt`/`llms-full.txt` for AI crawler discovery. All output formats configured in `hugo.toml`.
+
+*GoatCounter "Most Read" API* — Built a Cloudflare Worker proxy that queries the GoatCounter API for the top 10 posts over the past 7 days. The footer's "Most Read" section now fetches live data from this worker instead of a static list.
+
+*FAQ Section* — New `/faq/` section with per-category pages (Finance, AI, Tech, Economics, Medicine). Each post can define `faq` entries in frontmatter; Hugo aggregates them into browsable FAQ pages with `FAQPage` structured data for search engines.
+
+*Readnext Shortcode* — Inline "Related" link to another post: `{{</* readnext slug="post-slug" */>}}`. Links are validated against live permalinks at build time.
+
+*RSS Feed Fixes* — Stripped lightbox overlay elements from full-content RSS to prevent images appearing twice in feed readers. Added XSLT stylesheet for browser-friendly RSS rendering.
+
+*Cloudflare Cache Purge* — GitHub Actions deployment now automatically purges the Cloudflare cache after each build.
+
+*Research Page* — Dynamic `/research/` page pulling publication data from `data/research.yaml` with SSRN links, DOIs, and structured data.
 
 > **January 2026**
 

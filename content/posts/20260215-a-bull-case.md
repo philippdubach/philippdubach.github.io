@@ -115,3 +115,5 @@ David Autor's vision is more optimistic: AI could "extend the relevance, reach, 
 I'm more confident in the centaur framework than in any specific prediction about timelines or magnitudes. The ninth-power scaling curve, the 53-point gap on Humanity's Last Exam, the α=0.57 typicality bias in RLHF, the 69-88% hallucination rates in legal applications, and the 95% of [enterprises](/posts/enterprise-ai-strategy-is-backwards/) seeing no measurable P&L returns from AI investments all point in the same direction. The question of AI augmentation versus replacement has an empirical answer: AI is a tool that makes good practitioners better and bad practitioners worse. The [industry narrative](/posts/is-ai-really-eating-the-world/) demands a story about replacement. The data tells a story about partnership, one where the human's contribution is not a relic of an earlier era but the irreducible ingredient that makes the whole system work.
 
 The ability to spot the impossible backhand isn't going away. If anything, it's worth more every day.
+
+{{< readnext slug="enterprise-ai-strategy-is-backwards" >}}

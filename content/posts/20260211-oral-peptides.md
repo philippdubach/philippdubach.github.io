@@ -26,6 +26,11 @@ keywords:
 - oral amycretin Phase 2
 - Jevons Paradox statin analogy market expansion
 draft: true
+takeaways:
+- "Oral semaglutide has ~1% bioavailability — each pill destroys 99% of its active ingredient, requiring 280x more API than the equivalent injection"
+- "Eli Lilly's orforglipron is a small molecule, not a peptide, bypassing the oral delivery problem that cost Novo decades and $1.8B"
+- "The GLP-1 market hit $70B in 2025; oral pills are expected to expand the market, not cannibalize injections (statin precedent: 197% user growth)"
+- "Current GLP-1 penetration is under 5% of eligible US adults vs. 35%+ for statins, implying massive expansion ahead"
 faq:
 - question: "How does oral semaglutide work if only 1% is absorbed?"
   answer: "Oral semaglutide uses the permeation enhancer SNAC (salcaprozate sodium) to temporarily buffer stomach acid and fluidize gastric cell membranes, allowing a small fraction of the peptide to cross into the bloodstream. The resulting bioavailability is roughly 0.4 to 1%, meaning over 99% of each pill is destroyed. The oral 25mg daily dose requires approximately 280x more active ingredient than the equivalent weekly injection."

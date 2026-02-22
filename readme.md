@@ -6,7 +6,8 @@ Personal blog on quantitative finance, AI/ML, and technology.
 
 | | |
 |---|---|
-| RSS | [philippdubach.com/index.xml](https://philippdubach.com/index.xml) |
+| RSS | [philippdubach.com/feed/](https://philippdubach.com/feed/) |
+| JSON Feed | [philippdubach.com/feed.json](https://philippdubach.com/feed.json) |
 | Newsletter | [philippdubach.com/subscribe](https://philippdubach.com/subscribe/) |
 | Bluesky | [@philippdubach.com](https://bsky.app/profile/philippdubach.com) |
 | GitHub | [philippdubach](https://github.com/philippdubach) |
@@ -22,9 +23,10 @@ Personal blog on quantitative finance, AI/ML, and technology.
 | **CDN** | Cloudflare |
 | **Images** | Cloudflare R2 (`static.philippdubach.com`) |
 | **Analytics** | GoatCounter (privacy-first, no cookies) |
-| **Math** | MathJax 3.2.2 |
+| **Security Headers** | Cloudflare Worker (HSTS, CSP, COEP, COOP) |
+| **Math** | MathJax 3.2.2 (SRI-verified) |
 | **Code Highlighting** | Chroma (Hugo built-in) |
-| **Social Automation** | Cloudflare Workers + Workers AI |
+| **Social Automation** | Cloudflare Workers + Workers AI (Llama 3.3 70B) |
 | **Composer Tool** | Cloudflare Pages |
 | **URL Shortener** | Cloudflare Workers + KV + D1 |
 
@@ -36,18 +38,24 @@ Personal blog on quantitative finance, AI/ML, and technology.
 ├── hugo.toml                 # Site configuration
 ├── content/
 │   ├── posts/                # Blog articles (YYYYMMDD-slug.md)
+│   ├── faq/                  # Category FAQ pages (aggregated from post frontmatter)
+│   ├── categories/           # Category landing pages
 │   ├── projects/             # Project showcase
 │   └── standalone/           # Landing pages
 ├── layouts/
-│   ├── _default/             # Base templates
+│   ├── _default/             # Base templates + feed formats (JSON Feed, Posts API, llms.txt)
 │   ├── partials/             # Components (head, header, sidebar, footer, related)
-│   └── shortcodes/           # img, disclaimer, newsletter, etc.
-├── static/css/custom.css     # All styling
-├── data/navigation.yaml      # Nav menu config
+│   └── shortcodes/           # img, disclaimer, newsletter, readnext
+├── static/css/custom.css     # All styling (inlined at build time)
+├── data/
+│   ├── navigation.yaml       # Nav menu config
+│   └── research.yaml         # Research publications (SSRN papers, DOIs)
 ├── composer/                 # Post Composer (Cloudflare Pages)
 └── social-automation/
     ├── bluesky worker/       # Auto-post to Bluesky
     ├── twitter worker/       # Auto-post to Twitter/X
+    ├── goatcounter-worker/   # "Most Read" posts API proxy
+    ├── security-headers/     # HTTP security headers Worker
     └── url shortener/        # pdub.click
 ```
 
@@ -82,6 +90,7 @@ math = true               # Enable MathJax
 | `{{< img >}}` | Images from static.philippdubach.com CDN |
 | `{{< disclaimer type="finance" >}}` | Contextual disclaimers (finance, medical, ai, research, gambling) |
 | `{{< newsletter >}}` | Newsletter signup form |
+| `{{< readnext slug="post-slug" >}}` | Inline "Related" link to another post |
 
 ---
 
@@ -135,6 +144,8 @@ The workers use Llama 3.3 70B to generate social posts with specific style const
 cd social-automation/bluesky\ worker && npx wrangler deploy
 cd social-automation/twitter\ worker && npx wrangler deploy
 cd social-automation/url\ shortener && npx wrangler deploy
+cd social-automation/goatcounter-worker && npx wrangler deploy
+cd social-automation/security-headers && npx wrangler deploy
 ```
 
 ---
@@ -179,10 +190,10 @@ cd composer && npx wrangler pages deploy . --project-name post-composer
 ## UI/UX Features
 
 ### Layout
-- Three-column layout on desktop (sidebar, content, sidebar)
+- Tabbed homepage with Articles/Projects tabs, year dividers, and thumbnail images
 - Responsive mobile design with collapsible navigation
 - Related posts section with centered heading
-- Latest/Most Read sidebar sections
+- "Most Read" footer section powered by live GoatCounter data
 
 ### Typography & Spacing
 - Post spacing: 3.75rem gap between articles
@@ -195,15 +206,24 @@ Context-aware disclaimers that:
 - Hidden on homepage/list views
 - Types: finance, medical, ai, research, gambling
 
+### Machine-Readable Outputs
+- `/feed/index.xml` — RSS 2.0 with XSLT stylesheet
+- `/feed.json` — JSON Feed 1.1
+- `/api/posts.json` — Posts API for programmatic access
+- `/llms.txt` — AI/LLM crawler discovery
+- `/sitemap.xml` — Dynamic sitemap with git-based lastmod
+
 ---
 
 ## Security
 
 | Feature | Implementation |
 |---------|----------------|
-| CSP | Strict Content-Security-Policy headers |
-| SRI | GoatCounter script verified with hash |
-| Headers | X-Content-Type-Options, X-Frame-Options |
+| Security Headers | Cloudflare Worker injecting HSTS, CSP, COEP, COOP, Permissions-Policy |
+| CSP | Strict Content-Security-Policy with `frame-ancestors` (synced across Worker, head.html, _headers) |
+| SRI | GoatCounter and MathJax verified with integrity hashes |
+| CI Hardening | SHA-pinned GitHub Actions, Hugo binary checksum verification |
+| Headers | X-Content-Type-Options, X-Frame-Options, Referrer-Policy |
 | Input Validation | All worker inputs sanitized |
 | Rate Limiting | API endpoints protected |
 | Auth | API key + HMAC sessions on workers |
@@ -211,6 +231,18 @@ Context-aware disclaimers that:
 ---
 
 ## Changelog
+
+### February 2026
+- Redesigned homepage with tabbed Articles/Projects layout and thumbnail images via Cloudflare Image Resizing
+- Deployed security headers Cloudflare Worker (HSTS, CSP, COEP, COOP, Permissions-Policy)
+- Added JSON Feed 1.1, Posts API, and llms.txt/llms-full.txt output formats
+- Built GoatCounter "Most Read" API worker for live footer data
+- Added FAQ section with per-category pages and FAQPage structured data
+- Added `readnext` shortcode for inline related post links
+- Styled RSS feed with XSLT, stripped lightbox overlays from feed content
+- Automated Cloudflare cache purge in GitHub Actions deployment
+- Added dynamic research page with structured data
+- SHA-pinned all GitHub Actions, added Hugo binary checksum verification
 
 ### January 2026
 - Upgraded social automation AI model to Llama 3.3 70B (from 3.1 8B)

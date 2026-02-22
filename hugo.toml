@@ -39,6 +39,12 @@ enableGitInfo = true
     email = "me@philippdubach.com"
     bluesky = "philippdubach.com"
     twitter = "philippdubach"
+    linkedin = "philippdubach"
+
+  [params.academic]
+    google_scholar = "https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en"
+    researchgate = "https://www.researchgate.net/profile/Philipp-Dubach"
+    orcid = "https://orcid.org/0009-0002-3126-6760"
 
 [markup]
   [markup.highlight]

@@ -12,6 +12,8 @@ keywords:
 - deep generative models tutorial
 - diffusion model forward process
 - Stefano Ermon lectures
+- generative AI architecture
+- AI model training foundations
 categories:
 - AI
 type: Commentary

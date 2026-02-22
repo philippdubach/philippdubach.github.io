@@ -4,9 +4,9 @@ seoTitle = "Middle Power Realism: Carney's Davos Speech and the New Order"
 date = 2026-01-27
 description = "At Davos 2026, Carney told allies to take down the signs of the liberal order. Middle powers are learning to navigate between giants without illusions."
 images = ["https://static.philippdubach.com/ograph/0015.png"]
-keywords = ["Mark Carney Davos 2026 speech", "middle power foreign policy", "Donroe Doctrine Trump", "Canada EU SAFE defense", "rules-based international order collapse"]
-categories = ["Commentary"]
-type = "Commentary"
+keywords = ["Mark Carney Davos 2026 speech", "middle power foreign policy", "Donroe Doctrine Trump", "Canada EU SAFE defense", "rules-based international order collapse", "trade policy economics", "tariff response strategy", "economic coercion"]
+categories = ["Economics"]
+type = "Analysis"
 draft = false
 [[faq]]
 question = "What is middle power realism?"

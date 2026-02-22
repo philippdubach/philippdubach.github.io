@@ -12,10 +12,14 @@ keywords:
 - fare-free transit pros and cons
 - behavioral economics transit policy
 - congestion pricing
+- pricing psychology economics
+- zero price behavioral economics
+- public subsidy economics
+- pricing policy design
 external_url: https://people.duke.edu/~dandan/webfiles/PapersPI/Zero%20as%20a%20Special%20Price.pdf
 categories:
 - Economics
-type: Commentary
+type: Analysis
 aliases:
 - /2025/06/22/behavioral-economics-transit-policy/
 

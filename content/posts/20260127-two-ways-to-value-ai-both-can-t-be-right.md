@@ -49,4 +49,6 @@ The reconciliation might be this: AI winners could thrive spectacularly while br
 
 Non-U.S. developed markets, by the way, offer expected returns of around 5%, versus 3.9% for U.S. large caps. The valuation gap is real even if the AI story is true. {{< img src="aqr-expected-returns-equities.png" alt="AQR expected local real returns for equities: U.S. Large at 3.9%, Eurozone at 5.0%, UK at 4.9%, Japan at 4.9%" width="80%" >}}
 
+{{< readnext slug="the-saaspocalypse-paradox" >}}
+
 {{< disclaimer type="finance" >}}

@@ -33,7 +33,7 @@
       "external_url": {{ . | jsonify }},
       {{- end }}
       "title": {{ $page.Title | jsonify }},
-      "content_html": {{ $page.Content | replaceRE `(?s)<aside[^>]*class="readnext"[^>]*>.*?</aside>` "" | jsonify }},
+      "content_html": {{ $page.Content | replaceRE `(?s)<aside[^>]*class="readnext"[^>]*>.*?</aside>` "" | replaceRE `(?s)<aside[^>]*class="key-takeaways"[^>]*>.*?</aside>` "" | jsonify }},
       "summary": {{ ($page.Description | default ($page.Summary | plainify | truncate 300)) | jsonify }},
       {{- $image := "" }}
       {{- if $page.Params.images }}

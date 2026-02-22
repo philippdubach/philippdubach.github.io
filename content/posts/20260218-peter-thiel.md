@@ -113,3 +113,5 @@ I don't know which road we're on. I'm not sure anyone does. But the velocity of 
 
 The cost of intelligence has fallen roughly [150x](https://blog.samaltman.com/three-observations) in two years. The cost of pointing it at physics is a policy choice, not a technical constraint. The 75:1 compute gap between commercial and scientific AI spending is the number that determines how fast this goes. Whether it should go fast is a different question entirely.
 
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+

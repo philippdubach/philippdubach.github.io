@@ -17,7 +17,11 @@ categories:
 - Tech
 type: Commentary
 draft: false
-
+takeaways:
+- "Compact models now outperform massive predecessors: Llama-3 8B beats Falcon 180B, Aya 23 8B beats BLOOM 176B at 4.5% of parameters"
+- "Scaling laws only reliably predict pre-training loss, not downstream performance — emergent properties masks our inability to predict what's next"
+- "Hedge fund short interest in AI-adjacent utilities sits at the 99th percentile vs. the past 5 years"
+- "Frontier labs are incorporating classical symbolic tools on CPUs — the age of brute-force scaling may be ending"
 faq:
 - question: Are AI scaling laws showing diminishing returns?
   answer: Evidence suggests yes. Sara Hooker's research shows that compact models like Llama-3 8B now outperform massive predecessors like Falcon 180B. Scaling laws only reliably predict pre-training test loss, not actual downstream performance. The jump from GPT-4 to GPT-5 shows marginal improvements requiring careful measurement, unlike the obvious qualitative leaps from GPT-1 to GPT-4.

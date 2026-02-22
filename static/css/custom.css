@@ -273,6 +273,39 @@ blockquote p {
     text-decoration-color: #007acc;
 }
 
+/* Key Takeaways - BLUF summary for GEO */
+.key-takeaways {
+    background: #f8f9fa;
+    border-left: 3px solid #007acc;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.key-takeaways h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: #333;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.key-takeaways ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.key-takeaways li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.key-takeaways li:last-child {
+    margin-bottom: 0;
+}
+
 .post-content {
     line-height: 1.7;
 }

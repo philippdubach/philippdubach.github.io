@@ -11,9 +11,14 @@ keywords:
 - John Donahoe Nike strategy
 - Nike vs On Hoka competition
 - complementary assets competitive advantage
+- competitive advantage economics
+- brand valuation decline
+- disruption economics
+- supply chain concentration risk
+- market share loss economics
 categories:
 - Finance
-type: Essay
+type: Analysis
 draft: false
 aliases:
 - /2025/12/02/nikes-crisis-and-the-economics-of-brand-decay/

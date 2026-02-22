@@ -10,9 +10,13 @@ keywords:
 - streaming consolidation 2025
 - media M&A deal analysis
 - aggregation theory streaming
+- hostile tender offer mechanics
+- breakup fee economics
+- platform economics aggregation theory
+- M&A valuation analysis
 categories:
 - Finance
-type: Essay
+type: Analysis
 draft: false
 aliases:
 - /2025/12/09/not-logan-roy-netflix-vs.-paramounts-bidding-war/

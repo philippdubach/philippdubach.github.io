@@ -69,6 +69,15 @@
         {{ end }}
         {{ end }}
     </nav>
+
+    {{/* CollectionPage JSON-LD for category pillar pages */}}
+    {{- $hasPart := slice -}}
+    {{- range .Pages.ByDate.Reverse -}}
+      {{- $hasPart = $hasPart | append (dict "@id" (printf "%s#article" .Permalink)) -}}
+    {{- end }}
+    <script type="application/ld+json">
+    {{ dict "@context" "https://schema.org" "@type" "CollectionPage" "name" .Title "description" (.Description | default (printf "Articles on %s" .Title)) "url" .Permalink "about" (dict "@type" "Thing" "name" .Title) "numberOfItems" (len .Pages) "hasPart" $hasPart "author" (dict "@id" (printf "%s#person" .Site.BaseURL)) | jsonify | safeJS }}
+    </script>
     {{ end }}
 </div>
 {{ end }}

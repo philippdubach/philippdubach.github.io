@@ -11,6 +11,10 @@ keywords:
 - change point detection
 - cryptocurrency market inefficiency
 - automated crypto trading bot
+- efficient market hypothesis crypto
+- statistical arbitrage
+- volatility trading strategy
+- quantitative trading
 tags:
 - Project
 categories:
