@@ -1,5 +1,6 @@
 +++
-title = "The Economics of a Super Bowl Ad"
+title = "Economics of a Super Bowl Ad"
+aliases = ["/posts/the-economics-of-a-super-bowl-ad/"]
 seoTitle = "Super Bowl Ad Economics 2026: The $8M Prisoner's Dilemma"
 date = 2026-02-20
 lastmod = 2026-02-20
