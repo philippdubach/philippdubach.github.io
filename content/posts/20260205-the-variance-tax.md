@@ -1,5 +1,6 @@
 +++
-title = "The Variance Tax"
+title = "Variance Tax"
+aliases = ["/posts/the-variance-tax/"]
 seoTitle = "The Variance Tax: How Volatility Drag Erodes Compound Returns"
 date = 2026-02-06
 publishDate = 2026-02-06T03:00:00Z

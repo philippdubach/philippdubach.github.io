@@ -1,5 +1,6 @@
 +++
-title = "The Long Volatility Premium"
+title = "Long Volatility Premium"
+aliases = ["/posts/the-long-volatility-premium/"]
 seoTitle = "Long Volatility Premium: Beta-Adjusted Tail Hedging as a Compensated Factor"
 date = 2026-02-14
 lastmod = 2026-02-14
