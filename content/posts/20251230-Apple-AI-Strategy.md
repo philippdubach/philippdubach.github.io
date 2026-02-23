@@ -35,8 +35,8 @@ The commoditization evidence is suggestive. I've [written before](/posts/is-ai-r
 
 But the AI investment boom resembles previous cycles. Enormous capital flowing into a sector where barriers keep falling. That pattern often ends with winners who have distribution and customer relationships, not winners who spent the most on R&D. Apple's bet isn't guaranteed to be correct, but it's defensible.
 
+{{< readnext slug="not-all-ai-skeptics-think-alike" >}}
+
 The spring Siri update will matter. Reports that [Apple employees have concerns about performance in early iOS 26.4 builds](https://9to5mac.com/2025/10/19/apple-employees-concerned-by-early-ios-26-4-apple-intelligence-sir-version/) aren't encouraging. But Apple delayed the launch multiple times, suggesting they're trying to get it right rather than shipping half-baked.
 
 Apple's $157 billion cash pile provides optionality. If AI startups face a funding crunch, Apple can acquire capability. If someone achieves a breakthrough, Apple has resources to respond. Apple has preserved its options.
-
-{{< readnext slug="not-all-ai-skeptics-think-alike" >}}

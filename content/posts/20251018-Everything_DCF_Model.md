@@ -23,9 +23,9 @@ faq = [
   {question = "Does DCF work for assets that don't produce cash flows?", answer = "No. Mauboussin is clear that the DCF framework does not apply to assets that do not generate cash flows, such as gold, art, wine, or cryptocurrencies. Those assets are priced purely by supply and demand rather than by the present value of future distributions."},
 ]
 +++
-A brilliant piece of writing from [Michael Mauboussin](https://www.morganstanley.com/im/en-us/individual-investor/about-us/people-and-teams/investment-professionals/michael-mauboussin.html) and [Dan Callahan](https://www.morganstanley.com/im/en-us/individual-investor/about-us/people-and-teams/investment-professionals/dan-callahan.html) at Morgan Stanley that was formative in what I personally believe when it comes to valuation. 
-
-> […] we want to suggest the mantra "everything is a DCF model." The point is that whenever investors value a stake in a cash-generating asset, they should recognize that they are using a discounted cash flow (DCF) model. […] The value of those businesses is the present value of the cash they can distribute to their owners. This suggests a mindset that is very different from that of a speculator, who buys a stock in anticipation that it will go up without reference to its value. Investors and speculators have always coexisted in markets, and the behavior of many market participants is a blend of the two.
+A brilliant piece of writing from [Michael Mauboussin](https://www.morganstanley.com/im/en-us/individual-investor/about-us/people-and-teams/investment-professionals/michael-mauboussin.html) and [Dan Callahan](https://www.morganstanley.com/im/en-us/individual-investor/about-us/people-and-teams/investment-professionals/dan-callahan.html) at Morgan Stanley that was formative in what I personally believe when it comes to valuation.
 
 {{< readnext slug="the-variance-tax" >}}
+
+> […] we want to suggest the mantra "everything is a DCF model." The point is that whenever investors value a stake in a cash-generating asset, they should recognize that they are using a discounted cash flow (DCF) model. […] The value of those businesses is the present value of the cash they can distribute to their owners. This suggests a mindset that is very different from that of a speculator, who buys a stock in anticipation that it will go up without reference to its value. Investors and speculators have always coexisted in markets, and the behavior of many market participants is a blend of the two.
 

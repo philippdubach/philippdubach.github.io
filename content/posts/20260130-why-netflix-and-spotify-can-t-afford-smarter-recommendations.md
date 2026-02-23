@@ -43,8 +43,8 @@ Netflix's recommendation algorithm architecture runs this optimization across [t
 
 Not everyone is convinced the algorithms are making us better off. My own [analysis of social media success prediction](https://philippdubach.com/posts/social-media-success-prediction-bert-models-for-post-titles/) found that sophisticated language models often just memorize temporal patterns rather than learning what actually makes content good. They learn the news cycle, not the news.
 
+{{< readnext slug="ai-models-as-standalone-pls" >}}
+
 The risk is that we build hybrid recommender systems that are technically brilliant but experientially hollow, engineering away the serendipity that made discovery meaningful in the first place. The recommender is becoming a curator, and the curator is becoming an agent. The architecture will keep evolving — foundation models for recommendations, reinforcement learning from human feedback applied to discovery, inference costs that continue their [10× annual decline](https://a16z.com/llmflation-llm-inference-cost/) — but the open question for 2026 is whether we want to be the curators of our own lives, or merely consumers of an optimized feed.
 
 _Slides courtesy of "[A Multi-Armed Bandit Framework for Recommendations at Netflix](https://www.slideshare.net/slideshow/a-multiarmed-bandit-framework-for-recommendations-at-netflix/102629078)" by Jaya Kawale, Netflix._
-
-{{< readnext slug="ai-models-as-standalone-pls" >}}

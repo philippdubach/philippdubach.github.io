@@ -32,10 +32,10 @@ A recent article by [Anton Vorobets](https://antonvorobets.substack.com) that I 
 
 The article highlights significant practical consequences for portfolio management and risk assessment. Portfolio optimization based on normal distribution assumptions ignores fat left tails—exactly the kind of extreme downside events that can wipe out portfolios. This misspecification can lead to inadequate risk management and suboptimal asset allocation decisions. Vorobets suggests [alternative approaches, including Monte Carlo simulations combined with Conditional Value-at-Risk (CVaR) optimization](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4034316), which better accommodate the complex distributional properties observed in financial data. While computationally more demanding, these methods offer improved alignment with empirical reality.
 
+{{< readnext slug="the-variance-tax" >}}
+
 Reading this piece gave me a few ideas for extensions I might want to explore in an upcoming personal project:
 (1) While Vorobets focuses on US equity indices, similar analysis across fixed income, commodities, currencies, and alternative assets would provide a more comprehensive view of distributional properties across financial markets. Each asset class exhibits distinct market microstructure characteristics that may influence distributional behavior.
 (2) Global Market Coverage: Extending the geographic scope to include developed, emerging, and frontier markets would illuminate whether the documented deviations from normality represent universal phenomena or are specific to US market structures. Cross-regional analysis could reveal important insights about market development, regulatory frameworks, and institutional differences.
 (3) Building upon Vorobets' foundation, there are opportunities to incorporate multivariate normality testing, regime-dependent analysis, and time-varying parameter models. Additionally, investigating the power and robustness of different statistical tests across various market conditions would strengthen the methodological contribution.
 (4) Examining different time horizons, market regimes (pre- and post-financial crisis, COVID period), and potentially higher-frequency data could provide deeper insights into when and why distributional assumptions break down.
-
-{{< readnext slug="the-variance-tax" >}}

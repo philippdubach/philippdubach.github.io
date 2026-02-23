@@ -1,5 +1,9 @@
-{{/* Related Posts - shows posts with matching categories/keywords */}}
+{{/* Related Posts - shows posts with matching categories/keywords, falls back to recent posts */}}
 {{ $related := where (.Site.RegularPages.Related . | first 5) ".Params.unlisted" "ne" true | first 3 }}
+{{ if not $related }}
+  {{/* Fallback: recent posts from the same section, excluding the current page */}}
+  {{ $related = where (where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true) ".RelPermalink" "ne" .RelPermalink | first 3 }}
+{{ end }}
 {{ if $related }}
 <aside class="related-posts" aria-labelledby="related-heading">
     <h2 class="related-heading" id="related-heading">Related</h2>

@@ -58,6 +58,8 @@ The counterargument, and it's a reasonable one, is that IsoDDE represents a qual
 
 I find this plausible but unproven. We'll know more when Isomorphic's first candidates enter trials, targeted for late 2026.
 
+{{< readnext slug="the-pill-that-wastes-99-of-itself" >}}
+
 ## Where Isomorphic fits in the competitive stack
 
 Isomorphic's competitive position is unusual. It leads on computational benchmarks but trails on clinical progress. [Insilico Medicine](https://insilico.com/) has the most advanced clinical portfolio: its IPF drug ISM001-055 (now called rentosertib) reached Phase IIa with [positive results published in *Nature Medicine* in June 2025](https://www.nature.com/articles/s41591-025-03743-2), and Insilico has 10+ IND approvals across 31 programs. [Recursion Pharmaceuticals](https://ir.recursion.com/news-releases/news-release-details/recursion-and-exscientia-two-leaders-ai-drug-discovery-space), which [absorbed Exscientia in a $688 million merger](https://pharmaphorum.com/news/ai-biotechs-exscientia-and-recursion-agree-688m-merger), takes a different approach entirely, running millions of phenomics experiments weekly on 65 petabytes of biological imaging data. Both companies own wet-lab infrastructure that Isomorphic lacks.
@@ -71,5 +73,3 @@ The open-source threat is real but manageable in the near term. [Chai Discovery]
 For Alphabet, Isomorphic is a rounding error that could become a franchise. The Other Bets segment posted a $3.6 billion operating loss in 2025. Alphabet's net income was $132 billion. The [$600 million funding round](https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-600m-external-investment-round) led by Thrive Capital in March 2025 suggests the company understands the urgency of getting to the clinic, but Alphabet can sustain this bet indefinitely while the underlying science matures, and that patience is itself a competitive advantage most biotech startups don't have.
 
 The question I keep coming back to is simple: does better computation translate to better medicine? IsoDDE's benchmarks are the best evidence so far that AI can model molecular interactions with extraordinary precision. But Demis Hassabis [said it himself](https://www.isomorphiclabs.com/our-tech): "We know we're never going to solve drug design with AlphaFold alone. We'll need half a dozen more breakthroughs of that magnitude." IsoDDE might be one of those breakthroughs. The clinical data, when it arrives, will tell us whether it's the kind that matters.
-
-{{< readnext slug="the-pill-that-wastes-99-of-itself" >}}

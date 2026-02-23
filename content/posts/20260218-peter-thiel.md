@@ -70,6 +70,8 @@ The implication is straightforward. If AI has already produced results in theore
 
 [Goldman Sachs estimates](https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent) generative AI could raise global GDP by 7%, roughly $7 trillion. [McKinsey pegs](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-next-innovation-revolution-powered-by-ai) R&D-specific value at $360 to $560 billion annually, but explicitly noted they did not attempt to estimate "the value of truly breakthrough innovations that transform markets (if, for example, nuclear fusion was to enable limitless, clean electricity production)." The thing they couldn't model is the thing that would actually change everything.
 
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+
 ## The stamp collector's dilemma
 
 The bear case is simple and serious. AI is the greatest pattern-matching system ever built. Physics does not advance by pattern matching. It advances by conceptual revolution: Riemannian geometry for general relativity, an entirely new mathematical framework for quantum mechanics, gauge theory for the Standard Model. None of these were discoverable in existing data.
@@ -93,6 +95,4 @@ Every AI-accelerated physics breakthrough is inherently dual-use technology. The
 I don't know which road we're on. I'm not sure anyone does. But the velocity of AI scientific discovery, from Olympiad geometry problems to a gold medal at the International Mathematical Olympiad to a result in theoretical physics, all within 25 months, suggests the question will be answered empirically rather than philosophically. And probably sooner than the physicists expect.
 
 The cost of intelligence has fallen roughly [150x](https://blog.samaltman.com/three-observations) in two years. The cost of pointing it at physics is a policy choice, not a technical constraint. The 75:1 compute gap between commercial and scientific AI spending is the number that determines how fast this goes. Whether it should go fast is a different question entirely.
-
-{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
 

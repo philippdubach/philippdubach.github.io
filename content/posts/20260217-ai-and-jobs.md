@@ -62,6 +62,8 @@ I [wrote recently](https://philippdubach.com/posts/the-saaspocalypse-paradox/) a
 
 $650 billion is not a hedge. It's a conviction bet. That level of capital deployment, sustained over multiple years, creates its own labor demand in data center construction, power generation, chip design, networking, and the entire AI application layer that sits on top of the infrastructure. Enrico Moretti's research on [employment multipliers](https://eml.berkeley.edu/~moretti/text.pdf) suggests each high-tech job creates roughly five additional service-sector jobs in the same metro. If even a fraction of the AI infrastructure buildout translates into permanent technical employment, the downstream effects on local labor markets are substantial.
 
+{{< readnext slug="the-impossible-backhand" >}}
+
 ## Where the new AI jobs are forming
 
 The chart that stuck with me from the a16z newsletter is the one about company formation. SVB's State of Market report for 1H 2026 shows venture-backed startup formation rates by metro since 2022. Every major U.S. tech hub has contracted. Los Angeles is down 48%. Atlanta is down 47%. Miami, Chicago, D.C., Seattle: all down between 23% and 34%.
@@ -75,6 +77,4 @@ The rest of the country is in a venture drawdown. San Francisco is in a boom. Th
 This is where the Pave customer support data and the company formation data connect. The jobs that are disappearing (tier-1 support, basic back-office workflows, knowledge work automation targets) and the jobs that are forming (AI application companies in SF, infrastructure roles across the capex buildout) aren't the same jobs. They don't require the same skills, they don't pay the same wages, and they don't exist in the same cities. The pattern from the SVB historical data is repeating: technology displaces tasks in one category and creates entirely new categories of work elsewhere.
 
 The question I can't answer, and I'm not sure anyone can, is whether the "elsewhere" absorbs enough people fast enough. The internet transition took roughly 15 years to net out positively in aggregate employment. The smartphone transition was faster. AI job displacement has the steepest curve yet, with customer support hiring falling 65% in two years, not fifteen. The infrastructure investment is enormous, the historical pattern is consistent, and the geographic concentration of new company formation is real. But there is nothing in the data that guarantees the second act of this workforce transformation arrives on the same schedule as the first.
-
-{{< readnext slug="the-impossible-backhand" >}}
 

@@ -34,6 +34,8 @@ There's an economic concept called [Jevons paradox](https://en.wikipedia.org/wik
 
 Instead, the average employee now spends 57% of their workday on coordination: communicating, updating, aligning. Meetings alone cost the US economy $532 billion per year. This is the coordination layer, where organizations actually run, and where organizations quietly bleed.
 
+{{< readnext slug="the-saaspocalypse-paradox" >}}
+
 Three observations:
 
 (1) Only 26% of companies have the maturity to translate AI pilots into outcomes. The rest are layering AI on legacy workflows instead of redesigning them.<br>
@@ -43,5 +45,3 @@ Three observations:
 The coordination layer isn't glamorous. It's transcripts, status updates, action items, CRM entries. It's the administrative exhaust of getting anything done with other people. And it's almost entirely composed of language. We have language models now. Models that extract structured data from messy transcripts, convert meeting notes into CRM fields with 99% accuracy. Sales teams using these tools report 30% higher win rates and 80% less manual work.
 
 Yet most enterprise AI strategies ignore this entirely. They're focused on chatbots and demos for board presentations. Meanwhile, the language processing that constitutes the primary workload of any modern business remains stuck in the same recursive loops. The winners won't be companies with great AI announcements. They'll be the ones building daily habits early enough for the gains to stack.
-
-{{< readnext slug="the-saaspocalypse-paradox" >}}
