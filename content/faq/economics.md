@@ -1,5 +1,5 @@
 ---
 title: "Economics FAQ"
-description: "Frequently asked questions about macroeconomics, economic policy, and market dynamics"
+description: "Frequently asked questions about behavioral economics, wealth distribution, and game theory"
 category: "Economics"
 ---

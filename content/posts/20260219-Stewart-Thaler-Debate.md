@@ -8,6 +8,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-stewart-thaler-debate.
 description = "Prices rose 25% since 2020 and won't come back. The levels-vs-rates problem explains the vibecession, the Stewart-Thaler debate, and why nobody trusts economists."
 keywords = ["levels vs rates problem inflation", "vibepression 2026", "economics communication failure", "Jon Stewart Richard Thaler debate 2026", "why economy feels bad when data is good", "cumulative inflation since 2020", "K-shaped economy wages 2026", "vibecession 2026 explained", "nudge theory effectiveness meta-analysis", "prices still high inflation down", "economic perception gap", "real wage growth by income level", "consumer sentiment disconnect", "grocery prices since pandemic", "behavioral economics trust crisis", "essentials squeeze affordability", "Jon Stewart economics wrong", "housing affordability crisis 2026"]
 draft = true
+categories = ["Macro"]
 takeaways = [
   "Cumulative CPI is up ~25% since 2020 (groceries up 29.4%, housing up 30-45%) and none of it reverses when inflation falls to 2.4%",
   "Bottom-quartile wage growth collapsed from 7.5% to 3.5% in 2025, reversing pandemic-era compression that had closed a third of the post-1979 inequality gap",

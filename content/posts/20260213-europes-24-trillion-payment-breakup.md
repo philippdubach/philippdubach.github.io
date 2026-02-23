@@ -8,6 +8,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-european-payments-arbi
 description = "The EuroPA alliance connected 130 million users across 13 countries overnight. But this isn't really about sovereignty. It's an infrastructure arbitrage exploiting a 100-120bps spread between card network fees and SEPA Instant rails, accidentally protected by the EU's own regulation."
 keywords = ["European Payments Initiative EPI", "Wero payment system", "Visa Mastercard European market", "SEPA Instant Credit Transfer", "payment sovereignty Europe", "account-to-account payments A2A", "EuroPA alliance Bizum Bancomat", "interchange fee regulation EU", "digital euro ECB", "India UPI Brazil Pix comparison", "European payment infrastructure", "scheme fees Visa Mastercard"]
 draft = false
+categories = ["Macro"]
 takeaways = [
   "The EuroPA alliance connected 130 million users across 13 countries overnight, giving Wero the scale to challenge Visa and Mastercard's $4.7 trillion European transaction volume",
   "Card transactions cost European merchants up to 2% versus Wero's proposed 0.77%, a 100-120 basis point structural arbitrage because account-to-account payments skip the card network layer entirely",

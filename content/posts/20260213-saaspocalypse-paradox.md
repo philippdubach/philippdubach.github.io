@@ -7,6 +7,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-saaspocalypse-paradox3
 description = "The market is simultaneously pricing AI capex failure and AI destroying all software. Both cannot be true. A data-driven analysis of the February 2026 enterprise software sell-off, the hyperscaler sustainability question, and why Goldman Sachs, a16z, and the All-In pod see a 20x TAM expansion where the market sees extinction."
 keywords = ["SaaSpocalypse 2026", "IGV software ETF crash February 2026", "Anthropic Claude Cowork Plugins sell-off", "enterprise software AI disruption", "hyperscaler capex sustainability 2026", "software valuation inversion semiconductors", "SaaS per-seat pricing AI agents", "BofA AI paradox", "JP Morgan software sell-off", "systems of record vs systems of engagement", "software bifurcation AI risk", "Microsoft Azure AI capex", "Goldman Sachs AI agent TAM 2030", "a16z white collar services AI expansion", "value-based pricing AI software"]
 draft = false
+categories = ["AI", "Investing"]
 takeaways = [
   "The market is simultaneously punishing hyperscalers for weak AI capex returns and destroying software stocks because AI adoption is so strong it replaces all software, both cannot be true",
   "The IGV software ETF fell 32% to an RSI of 18, the most oversold reading since 1990, while the sector delivered 17% aggregate earnings growth and every major name beat Q4 2025 estimates",

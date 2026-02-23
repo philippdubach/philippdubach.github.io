@@ -8,6 +8,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-physics-department.jpg
 description = "Peter Thiel says physics stalled in 1972. Then GPT-5.2 proved a new result in theoretical physics. The 75:1 AI compute gap between commerce and science."
 keywords = ["AI scientific discovery", "Peter Thiel stagnation thesis", "GPT-5.2 gluon discovery", "AI breakthrough physics 2026", "AI compute gap science", "Great Stagnation physics", "total factor productivity decline", "AlphaFold Nobel Prize 2024", "AI for science", "DeepMind GNoME materials discovery", "AI fusion energy plasma control", "dual-use AI technology", "scientific progress stagnation", "bits vs atoms innovation", "research productivity decline", "computational irreducibility physics", "AI drug discovery clinical trials", "scattering amplitudes theoretical physics", "federal AI R&D spending", "Demis Hassabis radical abundance"]
 draft = true
+categories = ["AI"]
 takeaways = [
   "Total factor productivity growth fell from 1.7% annually (1947-1973) to 0.4% since 2004, a 76% decline that underpins Thiel's stagnation thesis",
   "Big Tech spends 75x more on AI than the entire US federal science budget: $250 billion versus $3.3 billion per year",

@@ -5,7 +5,7 @@ date = 2025-02-15
 images = ["https://static.philippdubach.com/ograph/ograph-post.jpg"]
 description = "Research shows passive investing makes markets more volatile as index fund growth amplifies each trade's price impact while active managers lag behind."
 keywords = ["passive investing market volatility", "index funds increasing volatility", "passive investing risks", "index fund market impact", "active vs passive investing volatility"]
-categories = ["Finance"]
+categories = ["Investing"]
 type = "Commentary"
 external_url = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3821263"
 aliases = ["/2025/02/15/passive-investings-active-problem/"]

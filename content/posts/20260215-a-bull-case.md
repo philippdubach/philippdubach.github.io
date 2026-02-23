@@ -7,6 +7,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-ai-scaling-walls1.jpg"
 description = "AI converges to the mean by design. On Humanity's Last Exam, top AI scores 37.5% vs human experts at 90%. The data says domain expertise is appreciating."
 keywords = ["AI quality ceiling domain expertise", "human AI collaboration centaur model", "Humanity's Last Exam AI benchmark 2026", "AI hallucination rates legal medical", "AI deskilling risk workforce", "AI convergence to mean RLHF typicality", "AI scaling laws diminishing returns", "centaur model AI augmentation vs replacement", "jagged technological frontier Harvard BCG", "model collapse Shumailov Nature 2024", "ninth power compute scaling AI", "AI overconfidence calibration error", "Ben Affleck AI Joe Rogan quality", "domain expert AI competitive advantage", "AI skill erosion professional knowledge", "Harvard BCG GPT-4 consultant study", "AI video generation quality limits", "Sara Hooker scaling laws compute cost", "AI blind delegation risk centaur", "enterprise AI strategy domain knowledge"]
 draft = false
+categories = ["AI"]
 aliases = ["/posts/a-bull-case/"]
 takeaways = [
   "Computational cost scales with the ninth power of improvement in practice: halving an AI error rate requires more than 500x the computational resources",

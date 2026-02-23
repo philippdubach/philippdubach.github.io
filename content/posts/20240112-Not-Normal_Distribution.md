@@ -5,7 +5,7 @@ date = 2025-06-15
 images = ["https://static.philippdubach.com/ograph/ograph-gaussian.jpg"]
 description = "Are stock returns normally distributed? Formal normality tests reject this assumption for most equity indices, with major implications for risk management."
 keywords = ["normal distribution stock returns", "fat tails finance", "are stock returns normally distributed", "portfolio optimization fat tails", "normality tests financial data"]
-categories = ["Finance"]
+categories = ["Quantitative Finance"]
 type = "Commentary"
 external_url = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5283255"
 aliases = ["/2025/06/15/it-just-aint-so/"]

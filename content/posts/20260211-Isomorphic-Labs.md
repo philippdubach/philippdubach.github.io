@@ -8,6 +8,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-isomorphic-labs-isodde
 description = "IsoDDE doubles AlphaFold 3 on hard benchmarks and beats physics-based gold standards. But no AI drug has FDA approval. What the $4B in pharma deals actually mean."
 keywords = ["Isomorphic Labs IsoDDE", "AI drug discovery clinical trials success rate", "IsoDDE vs AlphaFold 3", "Isomorphic Labs Eli Lilly Novartis partnership", "AI designed drug FDA approval", "computational drug design", "AI drug discovery 2026", "Alphabet Other Bets Isomorphic Labs", "Phase II efficacy AI drugs", "Insilico Medicine rentosertib", "Recursion Exscientia merger", "binding affinity prediction FEP+", "in silico drug discovery", "undruggable targets AI", "Demis Hassabis drug design", "Chai Discovery Boltz AI biotech", "Google DeepMind drug discovery spinoff", "AI pharma deal structure biobucks", "generative chemistry drug design", "AI drug discovery Phase II wall"]
 draft = true
+categories = ["Medicine", "AI"]
 takeaways = [
   "IsoDDE hits 50% on the hardest protein-ligand prediction benchmark versus 23% for AlphaFold 3 and beats the physics-based gold standard FEP+ on binding affinity with a 0.85 Pearson correlation",
   "AI-discovered drugs show 80-90% Phase I success rates versus a 40-65% historical average, but Phase II efficacy rates remain roughly 40% for both AI and traditional drugs",

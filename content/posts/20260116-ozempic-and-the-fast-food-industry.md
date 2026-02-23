@@ -5,7 +5,7 @@ date = 2026-01-16
 images = ["https://static.philippdubach.com/ograph/ograph-glp1-food.jpg"]
 description = "Cornell research: GLP-1 users cut grocery spending 5.3%, fast food 8%. With 16% household adoption and savory snacks down 10%, food stocks face headwinds."
 keywords = ["GLP-1 food industry impact", "Ozempic grocery spending", "food stocks GLP-1", "Wegovy consumer behavior", "weight loss drug food sales"]
-categories = ["Finance", "Economics"]
+categories = ["Medicine", "Economics"]
 type = "Commentary"
 draft = false
 external_url = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5073929"

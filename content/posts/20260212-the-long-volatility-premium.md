@@ -8,6 +8,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-long-volatility-premiu
 description = "One River's data shows beta-adjusted long volatility outperformed the S&P 500 over 40 years. Goldman, AQR, and Universa agree on the mechanism but disagree on implementation. A synthesis of the evidence."
 keywords = ["long volatility premium", "beta-adjusted tail hedging", "volatility risk premium", "tail risk hedging portfolio construction", "variance tax compounding", "put options convexity gamma", "trend following vs put hedging", "Universa Investments Spitznagel", "rebalancing premium volatility", "Goldman Sachs tail risk", "AQR tortoise hare hedging", "CAIA tail risk comparison"]
 draft = false
+categories = ["Quantitative Finance"]
 takeaways = [
   "One River's 40-year data shows a beta-adjusted long volatility overlay improved S&P 500 total returns while reducing drawdowns, because neutralizing the put's short-delta isolates convexity that pays off in crashes",
   "A 3.3% allocation to Universa with the rest in the S&P 500 compounded at 12.3% annually over 10 years, beating the index by truncating the variance tax on compound returns",

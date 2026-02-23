@@ -7,6 +7,7 @@ images = ["https://static.philippdubach.com/ograph/ograph-enterprise-agent-stack
 description = "The enterprise AI agent stack is stratifying into six layers with different winners at each. Models commoditize; context — your organizational world model — compounds. A framework for agentic AI architecture decisions."
 keywords = ["enterprise AI agent stack", "agentic AI architecture enterprise", "AI model commoditization", "organizational world model", "organizational context AI defensibility", "multi-model AI strategy", "enterprise AI context layer", "agent orchestration", "AI governance enterprise", "context graph enterprise AI", "multi-agent systems enterprise", "AI agent stack defensibility"]
 draft = false
+categories = ["AI"]
 takeaways = [
   "37% of enterprises now use five or more AI models in production, making single-provider lock-in the new version of single-cloud risk.",
   "The enterprise AI agent stack is stratifying into six layers with different winners at each, and context, not models, sits in the highest lock-in and hardest-to-rebuild zone.",

@@ -5,7 +5,7 @@ date = 2025-05-11
 images = ["https://static.philippdubach.com/ograph/ograph-post.jpg"]
 description = "UBS paper uses Transition Probability Tensors to bridge machine learning and arbitrage-free derivatives pricing, offering a faster alternative to Monte Carlo."
 keywords = ["machine learning derivatives pricing", "Monte Carlo simulation alternatives finance", "attention mechanisms quantitative finance", "arbitrage-free pricing machine learning", "transition probability tensors"]
-categories = ["Finance", "AI"]
+categories = ["Quantitative Finance"]
 type = "Commentary"
 external_url = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212863"
 aliases = ["/2025/05/11/beyond-monte-carlo-tensor-based-market-modeling/"]
