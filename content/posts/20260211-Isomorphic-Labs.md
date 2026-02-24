@@ -45,7 +45,7 @@ This ratio is standard across AI drug discovery deals in 2025, and it tells you 
 
 ## The Phase II wall
 
-Here is where I think the AI drug discovery narrative gets genuinely interesting, and where most commentary stops too early.
+Here is where I think the AI drug discovery narrative gets interesting, and where most commentary stops too early.
 
 [Jayatunga et al. (2024)](https://www.sciencedirect.com/science/article/pii/S135964462400134X), in the first systematic analysis of AI-discovered drugs in clinical trials, showed AI-discovered molecules achieving **80-90%** success rates in Phase I trials, well above the historical 40-65% average. That's meaningful. It suggests AI is good at designing molecules that are safe and have decent pharmacokinetic properties: they get absorbed, distributed, metabolized, and excreted the way you'd want. Phase I is mostly about safety. AI passes it.
 
@@ -73,4 +73,4 @@ The open-source threat is real but manageable in the near term. [Chai Discovery]
 
 For Alphabet, Isomorphic is a rounding error that could become a franchise. The Other Bets segment posted a $3.6 billion operating loss in 2025. Alphabet's net income was $132 billion. The [$600 million funding round](https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-600m-external-investment-round) led by Thrive Capital in March 2025 suggests the company understands the urgency of getting to the clinic, but Alphabet can sustain this bet indefinitely while the underlying science matures, and that patience is itself a competitive advantage most biotech startups don't have.
 
-The question I keep coming back to is simple: does better computation translate to better medicine? IsoDDE's benchmarks are the best evidence so far that AI can model molecular interactions with extraordinary precision. But Demis Hassabis [said it himself](https://www.isomorphiclabs.com/our-tech): "We know we're never going to solve drug design with AlphaFold alone. We'll need half a dozen more breakthroughs of that magnitude." IsoDDE might be one of those breakthroughs. The clinical data, when it arrives, will tell us whether it's the kind that matters.
+The question I keep coming back to is simple: does better computation translate to better medicine? IsoDDE's benchmarks are the best evidence so far that AI can model molecular interactions with unusual precision. But Demis Hassabis [said it himself](https://www.isomorphiclabs.com/our-tech): "We know we're never going to solve drug design with AlphaFold alone. We'll need half a dozen more breakthroughs of that magnitude." IsoDDE might be one of those breakthroughs. The clinical data, when it arrives, will tell us whether it's the kind that matters.
