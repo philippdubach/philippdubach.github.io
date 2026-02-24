@@ -10,7 +10,7 @@ keywords = ["Polymarket insider trading", "prediction market regulation", "predi
 categories = ["Investing"]
 type = "Analysis"
 draft = false
-unlisted = true
+unlisted = false
 takeaways = [
   "A suspected Google insider went 22-for-23 on Polymarket, turning $3M into $4.15M in under 24 hours, and no U.S. regulator has acted on any of the three major cases since December 2025",
   "A Fed working paper found Kalshi's macro markets matched the actual FOMC rate outcome on the day before every meeting since 2022, outperforming traditional forecasting tools in certain windows",
