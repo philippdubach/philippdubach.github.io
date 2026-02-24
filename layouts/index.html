@@ -62,7 +62,7 @@
                             <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
                         </span>
                         <span class="home-row-reading">{{ $page.ReadingTime }} min read</span>
-                        {{ with $page.Params.categories }}<span class="home-row-cat">{{ index . 0 }}</span>{{ end }}
+                        {{ with $page.Params.categories }}{{ $cat := index . 0 }}{{ $short := cond (eq $cat "Quantitative Finance") "Quant" $cat }}<span class="home-row-cat"><span class="cat-full">{{ $cat }}</span><span class="cat-mobile">{{ $short }}</span></span>{{ end }}
                     </div>
                 </a>
             </article>
@@ -111,7 +111,7 @@
                             <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
                         </span>
                         <span class="home-row-reading">{{ $page.ReadingTime }} min read</span>
-                        {{ with $page.Params.categories }}<span class="home-row-cat">{{ index . 0 }}</span>{{ end }}
+                        {{ with $page.Params.categories }}{{ $cat := index . 0 }}{{ $short := cond (eq $cat "Quantitative Finance") "Quant" $cat }}<span class="home-row-cat"><span class="cat-full">{{ $cat }}</span><span class="cat-mobile">{{ $short }}</span></span>{{ end }}
                     </div>
                 </a>
             </article>

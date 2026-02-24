@@ -2244,6 +2244,10 @@ pre {
     margin: 0 0.4rem;
 }
 
+.cat-mobile {
+    display: none;
+}
+
 .home-row-date-mobile {
     display: none;
 }
@@ -2329,6 +2333,14 @@ pre {
 
     .home-row-reading {
         font-size: 0.65rem;
+    }
+
+    .cat-full {
+        display: none;
+    }
+
+    .cat-mobile {
+        display: inline;
     }
 
     .home-divider {
