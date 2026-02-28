@@ -1,12 +1,12 @@
 +++
 title = "People Live in Levels, Not Rates"
-seoTitle = "The Levels vs Rates Problem: Why the Economy Feels Bad"
+seoTitle = "Why the Economy Feels Bad: The Levels vs Rates Problem"
 date = 2026-02-28
 lastmod = 2026-02-28
 publishDate = 2026-02-28T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-stewart-thaler-debate.jpg"]
 description = "Prices rose 25% since 2020 and won't come back. The levels-vs-rates problem explains the vibecession, the Stewart-Thaler debate, and why nobody trusts economists."
-keywords = ["levels vs rates problem inflation", "vibepression 2026", "economics communication failure", "Jon Stewart Richard Thaler debate 2026", "why economy feels bad when data is good", "cumulative inflation since 2020", "K-shaped economy wages 2026", "vibecession 2026 explained", "nudge theory effectiveness meta-analysis", "prices still high inflation down", "economic perception gap", "real wage growth by income level", "consumer sentiment disconnect", "grocery prices since pandemic", "behavioral economics trust crisis", "essentials squeeze affordability", "Jon Stewart economics wrong", "housing affordability crisis 2026"]
+keywords = ["why economy feels bad", "vibecession 2026", "prices still high inflation down", "Jon Stewart Richard Thaler debate 2026", "K-shaped economy wages 2026", "cumulative inflation since 2020", "levels vs rates problem inflation", "vibepression 2026", "consumer sentiment disconnect", "grocery prices since pandemic", "housing affordability crisis 2026", "economic perception gap", "real wage growth by income level", "nudge theory effectiveness meta-analysis", "essentials squeeze affordability", "economics communication failure", "behavioral economics trust crisis", "why economy feels bad when data is good"]
 draft = false
 categories = ["Macro"]
 type = "Commentary"
@@ -17,9 +17,9 @@ takeaways = [
   "Stewart reinvented the carbon tax while arguing against the economist who proposed it, the economics communication problem in 92 minutes",
 ]
 faq = [
-  {question = "Why does the economy feel bad when data says it's good?", answer = "The economy feels bad because people experience price levels, not rates of change. Inflation fell from 9% to 2.4%, but cumulative prices rose roughly 25% since 2020, with groceries up 29.4% and housing affordability at its lowest since the 1980s. Economists celebrate the rate normalizing; consumers live with the permanent level shift. This levels-vs-rates disconnect is the structural explanation for the vibecession."},
+  {question = "Why does the economy feel bad when inflation is down?", answer = "The economy feels bad because people experience price levels, not rates of change. Inflation fell from 9% to 2.4%, but cumulative prices rose roughly 25% since 2020, with groceries up 29.4% and housing affordability at its lowest since the 1980s. Economists celebrate the rate normalizing; consumers live with the permanent level shift. This levels-vs-rates disconnect is the structural explanation for the vibecession."},
   {question = "What is the levels-vs-rates problem in economics?", answer = "The levels-vs-rates problem describes a disconnect between how economists measure inflation (year-over-year rate of change) and how consumers experience it (cumulative price level). Inflation falling to 2.4% means prices are rising slowly again. It does not mean the 25% cumulative increase since 2020 reverses. A grocery bill that cost $150 in 2020 costs $194 today and will never cost $150 again."},
-  {question = "What happened in the Jon Stewart and Richard Thaler debate?", answer = "On February 4, 2026, Stewart hosted Nobel laureate Thaler on 'The Weekly Show' to discuss behavioral economics. Stewart argued that economics exists to maximize shareholder value and dismissed nudge theory as inadequate for systemic problems. He then unknowingly proposed a carbon tax, the exact policy he had just rejected, while believing he was contradicting Thaler. The episode triggered a fierce backlash from economists including Jason Furman and Jerusalem Demsas."},
+  {question = "What did Jon Stewart say about economics to Richard Thaler?", answer = "On February 4, 2026, Stewart hosted Nobel laureate Thaler on 'The Weekly Show' to discuss behavioral economics. Stewart argued that economics exists to maximize shareholder value and dismissed nudge theory as inadequate for systemic problems. He then unknowingly proposed a carbon tax, the exact policy he had just rejected, while believing he was contradicting Thaler. The episode triggered a fierce backlash from economists including Jason Furman and Jerusalem Demsas."},
   {question = "What is vibepression and how does it relate to the vibecession?", answer = "Vibepression is a term coined by Charles Schwab's Kevin Gordon in December 2025 to describe the deepening of the vibecession, a concept Kyla Scanlon introduced in June 2022. As of February 2026, the University of Michigan consumer sentiment index sits at 57.3, the 3rd percentile of its historical range, despite GDP growth of 4.4% and unemployment of 4.3%. The vibecession never resolved; it got a bleaker name."},
   {question = "Are real wages outpacing inflation in 2026?", answer = "In aggregate, yes, since June 2023. But the distribution is K-shaped: high earners held 4.5% wage growth while the bottom quartile fell from 7.5% to roughly 3.5%. The Economic Policy Institute reported in February 2026 that low-wage workers' real wages actually declined in 2025, reversing pandemic-era compression that had closed up to one-third of the post-1979 wage gap."},
   {question = "Will prices go back to pre-pandemic levels?", answer = "No. Prices will not return to pre-pandemic levels. Cumulative CPI is up roughly 25% since early 2020, with food-at-home up 29.4% and housing costs up 30-45%. Reversing this would require sustained deflation, which central banks actively prevent because falling price levels cause recessions. The inflation rate has normalized at 2.4%, but the level shift is permanent."},
@@ -33,7 +33,7 @@ That's Jon Stewart, [telling a Nobel laureate](https://podcasts.apple.com/us/pod
 
 The pile-on was deserved in its specifics and wrong in its framing. Stewart got basic things wrong. He also pointed at something real that the profession keeps failing to address.
 
-## Carbon tax 
+## The carbon tax moment
 
 The episode's most telling exchange involved climate policy. Thaler offered the textbook answer: a carbon tax. [Every economist agrees on this](https://singjupost.com/the-irrational-economy-w-nobel-laureate-richard-thaler-transcript/), Thaler said, and he's roughly right. Stewart rejected it on political grounds: the moment energy prices rise, voters punish the party in power. Fair enough. But then Stewart [proposed his own solution](https://podcasts.happyscribe.com/the-weekly-show-with-jon-stewart/the-irrational-economy-with-richard-thaler): "create a model that creates robust markets in damage mitigation and carbon mitigation." Thaler paused. That is a carbon tax. Stewart had arrived at the standard economic answer while believing he was overturning it.
 
@@ -51,7 +51,7 @@ But rates and levels are different things, and people live in levels. The cumula
 
 This is what Stewart was gesturing at. He expressed it as "economics doesn't care about people," which is wrong. What he actually meant: the metrics economists use to declare success (rates of change, aggregate growth, unemployment) don't capture what households experience at the grocery store, the mortgage broker, or the insurance renewal. The economic perception gap isn't irrational. It's a measurement problem.
 
-## K-shaped
+## K-shaped wages: the recovery that reversed
 
 The distributional story makes both sides' aggregate claims misleading. [The Economic Policy Institute reported](https://www.epi.org/blog/low-wage-workers-faced-worsening-affordability-in-2025/) in February 2026 that low-wage workers' real wages declined in 2025, ending five years of historically fast gains. High earners held steady at 4.5% wage growth. [The lowest-income quartile fell from 7.5% to roughly 3.5%](https://fortune.com/2025/11/10/k-shaped-economy-wage-growth-wealthiest-poorest-americans-diverge/). The pandemic-era wage compression that closed up to one-third of the post-1979 wage gap, documented by Autor, Dube, and McGrew in their 2023 paper, has reversed. [CNBC reported](https://www.cnbc.com/2026/01/30/wealth-inequality-k-shaped-economy-united-states-consumer-spending-trump.html) that the top 1% now hold roughly 32% of US net worth (about $52 trillion), while the bottom 50% hold 2.5%. Eight percent of American households have zero or negative net worth.
 
