@@ -29,7 +29,7 @@ faq = [
 +++
 {{< img src="pdf_covers_overview.png" alt="Cover pages of 12 AI research reports from Goldman Sachs, JPMorgan, Morgan Stanley, UBS, Barclays, Bank of America, HSBC, Citi, Deutsche Bank, and Santander." width="100%" >}}
 
-I spent the last week reading 12 bank AI research reports from nine of the world's largest financial institutions: Goldman Sachs, JPMorgan, Morgan Stanley (three separate reports), UBS, Barclays, Bank of America, HSBC, Citi, Deutsche Bank, and Santander. Not as investment advice. I wasn't looking for stock picks. I wanted to understand how institutions that collectively manage trillions of dollars and employ thousands of analysts actually see this technology heading into 2026: where they agree, where they diverge, and what they're being less than forthcoming about.
+I spent the last week reading 12 bank AI research reports from nine of the world's largest financial institutions: Goldman Sachs, JPMorgan, Morgan Stanley (three separate reports), UBS, Barclays, Bank of America, HSBC, Citi, Deutsche Bank, and Santander. I wanted to understand how institutions that collectively manage trillions of dollars and employ thousands of analysts actually see this technology heading into 2026: where they agree, where they diverge, and what they're being less than forthcoming about.
 
 What I found is useful, sometimes impressive, and _(mostly)_ worth reading.
 
