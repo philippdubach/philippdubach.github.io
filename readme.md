@@ -18,7 +18,7 @@ Personal blog on quantitative finance, AI/ML, and technology.
 
 | Layer | Technology |
 |-------|------------|
-| **Site Generator** | Hugo v0.128.0 Extended |
+| **Site Generator** | Hugo v0.157.0 Extended |
 | **Hosting** | GitHub Pages |
 | **CDN** | Cloudflare |
 | **Images** | Cloudflare R2 (`static.philippdubach.com`) |
@@ -235,6 +235,9 @@ Context-aware disclaimers that:
 ---
 
 ## Changelog
+
+### March 2026
+- Upgraded Hugo from v0.128.0 to v0.157.0, fixed deprecated `.Site.AllPages` and `.Site.Data` APIs
 
 ### February 2026
 - Unified all 73 posts to TOML frontmatter (converted 70 from YAML)
