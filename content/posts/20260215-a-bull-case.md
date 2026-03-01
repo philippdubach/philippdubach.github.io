@@ -53,6 +53,8 @@ Affleck captured the commercial implication of this better than most analysts:
 
 He's describing the ninth-power curve in plain English. Each marginal improvement costs exponentially more. The curve bends away from you the harder you push.
 
+{{< readnext slug="the-saaspocalypse-paradox" >}}
+
 ## Humanity's Last Exam
 
 The hardest measurement of where AI actually stands against domain expertise is [Humanity's Last Exam](https://artificialanalysis.ai/evaluations/humanitys-last-exam) (HLE), published in Nature in early 2025 by the Center for AI Safety and Scale AI. Built with approximately 1,000 subject-matter experts across 500+ institutions, it consists of 2,500 expert-crafted questions spanning 100+ academic domains, designed to be "Google-proof": questions that require genuine understanding rather than information retrieval.
