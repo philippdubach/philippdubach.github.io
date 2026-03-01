@@ -1,5 +1,5 @@
 +++
-title = "When Every Bulge Bracket Bank Agrees on AI"
+title = "Every Bulge Bracket Bank Agrees on AI"
 seoTitle = "I Read 12 Bank AI Research Reports So You Don't Have To"
 date = 2026-03-01
 lastmod = 2026-03-01
