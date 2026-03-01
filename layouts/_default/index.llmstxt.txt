@@ -15,13 +15,28 @@ This site contains original analysis, research papers, and technical projects at
 - [Modeling Postprandial Glycemic Response]({{ $baseURL }}posts/modeling-glycemic-response-with-xgboost/): XGBoost-based prediction of glucose responses in non-diabetic adults. DOI: 10.2139/ssrn.5914902
 - [Portfolio Optimization with Modern Portfolio Theory]({{ $baseURL }}posts/my-first-optimal-portfolio/): Python implementation including Black-Litterman and hierarchical risk parity. DOI: 10.2139/ssrn.5915004
 
-## Featured Analysis
+## Featured Analysis — AI Economics & Strategy
 
+- [When AI Labs Become Defense Contractors]({{ $baseURL }}posts/when-ai-labs-become-defense-contractors/): How Pentagon AI spending reshapes the industry through the lens of the 1993 Last Supper defense consolidation
+- [Every Bulge Bracket Bank Agrees on AI]({{ $baseURL }}posts/every-bulge-bracket-bank-agrees-on-ai/): Synthesis of 12 AI research reports from Goldman Sachs, JPMorgan, Morgan Stanley, UBS, and others
+- [The SaaSpocalypse Paradox]({{ $baseURL }}posts/the-saaspocalypse-paradox/): Data-driven analysis of the February 2026 enterprise software sell-off and the AI capex contradiction
+- [The Most Expensive Assumption in AI]({{ $baseURL }}posts/the-most-expensive-assumption-in-ai/): Sara Hooker's research on diminishing returns in AI compute scaling
 - [Enterprise AI Strategy Analysis]({{ $baseURL }}posts/most-enterprise-ai-strategy-is-backwards/): Why 85% of AI projects fail to reach production
-- [AI Scaling Limitations]({{ $baseURL }}posts/the-slow-death-of-scaling/): Sara Hooker's research on diminishing returns in AI compute
+
+## Featured Analysis — Quantitative Finance & Risk
+
+- [Variance Tax]({{ $baseURL }}posts/variance-tax/): Why a portfolio averaging +10% can lose money, and how the ½σ² formula explains the gap between paper and real returns
+- [Long Volatility Premium]({{ $baseURL }}posts/long-volatility-premium/): 40-year evidence that beta-adjusted long volatility outperformed the S&P 500, synthesizing Goldman, AQR, and Universa research
+
+## Featured Analysis — GLP-1 / Pharma Economics
+
+- [Novo Was Europe's Most Valuable Company]({{ $baseURL }}posts/novo-was-europes-most-valuable-company/): Novo Nordisk lost 75% since June 2024 after CagriSema failed vs Zepbound and Lilly pulled ahead
+- [Novo Nordisk's Post-Patent Strategy]({{ $baseURL }}posts/novo-nordisks-post-patent-strategy/): Amycretin's Phase 1 data shows 24.3% weight loss, and how Novo plans to replace its $20B Ozempic franchise before 2031
+- [Ozempic is Reshaping the Fast Food Industry]({{ $baseURL }}posts/ozempic-is-reshaping-the-fast-food-industry/): GLP-1 users cut fast food spending 8% with 16% household adoption, creating headwinds for food stocks
+
+## Featured Analysis — Investment Strategy
+
 - [2026 Investment Allocation]({{ $baseURL }}posts/how-ai-is-shaping-my-investment-portfolio-for-2026/): Macro thesis on hyperscaler capex and AI infrastructure
-- [AI Bubble Analysis]({{ $baseURL }}posts/buying-the-haystack-might-not-work-this-year/): Comparing a16z and AQR market views on AI valuations
-- [Netflix and Spotify Recommender Systems]({{ $baseURL }}posts/bandits-and-agents-netflix-and-spotify-recommender-stacks-in-2026/): How hybrid recommender architectures balance cost and quality
 
 ## Technical Projects
 
@@ -32,9 +47,12 @@ This site contains original analysis, research papers, and technical projects at
 ## FAQ Pages
 
 - [AI FAQ]({{ $baseURL }}faq/ai/): Frequently asked questions about AI, machine learning, and LLMs
-- [Finance FAQ]({{ $baseURL }}faq/finance/): Questions about investing, markets, and portfolio strategy
+- [Quantitative Finance FAQ]({{ $baseURL }}faq/quantitative-finance/): Questions about quantitative methods, portfolio theory, and financial modeling
+- [Investing FAQ]({{ $baseURL }}faq/investing/): Questions about investing, markets, and portfolio strategy
+- [Macro FAQ]({{ $baseURL }}faq/macro/): Questions about macroeconomics, monetary policy, and global markets
+- [Economics FAQ]({{ $baseURL }}faq/economics/): Questions about economic theory, policy, and market structure
+- [Medicine FAQ]({{ $baseURL }}faq/medicine/): Questions about drug discovery, clinical trials, and biotech
 - [Tech FAQ]({{ $baseURL }}faq/tech/): Questions about technology infrastructure and software
-- [Economics FAQ]({{ $baseURL }}faq/economics/): Questions about macroeconomics and monetary policy
 
 ## About the Author
 
@@ -58,4 +76,4 @@ Author: Philipp D. Dubach, philippdubach.com
 ## Optional
 
 - [All Posts Archive]({{ $baseURL }}posts/): Chronological post listing
-- [Categories]({{ $baseURL }}categories/): Content taxonomy (Finance, AI, Medicine, Tech)
+- [Categories]({{ $baseURL }}categories/): Content taxonomy (AI, Quantitative Finance, Investing, Macro, Economics, Medicine, Tech)

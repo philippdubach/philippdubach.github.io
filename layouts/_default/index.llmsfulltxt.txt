@@ -1,7 +1,7 @@
 {{- $baseURL := .Site.BaseURL -}}
 {{- $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
-{{- $displayNames := dict "ai" "AI" "commentary" "Commentary" "economics" "Economics" "finance" "Finance" "medicine" "Medicine" "tech" "Tech" -}}
-{{- $categoryOrder := slice "ai" "commentary" "economics" "finance" "medicine" "tech" -}}
+{{- $displayNames := dict "ai" "AI" "investing" "Investing" "quantitative finance" "Quantitative Finance" "macro" "Macro" "economics" "Economics" "medicine" "Medicine" "tech" "Tech" -}}
+{{- $categoryOrder := slice "ai" "investing" "quantitative finance" "macro" "economics" "medicine" "tech" -}}
 # Philipp D. Dubach - Full Content Index
 
 > This is the extended version of llms.txt with full article summaries inline. For the compact version, see [llms.txt]({{ $baseURL }}llms.txt).
@@ -22,7 +22,16 @@ Independent researcher and strategy consultant specializing in quantitative fina
 ### [{{ .Page.Title }}]({{ .Page.Permalink }})
 Published: {{ .Page.Date.Format "2006-01-02" }}
 Description: {{ .Page.Params.description }}
-Summary: {{ .Page.Summary | plainify | chomp }}
+{{ $summary := .Page.Summary | plainify | chomp -}}
+{{- $summary = replace $summary "&rsquo;" "'" -}}
+{{- $summary = replace $summary "&lsquo;" "'" -}}
+{{- $summary = replace $summary "&ldquo;" "'" -}}
+{{- $summary = replace $summary "&rdquo;" "'" -}}
+{{- $summary = replace $summary "&amp;" "&" -}}
+{{- $summary = replace $summary "&hellip;" "..." -}}
+{{- $summary = replace $summary "&lt;" "<" -}}
+{{- $summary = replace $summary "&gt;" ">" }}
+Summary: {{ $summary }}
 
 {{ end }}
 {{- end -}}
