@@ -128,7 +128,7 @@ RSS Feed → Worker (cron/manual) → Workers AI → Social Platform
 
 ### AI Post Generation
 
-The workers use Llama 3.3 70B to generate social posts with specific style constraints:
+The workers use Llama 4 Scout 17B to generate social posts with specific style constraints:
 - Neutral, factual tone (no clickbait)
 - Max 200 characters
 - No emojis or hashtags
@@ -167,7 +167,7 @@ Markdown editor for writing blog posts with live preview.
 
 - Live preview matching blog CSS
 - TOML frontmatter editor
-- AI-powered SEO metadata generation
+- AI-powered SEO, FAQ, and takeaways generation
 - Hugo shortcode rendering
 - KaTeX math support
 - Auto-closing brackets `[ ( {`
