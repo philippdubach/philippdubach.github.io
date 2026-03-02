@@ -1,9 +1,9 @@
 +++
 title = "Why Lilly's Weight Loss Pill Isn't a Peptide"
 seoTitle = "Oral GLP-1 Drugs 2026: The Pill That Wastes 99% of Itself"
-date = 2026-03-22
-lastmod = 2026-03-22
-publishDate = 2026-03-22T03:00:00Z
+date = 2026-04-12
+lastmod = 2026-04-12
+publishDate = 2026-04-12T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-oral-peptides1.jpg"]
 description = "Oral semaglutide destroys 99% of its active ingredient per dose. Eli Lilly's orforglipron skips the problem entirely. Inside the $70B oral GLP-1 pill race."
 keywords = ["orforglipron vs oral semaglutide", "oral GLP-1 drugs 2026", "oral semaglutide bioavailability SNAC", "GLP-1 market size obesity 2030", "Novo Nordisk vs Eli Lilly GLP-1 2026", "orforglipron FDA approval 2026", "oral weight loss pill GLP-1", "oral obesity drug pipeline", "small molecule GLP-1 receptor agonist", "oral semaglutide Wegovy pill 25mg", "GLP-1 manufacturing cost COGS", "semaglutide patent expiry 2031 biosimilar", "oral GLP-1 pipeline aleniglipron VK2735 amycretin", "GLP-1 adherence persistence discontinuation", "Hims compounded semaglutide lawsuit", "anti-obesity medication market expansion", "Jevons Paradox statin analogy GLP-1"]
