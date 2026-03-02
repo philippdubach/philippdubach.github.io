@@ -1,10 +1,10 @@
 +++
-title = "Why Ambiguity Is Not a Bug"
+title = "Ambiguity by Design"
 seoTitle = "Ambiguity Aversion: Why Unknown Probabilities Create Mispricing"
 date = 2026-04-01
 lastmod = 2026-04-01
 publishDate = 2026-04-01T03:00:00Z
-images = ["https://static.philippdubach.com/ograph/ograph-ambiguity-not-a-bug.jpg"]
+images = ["https://static.philippdubach.com/ograph/ograph-ambiguity-by-design.jpg"]
 description = "Ellsberg proved people flee unknown odds. Zeckhauser showed their flight creates mispricing. Part 2 on ambiguity aversion, comparative ignorance, and investing."
 keywords = ["ambiguity aversion investing", "Ellsberg paradox finance", "Zeckhauser unknown unknowable", "comparative ignorance Fox Tversky", "Knightian uncertainty mispricing", "ambiguity aversion vs risk aversion", "Gilboa Schmeidler maxmin expected utility", "Bewley inertia uncertainty", "betrayal aversion Bohnet Zeckhauser", "SaaSpocalypse IGV sell-off ambiguity", "unknown probability investing opportunity", "UU mispricing mechanism", "career risk ambiguity aversion", "institutional constraints uncertainty"]
 categories = ["Quantitative Finance"]

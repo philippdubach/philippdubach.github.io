@@ -32,7 +32,7 @@ Zeckhauser opens his [2006 paper](https://papers.ssrn.com/sol3/papers.cfm?abstra
 
 But Zeckhauser's point isn't the lesson. It's the exception. What happens when nobody has the marked deck? When the ambiguity is shared, when neither side can enumerate the states of the world, the Sky Masterson rule stops applying, and the investors who keep following it anyway leave money on the table.
 
-In [Part 1](/posts/three-kinds-of-not-knowing/) I laid out Zeckhauser's taxonomy: risk, uncertainty, and ignorance as three distinct problems. In [Part 2](/posts/why-ambiguity-is-not-a-bug/) I examined why investors flee the third box, the mechanism of ambiguity aversion. This piece asks the question that follows: when you're facing someone on the other side of a trade, how do you figure out whether they know something you don't?
+In [Part 1](/posts/three-kinds-of-not-knowing/) I laid out Zeckhauser's taxonomy: risk, uncertainty, and ignorance as three distinct problems. In [Part 2](/posts/ambiguity-by-design/) I examined why investors flee the third box, the mechanism of ambiguity aversion. This piece asks the question that follows: when you're facing someone on the other side of a trade, how do you figure out whether they know something you don't?
 
 ## The two matrices
 
