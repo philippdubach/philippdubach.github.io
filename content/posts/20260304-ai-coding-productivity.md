@@ -9,7 +9,7 @@ description = "METR found experienced developers 19% slower with AI, despite fee
 keywords = ["AI coding productivity", "AI productivity paradox", "AI coding tools productivity", "developer productivity AI", "METR study AI developers", "GitHub Copilot productivity", "AI code review bottleneck", "AI generated code quality", "DORA metrics AI adoption", "Amdahl's law software development", "AI pair programming ROI", "software engineering productivity", "Solow paradox AI", "AI coding assistant ROI", "code generation productivity gap"]
 categories = ["Tech"]
 type = "Analysis"
-aliases = ["/ai-productivity"]
+aliases = ["/posts/ai-productivity"]
 draft = false
 takeaways = [
   "A randomized controlled study found experienced developers using AI took 19% longer to complete tasks while believing they were 20% faster, a 39-point perception gap.",
