@@ -2,7 +2,7 @@
 title = "93% of Developers Use AI Coding Tools. Productivity Hasn't Moved."
 seoTitle = "AI Coding Productivity Paradox: 93% Adoption, 10% Gains"
 date = 2026-03-04
-lastmod = 2026-03-04
+lastmod = 2026-03-05
 publishDate = 2026-03-04T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-ai-coding-productivity1.jpg"]
 description = "METR found experienced developers 19% slower with AI, despite feeling 20% faster. At 92.6% adoption, organizational productivity gains remain roughly 10%."
