@@ -2,11 +2,11 @@
 title = "93% of Developers Use AI Coding Tools. Productivity Hasn't Moved."
 seoTitle = "AI Coding Productivity Paradox: 93% Adoption, 10% Gains"
 date = 2026-03-04
-lastmod = 2026-03-06
+lastmod = 2026-03-05
 publishDate = 2026-03-04T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-ai-coding-productivity1.jpg"]
 description = "METR found experienced developers 19% slower with AI, despite feeling 20% faster. At 92.6% adoption, organizational productivity gains remain roughly 10%."
-keywords = ["AI coding productivity", "AI productivity paradox", "AI coding tools productivity", "developer productivity AI", "METR study AI developers", "GitHub Copilot productivity", "AI code review bottleneck", "AI generated code quality", "DORA metrics AI adoption", "Amdahl's law software development", "AI pair programming ROI", "software engineering productivity", "Solow paradox AI", "AI coding assistant ROI", "code generation productivity gap"]
+keywords = ["AI coding productivity", "AI developer productivity paradox", "does AI coding improve productivity", "METR AI developer study 2026", "GitHub Copilot productivity ROI", "AI coding tools productivity", "developer productivity AI", "AI code review bottleneck", "AI generated code quality", "DORA metrics AI adoption", "Amdahl's law software development", "AI pair programming ROI", "software engineering productivity", "AI coding tools enterprise ROI 2026", "code generation productivity gap"]
 categories = ["Tech"]
 type = "Analysis"
 aliases = ["/posts/ai-productivity"]
@@ -23,6 +23,7 @@ faq = [
   {question = "Why do developers overestimate AI productivity gains?", answer = "METR found a 39-point perception gap: developers believed they were 20% faster while actually taking 19% longer. Instant code generation creates a sense of speed, but time spent reviewing, debugging, and fixing AI suggestions goes unnoticed. Stack Overflow's 2025 survey found the top frustration at 66% was code that's 'almost right but not quite.'"},
   {question = "How does AI coding affect code review and delivery metrics?", answer = "It shifts the bottleneck downstream. Faros AI measured a 98% increase in pull requests merged but a 91% increase in review time, a 9% rise in bugs, and no change in DORA delivery metrics across 10,000+ developers. Cursor acknowledged this gap by acquiring Graphite, a code review startup."},
   {question = "What is Amdahl's Law and why does it limit AI coding gains?", answer = "Amdahl's Law says optimizing one step in a process only improves throughput by the fraction that step represents. Writing code is 25-35% of software development, so even a 100% coding speedup yields at most 15-25% system improvement. Review, requirements, debugging, and meetings remain unchanged."},
+  {question = "Has METR updated their findings since the July 2025 study?", answer = "Yes. In February 2026, METR published an update acknowledging that 30-50% of invited developers declined to participate without AI access, introducing selection bias into the original study. Their newer cohort showed only a -4% slowdown (CI: -15% to +9%), substantially less negative than the original -19%. METR concluded that AI likely provides productivity benefits in early 2026, but that measuring those benefits with controlled experiments is harder than expected."},
 ]
 +++
 
@@ -66,7 +67,9 @@ The quality picture at 27% is not reassuring. [Veracode tested 100+ LLMs](https:
 
 ## Perception is reality
 
-The 19% slowdown number has been contested, fairly: the CI is wide (+2% to +39%), the study covered experienced developers on complex codebases, and METR has acknowledged design limitations. The models used were Claude 3.5 Sonnet and 3.7 Sonnet, both roughly a year behind the current generation at time of writing. METR frames the result as a point on a curve they expect to keep moving, not a fixed constant. But the perception gap itself is more robust than the exact slowdown figure, and it replicates.
+The 19% slowdown number has been contested, fairly: the CI is wide (+2% to +39%), the study covered experienced developers on complex codebases, and METR has acknowledged design limitations. In February 2026, [METR published an update](https://metr.org/blog/2026-02-24-uplift-update/) changing their experiment design after discovering that 30-50% of invited developers declined to participate without AI access, a selection effect that biased the original sample toward developers who benefit least from AI. Their newer cohort (800+ tasks, 57 developers) showed a -4% slowdown with a CI of -15% to +9%, substantially less negative. METR's conclusion: "AI likely provides productivity benefits in early 2026." The perception gap and the bottleneck problem remain real, but the exact magnitude of the July 2025 finding should be read with that caveat.
+
+METR's companion [Horizon benchmark](https://arxiv.org/abs/2503.14499) (Kwa et al., 2025) puts numbers to that curve: the 50%-task-completion time horizon for Claude 3.7 Sonnet was 60 minutes. Claude Opus 4.6, released February 2026, reached 719 minutes. The doubling time from 2023 is approximately 128 days. METR frames the productivity result as a point on that trend, not a fixed constant, though they also note that their benchmark tasks are cleaner than real production work and performance on "messier" tasks may improve more slowly. But the perception gap itself is more robust than the exact slowdown figure, and it replicates.
 
 [Stack Overflow's 2025 Developer Survey](https://survey.stackoverflow.co/2025/ai/) found favorable views of AI tools dropped from 70% to 60% over the prior year. 46% of developers don't trust AI output, up from 31%. The most commonly cited frustration, at 66%: "almost right but not quite." You write the code, it looks right, you spend the next hour tracking down why it doesn't behave the way it looks.
 
