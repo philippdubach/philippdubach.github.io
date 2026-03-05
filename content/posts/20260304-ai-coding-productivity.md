@@ -2,7 +2,7 @@
 title = "93% of Developers Use AI Coding Tools. Productivity Hasn't Moved."
 seoTitle = "AI Coding Productivity Paradox: 93% Adoption, 10% Gains"
 date = 2026-03-04
-lastmod = 2026-03-05
+lastmod = 2026-03-06
 publishDate = 2026-03-04T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-ai-coding-productivity1.jpg"]
 description = "METR found experienced developers 19% slower with AI, despite feeling 20% faster. At 92.6% adoption, organizational productivity gains remain roughly 10%."
@@ -66,7 +66,7 @@ The quality picture at 27% is not reassuring. [Veracode tested 100+ LLMs](https:
 
 ## Perception is reality
 
-The 19% slowdown number has been contested, fairly: the CI is wide (+2% to +39%), the study covered experienced developers on complex codebases, and METR has acknowledged design limitations. But the perception gap itself is more robust than the exact slowdown figure, and it replicates.
+The 19% slowdown number has been contested, fairly: the CI is wide (+2% to +39%), the study covered experienced developers on complex codebases, and METR has acknowledged design limitations. The models used were Claude 3.5 Sonnet and 3.7 Sonnet, both roughly a year behind the current generation at time of writing. METR frames the result as a point on a curve they expect to keep moving, not a fixed constant. But the perception gap itself is more robust than the exact slowdown figure, and it replicates.
 
 [Stack Overflow's 2025 Developer Survey](https://survey.stackoverflow.co/2025/ai/) found favorable views of AI tools dropped from 70% to 60% over the prior year. 46% of developers don't trust AI output, up from 31%. The most commonly cited frustration, at 66%: "almost right but not quite." You write the code, it looks right, you spend the next hour tracking down why it doesn't behave the way it looks.
 
