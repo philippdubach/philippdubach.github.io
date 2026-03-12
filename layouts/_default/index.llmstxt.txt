@@ -12,37 +12,69 @@ This site contains original analysis, research papers, and technical projects at
 ## Research Publications
 
 - [Attention Dynamics in Online Communities]({{ $baseURL }}standalone/hn-research/): Power laws, preferential attachment, and early success prediction on Hacker News. DOI: 10.2139/ssrn.5910263
+- [The Online Gambling Fairness Paradox]({{ $baseURL }}posts/against-all-odds-the-mathematics-of-provably-fair-casino-games/): Cryptographic verification, behavioral harm, and consumer protection in online gambling. DOI: 10.2139/ssrn.6065213
 - [Modeling Postprandial Glycemic Response]({{ $baseURL }}posts/modeling-glycemic-response-with-xgboost/): XGBoost-based prediction of glucose responses in non-diabetic adults. DOI: 10.2139/ssrn.5914902
 - [Portfolio Optimization with Modern Portfolio Theory]({{ $baseURL }}posts/my-first-optimal-portfolio/): Python implementation including Black-Litterman and hierarchical risk parity. DOI: 10.2139/ssrn.5915004
 
 ## Featured Analysis — AI Economics & Strategy
 
+- [AI Models Are the New Rebar]({{ $baseURL }}posts/ai-models-are-the-new-rebar/): Why foundation models are commoditizing into infrastructure and what that means for AI company margins
+- [AI Capex Arms Race: Who Blinks First?]({{ $baseURL }}posts/ai-capex-arms-race-who-blinks-first/): Tracking hyperscaler capital expenditure sustainability and the game theory of AI infrastructure spending
 - [When AI Labs Become Defense Contractors]({{ $baseURL }}posts/when-ai-labs-become-defense-contractors/): How Pentagon AI spending reshapes the industry through the lens of the 1993 Last Supper defense consolidation
 - [Every Bulge Bracket Bank Agrees on AI]({{ $baseURL }}posts/every-bulge-bracket-bank-agrees-on-ai/): Synthesis of 12 AI research reports from Goldman Sachs, JPMorgan, Morgan Stanley, UBS, and others
 - [The SaaSpocalypse Paradox]({{ $baseURL }}posts/the-saaspocalypse-paradox/): Data-driven analysis of the February 2026 enterprise software sell-off and the AI capex contradiction
+- [93% of Developers Use AI Coding Tools. Productivity Hasn't Moved.]({{ $baseURL }}posts/93-of-developers-use-ai-coding-tools.-productivity-hasnt-moved./): Why widespread AI coding adoption hasn't translated into measurable productivity gains
 - [The Most Expensive Assumption in AI]({{ $baseURL }}posts/the-most-expensive-assumption-in-ai/): Sara Hooker's research on diminishing returns in AI compute scaling
-- [Enterprise AI Strategy Analysis]({{ $baseURL }}posts/most-enterprise-ai-strategy-is-backwards/): Why 85% of AI projects fail to reach production
+- [Peter Thiel's Physics Department]({{ $baseURL }}posts/peter-thiels-physics-department/): Thiel's framework for evaluating technology companies through a physics lens
+- [Don't Go Monolithic; The Agent Stack Is Stratifying]({{ $baseURL }}posts/dont-go-monolithic-the-agent-stack-is-stratifying/): How the enterprise AI agent architecture is splitting into specialized layers
+- [Enterprise AI Strategy is Backwards]({{ $baseURL }}posts/enterprise-ai-strategy-is-backwards/): Why 85% of AI projects fail to reach production
+- [Beyond Vector Search: Why LLMs Need Episodic Memory]({{ $baseURL }}posts/beyond-vector-search-why-llms-need-episodic-memory/): The case for conversation history summarization over pure retrieval-augmented generation
 
 ## Featured Analysis — Quantitative Finance & Risk
 
+- [Three Kinds of Not-Knowing]({{ $baseURL }}posts/three-kinds-of-not-knowing/): A taxonomy of epistemic uncertainty and its implications for portfolio construction and risk management
 - [Variance Tax]({{ $baseURL }}posts/variance-tax/): Why a portfolio averaging +10% can lose money, and how the ½σ² formula explains the gap between paper and real returns
 - [Long Volatility Premium]({{ $baseURL }}posts/long-volatility-premium/): 40-year evidence that beta-adjusted long volatility outperformed the S&P 500, synthesizing Goldman, AQR, and Universa research
+- [Is Private Equity Just Beta With a Lockup?]({{ $baseURL }}posts/is-private-equity-just-beta-with-a-lockup/): Examining whether private equity returns are alpha or repackaged market exposure with illiquidity premium
+
+## Featured Analysis — Macro & Geopolitics
+
+- [People Live in Levels, Not Rates]({{ $baseURL }}posts/people-live-in-levels-not-rates/): Why inflation rates declining doesn't help when price levels remain elevated
+- [Europe's $24 Trillion Payment Breakup]({{ $baseURL }}posts/europes-24-trillion-payment-breakup-is-really-a-bet-on-infrastructure-arbitrage/): The infrastructure arbitrage behind Europe's push for payment sovereignty
+- [Pozsar's Bretton Woods III]({{ $baseURL }}posts/pozsars-bretton-woods-iii-the-framework-1/2/): Two-part analysis of Zoltan Pozsar's framework for the shifting global monetary order
+- [Britain's Strategic Limbo]({{ $baseURL }}posts/britains-strategic-limbo/): Post-Brexit Britain's search for a coherent economic and geopolitical strategy
+- [The Rise of Middle Power Realism]({{ $baseURL }}posts/the-rise-of-middle-power-realism/): How middle powers are reshaping global order through pragmatic non-alignment
+- [Big in Japan]({{ $baseURL }}posts/big-in-japan/): Japan's macro position and the implications of yen normalization
+
+## Featured Analysis — Investment Strategy
+
+- [Buying the Haystack Might Not Work This Year]({{ $baseURL }}posts/buying-the-haystack-might-not-work-this-year/): Why passive index concentration makes broad market exposure a directional AI bet
+- [The Absolute Insider Mess of Prediction Markets]({{ $baseURL }}posts/the-absolute-insider-mess-of-prediction-markets/): Information asymmetry and regulatory gaps in political prediction markets
+- [2026 Investment Allocation]({{ $baseURL }}posts/how-ai-is-shaping-my-investment-portfolio-for-2026/): Macro thesis on hyperscaler capex and AI infrastructure
+- [Passive Investing's Active Problem]({{ $baseURL }}posts/passive-investings-active-problem/): The paradox of passive dominance and its effect on price discovery
 
 ## Featured Analysis — GLP-1 / Pharma Economics
 
 - [Novo Was Europe's Most Valuable Company]({{ $baseURL }}posts/novo-was-europes-most-valuable-company/): Novo Nordisk lost 75% since June 2024 after CagriSema failed vs Zepbound and Lilly pulled ahead
 - [Novo Nordisk's Post-Patent Strategy]({{ $baseURL }}posts/novo-nordisks-post-patent-strategy/): Amycretin's Phase 1 data shows 24.3% weight loss, and how Novo plans to replace its $20B Ozempic franchise before 2031
 - [Ozempic is Reshaping the Fast Food Industry]({{ $baseURL }}posts/ozempic-is-reshaping-the-fast-food-industry/): GLP-1 users cut fast food spending 8% with 16% household adoption, creating headwinds for food stocks
+- [GLP-1 Receptor Agonists in ASUD Treatment]({{ $baseURL }}posts/glp-1-receptor-agonists-in-asud-treatment/): Clinical evidence for GLP-1 drugs in alcohol and substance use disorder treatment
 
-## Featured Analysis — Investment Strategy
+## Featured Analysis — Economics
 
-- [2026 Investment Allocation]({{ $baseURL }}posts/how-ai-is-shaping-my-investment-portfolio-for-2026/): Macro thesis on hyperscaler capex and AI infrastructure
+- [Economics of a Super Bowl Ad]({{ $baseURL }}posts/economics-of-a-super-bowl-ad/): ROI analysis of Super Bowl advertising at $8M per 30-second spot
+- [Where Mobile Money Goes Now]({{ $baseURL }}posts/where-mobile-money-goes-now/): The evolution of mobile payment infrastructure in emerging markets
+- [Behavioral Economics & Transit Policy]({{ $baseURL }}posts/behavioral-economics-transit-policy/): Nudge theory applied to public transportation adoption
 
 ## Technical Projects
 
-- [HN Sentiment Analysis]({{ $baseURL }}posts/65-percent-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/): NLP analysis of 32,000 Hacker News posts
+- [Social Media Success Prediction]({{ $baseURL }}posts/social-media-success-prediction-bert-models-for-post-titles/): BERT models for predicting Hacker News post engagement
+- [HN Sentiment Analysis]({{ $baseURL }}posts/65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/): NLP analysis of 32,000 Hacker News posts
+- [Against All Odds: Casino Mathematics]({{ $baseURL }}posts/against-all-odds-the-mathematics-of-provably-fair-casino-games/): Statistical analysis of cryptographic fairness in online gambling
+- [Counting Cards with Computer Vision]({{ $baseURL }}posts/counting-cards-with-computer-vision/): Real-time card counting using computer vision and deep learning
 - [CGM Data Reader]({{ $baseURL }}posts/i-built-a-cgm-data-reader/): Continuous glucose monitoring Python library
-- [Crypto Seasonality Patterns]({{ $baseURL }}posts/crypto-seasonality-patterns/): Statistical analysis of cryptocurrency market patterns
+- [RSS Swipr]({{ $baseURL }}posts/rss-swipr-find-blogs-like-you-find-your-dates/): Tinder-style blog discovery interface
+- [Crypto Seasonality Patterns]({{ $baseURL }}posts/crypto-mean-reversion-trading/): Statistical analysis of cryptocurrency market patterns
 
 ## FAQ Pages
 
