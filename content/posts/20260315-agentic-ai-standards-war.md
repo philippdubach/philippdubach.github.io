@@ -45,6 +45,8 @@ OpenAI's adoption went beyond Altman's post. MCP support rolled out across their
 
 One performance claim circulates in blog posts and marketing materials: that organizations implementing MCP report "40–60% faster agent deployment times." I have not found a primary source for this. No survey, no case study, no named company. I'd treat it as marketing content until someone produces the underlying data.
 
+{{< readnext slug="dont-go-monolithic-the-agent-stack-is-stratifying" >}}
+
 ## Google's A2A fills a different layer
 
 [Google launched A2A, the Agent-to-Agent protocol, at Cloud Next on April 9, 2025](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/), five months after MCP. Google didn't position A2A as MCP replacement. They called it a complement. I think that's honest, but it takes a minute to see why.
@@ -78,6 +80,8 @@ But USB also offers a warning. USB-C's physical connector won universally, then 
 This is the governance structure you typically see after a standards war has been decided in principle but before the implementation details have been hammered out. Think of the W3C in 1994, not the W3C in 1998. For anyone making architectural decisions right now, the practical question isn't MCP versus A2A. Most major enterprise platforms already support both. Salesforce, SAP, IBM, Microsoft, and AWS have committed to both. The question is sequencing and depth.
 
 [ISG analyst David Menninger](https://research.isg-one.com/analyst-perspectives/a2a-v-mcp-why-ai-agents-need-both) put it clearly: "MCP first for sharing context; then A2A for dynamic interaction among agents." That's the sequence I'd follow. MCP is the more mature protocol with the larger server ecosystem. The 10,000+ existing servers represent integration work that doesn't need to be rebuilt. Start there. Layer A2A on top when your use cases require multi-agent coordination across organizational boundaries, supply chain, cross-platform orchestration, which is exactly where the Tyson Foods and Adobe deployments have landed.
+
+{{< readnext slug="the-saaspocalypse-paradox" >}}
 
 MCP security deserves a separate conversation. [Astrix Security's research](https://astrix.security/learn/blog/state-of-mcp-server-security-2025/) found that 53% of MCP servers rely on static credentials rather than OAuth. A critical vulnerability in the mcp-remote npm package (CVE-2025-6514) exposed 437,000+ installations to shell injection. TCP/IP had its share of early-stage security problems in the 1980s, so I'm not calling this fatal. But these are real vulnerabilities, and they will cause real incidents before the posture matures.
 
