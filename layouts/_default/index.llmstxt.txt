@@ -1,4 +1,7 @@
 {{- $baseURL := .Site.BaseURL -}}
+{{- $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
+{{- $categoryOrder := slice "ai" "investing" "quantitative finance" "macro" "economics" "medicine" "tech" -}}
+{{- $displayNames := dict "ai" "AI" "investing" "Investing" "quantitative finance" "Quantitative Finance" "macro" "Macro" "economics" "Economics" "medicine" "Medicine" "tech" "Tech" -}}
 # Philipp D. Dubach
 
 > Independent researcher and strategy consultant specializing in quantitative finance, AI infrastructure economics, and macroeconomic analysis. Published on SSRN with research on attention dynamics in online communities, glycemic response modeling, and portfolio optimization.
@@ -7,7 +10,25 @@ This site contains original analysis, research papers, and technical projects at
 
 - Last Updated: {{ now.Format "2006-01-02" }}
 - Update Frequency: Weekly
+- Total Articles: {{ len $allPosts }}
 - Extended Version: [llms-full.txt]({{ $baseURL }}llms-full.txt)
+- Markdown Versions: All articles available in clean markdown by appending `index.md` to any post URL
+
+### Content Taxonomy
+{{ range $categoryOrder -}}
+{{- $term := . -}}
+{{- $taxonomy := index $.Site.Taxonomies.categories $term -}}
+{{- if $taxonomy -}}
+{{- $name := index $displayNames $term | default (humanize $term) }}
+- {{ $name }}: {{ len $taxonomy }} articles
+{{ end -}}
+{{- end }}
+## Key Statistics & Findings
+
+Citable data points from published analysis:
+{{ with site.Data.llms_statistics }}{{ range .statistics }}
+- {{ .stat }} — [Source]({{ $baseURL }}posts/{{ .source }}/)
+{{- end }}{{ end }}
 
 ## Research Publications
 
@@ -95,9 +116,10 @@ This site contains original analysis, research papers, and technical projects at
 ## API and Feeds
 
 - [RSS Feed]({{ $baseURL }}feed/index.xml): Full content RSS 2.0
-- [JSON Feed]({{ $baseURL }}feed.json): Structured JSON Feed 1.1
+- [JSON Feed]({{ $baseURL }}feed.json): Structured JSON Feed 1.1 (includes `_ai` extension with markdown URLs)
 - [Posts API]({{ $baseURL }}api/posts.json): Programmatic access to all posts
 - [Sitemap]({{ $baseURL }}sitemap.xml): Full site index with lastmod dates
+- [LLMs Full Text]({{ $baseURL }}llms-full.txt): Extended version with article summaries and key findings
 
 ## Citation Guidelines
 
