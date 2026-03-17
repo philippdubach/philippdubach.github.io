@@ -32,7 +32,9 @@ Description: {{ .Page.Params.description }}
 {{- $summary = replace $summary "&lt;" "<" -}}
 {{- $summary = replace $summary "&gt;" ">" }}
 Summary: {{ $summary }}
-
+{{ with .Page.Params.takeaways }}Key findings:
+{{ range . }}- {{ . }}
+{{ end }}{{ end }}
 {{ end }}
 {{- end -}}
 {{- end -}}
