@@ -67,6 +67,13 @@
     {{/* LLMs.txt - AI crawler discovery */}}
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt">
 
+    {{/* Markdown alternate - AI-readable version of posts */}}
+    {{ if eq .Section "posts" }}
+    {{ with .OutputFormats.Get "Markdown" }}
+    <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}" title="{{ $.Title }} (Markdown)">
+    {{ end }}
+    {{ end }}
+
 	<style>
 	{{ readFile "static/css/custom.css" | safeCSS }}
 	</style>
