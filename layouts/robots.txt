@@ -84,3 +84,8 @@ Allow: /
 # Sitemap
 Sitemap: {{ .Site.BaseURL }}sitemap.xml
 
+# AI Content Discovery
+# LLMs.txt: {{ .Site.BaseURL }}llms.txt
+# LLMs-full.txt: {{ .Site.BaseURL }}llms-full.txt
+# Markdown versions: append index.md to any post URL
+
