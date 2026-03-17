@@ -120,6 +120,8 @@ enableGitInfo = true
     baseName = "llms-full"
     isPlainText = true
     notAlternative = true
+  [outputFormats.Markdown]
+    notAlternative = true
 
 [related]
   includeNewer = true
@@ -140,6 +142,6 @@ enableGitInfo = true
 
 [outputs]
   home = ['HTML', 'RSS', 'JSONFeed', 'PostsAPI', 'LLMSTxt', 'LLMSFullTxt', 'SiteMap']
-  page = ['HTML']
+  page = ['HTML', 'Markdown']
   section = ['HTML', 'RSS', 'SiteMap']
   
