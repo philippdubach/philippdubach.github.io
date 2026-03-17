@@ -13,6 +13,7 @@
             • {{ .FuzzyWordCount }} words
             • {{ .ReadingTime }} min read
             {{- with .Params.categories }} • {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/" class="post-category">{{ $cat }}</a>{{ end }}{{ end }}
+            {{- if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }} • Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time>{{ end }}
             {{- if .Params.external_url }} • <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>{{ end }}
             • <button type="button" id="share-link" title="Copy short link" aria-label="Copy short link" class="share-btn">∞</button>
             <span id="share-status"></span>
@@ -20,7 +21,7 @@
         {{ end }}
     </header>
     {{ with .Params.takeaways }}
-    <aside class="key-takeaways" aria-label="Key takeaways">
+    <aside class="key-takeaways" aria-label="Key takeaways" data-snippet="takeaways">
         <h2>Key Takeaways</h2>
         <ul>
             {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
@@ -30,6 +31,16 @@
     <div class="post-content">
         {{ .Content }}
     </div>
+    {{ if eq .Section "posts" }}
+    {{ with .Params.keywords }}
+    <div class="topic-classification">
+        Topics: {{ delimit (first 5 .) ", " }}
+    </div>
+    {{ end }}
+    <aside class="author-entity" data-snippet="author">
+        <p><strong>{{ .Site.Params.author }}</strong> is a strategy consultant and independent researcher specializing in quantitative finance, AI infrastructure economics, and macroeconomic analysis. He holds a degree from Imperial College London and has published peer-reviewed research on <a href="/research/">SSRN</a>.</p>
+    </aside>
+    {{ end }}
 </article>
 
 {{ if eq .Section "posts" }}
