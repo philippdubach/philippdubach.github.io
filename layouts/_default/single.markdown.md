@@ -13,7 +13,7 @@
 {{ end }}
 ---
 
-{{ .RenderShortcodes | replaceRE `(?s)<aside[^>]*class="readnext"[^>]*>.*?</aside>` "" | replaceRE `(?s)<aside[^>]*class="key-takeaways"[^>]*>.*?</aside>` "" }}
+{{ .RenderShortcodes | replaceRE `(?s)<a[^>]*class="lightbox-overlay"[^>]*>.*?</a>` "" | replaceRE `(?s)<aside[^>]*class="readnext"[^>]*>.*?</aside>` "" | replaceRE `(?s)<aside[^>]*class="key-takeaways"[^>]*>.*?</aside>` "" }}
 
 {{ with .Params.faq -}}
 ---
