@@ -21,6 +21,13 @@
     "research_profiles": {
       "google_scholar": "https://scholar.google.com/citations?user=-69oS2wAAAAJ",
       "researchgate": "https://www.researchgate.net/profile/Philipp-Dubach"
+    },
+    "_ai": {
+      "llms_txt": {{ "/llms.txt" | absURL | jsonify }},
+      "llms_full_txt": {{ "/llms-full.txt" | absURL | jsonify }},
+      "markdown_available": true,
+      "markdown_url_pattern": "{post_url}index.md",
+      "markdown_example": {{ "/posts/the-saaspocalypse-paradox/index.md" | absURL | jsonify }}
     }
   },
   "items": [
