@@ -39,6 +39,9 @@ Citable data points from published analysis:
 
 ## Featured Analysis — AI Economics & Strategy
 
+- [On-Device AI Models Will Be The New Reason to Upgrade Your Phone]({{ $baseURL }}posts/on-device-ai-models-will-be-the-new-reason-to-upgrade-your-phone/): How on-device AI models distilled from Gemini could break the smartphone upgrade stalemate, with parameters becoming the new megapixels
+- [The Last Architecture Designed by Hand]({{ $baseURL }}posts/the-last-architecture-designed-by-hand/): Mathematical proofs of transformer limits, hybrid architectures in production, and AI systems searching for their own replacement
+- [MCP vs A2A in 2026: How the AI Protocol War Ends]({{ $baseURL }}posts/mcp-vs-a2a-in-2026-how-the-ai-protocol-war-ends/): How the AI protocol standards war between Anthropic's MCP and Google's A2A is likely to resolve
 - [AI Models Are the New Rebar]({{ $baseURL }}posts/ai-models-are-the-new-rebar/): Why foundation models are commoditizing into infrastructure and what that means for AI company margins
 - [AI Capex Arms Race: Who Blinks First?]({{ $baseURL }}posts/ai-capex-arms-race-who-blinks-first/): Tracking hyperscaler capital expenditure sustainability and the game theory of AI infrastructure spending
 - [When AI Labs Become Defense Contractors]({{ $baseURL }}posts/when-ai-labs-become-defense-contractors/): How Pentagon AI spending reshapes the industry through the lens of the 1993 Last Supper defense consolidation
@@ -76,6 +79,7 @@ Citable data points from published analysis:
 
 ## Featured Analysis — GLP-1 / Pharma Economics
 
+- [AI Can Now Design Drugs in Seconds; We Still Can't Tell You If They Work.]({{ $baseURL }}posts/ai-can-now-design-drugs-in-seconds-we-still-cant-tell-you-if-they-work./): Isomorphic Labs' IsoDDE hits 50% on hard protein-ligand benchmarks versus 23% for AlphaFold 3, but clinical translation remains unproven
 - [Novo Was Europe's Most Valuable Company]({{ $baseURL }}posts/novo-was-europes-most-valuable-company/): Novo Nordisk lost 75% since June 2024 after CagriSema failed vs Zepbound and Lilly pulled ahead
 - [Novo Nordisk's Post-Patent Strategy]({{ $baseURL }}posts/novo-nordisks-post-patent-strategy/): Amycretin's Phase 1 data shows 24.3% weight loss, and how Novo plans to replace its $20B Ozempic franchise before 2031
 - [Ozempic is Reshaping the Fast Food Industry]({{ $baseURL }}posts/ozempic-is-reshaping-the-fast-food-industry/): GLP-1 users cut fast food spending 8% with 16% household adoption, creating headwinds for food stocks
