@@ -1,7 +1,7 @@
 +++
 title = "On-Device AI Models Will Be The New Reason to Upgrade Your Phone"
 seoTitle = "On-Device AI Models Are the New Reason to Upgrade Your Phone"
-date = 2026-03-26
+date = 2026-03-25
 lastmod = 2026-03-26
 publishDate = 2026-03-26T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-on-device-models.jpg"]
