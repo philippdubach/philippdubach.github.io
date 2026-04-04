@@ -1,7 +1,7 @@
 +++
 title = "Three Kinds of Not-Knowing"
 seoTitle = "Knightian Uncertainty: Risk, Uncertainty, and Ignorance"
-date = 2026-03-12
+date = 2026-04-04
 publishDate = 2026-03-12T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-edge-of-knowledge.jpg"]
 description = "Knightian uncertainty splits not-knowing into risk, uncertainty, and ignorance. A century after Knight and Keynes, most of investing still ignores the split."
@@ -9,8 +9,8 @@ keywords = ["Knightian uncertainty investing", "risk uncertainty ignorance frame
 categories = ["Quantitative Finance"]
 type = "Analysis"
 draft = false
-unlisted = true
-lastmod = 2026-03-12
+unlisted = false
+lastmod = 2026-04-04
 takeaways = [
   "Zeckhauser's 2006 framework splits not-knowing into risk (known distributions), uncertainty (unknown probabilities), and ignorance (undefined states): most of finance covers only the first.",
   "Buffett wrote a $1.5B California earthquake reinsurance policy that the capital markets couldn't place because institutional models required probability estimates nobody had.",

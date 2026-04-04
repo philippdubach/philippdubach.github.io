@@ -26,7 +26,7 @@ faq = [
 ]
 +++
 
-The iPhone 17 runs a [**3 billion** parameter language model on-device](https://machinelearning.apple.com/research/introducing-apple-foundation-models) at 30 tokens per second. Obviously, the average consumer has no idea what that sentence means, and Apple hasn't figured out how to make them care.
+The iPhone 17 runs a [3 billion parameter language model on-device](https://machinelearning.apple.com/research/introducing-apple-foundation-models) at 30 tokens per second. Obviously, the average consumer has no idea what that sentence means, and Apple hasn't figured out how to make them care.
 
 I believe that's about to change. Apple now has [complete access to Google's Gemini model](https://9to5mac.com/2026/03/25/new-details-on-apple-google-ai-deal-revealed-including-gemini-changes-report/) in its own data centers, with [the ability to distill it into smaller models](https://www.theinformation.com/newsletters/ai-agenda/apple-can-distill-googles-big-gemini-model) built for iPhones and iPads. Knowledge distillation works like this: you take a large model, have it perform tasks with detailed reasoning, then feed those reasoning traces to a smaller model until the student learns to mimic the teacher. The smaller model ends up far more capable than if you'd trained it from scratch on the same data. Apple can now do this with the full Gemini, not just their own in-house models, and the distilled output runs locally. No internet required.
 
