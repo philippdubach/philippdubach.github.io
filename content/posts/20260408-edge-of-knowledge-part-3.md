@@ -1,15 +1,15 @@
 +++
 title = "The Geometry of Who Knows What"
-seoTitle = "Information Asymmetry in UU Investing: The Other Side Knows Less"
-date = 2026-04-08
-publishDate = 2026-04-08T03:00:00Z
+seoTitle = "Information Asymmetry: When Nobody Knows More Than You"
+date = 2026-04-13
+publishDate = 2026-04-13T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-geometry-who-knows-what.jpg"]
 description = "When neither side can define the states of the world, adverse selection fears are misplaced. Zeckhauser's information matrices and constraint arbitrage."
-keywords = ["Zeckhauser information asymmetry investing", "adverse selection vs ignorance markets", "sidecar investing Zeckhauser", "Buffett California Earthquake Authority reinsurance", "winner's curse Bazerman Samuelson", "Aumann agreeing to disagree", "constraint arbitrage institutional investors", "UU investing information matrix", "Monday morning quarterback risk", "Akerlof lemons problem investing", "complementary skills investing edge", "Summers sidecar objection", "Robb uncommunicable knowledge", "fiduciary duty ambiguity avoidance"]
+keywords = ["information asymmetry investing", "adverse selection financial markets", "sidecar investing Zeckhauser", "Buffett California Earthquake Authority reinsurance", "winner's curse investing", "Aumann agreeing to disagree", "constraint arbitrage institutional investors", "limits to arbitrage institutional constraints", "Monday morning quarterback risk", "Akerlof lemons problem investing", "complementary skills investing edge", "Summers sidecar objection", "Robb uncommunicable knowledge", "fiduciary duty ambiguity avoidance"]
 categories = ["Quantitative Finance"]
 type = "Analysis"
-draft = true
-lastmod = 2026-04-08
+draft = false
+lastmod = 2026-04-13
 takeaways = [
   "Zeckhauser's information matrices distinguish when the other side knows more (danger) from when ignorance is shared (opportunity), and most investors assume the wrong box.",
   "Wall Street rejected Buffett's $1B California earthquake reinsurance not because they feared adverse selection but because their compliance models required probability estimates that didn't exist.",
@@ -42,7 +42,7 @@ The first covers investing under uncertainty, where the possible states are know
 
 The second matrix covers investing under ignorance, where even the possible states are unknown. It's simpler: a 2x1. Unknown to You and Known to Others (Box E) versus Unknown to You and Unknown to Others (Box F). Box E is dangerous. Box F is opportunity.
 
-The point most people miss is about misidentification. Most investors assume they're in Box C or Box E: the other side knows more. This assumption is the legacy of standard finance, where [Akerlof's lemons problem (1970)](https://www.sfu.ca/~wainwrig/Econ400/akerlof.pdf) and the Glosten-Milgrom bid-ask spread model (1985) trained a generation to worry about adverse selection. Those worries are justified in Boxes A through C and in Box E. But in Box D and Box F, you're not facing an informed counterparty. You're facing someone equally confused, or someone who has left the market entirely because they can't tolerate the confusion.
+The point most people miss is about misidentification. Most investors assume they're in Box C or Box E: the other side knows more. This assumption is the legacy of standard information asymmetry models in finance, where [Akerlof's lemons problem (1970)](https://www.sfu.ca/~wainwrig/Econ400/akerlof.pdf) and the Glosten-Milgrom bid-ask spread model (1985) trained a generation to worry about adverse selection. Those worries are justified in Boxes A through C and in Box E. But in Box D and Box F, you're not facing an informed counterparty. You're facing someone equally confused, or someone who has left the market entirely because they can't tolerate the confusion.
 
 [Bazerman and Samuelson (1983)](https://www.cs.princeton.edu/courses/archive/spr09/cos444/papers/BazermanSamuelson83.pdf) showed that even in clean experimental settings, people are terrible at accounting for why the other side is willing to trade. Their winner's curse experiments found that bidders consistently failed to discount for the fact that winning an auction is bad news about your estimate's accuracy. In a UU world, this failure compounds. You can't compute the conditional expectation of the asset's value given that the other side is selling, because neither of you can define the state space over which that expectation would be calculated.
 
@@ -82,4 +82,4 @@ But complementary skills aren't the only form of advantage. In the [SaaSpocalyps
 
 I think both objections are correct and both miss something. They're correct that sidecar investing doesn't eliminate the evaluation problem. But they miss that the evaluation problem has different difficulty levels depending on context. Evaluating whether a real estate developer can build and lease a building is easier than evaluating whether a macro hedge fund can predict interest rates. Evaluating whether Buffett's insurance math is sound is easier than evaluating whether a biotech startup's drug candidate works. The sidecar concept isn't "trust someone blindly." It's "invest alongside someone whose edge you can partly verify, in situations where your own analytical advantage is zero."
 
-Knowing the geometry of who-knows-what is necessary but not sufficient. You've identified a Box D or Box F opportunity. You've assessed your absolute advantage. You've decided the other side isn't better informed. Now you need to decide how much to bet. In a UU world, the most famous formula for position sizing, the Kelly Criterion, breaks down in the ways you'd expect. That's [Part 4](/posts/bet-sizing-at-the-frontier/).
+Knowing the geometry of who-knows-what is necessary but not sufficient. You've identified a Box D or Box F opportunity. You've assessed your absolute advantage. You've decided the other side isn't better informed. Now you need to decide how much to bet. In a UU world, the most famous formula for position sizing, the Kelly Criterion, breaks down in the ways you'd expect. That's Part 4 _(coming soon)_.

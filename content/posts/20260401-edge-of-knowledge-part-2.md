@@ -6,7 +6,7 @@ lastmod = 2026-04-08
 publishDate = 2026-04-08T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-ambiguity-by-design.jpg"]
 description = "Ellsberg proved people flee unknown odds. Zeckhauser showed their flight creates mispricing. Part 2 on ambiguity aversion, comparative ignorance, and investing."
-keywords = ["ambiguity aversion investing", "Ellsberg paradox finance", "Zeckhauser unknown unknowable", "comparative ignorance Fox Tversky", "Knightian uncertainty mispricing", "ambiguity aversion vs risk aversion", "Gilboa Schmeidler maxmin expected utility", "Bewley inertia uncertainty", "betrayal aversion Bohnet Zeckhauser", "SaaSpocalypse IGV sell-off ambiguity", "unknown probability investing opportunity", "UU mispricing mechanism", "career risk ambiguity aversion", "institutional constraints uncertainty"]
+keywords = ["ambiguity aversion investing", "Ellsberg paradox finance", "Zeckhauser unknown unknowable", "comparative ignorance Fox Tversky", "Knightian uncertainty mispricing", "ambiguity aversion vs risk aversion", "Gilboa Schmeidler maxmin expected utility", "Bewley inertia uncertainty", "betrayal aversion Bohnet Zeckhauser", "SaaSpocalypse IGV sell-off ambiguity", "ambiguity premium equity mispricing", "Ellsberg paradox explained", "behavioral finance ambiguity aversion", "career risk ambiguity aversion", "institutional constraints uncertainty"]
 categories = ["Quantitative Finance"]
 type = "Analysis"
 draft = false
@@ -17,7 +17,7 @@ takeaways = [
   "Zeckhauser argues your discomfort facing an ambiguous asset tells you nothing about the asset but everything about the competitive field, because other buyers already left.",
 ]
 faq = [
-  {question = "What is the difference between risk aversion and ambiguity aversion?", answer = "Risk aversion is the preference for a certain outcome over an uncertain one with the same expected value, where probabilities are known. Ambiguity aversion is the preference for known probabilities over unknown ones, even when neither option is objectively better. Ellsberg demonstrated this in 1961: people prefer a known 50/50 bet over an unknown-probability bet they can take either side of, revealing aversion to the feeling of not-knowing rather than to any actual informational disadvantage."},
+  {question = "What is the difference between risk aversion and ambiguity aversion?", answer = "Risk aversion is preferring a certain outcome over an uncertain one with the same expected value, where probabilities are known. Ambiguity aversion is preferring known probabilities over unknown ones, even when neither option is objectively better. Ellsberg demonstrated this in 1961: people prefer a known 50/50 bet over an unknown-probability bet they can take either side of, revealing aversion to the feeling of not-knowing rather than to any actual informational disadvantage."},
   {question = "How does ambiguity aversion create mispricing in financial markets?", answer = "When deeply ambiguous events occur, ambiguity-averse investors exit positions even when operating results remain strong. Institutional constraints amplify this: fiduciary duties, compliance rules, and career risk force sophisticated capital out of positions that cannot be modeled with known probabilities. Competition thins, prices overshoot fundamentals, and a mispricing window opens for investors who can tolerate ambiguity."},
   {question = "Is ambiguity aversion rational or irrational?", answer = "Both, depending on context. Gilboa and Schmeidler (1989) showed that evaluating bets by worst-case probability is formally rational, and Bewley (2002) proved that inertia under genuine uncertainty is defensible. But in Ellsberg's original experiment, subjects preferred known 50/50 odds over unknown odds they could bet on either side of, revealing aversion to a feeling rather than to an informational asymmetry. Ambiguity aversion is a rational default that gets systematically overweighted in specific situations."},
   {question = "What is the comparative ignorance hypothesis?", answer = "Fox and Tversky (1995) showed that ambiguity aversion intensifies when people can compare themselves to someone who appears more knowledgeable. In financial markets, there is always someone who acts more confident, meaning the comparative ignorance effect is permanently activated, amplifying the flight from ambiguous assets beyond what the underlying uncertainty warrants."},
@@ -30,7 +30,7 @@ Ellsberg's urn experiment is one of the cleanest results in decision theory. [Da
 
 >What happens to prices when an entire market makes this choice simultaneously?
 
-## Experimental evidence
+## The experimental evidence
 
 Ellsberg's result spawned a body of work that, six decades later, has only strengthened the original finding. [Fox and Tversky (1995)](https://academic.oup.com/qje/article-abstract/110/3/585/1859203) added a twist that matters enormously for financial markets. Their "comparative ignorance hypothesis" showed that ambiguity aversion intensifies when people can compare themselves to someone who appears more knowledgeable. In a non-comparative setting, where subjects evaluated an ambiguous bet in isolation, ambiguity aversion largely disappeared. But the moment subjects could compare their knowledge to someone else's, the aversion came roaring back.
 
