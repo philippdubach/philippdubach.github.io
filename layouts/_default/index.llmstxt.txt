@@ -57,6 +57,7 @@ Citable data points from published analysis:
 ## Featured Analysis — Quantitative Finance & Risk
 
 - [Three Kinds of Not-Knowing]({{ $baseURL }}posts/three-kinds-of-not-knowing/): A taxonomy of epistemic uncertainty and its implications for portfolio construction and risk management
+- [Ambiguity by Design]({{ $baseURL }}posts/ambiguity-by-design/): Ellsberg proved people flee unknown odds; Zeckhauser showed their flight creates mispricing in financial markets
 - [Variance Tax]({{ $baseURL }}posts/variance-tax/): Why a portfolio averaging +10% can lose money, and how the ½σ² formula explains the gap between paper and real returns
 - [Long Volatility Premium]({{ $baseURL }}posts/long-volatility-premium/): 40-year evidence that beta-adjusted long volatility outperformed the S&P 500, synthesizing Goldman, AQR, and Universa research
 - [Is Private Equity Just Beta With a Lockup?]({{ $baseURL }}posts/is-private-equity-just-beta-with-a-lockup/): Examining whether private equity returns are alpha or repackaged market exposure with illiquidity premium
@@ -79,6 +80,7 @@ Citable data points from published analysis:
 
 ## Featured Analysis — GLP-1 / Pharma Economics
 
+- [Why Lilly's Weight Loss Pill Isn't a Peptide]({{ $baseURL }}posts/why-lillys-weight-loss-pill-isnt-a-peptide/): Oral semaglutide destroys 99% of its active ingredient; Lilly's Foundayo skips the problem entirely in the $70B oral GLP-1 race
 - [AI Can Now Design Drugs in Seconds; We Still Can't Tell You If They Work.]({{ $baseURL }}posts/ai-can-now-design-drugs-in-seconds-we-still-cant-tell-you-if-they-work./): Isomorphic Labs' IsoDDE hits 50% on hard protein-ligand benchmarks versus 23% for AlphaFold 3, but clinical translation remains unproven
 - [Novo Was Europe's Most Valuable Company]({{ $baseURL }}posts/novo-was-europes-most-valuable-company/): Novo Nordisk lost 75% since June 2024 after CagriSema failed vs Zepbound and Lilly pulled ahead
 - [Novo Nordisk's Post-Patent Strategy]({{ $baseURL }}posts/novo-nordisks-post-patent-strategy/): Amycretin's Phase 1 data shows 24.3% weight loss, and how Novo plans to replace its $20B Ozempic franchise before 2031
