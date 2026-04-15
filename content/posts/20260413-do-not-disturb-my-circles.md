@@ -2,14 +2,14 @@
 title = "Do Not Disturb My Circles"
 seoTitle = "AI for Science Lost to Chatbots: The $690B Misallocation"
 date = 2026-04-13
-lastmod = 2026-04-13
+lastmod = 2026-04-15
 publishDate = 2026-04-13T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-do-not-disturb-my-circles.jpg"]
 description = "AlphaFold cost under $1M to train. OpenAI spends $2.3B on inference. The chatbot era consumed the talent and compute that could have cured diseases."
 keywords = ["AI for science vs chatbots", "Demis Hassabis AlphaFold Gemini", "AlphaFold training cost", "AI compute scientific research funding", "Bell Labs monopoly research decline", "AI chatbot misallocation", "AI opportunity cost", "AI brain drain academia", "scientific AI funding gap", "AI capital allocation 2026", "DeepMind scientific AI", "AI infrastructure spending science", "Hassabis cure cancer quote", "chatbot era capital misallocation", "AI for science underfunded", "fundamental research AI funding", "AI resource allocation science commercial"]
 categories = ["AI"]
 type = "Commentary"
-draft = true
+draft = false
 takeaways = [
   "AlphaFold 2 trained on 128 TPUs for 11 days at an estimated cost under $1 million, less than what OpenAI spends on inference in a single day of its $2.3 billion annual bill",
   "Big Tech spends 75x more on AI than the entire US federal science budget: $250 billion on chatbot infrastructure versus $3.3 billion on AI for scientific research",
