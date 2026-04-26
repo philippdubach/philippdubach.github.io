@@ -39,6 +39,8 @@ Citable data points from published analysis:
 
 ## Featured Analysis — AI Economics & Strategy
 
+- [Do Not Disturb My Circles]({{ $baseURL }}posts/do-not-disturb-my-circles/): The chatbot era as capital misallocation. AlphaFold cost less to train than OpenAI spends on inference in a single day, Bell Labs as the cautionary tale
+- [Inside PRAGMA: Revolut's Foundation Model for Banking]({{ $baseURL }}posts/inside-pragma-revoluts-foundation-model-for-banking/): Revolut's 1B-parameter encoder trained on 24B banking events, compared with Nubank's nuFormer and the broader convergence in transaction foundation models
 - [On-Device AI Models Will Be The New Reason to Upgrade Your Phone]({{ $baseURL }}posts/on-device-ai-models-will-be-the-new-reason-to-upgrade-your-phone/): How on-device AI models distilled from Gemini could break the smartphone upgrade stalemate, with parameters becoming the new megapixels
 - [The Last Architecture Designed by Hand]({{ $baseURL }}posts/the-last-architecture-designed-by-hand/): Mathematical proofs of transformer limits, hybrid architectures in production, and AI systems searching for their own replacement
 - [MCP vs A2A in 2026: How the AI Protocol War Ends]({{ $baseURL }}posts/mcp-vs-a2a-in-2026-how-the-ai-protocol-war-ends/): How the AI protocol standards war between Anthropic's MCP and Google's A2A is likely to resolve
@@ -56,8 +58,11 @@ Citable data points from published analysis:
 
 ## Featured Analysis — Quantitative Finance & Risk
 
-- [Three Kinds of Not-Knowing]({{ $baseURL }}posts/three-kinds-of-not-knowing/): A taxonomy of epistemic uncertainty and its implications for portfolio construction and risk management
-- [Ambiguity by Design]({{ $baseURL }}posts/ambiguity-by-design/): Ellsberg proved people flee unknown odds; Zeckhauser showed their flight creates mispricing in financial markets
+- [Three Kinds of Not-Knowing]({{ $baseURL }}posts/three-kinds-of-not-knowing/): Investing at the Edge of Knowledge Part 1. Knightian uncertainty splits not-knowing into risk, uncertainty, and ignorance, and most of investing only handles the first
+- [Ambiguity by Design]({{ $baseURL }}posts/ambiguity-by-design/): Investing at the Edge of Knowledge Part 2. Ellsberg proved people flee unknown odds; Zeckhauser showed their flight creates mispricing in financial markets
+- [The Geometry of Who Knows What]({{ $baseURL }}posts/the-geometry-of-who-knows-what/): Investing at the Edge of Knowledge Part 3. When neither side can define the states of the world, adverse selection fears are misplaced and constraint arbitrage emerges
+- [Bet Sizing at the Frontier]({{ $baseURL }}posts/bet-sizing-at-the-frontier/): Investing at the Edge of Knowledge Part 4. The Kelly Criterion needs probabilities you don't have under genuine uncertainty, and Zeckhauser's Maxim B replaces formula precision with judgment
+- [The Moral Philosophy of Investing in Ignorance]({{ $baseURL }}posts/the-moral-philosophy-of-investing-in-ignorance/): Investing at the Edge of Knowledge Part 5. Constraint arbitrage as the structural source of UU returns and the distributional consequences of profiting from institutional ignorance
 - [Variance Tax]({{ $baseURL }}posts/variance-tax/): Why a portfolio averaging +10% can lose money, and how the ½σ² formula explains the gap between paper and real returns
 - [Long Volatility Premium]({{ $baseURL }}posts/long-volatility-premium/): 40-year evidence that beta-adjusted long volatility outperformed the S&P 500, synthesizing Goldman, AQR, and Universa research
 - [Is Private Equity Just Beta With a Lockup?]({{ $baseURL }}posts/is-private-equity-just-beta-with-a-lockup/): Examining whether private equity returns are alpha or repackaged market exposure with illiquidity premium

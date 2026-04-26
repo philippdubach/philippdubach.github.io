@@ -2,7 +2,7 @@
 title = "Ambiguity by Design"
 seoTitle = "Ambiguity Aversion: Why Unknown Probabilities Create Mispricing"
 date = 2026-04-08
-lastmod = 2026-04-08
+lastmod = 2026-04-26
 publishDate = 2026-04-08T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-ambiguity-by-design.jpg"]
 description = "Ellsberg proved people flee unknown odds. Zeckhauser showed their flight creates mispricing. Part 2 on ambiguity aversion, comparative ignorance, and investing."
@@ -72,4 +72,4 @@ The sellers weren't acting on information. They were acting on ambiguity aversio
 
 Zeckhauser describes the investor's challenge with a bridge analogy: you have to make peace with good decisions that lead to bad outcomes. Buying the IGV at $80 with an 18 RSI and 17% earnings growth is, on the framework, a good decision. If it drops to $70 first, that doesn't make it a bad decision. But making that distinction under ambiguity is not an analytical skill. It's a temperamental one. It requires accepting that "I don't know" is not disqualifying and that the discomfort you feel is shared, priced in, and possibly overpriced. That's harder than any calculation.
 
-Knowing that ambiguity aversion creates mispricing is the easy part. The hard part is what comes next: when you're facing someone on the other side of a trade in a UU world, how do you figure out whether they know something you don't, or whether they're just less uncomfortable than you are? That's the domain of sidecar investing and strategic inference. That's Part 3 _(coming soon)_.
+Knowing that ambiguity aversion creates mispricing is the easy part. The hard part is what comes next: when you're facing someone on the other side of a trade in a UU world, how do you figure out whether they know something you don't, or whether they're just less uncomfortable than you are? That's the domain of sidecar investing and strategic inference. That's [Part 3](/posts/the-geometry-of-who-knows-what/).

@@ -10,7 +10,7 @@ categories = ["Quantitative Finance"]
 type = "Analysis"
 draft = false
 unlisted = false
-lastmod = 2026-04-04
+lastmod = 2026-04-26
 takeaways = [
   "Zeckhauser's 2006 framework splits not-knowing into risk (known distributions), uncertainty (unknown probabilities), and ignorance (undefined states): most of finance covers only the first.",
   "Buffett wrote a $1.5B California earthquake reinsurance policy that the capital markets couldn't place because institutional models required probability estimates nobody had.",
@@ -81,4 +81,4 @@ And Box 3 is where the IGV software ETF fell **32%** from its September peak, wh
 
 This pattern will recur. AI is not the last technology that will generate new categories of outcomes that nobody anticipated. Every time it happens, the same sequence plays out: Box 3 conditions emerge, institutions flee because their models require Box 1 or Box 2 inputs, prices overshoot, and unconstrained investors who understand the nature of their own ignorance pick up the pieces. Zeckhauser wrote his paper two decades ago. The mechanism he described has, if anything, accelerated.
 
-The taxonomy tells you what kind of problem you're facing. It doesn't tell you what to do about it. That requires understanding why most investors run from Box 3, and whether running is rational. That's Part 2 _(coming soon)_.
+The taxonomy tells you what kind of problem you're facing. It doesn't tell you what to do about it. That requires understanding why most investors run from Box 3, and whether running is rational. That's [Part 2](/posts/ambiguity-by-design/).

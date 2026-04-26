@@ -9,7 +9,7 @@ keywords = ["information asymmetry investing", "adverse selection financial mark
 categories = ["Quantitative Finance"]
 type = "Analysis"
 draft = false
-lastmod = 2026-04-13
+lastmod = 2026-04-26
 takeaways = [
   "Zeckhauser's information matrices distinguish when the other side knows more (danger) from when ignorance is shared (opportunity), and most investors assume the wrong box.",
   "Wall Street rejected Buffett's $1B California earthquake reinsurance not because they feared adverse selection but because their compliance models required probability estimates that didn't exist.",
@@ -82,4 +82,4 @@ But complementary skills aren't the only form of advantage. In the [SaaSpocalyps
 
 I think both objections are correct and both miss something. They're correct that sidecar investing doesn't eliminate the evaluation problem. But they miss that the evaluation problem has different difficulty levels depending on context. Evaluating whether a real estate developer can build and lease a building is easier than evaluating whether a macro hedge fund can predict interest rates. Evaluating whether Buffett's insurance math is sound is easier than evaluating whether a biotech startup's drug candidate works. The sidecar concept isn't "trust someone blindly." It's "invest alongside someone whose edge you can partly verify, in situations where your own analytical advantage is zero."
 
-Knowing the geometry of who-knows-what is necessary but not sufficient. You've identified a Box D or Box F opportunity. You've assessed your absolute advantage. You've decided the other side isn't better informed. Now you need to decide how much to bet. In a UU world, the most famous formula for position sizing, the Kelly Criterion, breaks down in the ways you'd expect. That's Part 4 _(coming soon)_.
+Knowing the geometry of who-knows-what is necessary but not sufficient. You've identified a Box D or Box F opportunity. You've assessed your absolute advantage. You've decided the other side isn't better informed. Now you need to decide how much to bet. In a UU world, the most famous formula for position sizing, the Kelly Criterion, breaks down in the ways you'd expect. That's [Part 4](/posts/bet-sizing-at-the-frontier/).

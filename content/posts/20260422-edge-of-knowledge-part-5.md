@@ -8,8 +8,8 @@ description = "Constraint arbitrage, the sidecar problem, and who bears the dist
 keywords = ["ethics of investing under ignorance", "constraint arbitrage fairness", "Zeckhauser blame aversion investing", "institutional investor career risk", "Monday morning quarterback MMQ risk", "sidecar investing ethics Gazprom", "Munger Zeckhauser bridge quote", "UU investing distributional consequences", "Ricardo Waterloo investment unknown", "fiduciary duty ambiguity penalty", "market efficiency ignorance box", "pension fund UU constraints", "Buffett California earthquake authority ethics", "complementary skills vs power investing"]
 categories = ["Quantitative Finance"]
 type = "Analysis"
-draft = true
-lastmod = 2026-04-22
+draft = false
+lastmod = 2026-04-26
 takeaways = [
   "Most alpha in UU situations is constraint arbitrage: profiting from the gap between institutional rationality (right for the manager's career) and market rationality (right price for the asset).",
   "Returns from UU mispricing flow disproportionately to wealthy individuals and family offices because institutional governance requires probability estimates the ignorance box can't produce.",
@@ -56,7 +56,7 @@ Zeckhauser's sidecar works cleanly when the driver has genuine capability. A rea
 
 It gets murkier when the complementary asset is power rather than skill. Zeckhauser discusses a hypothetical Gazprom investment: "If you could comfortably determine that the Russian elite was investing on its own volition, and that foreigners would not be discriminated against..." The edge in that scenario isn't analytical. It's access to a political structure. The sidecar investor is riding alongside someone who can influence outcomes, not someone who can predict them. The distinction between capability and power as complementary assets is one the paper gestures at but doesn't fully resolve.
 
-[Robb (2006)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2205858) put his finger on a related problem. UU knowledge is "uncommunicable." If a mechanism for generating excess returns could be expressed as a process, someone would have arbitraged it away. But if the driver can't articulate their edge, the sidecar investor can't distinguish between genuine insight, survivorship bias, and proximity to power. This isn't just an epistemological difficulty. It's an ethical one: you're making a bet on someone whose advantage you can't evaluate, which means you're implicitly trusting that the advantage is legitimate.
+[Robb (2006)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2205858) put his finger on a related problem. UU knowledge is "uncommunicable." If a mechanism for generating excess returns could be expressed as a process, someone would have arbitraged it away. But if the driver can't articulate their edge, the sidecar investor can't distinguish between genuine insight, survivorship bias, and proximity to power. There's an epistemological problem here, and an ethical one. You're making a bet on someone whose advantage you can't evaluate, which means you're implicitly trusting that the advantage is legitimate.
 
 [Summers (2006)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2205848) observed that identifying skilled UU managers may be no easier than picking investments directly. I suspect this is too generous. In many cases, identifying whether a sidecar driver has skill, power, or luck is harder than evaluating the underlying asset, because the asset at least has observable characteristics. The driver's edge, by definition, doesn't.
 
