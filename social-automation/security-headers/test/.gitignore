@@ -1,0 +1,2 @@
+# Allow test files in this directory
+!*.test.js
