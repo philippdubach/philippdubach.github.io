@@ -93,14 +93,14 @@ enableGitInfo = true
   type = 'types'
   tag = 'tags'
 
-# Custom media types for JSON Feed and API
+# Custom media types for JSON Feed, Posts API, and Linkset
 [mediaTypes]
   [mediaTypes."application/feed+json"]
     suffixes = ["json"]
   [mediaTypes."application/linkset+json"]
     suffixes = ["json"]
 
-# Output formats for JSON Feed and Posts API
+# Output formats for JSON Feed, Posts API, LLM discovery, and api-catalog
 [outputFormats]
   [outputFormats.JSONFeed]
     mediaType = "application/feed+json"
@@ -152,6 +152,5 @@ enableGitInfo = true
   home = ['HTML', 'RSS', 'JSONFeed', 'PostsAPI', 'LLMSTxt', 'LLMSFullTxt', 'SiteMap', 'Markdown', 'APICatalog']
   page = ['HTML', 'Markdown']
   section = ['HTML', 'RSS', 'SiteMap', 'Markdown']
-  taxonomy = ['HTML', 'RSS', 'Markdown']
   term = ['HTML', 'RSS', 'Markdown']
   
