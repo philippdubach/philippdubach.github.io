@@ -34,6 +34,30 @@ test("isContentPath: cdn-cgi", () => {
   assert.equal(isContentPath("/cdn-cgi/foo"), false);
 });
 
+test("isContentPath: bare /categories/ excluded (no taxonomy listing .md)", () => {
+  // Hugo generates /categories/<term>/index.md but not /categories/index.md.
+  // Treating bare /categories/ as a content path would rewrite to a 404.
+  assert.equal(isContentPath("/categories/"), false);
+});
+
+test("isContentPath: bare /tags/ excluded", () => {
+  assert.equal(isContentPath("/tags/"), false);
+});
+
+test("isContentPath: bare /types/ excluded", () => {
+  assert.equal(isContentPath("/types/"), false);
+});
+
+test("isContentPath: term page under /categories/ still matches", () => {
+  assert.equal(isContentPath("/categories/ai/"), true);
+});
+
+test("buildLinkHeader: bare /categories/ has no per-page md alternate", () => {
+  const header = buildLinkHeader("/categories/");
+  assert.match(header, /rel="api-catalog"/);
+  assert.doesNotMatch(header, /<\/categories\/index\.md>/);
+});
+
 test("buildLinkHeader: homepage gets all site-wide rels + per-page alternate", () => {
   const header = buildLinkHeader("/");
   assert.match(header, /rel="api-catalog"/);

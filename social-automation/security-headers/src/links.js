@@ -21,10 +21,20 @@ const CONTENT_EXACT = new Set([
   "/newsletter/",
 ]);
 
+// Taxonomy listing roots — Hugo does not emit `<root>/index.md` for these,
+// so they must not be treated as content paths even though /categories/<term>/
+// (matching the prefix) is valid.
+const CONTENT_EXCLUDE = new Set([
+  "/categories/",
+  "/tags/",
+  "/types/",
+]);
+
 // SYNC POINT: when adding a new machine-readable endpoint, update both this
 // file and layouts/index.apicatalog.json.
 
 export const isContentPath = (path) => {
+  if (CONTENT_EXCLUDE.has(path)) return false;
   if (CONTENT_EXACT.has(path)) return true;
   return CONTENT_PREFIXES.some((p) => path.startsWith(p));
 };
