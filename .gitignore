@@ -61,3 +61,6 @@ CLAUDE.md
 .playwright-mcp/
 docs/
 tools/
+
+# Git worktrees
+.worktrees/
