@@ -27,6 +27,13 @@
   # Prevent XSS in older browsers (deprecated but harmless)
   X-XSS-Protection: 0
 
+  # Link headers (RFC 8288) — added by Cloudflare Worker, not GitHub Pages.
+  # Reference copy: see social-automation/security-headers/src/links.js for the live values.
+  # SYNC POINT: when adding a new machine-readable endpoint, update both
+  #   layouts/index.apicatalog.json (the catalog file)
+  #   social-automation/security-headers/src/links.js (the site-wide Link header).
+  Link: </.well-known/api-catalog>; rel="api-catalog", </sitemap.xml>; rel="sitemap", </feed/index.xml>; rel="alternate"; type="application/rss+xml"; title="RSS", </feed.json>; rel="alternate"; type="application/feed+json"; title="JSON Feed", </llms.txt>; rel="describedby"; type="text/plain"
+
 # Cache HTML pages with stale-while-revalidate for instant loads
 /*.html
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
