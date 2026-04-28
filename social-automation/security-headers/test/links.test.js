@@ -52,6 +52,24 @@ test("isContentPath: term page under /categories/ still matches", () => {
   assert.equal(isContentPath("/categories/ai/"), true);
 });
 
+test("isContentPath: paginated section path excluded (Hugo emits HTML only)", () => {
+  // Hugo's paginator (e.g. /posts/page/2/) generates HTML-only paginated
+  // index pages — no index.md exists at those paths. Treating them as
+  // content paths would advertise a dead .md URL via Link header and
+  // rewrite Accept: text/markdown requests to a 404.
+  assert.equal(isContentPath("/posts/page/2/"), false);
+});
+
+test("isContentPath: paginated term path excluded", () => {
+  assert.equal(isContentPath("/categories/ai/page/3/"), false);
+});
+
+test("buildLinkHeader: paginated path has no per-page md alternate", () => {
+  const header = buildLinkHeader("/posts/page/2/");
+  assert.match(header, /rel="api-catalog"/);
+  assert.doesNotMatch(header, /<\/posts\/page\/2\/index\.md>/);
+});
+
 test("buildLinkHeader: bare /categories/ has no per-page md alternate", () => {
   const header = buildLinkHeader("/categories/");
   assert.match(header, /rel="api-catalog"/);

@@ -84,10 +84,12 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
 
   // Catalog and markdown branches are mutually exclusive: the catalog has
   // its own dedicated path and content-type, regardless of what the client's
-  // Accept header asked for.
+  // Accept header asked for. The wantsMd branch additionally guards on
+  // newResponse.ok so we don't stamp text/markdown on 4xx/5xx bodies if a
+  // path slips past isContentPath without having an .md variant on origin.
   if (isCatalog) {
     newResponse.headers.set("Content-Type", "application/linkset+json");
-  } else if (wantsMd) {
+  } else if (wantsMd && newResponse.ok) {
     const body = await newResponse.clone().text();
     newResponse.headers.set("Content-Type", "text/markdown; charset=utf-8");
     newResponse.headers.set("x-markdown-tokens", String(estimateTokens(body)));

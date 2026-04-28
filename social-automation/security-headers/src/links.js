@@ -30,11 +30,17 @@ const CONTENT_EXCLUDE = new Set([
   "/types/",
 ]);
 
+// Hugo's paginator emits HTML-only paginated index pages (e.g. /posts/page/2/,
+// /categories/ai/page/3/). No index.md exists at those paths, so they must
+// not be treated as content paths.
+const PAGINATED_PATH = /\/page\/\d+\/?$/;
+
 // SYNC POINT: when adding a new machine-readable endpoint, update both this
 // file and layouts/index.apicatalog.json.
 
 export const isContentPath = (path) => {
   if (CONTENT_EXCLUDE.has(path)) return false;
+  if (PAGINATED_PATH.test(path)) return false;
   if (CONTENT_EXACT.has(path)) return true;
   return CONTENT_PREFIXES.some((p) => path.startsWith(p));
 };
