@@ -75,15 +75,22 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
 
   newResponse.headers.set("Link", buildLinkHeader(url.pathname));
 
-  if (wantsMd) {
-    const body = await newResponse.clone().text();
-    newResponse.headers.set("Content-Type", "text/markdown; charset=utf-8");
-    newResponse.headers.set("x-markdown-tokens", String(estimateTokens(body)));
+  // Vary on every content-negotiable response so downstream caches (browser,
+  // corporate proxies) know HTML and Markdown variants differ. The CF edge
+  // cache uses the synthetic _v key in cacheKeyFor for the same purpose.
+  if (isContentPath(url.pathname)) {
     newResponse.headers.set("Vary", "Accept");
   }
 
+  // Catalog and markdown branches are mutually exclusive: the catalog has
+  // its own dedicated path and content-type, regardless of what the client's
+  // Accept header asked for.
   if (isCatalog) {
     newResponse.headers.set("Content-Type", "application/linkset+json");
+  } else if (wantsMd) {
+    const body = await newResponse.clone().text();
+    newResponse.headers.set("Content-Type", "text/markdown; charset=utf-8");
+    newResponse.headers.set("x-markdown-tokens", String(estimateTokens(body)));
   }
 
   return newResponse;
@@ -116,7 +123,10 @@ export default {
     const originResponse = await fetchOrigin(request, originUrl);
     const decorated = await decorate(originResponse, { url, wantsMd, isCatalog });
 
-    // Only cache successful, cacheable responses.
+    // Cache stores the fully-decorated response. Header changes (CSP,
+    // Permissions-Policy, Link) only propagate after entries expire or are
+    // purged — pair such changes with `wrangler deploy` plus a CF cache
+    // purge to avoid serving stale headers.
     if (decorated.ok && request.method === "GET") {
       await cache.put(cacheKey, decorated.clone());
     }
