@@ -3,7 +3,7 @@
   "linkset": [
     {
       "anchor": "{{ $base }}/",
-      "service-doc": [
+      "service-desc": [
         { "href": "{{ $base }}/llms.txt", "type": "text/plain", "title": "LLM discovery summary" },
         { "href": "{{ $base }}/llms-full.txt", "type": "text/plain", "title": "LLM discovery full content" }
       ],

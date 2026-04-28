@@ -153,4 +153,3 @@ enableGitInfo = true
   page = ['HTML', 'Markdown']
   section = ['HTML', 'RSS', 'SiteMap', 'Markdown']
   term = ['HTML', 'RSS', 'Markdown']
-  

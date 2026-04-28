@@ -7,85 +7,14 @@ Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /cdn-cgi/
 
-# AI Search & Training Agents - explicitly allowed
-User-agent: GPTBot
+# AI Search & Training Agents — Content-Signal applied per group because named
+# user-agents do not inherit directives from the wildcard group.
+{{ $aiBots := slice "GPTBot" "ChatGPT-User" "OAI-SearchBot" "ClaudeBot" "claude-web" "anthropic-ai" "Claude-User" "Claude-SearchBot" "PerplexityBot" "Perplexity-User" "Google-Extended" "Google-CloudVertexBot" "Gemini-Deep-Research" "Applebot-Extended" "meta-externalagent" "Meta-WebIndexer" "Amazonbot" "cohere-ai" "Bytespider" "YouBot" "DeepSeekBot" "DuckAssistBot" "MistralAI-User" "GrokBot" "CCBot" "Diffbot" -}}
+{{ range $aiBots }}
+User-agent: {{ . }}
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: claude-web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Google-CloudVertexBot
-Allow: /
-
-User-agent: Gemini-Deep-Research
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: meta-externalagent
-Allow: /
-
-User-agent: Meta-WebIndexer
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: YouBot
-Allow: /
-
-User-agent: DeepSeekBot
-Allow: /
-
-User-agent: DuckAssistBot
-Allow: /
-
-User-agent: MistralAI-User
-Allow: /
-
-User-agent: GrokBot
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Diffbot
-Allow: /
-
+{{ end }}
 # Sitemap
 Sitemap: {{ .Site.BaseURL }}sitemap.xml
 
@@ -93,4 +22,3 @@ Sitemap: {{ .Site.BaseURL }}sitemap.xml
 # LLMs.txt: {{ .Site.BaseURL }}llms.txt
 # LLMs-full.txt: {{ .Site.BaseURL }}llms-full.txt
 # Markdown versions: append index.md to any post URL
-
