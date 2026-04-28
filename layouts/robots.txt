@@ -1,4 +1,9 @@
+# Content-Signal (draft-romm-aipref-contentsignals)
+# Site posture: maximally permissive — search, AI inference, and AI training all allowed.
+# Content negotiation: requests with Accept: text/markdown receive a markdown variant.
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /cdn-cgi/
 
