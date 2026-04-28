@@ -33,6 +33,12 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 
 **Updates**
 
+> **April 2026**
+
+*Agent Readiness* — Shipped three coordinated changes so AI agents and content-aware crawlers can discover and consume the site through standardized protocols. Every response now carries a `Link:` header (RFC 8288) advertising machine-readable resources: the api-catalog, sitemap, RSS and JSON feeds, `llms.txt`, and a per-page markdown alternate. A new `/.well-known/api-catalog` endpoint returns an RFC 9264 Linkset enumerating those endpoints (RFC 9727). Content negotiation now works: requesting any page with `Accept: text/markdown` returns a markdown variant with `Content-Type: text/markdown`, `Vary: Accept`, and an `x-markdown-tokens` count for LLM context-window planning. The robots.txt declares `Content-Signal: search=yes, ai-input=yes, ai-train=yes` per draft-romm-aipref-contentsignals.
+
+*Worker Refactor* — The 60-line security-headers Worker grew into four focused modules (`accept`, `links`, `cache`, `index`) with 32 unit tests. The `cache` module is the interesting bit: Cloudflare's edge cache doesn't honor `Vary: Accept` by default, so the Worker uses the Cache API with synthetic keys (`?_v=html|md`) to keep HTML and Markdown variants isolated under the same URL. Origin fetches HTML or rewrites to `/index.md` based on the client's Accept header.
+
 > **March 2026**
 
 *Hugo Upgrade* — Upgraded from Hugo v0.128.0 to v0.157.0. Migrated deprecated `.Site.AllPages` to `.Site.Pages` in the sitemap template and `.Site.Data` to `site.Data` across navigation, structured data, and research templates. Removed a dead `readFile` security config key from `hugo.toml`. No breaking changes, zero deprecation warnings.

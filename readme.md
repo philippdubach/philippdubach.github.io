@@ -214,8 +214,11 @@ Context-aware disclaimers that:
 - `/feed/index.xml` — RSS 2.0 with XSLT stylesheet
 - `/feed.json` — JSON Feed 1.1
 - `/api/posts.json` — Posts API for programmatic access
-- `/llms.txt` — AI/LLM crawler discovery
+- `/llms.txt`, `/llms-full.txt` — AI/LLM crawler discovery
 - `/sitemap.xml` — Dynamic sitemap with git-based lastmod
+- `/.well-known/api-catalog` — RFC 9264 Linkset enumerating the above (RFC 9727)
+- `/index.md`, `/posts/<slug>/index.md`, `/categories/<term>/index.md` — Markdown variant of every page; also returned by content negotiation when `Accept: text/markdown` is sent to the HTML URL
+- `Link:` response header on every page advertises the catalog, sitemap, feeds, and per-page markdown alternate (RFC 8288)
 
 ---
 
@@ -235,6 +238,14 @@ Context-aware disclaimers that:
 ---
 
 ## Changelog
+
+### April 2026
+- Shipped agent-readiness improvements: RFC 8288 `Link` headers on every response advertising machine-readable resources (api-catalog, sitemap, RSS, JSON Feed, llms.txt, per-page `.md` alternate)
+- Added `/.well-known/api-catalog` (RFC 9264 Linkset / RFC 9727) enumerating discoverable endpoints
+- Added markdown content negotiation: `Accept: text/markdown` returns a markdown variant of any post, section, or homepage with `Content-Type: text/markdown`, `Vary: Accept`, and `x-markdown-tokens`
+- Refactored security-headers Worker into four modules (`accept`, `links`, `cache`, `index`) with 32 unit tests, using the Cache API with variant-aware keys to keep HTML and Markdown isolated under the same URL
+- Declared `Content-Signal: search=yes, ai-input=yes, ai-train=yes` in robots.txt per draft-romm-aipref-contentsignals
+- Hugo now emits `Markdown` output for `home`, `section`, and `term` (post-level was already in place)
 
 ### March 2026
 - Upgraded Hugo from v0.128.0 to v0.157.0, fixed deprecated `.Site.AllPages` and `.Site.Data` APIs
