@@ -1,14 +1,20 @@
 /**
  * Security Headers Worker
- * Adds HTTP security headers to all responses from philippdubach.com.
- * GitHub Pages doesn't process _headers files — this Worker fills that gap.
+ * - Adds HTTP security headers to all responses from philippdubach.com.
+ * - Performs Accept-aware URL rewriting for Markdown content negotiation.
+ * - Emits RFC 8288 Link headers advertising machine-readable endpoints.
  *
- * Synced with static/_headers — keep both in sync when updating.
+ * Reference copy in static/_headers is documentation only — GitHub Pages
+ * does not process it. This Worker is the source of truth for response
+ * headers on philippdubach.com.
  */
 
+import { wantsMarkdown } from "./accept.js";
+import { buildLinkHeader, isContentPath } from "./links.js";
+import { cacheKeyFor } from "./cache.js";
+
 const SECURITY_HEADERS = {
-  // CSP with frame-ancestors (only works via HTTP header, not <meta>)
-  'Content-Security-Policy':
+  "Content-Security-Policy":
     "default-src 'self'; " +
     "script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net https://static.cloudflareinsights.com; " +
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
@@ -21,41 +27,100 @@ const SECURITY_HEADERS = {
     "frame-ancestors 'none'; " +
     "base-uri 'self'; " +
     "form-action 'self' https://newsletter-api.philippd.workers.dev; " +
-    'upgrade-insecure-requests;',
+    "upgrade-insecure-requests;",
+  "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+  "X-Frame-Options": "DENY",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy":
+    "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=(), unload=()",
+  "Cross-Origin-Embedder-Policy": "credentialless",
+  "Cross-Origin-Opener-Policy": "same-origin",
+  "X-XSS-Protection": "0",
+};
 
-  // HSTS — 2 years, preload ready
-  'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+const estimateTokens = (body) => Math.ceil(body.length / 4);
 
-  // Prevent clickjacking (redundant with CSP frame-ancestors but needed for older browsers)
-  'X-Frame-Options': 'DENY',
+// Path rewrites:
+// - /.well-known/api-catalog and /api-catalog → /api-catalog.json on origin
+// - HTML content paths with Accept: text/markdown → append index.md
+const rewriteOriginPath = (url, wantsMd) => {
+  const path = url.pathname;
 
-  // Prevent MIME sniffing
-  'X-Content-Type-Options': 'nosniff',
+  if (path === "/.well-known/api-catalog" || path === "/api-catalog") {
+    return "/api-catalog.json";
+  }
 
-  // Referrer policy
-  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  if (wantsMd && isContentPath(path)) {
+    return path.endsWith("/") ? `${path}index.md` : `${path}/index.md`;
+  }
 
-  // Permissions policy — disable unused browser features, enable bfcache
-  'Permissions-Policy':
-    'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=(), unload=()',
+  return null; // no rewrite
+};
 
-  // Cross-origin isolation
-  'Cross-Origin-Embedder-Policy': 'credentialless',
-  'Cross-Origin-Opener-Policy': 'same-origin',
+const fetchOrigin = async (request, originUrl) => {
+  const originRequest = new Request(originUrl, {
+    method: request.method,
+    headers: request.headers,
+  });
+  return fetch(originRequest);
+};
 
-  // Disable XSS auditor (deprecated, can cause issues)
-  'X-XSS-Protection': '0',
+const decorate = async (response, { url, wantsMd, isCatalog }) => {
+  const newResponse = new Response(response.body, response);
+
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
+    newResponse.headers.set(k, v);
+  }
+
+  newResponse.headers.set("Link", buildLinkHeader(url.pathname));
+
+  if (wantsMd) {
+    const body = await newResponse.clone().text();
+    newResponse.headers.set("Content-Type", "text/markdown; charset=utf-8");
+    newResponse.headers.set("x-markdown-tokens", String(estimateTokens(body)));
+    newResponse.headers.set("Vary", "Accept");
+  }
+
+  if (isCatalog) {
+    newResponse.headers.set("Content-Type", "application/linkset+json");
+  }
+
+  return newResponse;
 };
 
 export default {
   async fetch(request) {
-    const response = await fetch(request);
-    const newResponse = new Response(response.body, response);
+    const url = new URL(request.url);
+    const wantsMd = wantsMarkdown(request);
+    const isCatalog =
+      url.pathname === "/.well-known/api-catalog" || url.pathname === "/api-catalog";
 
-    for (const [header, value] of Object.entries(SECURITY_HEADERS)) {
-      newResponse.headers.set(header, value);
+    const cache = caches.default;
+    const cacheKey = cacheKeyFor(request, wantsMd);
+
+    const cached = await cache.match(cacheKey);
+    if (cached) {
+      // Cached response already carries our headers. Just return it.
+      return cached;
     }
 
-    return newResponse;
+    const rewritePath = rewriteOriginPath(url, wantsMd);
+    let originUrl = url.toString();
+    if (rewritePath) {
+      const u = new URL(url.toString());
+      u.pathname = rewritePath;
+      originUrl = u.toString();
+    }
+
+    const originResponse = await fetchOrigin(request, originUrl);
+    const decorated = await decorate(originResponse, { url, wantsMd, isCatalog });
+
+    // Only cache successful, cacheable responses.
+    if (decorated.ok && request.method === "GET") {
+      await cache.put(cacheKey, decorated.clone());
+    }
+
+    return decorated;
   },
 };
