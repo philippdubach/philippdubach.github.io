@@ -5,7 +5,12 @@ const parseAccept = (header) => {
     let q = 1;
     for (const p of params) {
       const [k, v] = p.trim().split("=");
-      if (k === "q") q = parseFloat(v);
+      if (k === "q") {
+        const parsed = parseFloat(v);
+        // Malformed q-values default to 1 (HTTP weight default). Without
+        // this guard, NaN propagates through Math.max and breaks ordering.
+        q = Number.isFinite(parsed) ? parsed : 1;
+      }
     }
     return { type: type.trim().toLowerCase(), q };
   });

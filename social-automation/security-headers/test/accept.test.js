@@ -32,3 +32,18 @@ test("Accept: */* → false (default to html)", () => {
 test("equal q values prefer markdown", () => {
   assert.equal(wantsMarkdown(req("text/html;q=0.5,text/markdown;q=0.5")), true);
 });
+
+test("malformed q-value defaults to 1 (no NaN propagation)", () => {
+  // Without a guard, parseFloat("abc") yields NaN, which then poisons
+  // Math.max comparisons (NaN < 0 is false), producing brittle behavior.
+  // Per HTTP semantics, an unrecognized q-value should fall back to the
+  // default weight of 1. The result must be a deterministic boolean.
+  const r = wantsMarkdown(req("text/markdown;q=abc"));
+  assert.equal(typeof r, "boolean");
+  assert.equal(r, true);
+});
+
+test("malformed q on both types: deterministic tie-break", () => {
+  // Both default to q=1; md wins on tie per existing rule.
+  assert.equal(wantsMarkdown(req("text/html;q=xyz,text/markdown;q=abc")), true);
+});
