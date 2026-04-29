@@ -7,7 +7,9 @@
             {{ with .google_scholar }}<a href="{{ . }}" target="_blank" rel="noopener">Google Scholar</a>{{ end }}
             {{ if and .google_scholar .researchgate }} · {{ end }}
             {{ with .researchgate }}<a href="{{ . }}" target="_blank" rel="noopener">ResearchGate</a>{{ end }}
-            {{ if and .researchgate .reading_list }} · {{ end }}
+            {{ if and .researchgate .arxiv }} · {{ end }}
+            {{ with .arxiv }}<a href="{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
+            {{ if and .arxiv .reading_list }} · {{ end }}
             {{ with .reading_list }}<a href="{{ . }}" target="_blank" rel="noopener">Reading List</a>{{ end }}
         </p>
         {{ end }}

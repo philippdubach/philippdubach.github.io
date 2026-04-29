@@ -3,6 +3,7 @@
 profiles:
   google_scholar: "https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en"
   researchgate: "https://www.researchgate.net/profile/Philipp-Dubach"
+  arxiv: "https://arxiv.org/search/q-fin?searchtype=author&query=Dubach,+P+D"
   reading_list: "https://reading.philippdubach.com/"
 
 publications:
