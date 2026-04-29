@@ -2,7 +2,7 @@
 title = "Visualizing Gradients with PyTorch"
 seoTitle = "Visualizing Gradients in PyTorch with 2D Surface Plots"
 date = 2025-08-23
-images = ["https://static.philippdubach.com/ograph/ograph-project.jpg"]
+images = ["https://static.philippdubach.com/ograph/ograph-gradients.jpg"]
 description = "Build the right mental model for gradients with this PyTorch visualization tool. 2D surface plots with gradient vectors show the direction of steepest ascent."
 keywords = ["pytorch gradient visualization", "visualize gradients python", "gradient descent visualization", "gradient vectors machine learning", "pytorch autograd tutorial"]
 categories = ["Tech"]
