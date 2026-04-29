@@ -4,6 +4,7 @@ profiles:
   google_scholar: "https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en"
   researchgate: "https://www.researchgate.net/profile/Philipp-Dubach"
   arxiv: "https://arxiv.org/search/q-fin?searchtype=author&query=Dubach,+P+D"
+  ssrn: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1"
   reading_list: "https://reading.philippdubach.com/"
 
 publications:

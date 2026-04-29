@@ -9,7 +9,9 @@
             {{ with .researchgate }}<a href="{{ . }}" target="_blank" rel="noopener">ResearchGate</a>{{ end }}
             {{ if and .researchgate .arxiv }} · {{ end }}
             {{ with .arxiv }}<a href="{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
-            {{ if and .arxiv .reading_list }} · {{ end }}
+            {{ if and .arxiv .ssrn }} · {{ end }}
+            {{ with .ssrn }}<a href="{{ . }}" target="_blank" rel="noopener">SSRN</a>{{ end }}
+            {{ if and .ssrn .reading_list }} · {{ end }}
             {{ with .reading_list }}<a href="{{ . }}" target="_blank" rel="noopener">Reading List</a>{{ end }}
         </p>
         {{ end }}
