@@ -63,3 +63,5 @@ statistics:
     source: "bet-sizing-at-the-frontier"
   - stat: "Buffett's Berkshire Hathaway routinely concentrates over 70% of its equity portfolio in five holdings, reflecting Maxim B concentration over Kelly-formula precision"
     source: "bet-sizing-at-the-frontier"
+  - stat: "F3ED, the NeurIPS 2024 tennis shot detector, mislabels 73% of single-shot serve unforced errors as something other than aces or first-serve faults; a 23-line scoreboard OCR reconciler corrects them"
+    source: "f3ed-cant-call-an-ace-fixing-a-neurips-2024-tennis-model"

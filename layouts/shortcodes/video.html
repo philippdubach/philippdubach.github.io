@@ -1,0 +1,39 @@
+{{- $baseUrl := "https://static.philippdubach.com" -}}
+{{- $src := .Get "src" -}}
+{{- $srcMobile := .Get "srcMobile" | default "" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $width := .Get "width" | default "80%" -}}
+{{- $aspect := .Get "aspect" | default "16/9" -}}
+{{- $poster := .Get "poster" | default "" -}}
+{{- $mobileBreakpoint := .Get "mobileBreakpoint" | default "768px" -}}
+{{- $videoUrl := $src -}}
+{{- if not (hasPrefix $src "http") -}}
+  {{- $videoUrl = printf "%s/%s" $baseUrl $src -}}
+{{- end -}}
+{{- $mobileUrl := "" -}}
+{{- if $srcMobile -}}
+  {{- if hasPrefix $srcMobile "http" -}}
+    {{- $mobileUrl = $srcMobile -}}
+  {{- else -}}
+    {{- $mobileUrl = printf "%s/%s" $baseUrl $srcMobile -}}
+  {{- end -}}
+{{- end -}}
+{{- $posterUrl := "" -}}
+{{- if $poster -}}
+  {{- if hasPrefix $poster "http" -}}
+    {{- $posterUrl = $poster -}}
+  {{- else -}}
+    {{- $posterUrl = printf "%s/cdn-cgi/image/width=1200,quality=80,format=auto/%s" $baseUrl $poster -}}
+  {{- end -}}
+{{- end -}}
+<div class="video-loop" style="width: {{ $width }}; margin: 1.5rem auto; padding: 0; aspect-ratio: {{ $aspect }};">
+  <video autoplay muted loop playsinline preload="metadata" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback"
+         {{ with $posterUrl }}poster="{{ . }}"{{ end }}
+         aria-label="{{ $alt }}"
+         style="width: 100%; height: 100%; display: block; border-radius: 4px; object-fit: cover; background: #000;">
+    {{- with $mobileUrl }}
+    <source src="{{ . }}" type="video/mp4" media="(max-width: {{ $mobileBreakpoint }})">
+    {{- end }}
+    <source src="{{ $videoUrl }}" type="video/mp4">
+  </video>
+</div>

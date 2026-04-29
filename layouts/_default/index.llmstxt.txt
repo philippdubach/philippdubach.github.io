@@ -100,6 +100,7 @@ Citable data points from published analysis:
 
 ## Technical Projects
 
+- [F3ED Can't Call an Ace]({{ $baseURL }}posts/f3ed-cant-call-an-ace-fixing-a-neurips-2024-tennis-model/): Auditing F3ED, the NeurIPS 2024 tennis shot detector, on ATP Challenger broadcasts. 73% of single-shot serve unforced errors are mislabeled aces or first-serve faults; a 23-line scoreboard OCR reconciler corrects them at runtime
 - [Social Media Success Prediction]({{ $baseURL }}posts/social-media-success-prediction-bert-models-for-post-titles/): BERT models for predicting Hacker News post engagement
 - [HN Sentiment Analysis]({{ $baseURL }}posts/65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/): NLP analysis of 32,000 Hacker News posts
 - [Against All Odds: Casino Mathematics]({{ $baseURL }}posts/against-all-odds-the-mathematics-of-provably-fair-casino-games/): Statistical analysis of cryptographic fairness in online gambling
