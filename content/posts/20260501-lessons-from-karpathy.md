@@ -27,7 +27,7 @@ faq = [
 ]
 +++
 
-{{< img src="karpathy_header.png" alt="Still from Andrej Karpathy's interview with Sequoia at AI Ascent discussing Software 3.0, vibe coding, and agentic engineering" width="80%" >}} _Based on Andrej Karpathy's [interview with Sequoia](https://www.youtube.com/watch?v=96jN2OCOfLs) at AI Ascent_
+{{< img src="karpathy_header.png" alt="Still from Andrej Karpathy's interview with Sequoia at AI Ascent discussing Software 3.0, vibe coding, and agentic engineering" width="80%" >}}
 
 Andrej Karpathy is one of the few people who has both built modern AI and explained it for the rest of us. He co-founded OpenAI, ran computer vision at Tesla (where he got Autopilot working), and his courses on neural networks are some of the most-watched lectures on the internet. He also has a habit of naming the era we're already in. "Vibe coding" was his. "Software 3.0" looks like the next one.
 
@@ -166,3 +166,4 @@ UIs diffusion-rendered moment by moment from raw video and audio. No apps in bet
 
 You do not have to buy this exact picture. The point is simply that the linear extrapolation, the same software but smarter, is almost certainly the wrong frame for where this ends up.
 
+_Based on Andrej Karpathy's [interview with Sequoia](https://www.youtube.com/watch?v=96jN2OCOfLs) at AI Ascent_

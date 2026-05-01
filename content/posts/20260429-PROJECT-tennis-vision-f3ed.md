@@ -56,10 +56,10 @@ F3ED has the highest F1, with fewer false positives at comparable recall. I'm no
 
 Tennis scoring is a finite-state machine. A point ends in exactly one of:
 
-- `ace`: server's first or second serve, receiver doesn't return
-- `double_fault`: both serves miss
-- `first_serve_fault`: first serve misses; second serve still to come
-- multi-shot rally → `winner` / `forced-err` / `unforced-err`
+`ace`: server's first or second serve, receiver doesn't return<br>
+`double_fault`: both serves miss<br>
+`first_serve_fault`: first serve misses; second serve still to come <br>
+multi-shot rally → `winner` / `forced-err` / `unforced-err`
 
 F3ED can only emit the bottom row. The first three depend on what happens between shots, or on what doesn't happen at all, and the model doesn't see between-shot stuff. It also has no class to put the answer in if it did: `ace`, `double_fault`, and `first_serve_fault` are not in F3ED's published label set. The closest available emission for any of them is `serve` + `unforced-err`. The model can't learn to distinguish them even if the training data did, because there's nowhere to put the answer.
 
