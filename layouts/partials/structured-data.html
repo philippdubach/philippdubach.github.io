@@ -464,13 +464,21 @@
 {{- $desc := .Description -}}
 {{- if not $desc }}{{ $desc = .Summary | plainify | truncate 160 }}{{ end -}}
 
+{{- /* v2.7 audit changes:
+       - Dropped articleBody (Mueller 2024 guidance: payload-bloat anti-pattern;
+         wordCount + description + abstract suffice).
+       - Added abstract (description = SERP snippet, abstract = full TL;DR;
+         AI engines preferentially extract abstract).
+       - Repointed speakable cssSelector to the takeaway claims and the H1.
+         Takeaways are the citation-ready passage; the first body paragraph is
+         not. */ -}}
 {{- $article := dict
   "@type" $articleType
   "@id" (printf "%s#article" .Permalink)
   "headline" .Title
   "name" .Title
   "description" $desc
-  "articleBody" (.Content | plainify)
+  "abstract" $desc
   "wordCount" .WordCount
   "timeRequired" (printf "PT%dM" .ReadingTime)
   "inLanguage" (.Site.Language.Lang | default "en")
@@ -480,7 +488,7 @@
   "publisher" (dict "@id" $personId)
   "isPartOf" (dict "@id" $websiteId)
   "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
-  "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".post-content > p:first-of-type" ".post-header h1"))
+  "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".key-takeaways .claim" ".post-header h1"))
 -}}
 
 {{/* Conditional: keywords */}}
@@ -509,19 +517,35 @@
   {{- $article = merge $article (dict "citation" (dict "@type" "CreativeWork" "url" .)) -}}
 {{- end }}
 
-{{/* Conditional: DOI sameAs + bidirectional mentions to ScholarlyArticle.
-     v2.6: when a blog post has `doi` in frontmatter, it indicates the post
-     is editorial commentary on a research paper. Emit `mentions` so the
-     ScholarlyArticle <-> BlogPosting graph edge is bidirectional. */}}
-{{- with .Params.doi }}
+{{/* mentions[] accumulator. v2.7 audit: each takeaway is emitted as a
+     schema.org Claim entity so AI search engines (ChatGPT, Perplexity, Google
+     AIO) treat them as discrete citation-ready atomic claims. Combined with
+     the visible <blockquote class="claim"> rendering, this is the single
+     biggest GEO win on the post template.
+     The DOI cross-link to a ScholarlyArticle is also emitted as a mention
+     when the post has frontmatter `doi` (editorial commentary on a paper). */}}
+{{- $mentions := slice -}}
+{{- with .Params.doi -}}
   {{- $doiUrl := printf "https://doi.org/%s" . -}}
   {{- $article = merge $article (dict "sameAs" $doiUrl) -}}
-  {{- $article = merge $article (dict "mentions" (dict
+  {{- $mentions = $mentions | append (dict
     "@type" "ScholarlyArticle"
     "sameAs" $doiUrl
     "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)
-  )) -}}
-{{- end }}
+  ) -}}
+{{- end -}}
+{{- with .Params.takeaways -}}
+  {{- range . -}}
+    {{- $mentions = $mentions | append (dict
+      "@type" "Claim"
+      "text" .
+      "appearance" (dict "@id" (printf "%s#article" $.Permalink))
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- if $mentions -}}
+  {{- $article = merge $article (dict "mentions" $mentions) -}}
+{{- end -}}
 
 {{/* Conditional: image */}}
 {{- $image := "" -}}
