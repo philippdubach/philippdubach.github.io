@@ -1,20 +1,37 @@
 {{ define "main" }}
-{{/* FAQ Hub Page - lists all FAQ categories */}}
+{{- /*
+  FAQ Hub (v3.0 audit) — lists all category FAQ pages with their counts.
+  About-hero lockup matches /about/, /research/, /categories/, /subscribe/.
+  Replaces the gray .faq-category-card grid with an editorial list register
+  matching the rest of the site.
+*/ -}}
 
-<article class="faq-hub">
-    <header class="faq-header">
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.description }}
-        <p class="faq-description">{{ . }}</p>
-        {{ end }}
+{{- /* Site-wide totals. */ -}}
+{{ $totalFAQs := 0 }}
+{{ $totalPosts := 0 }}
+{{ range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
+    {{ if .Params.faq }}
+        {{ $totalPosts = add $totalPosts 1 }}
+        {{ $totalFAQs = add $totalFAQs (len .Params.faq) }}
+    {{ end }}
+{{ end }}
+
+<article class="post single faq-hub">
+    <header class="post-header about-hero faq-hub-hero">
+        <h1 class="post-title about-name">{{ .Title }}</h1>
+        {{ with .Params.description }}<p class="about-lede">{{ . }}</p>{{ end }}
     </header>
 
-    <div class="faq-categories">
+    {{ with .Content }}
+    <div class="post-content faq-hub-intro">{{ . }}</div>
+    {{ end }}
+
+    <p class="faq-stats">{{ $totalFAQs }} questions from {{ $totalPosts }} posts across {{ len .Pages }} topics</p>
+
+    <ul class="faq-hub-list">
         {{ range .Pages }}
         {{ $category := .Params.category }}
         {{ $categoryLower := $category | lower }}
-
-        {{/* Count FAQs for this category */}}
         {{ $faqCount := 0 }}
         {{ $postCount := 0 }}
         {{ range where (where $.Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
@@ -23,30 +40,15 @@
                 {{ $faqCount = add $faqCount (len .Params.faq) }}
             {{ end }}
         {{ end }}
-
-        <div class="faq-category-card">
-            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-            <p class="faq-category-meta">{{ $faqCount }} questions from {{ $postCount }} posts</p>
-            {{ with .Params.description }}
-            <p class="faq-category-description">{{ . }}</p>
-            {{ end }}
-        </div>
+        <li class="faq-hub-item">
+            <a href="{{ .Permalink }}" class="faq-hub-link">
+                <span class="faq-hub-title">{{ .Title }}</span>
+                <span class="faq-hub-meta">{{ $faqCount }} questions · {{ $postCount }} posts</span>
+            </a>
+            {{ with .Params.description }}<p class="faq-hub-desc">{{ . }}</p>{{ end }}
+        </li>
         {{ end }}
-    </div>
-
-    {{/* Show total stats */}}
-    {{ $totalFAQs := 0 }}
-    {{ $totalPosts := 0 }}
-    {{ range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
-        {{ if .Params.faq }}
-            {{ $totalPosts = add $totalPosts 1 }}
-            {{ $totalFAQs = add $totalFAQs (len .Params.faq) }}
-        {{ end }}
-    {{ end }}
-
-    <p class="faq-hub-stats">
-        Browse {{ $totalFAQs }} frequently asked questions from {{ $totalPosts }} posts across all topics.
-    </p>
+    </ul>
 </article>
 
 {{ end }}
