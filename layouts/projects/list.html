@@ -1,67 +1,125 @@
 {{ define "main" }}
-<h1 class="visually-hidden">Projects</h1>
-<div class="posts">
-    {{ $posts := where (where .Site.RegularPages "Params.type" "Project") ".Params.unlisted" "ne" true }}
-    {{ $posts := $posts.ByDate.Reverse }}
-    {{ range (.Paginate $posts).Pages }}
-    <article class="post">
-        <header class="post-header">
-            <div class="post-meta">
-                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                    {{ .Date.Format "January 2, 2006" }}
-                </time>
-                {{ if .Params.external_url }}
-                    • <a href="{{ .Permalink }}" class="permalink">∞</a>
-                {{ end }}
-                {{ if eq .Params.type "Project" }}
-                    •<span class="project-tag">PROJECT</span>
-                {{ end }}
-            </div>
-            <h2 class="post-title">
-                {{ if .Params.external_url }}
-                    <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">
-                        {{ .Title }}
-                        <span class="external-link">→</span>
-                    </a>
-                {{ else }}
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
-                {{ end }}
-            </h2>
-        </header>
-        {{ with .Description }}
-        <p class="post-excerpt">{{ . }}</p>
-        {{ end }}
-    </article>
-    {{ end }}
-    
-    {{ if gt .Paginator.TotalPages 1 }}
-    <nav class="pagination" aria-label="Page navigation">
-        {{ if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" class="pagination-btn prev">
-                <span class="pagination-arrow">←</span>
-                <span class="pagination-text">Newer</span>
-            </a>
-        {{ else }}
-            <span class="pagination-btn disabled" aria-hidden="true">
-                <span class="pagination-arrow">←</span>
-                <span class="pagination-text">Newer</span>
-            </span>
-        {{ end }}
+{{- /*
+  Projects index — v2.6 redesign.
+  Hero lockup mirrors about/research (.about-hero / .about-name / .about-lede).
+  Featured-row pattern reuses homepage .home-row--featured for the newest project;
+  subsequent projects mirror homepage .home-row.
 
-        <span class="pagination-info">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
+  Image strategy switch:
+    "inline" — first {{< img >}} shortcode in the post body, smart-cropped (gravity=auto)
+               to a 4:5 portrait. Falls back to OG right-half crop if no inline image.
+    "ogcrop" — right-half of the canonical OG image (left-text + right-image layout).
+               Uses gravity=right.
 
-        {{ if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" class="pagination-btn next">
-                <span class="pagination-text">Older</span>
-                <span class="pagination-arrow">→</span>
+    Per-post override: .Params.card_image (CDN-relative path or full URL) wins over
+    both strategies. Always smart-cropped (gravity=auto) since aspect ratio is unknown.
+
+    Flip $imageStrategy below to switch; both code paths are kept so the choice is reversible.
+*/ -}}
+{{ $cdnBase := "https://static.philippdubach.com" }}
+{{ $imageStrategy := "inline" }}
+{{ $projects := where (where .Site.RegularPages "Params.type" "Project") ".Params.unlisted" "ne" true }}
+{{ $projects := $projects.ByDate.Reverse }}
+{{ $paperCount := len (where $projects "Params.doi" "!=" nil) }}
+{{ $firstYear := 2024 }}
+{{ with index $projects (sub (len $projects) 1) }}{{ $firstYear = .Date.Year }}{{ end }}
+
+<article class="post single projects-page">
+    <header class="post-header about-hero projects-hero">
+        <span class="section-label">Projects</span>
+        <h1 class="post-title about-name">Quantitative Finance, Machine Learning &amp; Computer Vision</h1>
+        <div class="about-lede projects-intro">
+            {{ .Content }}
+        </div>
+        <p class="projects-counts">{{ len $projects }} projects · {{ $paperCount }} papers · since {{ $firstYear }} · all open-source</p>
+        <p class="projects-related">Related: <a href="/research/">Research</a> · <a href="/categories/quantitative-finance/">Quantitative Finance</a> · <a href="/categories/ai/">AI</a></p>
+    </header>
+
+    <div class="home-feed-list projects-list">
+        {{ $scratch := newScratch }}
+        {{ $scratch.Set "prevYear" 0 }}
+        {{ range $i, $page := $projects }}
+        {{- $isFeatured := eq $i 0 -}}
+        {{- $yearChanged := and (gt $i 0) (ne ($page.Date.Year) ($scratch.Get "prevYear")) -}}
+
+        {{- /* Determine card image source.
+              Priority:
+                1. card_image override (gravity=auto)
+                2. strategy = "inline" → first {{< img >}} from body (gravity=auto),
+                                         falls back to OG right-half if no inline image
+                3. strategy = "ogcrop" → first images[] entry, right-half (gravity=right) */ -}}
+        {{- $cardSrc := "" -}}
+        {{- $gravity := "auto" -}}
+        {{- $resolved := false -}}
+
+        {{- with $page.Params.card_image -}}
+            {{- $cardSrc = . -}}
+            {{- if hasPrefix . "https://static.philippdubach.com/" -}}
+                {{- $cardSrc = replace . "https://static.philippdubach.com/" "" -}}
+            {{- end -}}
+            {{- $resolved = true -}}
+        {{- end -}}
+
+        {{- if and (not $resolved) (eq $imageStrategy "inline") -}}
+            {{- $matches := findRESubmatch `\{\{[<%]\s*img\s+src="([^"]+)"` $page.RawContent 1 -}}
+            {{- if $matches -}}
+                {{- $cardSrc = index (index $matches 0) 1 -}}
+                {{- if hasPrefix $cardSrc "https://static.philippdubach.com/" -}}
+                    {{- $cardSrc = replace $cardSrc "https://static.philippdubach.com/" "" -}}
+                {{- end -}}
+                {{- $resolved = true -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Fallback: OG right-half crop. Used when ogcrop strategy is selected,
+              when inline strategy finds no shortcode, or when there's no card_image. */ -}}
+        {{- if not $resolved -}}
+            {{- with $page.Params.images -}}
+                {{- $cardSrc = replace (index . 0) "https://static.philippdubach.com/" "" -}}
+                {{- $gravity = "right" -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Cloudflare Image Resizing supports gravity=auto|left|right|top|bottom. */ -}}
+        {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
+
+        <article class="home-row{{ if $isFeatured }} home-row--featured{{ end }} project-row" data-index="{{ $i }}">
+            <a href="{{ $page.Permalink }}" class="home-row-link">
+                <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
+                {{ if $cardSrc }}
+                {{- /* 4:5 portrait crop. Square (1:1) at gravity=right bleeds ~63px into the
+                      text half of canonical OGs (text ends at ~50% width); 4:5 anchors crops
+                      cleanly in the right-image area. */ -}}
+                {{- $w := cond $isFeatured 480 288 -}}
+                {{- $h := cond $isFeatured 600 360 -}}
+                <div class="home-row-thumb project-thumb">
+                    <img src="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width={{ $w }},height={{ $h }},quality=80,format=auto/{{ $cardSrc }}"
+                         srcset="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=240,height=300,quality=80,format=webp/{{ $cardSrc }} 240w,
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=400,height=500,quality=80,format=webp/{{ $cardSrc }} 400w,
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=720,height=900,quality=80,format=webp/{{ $cardSrc }} 720w"
+                         sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 480px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
+                         alt="{{ $page.Title }}"
+                         loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}"
+                         width="{{ $w }}" height="{{ $h }}"
+                         decoding="async">
+                </div>
+                {{ end }}
+                <div class="home-row-body">
+                    {{ if $isFeatured }}<span class="home-row-feature-flag section-label">Latest project</span>{{ end }}
+                    <h2 class="home-row-title">{{ $page.Title }}</h2>
+                    {{ with $page.Params.description }}
+                    <p class="home-row-desc">{{ . }}</p>
+                    {{ end }}
+                    <span class="home-row-date-mobile">
+                        <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
+                    </span>
+                    <span class="home-row-reading">{{ $page.ReadingTime }} min read</span>
+                    {{ with $page.Params.categories }}{{ $cat := index . 0 }}{{ $short := cond (eq $cat "Quantitative Finance") "Quant" $cat }}<span class="home-row-cat"><span class="cat-full">{{ $cat }}</span><span class="cat-mobile">{{ $short }}</span></span>{{ end }}
+                </div>
             </a>
-        {{ else }}
-            <span class="pagination-btn disabled" aria-hidden="true">
-                <span class="pagination-text">Older</span>
-                <span class="pagination-arrow">→</span>
-            </span>
+        </article>
+        {{ $scratch.Set "prevYear" ($page.Date.Year) }}
         {{ end }}
-    </nav>
-    {{ end }}
-</div>
+    </div>
+</article>
 {{ end }}

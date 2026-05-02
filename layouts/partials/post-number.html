@@ -1,0 +1,15 @@
+{{- /*
+Computes the chronological post number (oldest = №001, newest = №NNN).
+Excludes unlisted posts. Pads to 3 digits.
+Returns the formatted string (e.g. "074") or empty if not a regular post.
+*/ -}}
+{{- $page := . -}}
+{{- $all := where (where .Site.RegularPages "Section" "posts") "Params.unlisted" "!=" true -}}
+{{- $sorted := sort $all "Date" "asc" -}}
+{{- $num := 0 -}}
+{{- range $i, $p := $sorted -}}
+  {{- if eq $p.RelPermalink $page.RelPermalink -}}
+    {{- $num = add $i 1 -}}
+  {{- end -}}
+{{- end -}}
+{{- if $num -}}{{ printf "%03d" $num }}{{- end -}}

@@ -20,19 +20,26 @@
 {{- with .Site.Params.academic.google_scholar }}{{ $sameAs = $sameAs | append . }}{{ end -}}
 {{- with .Site.Params.academic.researchgate }}{{ $sameAs = $sameAs | append . }}{{ end -}}
 {{- with .Site.Params.academic.orcid }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with .Site.Params.academic.ssrn }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with .Site.Params.academic.arxiv }}{{ $sameAs = $sameAs | append . }}{{ end -}}
 
 {{/* Reusable @id references */}}
 {{- $personId := printf "%s#person" .Site.BaseURL -}}
 {{- $websiteId := printf "%s#website" .Site.BaseURL -}}
 
-{{/* Person entity — consistent across all pages */}}
+{{/* Person entity — consistent across all pages.
+     v2.6: added image, worksFor, hasOccupation; description sharpened with
+     domain anchors for AI search citation (Google AIO, Perplexity, ChatGPT). */}}
 {{- $person := dict
   "@type" "Person"
   "@id" $personId
   "name" .Site.Params.author
   "url" (printf "%sabout/" .Site.BaseURL)
   "jobTitle" "Strategy Consultant & Independent Researcher"
-  "description" "Strategy consultant and independent researcher in quantitative finance and machine learning."
+  "description" "Strategy consultant and independent researcher. Peer-reviewed work in quantitative finance and machine learning. Writes about unit economics, capital markets, and AI infrastructure at philippdubach.com."
+  "image" (dict "@type" "ImageObject" "url" "https://static.philippdubach.com/ograph/ograph-post.jpg" "width" 1200 "height" 630)
+  "worksFor" (dict "@type" "Organization" "name" "philippdubach.com" "url" (string .Site.BaseURL))
+  "hasOccupation" (dict "@type" "Occupation" "name" "Strategy Consultant and Independent Researcher" "occupationalCategory" "15-2099")
   "alumniOf" (dict "@type" "CollegeOrUniversity" "name" "Imperial College London")
   "knowsAbout" .Site.Params.keywords
   "sameAs" $sameAs
@@ -63,41 +70,174 @@
 </script>
 {{ end }}
 
-{{/* ===== RESEARCH PAGE: CollectionPage with ScholarlyArticle items ===== */}}
+{{/* ===== RESEARCH PAGE: Person + WebSite + CollectionPage with ScholarlyArticle items =====
+     v2.6: restructured to @graph pattern so $personId is dereferenceable.
+     Each ScholarlyArticle declares identifier (DOI), datePublished, sameAs (DOI URL +
+     derived arXiv/SSRN abstract URL), inLanguage, isPartOf (CollectionPage),
+     creator (Person), mainEntityOfPage, publisher (DOI prefix detection),
+     keywords, and subjectOf (commentary blog post when present). */}}
 {{ if eq .RelPermalink "/research/" }}
 {{ with site.Data.research }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Research",
-  "description": "{{ $.Params.description }}",
-  "url": "{{ $.Permalink }}",
-  "author": {
-    "@id": "{{ $personId }}"
-  },
-  "hasPart": [
-    {{- $first := true -}}
-    {{- range .publications -}}
-      {{- range .items -}}
-        {{- if not $first }},{{ end -}}
-        {{- $first = false }}
-    {
-      "@type": "ScholarlyArticle",
-      "headline": "{{ .title }}",
-      "name": "{{ .title }}",
-      {{ with .summary }}"abstract": {{ . | jsonify }},{{ end }}
-      "author": {
-        "@id": "{{ $personId }}"
-      }
-      {{ with .doi }},"url": "https://dx.doi.org/{{ . }}"{{ end }}
-    }
+{{- $collectionId := printf "%sresearch/" $.Site.BaseURL -}}
+{{- /* Build all ScholarlyArticle items as a slice of dicts */ -}}
+{{- $articles := slice -}}
+{{- $itemCount := 0 -}}
+{{- range .publications -}}
+  {{- $year := .year -}}
+  {{- range .items -}}
+    {{- $itemCount = add $itemCount 1 -}}
+    {{- $art := dict
+      "@type" "ScholarlyArticle"
+      "headline" .title
+      "name" .title
+      "datePublished" (printf "%d" $year)
+      "inLanguage" (.language | default "en")
+      "author" (dict "@id" $personId)
+      "creator" (dict "@id" $personId)
+      "isPartOf" (dict "@id" $collectionId)
+      "mainEntityOfPage" $collectionId
+    -}}
+    {{- with .summary }}{{- $art = merge $art (dict "abstract" .) -}}{{- end -}}
+    {{- with .keywords }}{{- $art = merge $art (dict "keywords" .) -}}{{- end -}}
+    {{- /* identifier (DOI as PropertyValue) and url + sameAs */ -}}
+    {{- with .doi -}}
+      {{- $doiUrl := printf "https://doi.org/%s" . -}}
+      {{- $art = merge $art (dict
+        "url" $doiUrl
+        "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)
+      ) -}}
+      {{- /* sameAs: include both DOI URL and the abstract page URL derived from DOI prefix */ -}}
+      {{- $sa := slice $doiUrl -}}
+      {{- if hasPrefix . "10.48550/arXiv." -}}
+        {{- $sa = $sa | append (printf "https://arxiv.org/abs/%s" (replace . "10.48550/arXiv." "")) -}}
+      {{- else if hasPrefix . "10.2139/ssrn." -}}
+        {{- $sa = $sa | append (printf "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=%s" (replace . "10.2139/ssrn." "")) -}}
       {{- end -}}
-    {{- end }}
-  ]
-}
+      {{- $art = merge $art (dict "sameAs" $sa) -}}
+      {{- /* publisher via DOI prefix detection (or .publication) */ -}}
+      {{- $pub := dict -}}
+      {{- with $.Params.publication -}}{{- /* unused, but reserved */ -}}{{- end -}}
+      {{- if hasPrefix . "10.48550" -}}
+        {{- $pub = dict "@type" "Organization" "name" "arXiv" "url" "https://arxiv.org" -}}
+      {{- else if hasPrefix . "10.2139" -}}
+        {{- $pub = dict "@type" "Organization" "name" "SSRN" "url" "https://ssrn.com" -}}
+      {{- end -}}
+      {{- if $pub }}{{- $art = merge $art (dict "publisher" $pub) -}}{{- end -}}
+    {{- end -}}
+    {{- /* If .publication is set, override publisher with the venue name */ -}}
+    {{- with .publication -}}
+      {{- $art = merge $art (dict "publisher" (dict "@type" "Organization" "name" .)) -}}
+    {{- end -}}
+    {{- /* Bidirectional cross-link to commentary blog post */ -}}
+    {{- with .commentary -}}
+      {{- $art = merge $art (dict "subjectOf" (dict
+        "@type" "BlogPosting"
+        "url" (printf "%s%s" $.Site.BaseURL (strings.TrimPrefix "/" .))
+      )) -}}
+    {{- end -}}
+    {{- /* Authors as full Person list when more than one author OR explicit `authors` field */ -}}
+    {{- with .authors -}}
+      {{- if gt (len .) 1 -}}
+        {{- $authorsList := slice -}}
+        {{- range . -}}
+          {{- if eq . "Dubach, P. D." -}}
+            {{- $authorsList = $authorsList | append (dict "@id" $personId) -}}
+          {{- else -}}
+            {{- $authorsList = $authorsList | append (dict "@type" "Person" "name" .) -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $art = merge $art (dict "author" $authorsList "creator" $authorsList) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $articles = $articles | append $art -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $collection := dict
+  "@type" "CollectionPage"
+  "@id" $collectionId
+  "name" "Research"
+  "url" $collectionId
+  "description" $.Params.description
+  "mainEntity" (dict "@id" $personId)
+  "about" (dict "@id" $personId)
+  "isPartOf" (dict "@id" $websiteId)
+  "author" (dict "@id" $personId)
+  "dateModified" ($.Lastmod.Format "2006-01-02")
+  "numberOfItems" $itemCount
+  "hasPart" $articles
+-}}
+
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $collection) | jsonify | safeJS }}
 </script>
 {{ end }}
+{{ end }}
+
+{{/* ===== PROJECTS PAGE: Person + WebSite + CollectionPage with ItemList of TechArticle =====
+     Mirrors research CollectionPage register. Each project = TechArticle ListItem with
+     position, url, headline, datePublished, optional codeRepository (inferred from
+     post body's first GitHub link via regex), optional inLanguage. */}}
+{{ if eq .RelPermalink "/projects/" }}
+{{- $collectionId := printf "%sprojects/" .Site.BaseURL -}}
+{{- $projects := where (where .Site.RegularPages "Params.type" "Project") ".Params.unlisted" "ne" true -}}
+{{- $projects = $projects.ByDate.Reverse -}}
+{{- $items := slice -}}
+{{- range $i, $page := $projects -}}
+  {{- $art := dict
+    "@type" "TechArticle"
+    "headline" $page.Title
+    "name" $page.Title
+    "url" $page.Permalink
+    "datePublished" ($page.Date.Format "2006-01-02")
+    "inLanguage" "en"
+    "author" (dict "@id" $personId)
+    "creator" (dict "@id" $personId)
+    "isPartOf" (dict "@id" $collectionId)
+    "mainEntityOfPage" $page.Permalink
+  -}}
+  {{- with $page.Params.description -}}{{- $art = merge $art (dict "abstract" .) -}}{{- end -}}
+  {{- with $page.Params.keywords -}}{{- $art = merge $art (dict "keywords" .) -}}{{- end -}}
+  {{- /* DOI cross-link to ScholarlyArticle when project was formalized as a paper */ -}}
+  {{- with $page.Params.doi -}}
+    {{- $art = merge $art (dict "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)) -}}
+    {{- $art = merge $art (dict "sameAs" (slice (printf "https://doi.org/%s" .))) -}}
+  {{- end -}}
+  {{- /* GitHub repo: detect first github.com link in post body for codeRepository */ -}}
+  {{- $body := $page.RawContent -}}
+  {{- $repoMatch := findRE `https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+` $body 1 -}}
+  {{- with $repoMatch -}}{{- $art = merge $art (dict "codeRepository" (index . 0)) -}}{{- end -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" (add $i 1)
+    "url" $page.Permalink
+    "item" $art
+  ) -}}
+{{- end -}}
+
+{{- $itemList := dict
+  "@type" "ItemList"
+  "itemListOrder" "https://schema.org/ItemListOrderDescending"
+  "numberOfItems" (len $projects)
+  "itemListElement" $items
+-}}
+
+{{- $collection := dict
+  "@type" "CollectionPage"
+  "@id" $collectionId
+  "name" "Projects"
+  "url" $collectionId
+  "description" $.Params.description
+  "mainEntity" $itemList
+  "about" (dict "@id" $personId)
+  "isPartOf" (dict "@id" $websiteId)
+  "author" (dict "@id" $personId)
+  "dateModified" ($.Lastmod.Format "2006-01-02")
+-}}
+
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $collection) | jsonify | safeJS }}
+</script>
 {{ end }}
 
 {{/* ===== BREADCRUMBS: Single pages ===== */}}
@@ -211,9 +351,18 @@
   {{- $article = merge $article (dict "citation" (dict "@type" "CreativeWork" "url" .)) -}}
 {{- end }}
 
-{{/* Conditional: DOI sameAs */}}
+{{/* Conditional: DOI sameAs + bidirectional mentions to ScholarlyArticle.
+     v2.6: when a blog post has `doi` in frontmatter, it indicates the post
+     is editorial commentary on a research paper. Emit `mentions` so the
+     ScholarlyArticle <-> BlogPosting graph edge is bidirectional. */}}
 {{- with .Params.doi }}
-  {{- $article = merge $article (dict "sameAs" (printf "https://doi.org/%s" .)) -}}
+  {{- $doiUrl := printf "https://doi.org/%s" . -}}
+  {{- $article = merge $article (dict "sameAs" $doiUrl) -}}
+  {{- $article = merge $article (dict "mentions" (dict
+    "@type" "ScholarlyArticle"
+    "sameAs" $doiUrl
+    "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)
+  )) -}}
 {{- end }}
 
 {{/* Conditional: image */}}

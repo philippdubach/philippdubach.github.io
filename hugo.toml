@@ -44,6 +44,8 @@ enableGitInfo = true
     google_scholar = "https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en"
     researchgate = "https://www.researchgate.net/profile/Philipp-Dubach"
     orcid = "https://orcid.org/0009-0002-3126-6760"
+    ssrn = "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1"
+    arxiv = "https://arxiv.org/search/q-fin?searchtype=author&query=Dubach,+P+D"
 
 [markup]
   [markup.highlight]

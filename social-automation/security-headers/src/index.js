@@ -17,10 +17,10 @@ const SECURITY_HEADERS = {
   "Content-Security-Policy":
     "default-src 'self'; " +
     "script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net https://static.cloudflareinsights.com; " +
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; " +
     "media-src 'self' https://static.philippdubach.com; " +
-    "font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; " +
+    "font-src 'self' data: https://cdn.jsdelivr.net; " +
     "connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://cdn.jsdelivr.net https://cloudflareinsights.com; " +
     "object-src 'none'; " +
     "worker-src 'self'; " +
@@ -72,6 +72,14 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
 
   for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
     newResponse.headers.set(k, v);
+  }
+
+  // Self-hosted font assets: 1-year immutable cache + CORS for cross-subdomain
+  // <link rel="preload" crossorigin>. Files in /fonts/ are content-stable
+  // (rename on re-subset).
+  if (url.pathname.startsWith("/fonts/")) {
+    newResponse.headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    newResponse.headers.set("Access-Control-Allow-Origin", "*");
   }
 
   newResponse.headers.set("Link", buildLinkHeader(url.pathname));

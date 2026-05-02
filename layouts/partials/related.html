@@ -6,7 +6,7 @@
 {{ end }}
 {{ if $related }}
 <aside class="related-posts" aria-labelledby="related-heading">
-    <h2 class="related-heading" id="related-heading">Related</h2>
+    <h2 class="related-heading section-label" id="related-heading">Read next</h2>
     <ul class="related-list">
         {{ range $related }}
         <li class="related-item">
@@ -17,7 +17,7 @@
         {{ end }}
     </ul>
     {{ with $.Params.categories }}{{ $cat := index . 0 }}
-    <p class="related-more"><a href="/categories/{{ $cat | urlize }}/">More in {{ $cat }}</a></p>
+    <p class="related-more"><a href="/categories/{{ $cat | urlize }}/">More in {{ $cat }} →</a></p>
     {{ end }}
 </aside>
 {{ end }}

@@ -5,6 +5,7 @@ date = 2025-05-30
 lastmod = 2026-02-10
 images = ["https://static.philippdubach.com/ograph/ograph-xgboost.jpg"]
 description = "A hands-on project predicting postprandial glucose curves with XGBoost, Gaussian curve fitting, and 27 engineered features from CGM data. Code on GitHub."
+doi = "10.2139/ssrn.5914902"
 keywords = ["predict glycemic response machine learning", "XGBoost glucose prediction", "postprandial glucose response prediction", "CGM data machine learning", "precision nutrition glucose prediction"]
 categories = ["Tech"]
 tags = ["Project"]

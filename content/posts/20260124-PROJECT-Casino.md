@@ -5,6 +5,7 @@ date = 2026-01-25
 publishDate = 2026-01-25T05:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-casino.jpg"]
 description = "Statistical analysis of 20,000 crash game rounds verifies the 97% RTP claim. But 179 rounds per hour means expected losses exceed 500% of wagers hourly."
+doi = "10.2139/ssrn.6065213"
 keywords = ["provably fair gambling", "crash game mathematics", "RTP statistical testing", "gambling house edge", "crash game strategy"]
 categories = ["Quantitative Finance"]
 type = "Project"

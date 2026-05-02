@@ -37,23 +37,25 @@
             {{ $blogScratch.Set "prevYear" 0 }}
             {{ range $i, $page := $posts }}
             {{ $yearChanged := and (gt $i 0) (ne ($page.Date.Year) ($blogScratch.Get "prevYear")) }}
-            <article class="home-row" data-index="{{ $i }}">
+            {{ $isFeatured := eq $i 0 }}
+            <article class="home-row{{ if $isFeatured }} home-row--featured{{ end }}" data-index="{{ $i }}">
                 <a href="{{ $page.Permalink }}" class="home-row-link">
                     <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
                     {{ with $page.Params.images }}{{ $imgPath := replace (index . 0) "https://static.philippdubach.com/" "" }}
                     <div class="home-row-thumb">
-                        <img src="{{ $cdnBase }}/cdn-cgi/image/width=360,quality=80,format=auto/{{ $imgPath }}"
-                             srcset="{{ $cdnBase }}/cdn-cgi/image/width=200,quality=80,format=webp/{{ $imgPath }} 200w,
-                                     {{ $cdnBase }}/cdn-cgi/image/width=360,quality=80,format=webp/{{ $imgPath }} 360w,
-                                     {{ $cdnBase }}/cdn-cgi/image/width=540,quality=80,format=webp/{{ $imgPath }} 540w"
-                             sizes="(max-width: 768px) 100px, 180px"
+                        <img src="{{ $cdnBase }}/cdn-cgi/image/width={{ if $isFeatured }}900{{ else }}360{{ end }},quality=80,format=auto/{{ $imgPath }}"
+                             srcset="{{ $cdnBase }}/cdn-cgi/image/width=400,quality=80,format=webp/{{ $imgPath }} 400w,
+                                     {{ $cdnBase }}/cdn-cgi/image/width=720,quality=80,format=webp/{{ $imgPath }} 720w,
+                                     {{ $cdnBase }}/cdn-cgi/image/width=1080,quality=80,format=webp/{{ $imgPath }} 1080w"
+                             sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 720px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
                              alt="{{ $page.Title }}"
                              loading="{{ if lt $i 6 }}eager{{ else }}lazy{{ end }}"
-                             width="360" height="189"
+                             width="{{ if $isFeatured }}1200{{ else }}360{{ end }}" height="{{ if $isFeatured }}630{{ else }}189{{ end }}"
                              decoding="async">
                     </div>
                     {{ end }}
                     <div class="home-row-body">
+                        {{ if $isFeatured }}<span class="home-row-feature-flag section-label">Latest essay</span>{{ end }}
                         <h2 class="home-row-title">{{ $page.Title }}</h2>
                         {{ with $page.Params.description }}
                         <p class="home-row-desc">{{ . }}</p>
@@ -66,6 +68,7 @@
                     </div>
                 </a>
             </article>
+            {{ if eq $i 2 }}{{ partial "home-feed-newsletter.html" . }}{{ end }}
             {{ $blogScratch.Set "prevYear" ($page.Date.Year) }}
             {{ end }}
         </div>

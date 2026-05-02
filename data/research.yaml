@@ -11,41 +11,65 @@ publications:
   - year: 2026
     items:
       - title: "The Anatomy of a Decentralized Prediction Market: Microstructure Evidence from the Polymarket Order Book"
-        summary: "Analyzing 30 billion Polymarket order-book events across 52 days to identify eight microstructure patterns, including a longshot spread premium and the finding that public-feed trade direction matches on-chain ground truth only 59% of the time. Under review at the Journal of Financial Markets."
+        authors: ["Dubach, P. D."]
+        summary: "Dubach analyzes 30 billion Polymarket order-book events across 52 days to identify eight microstructure patterns, including a longshot spread premium and the finding that public-feed trade direction matches on-chain ground truth only 59% of the time. Under review at the Journal of Financial Markets."
         doi: "10.48550/arXiv.2604.24366"
-        article: "/posts/the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book/"
+        commentary: "/posts/the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book/"
+        code: "https://github.com/philippdubach/polymarket-microstructure"
+        language: "en"
+        keywords: ["prediction market microstructure", "Polymarket", "order book", "longshot spread premium", "blockchain trading", "decentralized finance", "on-chain ground truth"]
 
       - title: "The Online Gambling Fairness Paradox: Cryptographic Verification, Behavioral Harm, and Consumer Protection"
-        summary: "Statistical analysis of 20,038 cryptocurrency crash game rounds confirming cryptographic fairness while highlighting that mathematical fairness doesn't ensure consumer safety."
+        authors: ["Dubach, P. D."]
+        summary: "Dubach presents a statistical analysis of 20,038 cryptocurrency crash game rounds, confirming cryptographic fairness while showing that mathematical fairness alone does not ensure consumer safety."
         doi: "10.2139/ssrn.6065213"
-        article: "/posts/against-all-odds-the-mathematics-of-provably-fair-casino-games/"
+        commentary: "/posts/against-all-odds-the-mathematics-of-provably-fair-casino-games/"
+        code: "https://github.com/philippdubach/stats-gambling"
+        language: "en"
+        keywords: ["online gambling fairness", "provably fair casino games", "cryptographic verification", "crash game statistics", "behavioral harm", "consumer protection gambling"]
 
       - title: "Volatility Regime Prediction via Causal Discovery in Option Markets"
+        authors: ["Dubach, P. D."]
         draft: true
-        summary: "Applying causal discovery methods to high-frequency option market data to predict transitions between volatility regimes."
-        dataset: "https://github.com/philippdubach/vol-regime-prediction/blob/797c2af0296d1c2c21c96531db51b1ca6b293b97/reports/Volatility_Regime_Prediction_Dataset.pdf"
+        summary: "Dubach applies causal discovery methods to high-frequency option market data to predict transitions between volatility regimes."
+        data: "https://github.com/philippdubach/vol-regime-prediction/blob/797c2af0296d1c2c21c96531db51b1ca6b293b97/reports/Volatility_Regime_Prediction_Dataset.pdf"
+        language: "en"
+        keywords: ["volatility regime prediction", "causal discovery", "option markets", "high-frequency options", "regime transitions"]
 
       - title: "Option Order Flow Imbalances, Informed Trading, and Short-Term Market Returns"
+        authors: ["Dubach, P. D."]
         draft: true
-        summary: "Analyzing 17 years of high-frequency SPY options data to identify informed trading patterns through order flow imbalances."
-        dataset: "https://github.com/philippdubach/options-dataset-hist/blob/main/reports/dataset_description.pdf"
+        summary: "Dubach analyzes 17 years of high-frequency SPY options data to identify informed trading patterns through order flow imbalances."
+        data: "https://github.com/philippdubach/options-dataset-hist/blob/main/reports/dataset_description.pdf"
+        language: "en"
+        keywords: ["option order flow imbalance", "informed trading", "SPY options", "high-frequency options data", "short-term market returns"]
 
   - year: 2025
     items:
       - title: "Attention Dynamics in Online Communities: Power Laws, Preferential Attachment, and Early Success Prediction on Hacker News"
-        summary: "Analyzing attention dynamics in online communities through 38 million Hacker News submissions, examining power laws in content visibility and early predictors of engagement."
+        authors: ["Dubach, P. D."]
+        summary: "Dubach studies attention dynamics in online communities through 38 million Hacker News submissions, examining power laws in content visibility and early predictors of engagement."
         doi: "10.2139/ssrn.5910263"
-        article: "/standalone/hn-research/"
+        commentary: "/standalone/hn-research/"
+        language: "en"
+        keywords: ["attention dynamics online communities", "Hacker News research", "power laws content visibility", "preferential attachment", "engagement prediction", "computational social science"]
 
       - title: "Modeling Postprandial Glycemic Response in Non-Diabetic Adults Using XGBRegressor"
-        summary: "A machine learning approach to predict individual postprandial glycemic responses using continuous glucose monitoring data and meal composition."
+        authors: ["Dubach, P. D."]
+        summary: "Dubach applies a machine-learning approach to predict individual postprandial glycemic responses using continuous glucose monitoring data and meal composition."
         doi: "10.2139/ssrn.5914902"
-        article: "/posts/modeling-glycemic-response-with-xgboost/"
+        commentary: "/posts/modeling-glycemic-response-with-xgboost/"
+        code: "https://github.com/philippdubach/glucose-response-analysis"
+        language: "en"
+        keywords: ["postprandial glycemic response", "XGBRegressor", "continuous glucose monitoring", "meal composition modeling", "non-diabetic glycemic prediction", "personalized nutrition"]
 
   - year: 2021
     items:
       - title: "A Python Integration of Practical Asset Allocation Based on Modern Portfolio Theory and Its Advancements"
-        summary: "An open-source Python implementation of modern portfolio theory and extensions including Black-Litterman, risk parity, and hierarchical risk parity."
+        authors: ["Dubach, P. D.", "Hilber, N."]
+        summary: "Dubach and Hilber present an open-source Python implementation of modern portfolio theory and its extensions, including Black-Litterman, risk parity, and hierarchical risk parity."
         doi: "10.2139/ssrn.5915004"
         publication: "Econometric Modeling: Capital Markets - Asset Pricing eJournal, Vol. 15, No. 3"
-        article: "/posts/my-first-optimal-portfolio/"
+        commentary: "/posts/my-first-optimal-portfolio/"
+        language: "en"
+        keywords: ["modern portfolio theory Python", "Black-Litterman implementation", "risk parity portfolio", "hierarchical risk parity", "asset allocation open source", "Markowitz Python"]
