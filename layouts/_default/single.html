@@ -3,10 +3,10 @@
 <article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}">
     {{ if $isAbout }}
     {{/* About-page hero lockup — replaces standard post header.
-         Section-label overline + serif name H1 + italic lede + grey CV strip.
-         No date/words/category meta (about is not a dated entry). */}}
+         Serif name H1 + italic lede. No section-label overline: H1 + URL +
+         sidebar already orient the visitor; accent red is reserved for link
+         state (one role, one job — matches /projects/ register). */}}
     <header class="post-header about-hero">
-        <span class="section-label">About</span>
         <h1 class="post-title about-name">{{ .Site.Params.author }}</h1>
         <p class="about-lede">Strategy consultant and independent researcher in quantitative finance, machine learning, and AI economics.</p>
     </header>
