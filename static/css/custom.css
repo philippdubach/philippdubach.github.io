@@ -569,10 +569,10 @@ blockquote p {
     border-bottom-color: var(--accent);
 }
 
-/* Topics — keyword pills below the biblio strip. v2.7: converted from plain
-   text to clickable category-link pills for internal-link graph + entity
-   association on AI search. data-nosnippet keeps these out of SERP/AIO
-   snippets (they're navigation, not content). */
+/* Topics — non-clickable keyword strip below the biblio. Present for LLM
+   and search-engine entity extraction; not all keywords map to category
+   pages, so they're rendered as plain text pills (no anchor). data-
+   nosnippet keeps the strip out of SERP snippet text. */
 .post-topics {
     margin: 0.25em 0 1.25em;
     display: flex;
@@ -601,22 +601,11 @@ blockquote p {
 
 .post-topics-list li {
     margin: 0;
-    padding: 0;
-}
-
-.post-topics-list a {
-    display: inline-block;
     padding: 0.2em 0.65em;
     border: 1px solid var(--border);
     border-radius: 999px;
     color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 140ms ease, border-color 140ms ease;
-}
-
-.post-topics-list a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+    cursor: default;
 }
 
 .post-content {
@@ -834,6 +823,17 @@ blockquote p {
    screen readers. Caption render via {{< img caption="..." >}} shortcode. */
 .post-figure {
     display: block;
+}
+
+/* Constrain figure imagery to the figure box. The shortcode emits img with
+   width attribute = 1200 (or imgWidth); without these rules the img
+   renders at that intrinsic pixel width and overflows the 80% figure. */
+.post-figure picture,
+.post-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 
 .post-figure-caption {
@@ -1788,10 +1788,14 @@ pre {
     padding-right: 0.05em;
 }
 
-/* Suppress drop cap on project posts and on posts with a takeaways block —
-   the second visual anchor would compete. */
+/* Suppress drop cap on project posts, on posts with a takeaways block, and
+   on the standalone About / Research pages — those use the about-hero
+   lockup with a lede paragraph that already establishes a top anchor; a
+   drop cap below it competes. */
 .project-post .post-content > p:first-of-type::first-letter,
-.post:has(.key-takeaways) .post-content > p:first-of-type::first-letter {
+.post:has(.key-takeaways) .post-content > p:first-of-type::first-letter,
+.post.about .post-content > p:first-of-type::first-letter,
+.research-page .post-content > p:first-of-type::first-letter {
     initial-letter: unset;
     -webkit-initial-letter: unset;
     font-weight: inherit;
@@ -1809,6 +1813,24 @@ pre {
 
 .post-header h1 {
     view-transition-name: post-title;
+}
+
+/* Reduced-motion users get no morph animations on view transitions.
+   The lightbox JS also bypasses startViewTransition() under this query,
+   but this rule covers the cross-document navigation case as well. */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}
+
+/* Lightbox morph timing — slower than the default 250ms feels more
+   editorial and lets the eye track the image as it grows. */
+::view-transition-group(lb-img) {
+    animation-duration: 320ms;
+    animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* Code block wrapper — language tag (top-right) + copy button (top-right,

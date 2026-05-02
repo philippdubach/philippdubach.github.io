@@ -93,6 +93,29 @@
       //
       // Performance: the dialog's <img> ships with no src; the high-res URL
       // sits on data-hires. First open hydrates src once and caches.
+      //
+      // Motion: when supported and the user hasn't requested reduced
+      // motion, the open/close runs inside startViewTransition() with a
+      // shared view-transition-name on the thumbnail picture and the
+      // dialog img — the browser FLIPs the morph between captured rects.
+      // We attach the name only for the duration of one transition so the
+      // next click can morph a different image.
+      var VT_NAME = 'lb-img';
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+      function canMorph(){
+        return typeof document.startViewTransition === 'function'
+            && !(reduce && reduce.matches);
+      }
+      function withMorph(thumbEl, dlgImg, run){
+        if (!canMorph()){ run(); return; }
+        thumbEl.style.viewTransitionName = VT_NAME;
+        dlgImg.style.viewTransitionName = VT_NAME;
+        var t = document.startViewTransition(run);
+        t.finished.finally(function(){
+          thumbEl.style.viewTransitionName = '';
+          dlgImg.style.viewTransitionName = '';
+        });
+      }
       document.addEventListener('click', function(e) {
         var trigger = e.target.closest('.img-trigger');
         if (trigger) {
@@ -103,7 +126,9 @@
           if (img && !img.src && dlg.dataset.hires) {
             img.src = dlg.dataset.hires;
           }
-          dlg.showModal();
+          var thumb = trigger.querySelector('picture') || trigger.querySelector('img') || trigger;
+          dlg._lbThumb = thumb;
+          withMorph(thumb, img, function(){ dlg.showModal(); });
           e.preventDefault();
           return;
         }
@@ -111,8 +136,30 @@
         // when the user clicks outside the content.
         var dlg = e.target.closest('.lightbox-dialog');
         if (dlg && e.target === dlg) {
-          dlg.close();
+          var img = dlg.querySelector('img');
+          var thumb = dlg._lbThumb || dlg;
+          withMorph(thumb, img, function(){ dlg.close(); });
         }
+      });
+      // Form-submit close (× button) and ESC close — wrap with morph too.
+      document.addEventListener('submit', function(e){
+        var form = e.target.closest('.lightbox-close-form');
+        if (!form) return;
+        var dlg = form.closest('.lightbox-dialog');
+        if (!dlg) return;
+        e.preventDefault();
+        var img = dlg.querySelector('img');
+        var thumb = dlg._lbThumb || dlg;
+        withMorph(thumb, img, function(){ dlg.close(); });
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key !== 'Escape') return;
+        var dlg = document.querySelector('.lightbox-dialog[open]');
+        if (!dlg) return;
+        e.preventDefault();
+        var img = dlg.querySelector('img');
+        var thumb = dlg._lbThumb || dlg;
+        withMorph(thumb, img, function(){ dlg.close(); });
       });
     })();</script>
 
