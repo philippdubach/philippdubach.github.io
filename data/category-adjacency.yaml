@@ -1,0 +1,40 @@
+# Curated cross-category sibling links — surfaces 2-3 editorially-selected
+# adjacent topics on each category page, replacing the dump-all category-nav.
+# Each key is the lower-cased category title (matches the hugo URL-segment).
+# Values are the *URL slugs* of sibling categories (also lower-cased,
+# spaces-as-hyphens). The template looks up the title via .Site.Taxonomies
+# so it stays in sync with category renames.
+
+ai:
+  - quantitative-finance
+  - tech
+  - macro
+
+quantitative-finance:
+  - ai
+  - investing
+  - macro
+
+investing:
+  - quantitative-finance
+  - macro
+  - economics
+
+macro:
+  - investing
+  - economics
+  - quantitative-finance
+
+economics:
+  - macro
+  - investing
+  - quantitative-finance
+
+medicine:
+  - ai
+  - tech
+
+tech:
+  - ai
+  - quantitative-finance
+  - medicine
