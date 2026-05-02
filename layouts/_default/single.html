@@ -1,11 +1,9 @@
 {{ define "main" }}
 {{- $isAbout := eq .RelPermalink "/about/" -}}
-<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}">
+{{- $isProject := eq .Params.type "Project" -}}
+<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isProject }} project-post{{ end }}">
     {{ if $isAbout }}
-    {{/* About-page hero lockup — replaces standard post header.
-         Serif name H1 + italic lede. No section-label overline: H1 + URL +
-         sidebar already orient the visitor; accent red is reserved for link
-         state (one role, one job — matches /projects/ register). */}}
+    {{/* About-page hero lockup — replaces standard post header. */}}
     <header class="post-header about-hero">
         <h1 class="post-title about-name">About</h1>
         <p class="about-lede">Strategy consultant and independent researcher in quantitative finance, machine learning, and AI economics.</p>
@@ -16,26 +14,26 @@
             {{ .Title }}
         </h1>
         {{ if not .Date.IsZero }}
+        {{- /* Slim post-meta — date + category only. Wordcount, reading-time,
+              "Updated", and "via" moved to the bottom post-biblio strip. */ -}}
         <div class="post-meta">
-            By <a href="/about/" class="post-author">{{ .Site.Params.author }}</a>
-            • <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                {{ .Date.Format "January 2, 2006" }}
-            </time>
-            • {{ .FuzzyWordCount }} words
-            • {{ .ReadingTime }} min read
-            {{- with .Params.categories }} • {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/" class="post-category">{{ $cat }}</a>{{ end }}{{ end }}
-            {{- if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }} • Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time>{{ end }}
-            {{- if .Params.external_url }} • <a href="{{ .Params.external_url }}" target="_blank" rel="noopener">via</a>{{ end }}
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{- with .Params.categories }} · {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/" class="post-category">{{ $cat }}</a>{{ end }}{{ end }}
+            {{- if .Params.external_url }} · <a href="{{ .Params.external_url }}" target="_blank" rel="noopener external">via</a>{{ end }}
         </div>
         {{ end }}
     </header>
     {{ end }}
     {{ with .Params.takeaways }}
-    <aside class="key-takeaways" aria-label="Key takeaways" data-snippet="takeaways">
-        <h2>Key Takeaways</h2>
-        <ul>
-            {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
-        </ul>
+    {{- /* Key Takeaways: italic standfirst register. Each takeaway is wrapped in
+          <blockquote class="claim" cite="{permalink}"> so AI engines (Perplexity,
+          ChatGPT, Google AIO) treat each as an atomic, citation-ready claim.
+          Paired with `mentions[]` of Claim entities in structured-data.html.
+          aria-label provides the screen-reader equivalent of the dropped H2. */ -}}
+    <aside class="key-takeaways" aria-label="Key takeaways">
+        {{ range . }}
+        <blockquote class="claim" cite="{{ $.Permalink }}">{{ . | markdownify }}</blockquote>
+        {{ end }}
     </aside>
     {{ end }}
     <div class="post-content">
@@ -43,21 +41,31 @@
     </div>
     {{ if eq .Section "posts" }}{{ partial "post-biblio.html" . }}{{ end }}
     {{ if eq .Section "posts" }}{{ with .Params.keywords }}
-    <div class="post-topics" data-snippet="topics" aria-label="Topics">Topics: {{ delimit (first 5 .) ", " }}</div>
+    {{- /* Topics — keyword pills as internal-link graph signal. data-nosnippet
+          prevents AIO/SERP leakage of this non-content navigation strip. */ -}}
+    <nav class="post-topics" aria-label="Topics" data-nosnippet>
+        <span class="post-topics-label">Topics:</span>
+        <ul class="post-topics-list">
+            {{ range first 5 . }}<li><a href="/categories/{{ . | urlize }}/">{{ . }}</a></li>{{ end }}
+        </ul>
+    </nav>
     {{ end }}{{ end }}
 </article>
 
 {{ if eq .Section "posts" }}
 
-{{/* Newsletter CTA - inline signup form */}}
-{{ partial "newsletter-cta.html" . }}
-
-<aside class="author-entity" data-snippet="author">
-    <p><strong>{{ .Site.Params.author }}</strong> (<a href="https://philippdubach.com">philippdubach.com</a>) is a builder-strategist exploring the structural mechanics of artificial intelligence, capital markets, and complex systems. Read by hedge fund managers, CTOs, and founders, his research strips away hype to focus on unit economics, variance, and cross-domain synthesis. He builds the systems he writes about. 80+ articles, peer-reviewed research on <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1">SSRN</a> and <a href="https://scholar.google.com/citations?user=-69oS2wAAAAJ">Google Scholar</a>, and a <a href="https://lab.philippdubach.com">weekly AI newsletter</a>.</p>
+{{/* Cold-visitor sequence: bio establishes trust → related shows there's more
+     → newsletter is the after-evidence subscribe ask. */}}
+<aside class="author-entity">
+    <p><strong>{{ .Site.Params.author }}</strong> is an independent researcher writing on quantitative finance, AI, and technology. Peer-reviewed papers on <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1" rel="me">SSRN</a> and <a href="https://scholar.google.com/citations?user=-69oS2wAAAAJ" rel="me">Google Scholar</a>, open-source code on <a href="https://github.com/{{ .Site.Params.social.github | default "philippdubach" }}" rel="me">GitHub</a>, weekly <a href="/subscribe/" rel="me">newsletter</a> for new essays.</p>
 </aside>
 
 {{/* Related Posts */}}
 {{ partial "related.html" . }}
+
+{{/* Newsletter CTA - inline signup form */}}
+{{ partial "newsletter-cta.html" . }}
+
 {{ end }}
 
 {{ end }}
