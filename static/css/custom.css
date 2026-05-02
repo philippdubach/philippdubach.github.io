@@ -887,7 +887,13 @@ blockquote p {
 /* <dialog> lightbox v3.0 — light frosted register to match the editorial
    tone of the site (vs. dark-app immersive). Transparent dialog box with
    the image floating; chrome (close button, caption) appears in corners
-   so the image owns the visual centre. */
+   so the image owns the visual centre.
+
+   Important: do NOT set `display` on the base selector. Author CSS beats
+   the UA `dialog:not([open]) { display: none }` rule regardless of
+   specificity, which would force the closed dialog to render at full
+   viewport and leak its (un-hydrated) <img alt> text into the page.
+   Only set display on [open]. */
 .lightbox-dialog {
     border: none;
     padding: 0;
@@ -898,13 +904,11 @@ blockquote p {
     height: 100vh;
     margin: 0;
     overflow: hidden;
-    /* Centre the inner img via flex without nesting a wrapper. */
-    display: grid;
-    place-items: center;
 }
 
 .lightbox-dialog[open] {
     display: grid;
+    place-items: center;
 }
 
 .lightbox-dialog::backdrop {
