@@ -2200,13 +2200,14 @@ pre {
 }
 
 .projects-h1 {
+    /* Match .post-title.about-name (about + research H1s) for one register
+       across the three index pages. */
     font-family: var(--body-font);
-    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-size: 2.2rem;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--ink);
-    margin: 0 0 0.4em;
-    letter-spacing: -0.01em;
+    margin: 0 0 0.5em;
 }
 
 .projects-dek {
@@ -2277,7 +2278,7 @@ pre {
     padding-bottom: 0.4em;
     border-bottom: 1px solid var(--border);
     font-family: var(--body-font);
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 400;
     line-height: 1;
     color: var(--text);
@@ -2413,9 +2414,8 @@ pre {
     .projects-hero {
         margin-bottom: 1em;
     }
-    .projects-h1 {
-        font-size: clamp(1.625rem, 6vw, 2rem);
-    }
+    /* About + research H1s have no mobile media query (stay at 2.2rem); keep
+       projects-h1 in sync — fixed size, no clamp. */
     .projects-dek p {
         font-size: 1rem;
         line-height: 1.45;
@@ -2430,7 +2430,7 @@ pre {
     }
     .projects-year-marker {
         margin: 1.5em 0 0.5em;
-        font-size: 2.25rem;
+        font-size: 1.75rem;
     }
 }
 
