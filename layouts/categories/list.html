@@ -10,33 +10,35 @@
     intro paragraph, and relatedLink mirroring the curated sentence.
 */ -}}
 {{ if eq .Title "Categories" }}
-{{- /* Main /categories/ index page — lists every category with its
-       posts. Kept lightweight (no hero, no schema overhaul); the per-
-       term pages are the cold-visitor entry points. */ -}}
-<article class="post single">
-    <header class="post-header">
-        <h1 class="post-title">Categories</h1>
+{{- /* /categories/ index — about-hero lockup matches the rest of the
+       site, then a clean navigation list (one row per topic with
+       title + count + dek pulled from the term page's frontmatter
+       description). Replaces the previous "dump every post under
+       every heading" pattern, which produced an unwieldy 140+-row
+       page. The term pages are the cold-visitor entry points; this
+       index just routes. */ -}}
+<article class="post single category-index">
+    <header class="post-header about-hero">
+        <h1 class="post-title about-name">{{ .Title }}</h1>
+        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
     </header>
 
-    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-    <section class="category-section">
-        {{ $catPosts := where $taxonomy.Pages ".Params.unlisted" "ne" true }}
-        <h2 class="category-heading"><a href="{{ $taxonomy.Page.Permalink }}">{{ $taxonomy.Page.Title }}</a> <span class="category-post-count">({{ len $catPosts }})</span></h2>
-        {{ $posts := $catPosts.ByDate.Reverse }}
-        {{ range $posts }}
-        <article class="archive-item">
-            <div class="archive-meta">
-                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-            </div>
-            <div class="archive-title">
-                <a href="{{ .Permalink }}">
-                    {{ .Title }}{{ if eq .Params.type "Project" }} <span class="project-tag">PROJECT</span>{{ end }}
-                </a>
-            </div>
-        </article>
-        {{ end }}
-    </section>
+    {{ with .Content }}
+    <div class="post-content category-index-intro">{{ . }}</div>
     {{ end }}
+
+    <ul class="category-index-list">
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        {{ $catPosts := where $taxonomy.Pages ".Params.unlisted" "ne" true }}
+        <li class="category-index-item">
+            <a href="{{ $taxonomy.Page.Permalink }}" class="category-index-link">
+                <span class="category-index-title">{{ $taxonomy.Page.Title }}</span>
+                <span class="category-index-meta">{{ len $catPosts }} {{ if eq (len $catPosts) 1 }}article{{ else }}articles{{ end }}</span>
+            </a>
+            {{ with $taxonomy.Page.Description }}<p class="category-index-desc">{{ . }}</p>{{ end }}
+        </li>
+        {{ end }}
+    </ul>
 </article>
 
 {{ else }}
