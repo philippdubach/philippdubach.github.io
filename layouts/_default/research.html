@@ -1,7 +1,19 @@
 {{ define "main" }}
-<article class="research-page">
-    <header class="research-header">
-        <h1>{{ .Title }}</h1>
+{{- /*
+  Research page rebuild (v2.6).
+  Hero lockup mirrors the about-page (.about-hero / .about-name / .about-lede).
+  Year separators use .section-label register (red ui-font + 1.5px red rule).
+  Per-item rendering: optional grey status badge → plain serif title (linked
+  to canonical: DOI > SSRN > arXiv > PDF) → byline → italic venue+status+year
+  line (DOI prefix detection: 10.48550 → arXiv, 10.2139 → SSRN) → italic
+  summary → optional commentary line → optional "Also:" secondary-links line
+  in biblio-strip register.
+*/ -}}
+<article class="post single research-page">
+    <header class="post-header about-hero research-hero">
+        <span class="section-label">Research</span>
+        <h1 class="post-title about-name">Publications</h1>
+        <p class="about-lede">Working papers and published research at the intersection of quantitative finance, machine learning, and market microstructure.</p>
         {{ with site.Data.research.profiles }}
         <p class="research-profiles">
             {{ with .google_scholar }}<a href="{{ . }}" target="_blank" rel="noopener">Google Scholar</a>{{ end }}
@@ -11,29 +23,103 @@
             {{ with .arxiv }}<a href="{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
             {{ if and .arxiv .ssrn }} · {{ end }}
             {{ with .ssrn }}<a href="{{ . }}" target="_blank" rel="noopener">SSRN</a>{{ end }}
-            {{ if and .ssrn .reading_list }} · {{ end }}
-            {{ with .reading_list }}<a href="{{ . }}" target="_blank" rel="noopener">Reading List</a>{{ end }}
         </p>
         {{ end }}
     </header>
 
+    <div class="post-content research-intro">
+        {{ .Content }}
+    </div>
+
     {{ range $yearGroup := site.Data.research.publications }}
-    <section class="research-year">
-        <h2>{{ $yearGroup.year }}</h2>
+    <section class="research-year-group">
+        <h2 class="section-label research-year">{{ $yearGroup.year }}</h2>
         {{ range $yearGroup.items }}
-        <div class="research-item">
-            <h3>{{ if .draft }}<span class="draft-label">Draft: </span>{{ end }}{{ .title }}</h3>
-            {{ with .publication }}<p class="research-publication">{{ . }}</p>{{ end }}
-            <p class="research-summary">{{ .summary }}</p>
-            <p class="research-links">
-                {{- $first := true -}}
-                {{ with .doi }}{{ if not $first }} · {{ end }}{{ $first = false }}doi: <a href="https://dx.doi.org/{{ . }}" target="_blank" rel="noopener">{{ . }}</a>{{ end }}
-                {{ with .article }}{{ if not $first }} · {{ end }}{{ $first = false }}<a href="{{ . }}">Article</a>{{ end }}
-                {{ with .dataset }}{{ if not $first }} · {{ end }}{{ $first = false }}<a href="{{ . }}" target="_blank" rel="noopener">Dataset</a>{{ end }}
+        {{- /* Determine canonical link priority: DOI > SSRN > arXiv > PDF > code */ -}}
+        {{- $canonical := "" -}}
+        {{- with .doi }}{{ $canonical = printf "https://doi.org/%s" . }}{{ end -}}
+        {{- if not $canonical }}{{ with .ssrn }}{{ $canonical = . }}{{ end }}{{ end -}}
+        {{- if not $canonical }}{{ with .arxiv }}{{ $canonical = . }}{{ end }}{{ end -}}
+        {{- if not $canonical }}{{ with .pdf }}{{ $canonical = . }}{{ end }}{{ end -}}
+        {{- if not $canonical }}{{ with .code }}{{ $canonical = . }}{{ end }}{{ end -}}
+
+        {{- /* Detect publisher / venue from DOI prefix when no .publication is set */ -}}
+        {{- $venueName := "" -}}
+        {{- $statusWord := "" -}}
+        {{- with .publication -}}
+            {{- $venueName = . -}}
+        {{- else -}}
+            {{- with .doi -}}
+                {{- if hasPrefix . "10.48550" -}}
+                    {{- $venueName = "arXiv" -}}
+                {{- else if hasPrefix . "10.2139" -}}
+                    {{- $venueName = "SSRN" -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+        {{- if .draft -}}
+            {{- $statusWord = "Draft" -}}
+        {{- else if and (not .publication) .doi -}}
+            {{- /* Non-draft preprints: use "Preprint" regardless of DOI prefix
+                  (arXiv vs SSRN), since "Working paper" otherwise conflicts with
+                  the .draft flag visually. The venue name carries the platform. */ -}}
+            {{- $statusWord = "Preprint" -}}
+        {{- end -}}
+
+        <article class="research-item">
+            {{ if .draft }}<span class="research-status">Draft</span>{{ end }}
+            <h3 class="research-title">{{ if $canonical }}<a href="{{ $canonical }}"{{ if not (or (hasPrefix $canonical "/") (hasPrefix $canonical "#")) }} target="_blank" rel="noopener"{{ end }}>{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</h3>
+            {{ with .authors }}
+            <p class="research-byline">{{ delimit . ", " }}</p>
+            {{ end }}
+            <p class="research-venue">
+                {{- if $venueName -}}
+                    <em>{{ if $statusWord }}{{ $statusWord }}, {{ end }}{{ $venueName }}{{ with .doi }}{{ if eq $venueName "arXiv" }} {{ replace . "10.48550/arXiv." "" }}{{ end }}{{ end }}, {{ $yearGroup.year }}.</em>
+                {{- else if $statusWord -}}
+                    <em>{{ $statusWord }}, {{ $yearGroup.year }}.</em>
+                {{- else -}}
+                    <em>{{ $yearGroup.year }}.</em>
+                {{- end -}}
             </p>
-        </div>
+            <p class="research-summary">{{ .summary }}</p>
+            {{ with .commentary }}
+            {{- $post := site.GetPage . -}}
+            <p class="research-commentary">Commentary: <a href="{{ . }}">{{ if $post }}{{ $post.Title }}{{ else }}Read on the blog{{ end }}</a></p>
+            {{ end }}
+            {{- /* Secondary resource lines — labeled by type (Code/Data/PDF)
+                  and auto-detected platform (GitHub/GitLab/Bitbucket/Zenodo/
+                  HuggingFace/OSF; PDF passthrough). */ -}}
+            {{- $resources := slice -}}
+            {{- with .code -}}{{- $resources = $resources | append (dict "label" "Code" "url" .) -}}{{- end -}}
+            {{- with .data -}}{{- $resources = $resources | append (dict "label" "Data" "url" .) -}}{{- end -}}
+            {{- with .pdf -}}{{- $resources = $resources | append (dict "label" "PDF" "url" .) -}}{{- end -}}
+            {{- range $resources -}}
+                {{- $platform := "Link" -}}
+                {{- $url := .url -}}
+                {{- if eq .label "PDF" -}}
+                    {{- $platform = "PDF" -}}
+                {{- else if in $url "github.com" -}}
+                    {{- $platform = "GitHub" -}}
+                {{- else if in $url "gitlab.com" -}}
+                    {{- $platform = "GitLab" -}}
+                {{- else if in $url "bitbucket.org" -}}
+                    {{- $platform = "Bitbucket" -}}
+                {{- else if in $url "zenodo.org" -}}
+                    {{- $platform = "Zenodo" -}}
+                {{- else if in $url "huggingface.co" -}}
+                    {{- $platform = "Hugging Face" -}}
+                {{- else if in $url "osf.io" -}}
+                    {{- $platform = "OSF" -}}
+                {{- else if in $url "kaggle.com" -}}
+                    {{- $platform = "Kaggle" -}}
+                {{- end -}}
+                <p class="research-resource">{{ .label }}: <a href="{{ $url }}" target="_blank" rel="noopener">{{ $platform }}</a></p>
+            {{- end -}}
+        </article>
         {{ end }}
     </section>
     {{ end }}
+
+    <p class="page-footnote"><em>For papers I'm reading, see <a href="{{ site.Data.research.profiles.reading_list }}" target="_blank" rel="noopener">reading.philippdubach.com</a>. The full bibliography is on <a href="{{ site.Data.research.profiles.google_scholar }}" target="_blank" rel="noopener">Google Scholar</a>.</em></p>
 </article>
 {{ end }}

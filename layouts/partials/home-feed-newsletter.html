@@ -1,0 +1,49 @@
+{{/* Inline newsletter card — appears mid-feed on the homepage. v2.6: replaces the
+     Subscribe nav item that was removed. Distinct IDs from post-end CTA so they
+     can coexist on a /posts/<slug>/ page (homepage doesn't load post-end). */}}
+<aside class="home-newsletter" aria-label="Newsletter signup">
+  <div class="home-newsletter__label section-label">Newsletter</div>
+  <p class="home-newsletter__pitch">A weekly read for finance and tech professionals. One link, one essay, every Tuesday.</p>
+  <form id="home-newsletter-form" class="home-newsletter__form">
+    <label for="home-newsletter-email" class="visually-hidden">Email address</label>
+    <input type="email" id="home-newsletter-email" name="email" placeholder="your@email.com" required
+           class="home-newsletter__input" aria-label="Email address">
+    <button type="submit" class="home-newsletter__button">Subscribe</button>
+  </form>
+  <p id="home-newsletter-privacy" class="home-newsletter__meta"><a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">No tracking</a>. Unsubscribe anytime.</p>
+  <div id="home-newsletter-message" class="home-newsletter__message" style="display:none;"></div>
+</aside>
+
+<script>
+(function() {
+  var form = document.getElementById('home-newsletter-form');
+  var msg = document.getElementById('home-newsletter-message');
+  var email = document.getElementById('home-newsletter-email');
+  var meta = document.getElementById('home-newsletter-privacy');
+  if (meta && !meta.dataset.countLoaded) {
+    meta.dataset.countLoaded = 'true';
+    fetch('https://newsletter-api.philippd.workers.dev/api/subscriber-count')
+      .then(function(r){return r.json();})
+      .then(function(d){ if (d.display) meta.insertBefore(document.createTextNode('Join ' + d.display + ' readers. '), meta.firstChild); })
+      .catch(function(){});
+  }
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var v = email.value.trim();
+    if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { show('Please enter a valid email address.', 'error'); return; }
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Subscribing...';
+    fetch('https://newsletter-api.philippd.workers.dev/api/subscribe', {
+      method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({email: v})
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if (d.success) { form.style.display='none'; meta.style.display='none'; show("Thanks for subscribing.", 'success'); }
+      else { show(d.error || 'Something went wrong. Please try again.', 'error'); btn.disabled=false; btn.textContent='Subscribe'; }
+    })
+    .catch(function(){ show('Something went wrong. Please try again later.', 'error'); btn.disabled=false; btn.textContent='Subscribe'; });
+  });
+  function show(t, kind) { msg.textContent = t; msg.className = 'home-newsletter__message home-newsletter__message--' + kind; msg.style.display = 'block'; }
+})();
+</script>

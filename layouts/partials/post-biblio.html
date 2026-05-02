@@ -1,0 +1,21 @@
+{{- /*
+Bibliographic strip — bottom-of-post identity row.
+v2.5: replaces above-title №NNN to avoid section-label register collision.
+13px ui-font, --text-meta grey, no letter-spacing, dotted dividers.
+*/ -}}
+{{- $num := partial "post-number.html" . -}}
+<div class="post-biblio" aria-label="Post identity">
+  {{- if $num }}<span class="post-biblio__num">№&nbsp;{{ $num }}</span>{{ end -}}
+  <span class="post-biblio__sep" aria-hidden="true">·</span>
+  <time class="post-biblio__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+  <span class="post-biblio__sep" aria-hidden="true">·</span>
+  <span class="post-biblio__time">{{ .ReadingTime }} min</span>
+  {{- with .Params.categories -}}
+    <span class="post-biblio__sep" aria-hidden="true">·</span>
+    <span class="post-biblio__cats">{{ range $i, $c := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $c | urlize }}/">{{ $c }}</a>{{ end }}</span>
+  {{- end -}}
+  {{- if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") -}}
+    <span class="post-biblio__sep" aria-hidden="true">·</span>
+    <span class="post-biblio__updated">Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time></span>
+  {{- end -}}
+</div>

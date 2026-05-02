@@ -14,35 +14,35 @@
     {{- end -}}
     {{ end }}
 
-    {{ if not (and .IsPage (eq .Section "posts")) }}
+    {{/* Footer divider on non-post pages, except pages that close with their
+         own .page-footnote rule (about, research) — avoid two horizontal rules
+         stacked at page end. */}}
+    {{- $hasFootnote := or (eq .RelPermalink "/about/") (eq .RelPermalink "/research/") -}}
+    {{ if and (not (and .IsPage (eq .Section "posts"))) (not $hasFootnote) }}
     <hr class="footer-divider" aria-hidden="true">
     {{ end }}
 
-    {{/* Footer Links */}}
+    {{/* Footer Links — single row of secondary links. Research/Projects live in
+         primary nav (sidebar on desktop, dock on mobile) so are not duplicated here.
+         On post pages we drop "Newsletter" since the inline CTA appears above. */}}
+    {{- $isPost := and .IsPage (eq .Section "posts") -}}
     <nav class="footer-links" aria-label="Footer navigation">
-        {{ if and .IsPage (eq .Section "posts") }}
         <div class="footer-row">
-            <a href="/research/">Research</a>
-            <span class="separator" aria-hidden="true">·</span>
-            <a href="/projects/">Projects</a>
+            <a href="{{ "/faq/" | relURL }}">FAQ</a>
+            {{ if not $isPost }}
             <span class="separator" aria-hidden="true">·</span>
             <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
-        </div>
-        {{ end }}
-        <div class="footer-row">
-            {{ if not (and .IsPage (eq .Section "posts")) }}
-            <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
-            <span class="separator" aria-hidden="true">·</span>
             {{ end }}
             {{ with .Site.Params.social.github }}
-            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
             <span class="separator" aria-hidden="true">·</span>
+            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
             {{ end }}
             {{ with .Site.Params.social.bluesky }}
-            <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
             <span class="separator" aria-hidden="true">·</span>
+            <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
             {{ end }}
             {{ with .Site.Params.social.email }}
+            <span class="separator" aria-hidden="true">·</span>
             <a href="mailto:{{ . }}">Email</a>
             {{ end }}
         </div>
@@ -111,50 +111,6 @@
             container.appendChild(link);
         });
 
-    // Share link handler - copies URL to clipboard
-    var link = document.getElementById('share-link');
-    var status = document.getElementById('share-status');
-    if (!link) return;
-
-    function copyTextInGesture(text, cb) {
-        var ok = false;
-        try {
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            ta.setAttribute('readonly', '');
-            ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
-            document.body.appendChild(ta);
-            ta.focus();
-            ta.select();
-            try { ta.setSelectionRange(0, ta.value.length); } catch (e) {}
-            try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-            document.body.removeChild(ta);
-        } catch (e) {
-            ok = false;
-        }
-
-        if (ok) {
-            cb(true);
-            return;
-        }
-
-        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
-            navigator.clipboard.writeText(text).then(function() { cb(true); }, function() { cb(false); });
-            return;
-        }
-
-        cb(false);
-    }
-
-    var canonical = document.querySelector('link[rel="canonical"]');
-    var pageUrl = (canonical ? canonical.href : location.href).replace(/\/+$/, '').split('?')[0];
-
-    link.addEventListener('click', function() {
-        copyTextInGesture(pageUrl, function(ok) {
-            status.textContent = ok ? 'url copied' : pageUrl;
-            setTimeout(function() { status.textContent = ''; }, 2500);
-        });
-    });
 })();
 </script>
 {{ end }}

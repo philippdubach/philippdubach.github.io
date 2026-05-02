@@ -1,3 +1,32 @@
+/* === Self-hosted fonts ===
+   Newsreader (Production Type, OFL) — body face. Variable woff2 with full opsz axis
+   (6–72) and wght narrowed to 400–600. Latin subset only. font-display: swap so
+   first paint uses the system fallback, swap on font load.
+   Source: /tmp/newsreader-zip subset via fonttools varLib.instancer + pyftsubset.
+   Wordmark stays on the original sans system stack (.site-title a). */
+@font-face {
+    font-family: 'Newsreader';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+    src: local('Newsreader'),
+         url('/fonts/newsreader-upright.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                   U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+                   U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Newsreader';
+    font-style: italic;
+    font-weight: 400 600;
+    font-display: swap;
+    src: local('Newsreader Italic'),
+         url('/fonts/newsreader-italic.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+                   U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
+                   U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -5,10 +34,114 @@
     box-sizing: border-box;
 }
 
+/* === REDESIGN FOUNDATION (v2.6) ===
+   Design tokens. See redesign/DECISIONS.md and redesign/CSS_SPEC.md.
+   Body links: dark + grey underline default, red on hover (calm in long-form).
+   Structural links (nav, post titles, CTAs): full red, no underline at rest. */
+:root {
+    --accent:           #c8102e;
+    --accent-hover:     #e63946;
+    --accent-tint:      #fbeaec;
+    --ink:              #1a1a1a;
+    --text:             #333333;
+    --text-secondary:   #555555;
+    --text-meta:        #767676;
+    --border:           #e9ecef;
+    --bg:               #ffffff;
+    --bg-tint:          #f6f6f6;
+
+    --body-font: 'Newsreader', ui-serif, Charter, 'Iowan Old Style', Georgia, 'Liberation Serif', 'DejaVu Serif', 'Noto Serif', serif;
+    --ui-font:   -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --mono-font: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+}
+
+/* Section-label pattern: top-tier structural style.
+   Used for: KEY TAKEAWAYS, READ NEXT, MOST READ, category page heads, DISCLAIMER, NOTE. */
+.section-label {
+    font-family: var(--ui-font);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 14px;
+    margin-bottom: 1em;
+}
+
+/* === About-page hero lockup ===
+   Section-front weight via typographic stack: ABOUT overline, serif name H1,
+   italic lede, grey CV strip. No portrait, no signature — credentials trust
+   carried by the prose and links below. */
+.about-hero { margin-bottom: 2.5em; }
+
+.about-hero .section-label {
+    display: inline-block;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 0.4em;
+    margin-bottom: 1.4em;
+}
+
+.post-title.about-name {
+    font-family: var(--body-font);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 0 0.5em;
+}
+
+.about-lede {
+    font-family: var(--body-font);
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    max-width: 50ch;
+    margin: 0 0 0.75em;
+}
+
+.about-cv-strip {
+    font-family: var(--ui-font);
+    font-size: 14px;
+    color: var(--text-meta);
+    margin: 0;
+    letter-spacing: 0.01em;
+}
+
+/* === Page-footnote ===
+   Italic prose at page end for site-meta legal content (privacy + opinions).
+   Same register as .post-biblio: thin grey rule + 13px ui-font grey. Used on
+   the about page and any other page that needs a quiet legal footnote.
+   v2.6 canonical rule: callout boxes are reserved for topic-risk per-post
+   disclaimers; site-wide housekeeping lives in body prose. */
+.page-footnote {
+    margin-top: 2.5em;
+    padding-top: 1em;
+    border-top: 1px solid var(--border);
+    font-family: var(--ui-font);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-meta);
+}
+
+.page-footnote em { font-style: italic; }
+
+.page-footnote a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.page-footnote a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
 /* Horizontal rule - matches footer divider style */
 hr {
     border: none;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid var(--border);
     margin: 2rem 0;
 }
 
@@ -27,12 +160,12 @@ hr {
 
 .error-page p {
     font-size: 1.1rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
 }
 
 .error-page a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -71,7 +204,7 @@ hr {
 
 .skip-link:focus {
     top: 0;
-    outline: 2px solid #007acc;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
@@ -81,7 +214,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-    outline: 2px solid #007acc;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
@@ -89,38 +222,90 @@ select:focus-visible {
 .post-content a:focus-visible,
 .archive-title a:focus-visible,
 .navigation a:focus-visible {
-    outline: 2px solid #007acc;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
     background-color: #e6f3ff;
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+    font-family: var(--body-font);
     padding-top: 90px;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Newsreader is variable with an opsz axis — let the browser pick the right
+       optical size based on rendered size (text vs display masters). */
+    font-optical-sizing: auto;
+    /* Editorial defaults: kerning + standard ligatures + oldstyle figures.
+       Tabular figures are scoped to numeric content (tables, takeaways) below. */
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-wrap: pretty;
+    hyphens: auto;
 }
 
-h1, h2, h3, h4 {
-    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+/* Numeric content: lining tabular figures so columns of numbers align cleanly. */
+table, .key-takeaways, .post-biblio, .post-meta {
+    font-feature-settings: "kern" 1, "liga" 1, "lnum" 1, "tnum" 1;
 }
 
+/* Disable hyphens on headings, titles, nav, and any chunked UI text — the
+   body's `hyphens: auto` should stay scoped to running prose. */
+h1, h2, h3, h4, h5, h6,
+.site-title, .post-title, .post-title a,
+.navigation, .nav, .footer,
+.section-label, .key-takeaways h2 {
+    hyphens: manual;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+/* Mixed-register heading scale (v2.6):
+   H1 serif (FT-Weekend feel) + H2/H3/H4 sans (publication structure). */
 h1 {
-    font-size: 1.777rem;
-    font-weight: 600;
-    line-height: 1.2;
+    font-family: var(--body-font);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
     margin: 0 0 1rem;
-    color: #333;
+    color: var(--ink);
+}
+
+h2, h3, h4 {
+    font-family: var(--ui-font);
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 2.4em 0 0.6em;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-secondary);
+    margin: 1.8em 0 0.4em;
+}
+
+h4 {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+    margin: 1.4em 0 0.3em;
 }
 
 blockquote {
     margin: 1em 0;
     padding-left: 1em;
     border-left: 2px solid #ccc;
-    color: #595959;
+    color: var(--text-secondary);
 }
 
 blockquote p {
@@ -150,13 +335,20 @@ blockquote p {
 
 .site-title a {
     text-decoration: none;
-    color: #333;
+    color: var(--ink);
+    /* Wordmark = original sans system stack. Functions as a logo — must not
+       inherit body serif. Keep this stack stable across redesign phases. */
+    font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
+    /* Prevent body's hyphens:auto from breaking the wordmark in the narrow sidebar */
+    hyphens: manual;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .site-description {
-    color: #595959;
+    color: var(--text-secondary);
     margin: 0.5rem 0 2rem 0;
     font-size: 0.9rem;
 }
@@ -172,7 +364,7 @@ blockquote p {
 
 .navigation a {
     text-decoration: none;
-    color: #007acc;
+    color: var(--accent);
     font-weight: 500;
 }
 
@@ -189,13 +381,13 @@ blockquote p {
 .social-links a {
     display: inline-block;
     margin-right: 1rem;
-    color: #595959;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9rem;
 }
 
 .social-links a:hover {
-    color: #007acc;
+    color: var(--accent);
 }
 
 /* Main content */
@@ -229,24 +421,24 @@ blockquote p {
 }
 
 .post-title a:hover {
-    color: #007acc;
+    color: var(--accent);
 }
 
 .post-excerpt {
     font-size: 0.9rem;
-    color: #595959;
+    color: var(--text-secondary);
     line-height: 1.5;
     margin-top: 0.5rem;
 }
 
 .post-meta {
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin-bottom: 0rem;
 }
 
 .post-meta a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: underline;
     text-decoration-color: rgba(0, 122, 204, 0.3);
     text-underline-offset: 2px;
@@ -254,41 +446,60 @@ blockquote p {
 
 .post-meta a:hover {
     text-decoration: underline;
-    text-decoration-color: #007acc;
+    text-decoration-color: var(--accent);
 }
 
-.share-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    color: #007acc;
-    cursor: pointer;
-    text-decoration: underline;
-    text-decoration-color: rgba(0, 122, 204, 0.3);
-    text-underline-offset: 2px;
+/* ===================================
+   Callout family — shared skeleton for .key-takeaways, .disclaimer, .callout
+   v2.6: vertical 3px left rule (container/quote/callout role) + light tint fill.
+   Variants:
+     - .key-takeaways  → accent rule + accent tint (red — BLUF summary, GEO)
+     - .disclaimer     → meta rule + bg-tint     (grey — note register)
+     - .callout--note  → meta rule + bg-tint     (grey — author asides)
+   =================================== */
+.callout,
+.key-takeaways,
+.disclaimer {
+    margin: 2em 0;
+    padding: 1.2em 1.4em;
+    border-left: 3px solid var(--text-meta);
+    background: var(--bg-tint);
+    border-radius: 0 4px 4px 0;
 }
 
-.share-btn:hover {
-    text-decoration-color: #007acc;
+.callout > :first-child,
+.key-takeaways > :first-child,
+.disclaimer > :first-child {
+    margin-top: 0;
 }
 
-/* Key Takeaways - BLUF summary for GEO */
+.callout > :last-child,
+.key-takeaways > :last-child,
+.disclaimer > :last-child {
+    margin-bottom: 0;
+}
+
+/* Label row — ui-font, uppercase, accent color. Applied to .key-takeaways h2
+   and to optional .callout > .callout__label / .callout--*-h. */
+.callout > h2,
+.callout > h3,
+.key-takeaways h2,
+.callout__label {
+    font-family: var(--ui-font);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* Takeaways: accent variant (red rule + red tint). */
 .key-takeaways {
-    background: #f8f9fa;
-    border-left: 3px solid #007acc;
-    padding: 1.25rem 1.5rem;
+    border-left-color: var(--accent);
+    background: var(--accent-tint);
     margin-top: 1.25rem;
     margin-bottom: 2.5rem;
-}
-
-.key-takeaways h2 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin: 0 0 0.75rem;
-    color: #333;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
 }
 
 .key-takeaways ul {
@@ -300,12 +511,72 @@ blockquote p {
 .key-takeaways li {
     margin-bottom: 0.4rem;
     line-height: 1.55;
-    color: #333;
+    color: var(--text);
     font-size: 0.95rem;
 }
 
 .key-takeaways li:last-child {
     margin-bottom: 0;
+}
+
+/* Note variant — explicit modifier when authoring custom callouts. */
+.callout--note {
+    border-left-color: var(--text-meta);
+    background: var(--bg-tint);
+}
+
+.callout--accent {
+    border-left-color: var(--accent);
+    background: var(--accent-tint);
+}
+
+/* Bibliographic strip — bottom-of-post identity row.
+   v2.5: numbered identity moved here to avoid section-label register collision.
+   13px ui-font, grey, no letter-spacing. Sits between content and newsletter CTA. */
+.post-biblio {
+    margin: 2.5em 0 1.5em;
+    padding-top: 1em;
+    border-top: 1px solid var(--border);
+    font-family: var(--ui-font);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-meta);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.4em;
+    align-items: baseline;
+}
+
+.post-biblio__num {
+    font-variant-numeric: tabular-nums lining-nums;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.post-biblio__sep {
+    color: var(--border);
+}
+
+.post-biblio a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.post-biblio a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Topics — keyword anchor below the biblio strip. Quieter than categories,
+   serves as SEO/GEO signal. Same ui-font family as biblio so they read as
+   one cluster. */
+.post-topics {
+    margin: 0.25em 0 1.25em;
+    font-family: var(--ui-font);
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-meta);
 }
 
 .post-content {
@@ -338,16 +609,49 @@ blockquote p {
     margin-bottom: 0.5rem;
 }
 
+/* Body links inside post content (v2.6): dark text + grey underline default,
+   red on hover. Keeps long-form posts (8-15 inline citations per section) calm
+   without the stippling effect of solid red links. */
 .post-content a {
-    color: #007acc;
+    color: var(--ink);
     text-decoration: underline;
-    text-decoration-color: rgba(0, 122, 204, 0.3);
-    text-underline-offset: 2px;
+    text-decoration-color: var(--text-meta);
+    text-decoration-thickness: from-font;
+    text-underline-offset: 0.18em;
 }
 
-.post-content a:hover {
-    text-decoration: underline;
-    text-decoration-color: #007acc;
+.post-content a:hover,
+.post-content a:focus {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
+/* Lists in post body (v2.6): hanging indent so bullets stay inside the
+   content column rather than overflowing into the gutter. Grey markers
+   per CSS_SPEC.md (red ::marker reserved for footnote list only). */
+.post-content ul,
+.post-content ol {
+    padding-left: 1.4em;
+    margin: 0 0 1.1em 0;
+}
+
+.post-content ul li,
+.post-content ol li {
+    margin-bottom: 0.4em;
+    line-height: 1.65;
+}
+
+.post-content ul li::marker,
+.post-content ol li::marker {
+    color: var(--text-meta);
+}
+
+.post-content ul ul,
+.post-content ol ol,
+.post-content ul ol,
+.post-content ol ul {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
 }
 
 /* Project Post Tag */
@@ -373,12 +677,12 @@ blockquote p {
 
 .archive-description {
     font-size: 0.9rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
 }
 
 .archive-description a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -388,7 +692,7 @@ blockquote p {
 
 .year h2 {
     margin: 2rem 0 1rem 0;
-    color: #595959;
+    color: var(--text-secondary);
     font-size: 1rem;
     font-weight: 600;
 }
@@ -403,7 +707,7 @@ blockquote p {
     width: 60px;
     flex-shrink: 0;
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
 }
 
 .archive-title {
@@ -416,7 +720,7 @@ blockquote p {
 }
 
 .archive-title a:hover {
-    color: #007acc;
+    color: var(--accent);
 }
 
 /* Prevent single-word orphans on last line */
@@ -461,7 +765,7 @@ blockquote p {
 }
 
 .pagination-btn:hover {
-    color: #007acc;
+    color: var(--accent);
     background-color: #f8fafc;
 }
 
@@ -544,7 +848,7 @@ a.lightbox-overlay:target {
     padding-top: 0.75rem;
     border-top: 1px solid #e9ecef;
     text-align: center;
-    color: #595959;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 2rem;
 }
@@ -555,7 +859,7 @@ a.lightbox-overlay:target {
 }
 
 .feedback-footer a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -563,75 +867,86 @@ a.lightbox-overlay:target {
     text-decoration: underline;
 }
 
-/* Inline newsletter signup (shortcode) */
+/* Inline newsletter signup — callout family (matches .home-newsletter and
+   the post-end CTA). Used by shortcode `{{< newsletter >}}` and the post-end
+   newsletter-cta partial. v2.6: red accent rule + accent tint + red Subscribe
+   button so all newsletter cards across the site share one look. */
 .inline-newsletter {
-    margin: 3rem auto 0;
-    padding: 1rem 0 1rem 1.5rem;
-    border-left: 3px solid #333;
-    width: 80%;
+    margin: 2.5rem 0 1.5rem;
+    padding: 1.4rem 1.6rem;
+    background: var(--accent-tint);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    max-width: 100%;
 }
 
-/* Variant without left border for standalone pages */
+/* "no-border" variant retained for backwards compat — still drops the rule
+   but keeps the new tint background so it reads as the same family */
 .inline-newsletter.no-border {
     border-left: none;
-    padding-left: 0;
+    border-radius: 6px;
 }
 
 .inline-newsletter-headline {
-    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-    font-size: 1.5rem;
-    font-style: italic;
+    font-family: var(--body-font);
+    font-size: 1.05rem;
+    font-style: normal;
     font-weight: 400;
     line-height: 1.4;
-    color: #333;
-    margin: 0 0 1.25rem 0;
+    color: var(--ink);
+    margin: 0 0 1rem 0;
+    max-width: 44ch;
 }
 
 .inline-newsletter-form {
     display: flex;
-    gap: 0;
+    gap: 0.5rem;
+    flex-wrap: wrap;
     max-width: 100%;
-    margin: 0;
+    margin: 0 0 0.5rem;
 }
 
 .inline-newsletter-input {
-    flex: 1;
+    flex: 1 1 220px;
     min-width: 0;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    font-family: inherit;
-    border: 1px solid #333;
-    border-right: none;
+    padding: 0.55rem 0.75rem;
+    font-family: var(--ui-font);
+    font-size: 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
     background: #fff;
-    color: #333;
+    color: var(--text);
 }
 
 .inline-newsletter-input:focus {
-    outline: none;
-    border-color: #333;
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
 }
 
 .inline-newsletter-input::placeholder {
-    color: #767676;
+    color: var(--text-meta);
 }
 
 .inline-newsletter-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.75rem;
-    font-family: inherit;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: #333;
+    appearance: none;
+    background: var(--accent);
     color: #fff;
-    border: 1px solid #333;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-family: var(--ui-font);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    border-radius: 4px;
     cursor: pointer;
     white-space: nowrap;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background 0.15s ease;
 }
 
 .inline-newsletter-button:hover:not(:disabled) {
-    background: #000;
+    background: var(--accent-hover);
 }
 
 .inline-newsletter-button:disabled {
@@ -640,32 +955,36 @@ a.lightbox-overlay:target {
 }
 
 .inline-newsletter-privacy {
-    margin: 0.75rem 0 0 0;
-    font-size: 0.8rem;
-    color: #666;
+    margin: 0;
+    font-family: var(--ui-font);
+    font-size: 12px;
+    color: var(--text-meta);
 }
 
 .inline-newsletter-privacy a {
-    color: #666;
-    text-decoration: underline;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
 }
 
 .inline-newsletter-privacy a:hover {
-    color: #333;
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
 .inline-newsletter-message {
-    margin: 1rem 0 0 0;
-    font-size: 0.95rem;
+    margin: 0.75rem 0 0 0;
+    font-family: var(--ui-font);
+    font-size: 13px;
     line-height: 1.5;
 }
 
 .inline-newsletter-message-success {
-    color: #333;
+    color: #1a7f3c;
 }
 
 .inline-newsletter-message-error {
-    color: #666;
+    color: var(--accent);
 }
 
 /* Newsletter form styles */
@@ -736,7 +1055,7 @@ a.lightbox-overlay:target {
 .subscriber-count {
     margin: 0.75rem 0 0 0;
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     text-align: center;
 }
 
@@ -758,12 +1077,12 @@ a.lightbox-overlay:target {
 
 .newsletter-message-error {
     background-color: transparent;
-    color: #595959;
+    color: var(--text-secondary);
     border: none;
 }
 
 .newsletter-message a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -792,7 +1111,7 @@ a.lightbox-overlay:target {
 }
 
 .newsletter-date {
-    color: #595959;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin-right: 0.5rem;
     min-width: 120px;
@@ -805,7 +1124,7 @@ a.lightbox-overlay:target {
 }
 
 .newsletter-item a:hover {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: underline;
 }
 
@@ -823,6 +1142,14 @@ a.lightbox-overlay:target {
 
 /* Overlay - hidden on desktop */
 .menu-overlay {
+    display: none;
+}
+
+/* ===================================
+   Mobile bottom dock — v2.6 primary nav for small screens.
+   Hidden on desktop; activated in the 768px media query.
+   =================================== */
+.mobile-dock {
     display: none;
 }
 
@@ -876,15 +1203,18 @@ a.lightbox-overlay:target {
     }
     
     .mobile-logo {
+        /* Wordmark must match the desktop sidebar — original sans system stack,
+           never inherit body serif. Mirror .site-title a exactly. */
+        font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
         font-size: 1rem;
-        font-weight: 600;
-        color: #333;
+        font-weight: bold;
+        color: var(--ink);
         text-decoration: none;
         letter-spacing: -0.01em;
     }
     
     .mobile-logo:hover {
-        color: #007acc;
+        color: var(--accent);
     }
     
     /* Hamburger icon - CSS-drawn lines, minimal style */
@@ -963,57 +1293,101 @@ a.lightbox-overlay:target {
         visibility: visible;
     }
     
-    /* Sidebar - slide-in drawer on mobile */
+    /* v2.6: sidebar hidden on mobile — primary nav lives in bottom dock */
     .sidebar {
-        position: fixed;
-        top: 52px; /* Below mobile header */
-        left: 0;
-        width: 260px;
-        max-width: 80vw;
-        height: calc(100vh - 52px);
-        padding: 1.5rem;
-        background: #fff;
-        z-index: 999;
-        transform: translateX(-100%);
-        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow-y: auto;
-        border-right: 1px solid #e9ecef;
-    }
-    
-    /* Hide only site title - already in mobile header, keep description */
-    .sidebar .site-title {
         display: none;
     }
-    
-    .sidebar .site-description {
-        margin-top: 0;
-    }
 
-    .navigation a {
-        display: block;
-        padding: 0.35rem 0;
-    }
-
-    .navigation li {
-        margin-bottom: 0;
-    }
-
-    .menu-toggle:checked ~ .container .sidebar {
-        transform: translateX(0);
-    }
-    
     /* Container - full width on mobile */
     .container {
         flex-direction: column;
         max-width: 100%;
         margin: 0;
     }
-    
-    /* Content area */
+
+    /* Content area — bottom padding clears the floating dock (44px pill + 28px lift + safe-area + breathing room) */
     .content {
         max-width: 100%;
         padding: 1.25rem 1rem;
-        padding-bottom: 2rem;
+        padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Mobile bottom dock — floating pill, labels-only.
+       Centered intrinsic-width, lifted off the bottom edge, hairline border + soft shadow.
+       Hide/show is driven by JS in baseof.html (data-hidden attribute). */
+    .mobile-dock {
+        display: inline-flex;
+        position: fixed;
+        left: 50%;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 28px);
+        transform: translateX(-50%) translateY(0);
+        max-width: calc(100vw - 32px);
+        z-index: 1000;
+        padding: 0 14px;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        box-shadow: 0 2px 14px rgba(26, 26, 26, 0.06);
+        transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1);
+        will-change: transform;
+    }
+
+    .mobile-dock[data-hidden="true"] {
+        transform: translateX(-50%) translateY(calc(100% + env(safe-area-inset-bottom, 0px) + 32px));
+        transition-duration: 180ms;
+    }
+
+    .mobile-dock__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        padding: 0 9px;
+        text-decoration: none;
+        color: var(--text-meta);
+        font-family: var(--ui-font);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0;
+        white-space: nowrap;
+        -webkit-tap-highlight-color: transparent;
+        transition: color 120ms ease;
+    }
+
+    .mobile-dock__item.is-active {
+        color: var(--accent);
+    }
+
+    /* Active-state underline — 1.5px solid red, item-width minus the 9px side padding,
+       sits ~3px below the label baseline. Echoes the section-label rule. */
+    .mobile-dock__item.is-active::after {
+        content: '';
+        position: absolute;
+        left: 9px;
+        right: 9px;
+        bottom: 10px;
+        height: 1.5px;
+        background: var(--accent);
+    }
+
+    .mobile-dock__item:active {
+        color: var(--ink);
+    }
+
+    .mobile-dock__item.is-active:active {
+        color: var(--accent);
+    }
+
+    .mobile-dock__label {
+        line-height: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .mobile-dock,
+        .mobile-dock[data-hidden="true"] {
+            transition: none;
+        }
     }
     
     /* Typography adjustments */
@@ -1118,37 +1492,35 @@ a.lightbox-overlay:target {
         max-width: 90%;
     }
     
-    /* Inline newsletter mobile */
+    /* Inline newsletter mobile — keep single-row layout (input + button side-by-side).
+       Headline matches desktop size; previous override of flex-direction: column was
+       expanding the input to 220px tall because flex-basis applies to main axis. */
     .inline-newsletter {
-        width: 90%;
-        padding-left: 1.25rem;
+        padding: 1.1rem 1.2rem;
     }
-    
-    .inline-newsletter-headline {
-        font-size: 1.25rem;
-    }
-    
+
     .inline-newsletter-form {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        align-items: stretch;
         width: 100%;
     }
-    
-    .inline-newsletter-form {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    
+
     .inline-newsletter-input {
-        border-right: 1px solid #333;
+        flex: 1 1 0;
+        min-width: 0;
     }
-    
+
     .inline-newsletter-button {
-        width: 100%;
-        padding: 0.875rem 1.5rem;
+        flex: 0 0 auto;
+        width: auto;
+        padding: 0.55rem 1rem;
     }
     
     /* Focus visible for touch */
     .menu-icon:focus-visible {
-        outline: 2px solid #007acc;
+        outline: 2px solid var(--accent);
         outline-offset: 2px;
         border-radius: 4px;
     }
@@ -1422,20 +1794,13 @@ pre {
 .chroma .w { color: #f6f8fa; }
 
 /* ===================================
-   Disclaimer Component
+   Disclaimer Component — note register, callout family
    =================================== */
-.disclaimer {
-    margin: 2.5rem 0 1.5rem 0;
-    padding: 1rem 1.5rem;
-    background: linear-gradient(to right, #f8f9fa, #ffffff);
-    border-left: 3px solid #d0d7de;
-    border-radius: 0 4px 4px 0;
-}
-
 .disclaimer-content {
-    font-size: 0.8rem;
+    font-family: var(--ui-font);
+    font-size: 13px;
     line-height: 1.5;
-    color: #656d76;
+    color: var(--text-secondary);
 }
 
 .disclaimer-content p {
@@ -1443,31 +1808,21 @@ pre {
 }
 
 .disclaimer-content strong {
-    color: #57606a;
+    color: var(--text);
     font-weight: 600;
-}
-
-/* Subtle fade-in for visual hierarchy */
-@media (prefers-reduced-motion: no-preference) {
-    .disclaimer {
-        animation: disclaimer-fade 0.3s ease-out;
-    }
-}
-
-@keyframes disclaimer-fade {
-    from { opacity: 0.7; }
-    to { opacity: 1; }
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 12px;
 }
 
 /* Mobile adjustments */
 @media screen and (max-width: 768px) {
     .disclaimer {
-        margin: 2rem 0 1rem 0;
-        padding: 0.875rem 1rem;
+        padding: 1em 1.1em;
     }
-    
+
     .disclaimer-content {
-        font-size: 0.75rem;
+        font-size: 12px;
     }
 }
 
@@ -1539,7 +1894,7 @@ pre {
 .category-post-count {
     font-weight: 400;
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
 }
 
@@ -1557,7 +1912,7 @@ pre {
 }
 
 .category-nav a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
     margin-right: 1rem;
 }
@@ -1573,7 +1928,7 @@ pre {
     margin-top: 0.25rem;
     text-align: center;
     font-size: 0.9rem;
-    color: #595959;
+    color: var(--text-secondary);
 }
 
 /* Post Taxonomy (Categories & Tags) */
@@ -1593,7 +1948,7 @@ pre {
 }
 
 .taxonomy-group a {
-    color: #595959;
+    color: var(--text-secondary);
     text-decoration: none;
 }
 
@@ -1602,12 +1957,12 @@ pre {
     margin: 0;
     padding: 0 0 0.75rem 0;
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     text-align: center;
 }
 
 .post-discovery a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -1617,12 +1972,12 @@ pre {
 
 /* Post Category in header */
 .post-category {
-    color: #595959;
+    color: var(--text-secondary);
     text-decoration: none;
 }
 
 .post-category:hover {
-    color: #007acc;
+    color: var(--accent);
 }
 
 /* Footer Links */
@@ -1637,7 +1992,7 @@ pre {
 }
 
 .footer-links a {
-    color: #595959;
+    color: var(--text-secondary);
     text-decoration: none;
 }
 
@@ -1687,7 +2042,7 @@ pre {
 .related-heading {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #595959;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin: 0 0 0.75rem 0;
@@ -1712,7 +2067,7 @@ pre {
 }
 
 .related-link {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
@@ -1725,7 +2080,7 @@ pre {
 .related-desc {
     margin: 0.2rem 0 0;
     font-size: 0.8rem;
-    color: #595959;
+    color: var(--text-secondary);
     line-height: 1.4;
 }
 
@@ -1740,7 +2095,7 @@ pre {
 }
 
 .related-more a {
-    color: #595959;
+    color: var(--text-secondary);
     text-decoration: none;
 }
 
@@ -1786,7 +2141,7 @@ pre {
 }
 
 .readnext a {
-    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-family: var(--body-font);
     font-style: italic;
     font-weight: 400;
     text-decoration: none;
@@ -1796,94 +2151,295 @@ pre {
 }
 
 .readnext a:hover {
-    color: #007acc;
+    color: var(--accent);
 }
 
 /* ===================================
-   Research Page Styles
+   Research Page Styles (v2.6)
+   Hero lockup mirrors about-page (uses .about-hero / .about-name / .about-lede).
+   Year separators use .section-label register (red ui-font + 1.5px red rule).
+   Per-item rendering: optional grey status badge → plain serif title (linked
+   to canonical) → byline → italic venue+status+year line → italic Newsreader
+   summary → optional commentary line → optional "Also:" links (biblio register).
    =================================== */
 
-.research-header {
-    margin-bottom: 1rem;
+.research-hero {
+    margin-bottom: 2.5em;
 }
 
 .research-profiles {
-    font-size: 0.9rem;
-    color: #595959;
+    font-family: var(--ui-font);
+    font-size: 14px;
+    color: var(--text-meta);
+    margin: 0.75em 0 0;
+    letter-spacing: 0.01em;
 }
 
 .research-profiles a {
-    color: #007acc;
+    color: var(--text-secondary);
     text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
 }
 
 .research-profiles a:hover {
-    text-decoration: underline;
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
-.research-year {
-    margin-bottom: 2rem;
+.research-intro {
+    margin-bottom: 2.5em;
 }
 
-.research-year h2 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #595959;
-    margin-bottom: 1rem;
+.research-intro p:last-child {
+    margin-bottom: 0;
 }
 
-.research-item {
-    margin-bottom: 1.5rem;
+/* ===================================
+   Projects index — v2.6 redesign.
+   Hero lockup mirrors about/research; rows reuse .home-row pattern.
+   =================================== */
+.projects-hero {
+    margin-bottom: 2.5em;
 }
 
-.research-item h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-    margin: 0 0 0.25rem 0;
-    line-height: 1.4;
+.projects-intro {
+    /* Override .about-lede 50ch cap: about page pairs that narrow measure with
+       a portrait; here there's no counterweight, so the cap leaves dead space
+       on the right and visually misaligns with the full-width rows below. */
+    max-width: none;
+    margin: 0.75em 0 1em;
 }
 
-.draft-label {
-    font-weight: 400;
-    color: #595959;
+.projects-intro p {
+    margin: 0 0 1em;
 }
 
-.research-publication {
-    font-size: 0.85rem;
-    color: #595959;
-    margin: 0.2rem 0 0.35rem 0;
-}
-
-.research-summary {
-    font-size: 0.9rem;
+.projects-intro p:first-child {
+    /* Italic 32-word lede: keep slightly narrower than the fact paragraph for
+       typographic rhythm; ~62ch lands ~80% of the row width. */
+    max-width: 62ch;
     font-style: italic;
-    color: #595959;
-    margin: 0 0 0.35rem 0;
-    line-height: 1.5;
+    color: var(--text-secondary);
 }
 
-.research-links {
-    font-size: 0.85rem;
+.projects-intro p:last-child {
+    /* Citation-ready fact paragraph: plain (non-italic) so AI engines treat it
+       as primary descriptive text, not pull-quote. Full reading measure. */
+    max-width: 70ch;
+    font-style: normal;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0;
+}
+
+/* Counts strip: ui-font biblio register, single line under the lede. */
+.projects-counts {
+    margin: 0 0 0.5em;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+    letter-spacing: 0.01em;
+}
+
+/* Related-link strip: same register, dotted-underline links. */
+.projects-related {
+    margin: 0;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+}
+
+.projects-related a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.projects-related a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Project list container — slightly more air than homepage feed since each
+   row is a heavier object (named build with screenshot). */
+.projects-list {
+    margin-top: 1.5em;
+}
+
+/* 4:5 portrait thumb for project cards. Canonical OG = left-text + right-image;
+   square crop at gravity=right bleeds into the text half, portrait stays clean. */
+.project-row .project-thumb img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+/* Year group */
+.research-year-group {
+    margin: 0 0 3em;
+}
+
+/* Year as section-label variant: same red ui-font register, full-width red rule */
+h2.section-label.research-year {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 0.4em;
+    margin: 0 0 1.5em;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-family: var(--ui-font);
+}
+
+/* Per-item block */
+.research-item {
+    margin: 0 0 2.25em;
+}
+
+.research-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Status badge — muted grey, sits above title when present */
+.research-status {
+    display: inline-block;
+    font-family: var(--ui-font);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-meta);
+    margin-bottom: 0.4em;
+    line-height: 1;
+}
+
+/* Title — plain serif 600, links carry it without italic interference */
+.research-title {
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 0.5em;
+    max-width: 62ch;
+}
+
+.research-title a {
+    color: var(--ink);
+    text-decoration: none;
+    background-image: linear-gradient(transparent calc(100% - 1px), var(--text-meta) calc(100% - 1px));
+}
+
+.research-title a:hover {
+    color: var(--accent);
+    background-image: linear-gradient(transparent calc(100% - 1px), var(--accent) calc(100% - 1px));
+}
+
+/* Byline — small ui-font sans, sits below title */
+.research-byline {
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 0.2em;
+}
+
+/* Venue / status / year line — italic Newsreader */
+.research-venue {
+    font-family: var(--body-font);
+    font-size: 14px;
+    color: var(--text-meta);
+    margin: 0 0 0.6em;
+}
+
+.research-venue em {
+    font-style: italic;
+}
+
+/* Summary — italic Newsreader */
+.research-summary {
+    font-family: var(--body-font);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0 0 0.5em;
+    max-width: 62ch;
+}
+
+/* Commentary cross-link — own line, ui-font, dotted-underline */
+.research-commentary {
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+    margin: 0 0 0.4em;
+}
+
+.research-commentary a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.research-commentary a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Secondary "Also:" links — biblio-strip register (legacy, kept for safety) */
+.research-also {
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
     margin: 0;
 }
 
-.research-links a {
-    color: #007acc;
+.research-also a {
+    color: var(--text-secondary);
     text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
 }
 
-.research-links a:hover {
-    text-decoration: underline;
+.research-also a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Per-resource lines: Code: GitHub / Data: GitHub / PDF: PDF — own line, ui-font */
+.research-resource {
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+    margin: 0 0 0.4em;
+}
+
+.research-resource:last-child {
+    margin-bottom: 0;
+}
+
+.research-resource a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.research-resource a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
 @media screen and (max-width: 768px) {
-    .research-item h3 {
-        font-size: 0.95rem;
+    .research-title {
+        font-size: 1.05rem;
     }
 
     .research-summary {
-        font-size: 0.85rem;
+        font-size: 15px;
+    }
+
+    h2.section-label.research-year {
+        margin-bottom: 1.2em;
     }
 }
 
@@ -1902,12 +2458,12 @@ pre {
 
 .faq-breadcrumb {
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
 }
 
 .faq-breadcrumb a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -1921,13 +2477,13 @@ pre {
 
 .faq-meta {
     font-size: 0.9rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin: 0 0 0.5rem 0;
 }
 
 .faq-description {
     font-size: 1rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin: 0;
 }
 
@@ -1944,7 +2500,7 @@ pre {
 
 .faq-item:target {
     background-color: #fffde7;
-    border-left: 3px solid #007acc;
+    border-left: 3px solid var(--accent);
     padding-left: 12px;
     scroll-margin-top: 80px;
 }
@@ -1976,12 +2532,12 @@ pre {
 
 .faq-source {
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin: 0;
 }
 
 .faq-source a {
-    color: #007acc;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -2015,24 +2571,24 @@ pre {
 }
 
 .faq-category-card h2 a:hover {
-    color: #007acc;
+    color: var(--accent);
 }
 
 .faq-category-meta {
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin: 0 0 0.5rem 0;
 }
 
 .faq-category-description {
     font-size: 0.9rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin: 0;
 }
 
 .faq-hub-stats {
     font-size: 0.9rem;
-    color: #595959;
+    color: var(--text-secondary);
     margin-top: 2rem;
     padding-top: 1rem;
     border-top: 1px solid #e9ecef;
@@ -2070,7 +2626,7 @@ pre {
 .home-intro {
     display: none;
     font-size: 0.85rem;
-    color: #595959;
+    color: var(--text-secondary);
     line-height: 1.5;
     margin: 0 0 1.25rem;
 }
@@ -2102,7 +2658,7 @@ pre {
 }
 
 .home-tab:hover {
-    color: #595959;
+    color: var(--text-secondary);
 }
 
 .home-tab--active {
@@ -2112,7 +2668,7 @@ pre {
 }
 
 .home-tab:focus-visible {
-    outline: 2px solid #007acc;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
@@ -2211,13 +2767,13 @@ pre {
 }
 
 .home-row:hover .home-row-title {
-    color: #007acc;
+    color: var(--accent);
 }
 
 .home-row-desc {
     font-size: 0.8rem;
     line-height: 1.45;
-    color: #595959;
+    color: var(--text-secondary);
     margin: 0 0 0.35rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -2280,9 +2836,170 @@ pre {
 }
 
 .home-divider-btn:focus-visible {
-    outline: 2px solid #007acc;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
+
+/* === Featured first card (Phase 5) ===
+   Stacked layout (image above, text below) with serif title and bigger image.
+   Date column hides; "Latest essay" flag replaces it as the structural label. */
+.home-row--featured {
+    border-bottom: 1.5px solid var(--border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.home-row--featured .home-row-link {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+    padding: 0.75rem 0.5rem 1rem;
+}
+
+.home-row--featured .home-row-date {
+    display: none;
+}
+
+.home-row--featured .home-row-thumb {
+    width: 100%;
+    aspect-ratio: 1200 / 630;
+    border-radius: 6px;
+}
+
+.home-row--featured .home-row-body {
+    padding: 0;
+}
+
+.home-row-feature-flag {
+    display: inline-block;
+    margin: 0 0 0.75rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    /* Slightly tighter than the .section-label canonical so it sits as a small tag, not a section header */
+    font-size: 12px;
+}
+
+.home-row--featured .home-row-title {
+    font-family: var(--body-font);
+    font-size: 1.85rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.005em;
+}
+
+.home-row--featured .home-row-desc {
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-line-clamp: 3;
+    margin-bottom: 0.6rem;
+}
+
+/* === Inline newsletter card (Phase 5) ===
+   Lives inside the homepage feed at index 2. Callout family styling
+   (red accent rule + accent tint) so it reads as part of the editorial
+   chrome, not a popup ad. */
+.home-newsletter {
+    margin: 1.5rem 0;
+    padding: 1.4rem 1.6rem;
+    background: var(--accent-tint);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+}
+
+.home-newsletter__label {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: 12px;
+}
+
+.home-newsletter__pitch {
+    font-family: var(--body-font);
+    font-size: 1.05rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 1rem;
+    max-width: 44ch;
+}
+
+.home-newsletter__form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.home-newsletter__input {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 0.55rem 0.75rem;
+    font-family: var(--ui-font);
+    font-size: 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--text);
+}
+
+.home-newsletter__input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+}
+
+.home-newsletter__button {
+    appearance: none;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-family: var(--ui-font);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.home-newsletter__button:hover {
+    background: var(--accent-hover);
+}
+
+.home-newsletter__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.home-newsletter__meta {
+    margin: 0;
+    font-family: var(--ui-font);
+    font-size: 12px;
+    color: var(--text-meta);
+}
+
+.home-newsletter__meta a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.home-newsletter__meta a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.home-newsletter__message {
+    margin-top: 0.75rem;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text);
+}
+
+.home-newsletter__message--error { color: var(--accent); }
+.home-newsletter__message--success { color: #1a7f3c; }
 
 /* ===================================
    Home Test — Mobile
@@ -2331,6 +3048,39 @@ pre {
         margin: 0 0 0.25rem;
     }
 
+    /* Featured card on mobile: thumbnail full-width, title 1.35rem, body fluid */
+    .home-row--featured .home-row-thumb {
+        width: 100%;
+    }
+
+    .home-row--featured .home-row-title {
+        font-size: 1.35rem;
+        line-height: 1.25;
+    }
+
+    .home-row--featured .home-row-desc {
+        font-size: 0.95rem;
+        -webkit-line-clamp: 3;
+    }
+
+    .home-newsletter {
+        padding: 1.1rem 1.2rem;
+        margin: 1rem 0;
+    }
+
+    .home-newsletter__pitch {
+        font-size: 0.95rem;
+    }
+
+    .home-newsletter__form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .home-newsletter__button {
+        width: 100%;
+    }
+
     .home-row-reading {
         font-size: 0.65rem;
     }
@@ -2355,7 +3105,7 @@ pre {
     background: #f8f9fa;
     border-left: 3px solid #e9ecef;
     font-size: 0.9rem;
-    color: #595959;
+    color: var(--text-secondary);
 }
 
 .author-entity p {
@@ -2363,7 +3113,7 @@ pre {
 }
 
 .author-entity a {
-    color: #007acc;
+    color: var(--accent);
 }
 
 .topic-classification {

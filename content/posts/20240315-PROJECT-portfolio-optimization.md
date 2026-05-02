@@ -4,6 +4,7 @@ seoTitle = "Python Portfolio Optimization: From Theory to Publication"
 date = 2024-03-15
 images = ["https://static.philippdubach.com/ograph/ograph-portfolio.jpg"]
 description = "How I built Python portfolio optimization tools, tripled the Sharpe ratio from 0.65 to 1.68, and published the results as an academic paper on MPT."
+doi = "10.2139/ssrn.5915004"
 keywords = ["Python portfolio optimization", "efficient frontier", "Modern Portfolio Theory", "Sharpe ratio", "out-of-sample testing"]
 categories = ["Investing"]
 tags = ["Project"]

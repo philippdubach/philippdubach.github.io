@@ -1,0 +1,34 @@
+{{- /*
+Mobile bottom dock — floating pill, mirrors desktop IA.
+4 items: Articles · Projects · Research · About.
+Active state via URL prefix match; emits aria-current="page".
+Scroll-aware hide/show is wired in baseof.html (inline JS).
+*/ -}}
+{{- $cur := .RelPermalink -}}
+{{- $section := .Section -}}
+{{- $isArticles := or .IsHome (and (eq $section "posts") (not (in $cur "/projects/")) (not (in $cur "/categories/"))) -}}
+{{- $isProjects := or (eq $section "projects") (in $cur "/projects/") -}}
+{{- $isResearch := in $cur "/research" -}}
+{{- $isAbout := in $cur "/about" -}}
+<nav class="mobile-dock" aria-label="Primary" data-mobile-dock>
+  <a href="{{ "/" | relURL }}"
+     class="mobile-dock__item{{ if $isArticles }} is-active{{ end }}"
+     {{ if $isArticles }}aria-current="page"{{ end }}>
+    <span class="mobile-dock__label">Articles</span>
+  </a>
+  <a href="{{ "/projects/" | relURL }}"
+     class="mobile-dock__item{{ if $isProjects }} is-active{{ end }}"
+     {{ if $isProjects }}aria-current="page"{{ end }}>
+    <span class="mobile-dock__label">Projects</span>
+  </a>
+  <a href="{{ "/research/" | relURL }}"
+     class="mobile-dock__item{{ if $isResearch }} is-active{{ end }}"
+     {{ if $isResearch }}aria-current="page"{{ end }}>
+    <span class="mobile-dock__label">Research</span>
+  </a>
+  <a href="{{ "/about/" | relURL }}"
+     class="mobile-dock__item{{ if $isAbout }} is-active{{ end }}"
+     {{ if $isAbout }}aria-current="page"{{ end }}>
+    <span class="mobile-dock__label">About</span>
+  </a>
+</nav>
