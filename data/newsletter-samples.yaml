@@ -1,0 +1,15 @@
+# Curated sample newsletter issues for /subscribe/. Render only when
+# there's at least one entry. Hand-rotate quarterly so the page doesn't
+# go stale. Each sample needs: number (issue), date (YYYY-MM-DD),
+# title, excerpt (~15 words), url (public archive link).
+#
+# Empty by default — populate after the first archived issue is public.
+
+samples: []
+# Example entry (uncomment and edit when ready):
+# samples:
+#   - number: 12
+#     date: "2026-04-15"
+#     title: "Why hyperscaler capex is breaking the macro"
+#     excerpt: "Five charts on the $400B AI infrastructure bet and what it does to dollar liquidity in 2026."
+#     url: "/newsletter-archive/12/"
