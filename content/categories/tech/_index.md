@@ -5,8 +5,10 @@ featured: "counting-cards-with-computer-vision"
 wikidata: "Q11016"
 ---
 
-Technical implementation details, engineering projects, and hands-on tutorials aimed at practitioners.
+Tech here means hands-on engineering: building working systems, breaking them, writing about what shipped and what didn't. Not opinion pieces about the industry, not vendor reviews. Code that runs, with the tradeoffs documented.
 
-Project work spans computer vision ([counting cards with OpenCV](/posts/counting-cards-with-computer-vision/)), machine learning ([visualizing PyTorch gradients](/posts/visualizing-gradients-with-pytorch/), [glycemic response modeling with XGBoost](/posts/modeling-glycemic-response-with-xgboost/)), health data engineering ([CGM data reader](/posts/i-built-a-cgm-data-reader/)), and AI-assisted deployment ([testing Cursor on Azure](/posts/deploying-to-production-with-ai-agents-testing-cursor-on-azure/)).
+Project work covers computer vision (a [card counter trained on OpenCV](/posts/counting-cards-with-computer-vision/) and an [audit of F3ED, the NeurIPS 2024 tennis-shot detector](/posts/f3ed-cant-call-an-ace-fixing-a-neurips-2024-tennis-model/)), applied machine learning ([visualizing PyTorch gradients](/posts/visualizing-gradients-with-pytorch/), [modeling postprandial glucose response with XGBoost](/posts/modeling-glycemic-response-with-xgboost/)), health-data engineering (a [Python library for the Dexcom CGM](/posts/i-built-a-cgm-data-reader/)), and agentic deployment (a [test of Cursor on a fresh Azure environment](/posts/deploying-to-production-with-ai-agents-testing-cursor-on-azure/)).
 
-The site itself serves as a working technical case study, built with Hugo, deployed on GitHub Pages via Cloudflare, and automated with Workers for social posting, URL shortening, and analytics aggregation.
+The site itself is a working case study. The blog runs on Hugo, deploys to GitHub Pages on push, sits behind Cloudflare. Five separate Cloudflare Workers handle the parts a static site can't: a security-headers Worker emits CSP and HSTS plus an Accept-aware content-negotiation layer that returns `index.md` to crawlers sending `Accept: text/markdown`; two AI Workers running Llama 4 Scout 17B auto-post to Bluesky and Twitter every 15 minutes, deduplicating via KV; a URL shortener at `pdub.click` uses KV plus D1; a GoatCounter proxy serves the "most read" data in the footer.
+
+Posts in this section show the engineering decisions, not the cleaned-up summaries. When a deploy broke, what broke. When a model underperformed, by how much.
