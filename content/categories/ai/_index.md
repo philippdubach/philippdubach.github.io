@@ -1,6 +1,7 @@
 ---
 title: "AI"
 description: "AI economics, scaling laws, enterprise strategy, labor market effects, and model evaluations — data-driven analysis of how AI creates and destroys value."
+featured: "the-most-expensive-assumption-in-ai"
 ---
 
 Coverage spans AI economics, enterprise deployment strategy, and the measurable effects of AI on labor markets and industries.

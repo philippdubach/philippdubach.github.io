@@ -1,6 +1,7 @@
 ---
 title: "Tech"
 description: "Engineering projects, software infrastructure, and technical deep dives — from Hugo static sites and Cloudflare Workers to computer vision and ML tutorials."
+featured: "counting-cards-with-computer-vision"
 ---
 
 Technical implementation details, engineering projects, and hands-on tutorials aimed at practitioners.

@@ -1,6 +1,7 @@
 ---
 title: "Medicine"
 description: "GLP-1 therapies, pharma economics, drug discovery, and health technology — from oral semaglutide bioavailability to AI-designed drug candidates."
+featured: "the-pill-that-wastes-99-of-itself"
 ---
 
 Analysis of drug development economics and medical research, with particular depth in GLP-1 receptor agonists and the competitive dynamics between Novo Nordisk and Eli Lilly.
