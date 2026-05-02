@@ -1,6 +1,7 @@
 ---
 title: "Economics"
 description: "Behavioral economics, wealth distribution modeling, and game theory — quantitative analysis of economic mechanisms."
+featured: "agent-based-systems-for-modeling-wealth-distribution"
 ---
 
 Quantitative economics with emphasis on behavioral effects, simulation models, and game-theoretic analysis.

@@ -1,6 +1,7 @@
 ---
 title: "Investing"
 description: "Market commentary, valuation frameworks, portfolio allocation, and investment strategy — from Buffett's legacy to prediction market microstructure."
+featured: "everything-is-a-dcf-model"
 ---
 
 Analysis of markets, valuations, and investment strategy grounded in empirical evidence rather than narrative.
