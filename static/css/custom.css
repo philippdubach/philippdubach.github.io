@@ -987,12 +987,6 @@ blockquote p {
     }
 }
 
-/* Legacy :target lightbox kept for backward compat with already-built pages
-   that may reference #lightbox-* anchors. New shortcode renders <dialog>. */
-a.lightbox-overlay {
-    display: none;
-}
-
 /* Feedback footer */
 .feedback-footer {
     margin-top: 0.75rem;
@@ -1316,25 +1310,6 @@ a.lightbox-overlay {
     
     body {
         padding-top: 0;
-    }
-    
-    /* Disable lightbox on mobile - native pinch-to-zoom is better */
-    .img-lightbox {
-        cursor: default;
-    }
-    
-    .img-lightbox:hover {
-        opacity: 1;
-    }
-    
-    a[href^="#lightbox-"] {
-        pointer-events: none;
-    }
-    
-    .lightbox-overlay,
-    .lightbox-overlay:target,
-    a.lightbox-overlay:target {
-        display: none !important;
     }
     
     /* Mobile header - always visible sticky bar */
