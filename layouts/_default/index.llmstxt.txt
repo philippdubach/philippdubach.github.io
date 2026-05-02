@@ -20,7 +20,7 @@ This site contains original analysis, research papers, and technical projects at
 {{- $taxonomy := index $.Site.Taxonomies.categories $term -}}
 {{- if $taxonomy -}}
 {{- $name := index $displayNames $term | default (humanize $term) }}
-- {{ $name }}: {{ len $taxonomy }} articles
+- [{{ $name }}]({{ $taxonomy.Page.Permalink }}): {{ len $taxonomy }} articles{{ with $taxonomy.Page.Description }} — {{ . }}{{ end }}
 {{ end -}}
 {{- end }}
 ## Key Statistics & Findings

@@ -2,6 +2,7 @@
 title: "Quantitative Finance"
 description: "Volatility, fat tails, risk theory, portfolio construction, and probability — the mathematical foundations of markets."
 featured: "the-variance-tax"
+wikidata: "Q1860864"
 ---
 
 Data-driven analysis of financial risk, volatility, and the mathematics underlying market behavior.

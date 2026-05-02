@@ -2,6 +2,7 @@
 title: "Macro"
 description: "Monetary policy, interest rates, currency dynamics, and geopolitical shifts — structural analysis of the global financial system."
 featured: "pozsar-bretton-woods-framework"
+wikidata: "Q161310"
 ---
 
 Analysis of monetary systems, central bank policy, and geopolitical realignment, focused on structural shifts rather than cyclical noise.
