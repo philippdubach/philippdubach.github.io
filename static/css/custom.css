@@ -2377,7 +2377,7 @@ pre {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -12px;
+    left: -24px;
     width: 2px;
     background: var(--accent);
     opacity: 0;
@@ -2385,11 +2385,11 @@ pre {
     pointer-events: none;
 }
 
-/* End position sits in the gutter, ~6px outside the row's left edge — clear of
-   the date column at left: 0 so the bar reads as a margin marker, not an overlap. */
+/* End position sits well outside the row's left edge so the bar reads as a
+   margin marker, never near the date column. */
 .project-row:hover::before,
 .project-row:focus-within::before {
-    left: -6px;
+    left: -16px;
     opacity: 1;
 }
 
