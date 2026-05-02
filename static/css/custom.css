@@ -1129,13 +1129,6 @@ blockquote p {
     border-bottom-style: solid;
 }
 
-/* The takeaways block on /subscribe/ wants the same italic standfirst
-   register used on posts, but with tighter top spacing since there's no
-   post-meta line above. */
-.subscribe-page .key-takeaways {
-    margin-top: 1.5rem;
-}
-
 /* Recent-issues sample row on /subscribe/. Curated, dated, hand-rotated
    from data/newsletter-samples.yaml. Renders only when populated.
    Italic Newsreader register with section-label kicker. */
