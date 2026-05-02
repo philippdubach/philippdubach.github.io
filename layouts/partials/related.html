@@ -1,20 +1,25 @@
-{{/* Related Posts - shows posts with matching categories/keywords, falls back to recent posts */}}
+{{/* Related Posts — v2.7 audit: matches the home/projects row register. No
+     descriptions, no "5 min read" meta — just titles + dates + categories.
+     Internal-link graph value preserved. data-nosnippet keeps this navigation
+     strip out of SERP/AIO snippets. */}}
 {{ $related := where (.Site.RegularPages.Related . | first 5) ".Params.unlisted" "ne" true | first 3 }}
 {{ if not $related }}
   {{/* Fallback: recent posts from the same section, excluding the current page */}}
   {{ $related = where (where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true) ".RelPermalink" "ne" .RelPermalink | first 3 }}
 {{ end }}
 {{ if $related }}
-{{/* data-nosnippet keeps the related-posts strip out of SERP/AIO snippets —
-     it's navigation, not content. The internal-link graph value is preserved. */}}
 <aside class="related-posts" aria-labelledby="related-heading" data-nosnippet>
-    <h2 class="related-heading section-label" id="related-heading">Read next</h2>
+    <h2 class="related-heading" id="related-heading">Read next</h2>
     <ul class="related-list">
         {{ range $related }}
         <li class="related-item">
-            <a href="{{ .RelPermalink }}" class="related-link">{{ .Title }}</a>
-            {{ with .Params.description }}<p class="related-desc">{{ . | truncate 120 }}</p>{{ end }}
-            <span class="related-meta">{{ .ReadingTime }} min read</span>
+            <a href="{{ .RelPermalink }}" class="related-link">
+                <span class="related-title">{{ .Title }}</span>
+                <span class="related-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                    {{ with .Params.categories }} · <span class="related-cat">{{ index . 0 }}</span>{{ end }}
+                </span>
+            </a>
         </li>
         {{ end }}
     </ul>

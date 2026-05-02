@@ -86,7 +86,56 @@
       },true);
     })();</script>
 
-    <script>document.addEventListener('keydown',function(e){if(e.key==='Escape'&&location.hash.startsWith('#lightbox-'))history.replaceState(null,'',location.pathname+location.search)})</script>
+    <script>(function(){
+      // <dialog> lightbox — opens on .img-trigger click, closes on backdrop
+      // click. ESC closes via native <dialog> behavior; submit of the inline
+      // <form method="dialog"> closes via the × button.
+      document.addEventListener('click', function(e) {
+        var trigger = e.target.closest('.img-trigger');
+        if (trigger) {
+          var id = trigger.dataset.lightboxTarget;
+          var dlg = document.getElementById(id);
+          if (dlg && typeof dlg.showModal === 'function') {
+            dlg.showModal();
+            e.preventDefault();
+          }
+          return;
+        }
+        // Backdrop click: <dialog> click events fire on the dialog itself when
+        // the user clicks outside the content (because the dialog fills the
+        // viewport via ::backdrop but receives click on the dialog element).
+        var dlg = e.target.closest('.lightbox-dialog');
+        if (dlg && e.target === dlg) {
+          dlg.close();
+        }
+      });
+    })();</script>
+
+    <script>(function(){
+      // Code-block copy button — event-delegated so it covers all .code-copy
+      // buttons rendered by layouts/_markup/render-codeblock.html.
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.code-copy');
+        if (!btn) return;
+        var block = btn.closest('.code-block');
+        if (!block) return;
+        var code = block.querySelector('pre code') || block.querySelector('pre');
+        if (!code || !navigator.clipboard) return;
+        var text = code.innerText.replace(/^\n+|\n+$/g, '');
+        navigator.clipboard.writeText(text).then(function() {
+          btn.dataset.copied = 'true';
+          var original = btn.querySelector('.code-copy-text');
+          if (original) {
+            var prev = original.textContent;
+            original.textContent = 'Copied';
+            setTimeout(function() {
+              original.textContent = prev;
+              delete btn.dataset.copied;
+            }, 1400);
+          }
+        }).catch(function() { /* silent fail */ });
+      });
+    })();</script>
 
     {{- if .Param "math" -}}
         {{ partialCached "math.html" . }}
