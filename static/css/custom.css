@@ -2188,6 +2188,69 @@ pre {
 }
 
 /* ===================================
+   Articles index — homepage. Ported from v2.6 projects pattern as a starting
+   point. Hero lockup uses shared .about-hero / .about-name / .about-lede;
+   counts + related strips and list register mirror v2.6 projects.
+   =================================== */
+.articles-hero {
+    margin-bottom: 2.5em;
+}
+
+.articles-intro {
+    /* Same override as the v2.6 projects-intro: drop the .about-lede 50ch cap
+       so the dek doesn't feel constrained next to the full-width row list. */
+    max-width: none;
+    margin: 0.75em 0 1em;
+}
+
+.articles-intro p {
+    margin: 0 0 1em;
+    max-width: 62ch;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.articles-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.articles-counts {
+    margin: 0 0 0.5em;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+    letter-spacing: 0.01em;
+}
+
+.articles-related {
+    margin: 0;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+}
+
+.articles-related a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.articles-related a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.articles-list {
+    margin-top: 1.5em;
+}
+
+/* 4:5 portrait thumb — same crop as v2.6 projects. */
+.article-row .article-thumb img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+/* ===================================
    Projects index — v2.7 simplified.
    Audit-driven: single-word H1, dek = .Content, counts as credibility line,
    format tags replace reading time, year markers as silent chapter breaks,
@@ -2314,7 +2377,7 @@ pre {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -4px;
+    left: -12px;
     width: 2px;
     background: var(--accent);
     opacity: 0;
@@ -2322,9 +2385,11 @@ pre {
     pointer-events: none;
 }
 
+/* End position sits in the gutter, ~6px outside the row's left edge — clear of
+   the date column at left: 0 so the bar reads as a margin marker, not an overlap. */
 .project-row:hover::before,
 .project-row:focus-within::before {
-    left: 0;
+    left: -6px;
     opacity: 1;
 }
 
