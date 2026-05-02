@@ -2482,6 +2482,29 @@ h2.section-label.category-year {
     border-bottom-color: var(--accent);
 }
 
+/* Category → FAQ cross-link. Sits below the adjacent-topics sentence
+   in the same italic register. Closes the broken link circuit between
+   category pillar pages and their FAQ aggregators (highest-leverage
+   internal-link gain per the FAQ-page audit). */
+.category-faq-link {
+    margin: 0.6rem 0 1rem;
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.category-faq-link a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.category-faq-link a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
 /* /categories/ index page — kept lightweight (navigation, not pillar). */
 .category-section {
     margin-bottom: 2.5rem;
