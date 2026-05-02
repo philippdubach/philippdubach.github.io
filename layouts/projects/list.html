@@ -1,20 +1,20 @@
 {{ define "main" }}
 {{- /*
-  Projects index — v2.6 redesign.
-  Hero lockup mirrors about/research (.about-hero / .about-name / .about-lede).
-  Featured-row pattern reuses homepage .home-row--featured for the newest project;
-  subsequent projects mirror homepage .home-row.
+  Projects index — v2.7 simplified.
+  Driven by the May 2026 design/UX/SEO audit.
 
-  Image strategy switch:
-    "inline" — first {{< img >}} shortcode in the post body, smart-cropped (gravity=auto)
-               to a 4:5 portrait. Falls back to OG right-half crop if no inline image.
-    "ogcrop" — right-half of the canonical OG image (left-text + right-image layout).
-               Uses gravity=right.
+  Phase 1 (simplification): single-word H1, italic dek = .Content, counts strip
+    promoted as credibility line, related strip moved below the FAQ block, format
+    tags replace reading time per row.
+  Phase 2 (delight): year markers as oversized serif numerals (silent chapter
+    breaks); no featured-row treatment; hover red left-border slide-in (CSS).
+  Phase 3 (future-proofing): client-side filter chips, About-these-projects FAQ
+    block (paired with FAQPage schema in structured-data.html).
 
-    Per-post override: .Params.card_image (CDN-relative path or full URL) wins over
-    both strategies. Always smart-cropped (gravity=auto) since aspect ratio is unknown.
-
-    Flip $imageStrategy below to switch; both code paths are kept so the choice is reversible.
+  Image strategy switch (kept from v2.6):
+    "inline" — first {{< img >}} from post body (gravity=auto, smart-cropped to 4:5).
+    "ogcrop" — right-half of canonical OG image (gravity=right).
+    Per-post override: .Params.card_image always wins.
 */ -}}
 {{ $cdnBase := "https://static.philippdubach.com" }}
 {{ $imageStrategy := "inline" }}
@@ -25,29 +25,29 @@
 {{ with index $projects (sub (len $projects) 1) }}{{ $firstYear = .Date.Year }}{{ end }}
 
 <article class="post single projects-page">
-    <header class="post-header about-hero projects-hero">
-        <span class="section-label">Projects</span>
-        <h1 class="post-title about-name">Quantitative Finance, Machine Learning &amp; Computer Vision</h1>
-        <div class="about-lede projects-intro">
+    <header class="projects-hero">
+        <h1 class="projects-h1">Projects</h1>
+        <div class="projects-dek">
             {{ .Content }}
         </div>
         <p class="projects-counts">{{ len $projects }} projects · {{ $paperCount }} papers · since {{ $firstYear }} · all open-source</p>
-        <p class="projects-related">Related: <a href="/research/">Research</a> · <a href="/categories/quantitative-finance/">Quantitative Finance</a> · <a href="/categories/ai/">AI</a></p>
     </header>
 
-    <div class="home-feed-list projects-list">
+    <nav class="projects-filter" aria-label="Filter projects by format">
+        <button type="button" class="projects-filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="projects-filter-btn" data-filter="paper">Papers</button>
+        <button type="button" class="projects-filter-btn" data-filter="code">Code</button>
+        <button type="button" class="projects-filter-btn" data-filter="hardware">Hardware</button>
+    </nav>
+
+    <div class="home-feed-list projects-list" id="projects-list">
         {{ $scratch := newScratch }}
         {{ $scratch.Set "prevYear" 0 }}
         {{ range $i, $page := $projects }}
-        {{- $isFeatured := eq $i 0 -}}
+        {{- $isFirstRow := eq $i 0 -}}
         {{- $yearChanged := and (gt $i 0) (ne ($page.Date.Year) ($scratch.Get "prevYear")) -}}
 
-        {{- /* Determine card image source.
-              Priority:
-                1. card_image override (gravity=auto)
-                2. strategy = "inline" → first {{< img >}} from body (gravity=auto),
-                                         falls back to OG right-half if no inline image
-                3. strategy = "ogcrop" → first images[] entry, right-half (gravity=right) */ -}}
+        {{- /* Determine card image source. card_image → inline shortcode → OG fallback. */ -}}
         {{- $cardSrc := "" -}}
         {{- $gravity := "auto" -}}
         {{- $resolved := false -}}
@@ -71,8 +71,6 @@
             {{- end -}}
         {{- end -}}
 
-        {{- /* Fallback: OG right-half crop. Used when ogcrop strategy is selected,
-              when inline strategy finds no shortcode, or when there's no card_image. */ -}}
         {{- if not $resolved -}}
             {{- with $page.Params.images -}}
                 {{- $cardSrc = replace (index . 0) "https://static.philippdubach.com/" "" -}}
@@ -80,24 +78,70 @@
             {{- end -}}
         {{- end -}}
 
-        {{- /* Cloudflare Image Resizing supports gravity=auto|left|right|top|bottom. */ -}}
         {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
 
-        <article class="home-row{{ if $isFeatured }} home-row--featured{{ end }} project-row" data-index="{{ $i }}">
+        {{- /* Format tag derivation.
+              Priority: explicit `format` frontmatter override → DOI shape (arXiv vs SSRN)
+              → first GitHub URL in body → "Write-up" default. */ -}}
+        {{- $formatTag := "Write-up" -}}
+        {{- $formatHref := "" -}}
+        {{- $formatSlug := "writeup" -}}
+
+        {{- with $page.Params.doi -}}
+            {{- $formatSlug = "paper" -}}
+            {{- if hasPrefix . "10.48550/arXiv" -}}
+                {{- $formatTag = "arXiv" -}}
+                {{- $arxivId := replace . "10.48550/arXiv." "" -}}
+                {{- $formatHref = printf "https://arxiv.org/abs/%s" $arxivId -}}
+            {{- else if hasPrefix . "10.2139" -}}
+                {{- $formatTag = "SSRN" -}}
+                {{- $formatHref = printf "https://doi.org/%s" . -}}
+            {{- else -}}
+                {{- $formatTag = "Paper" -}}
+                {{- $formatHref = printf "https://doi.org/%s" . -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Frontmatter override (e.g., format = "Hardware") trumps DOI-derivation. */ -}}
+        {{- with $page.Params.format -}}
+            {{- if eq . "Hardware" -}}
+                {{- $formatTag = "Hardware" -}}
+                {{- $formatSlug = "hardware" -}}
+                {{- $formatHref = "" -}}
+            {{- else if eq . "Code" -}}
+                {{- $formatTag = "Code" -}}
+                {{- $formatSlug = "code" -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* No DOI, no override → if body has a GitHub URL, treat as Code. */ -}}
+        {{- if and (eq $formatTag "Write-up") (not $page.Params.format) -}}
+            {{- $ghMatches := findRE `https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+` $page.RawContent 1 -}}
+            {{- if $ghMatches -}}
+                {{- $formatTag = "Code" -}}
+                {{- $formatSlug = "code" -}}
+                {{- $formatHref = index $ghMatches 0 -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Year marker as silent chapter break. Rendered for the first row and on
+              every year-change. */ -}}
+        {{- if or $isFirstRow $yearChanged -}}
+        <div class="projects-year-marker" data-year="{{ $page.Date.Year }}" aria-hidden="true">{{ $page.Date.Year }}</div>
+        {{- end -}}
+
+        <article class="home-row project-row" data-index="{{ $i }}" data-format="{{ $formatSlug }}" data-year="{{ $page.Date.Year }}">
             <a href="{{ $page.Permalink }}" class="home-row-link">
-                <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
+                <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}</time>
                 {{ if $cardSrc }}
-                {{- /* 4:5 portrait crop. Square (1:1) at gravity=right bleeds ~63px into the
-                      text half of canonical OGs (text ends at ~50% width); 4:5 anchors crops
-                      cleanly in the right-image area. */ -}}
-                {{- $w := cond $isFeatured 480 288 -}}
-                {{- $h := cond $isFeatured 600 360 -}}
+                {{- $w := 288 -}}
+                {{- $h := 360 -}}
                 <div class="home-row-thumb project-thumb">
                     <img src="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width={{ $w }},height={{ $h }},quality=80,format=auto/{{ $cardSrc }}"
                          srcset="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=240,height=300,quality=80,format=webp/{{ $cardSrc }} 240w,
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=400,height=500,quality=80,format=webp/{{ $cardSrc }} 400w,
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=720,height=900,quality=80,format=webp/{{ $cardSrc }} 720w"
-                         sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 480px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
+                         sizes="(max-width: 768px) 100px, 180px"
                          alt="{{ $page.Title }}"
                          loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}"
                          width="{{ $w }}" height="{{ $h }}"
@@ -105,7 +149,6 @@
                 </div>
                 {{ end }}
                 <div class="home-row-body">
-                    {{ if $isFeatured }}<span class="home-row-feature-flag section-label">Latest project</span>{{ end }}
                     <h2 class="home-row-title">{{ $page.Title }}</h2>
                     {{ with $page.Params.description }}
                     <p class="home-row-desc">{{ . }}</p>
@@ -113,7 +156,7 @@
                     <span class="home-row-date-mobile">
                         <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
                     </span>
-                    <span class="home-row-reading">{{ $page.ReadingTime }} min read</span>
+                    <span class="home-row-format home-row-format--{{ $formatSlug }}">{{ $formatTag }}</span>
                     {{ with $page.Params.categories }}{{ $cat := index . 0 }}{{ $short := cond (eq $cat "Quantitative Finance") "Quant" $cat }}<span class="home-row-cat"><span class="cat-full">{{ $cat }}</span><span class="cat-mobile">{{ $short }}</span></span>{{ end }}
                 </div>
             </a>
@@ -121,5 +164,60 @@
         {{ $scratch.Set "prevYear" ($page.Date.Year) }}
         {{ end }}
     </div>
+
+    <section class="projects-faq" aria-labelledby="projects-faq-h2">
+        <h2 id="projects-faq-h2" class="projects-faq-h2">About these projects</h2>
+        <dl class="projects-faq-list">
+            <dt>What domains does Philipp Dubach work in?</dt>
+            <dd>Quantitative finance (market microstructure, portfolio construction), machine-learning systems, computer vision, and the occasional hardware experiment. Several builds have been formalized as peer-reviewed papers and pre-prints with DOIs on SSRN and arXiv.</dd>
+            <dt>Are the projects open source?</dt>
+            <dd>Yes. Every project ships with a public repository, a write-up, and reproducible data when sharing it doesn't break licensing or privacy.</dd>
+            <dt>Where can I find the code and papers?</dt>
+            <dd>Each row links to its full write-up; format tags (Paper · arXiv / SSRN · Code · Hardware) link out directly to the artifact's home — arXiv abstract, SSRN page, or GitHub repo.</dd>
+        </dl>
+    </section>
+
+    <p class="projects-related">Related: <a href="/research/">Research</a> · <a href="/categories/quantitative-finance/">Quantitative Finance</a> · <a href="/categories/ai/">AI</a></p>
 </article>
+
+<script>
+(function(){
+    var btns = document.querySelectorAll('.projects-filter-btn');
+    var rows = document.querySelectorAll('.project-row');
+    var markers = document.querySelectorAll('.projects-year-marker');
+    if (!btns.length || !rows.length) return;
+
+    function applyFilter(filter) {
+        var visibleYears = {};
+        rows.forEach(function(row) {
+            var match = filter === 'all' || row.dataset.format === filter;
+            row.hidden = !match;
+            if (match) visibleYears[row.dataset.year] = true;
+        });
+        markers.forEach(function(m) {
+            m.hidden = !visibleYears[m.dataset.year];
+        });
+        btns.forEach(function(b) {
+            b.classList.toggle('is-active', b.dataset.filter === filter);
+            b.setAttribute('aria-pressed', b.dataset.filter === filter ? 'true' : 'false');
+        });
+        if (filter === 'all') {
+            history.replaceState(null, '', window.location.pathname);
+        } else {
+            history.replaceState(null, '', '#' + filter);
+        }
+    }
+
+    btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            applyFilter(btn.dataset.filter);
+        });
+    });
+
+    var hash = window.location.hash.replace('#', '');
+    if (hash && ['paper','code','hardware'].indexOf(hash) !== -1) {
+        applyFilter(hash);
+    }
+})();
+</script>
 {{ end }}

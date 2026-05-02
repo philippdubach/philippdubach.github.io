@@ -222,6 +222,34 @@
   "itemListElement" $items
 -}}
 
+{{- /* about[] — Person + DefinedTerm entries with sameAs to Wikipedia/Wikidata
+       for entity-association on AI search engines. */ -}}
+{{- $aboutDomains := slice
+  (dict "@id" $personId)
+  (dict
+    "@type" "DefinedTerm"
+    "name" "Quantitative Finance"
+    "sameAs" (slice "https://en.wikipedia.org/wiki/Mathematical_finance" "https://www.wikidata.org/wiki/Q11024"))
+  (dict
+    "@type" "DefinedTerm"
+    "name" "Machine Learning"
+    "sameAs" (slice "https://en.wikipedia.org/wiki/Machine_learning" "https://www.wikidata.org/wiki/Q2539"))
+  (dict
+    "@type" "DefinedTerm"
+    "name" "Computer Vision"
+    "sameAs" (slice "https://en.wikipedia.org/wiki/Computer_vision" "https://www.wikidata.org/wiki/Q844240"))
+-}}
+
+{{- /* BreadcrumbList for the index — Home → Projects. The site's IsPage-gated
+       breadcrumb block does not fire for section-list pages. */ -}}
+{{- $breadcrumb := dict
+  "@type" "BreadcrumbList"
+  "@id" (printf "%s#breadcrumb" $collectionId)
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" $.Site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" "Projects" "item" $collectionId))
+-}}
+
 {{- $collection := dict
   "@type" "CollectionPage"
   "@id" $collectionId
@@ -229,14 +257,42 @@
   "url" $collectionId
   "description" $.Params.description
   "mainEntity" $itemList
-  "about" (dict "@id" $personId)
+  "about" $aboutDomains
   "isPartOf" (dict "@id" $websiteId)
   "author" (dict "@id" $personId)
+  "breadcrumb" (dict "@id" (printf "%s#breadcrumb" $collectionId))
   "dateModified" ($.Lastmod.Format "2006-01-02")
 -}}
 
+{{- /* About-these-projects FAQ — paired 1:1 with the visible <dl> in
+       layouts/projects/list.html. Q&A copy must stay in sync with the HTML. */ -}}
+{{- $faq := dict
+  "@type" "FAQPage"
+  "@id" (printf "%s#faq" $collectionId)
+  "isPartOf" (dict "@id" $collectionId)
+  "mainEntity" (slice
+    (dict
+      "@type" "Question"
+      "name" "What domains does Philipp Dubach work in?"
+      "acceptedAnswer" (dict
+        "@type" "Answer"
+        "text" "Quantitative finance (market microstructure, portfolio construction), machine-learning systems, computer vision, and the occasional hardware experiment. Several builds have been formalized as peer-reviewed papers and pre-prints with DOIs on SSRN and arXiv."))
+    (dict
+      "@type" "Question"
+      "name" "Are the projects open source?"
+      "acceptedAnswer" (dict
+        "@type" "Answer"
+        "text" "Yes. Every project ships with a public repository, a write-up, and reproducible data when sharing it does not break licensing or privacy."))
+    (dict
+      "@type" "Question"
+      "name" "Where can I find the code and papers?"
+      "acceptedAnswer" (dict
+        "@type" "Answer"
+        "text" "Each row links to its full write-up; format tags (Paper, arXiv, SSRN, Code, Hardware) link out directly to the artifact's home: an arXiv abstract, an SSRN page, or a GitHub repo.")))
+-}}
+
 <script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $collection) | jsonify | safeJS }}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $collection $breadcrumb $faq) | jsonify | safeJS }}
 </script>
 {{ end }}
 
@@ -272,8 +328,11 @@
 </script>
 {{ end }}
 
-{{/* ===== BREADCRUMBS: Section and taxonomy pages ===== */}}
-{{ if and (not .IsPage) (not .IsHome) }}
+{{/* ===== BREADCRUMBS: Section and taxonomy pages =====
+     Excluded: /projects/ — the projects @graph block above already declares a
+     cross-referenced BreadcrumbList with @id so the CollectionPage.breadcrumb
+     property dereferences correctly. */}}
+{{ if and (not .IsPage) (not .IsHome) (ne .RelPermalink "/projects/") }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
