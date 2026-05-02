@@ -56,10 +56,109 @@
   "publisher" (dict "@id" $personId)
 -}}
 
-{{/* ===== HOMEPAGE: Person + WebSite ===== */}}
+{{/* ===== HOMEPAGE: Person + WebSite + CollectionPage with ItemList of BlogPosting =====
+     Mirrors the /projects/ schema register. The homepage IS the articles index;
+     emitting CollectionPage + ItemList lets the page surface as a topic hub for
+     "essays on quantitative finance / AI / technology" and gives AI search engines
+     citation-extractable item list for entity association. */}}
 {{ if .IsHome }}
+{{- $homeId := printf "%s#articles" .Site.BaseURL -}}
+{{- $articles := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
+{{- $articles = where $articles ".Params.type" "!=" "Project" -}}
+{{- $articles = $articles.ByDate.Reverse -}}
+{{- $articleItems := slice -}}
+{{- range $i, $page := $articles -}}
+  {{- $bp := dict
+    "@type" "BlogPosting"
+    "headline" $page.Title
+    "name" $page.Title
+    "url" $page.Permalink
+    "datePublished" ($page.Date.Format "2006-01-02")
+    "inLanguage" "en"
+    "author" (dict "@id" $personId)
+    "isPartOf" (dict "@id" $homeId)
+    "mainEntityOfPage" $page.Permalink
+  -}}
+  {{- with $page.Params.description -}}{{- $bp = merge $bp (dict "abstract" .) -}}{{- end -}}
+  {{- with $page.Params.images -}}{{- $bp = merge $bp (dict "image" (index . 0)) -}}{{- end -}}
+  {{- with $page.Params.keywords -}}{{- $bp = merge $bp (dict "keywords" .) -}}{{- end -}}
+  {{- $articleItems = $articleItems | append (dict
+    "@type" "ListItem"
+    "position" (add $i 1)
+    "url" $page.Permalink
+    "item" $bp
+  ) -}}
+{{- end -}}
+
+{{- $articleItemList := dict
+  "@type" "ItemList"
+  "itemListOrder" "https://schema.org/ItemListOrderDescending"
+  "numberOfItems" (len $articles)
+  "itemListElement" $articleItems
+-}}
+
+{{- /* about[] — entity-association for AI search. */ -}}
+{{- $homeAbout := slice
+  (dict "@id" $personId)
+  (dict
+    "@type" "DefinedTerm"
+    "name" "Quantitative Finance"
+    "sameAs" (slice "https://en.wikipedia.org/wiki/Mathematical_finance" "https://www.wikidata.org/wiki/Q11024"))
+  (dict
+    "@type" "DefinedTerm"
+    "name" "Artificial Intelligence"
+    "sameAs" (slice "https://en.wikipedia.org/wiki/Artificial_intelligence" "https://www.wikidata.org/wiki/Q11660"))
+  (dict
+    "@type" "DefinedTerm"
+    "name" "Technology"
+    "sameAs" (slice "https://en.wikipedia.org/wiki/Technology" "https://www.wikidata.org/wiki/Q11016"))
+-}}
+
+{{- $homeLastmod := .Lastmod -}}
+{{- with index $articles 0 -}}{{- $homeLastmod = .Date -}}{{- end -}}
+
+{{- $homeCollection := dict
+  "@type" "CollectionPage"
+  "@id" $homeId
+  "name" "Articles"
+  "url" .Site.BaseURL
+  "description" $.Params.description
+  "mainEntity" $articleItemList
+  "about" $homeAbout
+  "isPartOf" (dict "@id" $websiteId)
+  "author" (dict "@id" $personId)
+  "dateModified" ($homeLastmod.Format "2006-01-02")
+-}}
+
+{{- /* About-these-articles FAQ — paired 1:1 with the visible <dl> in
+       layouts/index.html. Q&A copy must stay in sync with the HTML. */ -}}
+{{- $homeFaq := dict
+  "@type" "FAQPage"
+  "@id" (printf "%s#faq" $homeId)
+  "isPartOf" (dict "@id" $homeId)
+  "mainEntity" (slice
+    (dict
+      "@type" "Question"
+      "name" "What does Philipp Dubach write about?"
+      "acceptedAnswer" (dict
+        "@type" "Answer"
+        "text" "Long-form essays, analyses, and notes on quantitative finance, AI, and technology. Independent research-style writing — not commentary, not aggregation. Some essays are formalized as peer-reviewed papers and pre-prints with DOIs on SSRN and arXiv."))
+    (dict
+      "@type" "Question"
+      "name" "How often are essays published?"
+      "acceptedAnswer" (dict
+        "@type" "Answer"
+        "text" "There is no fixed schedule. Essays appear when an idea is worth writing up, typically a few times a month. Subscribers receive new essays by email; the RSS and JSON feeds carry the same content."))
+    (dict
+      "@type" "Question"
+      "name" "Where can I find the source code or papers behind these essays?"
+      "acceptedAnswer" (dict
+        "@type" "Answer"
+        "text" "Essays that ship with code link to public GitHub repositories inline. Peer-reviewed papers and pre-prints are listed on the Research page with DOI links to SSRN and arXiv. Builds and reproducible projects are catalogued on the Projects page.")))
+-}}
+
 <script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" (slice $person $website) | jsonify | safeJS }}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $homeCollection $homeFaq) | jsonify | safeJS }}
 </script>
 {{ end }}
 

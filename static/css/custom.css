@@ -2368,11 +2368,13 @@ pre {
 /* Hover delight: 2px red left-border slides in from -4px to 0 on hover.
    Single craft moment — replaces nothing, layers on top of any existing
    row hover treatment. */
-.project-row {
+.project-row,
+.article-row {
     position: relative;
 }
 
-.project-row::before {
+.project-row::before,
+.article-row::before {
     content: "";
     position: absolute;
     top: 0;
@@ -2388,7 +2390,9 @@ pre {
 /* End position sits well outside the row's left edge so the bar reads as a
    margin marker, never near the date column. */
 .project-row:hover::before,
-.project-row:focus-within::before {
+.project-row:focus-within::before,
+.article-row:hover::before,
+.article-row:focus-within::before {
     left: -16px;
     opacity: 1;
 }
