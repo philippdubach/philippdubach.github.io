@@ -884,35 +884,43 @@ blockquote p {
     display: block;
 }
 
-/* <dialog> lightbox — keyboard-trapped, ESC-to-close, no history pollution. */
+/* <dialog> lightbox v3.0 — light frosted register to match the editorial
+   tone of the site (vs. dark-app immersive). Transparent dialog box with
+   the image floating; chrome (close button, caption) appears in corners
+   so the image owns the visual centre. */
 .lightbox-dialog {
     border: none;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    max-width: 95vw;
-    max-height: 95vh;
-    width: 95vw;
-    height: 95vh;
-    margin: auto;
+    padding: 0;
+    background: transparent;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
     overflow: hidden;
+    /* Centre the inner img via flex without nesting a wrapper. */
+    display: grid;
+    place-items: center;
+}
+
+.lightbox-dialog[open] {
+    display: grid;
 }
 
 .lightbox-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(245, 244, 242, 0.92);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
 }
 
 .lightbox-dialog img {
     display: block;
-    max-width: 100%;
-    max-height: calc(95vh - 6rem);
-    margin: 0 auto;
+    max-width: 92vw;
+    max-height: 88vh;
+    margin: 0;
     object-fit: contain;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
 }
 
 .lightbox-close-form {
@@ -921,32 +929,62 @@ blockquote p {
 }
 
 .lightbox-close {
-    position: absolute;
-    top: 0.75rem;
-    right: 1rem;
+    position: fixed;
+    top: 1rem;
+    right: 1.25rem;
     appearance: none;
     background: transparent;
     border: none;
-    font-size: 2rem;
+    font-size: 1.75rem;
     line-height: 1;
-    color: var(--text-secondary);
+    color: var(--text-meta);
     cursor: pointer;
-    padding: 0.25em 0.5em;
-    border-radius: 4px;
+    padding: 0.35em 0.6em;
+    border-radius: 2px;
+    transition: color 140ms ease, background 140ms ease;
 }
 
-.lightbox-close:hover {
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
     color: var(--accent);
+    background: rgba(255, 255, 255, 0.6);
+    outline: none;
 }
 
 .lightbox-caption {
-    margin: 1rem 0 0;
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0 1.5rem;
+    max-width: 80vw;
     font-family: var(--body-font);
     font-style: italic;
     font-size: 0.95rem;
     line-height: 1.5;
     color: var(--text-secondary);
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .lightbox-dialog img {
+        max-width: 100vw;
+        max-height: 92vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .lightbox-close {
+        top: env(safe-area-inset-top, 0.5rem);
+        right: 0.5rem;
+        font-size: 1.5rem;
+        padding: 0.5em 0.7em;
+    }
+    .lightbox-caption {
+        bottom: env(safe-area-inset-bottom, 0.75rem);
+        font-size: 0.875rem;
+        max-width: 92vw;
+    }
 }
 
 /* Legacy :target lightbox kept for backward compat with already-built pages
