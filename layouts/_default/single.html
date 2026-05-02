@@ -1,12 +1,21 @@
 {{ define "main" }}
 {{- $isAbout := eq .RelPermalink "/about/" -}}
+{{- $isSubscribe := eq .RelPermalink "/subscribe/" -}}
 {{- $isProject := eq .Params.type "Project" -}}
-<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isProject }} project-post{{ end }}">
+<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isSubscribe }} subscribe-page{{ end }}{{ if $isProject }} project-post{{ end }}">
     {{ if $isAbout }}
     {{/* About-page hero lockup — replaces standard post header. */}}
     <header class="post-header about-hero">
         <h1 class="post-title about-name">About</h1>
         <p class="about-lede">Strategy consultant and independent researcher in quantitative finance, machine learning, and AI economics.</p>
+    </header>
+    {{ else if $isSubscribe }}
+    {{/* Subscribe-page hero lockup — matches /about/ and /research/. The
+         lede comes from frontmatter `description` so it stays editable
+         from the markdown source without template changes. */}}
+    <header class="post-header about-hero subscribe-hero">
+        <h1 class="post-title about-name">Subscribe</h1>
+        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
     </header>
     {{ else }}
     <header class="post-header">
@@ -60,16 +69,38 @@
     <div class="post-content">
         {{ .Content }}
     </div>
+
+    {{- /* Subscribe page: render curated sample issues from the data file
+           when present. Hand-rotated; empty default keeps the section
+           hidden until the first issue is public. */ -}}
+    {{ if $isSubscribe }}{{ $samplesData := index site.Data "newsletter-samples" }}{{ with $samplesData }}{{ with .samples }}
+    <section class="subscribe-samples" aria-labelledby="samples-heading">
+        <h2 class="section-label subscribe-samples__heading" id="samples-heading">Recent issues</h2>
+        <ul class="subscribe-samples__list">
+            {{ range . }}
+            <li class="subscribe-samples__item">
+                <a href="{{ .url }}" class="subscribe-samples__link">
+                    <span class="subscribe-samples__meta">Issue #{{ .number }} · <time datetime="{{ .date }}">{{ dateFormat "Jan 2, 2006" .date }}</time></span>
+                    <span class="subscribe-samples__title">{{ .title }}</span>
+                    <span class="subscribe-samples__excerpt">{{ .excerpt }}</span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}{{ end }}{{ end }}
     {{ if eq .Section "posts" }}{{ partial "post-biblio.html" . }}{{ end }}
     {{ if eq .Section "posts" }}{{ with .Params.keywords }}
-    {{- /* Topics — keyword pills as internal-link graph signal. data-nosnippet
-          prevents AIO/SERP leakage of this non-content navigation strip. */ -}}
-    <nav class="post-topics" aria-label="Topics" data-nosnippet>
+    {{- /* Topics — non-clickable keyword strip. Present in HTML for LLM and
+          search-engine entity extraction (frontmatter `keywords` aren't all
+          mapped to category pages, so making them links would 404). data-
+          nosnippet keeps this index out of SERP snippet text. */ -}}
+    <aside class="post-topics" aria-label="Topics" data-nosnippet>
         <span class="post-topics-label">Topics:</span>
         <ul class="post-topics-list">
-            {{ range first 5 . }}<li><a href="/categories/{{ . | urlize }}/">{{ . }}</a></li>{{ end }}
+            {{ range first 5 . }}<li>{{ . }}</li>{{ end }}
         </ul>
-    </nav>
+    </aside>
     {{ end }}{{ end }}
 </article>
 
@@ -78,7 +109,7 @@
 {{/* Cold-visitor sequence: bio establishes trust → related shows there's more
      → newsletter is the after-evidence subscribe ask. */}}
 <aside class="author-entity">
-    <p><strong>{{ .Site.Params.author }}</strong> is an independent researcher writing on quantitative finance, AI, and technology. Peer-reviewed papers on <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1" rel="me">SSRN</a> and <a href="https://scholar.google.com/citations?user=-69oS2wAAAAJ" rel="me">Google Scholar</a>, open-source code on <a href="https://github.com/{{ .Site.Params.social.github | default "philippdubach" }}" rel="me">GitHub</a>, weekly <a href="/subscribe/" rel="me">newsletter</a> for new essays.</p>
+    <p><strong>{{ .Site.Params.author }}</strong> is an independent researcher writing on quantitative finance, AI, and technology. Peer-reviewed papers on <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1" rel="me">SSRN</a> and <a href="https://scholar.google.com/citations?user=-69oS2wAAAAJ" rel="me">Google Scholar</a>, open-source code on <a href="https://github.com/{{ .Site.Params.social.github | default "philippdubach" }}" rel="me">GitHub</a>, monthly <a href="/subscribe/" rel="me">newsletter</a> for new essays.</p>
 </aside>
 
 {{/* Related Posts */}}

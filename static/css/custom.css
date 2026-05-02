@@ -1016,6 +1016,191 @@ blockquote p {
     text-decoration: underline;
 }
 
+/* Subscribe-page form — v3.0 audit. The /subscribe/ page IS the form, so
+   it doesn't need a card-within-page chrome (no accent-tint background,
+   no border-left, no padding box). Sits in normal page flow under the
+   Takeaways block, breathing room from the about-hero. Uses semantic
+   editorial typography: serif input/button, generous whitespace. */
+.subscribe-page .post-content > p:first-of-type {
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 1rem;
+    max-width: 60ch;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin: 2rem 0 0.6rem;
+    max-width: 480px;
+}
+
+.subscribe-form__input {
+    flex: 1 1 240px;
+    min-width: 0;
+    padding: 0.7rem 0.9rem;
+    font-family: var(--ui-font);
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--text);
+}
+
+.subscribe-form__input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+}
+
+.subscribe-form__input::placeholder {
+    color: var(--text-meta);
+}
+
+.subscribe-form__button {
+    appearance: none;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    font-family: var(--ui-font);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+    min-height: 44px;
+}
+
+.subscribe-form__button:hover:not(:disabled) {
+    background: var(--accent-hover);
+}
+
+.subscribe-form__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.subscribe-form__privacy {
+    margin: 0 0 2rem;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+}
+
+.subscribe-form__privacy a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.subscribe-form__privacy a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.subscribe-form__message {
+    margin: 1rem 0 1.5rem;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.subscribe-form__message--success {
+    color: var(--ink);
+}
+
+.subscribe-form__message--error {
+    color: var(--accent);
+}
+
+.subscribe-form__message a {
+    color: var(--accent);
+    border-bottom: 1px dotted var(--accent);
+    text-decoration: none;
+}
+
+.subscribe-form__message a:hover {
+    border-bottom-style: solid;
+}
+
+/* The takeaways block on /subscribe/ wants the same italic standfirst
+   register used on posts, but with tighter top spacing since there's no
+   post-meta line above. */
+.subscribe-page .key-takeaways {
+    margin-top: 1.5rem;
+}
+
+/* Recent-issues sample row on /subscribe/. Curated, dated, hand-rotated
+   from data/newsletter-samples.yaml. Renders only when populated.
+   Italic Newsreader register with section-label kicker. */
+.subscribe-samples {
+    margin: 2.5rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border, #e9ecef);
+}
+
+.subscribe-samples__heading {
+    font-size: 12px;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin: 0 0 1.25rem;
+}
+
+.subscribe-samples__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.subscribe-samples__item {
+    margin: 0 0 1.4rem;
+}
+
+.subscribe-samples__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.subscribe-samples__meta {
+    display: block;
+    font-family: var(--ui-font);
+    font-size: 12px;
+    color: var(--text-meta);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.02em;
+}
+
+.subscribe-samples__title {
+    display: block;
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+}
+
+.subscribe-samples__link:hover .subscribe-samples__title {
+    color: var(--accent);
+}
+
+.subscribe-samples__excerpt {
+    display: block;
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 60ch;
+}
+
 /* Inline newsletter signup — callout family (matches .home-newsletter and
    the post-end CTA). Used by shortcode `{{< newsletter >}}` and the post-end
    newsletter-cta partial. v2.6: red accent rule + accent tint + red Subscribe
