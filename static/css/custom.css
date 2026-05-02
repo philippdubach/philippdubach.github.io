@@ -1710,6 +1710,107 @@ pre {
 }
 
 /* Hugo syntax highlighting container */
+/* Project lockup — only renders on .project-post (single posts where
+   type=Project). Status badge + repo CTA + DOI link + tech-stack chips. */
+.project-lockup {
+    margin: 0.75em 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6em 0.85em;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+}
+
+.project-status {
+    display: inline-block;
+    padding: 0.18em 0.6em;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+}
+
+.project-status--production {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.project-status--archived {
+    color: var(--text-meta);
+    border-color: var(--text-meta);
+}
+
+.project-status--wip {
+    color: var(--text-secondary);
+    border-color: var(--text-secondary);
+}
+
+.project-repo,
+.project-doi {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+    padding-bottom: 1px;
+    font-weight: 500;
+}
+
+.project-repo:hover,
+.project-doi:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--accent-hover);
+}
+
+.project-stack {
+    color: var(--text-meta);
+}
+
+.project-stack-chip {
+    color: var(--text-secondary);
+    font-family: var(--mono-font);
+    font-size: 12px;
+}
+
+/* Drop cap on the lede paragraph — single craft signal, only when no
+   .key-takeaways block precedes the first paragraph. CSS-only: the
+   :has() selector defaults the rule off when takeaways come before the
+   .post-content, since the takeaways block is the first reading anchor. */
+.post-content > p:first-of-type::first-letter {
+    initial-letter: 3;
+    -webkit-initial-letter: 3;
+    font-weight: 700;
+    color: var(--ink);
+    margin-right: 0.1em;
+    padding-right: 0.05em;
+}
+
+/* Suppress drop cap on project posts and on posts with a takeaways block —
+   the second visual anchor would compete. */
+.project-post .post-content > p:first-of-type::first-letter,
+.post:has(.key-takeaways) .post-content > p:first-of-type::first-letter {
+    initial-letter: unset;
+    -webkit-initial-letter: unset;
+    font-weight: inherit;
+    color: inherit;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+/* View Transitions — cross-document index→article navigation (Chrome 126+,
+   Safari 18 baseline). Free craft signal; falls back gracefully on
+   unsupported browsers (no animation, normal page load). */
+@view-transition {
+    navigation: auto;
+}
+
+.post-header h1 {
+    view-transition-name: post-title;
+}
+
 /* Code block wrapper — language tag (top-right) + copy button (top-right,
    fades in on hover). Wraps the .highlight Chroma output via the
    layouts/_markup/render-codeblock.html render hook. */
@@ -2364,6 +2465,77 @@ pre {
 .readnext a:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+}
+
+/* Tufte sidenote treatment at wide desktop. The post-content column is
+   ~720px; at viewport ≥1280px there is enough right gutter to float the
+   readnext aside out of the reading column without crowding it. Below that
+   threshold the inline italic line stays in flow (rule above). */
+@media (min-width: 1280px) {
+    .readnext {
+        float: right;
+        clear: right;
+        width: 220px;
+        margin: 0.4em -240px 0.6em 1.25rem;
+        font-size: 0.95rem;
+    }
+    .readnext a {
+        font-size: 0.95rem;
+        line-height: 1.45;
+    }
+}
+
+/* ===================================
+   Footnote popovers
+   =================================== */
+/* Hover/focus reveals a copy of the footnote next to the superscript ref.
+   The bottom-of-page <ol class="footnotes"> stays for print, screen
+   readers, and RSS. Popover content is built in baseof.html. */
+sup:has(.footnote-ref) { position: relative; }
+
+.footnote-popover {
+    display: none;
+    position: absolute;
+    top: 1.5em;
+    left: 0;
+    z-index: 50;
+    width: min(320px, 80vw);
+    padding: 0.65rem 0.85rem;
+    background: #fff;
+    border: 1px solid var(--border, #e9ecef);
+    border-radius: 3px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    font-family: var(--body-font);
+    font-style: normal;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-primary, #333);
+    text-align: left;
+}
+
+.footnote-popover.is-visible {
+    display: block;
+}
+
+.footnote-popover p {
+    margin: 0;
+}
+
+.footnote-popover p + p {
+    margin-top: 0.5em;
+}
+
+.footnote-popover a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+}
+
+@media (max-width: 768px) {
+    .footnote-popover {
+        left: auto;
+        right: 0;
+    }
 }
 
 /* ===================================

@@ -112,6 +112,33 @@
     })();</script>
 
     <script>(function(){
+      // Footnote popovers — copy each #fn:N content into a span next to its
+      // .footnote-ref superscript. Hover/focus to reveal. The bottom-of-page
+      // <ol class="footnotes"> stays for print, screen readers, and RSS. */
+      var refs = document.querySelectorAll('.footnote-ref');
+      refs.forEach(function(ref) {
+        var href = ref.getAttribute('href');
+        if (!href || !href.startsWith('#fn:')) return;
+        var target = document.querySelector(href);
+        if (!target) return;
+        var content = target.cloneNode(true);
+        var backref = content.querySelector('.footnote-backref');
+        if (backref) backref.remove();
+        var popover = document.createElement('span');
+        popover.className = 'footnote-popover';
+        popover.setAttribute('role', 'tooltip');
+        popover.innerHTML = content.innerHTML.trim();
+        ref.parentElement.appendChild(popover);
+        var show = function() { popover.classList.add('is-visible'); };
+        var hide = function() { popover.classList.remove('is-visible'); };
+        ref.addEventListener('mouseenter', show);
+        ref.addEventListener('mouseleave', hide);
+        ref.addEventListener('focus', show);
+        ref.addEventListener('blur', hide);
+      });
+    })();</script>
+
+    <script>(function(){
       // Code-block copy button — event-delegated so it covers all .code-copy
       // buttons rendered by layouts/_markup/render-codeblock.html.
       document.addEventListener('click', function(e) {
