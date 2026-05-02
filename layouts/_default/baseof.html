@@ -87,23 +87,28 @@
     })();</script>
 
     <script>(function(){
-      // <dialog> lightbox — opens on .img-trigger click, closes on backdrop
-      // click. ESC closes via native <dialog> behavior; submit of the inline
-      // <form method="dialog"> closes via the × button.
+      // <dialog> lightbox v3.0 — opens on .img-trigger click, closes on
+      // backdrop click. ESC closes via native <dialog> behavior; submit of
+      // the inline <form method="dialog"> closes via the × button.
+      //
+      // Performance: the dialog's <img> ships with no src; the high-res URL
+      // sits on data-hires. First open hydrates src once and caches.
       document.addEventListener('click', function(e) {
         var trigger = e.target.closest('.img-trigger');
         if (trigger) {
           var id = trigger.dataset.lightboxTarget;
           var dlg = document.getElementById(id);
-          if (dlg && typeof dlg.showModal === 'function') {
-            dlg.showModal();
-            e.preventDefault();
+          if (!dlg || typeof dlg.showModal !== 'function') return;
+          var img = dlg.querySelector('img');
+          if (img && !img.src && dlg.dataset.hires) {
+            img.src = dlg.dataset.hires;
           }
+          dlg.showModal();
+          e.preventDefault();
           return;
         }
-        // Backdrop click: <dialog> click events fire on the dialog itself when
-        // the user clicks outside the content (because the dialog fills the
-        // viewport via ::backdrop but receives click on the dialog element).
+        // Backdrop click: <dialog> click events fire on the dialog itself
+        // when the user clicks outside the content.
         var dlg = e.target.closest('.lightbox-dialog');
         if (dlg && e.target === dlg) {
           dlg.close();

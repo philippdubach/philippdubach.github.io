@@ -1,9 +1,13 @@
 {{- /*
-  Image shortcode — v2.7 audit:
+  Image shortcode — v3.0 lightbox revamp:
     - <figure> + optional <figcaption> in body-serif italic for visible captions
       (alt= stays for screen readers; caption= is for sighted readers).
-    - <dialog popover> lightbox replaces the legacy :target URL-hash lightbox
-      (no history pollution, ESC-to-close, keyboard-trapped, popover layer).
+    - <dialog> lightbox with View Transitions morph from thumbnail.
+    - data-hires holds the full-size URL; the inner <img src> is empty until
+      first open, when the click handler hydrates it. Saves a parsed <img>
+      and a speculative request per closed dialog.
+    - format=auto lets Cloudflare serve AVIF to capable clients (~30%
+      smaller than WebP at the same perceptual quality).
 */ -}}
 {{- $baseUrl := "https://static.philippdubach.com" -}}
 {{- $src := .Get "src" -}}
@@ -12,35 +16,40 @@
 {{- $class := .Get "class" | default "" -}}
 {{- $width := .Get "width" | default "80%" -}}
 {{- $imgWidth := .Get "imgWidth" | default "1200" -}}
-{{- $imgHeight := .Get "imgHeight" | default "630" -}}
+{{- /* Default imgHeight to auto: forcing 630 baked the OG aspect ratio onto
+       every body image, which clipped/distorted any source whose true ratio
+       differed (e.g. wide charts). Pass an explicit imgHeight to reserve
+       space and prevent CLS when you know the dimensions. */ -}}
+{{- $imgHeight := .Get "imgHeight" | default "auto" -}}
 {{- $priority := .Get "priority" | default "false" -}}
 {{- $id := printf "%s-%d" (replace (replace $src "/" "-") "." "-") .Ordinal -}}
 {{- $sizes := $width -}}
 {{- if hasSuffix $width "%" -}}
     {{- $sizes = replace $width "%" "vw" -}}
 {{- end -}}
+{{- $hires := printf "%s/cdn-cgi/image/width=2000,quality=85,format=auto/%s" $baseUrl $src -}}
 
 <figure class="post-figure" style="width: {{ $width }}; margin: 1.5rem auto;">
   <button type="button" class="img-trigger" data-lightbox-target="lightbox-{{ $id }}" aria-label="View full-size image">
     <picture class="img-lightbox">
       <source media="(max-width: 768px)"
-              srcset="{{ $baseUrl }}/cdn-cgi/image/width=320,quality=80,format=webp/{{ $src }} 320w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=480,quality=80,format=webp/{{ $src }} 480w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=640,quality=80,format=webp/{{ $src }} 640w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=960,quality=80,format=webp/{{ $src }} 960w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w"
+              srcset="{{ $baseUrl }}/cdn-cgi/image/width=320,quality=80,format=auto/{{ $src }} 320w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=480,quality=80,format=auto/{{ $src }} 480w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=640,quality=80,format=auto/{{ $src }} 640w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=960,quality=80,format=auto/{{ $src }} 960w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=auto/{{ $src }} 1200w"
               sizes="{{ $sizes }}">
       <source media="(max-width: 1024px)"
-              srcset="{{ $baseUrl }}/cdn-cgi/image/width=768,quality=80,format=webp/{{ $src }} 768w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=1024,quality=80,format=webp/{{ $src }} 1024w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=1440,quality=80,format=webp/{{ $src }} 1440w"
+              srcset="{{ $baseUrl }}/cdn-cgi/image/width=768,quality=80,format=auto/{{ $src }} 768w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1024,quality=80,format=auto/{{ $src }} 1024w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1440,quality=80,format=auto/{{ $src }} 1440w"
               sizes="{{ $sizes }}">
       <source media="(min-width: 1025px)"
-              srcset="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=1600,quality=80,format=webp/{{ $src }} 1600w,
-                      {{ $baseUrl }}/cdn-cgi/image/width=2000,quality=80,format=webp/{{ $src }} 2000w"
+              srcset="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=auto/{{ $src }} 1200w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1600,quality=80,format=auto/{{ $src }} 1600w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=2000,quality=80,format=auto/{{ $src }} 2000w"
               sizes="{{ $sizes }}">
-      <img src="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80/{{ $src }}"
+      <img src="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=auto/{{ $src }}"
            alt="{{ $alt }}"
            class="{{ $class }}"
            width="{{ $imgWidth }}"
@@ -54,13 +63,11 @@
   {{- end }}
 </figure>
 
-<dialog id="lightbox-{{ $id }}" class="lightbox-dialog" aria-label="Full-size image">
+<dialog id="lightbox-{{ $id }}" class="lightbox-dialog" aria-label="Full-size image" data-hires="{{ $hires }}">
   <form method="dialog" class="lightbox-close-form">
     <button type="submit" class="lightbox-close" aria-label="Close">×</button>
   </form>
-  <img src="{{ $baseUrl }}/cdn-cgi/image/width=2000,quality=90,format=webp/{{ $src }}"
-       alt="{{ $alt }}"
-       loading="lazy">
+  <img alt="{{ $alt }}" decoding="async">
   {{- with $caption }}
   <p class="lightbox-caption">{{ . | markdownify }}</p>
   {{- end }}
