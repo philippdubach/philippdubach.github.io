@@ -487,29 +487,37 @@ blockquote p {
     text-transform: uppercase;
 }
 
-/* Takeaways: accent variant (red rule + red tint). */
+/* Takeaways — italic standfirst register. v2.7 audit: strip the red fill +
+   red border + uppercase H2 (out-shouted the H1). Rendered as a series of
+   <blockquote class="claim"> entries so AI search engines treat each as a
+   discrete, citation-ready atomic claim. */
 .key-takeaways {
-    border-left-color: var(--accent);
-    background: var(--accent-tint);
-    margin-top: 1.25rem;
-    margin-bottom: 2.5rem;
+    margin: 1.25rem 0 2.5rem;
+    padding: 1.25em 0 0;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--border);
 }
 
-.key-takeaways ul {
-    margin: 0;
-    padding-left: 1.25rem;
-    list-style-type: square;
-}
-
-.key-takeaways li {
-    margin-bottom: 0.4rem;
+.key-takeaways .claim {
+    margin: 0 0 0.85em;
+    padding: 0 0 0 1em;
+    border-left: 2px solid var(--border);
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 1.05rem;
     line-height: 1.55;
-    color: var(--text);
-    font-size: 0.95rem;
+    color: var(--text-secondary);
+    quotes: none;
 }
 
-.key-takeaways li:last-child {
+.key-takeaways .claim:last-child {
     margin-bottom: 0;
+}
+
+.key-takeaways .claim::before,
+.key-takeaways .claim::after {
+    content: none;
 }
 
 /* Note variant — explicit modifier when authoring custom callouts. */
@@ -561,15 +569,54 @@ blockquote p {
     border-bottom-color: var(--accent);
 }
 
-/* Topics — keyword anchor below the biblio strip. Quieter than categories,
-   serves as SEO/GEO signal. Same ui-font family as biblio so they read as
-   one cluster. */
+/* Topics — keyword pills below the biblio strip. v2.7: converted from plain
+   text to clickable category-link pills for internal-link graph + entity
+   association on AI search. data-nosnippet keeps these out of SERP/AIO
+   snippets (they're navigation, not content). */
 .post-topics {
     margin: 0.25em 0 1.25em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4em;
     font-family: var(--ui-font);
     font-size: 12px;
     line-height: 1.5;
     color: var(--text-meta);
+}
+
+.post-topics-label {
+    color: var(--text-meta);
+    margin-right: 0.2em;
+}
+
+.post-topics-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+}
+
+.post-topics-list li {
+    margin: 0;
+    padding: 0;
+}
+
+.post-topics-list a {
+    display: inline-block;
+    padding: 0.2em 0.65em;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.post-topics-list a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 .post-content {
@@ -2099,38 +2146,24 @@ pre {
 /* ===================================
    Inline Related (readnext shortcode)
    =================================== */
+/* Inline readnext — v2.7 audit: dropped the centered max-80% pull-aside +
+   thematic-break rules above and below (announced "stop reading, look here"
+   mid-flow). Now a quiet left-aligned italic body-serif line, half a line of
+   vertical real estate, never breaks reading rhythm. */
 .readnext {
-    margin: 2.5rem auto;
+    margin: 1.25rem 0;
     padding: 0;
-    text-align: center;
-    max-width: 80%;
+    text-align: left;
+    max-width: none;
 }
 
 .readnext::before,
 .readnext::after {
-    content: "";
-    display: block;
-    width: 3rem;
-    height: 1px;
-    background: #ccc;
-    margin: 0 auto;
-}
-
-.readnext::before {
-    margin-bottom: 1rem;
-}
-
-.readnext::after {
-    margin-top: 1rem;
+    content: none;
 }
 
 .readnext-label {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: #767676;
-    display: block;
-    margin-bottom: 0.35rem;
+    display: none;
 }
 
 .readnext a {
@@ -2138,13 +2171,22 @@ pre {
     font-style: italic;
     font-weight: 400;
     text-decoration: none;
-    color: #333;
-    font-size: 1.05rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
     line-height: 1.5;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.readnext a::before {
+    content: "→ See also: ";
+    font-style: italic;
+    color: var(--accent);
+    border-bottom: none;
 }
 
 .readnext a:hover {
     color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
 /* ===================================
