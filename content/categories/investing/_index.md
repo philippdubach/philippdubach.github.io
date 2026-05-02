@@ -5,7 +5,7 @@ featured: "everything-is-a-dcf-model"
 wikidata: "Q179310"
 ---
 
-Analysis of markets, valuations, and investment strategy grounded in empirical evidence rather than narrative.
+Investing here means valuation, not prediction. The frame is Mauboussin's: identify situations where market price and intrinsic value diverge measurably, then size positions to the conviction that the gap will close. Not "where is the S&P going next year." More "is this asset worth what it costs, and on what assumptions."
 
 Valuation coverage includes [Everything is a DCF Model](/posts/everything-is-a-dcf-model/), applying Mauboussin's framework across asset classes, and the [a16z vs AQR debate](/posts/buying-the-haystack-might-not-work-this-year/) over whether AI's trillion-dollar infrastructure bets will generate proportional returns. The [SaaSpocalypse paradox](/posts/the-saaspocalypse-paradox/) examines how the market simultaneously prices AI capex failure and software disruption.
 
