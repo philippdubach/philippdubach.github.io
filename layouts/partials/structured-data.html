@@ -485,7 +485,7 @@
             "author" (dict "@id" $personId)
         )
     )
-    "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".about-lede" ".key-takeaways .claim"))
+    "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".about-lede" ".post-content p"))
 -}}
 <script type="application/ld+json">
 {{ dict "@context" "https://schema.org" "@graph" (slice (dict "@id" $personId) (dict "@id" $websiteId) $webpage) | jsonify | safeJS }}

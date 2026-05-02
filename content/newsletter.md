@@ -4,10 +4,6 @@ slug: subscribe
 description: "A monthly email with new writing on quantitative finance, AI, and macro strategy."
 draft: false
 og_type: "website"
-takeaways:
-  - "Monthly cadence: one email per month, written when there's something worth saying."
-  - "Coverage: quantitative finance, AI infrastructure, and macro strategy, plus shorter-form reads from across the web."
-  - "Self-hosted on Cloudflare Workers, addresses in Cloudflare KV. No third-party processor, no open-tracking pixels."
 ---
 
 The same research that appears as essays here, in shorter form, plus interesting reads from across the web.
