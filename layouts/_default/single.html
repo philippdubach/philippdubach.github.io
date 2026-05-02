@@ -22,9 +22,30 @@
             {{- if .Params.external_url }} · <a href="{{ .Params.external_url }}" target="_blank" rel="noopener external">via</a>{{ end }}
         </div>
         {{ end }}
+
+        {{- /* Project lockup — when type=Project. Status badge (Production /
+              Archived / WIP via frontmatter `status`) + repo CTA (frontmatter
+              `repo` or auto-detected from body) + tech-stack chips
+              (frontmatter `stack` array). Sits below post-meta but inside the
+              header so it stays in the title group. */ -}}
+        {{ if $isProject }}
+        <div class="project-lockup">
+            {{ with .Params.status }}<span class="project-status project-status--{{ . | lower }}">{{ . }}</span>{{ end }}
+            {{- $repo := .Params.repo -}}
+            {{- if not $repo -}}
+                {{- $matches := findRE `https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+` .RawContent 1 -}}
+                {{- with $matches -}}{{ $repo = index . 0 }}{{- end -}}
+            {{- end -}}
+            {{ with $repo }}<a href="{{ . }}" class="project-repo" target="_blank" rel="noopener external">View on GitHub →</a>{{ end }}
+            {{ with .Params.doi }}<a href="https://doi.org/{{ . }}" class="project-doi" target="_blank" rel="noopener external">DOI →</a>{{ end }}
+            {{ with .Params.stack }}<span class="project-stack">{{ range $i, $s := . }}{{ if $i }} · {{ end }}<span class="project-stack-chip">{{ $s }}</span>{{ end }}</span>{{ end }}
+        </div>
+        {{ end }}
     </header>
     {{ end }}
-    {{ with .Params.takeaways }}
+    {{- /* Takeaways are suppressed on project posts — projects are artifacts,
+          not argument-driven essays, and the takeaways register doesn't fit. */ -}}
+    {{ if not $isProject }}{{ with .Params.takeaways }}
     {{- /* Key Takeaways: italic standfirst register. Each takeaway is wrapped in
           <blockquote class="claim" cite="{permalink}"> so AI engines (Perplexity,
           ChatGPT, Google AIO) treat each as an atomic, citation-ready claim.
@@ -35,7 +56,7 @@
         <blockquote class="claim" cite="{{ $.Permalink }}">{{ . | markdownify }}</blockquote>
         {{ end }}
     </aside>
-    {{ end }}
+    {{ end }}{{ end }}
     <div class="post-content">
         {{ .Content }}
     </div>
