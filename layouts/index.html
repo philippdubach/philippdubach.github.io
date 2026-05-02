@@ -20,6 +20,15 @@
 {{ $firstYear := 2024 }}
 {{ with index $articles (sub (len $articles) 1) }}{{ $firstYear = .Date.Year }}{{ end }}
 
+{{- /* Flagship-pin override: if any article has `featured = true` in frontmatter,
+      pin it as the featured row and render it before the chronological list with
+      the rest in date order. Otherwise the most recent article gets the featured
+      treatment by default. */ -}}
+{{ $pinned := where $articles "Params.featured" true }}
+{{ $featured := index $pinned 0 }}
+{{ if not $featured }}{{ $featured = index $articles 0 }}{{ end }}
+{{ $rest := where $articles "Permalink" "!=" $featured.Permalink }}
+
 <article class="post single articles-page">
     <header class="post-header about-hero articles-hero">
         <h1 class="post-title about-name">Articles</h1>
@@ -27,15 +36,30 @@
             {{ .Content }}
         </div>
         <p class="articles-counts">{{ len $articles }} essays · since {{ $firstYear }}</p>
-        <p class="articles-related">Related: <a href="/projects/">Projects</a> · <a href="/research/">Research</a> · <a href="/categories/">Categories</a></p>
     </header>
+
+    <nav class="projects-filter" aria-label="Filter articles by category">
+        <button type="button" class="projects-filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="projects-filter-btn" data-filter="ai">AI</button>
+        <button type="button" class="projects-filter-btn" data-filter="quantitative-finance">Quant</button>
+        <button type="button" class="projects-filter-btn" data-filter="investing">Investing</button>
+        <button type="button" class="projects-filter-btn" data-filter="macro">Macro</button>
+        <button type="button" class="projects-filter-btn" data-filter="medicine">Medicine</button>
+    </nav>
+
+    {{- /* Build the iteration order: featured first, then the rest by date. When
+          no `featured = true` pin exists the featured IS the latest, so this
+          collapses to the natural chronological order. */ -}}
+    {{- $orderedArticles := slice $featured -}}
+    {{- range $rest -}}{{- $orderedArticles = $orderedArticles | append . -}}{{- end -}}
 
     <div class="home-feed-list articles-list" id="articles-list">
         {{ $scratch := newScratch }}
         {{ $scratch.Set "prevYear" 0 }}
-        {{ range $i, $page := $articles }}
+        {{ range $i, $page := $orderedArticles }}
         {{- $isFeatured := eq $i 0 -}}
-        {{- $yearChanged := and (gt $i 0) (ne ($page.Date.Year) ($scratch.Get "prevYear")) -}}
+        {{- $firstNonFeatured := eq $i 1 -}}
+        {{- $yearChanged := and (gt $i 1) (ne ($page.Date.Year) ($scratch.Get "prevYear")) -}}
 
         {{- /* Determine card image source.
               Priority:
@@ -77,9 +101,29 @@
 
         {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
 
-        <article class="home-row{{ if $isFeatured }} home-row--featured{{ end }} article-row" data-index="{{ $i }}">
+        {{- /* Format tag — auto-derived from .Params.type, with a small set of
+              friendly labels. Default is "Essay". Used alongside reading-time. */ -}}
+        {{- $formatTag := "Essay" -}}
+        {{- $formatSlug := "essay" -}}
+        {{- with $page.Params.type -}}
+            {{- if eq . "Analysis" -}}{{- $formatTag = "Analysis" -}}{{- $formatSlug = "analysis" -}}
+            {{- else if eq . "Commentary" -}}{{- $formatTag = "Commentary" -}}{{- $formatSlug = "commentary" -}}
+            {{- else if eq . "Note" -}}{{- $formatTag = "Note" -}}{{- $formatSlug = "note" -}}
+            {{- else if eq . "Article" -}}{{- $formatTag = "Essay" -}}{{- $formatSlug = "essay" -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Year marker fires on the first non-featured row (start of the
+              chronological list) and on each subsequent year transition. The
+              featured row never gets a year marker because it may be pinned
+              out of date order. */ -}}
+        {{- if or $firstNonFeatured $yearChanged -}}
+        <div class="projects-year-marker" data-year="{{ $page.Date.Year }}" aria-hidden="true">{{ $page.Date.Year }}</div>
+        {{- end -}}
+
+        <article class="home-row{{ if $isFeatured }} home-row--featured{{ end }} article-row" data-index="{{ $i }}" data-year="{{ $page.Date.Year }}" data-format="{{ $formatSlug }}" data-category="{{ with $page.Params.categories }}{{ index . 0 | urlize }}{{ end }}">
             <a href="{{ $page.Permalink }}" class="home-row-link">
-                <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}{{ if $yearChanged }}<span class="home-row-date-year">{{ $page.Date.Year }}</span>{{ end }}</time>
+                <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}</time>
                 {{ if $cardSrc }}
                 {{- $w := cond $isFeatured 480 288 -}}
                 {{- $h := cond $isFeatured 600 360 -}}
@@ -89,7 +133,7 @@
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=400,height=500,quality=80,format=webp/{{ $cardSrc }} 400w,
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=720,height=900,quality=80,format=webp/{{ $cardSrc }} 720w"
                          sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 480px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
-                         alt="{{ $page.Title }}"
+                         alt="{{ $page.Title }}{{ with $page.Params.description }} — {{ . | truncate 80 }}{{ end }}"
                          loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}"
                          width="{{ $w }}" height="{{ $h }}"
                          decoding="async">
@@ -104,14 +148,78 @@
                     <span class="home-row-date-mobile">
                         <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>
                     </span>
-                    <span class="home-row-reading">{{ $page.ReadingTime }} min read</span>
+                    <span class="home-row-format home-row-format--{{ $formatSlug }}">{{ $formatTag }}</span>
+                    <span class="home-row-reading">{{ $page.ReadingTime }} min</span>
                     {{ with $page.Params.categories }}{{ $cat := index . 0 }}{{ $short := cond (eq $cat "Quantitative Finance") "Quant" $cat }}<span class="home-row-cat"><span class="cat-full">{{ $cat }}</span><span class="cat-mobile">{{ $short }}</span></span>{{ end }}
                 </div>
             </a>
         </article>
         {{ if eq $i 2 }}{{ partial "home-feed-newsletter.html" . }}{{ end }}
-        {{ $scratch.Set "prevYear" ($page.Date.Year) }}
+        {{- /* Track year only for non-featured rows — the featured row may be
+              from an older year and we don't want it to influence the markers. */ -}}
+        {{- if not $isFeatured -}}{{ $scratch.Set "prevYear" ($page.Date.Year) }}{{- end -}}
         {{ end }}
     </div>
+
+    <section class="articles-faq" aria-labelledby="articles-faq-h2">
+        <h2 id="articles-faq-h2" class="projects-faq-h2">About these essays</h2>
+        <dl class="projects-faq-list">
+            <dt>What does Philipp Dubach write about?</dt>
+            <dd>Long-form essays, analyses, and notes on quantitative finance, AI, and technology. Independent research-style writing — not commentary, not aggregation. Some essays are formalized as peer-reviewed papers and pre-prints with DOIs on SSRN and arXiv.</dd>
+            <dt>How often are essays published?</dt>
+            <dd>There is no fixed schedule. Essays appear when an idea is worth writing up, typically a few times a month. Subscribers receive new essays by email; the RSS and JSON feeds carry the same content.</dd>
+            <dt>Where can I find the source code or papers behind these essays?</dt>
+            <dd>Essays that ship with code link to public GitHub repositories inline. Peer-reviewed papers and pre-prints are listed on the <a href="/research/">Research</a> page with DOI links to SSRN and arXiv. Builds and reproducible projects are catalogued on the <a href="/projects/">Projects</a> page.</dd>
+        </dl>
+    </section>
+
+    <p class="articles-related">Related: <a href="/projects/">Projects</a> · <a href="/research/">Research</a> · <a href="/categories/">Categories</a></p>
 </article>
+
+<script>
+(function(){
+    var btns = document.querySelectorAll('.projects-filter-btn');
+    var rows = document.querySelectorAll('.article-row');
+    var markers = document.querySelectorAll('.projects-year-marker');
+    var newsletter = document.querySelector('.articles-list .home-newsletter');
+    if (!btns.length || !rows.length) return;
+
+    function applyFilter(filter) {
+        var visibleYears = {};
+        rows.forEach(function(row) {
+            var match = filter === 'all' || row.dataset.category === filter;
+            row.hidden = !match;
+            if (match) visibleYears[row.dataset.year] = true;
+        });
+        markers.forEach(function(m) {
+            m.hidden = !visibleYears[m.dataset.year];
+        });
+        // Hide the inline newsletter when filtering — its mid-list placement
+        // assumes the chronological feed; on a filtered view it lands
+        // arbitrarily.
+        if (newsletter) {
+            newsletter.hidden = filter !== 'all';
+        }
+        btns.forEach(function(b) {
+            b.classList.toggle('is-active', b.dataset.filter === filter);
+            b.setAttribute('aria-pressed', b.dataset.filter === filter ? 'true' : 'false');
+        });
+        if (filter === 'all') {
+            history.replaceState(null, '', window.location.pathname);
+        } else {
+            history.replaceState(null, '', '#' + filter);
+        }
+    }
+
+    btns.forEach(function(btn) {
+        btn.addEventListener('click', function(){ applyFilter(btn.dataset.filter); });
+    });
+
+    var hash = window.location.hash.replace('#', '');
+    var validFilters = ['ai','quantitative-finance','investing','macro','medicine'];
+    if (hash && validFilters.indexOf(hash) !== -1) {
+        applyFilter(hash);
+    }
+})();
+</script>
 {{ end }}
