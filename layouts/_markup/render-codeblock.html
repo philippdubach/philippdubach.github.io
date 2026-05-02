@@ -1,0 +1,28 @@
+{{- /*
+  Code-block render hook — wraps Chroma-highlighted code with:
+    - Language tag (top-right, 11px monospace, grey)
+    - Copy button (top-right, fades in on hover)
+  Default: no line numbers (editorial register, not tutorial). Authors opt in
+  per-block via fenced-code attribute {linenos=true}, e.g.
+      ```python {linenos=true}
+      ...
+      ```
+  Combined with the chroma config in hugo.toml [markup.highlight] (lineNos=true),
+  the per-attr override only fires when explicitly false; we therefore force
+  false via the highlight options string when no linenos attribute is set.
+*/ -}}
+{{- $lang := .Type -}}
+{{- $linenos := "false" -}}
+{{- with .Attributes.linenos -}}
+    {{- if or (eq . true) (eq . "true") -}}{{ $linenos = "table" }}{{- end -}}
+{{- end -}}
+{{- $hlOpts := printf "lineNos=%s,lineNumbersInTable=true,noClasses=false" $linenos -}}
+<div class="code-block"{{ with $lang }} data-lang="{{ . }}"{{ end }}>
+{{- if $lang -}}
+    <span class="code-lang" aria-hidden="true">{{ $lang }}</span>
+{{- end -}}
+    <button type="button" class="code-copy" aria-label="Copy code to clipboard">
+        <span class="code-copy-text">Copy</span>
+    </button>
+{{ highlight (trim .Inner "\n") $lang $hlOpts }}
+</div>

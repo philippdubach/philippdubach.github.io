@@ -1,6 +1,14 @@
+{{- /*
+  Image shortcode — v2.7 audit:
+    - <figure> + optional <figcaption> in body-serif italic for visible captions
+      (alt= stays for screen readers; caption= is for sighted readers).
+    - <dialog popover> lightbox replaces the legacy :target URL-hash lightbox
+      (no history pollution, ESC-to-close, keyboard-trapped, popover layer).
+*/ -}}
 {{- $baseUrl := "https://static.philippdubach.com" -}}
 {{- $src := .Get "src" -}}
 {{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
 {{- $class := .Get "class" | default "" -}}
 {{- $width := .Get "width" | default "80%" -}}
 {{- $imgWidth := .Get "imgWidth" | default "1200" -}}
@@ -9,49 +17,51 @@
 {{- $id := printf "%s-%d" (replace (replace $src "/" "-") "." "-") .Ordinal -}}
 {{- $sizes := $width -}}
 {{- if hasSuffix $width "%" -}}
-        {{- $sizes = replace $width "%" "vw" -}}
+    {{- $sizes = replace $width "%" "vw" -}}
 {{- end -}}
 
-<a href="#lightbox-{{ $id }}" style="display: block; width: {{ $width }}; margin: 0 auto; padding: 1.5rem 0; text-decoration: none;">
-  <picture class="img-lightbox">
-    <!-- Mobile: 320px-768px -->
-    <source media="(max-width: 768px)" 
-            srcset="{{ $baseUrl }}/cdn-cgi/image/width=320,quality=80,format=webp/{{ $src }} 320w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=480,quality=80,format=webp/{{ $src }} 480w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=640,quality=80,format=webp/{{ $src }} 640w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=960,quality=80,format=webp/{{ $src }} 960w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w"
-            sizes="{{ $sizes }}">
-    
-    <!-- Tablet: 768px-1024px -->
-    <source media="(max-width: 1024px)" 
-            srcset="{{ $baseUrl }}/cdn-cgi/image/width=768,quality=80,format=webp/{{ $src }} 768w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=1024,quality=80,format=webp/{{ $src }} 1024w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=1440,quality=80,format=webp/{{ $src }} 1440w"
-            sizes="{{ $sizes }}">
-    
-    <!-- Desktop: 1024px+ -->
-    <source media="(min-width: 1025px)" 
-            srcset="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=1600,quality=80,format=webp/{{ $src }} 1600w,
-                    {{ $baseUrl }}/cdn-cgi/image/width=2000,quality=80,format=webp/{{ $src }} 2000w"
-            sizes="{{ $sizes }}">
-    
-    <!-- Fallback -->
-    <img src="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80/{{ $src }}" 
-         alt="{{ $alt }}" 
-         class="{{ $class }}"
-         width="{{ $imgWidth }}"
-         {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}"{{ end }}
-         {{ if eq $priority "true" }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
-         decoding="async"
-         style="width: 100%; height: auto; display: block;">
-  </picture>
-</a>
+<figure class="post-figure" style="width: {{ $width }}; margin: 1.5rem auto;">
+  <button type="button" class="img-trigger" data-lightbox-target="lightbox-{{ $id }}" aria-label="View full-size image">
+    <picture class="img-lightbox">
+      <source media="(max-width: 768px)"
+              srcset="{{ $baseUrl }}/cdn-cgi/image/width=320,quality=80,format=webp/{{ $src }} 320w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=480,quality=80,format=webp/{{ $src }} 480w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=640,quality=80,format=webp/{{ $src }} 640w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=960,quality=80,format=webp/{{ $src }} 960w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w"
+              sizes="{{ $sizes }}">
+      <source media="(max-width: 1024px)"
+              srcset="{{ $baseUrl }}/cdn-cgi/image/width=768,quality=80,format=webp/{{ $src }} 768w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1024,quality=80,format=webp/{{ $src }} 1024w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1440,quality=80,format=webp/{{ $src }} 1440w"
+              sizes="{{ $sizes }}">
+      <source media="(min-width: 1025px)"
+              srcset="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80,format=webp/{{ $src }} 1200w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=1600,quality=80,format=webp/{{ $src }} 1600w,
+                      {{ $baseUrl }}/cdn-cgi/image/width=2000,quality=80,format=webp/{{ $src }} 2000w"
+              sizes="{{ $sizes }}">
+      <img src="{{ $baseUrl }}/cdn-cgi/image/width=1200,quality=80/{{ $src }}"
+           alt="{{ $alt }}"
+           class="{{ $class }}"
+           width="{{ $imgWidth }}"
+           {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}"{{ end }}
+           {{ if eq $priority "true" }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
+           decoding="async">
+    </picture>
+  </button>
+  {{- with $caption }}
+  <figcaption class="post-figure-caption">{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
 
-<!-- Lightbox overlay -->
-<a href="#_" id="lightbox-{{ $id }}" class="lightbox-overlay">
-  <img src="{{ $baseUrl }}/cdn-cgi/image/width=2000,quality=90,format=webp/{{ $src }}" 
+<dialog id="lightbox-{{ $id }}" class="lightbox-dialog" aria-label="Full-size image">
+  <form method="dialog" class="lightbox-close-form">
+    <button type="submit" class="lightbox-close" aria-label="Close">×</button>
+  </form>
+  <img src="{{ $baseUrl }}/cdn-cgi/image/width=2000,quality=90,format=webp/{{ $src }}"
        alt="{{ $alt }}"
        loading="lazy">
-</a>
+  {{- with $caption }}
+  <p class="lightbox-caption">{{ . | markdownify }}</p>
+  {{- end }}
+</dialog>
