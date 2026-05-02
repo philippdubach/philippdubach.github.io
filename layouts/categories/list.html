@@ -1,85 +1,166 @@
 {{ define "main" }}
-<div class="archive">
-    {{ if eq .Title "Categories" }}
-    {{/* Main categories index page - show all categories with their posts */}}
-    <h1>Categories</h1>
-    
+{{- /*
+  Categories pages — v3.0 audit:
+    Hero lockup mirrors /about/ and /research/ (.about-hero / .about-name /
+    .about-lede). Year separators use the .section-label register (red
+    ui-font + 1.5px red rule, shared with .research-year). Curated
+    "Adjacent topics" sentence sourced from data/category-adjacency.yaml
+    replaces the dump-all sibling nav. CollectionPage JSON-LD upgraded
+    with DefinedTerm + Wikidata sameAs, SpeakableSpecification on the
+    intro paragraph, and relatedLink mirroring the curated sentence.
+*/ -}}
+{{ if eq .Title "Categories" }}
+{{- /* Main /categories/ index page — lists every category with its
+       posts. Kept lightweight (no hero, no schema overhaul); the per-
+       term pages are the cold-visitor entry points. */ -}}
+<article class="post single">
+    <header class="post-header">
+        <h1 class="post-title">Categories</h1>
+    </header>
+
     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
     <section class="category-section">
         {{ $catPosts := where $taxonomy.Pages ".Params.unlisted" "ne" true }}
-        <h2 class="category-heading">{{ $taxonomy.Page.Title }} <span class="category-post-count">({{ len $catPosts }})</span></h2>
+        <h2 class="category-heading"><a href="{{ $taxonomy.Page.Permalink }}">{{ $taxonomy.Page.Title }}</a> <span class="category-post-count">({{ len $catPosts }})</span></h2>
         {{ $posts := $catPosts.ByDate.Reverse }}
         {{ range $posts }}
         <article class="archive-item">
             <div class="archive-meta">
-                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                    {{ .Date.Format "Jan 2, 2006" }}
-                </time>
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
             </div>
             <div class="archive-title">
                 <a href="{{ .Permalink }}">
-                    {{ .Title }}
-                    {{ if eq .Params.type "Project" }}
-                       <span class="project-tag">PROJECT</span>
-                    {{ end }}
+                    {{ .Title }}{{ if eq .Params.type "Project" }} <span class="project-tag">PROJECT</span>{{ end }}
                 </a>
             </div>
         </article>
         {{ end }}
     </section>
     {{ end }}
-    
-    {{ else }}
-    {{/* Individual category page */}}
-    <h1>{{ .Title }}</h1>
+</article>
+
+{{ else }}
+{{- /* Individual category pillar page (e.g. /categories/ai/). */ -}}
+{{- $filteredPages := where .Pages ".Params.unlisted" "ne" true -}}
+{{- /* Featured (pinned) post lookup — set via `featured = "post-slug"` in
+       the category's _index.md. Match against any of: .Slug, the
+       URL-tail of .RelPermalink, or the file basename. */ -}}
+{{- $featuredSlug := .Params.featured -}}
+{{- $featuredPost := false -}}
+{{- if $featuredSlug -}}
+  {{- range $filteredPages -}}
+    {{- $tail := index (last 1 (split (trim .RelPermalink "/") "/")) 0 -}}
+    {{- if or (eq .Slug $featuredSlug) (eq $tail $featuredSlug) -}}
+      {{- $featuredPost = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- /* Chronological list excludes the featured post to avoid duplication. */ -}}
+{{- $chronoPages := $filteredPages -}}
+{{- if $featuredPost -}}
+  {{- $chronoPages = where $filteredPages ".RelPermalink" "ne" $featuredPost.RelPermalink -}}
+{{- end -}}
+<article class="post single category-page">
+    <header class="post-header about-hero category-hero">
+        <h1 class="post-title about-name">{{ .Title }}</h1>
+        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
+    </header>
 
     {{ with .Content }}
-    <div class="archive-description">{{ . }}</div>
+    <div class="post-content category-intro">{{ . }}</div>
     {{ end }}
 
-    {{ $filteredPages := where .Pages ".Params.unlisted" "ne" true }}
-    <p class="category-post-count">{{ len $filteredPages }} posts</p>
+    <p class="category-stats">{{ len $filteredPages }} {{ if eq (len $filteredPages) 1 }}article{{ else }}articles{{ end }}</p>
 
-    {{ $posts := $filteredPages.ByDate.Reverse }}
+    {{ if $featuredPost }}
+    {{- /* Pinned flagship — the editorially-selected entry point for cold
+           visitors. "Start here" label sits in section-label register. */ -}}
+    <section class="category-featured" aria-labelledby="featured-heading">
+        <h2 class="section-label category-featured-label" id="featured-heading">Start here</h2>
+        <article class="category-featured-item">
+            <a href="{{ $featuredPost.RelPermalink }}" class="category-featured-link">
+                <h3 class="category-featured-title">{{ $featuredPost.Title }}</h3>
+                {{ with $featuredPost.Params.description }}<p class="category-featured-dek">{{ . }}</p>{{ end }}
+                <span class="category-featured-meta">
+                    <time datetime="{{ $featuredPost.Date.Format "2006-01-02" }}">{{ $featuredPost.Date.Format "Jan 2, 2006" }}</time>
+                </span>
+            </a>
+        </article>
+    </section>
+    {{ end }}
+
+    {{ $posts := $chronoPages.ByDate.Reverse }}
     {{ range $posts.GroupByDate "2006" }}
-    <section class="year">
-        <h2>{{ .Key }}</h2>
+    <section class="category-year-group">
+        <h2 class="section-label category-year">{{ .Key }}</h2>
         {{ range .Pages }}
         <article class="archive-item">
             <div class="archive-meta">
-                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                    {{ .Date.Format "Jan 2" }}
-                </time>
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Jan 2" }}</time>
             </div>
             <div class="archive-title">
                 <a href="{{ .Permalink }}">
-                    {{ .Title }}
-                    {{ if eq .Params.type "Project" }}
-                       <span class="project-tag">PROJECT</span>
-                    {{ end }}
+                    {{ .Title }}{{ if eq .Params.type "Project" }} <span class="project-tag">PROJECT</span>{{ end }}
                 </a>
             </div>
         </article>
         {{ end }}
     </section>
     {{ end }}
-    {{/* Cross-category navigation */}}
-    <nav class="category-nav" aria-label="Browse other categories">
-        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-        {{ if ne $taxonomy.Page.Title $.Title }}
-        <a href="{{ $taxonomy.Page.Permalink }}">{{ $taxonomy.Page.Title }}</a>
-        {{ end }}
-        {{ end }}
-    </nav>
 
-    {{/* CollectionPage JSON-LD for category pillar pages */}}
+    {{- /* Curated cross-category sentence — replaces the dump-all
+           .category-nav. Source: data/category-adjacency.yaml. The key
+           is the URL-tail (lower-cased category slug). */ -}}
+    {{- $catKey := index (last 1 (split (trim .RelPermalink "/") "/")) 0 -}}
+    {{- $adjacencyData := index .Site.Data "category-adjacency" -}}
+    {{- $adjacent := index $adjacencyData $catKey -}}
+    {{- $adjacentTaxa := slice -}}
+    {{- range $adjacent -}}
+      {{- $sibKey := . -}}
+      {{- range $name, $taxonomy := $.Site.Taxonomies.categories -}}
+        {{- $sibTail := index (last 1 (split (trim $taxonomy.Page.RelPermalink "/") "/")) 0 -}}
+        {{- if eq $sibTail $sibKey -}}
+          {{- $adjacentTaxa = $adjacentTaxa | append $taxonomy.Page -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{ if $adjacentTaxa }}
+    <p class="category-adjacent">
+        Adjacent topics:
+        {{ range $i, $p := $adjacentTaxa }}{{ if $i }}, {{ end }}<a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>{{ end }}.
+    </p>
+    {{ end }}
+
+    {{- /* CollectionPage JSON-LD with DefinedTerm + Wikidata sameAs,
+           SpeakableSpecification, and relatedLink mirror. */ -}}
     {{- $hasPart := slice -}}
     {{- range $filteredPages.ByDate.Reverse -}}
       {{- $hasPart = $hasPart | append (dict "@id" (printf "%s#article" .Permalink)) -}}
-    {{- end }}
+    {{- end -}}
+    {{- $about := dict "@type" "DefinedTerm" "name" .Title -}}
+    {{- with .Params.wikidata -}}
+      {{- $about = merge $about (dict "sameAs" (printf "https://www.wikidata.org/wiki/%s" .)) -}}
+    {{- end -}}
+    {{- $relatedLinks := slice -}}
+    {{- range $adjacentTaxa -}}
+      {{- $relatedLinks = $relatedLinks | append .Permalink -}}
+    {{- end -}}
+    {{- $cp := dict
+        "@context" "https://schema.org"
+        "@type" "CollectionPage"
+        "name" .Title
+        "description" (.Description | default (printf "Articles on %s" .Title))
+        "url" .Permalink
+        "about" $about
+        "numberOfItems" (len $filteredPages)
+        "hasPart" $hasPart
+        "author" (dict "@id" (printf "%s#person" .Site.BaseURL))
+        "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".about-lede" ".category-intro p:first-of-type"))
+    -}}
+    {{- if $relatedLinks -}}{{ $cp = merge $cp (dict "relatedLink" $relatedLinks) }}{{- end }}
     <script type="application/ld+json">
-    {{ dict "@context" "https://schema.org" "@type" "CollectionPage" "name" .Title "description" (.Description | default (printf "Articles on %s" .Title)) "url" .Permalink "about" (dict "@type" "Thing" "name" .Title) "numberOfItems" (len $filteredPages) "hasPart" $hasPart "author" (dict "@id" (printf "%s#person" .Site.BaseURL)) | jsonify | safeJS }}
+    {{ $cp | jsonify | safeJS }}
     </script>
-    {{ end }}
-</div>
+</article>
+{{ end }}
 {{ end }}

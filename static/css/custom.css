@@ -1792,11 +1792,12 @@ pre {
     font-size: 12px;
 }
 
-/* Drop cap on the lede paragraph — single craft signal, only when no
-   .key-takeaways block precedes the first paragraph. CSS-only: the
-   :has() selector defaults the rule off when takeaways come before the
-   .post-content, since the takeaways block is the first reading anchor. */
-.post-content > p:first-of-type::first-letter {
+/* Drop cap on the lede paragraph — single craft signal, scoped to actual
+   posts only via `.posts` (set by single.html from .Section). Standalone
+   pages (subscribe, about, research, newsletter-archive) don't get a
+   drop cap — they aren't argument-driven essays. The :has() escape
+   below also disables the rule on posts that lead with takeaways. */
+.post.posts .post-content > p:first-of-type::first-letter {
     initial-letter: 3;
     -webkit-initial-letter: 3;
     font-weight: 700;
@@ -2189,7 +2190,121 @@ pre {
     }
 }
 
-/* Categories page */
+/* Categories — v3.0 audit. Per-term pages use the about-hero lockup
+   shared with /about/ and /research/; year markers use the section-label
+   register (red ui-font + 1.5px red rule) shared with .research-year.
+   The /categories/ index keeps the lighter category-heading register
+   since it's a navigation page, not an editorial pillar. */
+
+.category-page .post-content.category-intro {
+    margin-bottom: 2rem;
+}
+
+.category-stats {
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+    margin: 0 0 2rem;
+    letter-spacing: 0.02em;
+}
+
+/* Year separators on category term pages — same register as /research/. */
+h2.section-label.category-year {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 0.4em;
+    margin: 2.5em 0 1.25em;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-family: var(--ui-font);
+}
+
+.category-year-group + .category-year-group {
+    margin-top: 1rem;
+}
+
+/* Featured "Start here" pin — sits between the intro and the
+   chronological list, surfacing the editorially-curated entry point for
+   cold visitors. Larger than archive rows but visually distinct from
+   the post body, using the section-label kicker. */
+.category-featured {
+    margin: 0 0 2.5rem;
+    padding: 1.25rem 0 1.5rem;
+    border-top: 1px solid var(--border, #e9ecef);
+    border-bottom: 1px solid var(--border, #e9ecef);
+}
+
+.category-featured-label {
+    font-size: 12px;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin: 0 0 0.6em;
+}
+
+.category-featured-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.category-featured-title {
+    font-family: var(--body-font);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 0 0 0.4em;
+    text-wrap: balance;
+}
+
+.category-featured-link:hover .category-featured-title {
+    color: var(--accent);
+}
+
+.category-featured-dek {
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0 0 0.6em;
+    max-width: 60ch;
+}
+
+.category-featured-meta {
+    font-family: var(--ui-font);
+    font-size: 12px;
+    color: var(--text-meta);
+}
+
+/* Curated cross-category sentence — replaces the dump-all .category-nav.
+   Reads as editorial prose, not navigation chrome. */
+.category-adjacent {
+    margin: 3rem 0 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border, #e9ecef);
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.category-adjacent a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+}
+
+.category-adjacent a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* /categories/ index page — kept lightweight (navigation, not pillar). */
 .category-section {
     margin-bottom: 2.5rem;
 }
@@ -2199,7 +2314,16 @@ pre {
     font-weight: 600;
     margin-bottom: 0.75rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border, #e9ecef);
+}
+
+.category-heading a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.category-heading a:hover {
+    color: var(--accent);
 }
 
 .category-post-count {
@@ -2207,29 +2331,6 @@ pre {
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
-}
-
-.category-description {
-    color: #666;
-    margin-bottom: 1.5rem;
-}
-
-/* Category navigation on category pages */
-.category-nav {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e9ecef;
-    font-size: 0.85rem;
-}
-
-.category-nav a {
-    color: var(--accent);
-    text-decoration: none;
-    margin-right: 1rem;
-}
-
-.category-nav a:hover {
-    text-decoration: underline;
 }
 
 /* ===================================
