@@ -32,6 +32,7 @@ Citable data points from published analysis:
 
 ## Research Publications
 
+- [The Anatomy of a Decentralized Prediction Market]({{ $baseURL }}posts/the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book/): Microstructure evidence from a 30-billion-event Polymarket order-book archive joined to the on-chain trade record. arXiv:2604.24366; under review at Journal of Financial Markets
 - [Attention Dynamics in Online Communities]({{ $baseURL }}standalone/hn-research/): Power laws, preferential attachment, and early success prediction on Hacker News. DOI: 10.2139/ssrn.5910263
 - [The Online Gambling Fairness Paradox]({{ $baseURL }}posts/against-all-odds-the-mathematics-of-provably-fair-casino-games/): Cryptographic verification, behavioral harm, and consumer protection in online gambling. DOI: 10.2139/ssrn.6065213
 - [Modeling Postprandial Glycemic Response]({{ $baseURL }}posts/modeling-glycemic-response-with-xgboost/): XGBoost-based prediction of glucose responses in non-diabetic adults. DOI: 10.2139/ssrn.5914902
@@ -100,6 +101,7 @@ Citable data points from published analysis:
 
 ## Technical Projects
 
+- [Polymarket Order-Book Microstructure]({{ $baseURL }}posts/the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book/): A 624 GB tick-level archive of Polymarket's WebSocket feed (30.3B events across 52 days, 385,198 markets) joined to 255M on-chain OrderFilled events; pre-registered 600-market panel; replication package on Zenodo (DOI 10.5281/zenodo.19811426)
 - [F3ED Can't Call an Ace]({{ $baseURL }}posts/f3ed-cant-call-an-ace-fixing-a-neurips-2024-tennis-model/): Auditing F3ED, the NeurIPS 2024 tennis shot detector, on ATP Challenger broadcasts. 73% of single-shot serve unforced errors are mislabeled aces or first-serve faults; a 23-line scoreboard OCR reconciler corrects them at runtime
 - [Social Media Success Prediction]({{ $baseURL }}posts/social-media-success-prediction-bert-models-for-post-titles/): BERT models for predicting Hacker News post engagement
 - [HN Sentiment Analysis]({{ $baseURL }}posts/65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/): NLP analysis of 32,000 Hacker News posts

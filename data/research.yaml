@@ -11,8 +11,9 @@ publications:
   - year: 2026
     items:
       - title: "The Anatomy of a Decentralized Prediction Market: Microstructure Evidence from the Polymarket Order Book"
-        summary: "Analyzing 30 billion Polymarket order-book events across 52 days to identify eight microstructure patterns, including a longshot spread premium and the finding that public-feed trade direction matches on-chain ground truth only 59% of the time."
+        summary: "Analyzing 30 billion Polymarket order-book events across 52 days to identify eight microstructure patterns, including a longshot spread premium and the finding that public-feed trade direction matches on-chain ground truth only 59% of the time. Under review at the Journal of Financial Markets."
         doi: "10.48550/arXiv.2604.24366"
+        article: "/posts/the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book/"
 
       - title: "The Online Gambling Fairness Paradox: Cryptographic Verification, Behavioral Harm, and Consumer Protection"
         summary: "Statistical analysis of 20,038 cryptocurrency crash game rounds confirming cryptographic fairness while highlighting that mathematical fairness doesn't ensure consumer safety."
