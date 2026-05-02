@@ -454,8 +454,46 @@
 </script>
 {{ end }}
 
+{{/* ===== SUBSCRIBE PAGE: Person + WebSite + WebPage with SubscribeAction.
+     Suppresses the BlogPosting block below — /subscribe/ is a conversion
+     utility, not editorial content; emitting BlogPosting with wordCount:1
+     misleads crawlers about content type. */}}
+{{ if eq .RelPermalink "/subscribe/" }}
+{{- $personId := printf "%s#person" .Site.BaseURL -}}
+{{- $websiteId := printf "%s#website" .Site.BaseURL -}}
+{{- $webpage := dict
+    "@type" "WebPage"
+    "@id" (printf "%s#webpage" .Permalink)
+    "url" .Permalink
+    "name" .Title
+    "description" (.Description | default (printf "Subscribe to %s" .Site.Title))
+    "isPartOf" (dict "@id" $websiteId)
+    "about" (dict "@id" $personId)
+    "primaryImageOfPage" (dict "@id" (printf "%s#primaryimage" .Permalink))
+    "potentialAction" (dict
+        "@type" "SubscribeAction"
+        "name" "Subscribe to the newsletter"
+        "target" (dict
+            "@type" "EntryPoint"
+            "urlTemplate" "https://newsletter-api.philippd.workers.dev/api/subscribe"
+            "httpMethod" "POST"
+            "contentType" "application/json"
+        )
+        "object" (dict
+            "@type" "CreativeWork"
+            "name" (printf "%s newsletter" .Site.Params.author)
+            "author" (dict "@id" $personId)
+        )
+    )
+    "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".about-lede" ".key-takeaways .claim"))
+-}}
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@graph" (slice (dict "@id" $personId) (dict "@id" $websiteId) $webpage) | jsonify | safeJS }}
+</script>
+{{ end }}
+
 {{/* ===== ARTICLE PAGES: Person + WebSite + Article @graph ===== */}}
-{{ if and .IsPage (ne .RelPermalink "/about/") }}
+{{ if and .IsPage (ne .RelPermalink "/about/") (ne .RelPermalink "/subscribe/") }}
 {{- $articleType := "BlogPosting" -}}
 {{- if eq .Params.type "Project" }}{{ $articleType = "TechArticle" }}{{ end -}}
 {{- if eq .Params.type "Essay" }}{{ $articleType = "Article" }}{{ end -}}

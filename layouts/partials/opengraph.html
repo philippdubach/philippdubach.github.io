@@ -1,8 +1,18 @@
 {{/* Open Graph implementation */}}
 {{- $ogTitle := .Params.seoTitle | default .Title | default .Site.Title -}}
+{{- /* og:type — `article` for editorial pages (.IsPage true), `website`
+       for the site root and section indices. Pages can override via the
+       `og_type` frontmatter field, used on utility pages like /subscribe/
+       so social unfurls don't display a fake publication timestamp. */ -}}
+{{- $ogType := "" -}}
+{{- with .Params.og_type -}}
+    {{- $ogType = . -}}
+{{- else -}}
+    {{- if .IsPage -}}{{- $ogType = "article" -}}{{- else -}}{{- $ogType = "website" -}}{{- end -}}
+{{- end -}}
 <meta property="og:title" content="{{ $ogTitle }}">
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:type" content="{{ $ogType }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ .Site.Params.site_name | default .Site.Title }}">
 <meta property="og:locale" content="{{ .Site.Params.locale | default "en_US" }}">
@@ -41,8 +51,8 @@
 {{ end }}
 {{ end }}
 
-{{/* Article-specific Open Graph tags */}}
-{{ if .IsPage }}
+{{/* Article-specific Open Graph tags — only emit when og:type is article */}}
+{{ if and .IsPage (eq $ogType "article") }}
 <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
 <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
 {{ if .Params.author }}
