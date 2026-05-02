@@ -492,8 +492,84 @@
 </script>
 {{ end }}
 
+{{/* ===== FAQ CATEGORY PAGES: Person + WebSite + FAQPage @graph =====
+     Replaces the standalone FAQPage schema previously emitted from
+     layouts/faq/single.html. Now @graph-integrated with @id refs to
+     the canonical Person and WebSite, plus DefinedTerm + Wikidata
+     sameAs on `about`, SpeakableSpecification on .faq-answer p,
+     dateModified from the newest contributing post, and a relatedLink
+     to the parent /categories/<slug>/. */}}
+{{ if and (eq .Section "faq") .IsPage }}
+{{- $category := .Params.category -}}
+{{- $categoryLower := $category | lower -}}
+{{- /* Aggregate posts in matching category and build the same FAQ list
+       the layout renders — capped at 20, newest first. */ -}}
+{{- $postsWithFAQ := slice -}}
+{{- range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
+    {{- if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) -}}
+        {{- $postsWithFAQ = $postsWithFAQ | append . -}}
+    {{- end -}}
+{{- end -}}
+{{- $postsWithFAQ = sort $postsWithFAQ ".Date" "desc" -}}
+{{- $allFAQs := slice -}}
+{{- range $postsWithFAQ -}}
+    {{- $post := . -}}
+    {{- range .Params.faq -}}
+        {{- $faqItem := dict "question" .question "answer" .answer "sourceURL" $post.Permalink -}}
+        {{- $allFAQs = $allFAQs | append $faqItem -}}
+    {{- end -}}
+{{- end -}}
+{{- $displayFAQs := first 20 $allFAQs -}}
+{{- if gt (len $displayFAQs) 0 -}}
+{{- $personId := printf "%s#person" .Site.BaseURL -}}
+{{- $websiteId := printf "%s#website" .Site.BaseURL -}}
+{{- /* dateModified = .Date of the newest contributing post. */ -}}
+{{- $newest := index $postsWithFAQ 0 -}}
+{{- /* Resolve parent category page for relatedLink + breadcrumb. */ -}}
+{{- $parentCategoryURL := "" -}}
+{{- range $name, $taxonomy := .Site.Taxonomies.categories -}}
+    {{- if eq ($name | lower) $categoryLower -}}
+        {{- $parentCategoryURL = $taxonomy.Page.Permalink -}}
+    {{- end -}}
+{{- end -}}
+{{- /* DefinedTerm + Wikidata sameAs from frontmatter. */ -}}
+{{- $about := dict "@type" "DefinedTerm" "name" $category -}}
+{{- with .Params.wikidata -}}
+    {{- $about = merge $about (dict "sameAs" (printf "https://www.wikidata.org/wiki/%s" .)) -}}
+{{- end -}}
+{{- $mainEntity := slice -}}
+{{- range $displayFAQs -}}
+    {{- $slug := .question | anchorize -}}
+    {{- $q := dict
+        "@type" "Question"
+        "name" .question
+        "url" (printf "%s#%s" $.Permalink $slug)
+        "acceptedAnswer" (dict "@type" "Answer" "text" .answer)
+    -}}
+    {{- $mainEntity = $mainEntity | append $q -}}
+{{- end -}}
+{{- $faqPage := dict
+    "@type" "FAQPage"
+    "@id" (printf "%s#faqpage" .Permalink)
+    "url" .Permalink
+    "name" .Title
+    "description" (.Description | default (printf "%s frequently asked questions" $category))
+    "isPartOf" (dict "@id" $websiteId)
+    "author" (dict "@id" $personId)
+    "about" $about
+    "dateModified" ($newest.Date.Format "2006-01-02")
+    "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".about-lede" ".faq-answer p"))
+    "mainEntity" $mainEntity
+-}}
+{{- if $parentCategoryURL -}}{{ $faqPage = merge $faqPage (dict "relatedLink" (slice $parentCategoryURL)) }}{{- end -}}
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@graph" (slice (dict "@id" $personId) (dict "@id" $websiteId) $faqPage) | jsonify | safeJS }}
+</script>
+{{- end -}}
+{{ end }}
+
 {{/* ===== ARTICLE PAGES: Person + WebSite + Article @graph ===== */}}
-{{ if and .IsPage (ne .RelPermalink "/about/") (ne .RelPermalink "/subscribe/") }}
+{{ if and .IsPage (ne .RelPermalink "/about/") (ne .RelPermalink "/subscribe/") (ne .Section "faq") }}
 {{- $articleType := "BlogPosting" -}}
 {{- if eq .Params.type "Project" }}{{ $articleType = "TechArticle" }}{{ end -}}
 {{- if eq .Params.type "Essay" }}{{ $articleType = "Article" }}{{ end -}}

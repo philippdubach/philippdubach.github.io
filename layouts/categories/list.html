@@ -131,6 +131,17 @@
     </p>
     {{ end }}
 
+    {{- /* Browse the topic FAQ — closes the link circuit between the
+           category pillar and its FAQ aggregator. Renders only when an
+           FAQ page exists for this category. */ -}}
+    {{- $faqLookupURL := printf "/faq/%s/" $catKey -}}
+    {{- $faqLink := .Site.GetPage $faqLookupURL -}}
+    {{ if $faqLink }}
+    <p class="category-faq-link">
+        <a href="{{ $faqLink.RelPermalink }}">Browse the {{ .Title }} FAQ →</a>
+    </p>
+    {{ end }}
+
     {{- /* CollectionPage JSON-LD with DefinedTerm + Wikidata sameAs,
            SpeakableSpecification, and relatedLink mirror. */ -}}
     {{- $hasPart := slice -}}
@@ -145,6 +156,10 @@
     {{- range $adjacentTaxa -}}
       {{- $relatedLinks = $relatedLinks | append .Permalink -}}
     {{- end -}}
+    {{- /* Reciprocal hub-and-spoke: FAQ aggregator linked from category. */ -}}
+    {{- $faqLookup := printf "/faq/%s/" $catKey -}}
+    {{- $faqPage := .Site.GetPage $faqLookup -}}
+    {{- if $faqPage -}}{{ $relatedLinks = $relatedLinks | append $faqPage.Permalink }}{{- end -}}
     {{- $cp := dict
         "@context" "https://schema.org"
         "@type" "CollectionPage"
