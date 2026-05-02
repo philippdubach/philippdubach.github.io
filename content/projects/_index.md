@@ -18,4 +18,4 @@ keywords: [
 ]
 ---
 
-*Data tools, ML prototypes, hardware experiments, the occasional meta-project on the infrastructure behind this site. Built to answer a question or scratch an itch, not to win client work. Microstructure, portfolio construction, ML, and computer vision, with a few peer-reviewed papers and pre-prints on SSRN and arXiv. Repo, write-up, data where I can.*
+*Open-source code, papers, and hardware experiments by Philipp Dubach. Built to answer a question or scratch an itch, not to win client work. Most sits in market microstructure, portfolio construction, ML systems, and computer vision; a few are peer-reviewed papers on SSRN and arXiv. Each ships with a repo, write-up, and data where I can.*

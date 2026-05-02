@@ -2195,55 +2195,209 @@ pre {
 }
 
 /* ===================================
-   Projects index — v2.6 redesign.
-   Hero lockup mirrors about/research; rows reuse .home-row pattern.
+   Projects index — v2.7 simplified.
+   Audit-driven: single-word H1, dek = .Content, counts as credibility line,
+   format tags replace reading time, year markers as silent chapter breaks,
+   filter chips above list, About-FAQ + related strip below list, hover
+   delight via 2px red left-border slide-in. No PROJECTS overline, no
+   featured-row treatment.
    =================================== */
 .projects-hero {
-    margin-bottom: 2.5em;
+    margin-bottom: 1.5em;
 }
 
-.projects-intro {
-    /* Override .about-lede 50ch cap: about page pairs that narrow measure with
-       a portrait; here there's no counterweight, so the cap leaves dead space
-       on the right and visually misaligns with the full-width rows below. */
-    max-width: none;
-    margin: 0.75em 0 1em;
+.projects-h1 {
+    font-family: var(--body-font);
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0 0 0.4em;
+    letter-spacing: -0.01em;
 }
 
-.projects-intro p {
-    margin: 0 0 1em;
-}
-
-.projects-intro p:first-child {
-    /* Italic 32-word lede: keep slightly narrower than the fact paragraph for
-       typographic rhythm; ~62ch lands ~80% of the row width. */
-    max-width: 62ch;
-    font-style: italic;
-    color: var(--text-secondary);
-}
-
-.projects-intro p:last-child {
-    /* Citation-ready fact paragraph: plain (non-italic) so AI engines treat it
-       as primary descriptive text, not pull-quote. Full reading measure. */
+.projects-dek {
     max-width: 70ch;
-    font-style: normal;
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 0;
+    margin: 0.4em 0 1em;
 }
 
-/* Counts strip: ui-font biblio register, single line under the lede. */
+.projects-dek p {
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Counts strip — promoted to credibility line directly under the dek. */
 .projects-counts {
-    margin: 0 0 0.5em;
+    margin: 0;
     font-family: var(--ui-font);
     font-size: 13px;
-    color: var(--text-meta);
+    font-weight: 500;
+    color: var(--text-secondary);
     letter-spacing: 0.01em;
 }
 
-/* Related-link strip: same register, dotted-underline links. */
-.projects-related {
+/* Filter chips — pill row above the project list. */
+.projects-filter {
+    display: flex;
+    gap: 0.4em;
+    flex-wrap: wrap;
+    margin: 2em 0 1em;
+}
+
+.projects-filter-btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.35em 0.95em;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 140ms ease, border-color 140ms ease, background-color 140ms ease;
+}
+
+.projects-filter-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.projects-filter-btn.is-active {
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Project list container. */
+.projects-list {
+    margin-top: 0.5em;
+}
+
+/* Year markers — oversized serif numerals as silent chapter breaks.
+   Newsreader OldStyle figures (onum) for typographic warmth. */
+.projects-year-marker {
+    margin: 2.5em 0 0.75em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--body-font);
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text);
+    font-feature-settings: "onum" 1;
+}
+
+.projects-list > .projects-year-marker:first-child {
+    margin-top: 0.5em;
+}
+
+/* 4:5 portrait thumb. Canonical OG = left-text + right-image; gravity=right
+   on OG fallback or gravity=auto on inline-image strategy. */
+.project-row .project-thumb img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+/* OldStyle figures on date columns inside the projects list. */
+.project-row .home-row-date,
+.project-row .home-row-date-mobile time {
+    font-feature-settings: "onum" 1;
+}
+
+/* Hover delight: 2px red left-border slides in from -4px to 0 on hover.
+   Single craft moment — replaces nothing, layers on top of any existing
+   row hover treatment. */
+.project-row {
+    position: relative;
+}
+
+.project-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    width: 2px;
+    background: var(--accent);
+    opacity: 0;
+    transition: left 140ms ease-out, opacity 140ms ease-out;
+    pointer-events: none;
+}
+
+.project-row:hover::before,
+.project-row:focus-within::before {
+    left: 0;
+    opacity: 1;
+}
+
+/* Format tag — small pill on each row, replaces "X min read".
+   Default neutral; arXiv/SSRN get accent (papers are the load-bearing format). */
+.home-row-format {
+    display: inline-block;
+    padding: 0.15em 0.55em;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--ui-font);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+    margin-right: 0.5em;
+    line-height: 1.4;
+}
+
+.home-row-format--paper {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* About-these-projects FAQ block — paired with FAQPage schema. */
+.projects-faq {
+    margin: 4em 0 2em;
+    padding-top: 2em;
+    border-top: 1px solid var(--border);
+}
+
+.projects-faq-h2 {
+    font-family: var(--body-font);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 1em;
+}
+
+.projects-faq-list {
     margin: 0;
+    max-width: 70ch;
+}
+
+.projects-faq-list dt {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 1.4em 0 0.35em;
+}
+
+.projects-faq-list dt:first-of-type {
+    margin-top: 0;
+}
+
+.projects-faq-list dd {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* Related strip — moved below FAQ; same register, dotted-underline links. */
+.projects-related {
+    margin: 2em 0 0;
     font-family: var(--ui-font);
     font-size: 13px;
     color: var(--text-meta);
@@ -2260,17 +2414,31 @@ pre {
     border-bottom-color: var(--accent);
 }
 
-/* Project list container — slightly more air than homepage feed since each
-   row is a heavier object (named build with screenshot). */
-.projects-list {
-    margin-top: 1.5em;
-}
-
-/* 4:5 portrait thumb for project cards. Canonical OG = left-text + right-image;
-   square crop at gravity=right bleeds into the text half, portrait stays clean. */
-.project-row .project-thumb img {
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
+/* Mobile compression — header furniture must clear viewport quickly so the
+   first project row's H2 is visible above the fold at 375x667. */
+@media (max-width: 768px) {
+    .projects-hero {
+        margin-bottom: 1em;
+    }
+    .projects-h1 {
+        font-size: clamp(1.625rem, 6vw, 2rem);
+    }
+    .projects-dek p {
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+    .projects-filter {
+        margin: 1.25em 0 0.75em;
+        gap: 0.3em;
+    }
+    .projects-filter-btn {
+        padding: 0.3em 0.75em;
+        font-size: 12px;
+    }
+    .projects-year-marker {
+        margin: 1.5em 0 0.5em;
+        font-size: 2.25rem;
+    }
 }
 
 /* Year group */
