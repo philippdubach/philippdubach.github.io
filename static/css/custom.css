@@ -3936,9 +3936,11 @@ h2.section-label.research-year {
    Stacked layout (image above, text below) with serif title and bigger image.
    Date column hides; "Latest essay" flag replaces it as the structural label. */
 .home-row--featured {
-    border-bottom: 1.5px solid var(--border);
-    padding-bottom: 1.5rem;
-    margin-bottom: 0.5rem;
+    /* No border-bottom: the explicit <hr class="feed-divider"> below the
+       featured row carries the visual seam. The previous 1.5px rule was
+       the implicit divider before the divider was added. */
+    padding-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .home-row--featured .home-row-link {
@@ -4185,9 +4187,21 @@ h2.section-label.research-year {
     .home-newsletter__form {
         flex-direction: column;
         gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    /* Reset the desktop `flex: 1 1 220px` shorthand. In column direction
+       the 220px becomes a vertical basis and flex-grow stretches the input
+       to absurd heights — the bug that made the email field ~600px tall
+       on mobile. Drop flex/basis, fix the height, fill the width. */
+    .home-newsletter__input {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
     }
 
     .home-newsletter__button {
+        flex: 0 0 auto;
         width: 100%;
     }
 
