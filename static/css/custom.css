@@ -1065,60 +1065,12 @@ blockquote p {
     border-bottom-style: solid;
 }
 
-/* Latest-issue pointer that sits below the subscribe card. Hydrated
-   client-side from the newsletter archive API so it always points at
-   the top of the list. Hidden by default; revealed when the fetch
-   resolves with at least one issue. */
+/* Latest-issue pointer below the subscribe card. Inherits .post-content
+   prose link styling so it visually matches the "RSS feed" / "Bluesky"
+   links a few lines below it. JS upgrades href + link text to the
+   latest issue from the same API the archive page uses. */
 .subscribe-latest {
-    margin: 1rem 0 2rem;
-}
-
-.subscribe-latest__link {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.4rem;
-    font-family: var(--ui-font);
-    font-size: 14px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--text-meta);
-    padding-bottom: 1px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.subscribe-latest__link:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-}
-
-.subscribe-latest__label {
-    font-weight: 600;
-    color: var(--ink);
-}
-
-.subscribe-latest__link:hover .subscribe-latest__label {
-    color: var(--accent);
-}
-
-.subscribe-latest__title {
-    font-style: italic;
-    color: var(--text-secondary);
-}
-
-.subscribe-latest__title:not(:empty)::before {
-    content: "— ";
-    color: var(--text-meta);
-    font-style: normal;
-}
-
-.subscribe-latest__chevron {
-    color: var(--accent);
-    font-style: normal;
-    transition: transform 0.15s ease;
-}
-
-.subscribe-latest__link:hover .subscribe-latest__chevron {
-    transform: translateX(2px);
+    margin: 1rem 0 1.25rem;
 }
 
 /* Recent-issues sample row on /subscribe/. Curated, dated, hand-rotated

@@ -23,13 +23,7 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
   <div id="subscribe-newsletter-message" class="home-newsletter__message" style="display:none;"></div>
 </aside>
 
-<p id="subscribe-latest" class="subscribe-latest">
-  <a id="subscribe-latest-link" href="/newsletter-archive/" class="subscribe-latest__link">
-    <span class="subscribe-latest__label">Read the latest issue</span>
-    <span id="subscribe-latest-title" class="subscribe-latest__title"></span>
-    <span class="subscribe-latest__chevron" aria-hidden="true">→</span>
-  </a>
-</p>
+<p class="subscribe-latest">Or read <a id="subscribe-latest-link" href="/newsletter-archive/"><span id="subscribe-latest-text">the latest issue</span> →</a>.</p>
 
 <script>
 (function() {
@@ -72,11 +66,15 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
     msg.style.display = 'block';
   }
 
-  // Latest issue link — visible by default pointing at /newsletter-archive/.
-  // JS enhances it with the direct issue URL + title once the API resolves.
+  // Latest issue link — visible by default pointing at /newsletter-archive/
+  // (the archive page does its own API call). Once the same API resolves
+  // here, the link is upgraded to open the latest issue directly from the
+  // CDN. Same endpoint as content/newsletter-archive.md so both pages stay
+  // in sync; the localhost CSP/CORS may block this — that is fine, the
+  // archive fallback keeps the link functional.
   var latestLink = document.getElementById('subscribe-latest-link');
-  var latestTitle = document.getElementById('subscribe-latest-title');
-  if (latestLink && latestTitle) {
+  var latestText = document.getElementById('subscribe-latest-text');
+  if (latestLink && latestText) {
     fetch('https://newsletter-api.philippd.workers.dev/api/newsletters')
       .then(function(r) { return r.ok ? r.json() : null; })
       .then(function(data) {
@@ -87,7 +85,7 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
         latestLink.href = url;
         latestLink.target = '_blank';
         latestLink.rel = 'noopener';
-        if (top.title) latestTitle.textContent = top.title;
+        if (top.date) latestText.textContent = 'the ' + top.date + ' issue';
       })
       .catch(function() { /* silent — link still works as archive fallback */ });
   }
