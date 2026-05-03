@@ -18,10 +18,7 @@
        page. The term pages are the cold-visitor entry points; this
        index just routes. */ -}}
 <article class="post single category-index">
-    <header class="post-header about-hero">
-        <h1 class="post-title about-name">{{ .Title }}</h1>
-        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
-    </header>
+    <h1 class="page-label section-label">{{ .Title }}</h1>
 
     {{ with .Content }}
     <div class="post-content category-index-intro">{{ . }}</div>
@@ -63,10 +60,7 @@
   {{- $chronoPages = where $filteredPages ".RelPermalink" "ne" $featuredPost.RelPermalink -}}
 {{- end -}}
 <article class="post single category-page">
-    <header class="post-header about-hero category-hero">
-        <h1 class="post-title about-name">{{ .Title }}</h1>
-        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
-    </header>
+    <h1 class="page-label section-label">{{ .Title }}</h1>
 
     {{ with .Content }}
     <div class="post-content category-intro">{{ . }}</div>
