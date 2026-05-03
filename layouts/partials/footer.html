@@ -1,119 +1,54 @@
-{{/* Site Footer - appears on all pages */}}
+{{/* Site footer — appears on every page. v3.x audit:
+     - Left-aligned editorial register (was 2018-style centered middot row).
+     - Identity byline above copyright for E-E-A-T + GEO trust. The post
+       .author-entity aside still carries rich post-end credibility (peer-
+       reviewed papers, code links); this is the terser site-wide identity.
+     - Machine-readable resources strip surfaces RSS / JSON Feed /
+       llms.txt / api-catalog to humans (developers, journalists). They
+       were previously discoverable only via <link rel> in <head>.
+     - rel="me" on GitHub/Bluesky enables IndieWeb + Bluesky verification
+       round-trip; the @graph Person.sameAs already covers crawler-side
+       entity binding.
+     - Newsletter still drops on post pages where the inline CTA covers
+       conversion. */}}
 <footer class="site-footer" role="contentinfo">
-    {{/* Post-specific footer content */}}
-    {{ if and .IsPage (eq .Section "posts") (not hugo.IsServer) }}
-    {{- $posts := where .Site.RegularPages "Section" "posts" -}}
-    {{- if gt (len $posts) 0 -}}
-    {{- $latestPost := index $posts 0 -}}
-    <p class="post-discovery" id="post-discovery"
-       data-current-path="{{ .RelPermalink }}"
-       data-latest-path="{{ $latestPost.RelPermalink }}"
-       data-latest-title="{{ $latestPost.Title }}">
-        <!-- Populated by JS: shows either Latest or Most Read -->
-    </p>
-    {{- end -}}
-    {{ end }}
-
-    {{/* Footer divider on non-post pages, except pages that close with their
-         own .page-footnote rule (about, research) — avoid two horizontal rules
-         stacked at page end. */}}
+    {{- $isPost := and .IsPage (eq .Section "posts") -}}
+    {{- /* Hairline rule precedes the footer except where the page already
+           closes with its own .page-footnote rule (about, research) — avoid
+           stacking two rules. Posts also skip; the related-posts and
+           newsletter CTA already create their own visual seam. */ -}}
     {{- $hasFootnote := or (eq .RelPermalink "/about/") (eq .RelPermalink "/research/") -}}
-    {{ if and (not (and .IsPage (eq .Section "posts"))) (not $hasFootnote) }}
+    {{ if and (not $isPost) (not $hasFootnote) }}
     <hr class="footer-divider" aria-hidden="true">
     {{ end }}
 
-    {{/* Footer Links — single row of secondary links. Research/Projects live in
-         primary nav (sidebar on desktop, dock on mobile) so are not duplicated here.
-         On post pages we drop "Newsletter" since the inline CTA appears above. */}}
-    {{- $isPost := and .IsPage (eq .Section "posts") -}}
-    {{- /* FAQ + Newsletter live here because the sidebar carries only the
-           four section-fronts (Articles/Projects/Research/About). Newsletter
-           drops on post pages since the inline CTA appears above. */ -}}
-    <nav class="footer-links" aria-label="Footer navigation">
-        <div class="footer-row">
-            <a href="{{ "/faq/" | relURL }}">FAQ</a>
+    <p class="footer-byline">
+        <a href="{{ "/about/" | relURL }}" class="footer-byline__name">{{ .Site.Params.author | default "Philipp D. Dubach" }}</a><span class="footer-byline__role">, strategy consultant and independent researcher in quantitative finance, machine learning, and AI economics.</span>
+    </p>
+
+    <nav class="footer-utilities" aria-label="Footer navigation">
+        <ul class="footer-utilities__group">
+            <li><a href="{{ "/faq/" | relURL }}">FAQ</a></li>
             {{ if not $isPost }}
-            <span class="separator" aria-hidden="true">·</span>
-            <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
+            <li><a href="{{ "/subscribe/" | relURL }}">Newsletter</a></li>
             {{ end }}
             {{ with .Site.Params.social.github }}
-            <span class="separator" aria-hidden="true">·</span>
-            <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <li><a href="https://github.com/{{ . }}" target="_blank" rel="me noopener noreferrer">GitHub</a></li>
             {{ end }}
             {{ with .Site.Params.social.bluesky }}
-            <span class="separator" aria-hidden="true">·</span>
-            <a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
+            <li><a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="me noopener noreferrer">Bluesky</a></li>
             {{ end }}
             {{ with .Site.Params.social.email }}
-            <span class="separator" aria-hidden="true">·</span>
-            <a href="mailto:{{ . }}">Email</a>
+            <li><a href="mailto:{{ . }}">Email</a></li>
             {{ end }}
-        </div>
+        </ul>
+        <ul class="footer-utilities__group footer-utilities__feeds" aria-label="Machine-readable resources">
+            <li><a href="/feed/index.xml">RSS</a></li>
+            <li><a href="/feed.json">JSON Feed</a></li>
+            <li><a href="/llms.txt">llms.txt</a></li>
+            <li><a href="/api-catalog.json">API catalog</a></li>
+        </ul>
     </nav>
 
     <p class="copyright">© {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}</p>
 </footer>
-
-{{ if .IsPage }}
-<script>
-(function(){
-    var container = document.getElementById('post-discovery');
-    if (!container) return;
-    
-    var currentPath = container.dataset.currentPath;
-    var latestPath = container.dataset.latestPath;
-    var latestTitle = container.dataset.latestTitle;
-    var isOnLatest = currentPath === latestPath;
-    
-    // Fetch most read from GoatCounter
-    fetch('https://weekly-top-goatcounter-api.philippd.workers.dev')
-        .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('API request failed')); })
-        .then(function(data) {
-            // Helper to safely set post discovery content
-            function setDiscovery(label, path, title) {
-                container.textContent = '';
-                container.appendChild(document.createTextNode(label + ': '));
-                var link = document.createElement('a');
-                link.href = path;
-                link.textContent = title;
-                container.appendChild(link);
-            }
-
-            if (data.hits && data.hits.length > 0) {
-                // Filter to only blog posts with valid titles - belt & suspenders
-                var blogPosts = data.hits.filter(function(hit) {
-                    return hit.path && hit.path.startsWith('/posts/') && hit.title && hit.title.trim() !== '';
-                });
-                if (blogPosts.length === 0) {
-                    setDiscovery('Latest', latestPath, latestTitle);
-                    return;
-                }
-                var mostRead = blogPosts[0];
-                var mostReadPath = mostRead.path;
-                var mostReadTitle = mostRead.title.replace(' - philippdubach.com', '');
-                var isOnMostRead = currentPath === mostReadPath || currentPath === mostReadPath + '/';
-
-                // Logic: if on latest → show most read; if on most read → show latest; else → show most read
-                if (isOnLatest || !isOnMostRead) {
-                    setDiscovery('Most read', mostReadPath, mostReadTitle);
-                } else {
-                    setDiscovery('Latest', latestPath, latestTitle);
-                }
-            } else {
-                // Fallback to latest if no most read data
-                setDiscovery('Latest', latestPath, latestTitle);
-            }
-        })
-        .catch(function() {
-            // Fallback to latest on error - use safe DOM manipulation
-            container.textContent = '';
-            container.appendChild(document.createTextNode('Latest: '));
-            var link = document.createElement('a');
-            link.href = latestPath;
-            link.textContent = latestTitle;
-            container.appendChild(link);
-        });
-
-})();
-</script>
-{{ end }}
