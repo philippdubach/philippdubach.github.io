@@ -124,9 +124,11 @@
             {{- end -}}
         {{- end -}}
 
-        {{- /* Year marker as silent chapter break. Rendered for the first row and on
-              every year-change. */ -}}
-        {{- if or $isFirstRow $yearChanged -}}
+        {{- /* Year marker as silent chapter break. Rendered for the first row
+              and on every year-change, except for the current year — recent
+              posts are implicitly recent and don't need a year banner. The
+              first transition (e.g. 2025) is the first marker that renders. */ -}}
+        {{- if and (or $isFirstRow $yearChanged) (ne $page.Date.Year now.Year) -}}
         <div class="projects-year-marker" data-year="{{ $page.Date.Year }}" aria-hidden="true">{{ $page.Date.Year }}</div>
         {{- end -}}
 

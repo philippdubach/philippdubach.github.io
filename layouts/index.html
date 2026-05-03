@@ -116,8 +116,10 @@
         {{- /* Year marker fires on the first non-featured row (start of the
               chronological list) and on each subsequent year transition. The
               featured row never gets a year marker because it may be pinned
-              out of date order. */ -}}
-        {{- if or $firstNonFeatured $yearChanged -}}
+              out of date order. The current year is suppressed — the
+              implicit assumption is that recent posts are recent. The first
+              year transition (e.g. 2025) is the first marker that renders. */ -}}
+        {{- if and (or $firstNonFeatured $yearChanged) (ne $page.Date.Year now.Year) -}}
         <div class="projects-year-marker" data-year="{{ $page.Date.Year }}" aria-hidden="true">{{ $page.Date.Year }}</div>
         {{- end -}}
 
