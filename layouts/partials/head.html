@@ -19,12 +19,19 @@
     {{/* Preconnect to MathJax CDN */}}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
-    {{/* SEO Meta Tags */}}
-    <meta name="robots" content="{{ if .Params.robots }}{{ .Params.robots }}{{ else }}index, follow{{ end }}">
+    {{/* SEO Meta Tags. 404 forces noindex,follow: hard 404 status is the
+         primary signal, but GPTBot/ClaudeBot/PerplexityBot honor noindex
+         more reliably than they honor status codes (per their docs). The
+         `follow` keeps the recovery links discoverable as a navigation
+         hop, not as an indexable resource. */}}
+    {{- $is404 := eq .Kind "404" -}}
+    <meta name="robots" content="{{ if $is404 }}noindex, follow{{ else if .Params.robots }}{{ .Params.robots }}{{ else }}index, follow{{ end }}">
     {{/* Use seoTitle if available (for shorter SEO-optimized titles), otherwise use Title */}}
     {{- $pageTitle := .Params.seoTitle | default .Title -}}
     <title>
-	{{- if .IsHome -}}
+	{{- if $is404 -}}
+		Page not found - philippdubach.com
+	{{- else if .IsHome -}}
     	{{ .Site.Params.site_name }}
 	{{- else if $pageTitle -}}
     	{{ $pageTitle }} - philippdubach.com
@@ -48,8 +55,10 @@
     {{/* Hugo Generator */}}
     {{ hugo.Generator }}
 
-    {{/* Canonical URL */}}
-    <link rel="canonical" href="{{ .Permalink }}">
+    {{/* Canonical URL — skip on 404 so we don't tell crawlers /404.html
+         is itself a navigable resource. Pointing at the homepage instead
+         would imply the missing URL was meant to be /, which is wrong. */}}
+    {{ if not $is404 }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
     
     {{/* RSS Feed */}}
     {{- with .OutputFormats.Get "RSS" }}
@@ -86,6 +95,13 @@
     <meta name="theme-color" content="{{ .Site.Params.theme_color | default "#434648" }}">
     <meta name="msapplication-TileColor" content="{{ .Site.Params.msapplication_tile_color | default "#434648" }}">
 
+    {{/* OpenGraph, Twitter, JSON-LD — skip on 404. Otherwise stale links
+         shared in Slack/Discord unfurl with the default OG image and a
+         "404 Page not found" title (an own-goal social card), and the
+         structured-data partial emits a BreadcrumbList that asserts
+         /404.html is a real navigable resource. Strip everything optional
+         and let the chrome (nav + footer) carry the recovery surface. */}}
+    {{ if not $is404 }}
     {{/* Open Graph */}}
     {{ partial "opengraph.html" . }}
 
@@ -94,4 +110,5 @@
 
     {{/* Structured Data */}}
     {{ partial "structured-data.html" . }}
+    {{ end }}
 </head>
