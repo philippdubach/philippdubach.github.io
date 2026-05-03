@@ -356,19 +356,6 @@ blockquote p {
     max-width: 18ch;
 }
 
-/* Quiet uppercase kicker above the primary nav group. Reuses the .section-label
-   token family but at 11px without the bottom rule (the rule is reserved for
-   in-content section labels) so it doesn't compete visually with the article. */
-.navigation-label {
-    margin: 0 0 0.6rem;
-    font-family: var(--ui-font);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-meta);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
 .navigation ul {
     list-style: none;
     margin: 0;
