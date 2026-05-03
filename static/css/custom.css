@@ -2975,6 +2975,17 @@ sup:has(.footnote-ref) { position: relative; }
    filter-status caption → archive list.
    =================================== */
 
+/* Quiet page-level H1 above the featured row on /articles/ and /projects/.
+   Reuses the .section-label register (red ui-font 14px uppercase + 1.5px
+   red bottom rule) so the page has a proper H1 anchor for SEO + screen
+   readers without reintroducing the hero we removed. Shrinks the rule
+   width slightly so it doesn't run the full container width. */
+.page-label {
+    font-size: 14px;
+    margin: 0 0 1.25rem;
+    line-height: 1;
+}
+
 /* Hairline divider between the featured row and the filter chips. Single
    1px line in --border so it reads as quiet seam, not section heading. */
 .feed-divider {
@@ -3075,15 +3086,14 @@ sup:has(.footnote-ref) { position: relative; }
     border-color: var(--text-secondary);
 }
 
-/* Secondary affordance line on the featured project row. Comma-separated
-   list of artifact types (Repo, arXiv/SSRN/Paper) without underlines —
-   the entire row is the click target so these read as orientation
-   hints, not click affordances. */
+/* Secondary affordance line on the featured project row. Block-level so
+   it sits on its own line above the meta strip — inline-flex caused
+   "Repo · arXivMay 2, 2026" mobile collisions when the affordance ran
+   into the inline date/format/cat sequence. Single label ("Repo +
+   write-up") used only when project has both a paper and a repo, since
+   the existing format pill below already conveys the primary artifact. */
 .row-affordance {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.5rem;
+    display: block;
     margin: 0 0 0.5rem;
     font-family: var(--ui-font);
     font-size: 13px;
@@ -3094,20 +3104,6 @@ sup:has(.footnote-ref) { position: relative; }
 .row-affordance__item {
     display: inline-flex;
     align-items: baseline;
-}
-
-.row-affordance__item + .row-affordance__item::before {
-    content: "·";
-    color: var(--text-meta);
-    margin-right: 0.5rem;
-}
-
-/* Hide the format tag pill on the featured project row — the .row-affordance
-   line above already lists the artifact type ("Repo · arXiv"), and showing
-   the same label as both prose text and a red-bordered pill reads as a bug.
-   Non-featured rows keep the pill since they don't carry the affordance. */
-.home-row--featured.project-row .home-row-format {
-    display: none;
 }
 
 /* Filter chips — pill row above the project list. */

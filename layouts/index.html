@@ -32,6 +32,14 @@
 {{ $rest := where $articles "Permalink" "!=" $featured.Permalink }}
 
 <article class="post single articles-page">
+    {{- /* Quiet page-level H1 — single-word section label register so the
+           page has a proper top-level heading without competing with the
+           featured row's "LATEST ESSAY" overline. Anchors the page
+           semantically (proper H1 for SEO and screen readers) and visually
+           (cold visitors get a top-of-page orientation cue) without
+           recreating the hero we removed. */ -}}
+    <h1 class="page-label section-label">Articles</h1>
+
     {{- /* Build the iteration order: featured first, then the rest by date. */ -}}
     {{- $orderedArticles := slice $featured -}}
     {{- range $rest -}}{{- $orderedArticles = $orderedArticles | append . -}}{{- end -}}

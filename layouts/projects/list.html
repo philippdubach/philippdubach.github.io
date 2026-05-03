@@ -21,6 +21,9 @@
 {{ $projects := $projects.ByDate.Reverse }}
 
 <article class="post single projects-page">
+    {{- /* Quiet page-level H1 — same register as the articles index. */ -}}
+    <h1 class="page-label section-label">Projects</h1>
+
     <div class="home-feed-list projects-list" id="projects-list">
         {{ $scratch := newScratch }}
         {{ $scratch.Set "prevYear" 0 }}
@@ -154,10 +157,15 @@
                     {{ with $page.Params.description }}
                     <p class="home-row-desc">{{ . }}</p>
                     {{ end }}
-                    {{ if and $isFeatured (or $featuredRepo $featuredDOI) }}
+                    {{- /* Featured-only affordance: surfaces "Repo" when the
+                          project ships both a paper AND a repo. The format pill
+                          below already shows the primary artifact (arXiv/SSRN/
+                          Paper/Code/Hardware) — duplicating the DOI label here
+                          read as a bug. Hidden when the project has only a repo
+                          (the pill already shows "Code") or only a paper. */ -}}
+                    {{ if and $isFeatured $featuredRepo $featuredDOI }}
                     <span class="row-affordance">
-                        {{ with $featuredRepo }}<span class="row-affordance__item">Repo</span>{{ end }}
-                        {{ with $featuredDOI }}<span class="row-affordance__item">{{ if hasPrefix . "10.48550/arXiv" }}arXiv{{ else if hasPrefix . "10.2139" }}SSRN{{ else }}Paper{{ end }}</span>{{ end }}
+                        <span class="row-affordance__item">Repo + write-up</span>
                     </span>
                     {{ end }}
                     <span class="home-row-date-mobile">
