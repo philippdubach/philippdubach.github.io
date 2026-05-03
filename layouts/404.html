@@ -1,7 +1,55 @@
 {{ define "main" }}
-<div class="error-page">
-    <h1>404</h1>
-    <p>The page you're looking for could not be found.</p>
-    <p><a href="/">← Return to homepage</a></p>
-</div>
+{{- /* 404 — uses the canonical about-hero lockup so the page reads as part
+       of the editorial chrome rather than a one-off error screen. The two
+       recovery sections (categories + recent essays) match the cold-visitor
+       paths that actually convert: a stale link, a renamed slug, or an
+       LLM-hallucinated URL is most often topic-shaped, not slug-shaped, so
+       category pillars beat any string-distance fuzzy match. The page-end
+       contact line uses the .page-footnote register from /about/. */ -}}
+<article class="post single error-page-v2">
+    <header class="post-header about-hero error-hero">
+        <p class="section-label error-overline">404 — Page not found</p>
+        <h1 class="post-title about-name">This page is missing.</h1>
+        <p class="about-lede">The link you followed is stale, the slug was renamed, or an AI hallucinated a URL that never existed. Here is what is still here.</p>
+    </header>
+
+    <section class="error-recovery" aria-labelledby="error-topics">
+        <h2 id="error-topics" class="section-label">Browse by topic</h2>
+        <ul class="category-index-list">
+            {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+            {{ $catPosts := where $taxonomy.Pages ".Params.unlisted" "ne" true }}
+            <li class="category-index-item">
+                <a href="{{ $taxonomy.Page.Permalink }}" class="category-index-link">
+                    <span class="category-index-title">{{ $taxonomy.Page.Title }}</span>
+                    <span class="category-index-meta">{{ len $catPosts }} {{ if eq (len $catPosts) 1 }}article{{ else }}articles{{ end }}</span>
+                </a>
+                {{ with $taxonomy.Page.Description }}<p class="category-index-desc">{{ . }}</p>{{ end }}
+            </li>
+            {{ end }}
+        </ul>
+    </section>
+
+    {{- $recent := first 5 (where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true) -}}
+    {{ if $recent }}
+    <section class="error-recovery" aria-labelledby="error-recent">
+        <h2 id="error-recent" class="section-label">Recently published</h2>
+        <ul class="error-recent-list">
+            {{ range $recent }}
+            <li class="archive-item">
+                <div class="archive-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
+                </div>
+                <div class="archive-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
+
+    <p class="page-footnote error-contact">
+        If you arrived here from a published link that should still work, <a href="mailto:me@philippdubach.com">let me know</a>.
+    </p>
+</article>
 {{ end }}
