@@ -26,7 +26,7 @@ enableGitInfo = true
   # <meta description> — two sentences, ~217 chars), but reinforces the same
   # topical claim in editorial italic register. Reads in Newsreader serif,
   # wraps to 2-3 lines inside the 200px rail. No contradictory entity claim.
-  sidebar_description = "A working notebook on quantitative finance, AI, and the economics underneath both."
+  sidebar_description = "Quantitative finance, AI, and the economics underneath."
   
   favicon = "/favicon.ico"
   math = false
