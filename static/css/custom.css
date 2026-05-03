@@ -3937,8 +3937,10 @@ h2.section-label.research-year {
    Date column hides; "Latest essay" flag replaces it as the structural label. */
 .home-row--featured {
     /* No border-bottom: the explicit <hr class="feed-divider"> below the
-       featured row carries the visual seam. The previous 1.5px rule was
-       the implicit divider before the divider was added. */
+       featured row carries the visual seam. The base .home-row rule has
+       its own border-bottom (1px #f0f0f0); override to none so the
+       featured row + explicit hr don't render as a double line. */
+    border-bottom: none;
     padding-bottom: 1rem;
     margin-bottom: 0;
 }
