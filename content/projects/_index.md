@@ -17,5 +17,3 @@ keywords: [
   "reproducible quant research"
 ]
 ---
-
-*Open-source code, papers, and hardware experiments by Philipp Dubach. Built to answer a question or scratch an itch, not to win client work. Most sits in market microstructure, portfolio construction, ML systems, and computer vision; a few are peer-reviewed papers on SSRN and arXiv. Each ships with a repo, write-up, and data where I can.*
