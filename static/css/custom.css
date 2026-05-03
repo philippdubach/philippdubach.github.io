@@ -2968,38 +2968,42 @@ sup:has(.footnote-ref) { position: relative; }
 }
 
 /* ===================================
-   Articles index — homepage. Ported from v2.6 projects pattern as a starting
-   point. Hero lockup uses shared .about-hero / .about-name / .about-lede;
-   counts + related strips and list register mirror v2.6 projects.
+   Articles + Projects index — v3.x audit (2026-05). Hero removed; the lead
+   story IS the masthead (NYT, Stratechery, New Yorker, FT pattern). The
+   featured row's "LATEST ESSAY"/"LATEST PROJECT" red overline does the
+   orientation work. Featured row → hairline divider → filter chips →
+   filter-status caption → archive list.
    =================================== */
-.articles-hero {
-    margin-bottom: 2.5em;
+
+/* Hairline divider between the featured row and the filter chips. Single
+   1px line in --border so it reads as quiet seam, not section heading. */
+.feed-divider {
+    margin: 0.5rem 0 1.5rem;
+    border: none;
+    border-top: 1px solid var(--border);
 }
 
-.articles-intro {
-    /* Same override as the v2.6 projects-intro: drop the .about-lede 50ch cap
-       so the dek doesn't feel constrained next to the full-width row list. */
-    max-width: none;
-    margin: 0.75em 0 1em;
+/* Filter chip row sits between divider and archive list. Slightly tighter
+   top margin than the previous "below hero" position — divider already
+   establishes the seam so we don't need extra whitespace. */
+.feed-filter {
+    margin-top: 0;
 }
 
-.articles-intro p {
-    margin: 0 0 1em;
-    max-width: 62ch;
-    font-style: italic;
-    color: var(--text-secondary);
-}
-
-.articles-intro p:last-child {
-    margin-bottom: 0;
-}
-
-.articles-counts {
-    margin: 0 0 0.5em;
+/* Live region populated by the filter JS. Empty when filter=all (no
+   visual chrome), informative when a filter is active. ui-font matches
+   the chip label register, --text-meta keeps it quiet. */
+.filter-status {
+    margin: 1rem 0 1.5rem;
     font-family: var(--ui-font);
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.5;
     color: var(--text-meta);
-    letter-spacing: 0.01em;
+    min-height: 1px;
+}
+
+.filter-status:empty {
+    margin: 0;
 }
 
 .articles-related {
@@ -3031,50 +3035,71 @@ sup:has(.footnote-ref) { position: relative; }
 }
 
 /* ===================================
-   Projects index — v2.7 simplified.
-   Audit-driven: single-word H1, dek = .Content, counts as credibility line,
-   format tags replace reading time, year markers as silent chapter breaks,
-   filter chips above list, About-FAQ + related strip below list, hover
-   delight via 2px red left-border slide-in. No PROJECTS overline, no
-   featured-row treatment.
+   Projects index — v3.x audit (2026-05): hero removed, parity with the
+   articles index. Projects-only deltas — status badge on featured row,
+   secondary affordance line for repo/DOI links — defined below.
    =================================== */
-.projects-hero {
-    margin-bottom: 1.5em;
+
+/* Status badge — small gray pill on the featured project row. Sits
+   inline next to the "Latest project" overline. Color variants per
+   .Params.status frontmatter (production / archived / wip). */
+.row-status-badge {
+    display: inline-block;
+    margin-left: 0.5em;
+    padding: 0.1em 0.55em;
+    font-family: var(--ui-font);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+    background: var(--bg-tint);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    line-height: 1.4;
+    vertical-align: middle;
 }
 
-.projects-h1 {
-    /* Match .post-title.about-name (about + research H1s) for one register
-       across the three index pages. */
-    font-family: var(--body-font);
-    font-size: 2.2rem;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--ink);
-    margin: 0 0 0.5em;
+.row-status-badge--production {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-tint);
 }
 
-.projects-dek {
-    max-width: 70ch;
-    margin: 0.4em 0 1em;
+.row-status-badge--archived {
+    color: var(--text-meta);
 }
 
-.projects-dek p {
-    font-family: var(--body-font);
-    font-style: italic;
-    font-size: 1.125rem;
-    line-height: 1.5;
+.row-status-badge--wip {
     color: var(--text-secondary);
-    margin: 0;
+    border-color: var(--text-secondary);
 }
 
-/* Counts strip — promoted to credibility line directly under the dek. */
-.projects-counts {
-    margin: 0;
+/* Secondary affordance line on the featured project row. Comma-separated
+   list of artifact types (Repo, arXiv/SSRN/Paper) without underlines —
+   the entire row is the click target so these read as orientation
+   hints, not click affordances. */
+.row-affordance {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0 0 0.5rem;
     font-family: var(--ui-font);
     font-size: 13px;
-    font-weight: 500;
     color: var(--text-secondary);
-    letter-spacing: 0.01em;
+    line-height: 1.5;
+}
+
+.row-affordance__item {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.row-affordance__item + .row-affordance__item::before {
+    content: "·";
+    color: var(--text-meta);
+    margin-right: 0.5rem;
 }
 
 /* Filter chips — pill row above the project list. */
@@ -3257,18 +3282,9 @@ sup:has(.footnote-ref) { position: relative; }
     border-bottom-color: var(--accent);
 }
 
-/* Mobile compression — header furniture must clear viewport quickly so the
-   first project row's H2 is visible above the fold at 375x667. */
+/* Mobile: tighten filter chips so they don't crowd the divider on small
+   viewports. */
 @media (max-width: 768px) {
-    .projects-hero {
-        margin-bottom: 1em;
-    }
-    /* About + research H1s have no mobile media query (stay at 2.2rem); keep
-       projects-h1 in sync — fixed size, no clamp. */
-    .projects-dek p {
-        font-size: 1rem;
-        line-height: 1.45;
-    }
     .projects-filter {
         margin: 1.25em 0 0.75em;
         gap: 0.3em;
@@ -3785,7 +3801,7 @@ h2.section-label.research-year {
 .home-row-link:hover {
     text-decoration: none;
     color: inherit;
-    background: #fafbfc;
+    background: var(--accent-tint);
 }
 
 /* Row — Date Column */
@@ -3956,19 +3972,37 @@ h2.section-label.research-year {
 }
 
 .home-row--featured .home-row-title {
+    /* v3.x: bumped from 1.85rem (the hero is gone, the featured row
+       is the masthead, so the headline carries the page-front weight). */
     font-family: var(--body-font);
-    font-size: 1.85rem;
+    font-size: 2.4rem;
     font-weight: 600;
-    line-height: 1.2;
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.005em;
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+    letter-spacing: -0.01em;
 }
 
 .home-row--featured .home-row-desc {
-    font-size: 1rem;
-    line-height: 1.55;
-    -webkit-line-clamp: 3;
+    /* v3.x: looser line-height (was 1.55) — typographic warmth, reads
+       less algorithmic. Larger size + 4-line clamp allows the longer
+       40-50 word dek the agent recommended for the featured row. */
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-line-clamp: 4;
     margin-bottom: 0.6rem;
+}
+
+/* Mobile: clamp the featured headline so it doesn't push the overline
+   off-screen on iPhone SE / 375px viewports. */
+@media screen and (max-width: 768px) {
+    .home-row--featured .home-row-title {
+        font-size: 1.7rem;
+    }
+
+    .home-row--featured .home-row-desc {
+        font-size: 1rem;
+        -webkit-line-clamp: 3;
+    }
 }
 
 /* === Inline newsletter card (Phase 5) ===
