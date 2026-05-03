@@ -2561,53 +2561,18 @@ h2.section-label.category-year {
 /* ===================================
    Site Footer
    =================================== */
+/* Footer — left-aligned editorial register (v3.x audit). The previous
+   centered-middot-row treatment was a 2018 personal-blog tell. Now mirrors
+   the rest of the site: byline in italic Newsreader, utilities in
+   ui-font 13px, copyright at 12px. Hover is --accent across both
+   utility groups (matching sidebar/body register). */
 .site-footer {
-    margin-top: 0.25rem;
-    text-align: center;
-    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    text-align: left;
     color: var(--text-secondary);
 }
 
-/* Post Taxonomy (Categories & Tags) */
-.post-taxonomy {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    font-size: 0.85rem;
-}
-
-.taxonomy-group {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-}
-
-.taxonomy-group a {
-    color: var(--text-secondary);
-    text-decoration: none;
-}
-
-/* Post Discovery (single link: Latest or Most Read) */
-.post-discovery {
-    margin: 0;
-    padding: 0 0 0.75rem 0;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-align: center;
-}
-
-.post-discovery a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.post-discovery a:hover {
-    text-decoration: underline;
-}
-
-/* Post Category in header */
+/* Post Category in header — kept (still used by post-meta) */
 .post-category {
     color: var(--text-secondary);
     text-decoration: none;
@@ -2617,47 +2582,105 @@ h2.section-label.category-year {
     color: var(--accent);
 }
 
-/* Footer Links */
-.footer-links {
-    margin: 0;
-    padding: 0.75rem 0;
-    text-align: center;
-}
-
-.footer-row {
-    line-height: 1.8;
-}
-
-.footer-links a {
+/* Identity byline — terser counterpart to the post-end .author-entity
+   aside. Name in --ink with prose-link hover register, italic role
+   descriptor in Newsreader matching the .about-lede on /about/. */
+.footer-byline {
+    margin: 0 0 0.75rem;
+    font-family: var(--body-font);
+    font-size: 0.95rem;
+    line-height: 1.5;
     color: var(--text-secondary);
+    max-width: 60ch;
+}
+
+.footer-byline__name {
+    color: var(--ink);
     text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.footer-links a:hover {
-    color: #333;
-    text-decoration: underline;
+.footer-byline__name:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
-.footer-links .separator {
-    color: #ccc;
-    margin: 0 0.5rem;
+.footer-byline__role {
+    font-style: italic;
+}
+
+/* Utilities — two stacked rows. First row carries primary social/utility
+   links (FAQ, Newsletter, GitHub, Bluesky, Email). Second row carries the
+   machine-readable resources (RSS, JSON Feed, llms.txt, API catalog)
+   that were previously visible only in <head>'s link rels. Both use
+   middot separators via ::before pseudo-elements (no .separator span
+   bytes per item). */
+.footer-utilities {
+    margin: 0 0 1rem;
+}
+
+.footer-utilities__group {
+    list-style: none;
+    margin: 0 0 0.35rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-family: var(--ui-font);
+    font-size: 13px;
+    color: var(--text-meta);
+    line-height: 1.7;
+}
+
+.footer-utilities__group li {
+    display: inline-flex;
+    align-items: baseline;
+    margin: 0;
+}
+
+.footer-utilities__group li + li::before {
+    content: "·";
+    color: var(--text-meta);
+    margin: 0 0.55em;
+    pointer-events: none;
+}
+
+.footer-utilities__group a {
+    color: var(--text-meta);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.footer-utilities__group a:hover {
+    color: var(--accent);
+}
+
+.footer-utilities__feeds {
+    color: var(--text-meta);
 }
 
 .copyright {
-    margin: 0;
-    padding-top: 0.5rem;
-    font-size: 0.8rem;
-    color: #767676;
+    margin: 0.5rem 0 0;
+    font-family: var(--ui-font);
+    font-size: 12px;
+    color: var(--text-meta);
+    line-height: 1.5;
 }
 
-/* Mobile adjustments for footer */
+/* Mobile: keep left alignment, tighten spacing, allow utility rows to wrap */
 @media screen and (max-width: 768px) {
     .site-footer {
-        margin-top: 0.25rem;
+        margin-top: 1rem;
     }
-    
-    .footer-links .separator {
-        margin: 0 0.35rem;
+
+    .footer-byline {
+        font-size: 0.9rem;
+    }
+
+    .footer-utilities__group li + li::before {
+        margin: 0 0.4em;
     }
 }
 
