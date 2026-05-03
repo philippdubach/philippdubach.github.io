@@ -4,16 +4,34 @@
             <div class="site-title">
                 <a href="{{ .Site.BaseURL }}" aria-label="Home - {{ .Site.Title }}">{{ .Site.Params.sidebar_title | default .Site.Title }}</a>
             </div>
+            {{- /* The lede falls through to params.description when sidebar_description
+                   is unset (it now is, per hugo.toml — single canonical site description). */ -}}
             <p class="site-description">{{ .Site.Params.sidebar_description | default .Site.Params.description }}</p>
         </div>
-        
+
         <nav class="navigation" aria-label="Main navigation">
-            <ul>
+            {{- /* Primary group — the four section-fronts. Section-label register
+                   above the list at 11px (no rule), section-label tokens reused. */ -}}
+            <p class="navigation-label" id="nav-sections">Sections</p>
+            <ul aria-labelledby="nav-sections">
                 {{ range site.Data.navigation.main }}
                 {{ $isActive := or (eq $.RelPermalink .url) (and (ne .url "/") (hasPrefix $.RelPermalink .url)) }}
                 <li><a href="{{ .url }}"{{ if $isActive }} class="nav-active" aria-current="page"{{ end }}>{{ .name }}</a></li>
                 {{ end }}
             </ul>
+
+            {{- /* Secondary group — the topical hubs (Categories, FAQ) plus the
+                   conversion surface (Subscribe). Hairline border separates from
+                   primary; no label so it reads as "the next group" without
+                   competing with the primary section label. */ -}}
+            {{ with site.Data.navigation.secondary }}
+            <ul class="navigation-secondary">
+                {{ range . }}
+                {{ $isActive := or (eq $.RelPermalink .url) (and (ne .url "/") (hasPrefix $.RelPermalink .url)) }}
+                <li><a href="{{ .url }}"{{ if $isActive }} class="nav-active" aria-current="page"{{ end }}>{{ .name }}</a></li>
+                {{ end }}
+            </ul>
+            {{ end }}
         </nav>
     </div>
 </aside>

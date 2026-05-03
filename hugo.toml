@@ -20,9 +20,13 @@ enableGitInfo = true
   keywords = ["Quantitative Finance", "Macro Strategy", "AI Infrastructure", "Machine Learning", "Asset Allocation", "Bretton Woods III", "Python for Finance"]
   rssFeedDescription = "full"
 
-  # VISUAL SETTINGS 
+  # VISUAL SETTINGS
   sidebar_title = "philippdubach"
-  sidebar_description = "Blog about Personal Projects, Articles and Papers on Economics, Finance and Technology"
+  # Sidebar lede. Different from `description` above (which is tuned for
+  # <meta description> — two sentences, ~217 chars), but reinforces the same
+  # topical claim in editorial italic register. Reads in Newsreader serif,
+  # wraps to 2-3 lines inside the 200px rail. No contradictory entity claim.
+  sidebar_description = "A working notebook on quantitative finance, AI, and the economics underneath both."
   
   favicon = "/favicon.ico"
   math = false
