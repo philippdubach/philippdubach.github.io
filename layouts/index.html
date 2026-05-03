@@ -1,24 +1,26 @@
 {{ define "main" }}
 {{- /*
-  Articles index — homepage. Ported from layouts/projects/list.html v2.6
-  (commit 34902b29) as a starting point. Hero lockup mirrors about/research
-  (.about-hero / .about-name / .about-lede); featured-row pattern reuses
-  homepage .home-row--featured for the latest essay.
+  Articles index — homepage. v3.x audit (2026-05): hero removed. The lead
+  story is the masthead — pattern from NYT, Stratechery, New Yorker, FT.
+  The featured row's "LATEST ESSAY" overline (red section-label register,
+  1.5px red bottom rule) does the orientation work the H1+dek+counts strip
+  used to do. Page lede content moved to the FAQ at page bottom (the first
+  Q already answers "what is this page?").
 
   Image strategy switch — same shape as projects v2.6:
     "inline" — first {{< img >}} from post body, smart-cropped (gravity=auto).
     "ogcrop" — right-half of canonical OG image (gravity=right).
     Per-post override: .Params.card_image (CDN-relative path or full URL).
 
-  No tabs, no Projects feed — /projects/ has its own page.
+  Filter behavior: the featured row is pinned and NOT filtered. It always
+  shows the latest essay regardless of active chip — it is the masthead,
+  not a feed item. Filter-status caption gives feedback when active.
 */ -}}
 {{ $cdnBase := "https://static.philippdubach.com" }}
 {{ $imageStrategy := "inline" }}
 {{ $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
 {{ $articles := where $allPosts ".Params.type" "!=" "Project" }}
 {{ $articles := $articles.ByDate.Reverse }}
-{{ $firstYear := 2024 }}
-{{ with index $articles (sub (len $articles) 1) }}{{ $firstYear = .Date.Year }}{{ end }}
 
 {{- /* Flagship-pin override: if any article has `featured = true` in frontmatter,
       pin it as the featured row and render it before the chronological list with
@@ -30,26 +32,7 @@
 {{ $rest := where $articles "Permalink" "!=" $featured.Permalink }}
 
 <article class="post single articles-page">
-    <header class="post-header about-hero articles-hero">
-        <h1 class="post-title about-name">Articles</h1>
-        <div class="about-lede articles-intro">
-            {{ .Content }}
-        </div>
-        <p class="articles-counts">{{ len $articles }} essays · since {{ $firstYear }}</p>
-    </header>
-
-    <nav class="projects-filter" aria-label="Filter articles by category">
-        <button type="button" class="projects-filter-btn is-active" data-filter="all">All</button>
-        <button type="button" class="projects-filter-btn" data-filter="ai">AI</button>
-        <button type="button" class="projects-filter-btn" data-filter="quantitative-finance">Quant</button>
-        <button type="button" class="projects-filter-btn" data-filter="investing">Investing</button>
-        <button type="button" class="projects-filter-btn" data-filter="macro">Macro</button>
-        <button type="button" class="projects-filter-btn" data-filter="medicine">Medicine</button>
-    </nav>
-
-    {{- /* Build the iteration order: featured first, then the rest by date. When
-          no `featured = true` pin exists the featured IS the latest, so this
-          collapses to the natural chronological order. */ -}}
+    {{- /* Build the iteration order: featured first, then the rest by date. */ -}}
     {{- $orderedArticles := slice $featured -}}
     {{- range $rest -}}{{- $orderedArticles = $orderedArticles | append . -}}{{- end -}}
 
@@ -90,8 +73,7 @@
             {{- end -}}
         {{- end -}}
 
-        {{- /* Fallback: OG right-half crop. Used when ogcrop strategy is selected,
-              when inline strategy finds no shortcode, or when there's no card_image. */ -}}
+        {{- /* Fallback: OG right-half crop. */ -}}
         {{- if not $resolved -}}
             {{- with $page.Params.images -}}
                 {{- $cardSrc = replace (index . 0) "https://static.philippdubach.com/" "" -}}
@@ -101,8 +83,7 @@
 
         {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
 
-        {{- /* Format tag — auto-derived from .Params.type, with a small set of
-              friendly labels. Default is "Essay". Used alongside reading-time. */ -}}
+        {{- /* Format tag — auto-derived from .Params.type, with friendly labels. */ -}}
         {{- $formatTag := "Essay" -}}
         {{- $formatSlug := "essay" -}}
         {{- with $page.Params.type -}}
@@ -115,10 +96,7 @@
 
         {{- /* Year marker fires on the first non-featured row (start of the
               chronological list) and on each subsequent year transition. The
-              featured row never gets a year marker because it may be pinned
-              out of date order. The current year is suppressed — the
-              implicit assumption is that recent posts are recent. The first
-              year transition (e.g. 2025) is the first marker that renders. */ -}}
+              featured row never gets a year marker. Current year is suppressed. */ -}}
         {{- if and (or $firstNonFeatured $yearChanged) (ne $page.Date.Year now.Year) -}}
         <div class="projects-year-marker" data-year="{{ $page.Date.Year }}" aria-hidden="true">{{ $page.Date.Year }}</div>
         {{- end -}}
@@ -156,9 +134,27 @@
                 </div>
             </a>
         </article>
+
+        {{- /* Insert the divider + filter chips immediately after the featured
+              row. The divider is the visual seam between "the masthead" and
+              "the archive"; chips reframe filtering as "browse the archive"
+              rather than "page nav". The filter-status live region gives
+              feedback when a filter is active. */ -}}
+        {{ if $isFeatured }}
+        <hr class="feed-divider" aria-hidden="true">
+        <nav class="projects-filter feed-filter" aria-label="Filter articles by category">
+            <button type="button" class="projects-filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="projects-filter-btn" data-filter="ai" aria-pressed="false">AI</button>
+            <button type="button" class="projects-filter-btn" data-filter="quantitative-finance" aria-pressed="false">Quant</button>
+            <button type="button" class="projects-filter-btn" data-filter="investing" aria-pressed="false">Investing</button>
+            <button type="button" class="projects-filter-btn" data-filter="macro" aria-pressed="false">Macro</button>
+            <button type="button" class="projects-filter-btn" data-filter="medicine" aria-pressed="false">Medicine</button>
+        </nav>
+        <p class="filter-status" id="filter-status" aria-live="polite"></p>
+        {{ end }}
+
         {{ if eq $i 2 }}{{ partial "home-feed-newsletter.html" . }}{{ end }}
-        {{- /* Track year only for non-featured rows — the featured row may be
-              from an older year and we don't want it to influence the markers. */ -}}
+        {{- /* Track year only for non-featured rows. */ -}}
         {{- if not $isFeatured -}}{{ $scratch.Set "prevYear" ($page.Date.Year) }}{{- end -}}
         {{ end }}
     </div>
@@ -181,31 +177,54 @@
 <script>
 (function(){
     var btns = document.querySelectorAll('.projects-filter-btn');
-    var rows = document.querySelectorAll('.article-row');
+    var rows = document.querySelectorAll('.article-row:not(.home-row--featured)');
     var markers = document.querySelectorAll('.projects-year-marker');
     var newsletter = document.querySelector('.articles-list .home-newsletter');
+    var status = document.getElementById('filter-status');
     if (!btns.length || !rows.length) return;
+
+    var FILTER_LABELS = {
+        'ai': 'AI',
+        'quantitative-finance': 'Quantitative Finance',
+        'investing': 'Investing',
+        'macro': 'Macro',
+        'medicine': 'Medicine'
+    };
 
     function applyFilter(filter) {
         var visibleYears = {};
+        var visibleCount = 0;
         rows.forEach(function(row) {
             var match = filter === 'all' || row.dataset.category === filter;
             row.hidden = !match;
-            if (match) visibleYears[row.dataset.year] = true;
+            if (match) {
+                visibleYears[row.dataset.year] = true;
+                visibleCount++;
+            }
         });
         markers.forEach(function(m) {
             m.hidden = !visibleYears[m.dataset.year];
         });
-        // Hide the inline newsletter when filtering — its mid-list placement
-        // assumes the chronological feed; on a filtered view it lands
-        // arbitrarily.
+        // Inline newsletter mid-list assumes chronological feed; hide on filter.
         if (newsletter) {
             newsletter.hidden = filter !== 'all';
         }
         btns.forEach(function(b) {
-            b.classList.toggle('is-active', b.dataset.filter === filter);
-            b.setAttribute('aria-pressed', b.dataset.filter === filter ? 'true' : 'false');
+            var active = b.dataset.filter === filter;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
+        // Filter-status caption: silent on "all", informative on a filter.
+        // The featured row stays pinned regardless, so the count refers to
+        // the archive list only.
+        if (status) {
+            if (filter === 'all') {
+                status.textContent = '';
+            } else {
+                var label = FILTER_LABELS[filter] || filter;
+                status.textContent = 'Showing ' + visibleCount + ' essay' + (visibleCount === 1 ? '' : 's') + ' in ' + label + '. The latest essay is always pinned above.';
+            }
+        }
         if (filter === 'all') {
             history.replaceState(null, '', window.location.pathname);
         } else {
