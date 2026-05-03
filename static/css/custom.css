@@ -3102,6 +3102,14 @@ sup:has(.footnote-ref) { position: relative; }
     margin-right: 0.5rem;
 }
 
+/* Hide the format tag pill on the featured project row — the .row-affordance
+   line above already lists the artifact type ("Repo · arXiv"), and showing
+   the same label as both prose text and a red-bordered pill reads as a bug.
+   Non-featured rows keep the pill since they don't carry the affordance. */
+.home-row--featured.project-row .home-row-format {
+    display: none;
+}
+
 /* Filter chips — pill row above the project list. */
 .projects-filter {
     display: flex;
