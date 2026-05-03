@@ -1970,36 +1970,6 @@ pre {
     font-size: 12px;
 }
 
-/* Drop cap on the lede paragraph — single craft signal, scoped to actual
-   posts only via `.posts` (set by single.html from .Section). Standalone
-   pages (subscribe, about, research, newsletter-archive) don't get a
-   drop cap — they aren't argument-driven essays. The :has() escape
-   below also disables the rule on posts that lead with takeaways. */
-.post.posts .post-content > p:first-of-type::first-letter {
-    initial-letter: 3;
-    -webkit-initial-letter: 3;
-    font-weight: 700;
-    color: var(--ink);
-    margin-right: 0.1em;
-    padding-right: 0.05em;
-}
-
-/* Suppress drop cap on project posts, on posts with a takeaways block, and
-   on the standalone About / Research pages — those use the about-hero
-   lockup with a lede paragraph that already establishes a top anchor; a
-   drop cap below it competes. */
-.project-post .post-content > p:first-of-type::first-letter,
-.post:has(.key-takeaways) .post-content > p:first-of-type::first-letter,
-.post.about .post-content > p:first-of-type::first-letter,
-.research-page .post-content > p:first-of-type::first-letter {
-    initial-letter: unset;
-    -webkit-initial-letter: unset;
-    font-weight: inherit;
-    color: inherit;
-    margin-right: 0;
-    padding-right: 0;
-}
-
 /* View Transitions — cross-document index→article navigation (Chrome 126+,
    Safari 18 baseline). Free craft signal; falls back gracefully on
    unsupported browsers (no animation, normal page load). */
