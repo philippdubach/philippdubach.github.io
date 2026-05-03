@@ -26,17 +26,18 @@
          primary nav (sidebar on desktop, dock on mobile) so are not duplicated here.
          On post pages we drop "Newsletter" since the inline CTA appears above. */}}
     {{- $isPost := and .IsPage (eq .Section "posts") -}}
-    {{- /* FAQ moved to sidebar (primary topical hub surface). Newsletter stays
-           here on non-post pages so mobile users — who only see the 4-item dock,
-           not the expanded sidebar — keep a discoverable subscribe link. Posts
-           drop it because the inline CTA appears above. */ -}}
+    {{- /* FAQ + Newsletter live here because the sidebar carries only the
+           four section-fronts (Articles/Projects/Research/About). Newsletter
+           drops on post pages since the inline CTA appears above. */ -}}
     <nav class="footer-links" aria-label="Footer navigation">
         <div class="footer-row">
+            <a href="{{ "/faq/" | relURL }}">FAQ</a>
             {{ if not $isPost }}
+            <span class="separator" aria-hidden="true">·</span>
             <a href="{{ "/subscribe/" | relURL }}">Newsletter</a>
             {{ end }}
             {{ with .Site.Params.social.github }}
-            {{ if not $isPost }}<span class="separator" aria-hidden="true">·</span>{{ end }}
+            <span class="separator" aria-hidden="true">·</span>
             <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
             {{ end }}
             {{ with .Site.Params.social.bluesky }}
