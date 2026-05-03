@@ -23,7 +23,7 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
   <div id="subscribe-newsletter-message" class="home-newsletter__message" style="display:none;"></div>
 </aside>
 
-<p class="subscribe-latest">Or read <a id="subscribe-latest-link" href="/newsletter-archive/"><span id="subscribe-latest-text">the latest issue</span> →</a>.</p>
+<p class="subscribe-latest">Read <a id="subscribe-latest-link" href="/newsletter-archive/"><span id="subscribe-latest-text">the latest issue</span></a>, or subscribe via <a href="/index.xml">RSS</a> or <a href="https://bsky.app/profile/philippdubach.com">Bluesky</a>.</p>
 
 <script>
 (function() {
@@ -92,4 +92,3 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
 })();
 </script>
 
-Alternatively, subscribe to the [RSS feed](/index.xml) or follow on [Bluesky](https://bsky.app/profile/philippdubach.com).
