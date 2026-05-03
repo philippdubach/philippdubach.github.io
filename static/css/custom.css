@@ -2582,9 +2582,10 @@ h2.section-label.category-year {
     color: var(--accent);
 }
 
-/* Identity byline — terser counterpart to the post-end .author-entity
-   aside. Name in --ink with prose-link hover register, italic role
-   descriptor in Newsreader matching the .about-lede on /about/. */
+/* Identity byline — sole site-wide identity surface (the post-end
+   .author-entity aside was removed). Name in --ink with prose-link
+   hover register, italic role descriptor in Newsreader matching the
+   .about-lede on /about/. */
 .footer-byline {
     margin: 0 0 0.75rem;
     font-family: var(--body-font);
@@ -4171,24 +4172,6 @@ h2.section-label.research-year {
     .home-divider {
         padding: 1rem 0;
     }
-}
-
-/* AI Discovery - Enhanced Entity Pages */
-.author-entity {
-    margin-top: 2rem;
-    padding: 1rem 1.25rem;
-    background: #f8f9fa;
-    border-left: 3px solid #e9ecef;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.author-entity p {
-    margin: 0;
-}
-
-.author-entity a {
-    color: var(--accent);
 }
 
 .topic-classification {
