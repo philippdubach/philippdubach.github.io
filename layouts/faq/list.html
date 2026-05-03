@@ -17,10 +17,7 @@
 {{ end }}
 
 <article class="post single faq-hub">
-    <header class="post-header about-hero faq-hub-hero">
-        <h1 class="post-title about-name">{{ .Title }}</h1>
-        {{ with .Params.description }}<p class="about-lede">{{ . }}</p>{{ end }}
-    </header>
+    <h1 class="page-label section-label">{{ .Title }}</h1>
 
     {{ with .Content }}
     <div class="post-content faq-hub-intro">{{ . }}</div>

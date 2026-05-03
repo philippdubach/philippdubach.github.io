@@ -7,11 +7,11 @@
        category pillars beat any string-distance fuzzy match. The page-end
        contact line uses the .page-footnote register from /about/. */ -}}
 <article class="post single error-page-v2">
-    <header class="post-header about-hero error-hero">
-        <p class="section-label error-overline">404 — Page not found</p>
-        <h1 class="post-title about-name">This page is missing.</h1>
-        <p class="about-lede">The link you followed is stale, the slug was renamed, or an AI hallucinated a URL that never existed. Here is what is still here.</p>
-    </header>
+    {{- /* 404 in kicker register — matches all other catalog/list pages.
+           Body prose carries the apology and the explanation; the kicker
+           is the H1 anchor for SEO + screen readers. */ -}}
+    <h1 class="page-label section-label">Page not found</h1>
+    <p class="error-explainer">The link you followed is stale, the slug was renamed, or an AI hallucinated a URL that never existed. Here is what is still here.</p>
 
     <section class="error-recovery" aria-labelledby="error-topics">
         <h2 id="error-topics" class="section-label">Browse by topic</h2>

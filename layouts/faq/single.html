@@ -47,17 +47,14 @@
 {{ end }}
 
 <article class="post single faq-page">
-    <header class="post-header about-hero faq-hero">
-        {{ if $parentCategory }}
-        <nav class="faq-breadcrumb" aria-label="Breadcrumb">
-            <a href="{{ "/" | relURL }}">Home</a> ›
-            <a href="{{ $parentCategory.RelPermalink }}">{{ $parentCategory.Title }}</a> ›
-            <span>FAQ</span>
-        </nav>
-        {{ end }}
-        <h1 class="post-title about-name">{{ .Title }}</h1>
-        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
-    </header>
+    {{ if $parentCategory }}
+    <nav class="faq-breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ "/" | relURL }}">Home</a> ›
+        <a href="{{ $parentCategory.RelPermalink }}">{{ $parentCategory.Title }}</a> ›
+        <span>FAQ</span>
+    </nav>
+    {{ end }}
+    <h1 class="page-label section-label">{{ .Title }}</h1>
 
     {{ with .Content }}
     <div class="post-content faq-intro">{{ . }}</div>
