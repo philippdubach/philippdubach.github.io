@@ -329,44 +329,92 @@ blockquote p {
     text-decoration: none;
     color: var(--ink);
     /* Wordmark = original sans system stack. Functions as a logo — must not
-       inherit body serif. Keep this stack stable across redesign phases. */
+       inherit body serif. Keep this stack stable across redesign phases.
+       v3.x: weight 600 (was 700) and 1.25rem (was 1.5rem) so it reads as a
+       wordmark in a 200px rail rather than a body H1. */
     font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     /* Prevent body's hyphens:auto from breaking the wordmark in the narrow sidebar */
     hyphens: manual;
     word-break: normal;
     overflow-wrap: normal;
 }
 
+/* Editorial italic lede. Replaces the previous sans 0.9rem boilerplate
+   ("Blog about Personal Projects, Articles and Papers..."). Newsreader
+   italic matches the .about-lede register used on /about/, /subscribe/,
+   /research/, /404/. Wraps to 2-3 lines inside the 200px rail. */
 .site-description {
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 0.9375rem;
+    line-height: 1.45;
     color: var(--text-secondary);
-    margin: 0.5rem 0 2rem 0;
-    font-size: 0.9rem;
+    margin: 0.4rem 0 1.75rem;
+    max-width: 18ch;
+}
+
+/* Quiet uppercase kicker above the primary nav group. Reuses the .section-label
+   token family but at 11px without the bottom rule (the rule is reserved for
+   in-content section labels) so it doesn't compete visually with the article. */
+.navigation-label {
+    margin: 0 0 0.6rem;
+    font-family: var(--ui-font);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .navigation ul {
     list-style: none;
+    margin: 0 0 1.25rem;
+    padding: 0;
+}
+
+/* Secondary nav group (Categories / FAQ / Subscribe). Hairline rule on top
+   does the divider work — no second section label, so the rule reads as
+   "next group" without competing with the primary "Sections" kicker. */
+.navigation-secondary {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
     margin-bottom: 0;
 }
 
 .navigation li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.15rem;
 }
 
+/* Default nav link is --ink, not --accent. The previous "all links red"
+   default read as 2003-blog sidebar widgetry; reserving --accent for hover
+   and the active-state border keeps the rail editorial. The 2px transparent
+   border + matching padding-left holds the layout stable when the active
+   state swaps the border color in. */
 .navigation a {
+    display: block;
+    padding: 0.25rem 0 0.25rem 0.625rem;
+    border-left: 2px solid transparent;
+    font-family: var(--ui-font);
+    font-size: 0.9375rem;
+    font-weight: 400;
     text-decoration: none;
-    color: var(--accent);
-    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.6;
+    transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .navigation a:hover {
-    text-decoration: underline;
+    color: var(--accent);
+    text-decoration: none;
 }
 
 .navigation a.nav-active {
-    color: #333;
-    font-weight: 600;
+    color: var(--ink);
+    font-weight: 500;
+    border-left-color: var(--accent);
     text-decoration: none;
 }
 
