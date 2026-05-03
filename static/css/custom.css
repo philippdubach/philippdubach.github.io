@@ -138,32 +138,31 @@ hr {
     margin: 2rem 0;
 }
 
-/* 404 Error page styles */
-.error-page {
-    text-align: center;
-    padding: 4rem 2rem;
+/* 404 — composes with .about-hero so the page picks up the editorial
+   register used by /about/, /subscribe/, /research/. The overline carries
+   the status code at small caps so the H1 can speak in normal voice. The
+   two .error-recovery sections lift the existing .category-index-list and
+   .archive-item registers from /categories/ and the homepage feed. */
+.error-hero {
+    margin-bottom: 2.5em;
 }
 
-.error-page h1 {
-    font-size: 6rem;
-    color: #333;
-    margin-bottom: 1rem;
-    line-height: 1;
+.error-recovery {
+    margin: 2.5em 0 2em;
 }
 
-.error-page p {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
+.error-recovery .section-label {
+    margin-bottom: 1.25rem;
 }
 
-.error-page a {
-    color: var(--accent);
-    text-decoration: none;
+.error-recent-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.error-page a:hover {
-    text-decoration: underline;
+.error-contact {
+    margin-top: 2em;
 }
 
 /* Accessibility - visually hidden but accessible to screen readers */
