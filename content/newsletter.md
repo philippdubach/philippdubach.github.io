@@ -23,7 +23,7 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
   <div id="subscribe-newsletter-message" class="home-newsletter__message" style="display:none;"></div>
 </aside>
 
-<p id="subscribe-latest" class="subscribe-latest" hidden>
+<p id="subscribe-latest" class="subscribe-latest">
   <a id="subscribe-latest-link" href="/newsletter-archive/" class="subscribe-latest__link">
     <span class="subscribe-latest__label">Read the latest issue</span>
     <span id="subscribe-latest-title" class="subscribe-latest__title"></span>
@@ -72,11 +72,11 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
     msg.style.display = 'block';
   }
 
-  // Latest issue link — pulls the top of the newsletter archive.
-  var latestWrap = document.getElementById('subscribe-latest');
+  // Latest issue link — visible by default pointing at /newsletter-archive/.
+  // JS enhances it with the direct issue URL + title once the API resolves.
   var latestLink = document.getElementById('subscribe-latest-link');
   var latestTitle = document.getElementById('subscribe-latest-title');
-  if (latestWrap && latestLink && latestTitle) {
+  if (latestLink && latestTitle) {
     fetch('https://newsletter-api.philippd.workers.dev/api/newsletters')
       .then(function(r) { return r.ok ? r.json() : null; })
       .then(function(data) {
@@ -88,9 +88,8 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
         latestLink.target = '_blank';
         latestLink.rel = 'noopener';
         if (top.title) latestTitle.textContent = top.title;
-        latestWrap.hidden = false;
       })
-      .catch(function() { /* silent — link stays hidden */ });
+      .catch(function() { /* silent — link still works as archive fallback */ });
   }
 })();
 </script>
