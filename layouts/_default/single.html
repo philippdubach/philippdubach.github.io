@@ -113,12 +113,6 @@
 
 {{ if eq .Section "posts" }}
 
-{{/* Cold-visitor sequence: bio establishes trust → related shows there's more
-     → newsletter is the after-evidence subscribe ask. */}}
-<aside class="author-entity">
-    <p><strong>{{ .Site.Params.author }}</strong> is an independent researcher writing on quantitative finance, AI, and technology. Peer-reviewed papers on <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1" rel="me">SSRN</a> and <a href="https://scholar.google.com/citations?user=-69oS2wAAAAJ" rel="me">Google Scholar</a>, open-source code on <a href="https://github.com/{{ .Site.Params.social.github | default "philippdubach" }}" rel="me">GitHub</a>, monthly <a href="/subscribe/" rel="me">newsletter</a> for new essays.</p>
-</aside>
-
 {{/* Related Posts */}}
 {{ partial "related.html" . }}
 
