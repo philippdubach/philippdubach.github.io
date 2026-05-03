@@ -1,8 +1,9 @@
 {{ define "main" }}
 {{- $isAbout := eq .RelPermalink "/about/" -}}
 {{- $isSubscribe := eq .RelPermalink "/subscribe/" -}}
+{{- $isNewsletterArchive := eq .RelPermalink "/newsletter-archive/" -}}
 {{- $isProject := eq .Params.type "Project" -}}
-<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isSubscribe }} subscribe-page{{ end }}{{ if $isProject }} project-post{{ end }}">
+<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isSubscribe }} subscribe-page{{ end }}{{ if $isNewsletterArchive }} newsletter-archive-page{{ end }}{{ if $isProject }} project-post{{ end }}">
     {{ if $isAbout }}
     {{/* About-page hero lockup — replaces standard post header. */}}
     <header class="post-header about-hero">
@@ -15,6 +16,12 @@
          from the markdown source without template changes. */}}
     <header class="post-header about-hero subscribe-hero">
         <h1 class="post-title about-name">Subscribe</h1>
+        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
+    </header>
+    {{ else if $isNewsletterArchive }}
+    {{/* Newsletter-archive hero lockup — matches /subscribe/. */}}
+    <header class="post-header about-hero newsletter-archive-hero">
+        <h1 class="post-title about-name">{{ .Title }}</h1>
         {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
     </header>
     {{ else }}

@@ -1030,103 +1030,95 @@ blockquote p {
     max-width: 60ch;
 }
 
-.subscribe-form {
-    display: flex;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    margin: 2rem 0 0.6rem;
-    max-width: 480px;
+/* Subscribe page CTA — reuses .home-newsletter classes for visual parity
+   with the homepage card. The .subscribe-cta modifier lifts it off the
+   surrounding prose with a top margin and slightly wider input. */
+.home-newsletter.subscribe-cta {
+    margin: 2rem 0 1rem;
+    padding: 1.6rem 1.8rem;
 }
 
-.subscribe-form__input {
-    flex: 1 1 240px;
-    min-width: 0;
+.home-newsletter.subscribe-cta .home-newsletter__pitch {
+    font-size: 1.1rem;
+    max-width: 56ch;
+}
+
+.home-newsletter.subscribe-cta .home-newsletter__input {
+    flex: 1 1 280px;
     padding: 0.7rem 0.9rem;
-    font-family: var(--ui-font);
     font-size: 15px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    background: #fff;
-    color: var(--text);
 }
 
-.subscribe-form__input:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
-    border-color: var(--accent);
-}
-
-.subscribe-form__input::placeholder {
-    color: var(--text-meta);
-}
-
-.subscribe-form__button {
-    appearance: none;
-    background: var(--accent);
-    color: #fff;
-    border: none;
+.home-newsletter.subscribe-cta .home-newsletter__button {
     padding: 0.7rem 1.4rem;
-    font-family: var(--ui-font);
     font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    border-radius: 4px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.15s ease;
     min-height: 44px;
 }
 
-.subscribe-form__button:hover:not(:disabled) {
-    background: var(--accent-hover);
-}
-
-.subscribe-form__button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.subscribe-form__privacy {
-    margin: 0 0 2rem;
-    font-family: var(--ui-font);
-    font-size: 13px;
-    color: var(--text-meta);
-}
-
-.subscribe-form__privacy a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--text-meta);
-}
-
-.subscribe-form__privacy a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-}
-
-.subscribe-form__message {
-    margin: 1rem 0 1.5rem;
-    font-family: var(--body-font);
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.subscribe-form__message--success {
-    color: var(--ink);
-}
-
-.subscribe-form__message--error {
-    color: var(--accent);
-}
-
-.subscribe-form__message a {
+.home-newsletter.subscribe-cta .home-newsletter__message a {
     color: var(--accent);
     border-bottom: 1px dotted var(--accent);
     text-decoration: none;
 }
 
-.subscribe-form__message a:hover {
+.home-newsletter.subscribe-cta .home-newsletter__message a:hover {
     border-bottom-style: solid;
+}
+
+/* Latest-issue pointer that sits below the subscribe card. Hydrated
+   client-side from the newsletter archive API so it always points at
+   the top of the list. Hidden by default; revealed when the fetch
+   resolves with at least one issue. */
+.subscribe-latest {
+    margin: 1rem 0 2rem;
+}
+
+.subscribe-latest__link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-family: var(--ui-font);
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-meta);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.subscribe-latest__link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.subscribe-latest__label {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.subscribe-latest__link:hover .subscribe-latest__label {
+    color: var(--accent);
+}
+
+.subscribe-latest__title {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.subscribe-latest__title:not(:empty)::before {
+    content: "— ";
+    color: var(--text-meta);
+    font-style: normal;
+}
+
+.subscribe-latest__chevron {
+    color: var(--accent);
+    font-style: normal;
+    transition: transform 0.15s ease;
+}
+
+.subscribe-latest__link:hover .subscribe-latest__chevron {
+    transform: translateX(2px);
 }
 
 /* Recent-issues sample row on /subscribe/. Curated, dated, hand-rotated
@@ -1417,42 +1409,97 @@ blockquote p {
     text-decoration: underline;
 }
 
-/* Newsletter archive styles */
-.newsletter-archive {
-    margin: 2rem 0;
+/* Newsletter archive — editorial register matching the FAQ hub and
+   subscribe-samples row. Italic Newsreader meta + serif title, hover
+   nudge. Fetched client-side from the newsletter API. */
+.archive-issues {
+    margin: 2rem 0 1.5rem;
 }
 
-.newsletter-list {
+.archive-issues__loading,
+.archive-issues__empty,
+.archive-issues__error {
+    margin: 0;
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.archive-issues__error {
+    color: var(--accent);
+}
+
+.archive-issues__list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.newsletter-item {
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e9ecef;
+.archive-issues__item {
+    margin: 0;
+    border-top: 1px solid var(--border);
 }
 
-.newsletter-item:last-child {
-    border-bottom: none;
+.archive-issues__item:last-child {
+    border-bottom: 1px solid var(--border);
 }
 
-.newsletter-date {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
-    min-width: 120px;
-    display: inline-block;
-}
-
-.newsletter-item a {
-    color: #333;
+.archive-issues__link {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 1rem 0;
     text-decoration: none;
+    color: inherit;
+    transition: color 0.15s ease;
 }
 
-.newsletter-item a:hover {
+.archive-issues__date {
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.archive-issues__title {
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+}
+
+.archive-issues__link:hover .archive-issues__title {
     color: var(--accent);
-    text-decoration: underline;
+}
+
+.archive-issues__cta {
+    margin: 1.5rem 0 2rem;
+    font-family: var(--ui-font);
+    font-size: 14px;
+}
+
+.archive-issues__cta a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+    padding-bottom: 1px;
+    transition: border-bottom-style 0.15s ease;
+}
+
+.archive-issues__cta a:hover {
+    border-bottom-style: solid;
+}
+
+@media screen and (max-width: 600px) {
+    .archive-issues__link {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding: 0.85rem 0;
+    }
 }
 
 /* Hidden checkbox for toggle state */
