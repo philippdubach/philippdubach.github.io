@@ -268,6 +268,18 @@ async function processNewPosts(env, dryRun = false) {
       continue;
     }
 
+    // Cron overlap guard: if another tick is already processing this post,
+    // skip. Lock TTL (60s) is shorter than cron interval (15min) so a
+    // crashed run can't deadlock subsequent ticks.
+    const lockKey = `lock:${id}`;
+    if (await env.POSTED_STATE.get(lockKey)) {
+      results.skipped++;
+      continue;
+    }
+    if (!dryRun) {
+      await env.POSTED_STATE.put(lockKey, '1', { expirationTtl: 60 });
+    }
+
     try {
       // Fetch full article text and takeaways for LLM context
       const { text: fullText, takeaways } = await fetchFullArticleText(info.link);
@@ -298,14 +310,18 @@ async function processNewPosts(env, dryRun = false) {
       };
 
       const tweet = await postToTwitter(credentials, tweetText);
-      await env.POSTED_STATE.put(id, JSON.stringify({ 
-        title: info.title, 
-        tweetId: tweet.data?.id, 
-        at: new Date().toISOString() 
+      await env.POSTED_STATE.put(id, JSON.stringify({
+        title: info.title,
+        tweetId: tweet.data?.id,
+        at: new Date().toISOString()
       }));
       results.posted.push({ id, title: info.title, tweetId: tweet.data?.id });
     } catch (e) {
       results.errors.push({ id, error: e.message });
+    } finally {
+      if (!dryRun) {
+        await env.POSTED_STATE.delete(lockKey).catch(() => {});
+      }
     }
   }
 
