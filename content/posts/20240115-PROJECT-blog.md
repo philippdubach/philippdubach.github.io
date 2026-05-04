@@ -33,6 +33,22 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 
 **Updates**
 
+> **May 2026**
+
+*Hugo 0.161.1 Upgrade* — Bumped from 0.157.0. Byte-identical output, zero deprecation warnings. Added a local diff harness (`scripts/upgrade-diff.sh`) that builds with two Hugo versions and diffs `public/`, used to validate the bump as a no-op. The new release window opened up `strings.ReplacePairs` (collapsed an 8-call entity-decode chain in `llms-full.txt`) and fixed enough Goldmark / `RenderShortcodes` edge cases that 8 of 9 post-render regex passes in the markdown variant template could go. One was actively harmful: the math-delimiter regex was corrupting Wikipedia URLs like `Universal_Serial_Bus_\(USB\)` into `_$USB$_` because the pattern was over-eager.
+
+*Index Redesign* — Articles and projects now share the same structure: hero dropped, the featured row *is* the masthead (red overline, 1.5px red rule, large headline), hairline divider, filter chips reframed as "browse the archive" rather than page nav. Quiet `<h1 class="page-label">` for SEO and screen readers without competing visually with the featured headline. Featured card image now requests a 1200×630 landscape source matching the CSS aspect-ratio (was getting a 480×600 portrait stretched sideways, which clipped faces).
+
+*Markdown Variant Maturity* — `/posts/<slug>/index.md` now emits clean markdown via output-format-aware sibling shortcodes (`img.markdown.md`, `disclaimer.markdown.md`, `newsletter.markdown.md`, `readnext.markdown.md`). HTML pollution never enters the markdown stream. YAML preamble parseable by gray-matter and every major LLM tooling SDK. Dropped the `eq .Section "posts"` gate so `/about/`, `/research/`, `/subscribe/` ship real markdown content too.
+
+*Worker Audit* — Three parallel reviews (perf, reliability, security) of the Hugo site and remaining Cloudflare Workers found nine issues worth fixing, clustered in the social-automation workers. Bluesky's 300-char post limit was being silently exceeded when the appended URL pushed total length over budget, leaving stuck-loop posts that retried every 15 minutes. The `og:image` URL was being fetched without domain validation (SSRF gap, low probability). Cron ticks could race the same article when a tick took longer than 15 minutes. The bluesky worker fetched each article URL twice per post. All four fixed, plus a GoatCounter title sanitizer at the Worker boundary so a downstream consumer that uses `innerHTML` can't be tricked into executing script regardless of how the rendering side is written.
+
+*Template Hardening* — `readnext` shortcode now emits a build-time `warnf` when the slug doesn't match a post, instead of silently rendering nothing. FAQ aggregation extracted to a cached partial (one scan per category instead of two on every faq/* page). Homepage and projects `ItemList` JSON-LD capped at 20 entries (Google rich-result band). `posts.json` prefers `.Description` over `.Summary` to skip 86 of 87 markdown renders at build time.
+
+*Decommissioning* — Removed the post composer (`post-composer.pages.dev`) and URL shortener (`pdub.click`). Both unused. Deleted source from the repo, then deleted the Pages project, KV namespaces, D1 database via wrangler.
+
+*Accessibility* — Sidebar wordmark `aria-label` now starts with the visible text per WCAG 2.5.3 (voice-control users saying "click philippdubach" can now activate it). Newsletter card meta switched to `--text-secondary` for 7.0:1 contrast on the pink tint (was 3.91:1, below AA).
+
 > **April 2026**
 
 *Agent Readiness* — Shipped three coordinated changes so AI agents and content-aware crawlers can discover and consume the site through standardized protocols. Every response now carries a `Link:` header (RFC 8288) advertising machine-readable resources: the api-catalog, sitemap, RSS and JSON feeds, `llms.txt`, and a per-page markdown alternate. A new `/.well-known/api-catalog` endpoint returns an RFC 9264 Linkset enumerating those endpoints (RFC 9727). Content negotiation now works: requesting any page with `Accept: text/markdown` returns a markdown variant with `Content-Type: text/markdown`, `Vary: Accept`, and an `x-markdown-tokens` count for LLM context-window planning. The robots.txt declares `Content-Signal: search=yes, ai-input=yes, ai-train=yes` per draft-romm-aipref-contentsignals.
@@ -70,8 +86,6 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 > **January 2026**
 
 *Social Automation & AI Model Upgrade* — Upgraded Workers AI model from Llama 3.1 8B to **Llama 4 Scout 17B** for better post generation. Added Twitter/X automation worker alongside Bluesky. AI generates neutral, non-clickbait posts with extensive banned word filtering.
-
-*Post Composer Enhancements* — Added auto-closing brackets `[ ( {` in editor. Updated footer with social links matching main site. Deployed at [post-composer.pages.dev](https://post-composer.pages.dev).
 
 *UI/UX Polish* — Fixed mobile footer spacing consistency. Increased homepage post spacing (3.75rem). Disclaimers now only display on individual posts, hidden on homepage. Centered related posts heading.
 
