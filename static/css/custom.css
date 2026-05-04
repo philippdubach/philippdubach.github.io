@@ -3833,11 +3833,6 @@ h2.section-label.research-year {
     border-radius: 4px;
     overflow: hidden;
     background: #f6f8fa;
-    transition: transform 0.2s ease;
-}
-
-.home-row:hover .home-row-thumb {
-    transform: scale(1.03);
 }
 
 .home-row-thumb img {
@@ -3845,6 +3840,11 @@ h2.section-label.research-year {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.home-row:hover .home-row-thumb img {
+    transform: scale(1.03);
 }
 
 /* Row — Text Body */
@@ -3953,7 +3953,10 @@ h2.section-label.research-year {
     flex-direction: column;
     align-items: stretch;
     gap: 1.25rem;
-    padding: 0.75rem 0.5rem 1rem;
+    /* No horizontal padding: the thumb spans edge-to-edge so the hover tint
+       doesn't render as a visible rim around the image. The body picks up
+       the side breathing room via its own padding below. */
+    padding: 0.75rem 0 1rem;
 }
 
 .home-row--featured .home-row-date {
@@ -3967,7 +3970,7 @@ h2.section-label.research-year {
 }
 
 .home-row--featured .home-row-body {
-    padding: 0;
+    padding: 0 0.5rem;
 }
 
 .home-row-feature-flag {
@@ -4039,7 +4042,6 @@ h2.section-label.research-year {
     line-height: 1.4;
     color: var(--ink);
     margin: 0 0 1rem;
-    max-width: 44ch;
 }
 
 .home-newsletter__form {
@@ -4095,13 +4097,15 @@ h2.section-label.research-year {
     margin: 0;
     font-family: var(--ui-font);
     font-size: 12px;
-    color: var(--text-meta);
+    /* var(--text-secondary) #595959 hits 7.0:1 on the --accent-tint pink;
+       var(--text-meta) #767676 only reaches 3.91:1, below WCAG AA 4.5:1. */
+    color: var(--text-secondary);
 }
 
 .home-newsletter__meta a {
     color: var(--text-secondary);
     text-decoration: none;
-    border-bottom: 1px dotted var(--text-meta);
+    border-bottom: 1px dotted var(--text-secondary);
 }
 
 .home-newsletter__meta a:hover {
