@@ -2,7 +2,8 @@
     <div class="sidebar-content">
         <div class="site-header">
             <div class="site-title">
-                <a href="{{ .Site.BaseURL }}" aria-label="Home - {{ .Site.Title }}">{{ .Site.Params.sidebar_title | default .Site.Title }}</a>
+                {{- $wordmark := .Site.Params.sidebar_title | default .Site.Title -}}
+                <a href="{{ .Site.BaseURL }}" aria-label="{{ $wordmark }} — home">{{ $wordmark }}</a>
             </div>
             {{- /* The lede falls through to params.description when sidebar_description
                    is unset (it now is, per hugo.toml — single canonical site description). */ -}}
