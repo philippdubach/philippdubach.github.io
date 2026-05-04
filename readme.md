@@ -18,7 +18,7 @@ Personal blog on quantitative finance, AI/ML, and technology.
 
 | Layer | Technology |
 |-------|------------|
-| **Site Generator** | Hugo v0.157.0 Extended |
+| **Site Generator** | Hugo v0.161.1 Extended |
 | **Hosting** | GitHub Pages |
 | **CDN** | Cloudflare |
 | **Images** | Cloudflare R2 (`static.philippdubach.com`) |
@@ -50,13 +50,11 @@ Personal blog on quantitative finance, AI/ML, and technology.
 ├── data/
 │   ├── navigation.yaml       # Nav menu config
 │   └── research.yaml         # Research publications (SSRN papers, DOIs)
-├── composer/                 # Post Composer (Cloudflare Pages)
 └── social-automation/
     ├── bluesky worker/       # Auto-post to Bluesky
     ├── twitter worker/       # Auto-post to Twitter/X
     ├── goatcounter-worker/   # "Most Read" posts API proxy
-    ├── security-headers/     # HTTP security headers Worker
-    └── url shortener/        # pdub.click
+    └── security-headers/     # HTTP security headers Worker
 ```
 
 ---
@@ -135,58 +133,12 @@ The workers use Llama 4 Scout 17B to generate social posts with specific style c
 - Varied sentence structure
 - Extensive banned word list (AI slop words filtered)
 
-### URL Shortener
-
-| | |
-|---|---|
-| Domain | [pdub.click](https://pdub.click) |
-| Storage | KV for redirects, D1 for analytics |
-| Features | Dashboard, click tracking, HMAC auth |
-
 **Deploy workers:**
 ```bash
 cd social-automation/bluesky\ worker && npx wrangler deploy
 cd social-automation/twitter\ worker && npx wrangler deploy
-cd social-automation/url\ shortener && npx wrangler deploy
 cd social-automation/goatcounter-worker && npx wrangler deploy
 cd social-automation/security-headers && npx wrangler deploy
-```
-
----
-
-## Composer Tool
-
-Markdown editor for writing blog posts with live preview.
-
-| | |
-|---|---|
-| URL | [post-composer.pages.dev](https://post-composer.pages.dev) |
-| AI Backend | Cloudflare Functions + Claude API |
-
-### Features
-
-- Live preview matching blog CSS
-- TOML frontmatter editor
-- AI-powered SEO, FAQ, and takeaways generation
-- Hugo shortcode rendering
-- KaTeX math support
-- Auto-closing brackets `[ ( {`
-- Syntax highlighting (CodeMirror)
-- Focus mode
-- Auto-save to localStorage
-- Export as `.md` file or clipboard
-
-### Keyboard Shortcuts
-
-| Key | Action |
-|-----|--------|
-| `Cmd/Ctrl + S` | Download .md file |
-| `Cmd/Ctrl + E` | Copy to clipboard |
-| `Escape` | Exit focus mode |
-
-**Deploy:**
-```bash
-cd composer && npx wrangler pages deploy . --project-name post-composer
 ```
 
 ---
@@ -239,6 +191,18 @@ Context-aware disclaimers that:
 
 ## Changelog
 
+### May 2026
+- Upgraded Hugo from v0.157.0 to v0.161.1; byte-identical output, zero deprecation warnings; added a local diff harness (`scripts/upgrade-diff.sh`) for validating future upgrades against two binaries
+- Pruned 8 of 9 dead/harmful post-render regex passes in `single.markdown.md`; the math-delimiter regex was corrupting Wikipedia URLs like `Universal_Serial_Bus_\(USB\)` into `_$USB$_`. Replaced an 8-call entity-decode chain with `strings.ReplacePairs`. Fixed double-quote entity decode (`&ldquo;`/`&rdquo;` were mapping to `'` instead of `"`)
+- Redesigned articles + projects indexes: hero dropped, featured row is the masthead (red overline + rule), hairline divider, filter chips, year markers; quiet `page-label` H1 for SEO/a11y. Featured card image now requests landscape source matching the CSS aspect-ratio
+- Refactored markdown variants to output-format-aware sibling shortcodes (`img.markdown.md`, `disclaimer.markdown.md`, `newsletter.markdown.md`, `readnext.markdown.md`); HTML pollution no longer enters the markdown stream. Added YAML preamble for AI/RAG ingestion; dropped the `eq .Section "posts"` gate so `/about/`, `/research/`, `/subscribe/` ship markdown content too
+- Hardened bluesky and twitter workers from a parallel perf/reliability/security audit: fixed Bluesky 300-char overflow (LLM cap reserves URL+separator budget), merged duplicate article fetches, added cron concurrency lock via 60s KV sentinel, gated OG image fetch behind a trusted-domain SSRF check; sanitized GoatCounter titles at the Worker boundary
+- Template hardening: `readnext` shortcode emits `warnf` on bad slug; FAQ aggregation extracted to a cached partial (one scan per category, was running twice per faq/* page); homepage and projects `ItemList` JSON-LD capped at 20 entries; `posts.json` prefers `.Description` over `.Summary` to skip ~86 markdown renders per build
+- Extracted `posts-sorted-by-date.html` partial cached via `partialCached` with no variant — site-invariant scan runs once per build instead of per-post-page
+- Decommissioned the post composer (`post-composer.pages.dev`) and URL shortener (`pdub.click`); deleted source, KV namespaces, and D1 database via wrangler
+- Accessibility: sidebar wordmark `aria-label` now starts with the visible text per WCAG 2.5.3; newsletter card meta darkened to hit 7.0:1 contrast on the pink tint (was 3.91:1, below AA)
+- Bumped wrangler to 4.87.0 in remaining workers (bluesky, twitter, goatcounter)
+
 ### April 2026
 - Shipped agent-readiness improvements: RFC 8288 `Link` headers on every response advertising machine-readable resources (api-catalog, sitemap, RSS, JSON Feed, llms.txt, per-page `.md` alternate)
 - Added `/.well-known/api-catalog` (RFC 9264 Linkset / RFC 9727) enumerating discoverable endpoints
@@ -267,22 +231,14 @@ Context-aware disclaimers that:
 
 ### January 2026
 - Upgraded social automation AI model to Llama 3.3 70B (from 3.1 8B)
-- Added auto-closing brackets to composer
-- Updated composer footer with social links
 - Fixed mobile footer spacing consistency
 - Increased homepage post spacing to 3.75rem
 - Fixed disclaimer visibility (post pages only)
 - Centered related posts heading
 - Created Copilot instructions file
 
-### December 2025
-- Deployed composer to Cloudflare Pages
-- Added AI SEO generation to composer
-- Implemented focus mode in editor
-
 ### November 2025
 - Social automation workers deployed
-- URL shortener (pdub.click) launched
 - GoatCounter analytics integration
 
 ---
