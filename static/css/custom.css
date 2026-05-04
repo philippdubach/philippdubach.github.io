@@ -2815,9 +2815,10 @@ h2.section-label.category-year {
 /* External-link glyph (↗) — appended to absolute http(s) links inside post
    content that don't point at this site. Tasteful editorial signal that the
    link leaves the site. Excluded from headings, code, footnotes, and figures
-   to avoid noise. */
+   to avoid noise. The trailing \fe0e (VARIATION SELECTOR-15) forces text
+   presentation; without it, iOS Safari renders ↗ as a color emoji. */
 .post-content a[href^="http"]:not([href*="philippdubach.com"]):not(:has(img))::after {
-    content: " ↗";
+    content: " \2197\fe0e";
     color: var(--text-meta);
     font-size: 0.85em;
     margin-left: 0.05em;
@@ -2858,7 +2859,9 @@ h2.section-label.category-year {
 }
 
 .readnext a::before {
-    content: "→ See also: ";
+    /* \2192 → arrow + \fe0e (VARIATION SELECTOR-15) forces text presentation;
+       without the selector, iOS Safari renders → as a color emoji. */
+    content: "\2192\fe0e\00a0See also:\00a0";
     font-style: italic;
     color: var(--accent);
     border-bottom: none;
