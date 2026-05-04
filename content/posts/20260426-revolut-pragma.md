@@ -48,6 +48,8 @@ The figure above is what a single user looks like to PRAGMA: a stream of structu
 
 Pre-training is masked language modelling, but with three masking sources blended together: 15% standard token masking, 10% whole-event masking, and 10% semantic-type masking. The whole-event variant is  interesting for banking. It teaches the model that when you cannot see the amount of a card payment but you can see the merchant, the time, and the surrounding behavioural pattern, the amount is often inferable. That is exactly the inductive bias you want in a credit or fraud model.
 
+{{< readnext slug="the-bicycle-needs-riding-to-be-understood" >}}
+
 ## The numbers
 
 {{< img src="table2-results.png" alt="Relative performance of PRAGMA-L with LoRA fine-tuning against internal task-specific baselines: 130 percent PR-AUC lift on credit scoring, 163 percent AUUC on uplift, 40 percent mAP on product recommendation, with the AML task showing a 47 percent loss" width="80%" >}}

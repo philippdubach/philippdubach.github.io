@@ -70,6 +70,8 @@ After implementing this, I figured: why not send a confirmation to the subscribe
 
 I also looked at [Mailgun](https://www.mailgun.com/) and [SendGrid](https://sendgrid.com/) before settling on Resend. Mailgun has better deliverability monitoring but a more complex API. SendGrid has more features but felt overengineered for what I needed. Resend's free tier and simple API won. If you have strong opinions on email APIs, I'm curious to hear them.
 
+{{< readnext slug="the-bicycle-needs-riding-to-be-understood" >}}
+
 The total cost of running this: zero. Cloudflare Workers has a generous free tier. Cloudflare R2 (where the HTML newsletters are hosted) has 10GB free storage. Resend gives 3,000 emails per month. The Python script runs locally or on my Azure instance.
 
 You can find [my first newsletter here](https://static.philippdubach.com/newsletter/newsletter-2025-12.html). The full code for both the [newsletter generator](https://github.com/philippdubach/newsletter-generator) and the [subscriber API](https://github.com/philippdubach/newsletter-api) is on GitHub. 

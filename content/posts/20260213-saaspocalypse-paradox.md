@@ -64,6 +64,8 @@ The software vs semiconductor valuation picture strengthens this framing. The se
 
 This is the case that BofA called a paradox and JP Morgan called a mispricing.
 
+{{< readnext slug="ai-capex-arms-race-who-blinks-first" >}}
+
 ## The hyperscaler AI capex question that connects both sides
 
 There is a number that both cases have to account for, and it's the one that determines which side of the paradox resolves first.

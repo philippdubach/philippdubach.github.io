@@ -52,6 +52,8 @@ F3ED has the highest F1, with fewer false positives at comparable recall. I'm no
 
 > *Note: numbers above are from the V006 baseline run on commit `0babb71` (2026-04-23). Bounce-dedup and reconciler work since then shift F1 marginally upward; full re-eval pending a Phase-1 v8x rerun on V006.*
 
+{{< readnext slug="modeling-glycemic-response-with-xgboost" >}}
+
 ## The audit
 
 Tennis scoring is a finite-state machine. A point ends in exactly one of:
@@ -179,6 +181,8 @@ The first is a temporal dedup with ~400 ms minimum separation between bounces, f
 The second is a court-locality filter: project the ball pixel through the homography to canvas coordinates, drop if it falls outside the court polygon plus a 200 px buffer. This kills inter-rally noise where the ball is being held or replayed, dropping another 12-15%.
 
 Real bounces don't fire 200 ms apart and don't land 3 m past the doubles alley. Neither filter is novel; both are roughly ten lines of code. If you're using a CatBoost-style bounce detector you probably want both anyway.
+
+{{< readnext slug="social-media-success-prediction-bert-models-for-post-titles" >}}
 
 ## What's open
 

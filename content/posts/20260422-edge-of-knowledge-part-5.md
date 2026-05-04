@@ -72,6 +72,8 @@ The result is a collective action problem with distributional consequences. The 
 
 I'm not sure this is a solvable problem. The fiduciary duty to beneficiaries is real, and "we invested in something we couldn't model because the price seemed low" is not, and should not be, an acceptable fiduciary justification. But it's worth naming the consequence: the epistemological structure of markets has equity implications. The returns from acting under ignorance flow to those who already have the most capacity to bear it. This is not a conspiracy. It's a structural feature that emerges naturally from the interaction of ambiguity aversion, institutional constraints, and governance design.
 
+{{< readnext slug="agent-based-systems-for-modeling-wealth-distribution" >}}
+
 ---
 
 Zeckhauser closes his paper by returning to David Ricardo at Waterloo. Ricardo wasn't a military analyst. He didn't have inside information about Wellington's strategy. He just understood the structure of the situation: thin competition (most investors had fled), an eager seller (the British government needed capital), asymmetric payoffs (bounded downside, enormous upside), and a kind of not-knowing that was the same for everyone. He bought British government bonds on the eve of the battle and made a fortune.

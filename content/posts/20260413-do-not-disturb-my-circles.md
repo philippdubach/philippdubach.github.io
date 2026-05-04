@@ -101,6 +101,8 @@ So they folded everything. AlphaFold predicted the structures of **200 million p
 
 All of this on a fraction of the compute that powers the chatbot economy. I keep coming back to this: the entire portfolio of DeepMind's scientific work, the Nobel Prize, the drug programs, the materials, the fusion experiments, consumed less compute than a single frontier chatbot burns through in inference costs per quarter.
 
+{{< readnext slug="alphafold-3-free-for-science" >}}
+
 ## The case for the war machines
 
 I want to present the counterargument honestly, because it's not trivial.

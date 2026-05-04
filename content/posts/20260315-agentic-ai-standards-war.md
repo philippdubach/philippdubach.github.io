@@ -31,6 +31,8 @@ On March 26, 2025, Sam Altman posted the following [three sentences](https://x.c
  
  MCP is Anthropic's Model Context Protocol. OpenAI is Anthropic's most direct competitor. Altman was endorsing a rival's standard. That post may be the most significant event in enterprise AI infrastructure this year. When your main competitor adopts your protocol, the war is close to over. I've been watching this play out since [Anthropic launched MCP in November 2024](https://www.anthropic.com/news/model-context-protocol), and I want to work through what's happening: who controls what, what "interoperability" means in practice, and whether any of this follows patterns we've seen before. 
 
+{{< readnext slug="karpathys-software-3.0-playbook" >}}
+
 ## What is MCP 
 
 MCP is a client-server protocol, licensed MIT, built on JSON-RPC 2.0. The mental model is simple: an AI agent (the host) connects through a client to MCP servers that expose tools, data sources, and context. Instead of building a bespoke integration every time Claude or GPT needs to talk to Salesforce, GitHub, or your internal database, you build one MCP server. Any compatible host can then use it.

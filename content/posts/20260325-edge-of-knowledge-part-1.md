@@ -79,6 +79,8 @@ Nobody in January 2026 could enumerate the states of the world for enterprise so
 
 And Box 3 is where the IGV software ETF fell **32%** from its September peak, where hedge funds made **$24 billion** shorting the sector, where the RSI hit **18** (the most oversold reading in the ETF's history), and where earnings growth continued at **17%**. The disconnect between operating results and market prices is exactly what Zeckhauser's framework predicts: when the state space is undefined, investors who require defined state spaces to make decisions leave the market. Their departure compresses prices beyond what any fundamental analysis would justify. The mispricing lives in the gap between what the asset is worth and what institutions are able to hold.
 
+{{< readnext slug="the-market-can-stay-irrational-longer-than-you-can-stay-solvent" >}}
+
 This pattern will recur. AI is not the last technology that will generate new categories of outcomes that nobody anticipated. Every time it happens, the same sequence plays out: Box 3 conditions emerge, institutions flee because their models require Box 1 or Box 2 inputs, prices overshoot, and unconstrained investors who understand the nature of their own ignorance pick up the pieces. Zeckhauser wrote his paper two decades ago. The mechanism he described has, if anything, accelerated.
 
 The taxonomy tells you what kind of problem you're facing. It doesn't tell you what to do about it. That requires understanding why most investors run from Box 3, and whether running is rational. That's [Part 2](/posts/ambiguity-by-design/).

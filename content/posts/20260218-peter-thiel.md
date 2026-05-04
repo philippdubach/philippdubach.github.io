@@ -31,6 +31,8 @@ On December 11, [Jimmy Carr](https://en.wikipedia.org/wiki/Jimmy_Carr) sat on th
 
 Two months later, on February 13, GPT-5.2 [derived and formally proved](https://thequantuminsider.com/2026/02/13/ai-scientist-spots-what-physicists-missed-in-gluon-scattering/) a new result in theoretical physics: single-minus gluon scattering amplitudes, long assumed to vanish, are nonzero in the half-collinear regime. Nima Arkani-Hamed at the Institute for Advanced Study called the formulas "strikingly simple" after fifteen years of personal curiosity about the problem. Nathaniel Craig at UC Santa Barbara called it "journal-level research advancing the frontiers of theoretical physics."
 
+{{< readnext slug="do-not-disturb-my-circles" >}}
+
 ## Thiel's stagnation case
 
 Carr was paraphrasing Thiel, who has been making this argument for fifteen years. The [Founders Fund manifesto](https://www.scribd.com/document/61379051/What-Happened-to-the-Future-Founders-Fund-Manifesto) (2011) put it bluntly: "We wanted flying cars, instead we got 140 characters." Thiel's framework distinguishes progress in bits from progress in atoms: spectacular digital gains since 1970, physical-world stagnation. Tyler Cowen named the broader phenomenon the Great Stagnation. On the [Douthat podcast](https://singjupost.com/a-i-mars-and-immortality-are-we-dreaming-big-enough-peter-thiel-transcript/) Thiel was more measured: "The claim was that the velocity had slowed, it wasn't zero."
@@ -52,6 +54,8 @@ In fusion, [DeepMind trained a reinforcement learning system](https://deepmind.g
 Microsoft and Pacific Northwest National Lab [screened 32.6 million inorganic materials](https://www.datacenterdynamics.com/en/news/microsoft-and-pnnl-use-ai-and-hpc-for-battery-materials-research/) in roughly 80 hours, identified 18 finalists, and produced a [working battery prototype](https://techround.co.uk/news/microsofts-ai-powered-battery-discovery-could-replace-lithium/) using 70% less lithium within nine months. In drug discovery, at least [75 AI-discovered drugs](https://pmc.ncbi.nlm.nih.gov/articles/PMC11800368/) have entered clinical trials, up from 3 in 2016, with Phase I success rates of 80 to 90% compared to the traditional 40%.
 
 And then, GPT-5.2 produced a new result in theoretical physics. A proof that human physicists had not found. The mathematical reasoning timeline tells the story. [AlphaGeometry](https://deepmind.google/discover/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/) solved 25 of 30 Olympiad geometry problems in January 2024. By July 2024, [AlphaProof earned a silver medal](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/) at the International Mathematical Olympiad. By 2025, [Gemini Deep Think scored gold](https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/): 5 of 6 problems, 35 points, end-to-end in natural language. Terence Tao [revised his prediction](https://siliconreckoner.substack.com/p/terence-tao-on-machine-assisted-proofs) for superhuman AI mathematics from 2029 to 2026.
+
+{{< readnext slug="alphafold-3-free-for-science" >}}
 
 ## 75:1 compute gap
 

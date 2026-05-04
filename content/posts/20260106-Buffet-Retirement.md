@@ -31,6 +31,8 @@ Three behaviors from those letters matter. (1) Communication discipline: Between
 
 Read [the letters chronologically](https://www.berkshirehathaway.com/letters/letters.html) and you see Berkshire become a system rather than a portfolio. The early articulation is there in [the 1983 letter](https://berkshirehathaway.com/letters/1983.html): partnership mentality, per-share intrinsic value, and a preference for businesses that generate cash and earn strong returns on tangible equity.
 
+{{< readnext slug="michael-burrys-379-newsletter" >}}
+
 The engine is insurance float. Property-casualty insurers collect premiums upfront and pay claims years or decades later. That gap creates investable capital at zero or negative cost. As Buffett puts it in the 2024 letter: "When writing P/C insurance, we receive payment upfront and much later learn what our product has cost us, sometimes a moment of truth that is delayed as much as 30 or more years." In 2024, Berkshire's insurance operations generated $9 billion in underwriting profit and $13.7 billion in investment income. GEICO, "repolished" over five years by Todd Combs, had what the letter calls a "spectacular" year.
 
 On the question of where Buffett was right: if you ban the word "mistake," risk does not vanish; it goes off balance sheet until it detonates. In the [2024 letter](https://www.berkshirehathaway.com/letters/2024ltr.pdf) he writes: 

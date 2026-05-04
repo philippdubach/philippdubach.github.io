@@ -28,6 +28,8 @@ My introduction to quantitative portfolio optimization happened during my underg
 
 This gap inspired what would eventually be published as: [A Python integration of practical asset allocation based on modern portfolio theory and its advancements](https://digitalcollection.zhaw.ch/handle/11475/24351).
 
+{{< readnext slug="it-just-aint-so" >}}
+
 My approach centered on a simple philosophy:
 >The focus is to keep the tools simple enough for interested practitioners to understand the underlying theory yet provide adequate numerical solutions.
 

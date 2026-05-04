@@ -27,6 +27,8 @@ The frontend is vanilla JavaScript—no React, no build steps, just DOM manipula
 
 Building the model, I started with XGBoost and some hand-engineered features (title length, word count, time of day, feed source). Decent—around 66% ROC-AUC. It learned that I dislike short, clickbaity titles. But it didn't understand context.
 
+{{< readnext slug="modeling-glycemic-response-with-xgboost" >}}
+
 The upgrade was MPNet (`all-mpnet-base-v2` from sentence-transformers) to generate 768-dimensional embeddings for every article's title and description. Combined with engineered features—feed preferences, temporal patterns, text statistics—this gets fed into a Hybrid Random Forest.
 
 ```python

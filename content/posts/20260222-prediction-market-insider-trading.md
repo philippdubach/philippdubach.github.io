@@ -53,6 +53,8 @@ It's not just Compound AI. [Polysights](https://gizmodo.com/tracking-insider-tra
 
 The irony is rich. Blockchain's radical transparency, the thing that was supposed to make financial markets honest, is simultaneously enabling insider detection and insider copytrading. The same data pipeline that lets Compound AI catch cheaters also lets copytraders amplify their profits.
 
+{{< readnext slug="the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book" >}}
+
 ## Regulation
 
 On regulated stock markets, insider trading law is well-established. [SEC Rule 10b-5](https://en.wikipedia.org/wiki/SEC_Rule_10b-5), decades of case law, a well-staffed enforcement division, cooperation agreements with every broker-dealer in America. Everyone in the industry knows it's illegal.
@@ -94,6 +96,8 @@ The paper identifies a specific structural advantage. [Fed funds futures](https:
 The Fed paper is preliminary research, not official policy. But the central bank's own economists are treating prediction markets as credible information infrastructure. The authors [intend to make the underlying data publicly available](https://natlawreview.com/article/federal-reserve-researchers-find-prediction-markets-deliver-forecasting-value), which would further normalize prediction market data as a standard input to policy analysis.
 
 If prediction markets are valuable enough that the Federal Reserve is studying them as forecasting tools for [monetary policy](https://en.wikipedia.org/wiki/Monetary_policy_of_the_United_States), the insider trading problem becomes a question of whether a tool the central bank wants to rely on can maintain the informational integrity that makes it useful. Insiders trading on classified military intelligence don't make the Fed's rate probability distributions more accurate. They make them less trustworthy.
+
+{{< readnext slug="dual-mandate-tensions" >}}
 
 ## The regulatory picture, fractured
 

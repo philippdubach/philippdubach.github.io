@@ -77,6 +77,8 @@ Puts act as the hare. They deliver spectacular returns in sudden crashes like CO
 
 But the strategies are genuinely complementary. [Recent academic work](https://www.tandfonline.com/doi/full/10.1080/10293523.2025.2553254) combining both approaches via a portable alpha framework found statistically significant alpha of 0.25% per month after controlling for traditional equity factors, with the strongest outperformance during periods of market turmoil. Puts for the fast crash, trend for the slow bleed.
 
+{{< readnext slug="three-kinds-of-not-knowing" >}}
+
 ## Where most tail hedges fail, and the benchmark problem
 
 Here is where most investors get burned. A [CAIA Association paper](https://www.caia.org/sites/default/files/2013-aiar-q1-comparison.pdf) compared multiple tail-risk strategies against a deliberately boring benchmark: holding cash. Cash achieved a reduction of 80% of portfolio tail risk and 81% of portfolio standard deviation compared to an S&P 500-only portfolio, with an information ratio of 0.67. Several popular tail-risk strategies, particularly those involving short-dated VIX futures and 1-month variance swaps, actually failed to beat this cash benchmark, with performance drags of 355 and 203 basis points respectively. {{< img src="chart7-strategy-efficiency.png" alt="Scatter quadrant chart plotting annual cost in basis points versus crisis return for six tail-risk strategies. Trend following sits in the ideal quadrant with low cost and high crisis return. VIX futures and variance swaps fall in the expensive quadrant, underperforming even a simple cash allocation" width="90%" >}}
@@ -98,6 +100,8 @@ The optimal tail hedge allocation is a psychological question, not a mathematica
 The framing I find most useful is Goldman's. Do not evaluate the hedge in isolation. Evaluate what it enables. A 3% tail hedge allocation that reduces max drawdown from 50% to 25% frees up enough risk budget to increase equity exposure by 10 to 15 percentage points. The incremental return from that higher equity allocation over a full market cycle will, in most scenarios, more than compensate for the cost of the hedge. The hedge is the enabler, not the alpha.
 
 Whether you implement this with puts, trend-following, or both depends on your time horizon and what kind of drawdown keeps you up at night. Fast crashes favor puts. Slow bleeds favor trend. If you do not know which one is coming (you do not), blend them.
+
+{{< readnext slug="bet-sizing-at-the-frontier" >}}
 
 The caveats are real. All backtests benefit from hindsight. Transaction costs and bid-ask spreads in options markets are material and not fully captured in the CBOE indices used as benchmarks. The behavioral challenge of holding a position that bleeds money most of the time is hard to overstate, especially for allocators who report to investment committees that look at monthly returns.
 

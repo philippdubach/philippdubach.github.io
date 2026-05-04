@@ -69,6 +69,8 @@ For context, [Cappon et al. (2023)](https://www.sciencedirect.com/science/articl
 
 A study on [glycemic prediction in pregnant women](https://www.nature.com/articles/s41522-025-00650-9) found that adding gut microbiome data increased explained variance in glucose peaks from 34% to 42%, underscoring that meal composition alone leaves a lot on the table.
 
+{{< readnext slug="novo-nordisks-post-patent-strategy" >}}
+
 The complete code, Jupyter notebooks, processed datasets, and supplementary results are available in my [GitHub repository](https://github.com/philippdubach/glucose-response-analysis).
 
 <hr>

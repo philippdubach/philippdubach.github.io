@@ -61,11 +61,15 @@ And this loops back: more deployment produces richer traces, which improve the c
 
 And unlike model weights, which any well-funded lab can approximate, your organization's accumulated process knowledge is genuinely unique. No one else has your meeting patterns, your escalation sequences, your informal decision-making topology. That's a moat.
 
+{{< readnext slug="bandits-and-agents-netflix-and-spotify-recommender-stacks-in-2026" >}}
+
 ## Where this breaks, and why the agentic AI failure rate will be high
 
 [Gartner predicts 40% of enterprise applications will feature task-specific AI agents by 2026](https://www.uctoday.com/unified-communications/gartner-predicts-40-of-enterprise-apps-will-feature-ai-agents-by-2026/), up from less than 5% in 2025. [McKinsey's latest survey shows 23% of organizations are already scaling agentic AI](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai), with another 39% experimenting. But Gartner also warns that over 40% of agentic AI projects will be canceled by end of 2027 due to escalating costs and unclear business value.
 
 The gap between ambition and execution is the context problem in disguise. Without process knowledge, agents produce plausible outputs that don't match how the organization actually works. They retrieve the right policy document but apply it without understanding the exceptions your team has developed over years. They draft the right kind of email but miss the relationship dynamics that would change the tone. The failure mode isn't that the model is bad. It's that the context is shallow. {{< img src="lockin-vs-rebuild-scatter.png" alt="Enterprise AI agent stack scatter plot showing six layers plotted by lock-in risk versus rebuild difficulty. Context sits alone in the top-right danger zone with highest lock-in and hardest rebuild. Models, Interfaces, and Agents cluster in the commodity zone at bottom-left. Orchestration and Security occupy the middle." width="80%" >}} This chart tells the strategic story in one image. Models, interfaces, and agents cluster in the commodity zone: low lock-in, easy to replace. Context sits alone in the danger zone: highest lock-in risk and hardest to rebuild. That's exactly where your due diligence should concentrate.
+
+{{< readnext slug="enterprise-ai-strategy-is-backwards" >}}
 
 ## What to actually do about your agentic AI architecture
 

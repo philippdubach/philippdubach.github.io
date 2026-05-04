@@ -27,6 +27,8 @@ faq = [
 
 For every dollar of revenue, they're allegedly spending roughly $5 to deliver the product. These OpenAI losses initially sound like a joke about "making it up on volume," but they point to a more fundamental problem facing OpenAI and its competitors. AI companies are locked into continuously releasing more powerful (and expensive) models. If they stop, [open-source alternatives will catch up](https://arxiv.org/abs/2311.16989) and offer equivalent capabilities at substantially lower costs. This creates an uncomfortable dynamic. If your current model requires spending more than you earn just to fund the next generation, the path to profitability becomes unclear—perhaps impossible.
 
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+
 Anthropic CEO Dario Amodei (everybody's favorite AI CEO) recently offered a different perspective in a [conversation with Stripe co-founder John Collison](https://youtu.be/GcqQ1ebBqkc?si=sEDGAVBuZsjtLpZS&t=1016). He argues that treating each model as an independent business unit reveals a different picture than conventional accounting suggests.
 
 >Let's say in 2023, you train a model that costs $100 million, and then you deploy it in 2024 and it makes $200 million of revenue.

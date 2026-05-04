@@ -40,6 +40,8 @@ A card transaction through Visa or Mastercard can cost a European merchant up to
 
 Most analysis I read over the past days focuses on whether Wero can beat Visa and Mastercard on user experience or brand recognition. But Wero does not need to win on UX. It needs to win on cost, and the cost advantage is structural because account-to-account payments simply skip an entire layer of intermediation. The question is whether that cost advantage is large enough to overcome the switching costs, and whether the political will exists to force adoption where market forces alone might not.
 
+{{< readnext slug="the-rise-of-middle-power-realism" >}}
+
 ## II. What Wero actually is and why the impact of the EuroPA deal 
 
 Wero is a digital wallet built on top of SEPA Instant Credit Transfer infrastructure. Users access it through their existing banking app. Payments move directly between bank accounts in under 10 seconds using a phone number, email, or QR code. No card, no card network, no intermediary skimming basis points off each transaction.
@@ -105,6 +107,8 @@ Running in parallel is the ECB's digital euro project, a central bank digital cu
 EPI positions Wero as complementary, handling private money while the digital euro handles public money. But the overlap in ambition is obvious, and it creates a coordination problem. Banks worry about deposit outflows and implementation costs estimated at [€4 to 5.8 billion](https://www.capco.com/intelligence/capco-intelligence/the-digital-euro-in-2025). There is no guaranteed parliamentary majority for the legislation. And Trump's anti-CBDC stance, including signing the GENIUS Act for stablecoins while banning federal CBDCs, creates a strange dynamic where Europe might pursue a digital euro partly as a response to American policy that explicitly rejects the concept.
 
 My read is that the digital euro and Wero are less complementary than they are competing bets on the same thesis: that Europe needs sovereign payment infrastructure. The digital euro is the maximalist version. Wero is the pragmatic one. If I had to bet, I would bet on the pragmatic version arriving first and capturing enough transaction volume to make the digital euro's incremental value harder to justify politically. But both could fail. And both failing would leave Europe exactly where it started, which is the outcome Visa and Mastercard are quietly optimizing for.
+
+{{< readnext slug="britains-strategic-limbo" >}}
 
 ## What's next
 
