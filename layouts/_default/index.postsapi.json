@@ -33,7 +33,11 @@
       {{- if $page.Params.images }}
       "image": {{ index $page.Params.images 0 | jsonify }},
       {{- end }}
-      "summary": {{ $page.Summary | plainify | truncate 500 | jsonify }}
+      {{- /* Prefer the free frontmatter description over .Summary, which triggers
+             a full markdown render per post when no <!--more--> divider exists.
+             Posts with a description get a free summary; the small minority
+             without fall through to the rendered summary path. */ -}}
+      "summary": {{ with $page.Description }}{{ . | jsonify }}{{ else }}{{ $page.Summary | plainify | truncate 500 | jsonify }}{{ end }}
     }
     {{- end }}
   ]

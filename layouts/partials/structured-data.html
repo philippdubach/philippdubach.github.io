@@ -66,8 +66,13 @@
 {{- $articles := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
 {{- $articles = where $articles ".Params.type" "!=" "Project" -}}
 {{- $articles = $articles.ByDate.Reverse -}}
+{{- /* Cap at 20 — Google rich-result eligibility for ItemList sits in the
+       10-20 band; emitting all 87+ articles is page-weight bloat without
+       SEO upside. The ItemList schema continues to express the full
+       collection via numberOfItems below. */ -}}
+{{- $articleItemsSrc := first 20 $articles -}}
 {{- $articleItems := slice -}}
-{{- range $i, $page := $articles -}}
+{{- range $i, $page := $articleItemsSrc -}}
   {{- $bp := dict
     "@type" "BlogPosting"
     "headline" $page.Title
@@ -281,8 +286,11 @@
 {{- $collectionId := printf "%sprojects/" .Site.BaseURL -}}
 {{- $projects := where (where .Site.RegularPages "Params.type" "Project") ".Params.unlisted" "ne" true -}}
 {{- $projects = $projects.ByDate.Reverse -}}
+{{- /* Cap at 20 — same Google rich-result reasoning as the homepage
+       articles ItemList. numberOfItems below still reports the full count. */ -}}
+{{- $projectItemsSrc := first 20 $projects -}}
 {{- $items := slice -}}
-{{- range $i, $page := $projects -}}
+{{- range $i, $page := $projectItemsSrc -}}
   {{- $art := dict
     "@type" "TechArticle"
     "headline" $page.Title
@@ -502,15 +510,9 @@
 {{ if and (eq .Section "faq") .IsPage }}
 {{- $category := .Params.category -}}
 {{- $categoryLower := $category | lower -}}
-{{- /* Aggregate posts in matching category and build the same FAQ list
-       the layout renders — capped at 20, newest first. */ -}}
-{{- $postsWithFAQ := slice -}}
-{{- range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
-    {{- if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) -}}
-        {{- $postsWithFAQ = $postsWithFAQ | append . -}}
-    {{- end -}}
-{{- end -}}
-{{- $postsWithFAQ = sort $postsWithFAQ ".Date" "desc" -}}
+{{- /* Cached partial returns the same sorted, FAQ-bearing post list
+       used by layouts/faq/single.html — single scan per category. */ -}}
+{{- $postsWithFAQ := partialCached "faq-posts-by-category.html" $categoryLower $categoryLower -}}
 {{- $allFAQs := slice -}}
 {{- range $postsWithFAQ -}}
     {{- $post := . -}}

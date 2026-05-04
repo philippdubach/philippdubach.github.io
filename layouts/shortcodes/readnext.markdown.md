@@ -8,8 +8,8 @@
 */ -}}
 {{- $slug := .Get "slug" -}}
 {{- $target := printf "/posts/%s/" $slug -}}
-{{- range where .Site.RegularPages "Section" "posts" -}}
-{{- if eq .RelPermalink $target -}}
+{{- $matched := where (where .Site.RegularPages "Section" "posts") "RelPermalink" $target -}}
+{{- if not $matched -}}{{- warnf "readnext: slug %q not found (called from %s). Verify with `hugo list all`." $slug .Page.RelPermalink -}}{{- end -}}
+{{- range $matched -}}
 *Related: [{{ .Title }}]({{ .Permalink }})*
 {{ end -}}
-{{- end -}}
