@@ -71,6 +71,8 @@ The GPT-3.5 to GPT-4 chess jump is the proof point. Capability tracks what the l
 
 Two things follow. If you are a founder and you can build a verifiable environment in your domain, even one the labs aren't focused on, you can fine-tune a model that flies. That is real leverage. If you are a worker, the more useful question than "is my job safe?" is "is my job verifiable?" Karpathy thinks everything is automatable eventually. Verifiability mainly sets the order.
 
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+
 ## 4. Software 3.0: prompting is the new programming
 
 The frame that makes the rest of this make sense. Karpathy's three eras:
@@ -123,6 +125,8 @@ Then he saw the Software 3.0 version. Hand the photo to Gemini, say "use NanoBan
 
 A lot of what we are building today is scaffolding around a capability the model could perform end-to-end. Before writing the next CRUD app, ask whether the model is the app.
 
+{{< readnext slug="dont-go-monolithic-the-agent-stack-is-stratifying" >}}
+
 ## 8. New possibilities matter more than the speed-ups
 
 The flip side of "some apps shouldn't exist" is that some products could not have existed before. Karpathy's knowledge-base project is the example. Take a pile of documents, ask the LLM to recompile them into a wiki, surface the connections you would never have stitched together by hand.
@@ -148,6 +152,8 @@ For infra builders, Karpathy's pet peeve is also the opportunity:
 Rebuild the developer stack so the primary consumer of docs, configs, APIs, and deployment flows is an agent rather than a human. Data structures should be legible to LLMs by default, and sensors and actuators over the world should sit behind agent-callable interfaces.
 
 His test: can you say "build and deploy MenuGen" and never touch a settings panel? When the answer is yes, the infrastructure has caught up.
+
+{{< readnext slug="mcp-vs-a2a-in-2026-how-the-ai-protocol-war-ends" >}}
 
 ## 11. Hire for big projects, not puzzles
 

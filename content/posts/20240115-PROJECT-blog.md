@@ -55,6 +55,8 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 
 *Worker Refactor* — The 60-line security-headers Worker grew into four focused modules (`accept`, `links`, `cache`, `index`) with 32 unit tests. The `cache` module is the interesting bit: Cloudflare's edge cache doesn't honor `Vary: Accept` by default, so the Worker uses the Cache API with synthetic keys (`?_v=html|md`) to keep HTML and Markdown variants isolated under the same URL. Origin fetches HTML or rewrites to `/index.md` based on the client's Accept header.
 
+{{< readnext slug="dont-go-monolithic-the-agent-stack-is-stratifying" >}}
+
 > **March 2026**
 
 *Hugo Upgrade* — Upgraded from Hugo v0.128.0 to v0.157.0. Migrated deprecated `.Site.AllPages` to `.Site.Pages` in the sitemap template and `.Site.Data` to `site.Data` across navigation, structured data, and research templates. Removed a dead `readFile` security config key from `hugo.toml`. No breaking changes, zero deprecation warnings.
@@ -94,6 +96,8 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 *Disclaimer Shortcode* — Six types: finance, medical, general, AI, research, gambling. Syntax: `{{</* disclaimer type="finance" */>}}`.
 
 *IndexNow Integration* — Automated submissions via GitHub Actions for faster search engine discovery. Only pings recently changed URLs based on `lastmod`.
+
+{{< readnext slug="the-bicycle-needs-riding-to-be-understood" >}}
 
 > **December 2025**
 

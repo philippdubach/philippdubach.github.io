@@ -38,6 +38,8 @@ I like this stock over the long term. The GLP-1 market is real, the addressable 
 
 The problems are compounding. US pricing is resetting structurally lower through MFN and IRA. The pipeline just lost its best competitive argument. International patents are falling away faster than expected. Eli Lilly is pulling ahead on every axis. And Novo [guided for its **first revenue decline in modern history**](https://www.cnbc.com/2026/02/03/novo-nordisk-2025-earnings-wegovy-ozempic.html) in 2026: adjusted sales down **5-13%**. A former senior district sales manager at Novo described that guidance as "very tepid," and added that the severity of the market reaction suggests investors may be pricing in further downside beyond what management disclosed.
 
+{{< readnext slug="everything-is-a-dcf-model" >}}
+
 ## Stock collapse
 
 The speed of the decline matters. In June 2024, NVO hit $142.44. Then, in sequence: a July 2025 guidance cut after Q2 results showed US pricing headwinds worse than expected (shares dropped roughly 22% in a session). A September 2025 announcement of [9,000 job cuts](https://www.cnbc.com/2025/09/10/wegovy-maker-novo-nordisk-to-cut-around-9000-jobs.html) and DKK 8 billion in restructuring charges under new CEO Maziar Mike Doustdar, read not as efficiency but as admission of trouble. February 4, 2026 full-year results [guiding adjusted sales growth at -5% to -13%](https://www.fiercepharma.com/pharma/novo-shares-plummet-sales-profit-warning-26) (the stock [cratered 18% in Copenhagen](https://www.euronews.com/business/2026/02/04/novo-nordisk-stock-sinks-by-17-after-bleak-2026-forecast)). And today, REDEFINE 4.
@@ -86,6 +88,8 @@ Novo's management pointed to the blinded REDEFINE 11 trial (flexible dosing) and
 
 CagriSema will still probably get FDA approval in late 2026, based on the REDEFINE 1 and 2 placebo data. But launching a drug with clinical proof of inferiority to the market leader is a very different commercial proposition than launching one with a credible superiority story. Pricing, formulary positioning, and physician adoption all get harder. A former director at Eli Lilly told AlphaSense that Lilly's retatrutide appears superior to both Zepbound and CagriSema based on available data, and that CagriSema lacks a compelling differentiation story, particularly on muscle preservation. The obesity market, this person believes, will double or triple over the next decade, but price reductions will be the primary driver of that expansion.
 
+{{< readnext slug="glp-1-receptor-agonists-in-asud-treatment" >}}
+
 ## Eli Lilly is pulling ahead
 
 This is the part I think the Novo bull case underweights. Lilly is pulling ahead on efficacy, pipeline breadth, oral convenience, manufacturing capacity, and patent duration, all at once.
@@ -101,6 +105,8 @@ Retatrutide, the triple agonist (GLP-1/GIP/glucagon), showed [**28.7%** weight l
 Manufacturing: Lilly has committed [**$50 billion+** in investment](https://www.cnbc.com/2025/09/23/eli-lilly-plans-6point5-billion-texas-manufacturing-plant-for-obesity-pill.html) since 2020, including a [$6.5 billion Texas oral pill facility](https://investor.lilly.com/news-releases/news-release-details/lilly-plans-build-new-65-billion-facility-manufacture-active). Tirzepatide patents extend through the back half of the 2030s, giving Lilly 5-7 more years of US exclusivity than semaglutide.
 
 [Truist estimates](https://www.biospace.com/business/lillys-weight-loss-trio-could-top-100b-in-revenue-thanks-to-oral-option) Lilly's obesity/diabetes trio could reach $101 billion in combined peak sales worldwide, before retatrutide even enters the market.
+
+{{< readnext slug="why-lillys-weight-loss-pill-isnt-a-peptide" >}}
 
 ## The Wegovy pill: one bright spot
 

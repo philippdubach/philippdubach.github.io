@@ -63,6 +63,8 @@ The inflated figure matters because it supports a specific argument: that AI has
 
 The quality picture at 27% is not reassuring. [Veracode tested 100+ LLMs](https://www.businesswire.com/news/home/20250730694951/en/AI-Generated-Code-Poses-Major-Security-Risks-in-Nearly-Half-of-All-Development-Tasks-Veracode-Research-Reveals) across 80 coding tasks and found 45% of AI-generated code introduced OWASP Top 10 vulnerabilities. [CodeRabbit's analysis](https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation) found AI-generated code contains 2.74x more security vulnerabilities than human-written code. [Black Duck's 2026 OSSRA report](https://www.blackduck.com/blog/open-source-trends-ossra-report.html) found vulnerabilities per codebase up 107% year over year, the mean codebase going from 280 to 581 known vulnerabilities. [Martin Fowler's framing](https://thenewstack.io/martin-fowler-on-preparing-for-ais-nondeterministic-computing/) is still the most honest I've seen: "Treat every slice as a PR from a rather dodgy collaborator who's very productive in the lines-of-code sense, but you can't trust a thing they're doing."
 
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+
 ## Perception is reality
 
 The 19% slowdown number has been contested, fairly: the CI is wide (+2% to +39%), the study covered experienced developers on complex codebases, and METR has acknowledged design limitations. In February 2026, [METR published an update](https://metr.org/blog/2026-02-24-uplift-update/) changing their experiment design after discovering that 30-50% of invited developers declined to participate without AI access, a selection effect that biased the original sample toward developers who benefit least from AI. Their newer cohort (800+ tasks, 57 developers) showed a -4% slowdown with a CI of -15% to +9%, substantially less negative. METR's conclusion: "AI likely provides productivity benefits in early 2026." The perception gap and the bottleneck problem remain real, but the exact magnitude of the July 2025 finding should be read with that caveat.
@@ -72,6 +74,8 @@ METR's companion [Horizon benchmark](https://arxiv.org/abs/2503.14499) (Kwa et a
 [Stack Overflow's 2025 Developer Survey](https://survey.stackoverflow.co/2025/ai/) found favorable views of AI tools dropped from 70% to 60%, with 46% not trusting AI output and 66% citing "almost right but not quite" as their top frustration. [Software.com's monitoring](https://www.software.com/reports/code-time-report) of 250,000 developers found the median developer codes for 52 minutes per day, about 11% of a 40-hour week. The tools are fighting over 11% of the workday.
 
 A [field experiment across 4,867 developers](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945566) from MIT, Princeton, Wharton, and Microsoft found that above-median-tenure developers showed no significant productivity increase from AI tools. The people capable of using AI most effectively are also the people most likely to catch when it's wrong and fix it. It's why the tools work better for junior developers on simple tasks than for senior developers on the things that actually matter most.
+
+{{< readnext slug="dont-go-monolithic-the-agent-stack-is-stratifying" >}}
 
 ## GitHub's 2022 Copilot study
 
@@ -86,6 +90,8 @@ What the study actually shows is that when you pick a task specifically suited t
 Daron Acemoglu, who shared the 2024 Nobel Prize in Economics partly for his work on technology and labor markets, [projected](https://www.nber.org/papers/w32487) a 0.5% total factor productivity increase from AI over the next decade. His reasoning: the economic value of AI concentrates in a narrow set of tasks that don't represent enough of total economic activity to move aggregate numbers. The Bain arithmetic, at macroeconomic scale.
 
 The standard optimist response is the IT comparison: computers entered enterprises in the 1970s and 1980s without producing measurable productivity improvements for a decade, then the gains came in the mid-1990s. It's a reasonable historical parallel. I'm genuinely uncertain whether it applies. Computers replaced manual processes wholesale. AI coding tools are a faster ingredient inside a process whose other ingredients haven't changed: the requirements still need to be understood, the review still needs to happen, the tests still need to pass. The productivity lag might resolve. Or the structure of the workflow might mean it doesn't, even eventually. I don't know, and the honest answer is that nobody does yet.
+
+{{< readnext slug="does-ai-mean-the-demand-on-labor-goes-up" >}}
 
 ## Where the value actually lands
 

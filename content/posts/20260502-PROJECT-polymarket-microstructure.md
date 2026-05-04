@@ -58,6 +58,8 @@ Joining to on-chain trades took most of the engineering time. Polymarket's CTF E
 
 The 600-market panel selection rule (volume metric, random-stratum eligibility threshold, random seed, category scheme) was committed in a [pre-registration document](https://github.com/philippdubach/polymarket-microstructure) before computing the panel. A deterministic build script emits the panel parquet, whose SHA-256 is recorded back into the pre-registration document before any analysis runs. This goes beyond the empirical-microstructure norm; the cost is one document and one hash, the benefit is that a reader can verify no market was added or removed after the analysis ran.
 
+{{< readnext slug="the-absolute-insider-mess-of-prediction-markets" >}}
+
 ## Eight stylized facts
 
 ### SF1 — Longshot spread premium
@@ -87,6 +89,8 @@ The bivariate slope is 0.818 (HC3 SE 0.113, $t = 7.2$, $R^2 = 0.13$). Category f
 The category + log-volume specification is the conservative reading. Volume mediates the depth-time relationship because markets active longer accumulate more makers, and more makers means more depth, so a regression that omits volume attributes the makers-and-time channel to time alone. The 0.305 coefficient is the residual depth decay after that mediation is netted out; the 0.550 within-category slope reported in the abstract is the figure before mediation is netted out, and is the appropriate one to compare to a literature that does not condition on volume.{{< img src="sf8_depth_decay.png" alt="SF8 cross-sectional fit of log mean depth on log seconds-to-close at the panel midpoint; slope 0.818 bivariate, 0.550 with category fixed effects, 0.305 adding log volume" width="80%" >}}
 
 (SF3 covers Polygon block-clock alignment, SF5 the category-conditional spread, and SF6 the archive-ingestion latency. All three are in the paper. SF6 in particular is a property of the collector pipeline rather than of Polymarket; the median per-market p50 ingestion delay is 41.5 ms, which is a sanity check on the collector, not a microstructure result.)
+
+{{< readnext slug="gambling-vs.-investing" >}}
 
 ## The limits of orderbook-only inference
 
@@ -123,6 +127,8 @@ I had a long-ish exchange recently with someone scoping research on the same dat
 *Latency arb (intra-venue).* Doesn't really work as a question on Polymarket. The two-clock gap in the WebSocket feed (SF6) is archive-ingestion delay, not trader latency, and without an exchange-side clock you can't separate the two. Cross-venue is the workable framing.
 
 *Cross-venue arb.* Open and product-relevant. Kalshi, PredictIt, sports-book mirrors. The data engineering is probably the harder part.
+
+{{< readnext slug="against-all-odds-the-mathematics-of-provably-fair-casino-games" >}}
 
 ## Replication
 
