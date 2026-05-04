@@ -11,14 +11,10 @@
 {{ $category := .Params.category }}
 {{ $categoryLower := $category | lower }}
 
-{{- /* Aggregate posts in this category that have FAQ frontmatter. */ -}}
-{{ $postsWithFAQ := slice }}
-{{ range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
-    {{ if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) }}
-        {{ $postsWithFAQ = $postsWithFAQ | append . }}
-    {{ end }}
-{{ end }}
-{{ $postsWithFAQ = sort $postsWithFAQ ".Date" "desc" }}
+{{- /* Aggregate posts in this category that have FAQ frontmatter.
+       Cached partial — single scan per category across the build,
+       shared with the FAQPage schema emitter in structured-data.html. */ -}}
+{{ $postsWithFAQ := partialCached "faq-posts-by-category.html" $categoryLower $categoryLower }}
 
 {{- /* Flatten Q&A entries with source attribution, newest first. */ -}}
 {{ $allFAQs := slice }}
