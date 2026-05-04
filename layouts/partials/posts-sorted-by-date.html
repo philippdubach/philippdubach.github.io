@@ -1,0 +1,7 @@
+{{- /*
+  Returns posts (excluding unlisted) sorted by date ascending. Site-wide
+  invariant — same result on every page — so cache once via partialCached
+  with no variant. Used by post-number.html for chronological №NNN labels.
+*/ -}}
+{{- $all := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
+{{- return sort $all "Date" "asc" -}}
