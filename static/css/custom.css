@@ -1645,23 +1645,33 @@ blockquote p {
     }
 
     /* Mobile bottom dock — floating pill, labels-only.
-       Centered intrinsic-width, lifted off the bottom edge, hairline border + soft shadow.
-       Hide/show is driven by JS in baseof.html (data-hidden attribute). */
+       Centered intrinsic-width. Lift matches iOS 26 system tab bar (~16px above
+       safe area; iOS 26 uses 21pt, M3 floating uses 16dp, 16px splits these).
+       Background uses backdrop-filter for content-aware translucency; no border —
+       depth comes from the shadow. Hide/show is JS in baseof.html. */
     .mobile-dock {
         display: inline-flex;
         position: fixed;
         left: 50%;
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 28px);
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
         transform: translateX(-50%) translateY(0);
         max-width: calc(100vw - 32px);
         z-index: 1000;
         padding: 0 14px;
-        background: rgba(255, 255, 255, 0.98);
-        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: none;
         border-radius: 22px;
-        box-shadow: 0 2px 14px rgba(26, 26, 26, 0.06);
+        box-shadow: 0 4px 20px rgba(26, 26, 26, 0.08);
         transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1);
         will-change: transform;
+    }
+
+    @supports not ((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))) {
+        .mobile-dock {
+            background: rgba(255, 255, 255, 0.96);
+        }
     }
 
     .mobile-dock[data-hidden="true"] {
@@ -1677,7 +1687,10 @@ blockquote p {
         height: 44px;
         padding: 0 9px;
         text-decoration: none;
-        color: var(--text-meta);
+        /* var(--text-secondary) #595959 hits 7.0:1 on white (AAA) and lands in
+           APCA's Lc 75 zone for 12px UI text; var(--text-meta) #767676 was
+           4.54:1 / Lc ~60 — passing AA but visually washed out. */
+        color: var(--text-secondary);
         font-family: var(--ui-font);
         font-size: 12px;
         font-weight: 500;
