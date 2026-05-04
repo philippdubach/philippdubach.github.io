@@ -1645,15 +1645,17 @@ blockquote p {
     }
 
     /* Mobile bottom dock — floating pill, labels-only.
-       Centered intrinsic-width. Lift matches iOS 26 system tab bar (~16px above
-       safe area; iOS 26 uses 21pt, M3 floating uses 16dp, 16px splits these).
-       Background uses backdrop-filter for content-aware translucency; no border —
-       depth comes from the shadow. Hide/show is JS in baseof.html. */
+       Centered intrinsic-width. Sits 8px above the safe-area inset; close
+       enough to the bottom edge to feel native, with just enough breathing
+       room to clear the iOS home indicator visually. Background uses
+       backdrop-filter for content-aware translucency; no border — depth
+       comes from the shadow. Hide/show is scroll-aware JS in baseof.html
+       (only enabled on single article/project pages). */
     .mobile-dock {
         display: inline-flex;
         position: fixed;
         left: 50%;
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
         transform: translateX(-50%) translateY(0);
         max-width: calc(100vw - 32px);
         z-index: 1000;
@@ -1674,8 +1676,11 @@ blockquote p {
         }
     }
 
+    /* Hidden state: slide to the bottom, fully off-screen. The 200% + 80px
+       offset is intentionally generous so the dock clears the viewport even
+       when the on-screen address bar is collapsed. */
     .mobile-dock[data-hidden="true"] {
-        transform: translateX(-50%) translateY(calc(100% + env(safe-area-inset-bottom, 0px) + 32px));
+        transform: translateX(-50%) translateY(calc(200% + env(safe-area-inset-bottom, 0px) + 80px));
         transition-duration: 180ms;
     }
 

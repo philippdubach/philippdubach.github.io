@@ -20,13 +20,20 @@
     {{/* Mobile bottom dock - v2.6 IA primary nav for small screens */}}
     {{ partial "mobile-dock.html" . }}
 
-    {{/* Scroll-aware mobile dock.
+    {{/* Scroll-aware mobile dock — only on individual article/project pages.
+         List pages, taxonomy pages, and standalone pages (about/research/
+         subscribe) keep the dock pinned at all times because the user is
+         not in a long-form reading flow there. The shortcode below renders
+         the script ONLY when this is a single post (.Kind=="page" AND
+         .Section=="posts"); both essays and project posts live there.
+
          HIDE: ≥150ms continuous downward AND mean velocity ≥350 px/sec over that window.
                (Slow reader scrolls don't trigger; intentional swipes do.)
          SHOW: ≥15px cumulative upward in a 250ms rolling window. No velocity gate.
          Always-show: first 100px from top; within 240px of document end.
          Anti-flicker: 150ms lockout after any state change.
          Anchor-click suppression: 400ms. rAF-throttled, passive listener. */}}
+    {{ if and (eq .Kind "page") (eq .Section "posts") }}
     <script>(function(){
       var d=document.querySelector('[data-mobile-dock]');if(!d)return;
       // Rolling sample buffer of {t, y}. Velocity is computed over the last 200ms
@@ -85,6 +92,7 @@
         if(a)anchorSuppress=Date.now()+400;
       },true);
     })();</script>
+    {{ end }}
 
     <script>(function(){
       // <dialog> lightbox v3.0 — opens on .img-trigger click, closes on
