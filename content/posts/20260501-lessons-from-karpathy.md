@@ -34,7 +34,7 @@ Andrej Karpathy is one of the few people who has both built modern AI and explai
 So when Karpathy says he has "never felt more behind as a programmer," it is worth slowing down. That isn't false modesty from a guy with his résumé. Something shifted under the field and most people haven't recalibrated. The Sequoia interview below is his attempt to describe what shifted. The lessons here are pulled from it, ordered roughly by how much they should change what you do tomorrow.
 
 
-## 1. Inflection point December 2024
+## 1. Inflection point December 2025
 
 Until late last year, agentic coding tools were "kind of helpful." Good in stretches, often wrong in ways you had to babysit. Over the December break, the latest models crossed a line:
 
