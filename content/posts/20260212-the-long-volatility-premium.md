@@ -49,7 +49,7 @@ If markets are efficient, a beta-adjusted long volatility position should not de
 
 The first is the rebalancing premium. When you hold negatively correlated assets and rebalance systematically, you extract what the literature calls a "rebalancing bonus" where the geometric return exceeds the weighted average of individual arithmetic returns. [Recent work in the Investment Analysts Journal](https://www.tandfonline.com/doi/full/10.1080/10293523.2025.2553254) formalizes this for tail hedging specifically. A long volatility position that delivers explosive gains during crashes and modest losses during calm markets, rebalanced against equities, creates a structural tailwind. You systematically sell the hedge at high prices after crashes and buy it back cheaply during calm, monetizing mean reversion.
 
-{{< readnext slug="the-variance-tax" >}}
+{{< readnext slug="variance-tax" >}}
 
 The second is that stock-volatility correlation intensifies dramatically during crashes. When equities fall sharply, implied volatility does not just rise proportionally, it spikes exponentially. The hedge's payoff is largest precisely when the portfolio most needs it. This convexity, once beta-adjusted, can more than compensate for the ongoing cost of the position.
 

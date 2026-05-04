@@ -32,7 +32,7 @@ A recent article by [Anton Vorobets](https://antonvorobets.substack.com) that I 
 
 The article highlights significant practical consequences for portfolio management and risk assessment. Portfolio optimization based on normal distribution assumptions ignores fat left tails—exactly the kind of extreme downside events that can wipe out portfolios. This misspecification can lead to inadequate risk management and suboptimal asset allocation decisions. Vorobets suggests [alternative approaches, including Monte Carlo simulations combined with Conditional Value-at-Risk (CVaR) optimization](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4034316), which better accommodate the complex distributional properties observed in financial data. While computationally more demanding, these methods offer improved alignment with empirical reality.
 
-{{< readnext slug="the-variance-tax" >}}
+{{< readnext slug="variance-tax" >}}
 
 Reading this piece gave me a few ideas for extensions I might want to explore in an upcoming personal project:
 (1) While Vorobets focuses on US equity indices, similar analysis across fixed income, commodities, currencies, and alternative assets would provide a more comprehensive view of distributional properties across financial markets. Each asset class exhibits distinct market microstructure characteristics that may influence distributional behavior.

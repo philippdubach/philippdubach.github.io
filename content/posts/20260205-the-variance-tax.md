@@ -44,7 +44,7 @@ Take the derivative, set to zero. The leverage that maximizes compound wealth:
 
 $$L^{\ast} = (μ − r) / σ²$$
 
-{{< readnext slug="the-long-volatility-premium" >}}
+{{< readnext slug="long-volatility-premium" >}}
 
 For the S&P 500 with roughly 7% excess return and 16% vol, L* comes out to about 2.7x.
 {{< img src="leverage_curve.png" alt="The leverage curve for S&P 500 parameters showing compound return peaking at Kelly optimal leverage L*=2.7x, with labeled points at 1x, 2x, and 3x leverage. Returns decline beyond the Kelly optimum and eventually turn negative" width="80%" >}} This is the [Kelly criterion](https://en.wikipedia.org/wiki/Kelly_criterion) (_which you might know from utility theory or gambling heuristics but in fact, as we see here, it falls straight out of the variance tax formula._) Beyond Kelly, every dollar of additional leverage costs more in variance drain than it earns in expected return. The curve bends over and eventually goes negative. In practice, most practitioners use "half-Kelly" — sizing positions at L*/2 — because the formula assumes you know μ and σ precisely, and you don't. Estimation error in either parameter can push you past the peak and onto the losing side of the curve. Half-Kelly sacrifices roughly 25% of the theoretical growth rate but dramatically reduces drawdown risk.

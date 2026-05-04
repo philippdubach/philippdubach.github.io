@@ -45,7 +45,7 @@ The chart below plots each bank by how bullish they are on AI's economic impact 
 
 That chart is an editorial interpretation, not a precise measurement. But the shape is right. Bank of America is the only institution that consistently anchors its claims to actual GDP data rather than projections. Goldman Sachs, at the other extreme, produces a report that reads as a pitch to every infrastructure CFO and sovereign wealth fund in the world. Both can be making valid arguments. They're just not making the same kind.
 
-{{< readnext slug="ai-productivity-gap" >}}
+{{< readnext slug="93-of-developers-use-ai-coding-tools.-productivity-hasnt-moved." >}}
 
 ## What’s happening vs. what might happen
 

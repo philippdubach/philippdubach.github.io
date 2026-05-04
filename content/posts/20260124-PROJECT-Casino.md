@@ -49,7 +49,7 @@ This means the probability of reaching at least multiplier m before crashing equ
 
 $$E[\text{Profit}] = P(M \geq m) \times m - 1 = \frac{r}{m} \times m - 1 = r - 1 = -0.03$$
 
-{{< readnext slug="the-variance-tax" >}}
+{{< readnext slug="variance-tax" >}}
 
 This mathematical property makes crash games theoretically "strategy-proof" in expectation. No cash-out timing strategy should yield better long-term results than another.{{< img src="fig_survival_annotated.png" alt="Survival probability curve on log-log scale showing probability of reaching target multiplier: 2x succeeds 48.5% of the time, 5x at 19.6%, 10x at 9.7%, 50x at 2.0%, and 100x at just 1.1%" width="80%" >}}The empirical data matches theory almost perfectly. A 2x target succeeds about 48.5% of the time. Aiming for 10x? That works only 9.7% of rounds. The close fit between my observations and the theoretical line confirms the stated 97% RTP.
 
