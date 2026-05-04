@@ -105,8 +105,30 @@ async function fetchTopPosts(env) {
   // Sort by count descending
   blogPosts.sort((a, b) => (b.count || 0) - (a.count || 0));
 
-  // Return top 10
-  return blogPosts.slice(0, 10);
+  // Sanitize title at the Worker boundary. Titles come from GoatCounter's
+  // hit-tracking pixel and are technically attacker-controllable (page
+  // could spoof its own title). Strip all HTML tags and angle brackets so
+  // a downstream consumer that uses innerHTML can't be tricked into
+  // executing script regardless of how the rendering side is written.
+  return blogPosts.slice(0, 10).map(hit => ({
+    ...hit,
+    title: sanitizeTitle(hit.title),
+  }));
+}
+
+/**
+ * Strip HTML tags and remove angle brackets from a title.
+ * Defensive even if the consumer uses textContent — keeps the API
+ * contract of "no markup in the title field".
+ */
+function sanitizeTitle(title) {
+  if (typeof title !== 'string') return '';
+  return title
+    .replace(/<[^>]*>/g, '')      // strip tags
+    .replace(/[<>]/g, '')          // strip stray brackets
+    .replace(/\s+/g, ' ')          // collapse whitespace
+    .trim()
+    .substring(0, 200);            // bound length
 }
 
 /**
