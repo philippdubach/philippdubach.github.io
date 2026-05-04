@@ -117,12 +117,12 @@
             <a href="{{ $page.Permalink }}" class="home-row-link">
                 <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}</time>
                 {{ if $cardSrc }}
-                {{- /* Aspect-aware sizing: featured slot is 1200:630 landscape
-                       (CSS aspect-ratio); archive rows are 288:360 portrait.
-                       Source aspect MUST match render aspect or the browser
-                       stretches the bitmap and faces get squashed/clipped. */ -}}
-                {{- $w := cond $isFeatured 1200 288 -}}
-                {{- $h := cond $isFeatured 630 360 -}}
+                {{- /* Both card slots render at 1200:630 (40:21) per CSS
+                       aspect-ratio. Source bitmaps are requested at the
+                       same ratio so Cloudflare crops once at the edge and
+                       the browser does not double-crop via object-fit. */ -}}
+                {{- $w := cond $isFeatured 1200 360 -}}
+                {{- $h := cond $isFeatured 630 189 -}}
                 <div class="home-row-thumb article-thumb">
                     <img src="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width={{ $w }},height={{ $h }},quality=80,format=auto/{{ $cardSrc }}"
                          srcset="{{ if $isFeatured -}}
@@ -130,9 +130,9 @@
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1000,height=525,quality=80,format=webp/{{ $cardSrc }} 1000w,
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1600,height=840,quality=80,format=webp/{{ $cardSrc }} 1600w
                                  {{- else -}}
-                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=240,height=300,quality=80,format=webp/{{ $cardSrc }} 240w,
-                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=400,height=500,quality=80,format=webp/{{ $cardSrc }} 400w,
-                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=720,height=900,quality=80,format=webp/{{ $cardSrc }} 720w
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=240,height=126,quality=80,format=webp/{{ $cardSrc }} 240w,
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=400,height=210,quality=80,format=webp/{{ $cardSrc }} 400w,
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=720,height=378,quality=80,format=webp/{{ $cardSrc }} 720w
                                  {{- end }}"
                          sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 880px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
                          alt="{{ $page.Title }}{{ with $page.Params.description }} — {{ . | truncate 80 }}{{ end }}"
