@@ -11,9 +11,16 @@
     frontmatter.parse, and every major LLM tooling SDK)
   - Drop the eq .Section "posts" gate so /about/, /research/,
     /subscribe/, etc. now ship real markdown content
-  - Convert MathJax \(...\) → $...$ and \[...\] → $$...$$ for GFM/
-    Pandoc/Obsidian compatibility
   - Structured footer with canonical URL + Content-Signal posture
+
+  Hugo 0.161.1 audit (May 2026): the post-render pipeline previously
+  ran nine regex passes over the body. Eight were dead or harmful:
+  the HTML strips (lightbox anchors, asides, forms, dialogs, scripts,
+  noscripts) no longer matched anything Goldmark or sibling shortcodes
+  emit, and the math-delimiter conversions were false-matching URL-
+  escaped parens. Only the blank-line collapse remains. Math
+  passthrough is still configured in hugo.toml; Goldmark consumes
+  $$...$$ delimiters natively before .RenderShortcodes sees the body.
 
   The HTML siblings keep all the lightbox + responsive-srcset machinery;
   this template gets the clean version.
@@ -74,25 +81,18 @@ content_signal: search=yes, ai-input=yes, ai-train=yes
        - collapse 3+ consecutive blank lines to two
 */ -}}
 {{- $body := .RenderShortcodes -}}
-{{- /* Strip lightbox-overlay autolinker artifact (Goldmark) */ -}}
-{{- $body = $body | replaceRE `(?s)<a[^>]*class="lightbox-overlay"[^>]*>.*?</a>` "" -}}
-{{- /* Strip all asides — key-takeaways, newsletter forms, archive lists,
-       readnext (already handled by shortcode siblings but defensive).
-       Asides in markdown are by definition decoration. */ -}}
-{{- $body = $body | replaceRE `(?s)<aside[^>]*>.*?</aside>` "" -}}
-{{- /* Strip interactive elements that don't function in a markdown stream:
-       forms, dialogs, scripts, noscripts. Some pages (subscribe,
-       newsletter-archive) have raw HTML in the source for these. */ -}}
-{{- $body = $body | replaceRE `(?s)<form[^>]*>.*?</form>` "" -}}
-{{- $body = $body | replaceRE `(?s)<dialog[^>]*>.*?</dialog>` "" -}}
-{{- $body = $body | replaceRE `(?s)<script[^>]*>.*?</script>` "" -}}
-{{- $body = $body | replaceRE `(?s)<noscript[^>]*>.*?</noscript>` "" -}}
-{{- /* Math syntax: convert MathJax \(...\) → $...$ and \[...\] → $$...$$
-       for GFM/Pandoc/Obsidian compatibility. */ -}}
-{{- $body = $body | replaceRE `\\\(([^)]*)\\\)` "$$$1$$" -}}
-{{- $body = $body | replaceRE `(?s)\\\[(.*?)\\\]` "$$$$$1$$$$" -}}
 {{- /* Collapse 3+ consecutive blank lines (TOML +++ frontmatter in
-       source files leaves bands of empty lines behind). */ -}}
+       source files leaves bands of empty lines behind).
+
+       Hugo 0.161.1 audit: the previous HTML-strip passes (lightbox
+       anchors, asides, forms, dialogs, scripts, noscripts) became dead
+       code — sibling shortcodes now handle output-format separation
+       cleanly and Goldmark no longer emits those elements into the
+       markdown stream. The MathJax \(...\) → $...$ and \[...\] → $$...$$
+       passes were also removed: zero posts used that source syntax for
+       math (passthrough handles $$...$$ natively), and the regex was
+       false-matching URL-escaped parens like \(USB\), corrupting them
+       to $USB$ in Wikipedia links. */ -}}
 {{- $body = $body | replaceRE `\n{3,}` "\n\n" }}
 
 {{ $body | safeHTML }}
