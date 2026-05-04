@@ -89,6 +89,10 @@
             {{- end -}}
         {{- end -}}
 
+        {{- /* Per-post gravity override (e.g. "0.45x0.4" to pin a face). Applied
+              last so it wins over the auto/right defaults set above. */ -}}
+        {{- with $page.Params.card_gravity -}}{{- $gravity = . -}}{{- end -}}
+
         {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
 
         {{- /* Format tag — auto-derived from .Params.type, with friendly labels. */ -}}
@@ -113,14 +117,24 @@
             <a href="{{ $page.Permalink }}" class="home-row-link">
                 <time class="home-row-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2" }}</time>
                 {{ if $cardSrc }}
-                {{- $w := cond $isFeatured 480 288 -}}
-                {{- $h := cond $isFeatured 600 360 -}}
+                {{- /* Aspect-aware sizing: featured slot is 1200:630 landscape
+                       (CSS aspect-ratio); archive rows are 288:360 portrait.
+                       Source aspect MUST match render aspect or the browser
+                       stretches the bitmap and faces get squashed/clipped. */ -}}
+                {{- $w := cond $isFeatured 1200 288 -}}
+                {{- $h := cond $isFeatured 630 360 -}}
                 <div class="home-row-thumb article-thumb">
                     <img src="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width={{ $w }},height={{ $h }},quality=80,format=auto/{{ $cardSrc }}"
-                         srcset="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=240,height=300,quality=80,format=webp/{{ $cardSrc }} 240w,
+                         srcset="{{ if $isFeatured -}}
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=600,height=315,quality=80,format=webp/{{ $cardSrc }} 600w,
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1000,height=525,quality=80,format=webp/{{ $cardSrc }} 1000w,
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1600,height=840,quality=80,format=webp/{{ $cardSrc }} 1600w
+                                 {{- else -}}
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=240,height=300,quality=80,format=webp/{{ $cardSrc }} 240w,
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=400,height=500,quality=80,format=webp/{{ $cardSrc }} 400w,
-                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=720,height=900,quality=80,format=webp/{{ $cardSrc }} 720w"
-                         sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 480px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=720,height=900,quality=80,format=webp/{{ $cardSrc }} 720w
+                                 {{- end }}"
+                         sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 880px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
                          alt="{{ $page.Title }}{{ with $page.Params.description }} — {{ . | truncate 80 }}{{ end }}"
                          loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}"
                          width="{{ $w }}" height="{{ $h }}"
@@ -161,7 +175,7 @@
         <p class="filter-status" id="filter-status" aria-live="polite"></p>
         {{ end }}
 
-        {{ if eq $i 2 }}{{ partial "home-feed-newsletter.html" . }}{{ end }}
+        {{ if eq $i 6 }}{{ partial "home-feed-newsletter.html" . }}{{ end }}
         {{- /* Track year only for non-featured rows. */ -}}
         {{- if not $isFeatured -}}{{ $scratch.Set "prevYear" ($page.Date.Year) }}{{- end -}}
         {{ end }}
