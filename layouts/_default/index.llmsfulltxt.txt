@@ -22,15 +22,7 @@ Independent researcher and strategy consultant specializing in quantitative fina
 ### [{{ .Page.Title }}]({{ .Page.Permalink }})
 Published: {{ .Page.Date.Format "2006-01-02" }}
 Description: {{ .Page.Params.description }}
-{{ $summary := .Page.Summary | plainify | chomp -}}
-{{- $summary = replace $summary "&rsquo;" "'" -}}
-{{- $summary = replace $summary "&lsquo;" "'" -}}
-{{- $summary = replace $summary "&ldquo;" "'" -}}
-{{- $summary = replace $summary "&rdquo;" "'" -}}
-{{- $summary = replace $summary "&amp;" "&" -}}
-{{- $summary = replace $summary "&hellip;" "..." -}}
-{{- $summary = replace $summary "&lt;" "<" -}}
-{{- $summary = replace $summary "&gt;" ">" }}
+{{ $summary := .Page.Summary | plainify | chomp | strings.ReplacePairs "&rsquo;" "'" "&lsquo;" "'" "&ldquo;" "\"" "&rdquo;" "\"" "&amp;" "&" "&hellip;" "..." "&lt;" "<" "&gt;" ">" }}
 Summary: {{ $summary }}
 {{ with .Page.Params.takeaways }}Key findings:
 {{ range . }}- {{ . }}
