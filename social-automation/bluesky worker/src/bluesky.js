@@ -161,13 +161,39 @@ async function createEmbed(url, imageUrl, title, description, accessJwt) {
   }
 }
 
+// SSRF gate. The OG image URL comes from a remote HTML page's <meta>
+// content; even though we only fetch RSS items from trusted domains,
+// the og:image field inside those pages is attacker-controllable in
+// principle. Restrict to the CDN + canonical site so a poisoned tag
+// can't make the Worker fetch internal/private endpoints.
+const TRUSTED_IMAGE_DOMAINS = new Set([
+  'static.philippdubach.com',
+  'philippdubach.com',
+  'www.philippdubach.com',
+]);
+
+function isTrustedImageUrl(url) {
+  try {
+    const u = new URL(url);
+    if (u.protocol !== 'https:' && u.protocol !== 'http:') return false;
+    return TRUSTED_IMAGE_DOMAINS.has(u.hostname);
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Upload image to Bluesky
  */
 async function uploadImage(imageUrl, accessJwt) {
   const MAX_IMAGE_SIZE = 1024 * 1024; // 1MB limit
   const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-  
+
+  if (!isTrustedImageUrl(imageUrl)) {
+    console.warn('Image URL rejected (not from trusted domain):', imageUrl);
+    return null;
+  }
+
   try {
     const imageResponse = await fetch(imageUrl);
     if (!imageResponse.ok) {

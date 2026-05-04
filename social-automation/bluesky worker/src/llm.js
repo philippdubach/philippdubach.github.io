@@ -46,7 +46,13 @@ Never use these words: delve, realm, harness, unlock, tapestry, paradigm, cuttin
 
 Output ONLY the post text. No quotes. No labels. No explanation.`;
 
-export async function generatePostMessage(ai, title, description, fullText = '', takeaways = '') {
+export async function generatePostMessage(ai, title, description, fullText = '', takeaways = '', maxLength = 250) {
+  // Clamp maxLength to a sane band; callers who pass platform-specific
+  // budgets (e.g. Bluesky reserves URL + "\n\n" from 300) may compute
+  // values outside this range, so reject obvious nonsense without
+  // throwing — the LLM still produces a usable post at 80 chars and
+  // the caller will catch any platform-side rejection.
+  const MAX_MSG_LENGTH = Math.max(80, Math.min(280, maxLength));
   try {
     const safeTitle = sanitizeForPrompt(title);
 
@@ -90,8 +96,7 @@ export async function generatePostMessage(ai, title, description, fullText = '',
         .replace(/\s{2,}/g, ' ')
         .trim();
 
-      // Truncate to 250 chars with sentence-boundary awareness
-      const MAX_MSG_LENGTH = 250;
+      // Truncate to caller-supplied budget with sentence-boundary awareness.
       if (msg.length > MAX_MSG_LENGTH) {
         const truncated = msg.substring(0, MAX_MSG_LENGTH);
         const lastPeriod = truncated.lastIndexOf('.');
@@ -109,6 +114,6 @@ export async function generatePostMessage(ai, title, description, fullText = '',
     // Use sanitized title in fallback
     const safeTitle = sanitizeForPrompt(title);
     const fallback = `New post: ${safeTitle}`;
-    return fallback.length > 250 ? fallback.substring(0, 247) + '...' : fallback;
+    return fallback.length > MAX_MSG_LENGTH ? fallback.substring(0, MAX_MSG_LENGTH - 3) + '...' : fallback;
   }
 }

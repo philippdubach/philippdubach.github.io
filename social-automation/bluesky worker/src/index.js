@@ -1,6 +1,13 @@
-import { parseRSS, extractPostInfo, fetchOGMetadata, fetchFullArticleText } from './rss.js';
+import { parseRSS, extractPostInfo, fetchArticleData } from './rss.js';
 import { generatePostMessage } from './llm.js';
 import { postToBluesky } from './bluesky.js';
+
+// Bluesky enforces a 300-character post limit. The link is appended after
+// the LLM-generated message with a "\n\n" separator, so the message budget
+// is `300 - 2 - link.length`. Without this guard the LLM cap (250) plus a
+// typical 70-char link (322) overflowed and threw, leaving the post stuck
+// in a re-attempt loop forever (KV is only marked posted on success).
+const BLUESKY_POST_LIMIT = 300;
 
 /**
  * Timing-safe string comparison to prevent timing attacks
@@ -268,14 +275,28 @@ async function processNewPosts(env, dryRun = false) {
       continue;
     }
 
+    // Cron overlap guard: if another tick is already processing this post,
+    // skip it. The lock TTL (60s) is shorter than the cron interval (15min),
+    // so a stuck lock from a crashed run can't deadlock subsequent ticks.
+    const lockKey = `lock:${id}`;
+    if (await env.POSTED_STATE.get(lockKey)) {
+      results.skipped++;
+      continue;
+    }
+    if (!dryRun) {
+      await env.POSTED_STATE.put(lockKey, '1', { expirationTtl: 60 });
+    }
+
     try {
-      const og = await fetchOGMetadata(info.link);
-      info.image = og.image;
-      info.ogDescription = og.description || info.description;
-      
-      // Fetch full article text and takeaways for LLM context
-      const { text: fullText, takeaways } = await fetchFullArticleText(info.link);
-      const message = await generatePostMessage(env.AI, info.title, info.description, fullText, takeaways);
+      // Single fetch covers both OG metadata and article body.
+      const articleData = await fetchArticleData(info.link);
+      info.image = articleData.image;
+      info.ogDescription = articleData.description || info.description;
+
+      // Reserve URL + "\n\n" budget so the LLM truncation respects the
+      // 300-char Bluesky limit. See BLUESKY_POST_LIMIT comment at top.
+      const maxMsgLen = BLUESKY_POST_LIMIT - 2 - info.link.length;
+      const message = await generatePostMessage(env.AI, info.title, info.description, articleData.text, articleData.takeaways, maxMsgLen);
 
       if (dryRun) {
         results.posted.push({ id, title: info.title, message, image: info.image, description: info.ogDescription });
@@ -290,6 +311,10 @@ async function processNewPosts(env, dryRun = false) {
       results.posted.push({ id, title: info.title, uri: bsky.uri });
     } catch (e) {
       results.errors.push({ id, error: e.message });
+    } finally {
+      if (!dryRun) {
+        await env.POSTED_STATE.delete(lockKey).catch(() => {});
+      }
     }
   }
 
@@ -300,13 +325,11 @@ async function processNewPosts(env, dryRun = false) {
  * Post a single URL directly (for testing)
  */
 async function postSingleUrl(env, url) {
-  // Fetch page metadata
+  // One fetch covers title extraction + OG metadata + article body.
   const response = await fetch(url, { headers: { 'User-Agent': 'SocialPoster/1.0' } });
   if (!response.ok) throw new Error(`Failed to fetch URL: ${response.status}`);
-  
   const html = await response.text();
-  
-  // Extract title from og:title or <title>
+
   let title = 'New Post';
   const ogTitleMatch = html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i)
     || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:title["']/i);
@@ -316,15 +339,15 @@ async function postSingleUrl(env, url) {
     const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
     if (titleMatch) title = titleMatch[1];
   }
-  
-  // Fetch OG metadata for image
-  const og = await fetchOGMetadata(url);
-  
-  // Fetch full article text and takeaways
-  const { text: fullText, takeaways } = await fetchFullArticleText(url);
 
-  // Generate message with LLM
-  const message = await generatePostMessage(env.AI, title, '', fullText, takeaways);
+  // Reuse the same unified fetch (second round-trip on this code path is
+  // unavoidable because we already needed the HTML for title extraction
+  // above; in the scheduled path the unified fetch is the only one).
+  const articleData = await fetchArticleData(url);
+
+  // Reserve URL + "\n\n" budget against Bluesky's 300-char post limit.
+  const maxMsgLen = BLUESKY_POST_LIMIT - 2 - url.length;
+  const message = await generatePostMessage(env.AI, title, '', articleData.text, articleData.takeaways, maxMsgLen);
   
   // Validate credentials
   if (!env.BLUESKY_HANDLE || !env.BLUESKY_APP_PASSWORD) {
@@ -332,20 +355,20 @@ async function postSingleUrl(env, url) {
   }
   
   const bsky = await postToBluesky(
-    env.BLUESKY_HANDLE, 
-    env.BLUESKY_APP_PASSWORD, 
-    message, 
-    url, 
-    og.image, 
-    title, 
-    og.description || ''
+    env.BLUESKY_HANDLE,
+    env.BLUESKY_APP_PASSWORD,
+    message,
+    url,
+    articleData.image,
+    title,
+    articleData.description || ''
   );
-  
+
   return {
     success: true,
     title,
     message,
     uri: bsky.uri,
-    fullTextLength: fullText.length,
+    fullTextLength: articleData.text.length,
   };
 }

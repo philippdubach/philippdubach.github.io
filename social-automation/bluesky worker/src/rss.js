@@ -191,83 +191,63 @@ function extractTakeaways(html) {
 }
 
 /**
- * Fetch full article text from a post's HTML page
+ * Fetch all article data (OG metadata + full text + takeaways) in a single
+ * HTTP round-trip. Replaces the previous fetchOGMetadata + fetchFullArticleText
+ * pair which fetched the same URL twice per post.
  * @param {string} url - Post URL
- * @returns {Promise<{text: string, takeaways: string}>} Article text and key takeaways
+ * @param {string} userAgent - User-Agent header value
+ * @returns {Promise<{image: string|null, description: string|null, text: string, takeaways: string}>}
  */
-export async function fetchFullArticleText(url) {
+export async function fetchArticleData(url, userAgent = 'SocialPoster/1.0') {
+  const empty = { image: null, description: null, text: '', takeaways: '' };
   try {
     const response = await fetchWithTimeout(url, {
-      headers: { 'User-Agent': 'SocialPoster/1.0' },
+      headers: { 'User-Agent': userAgent },
     });
-
-    if (!response.ok) return { text: '', takeaways: '' };
+    if (!response.ok) return empty;
 
     const html = await response.text();
 
-    // Extract takeaways before stripping aside tags
+    // OG image
+    let image = null;
+    const imgMatch = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
+      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
+    if (imgMatch) image = imgMatch[1];
+
+    // OG description (or meta description fallback)
+    let description = null;
+    const descMatch = html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i)
+      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:description["']/i)
+      || html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i);
+    if (descMatch) description = descMatch[1];
+
+    // Locate article body
     let articleHtml = '';
     const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
     if (articleMatch) {
       articleHtml = articleMatch[1];
     } else {
       const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
-      if (mainMatch) {
-        articleHtml = mainMatch[1];
-      } else {
+      if (mainMatch) articleHtml = mainMatch[1];
+      else {
         const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
         if (bodyMatch) articleHtml = bodyMatch[1];
       }
     }
 
+    // Takeaways before stripping asides
     const takeaways = extractTakeaways(articleHtml);
 
-    // Strip nav, header, footer, aside tags
     articleHtml = articleHtml
       .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '')
       .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, '')
       .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, '')
       .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, '');
 
-    // Use safe HTML stripping
-    const text = stripHtmlTags(articleHtml);
+    const text = stripHtmlTags(articleHtml).substring(0, 2000);
 
-    return { text: text.substring(0, 2000), takeaways };
+    return { image, description, text, takeaways };
   } catch (e) {
-    return { text: '', takeaways: '' };
-  }
-}
-
-/**
- * Fetch OG metadata from a post's HTML page
- * @param {string} url - Post URL
- * @returns {Promise<{image: string|null, description: string|null}>}
- */
-export async function fetchOGMetadata(url) {
-  try {
-    const response = await fetchWithTimeout(url, {
-      headers: { 'User-Agent': 'SocialPoster/1.0' },
-    });
-
-    if (!response.ok) return { image: null, description: null };
-
-    const html = await response.text();
-    
-    // Extract og:image
-    let image = null;
-    const imgMatch = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
-      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
-    if (imgMatch) image = imgMatch[1];
-    
-    // Extract og:description or meta description
-    let description = null;
-    const descMatch = html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i)
-      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:description["']/i)
-      || html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i);
-    if (descMatch) description = descMatch[1];
-    
-    return { image, description };
-  } catch (e) {
-    return { image: null, description: null };
+    return empty;
   }
 }
