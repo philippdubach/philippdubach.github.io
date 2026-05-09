@@ -127,6 +127,7 @@
                     <img src="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width={{ $w }},height={{ $h }},quality=80,format=auto/{{ $cardSrc }}"
                          srcset="{{ if $isFeatured -}}
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=600,height=315,quality=80,format=webp/{{ $cardSrc }} 600w,
+                                 {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=800,height=420,quality=80,format=webp/{{ $cardSrc }} 800w,
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1000,height=525,quality=80,format=webp/{{ $cardSrc }} 1000w,
                                  {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1600,height=840,quality=80,format=webp/{{ $cardSrc }} 1600w
                                  {{- else -}}
@@ -137,6 +138,7 @@
                          sizes="{{ if $isFeatured }}(max-width: 768px) 100vw, 880px{{ else }}(max-width: 768px) 100px, 180px{{ end }}"
                          alt="{{ $page.Title }}{{ with $page.Params.description }} — {{ . | truncate 80 }}{{ end }}"
                          loading="{{ if lt $i 4 }}eager{{ else }}lazy{{ end }}"
+                         {{ if $isFeatured }}fetchpriority="high"{{ end }}
                          width="{{ $w }}" height="{{ $h }}"
                          decoding="async">
                 </div>

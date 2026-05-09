@@ -50,6 +50,7 @@ Citable data points from published analysis:
 - [When AI Labs Become Defense Contractors]({{ $baseURL }}posts/when-ai-labs-become-defense-contractors/): How Pentagon AI spending reshapes the industry through the lens of the 1993 Last Supper defense consolidation
 - [Every Bulge Bracket Bank Agrees on AI]({{ $baseURL }}posts/every-bulge-bracket-bank-agrees-on-ai/): Synthesis of 12 AI research reports from Goldman Sachs, JPMorgan, Morgan Stanley, UBS, and others
 - [The SaaSpocalypse Paradox]({{ $baseURL }}posts/the-saaspocalypse-paradox/): Data-driven analysis of the February 2026 enterprise software sell-off and the AI capex contradiction
+- [Two Anthropics]({{ $baseURL }}posts/two-anthropics/): The structural tension between the safety lab Dario founded in 2021 and the $380B frontier scaler it became, with three scenarios for how the safety thesis resolves
 - [93% of Developers Use AI Coding Tools. Productivity Hasn't Moved.]({{ $baseURL }}posts/93-of-developers-use-ai-coding-tools.-productivity-hasnt-moved./): Why widespread AI coding adoption hasn't translated into measurable productivity gains
 - [The Most Expensive Assumption in AI]({{ $baseURL }}posts/the-most-expensive-assumption-in-ai/): Sara Hooker's research on diminishing returns in AI compute scaling
 - [Peter Thiel's Physics Department]({{ $baseURL }}posts/peter-thiels-physics-department/): Thiel's framework for evaluating technology companies through a physics lens

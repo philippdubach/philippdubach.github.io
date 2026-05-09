@@ -12,6 +12,7 @@
 import { wantsMarkdown } from "./accept.js";
 import { buildLinkHeader, isContentPath } from "./links.js";
 import { cacheKeyFor } from "./cache.js";
+import { resolveRedirect, buildRedirectResponse } from "./redirects.js";
 
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
@@ -110,6 +111,19 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
 export default {
   async fetch(request) {
     const url = new URL(request.url);
+
+    // Legacy URL redirects (slug renames, deleted posts, Substack-era date-prefix
+    // paths, /page/N pagination, old taxonomy aliases). Evaluated before cache
+    // lookup so that a stale cached origin response can't shadow a redirect.
+    // Apply to GET and HEAD — search engines and browsers issue HEAD before
+    // following links, and 301/410 responses are valid for both methods.
+    if (request.method === "GET" || request.method === "HEAD") {
+      const redirect = resolveRedirect(url.pathname);
+      if (redirect) {
+        return buildRedirectResponse(redirect);
+      }
+    }
+
     const wantsMd = wantsMarkdown(request);
     const isCatalog =
       url.pathname === "/.well-known/api-catalog" || url.pathname === "/api-catalog";

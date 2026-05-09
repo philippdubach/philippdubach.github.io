@@ -73,3 +73,7 @@ statistics:
     source: "the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book"
   - stat: "A pre-registered 600-market panel covers 30.3 billion Polymarket order-book events across 52 days joined to 255 million on-chain OrderFilled events, with the full pipeline released as a Zenodo replication package"
     source: "the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book"
+  - stat: "Anthropic compounded a $124M Series A in May 2021 into a $380B valuation by February 2026, with revenue running near $10B annualized after three consecutive years of 10x growth"
+    source: "two-anthropics"
+  - stat: "Anthropic's compute commitments through 2028 total roughly $78 billion across Amazon, the $50B Fluidstack data-center deal, and the $11B Project Rainier build"
+    source: "two-anthropics"

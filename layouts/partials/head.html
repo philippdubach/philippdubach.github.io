@@ -12,11 +12,15 @@
     {{/* Note: preconnect implies dns-prefetch, so no need for both */}}
     {{/* Fonts: self-hosted at /fonts/ (Newsreader variable woff2). Wordmark on system sans. */}}
     <link rel="preload" href="/fonts/newsreader-upright.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
-    <link rel="preconnect" href="https://stats.philippdubach.com" crossorigin>
+    {{/* Lighthouse caps useful preconnect at 4. Order by LCP impact: image
+         CDN first, then analytics endpoints fired on page load. The
+         newsletter API only fires on form submit (below fold, post-LCP);
+         dropped from preconnect because Lighthouse flagged it as unused. */}}
     <link rel="preconnect" href="https://static.philippdubach.com" crossorigin>
-    <link rel="preconnect" href="https://newsletter-api.philippd.workers.dev" crossorigin>
-    {{/* Preconnect to MathJax CDN */}}
+    <link rel="preconnect" href="https://stats.philippdubach.com" crossorigin>
+    <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
+    {{/* Preconnect to MathJax CDN — only used on math-enabled posts but
+         loaded on every page via the math partial guard, so warm anyway. */}}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     {{/* SEO Meta Tags. 404 forces noindex,follow: hard 404 status is the
