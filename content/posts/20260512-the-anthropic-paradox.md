@@ -28,7 +28,7 @@ keywords = [
   "race to the top AI safety",
   "Anthropic enterprise customers Pfizer United Airlines"
 ]
-draft = true
+draft = false
 categories = ["AI", "Investing"]
 type = "Commentary"
 takeaways = [
