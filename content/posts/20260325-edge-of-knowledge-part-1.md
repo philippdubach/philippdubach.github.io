@@ -4,6 +4,7 @@ seoTitle = "Knightian Uncertainty: Risk, Uncertainty, and Ignorance"
 date = 2026-04-04
 publishDate = 2026-03-12T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-edge-of-knowledge.jpg"]
+card_image = "https://static.philippdubach.com/edge-of-knowledge-1-cover.jpg"
 description = "Knightian uncertainty splits not-knowing into risk, uncertainty, and ignorance. A century after Knight and Keynes, most of investing still ignores the split."
 keywords = ["Knightian uncertainty investing", "risk vs uncertainty investing", "risk uncertainty ignorance framework", "Zeckhauser unknown unknowable", "investing under uncertainty", "unknown unknowns investing", "radical uncertainty finance", "Frank Knight risk uncertainty profit", "Keynes weight of evidence", "Knightian uncertainty explained", "unknown unknowable UU investing", "decision making under uncertainty finance", "Buffett California earthquake reinsurance", "Kay King radical uncertainty", "Ricardo Waterloo bonds", "enterprise software AI uncertainty 2026", "types of uncertainty investing"]
 categories = ["Quantitative Finance"]
@@ -24,6 +25,8 @@ faq = [
   {question = "How does Knightian uncertainty apply to AI disruption of enterprise software?", answer = "The February 2026 software sell-off is a real-world example of Zeckhauser's third box: ignorance. Investors couldn't just estimate probabilities of known outcomes. The possible states themselves, such as what CRM even means when AI agents replace human users, were undefined. This made traditional valuation models inapplicable."},
 ]
 +++
+
+{{< img src="edge-of-knowledge-1-cover.jpg" alt="Editorial illustration: a charcoal silhouette of a figure stands at the edge of a fog bank looking at three lanterns hung on a wire, the leftmost burning warm ochre, the middle dim, the rightmost unlit and barely visible in the fog — encoding risk, uncertainty, and ignorance" width="80%" priority="true" >}}
 
 *Investing at the Edge of Knowledge, Part 1*
 

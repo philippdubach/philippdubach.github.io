@@ -26,7 +26,7 @@
       <link>{{ .Site.BaseURL }}</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>{{ site.Language.LanguageCode }}</language>{{ with .Site.Params.social.email }}
+    <language>{{ site.Language.Locale }}</language>{{ with .Site.Params.social.email }}
     <managingEditor>{{.}} ({{ $.Site.Params.author }})</managingEditor>
     <webMaster>{{.}} ({{ $.Site.Params.author }})</webMaster>{{end}}{{ with .Site.Copyright }}
     <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}

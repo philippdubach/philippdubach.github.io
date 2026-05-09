@@ -79,7 +79,7 @@
     {{- /* Subscribe page: render curated sample issues from the data file
            when present. Hand-rotated; empty default keeps the section
            hidden until the first issue is public. */ -}}
-    {{ if $isSubscribe }}{{ $samplesData := index site.Data "newsletter-samples" }}{{ with $samplesData }}{{ with .samples }}
+    {{ if $isSubscribe }}{{ $samplesData := index hugo.Data "newsletter-samples" }}{{ with $samplesData }}{{ with .samples }}
     <section class="subscribe-samples" aria-labelledby="samples-heading">
         <h2 class="section-label subscribe-samples__heading" id="samples-heading">Recent issues</h2>
         <ul class="subscribe-samples__list">

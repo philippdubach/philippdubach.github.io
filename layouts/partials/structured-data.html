@@ -181,7 +181,7 @@
      creator (Person), mainEntityOfPage, publisher (DOI prefix detection),
      keywords, and subjectOf (commentary blog post when present). */}}
 {{ if eq .RelPermalink "/research/" }}
-{{ with site.Data.research }}
+{{ with hugo.Data.research }}
 {{- $collectionId := printf "%sresearch/" $.Site.BaseURL -}}
 {{- /* Build all ScholarlyArticle items as a slice of dicts */ -}}
 {{- $articles := slice -}}

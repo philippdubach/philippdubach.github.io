@@ -5,6 +5,7 @@ date = 2026-03-25
 lastmod = 2026-03-26
 publishDate = 2026-03-26T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-on-device-models.jpg"]
+card_image = "https://static.philippdubach.com/chip-cover.jpg"
 description = "Smartphones haven't had a compelling upgrade story in years. On-device AI models, distilled from frontier systems like Gemini, are about to change that. Parameters are the new megapixels."
 keywords = ["on-device AI smartphone", "Apple Gemini distillation", "smartphone upgrade cycle AI 2026", "Apple Foundation Model 3 billion parameters", "NPU TOPS smartphone 2026", "iPhone on-device AI model parameters", "parameter count smartphone marketing", "megapixel myth AI equivalent", "Gemini Nano on-device models", "Apple Intelligence upgrade cycle", "knowledge distillation AI iPhone", "on-device LLM smartphone 2026", "smartphone AI hardware differentiation", "smartphone spec war AI parameters"]
 categories = ["AI", "Tech"]
@@ -25,6 +26,8 @@ faq = [
   {question = "How many parameters can a smartphone run on-device?", answer = "Current smartphones run 1-3 billion parameter models natively. Apple's Foundation Model is roughly 3 billion parameters. Google's Gemini Nano ships at 1.8 to 3.25 billion parameters. Developers have also demonstrated running a 400 billion parameter Mixture of Experts model on iPhone 17 Pro, though only 17 billion parameters are active per inference pass."},
 ]
 +++
+
+{{< img src="chip-cover.jpg" alt="Editorial cover illustration for an analysis of on-device AI models as the new smartphone upgrade driver" width="80%" priority="true" >}}
 
 The iPhone 17 runs a [3 billion parameter language model on-device](https://machinelearning.apple.com/research/introducing-apple-foundation-models) at 30 tokens per second. Obviously, the average consumer has no idea what that sentence means, and Apple hasn't figured out how to make them care.
 

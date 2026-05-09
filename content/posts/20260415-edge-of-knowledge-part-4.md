@@ -5,6 +5,7 @@ date = 2026-04-17
 lastmod = 2026-04-26
 publishDate = 2026-04-17T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-bet-sizing-frontier.jpg"]
+card_image = "https://static.philippdubach.com/edge-of-knowledge-4-cover.jpg"
 description = "The Kelly Criterion assumes you know your probability of winning. In a UU world, you don't, and heuristics like Zeckhauser's Maxim B replace false precision."
 keywords = ["Kelly Criterion limitations", "position sizing under uncertainty", "Kelly Samuelson debate", "Zeckhauser Maxim B", "unknown unknowable investing", "fractional Kelly half Kelly"]
 categories = ["Quantitative Finance"]
@@ -25,6 +26,8 @@ faq = [
   {question = "What does Zeckhauser recommend for position sizing under ignorance?", answer = "Zeckhauser's Maxim B: 'The greater is your expected return, the larger your advantage, the greater the percentage of your capital you should put at risk.' This sounds obvious but is actually radical because it replaces formula-based precision with judgment-based heuristics. He also offers a diagnostic: 'If in an unknowable world none of your investments looks foolish after the fact, you are staying too far away from the unknowable.'"},
 ]
 +++
+
+{{< img src="edge-of-knowledge-4-cover.jpg" alt="Editorial illustration: a single charcoal-silhouette figure stands at the edge of a fog bank holding a small stack of warm-ochre coins, with a few coins already pushed forward into the mist trailing into the fog, visualizing the Kelly Criterion as a sizing problem under uncertainty" width="80%" priority="true" >}}
 
 *Investing at the Edge of Knowledge, Part 4 · [Start with Part 1](/posts/three-kinds-of-not-knowing/)*
 

@@ -108,7 +108,7 @@
            .category-nav. Source: data/category-adjacency.yaml. The key
            is the URL-tail (lower-cased category slug). */ -}}
     {{- $catKey := index (last 1 (split (trim .RelPermalink "/") "/")) 0 -}}
-    {{- $adjacencyData := index .Site.Data "category-adjacency" -}}
+    {{- $adjacencyData := index hugo.Data "category-adjacency" -}}
     {{- $adjacent := index $adjacencyData $catKey -}}
     {{- $adjacentTaxa := slice -}}
     {{- range $adjacent -}}

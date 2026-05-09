@@ -4,6 +4,7 @@ seoTitle = "Oral GLP-1 Pills 2026: The Pill That Wastes 99% of Itself"
 date = 2026-04-09
 lastmod = 2026-04-09
 images = ["https://static.philippdubach.com/ograph/ograph-oral-peptides1.jpg"]
+card_image = "https://static.philippdubach.com/pill-cover.jpg"
 description = "Oral semaglutide destroys 99% of its active ingredient per dose. Lilly's Foundayo skips the problem entirely. Inside the $70B oral GLP-1 pill race."
 keywords = ["Foundayo vs oral Wegovy", "orforglipron vs oral semaglutide", "oral GLP-1 weight loss pill 2026", "oral semaglutide bioavailability SNAC", "GLP-1 market size obesity 2030", "Foundayo orforglipron FDA approval 2026", "Foundayo weight loss pill price", "Novo Nordisk vs Eli Lilly GLP-1 2026", "oral weight loss pill GLP-1", "small molecule GLP-1 receptor agonist", "oral semaglutide Wegovy pill 25mg", "GLP-1 manufacturing cost COGS", "semaglutide patent expiry 2031 biosimilar", "oral GLP-1 pipeline aleniglipron VK2735 amycretin", "GLP-1 adherence persistence discontinuation", "anti-obesity medication market expansion", "Jevons Paradox statin analogy GLP-1"]
 categories = ["Medicine"]
@@ -25,6 +26,8 @@ faq = [
   {question = "How much does Foundayo cost per month?", answer = "Foundayo starts at $149 per month for the lowest dose for self-pay patients. Eligible commercially insured patients may pay as little as $25 per month with the Foundayo savings card. Eligible Medicare Part D individuals may be able to get Foundayo for $50 per month beginning July 2026. The oral Wegovy pill is priced at $149 to $299 per month depending on dose."},
 ]
 +++
+
+{{< img src="pill-cover.jpg" alt="Editorial cover illustration for an analysis of Eli Lilly's Foundayo and the oral GLP-1 weight loss pill race against Novo Nordisk's oral Wegovy" width="80%" priority="true" >}}
 
 >Novo Nordisk spent decades and $1.8 billion learning how to get a peptide past the gut. Eli Lilly looked at the same problem and decided to skip it entirely.
 

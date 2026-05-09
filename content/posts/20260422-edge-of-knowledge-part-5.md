@@ -4,6 +4,7 @@ seoTitle = "Ethics of UU Investing: Who Profits When Markets Can't Model Risk?"
 date = 2026-04-22
 publishDate = 2026-04-22T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-moral-philosophy-investing-ignorance.jpg"]
+card_image = "https://static.philippdubach.com/edge-of-knowledge-5-cover.jpg"
 description = "Constraint arbitrage, the sidecar problem, and who bears the distributional cost of investing under ignorance. The final installment of Edge of Knowledge."
 keywords = ["ethics of investing under ignorance", "constraint arbitrage fairness", "Zeckhauser blame aversion investing", "institutional investor career risk", "Monday morning quarterback MMQ risk", "sidecar investing ethics Gazprom", "Munger Zeckhauser bridge quote", "UU investing distributional consequences", "Ricardo Waterloo investment unknown", "fiduciary duty ambiguity penalty", "market efficiency ignorance box", "pension fund UU constraints", "Buffett California earthquake authority ethics", "complementary skills vs power investing"]
 categories = ["Quantitative Finance"]
@@ -23,6 +24,8 @@ faq = [
   {question = "What is the difference between capability and power as complementary assets in sidecar investing?", answer = "Zeckhauser's sidecar concept works cleanly when the driver has genuine capability: a real estate developer who creates value, a venture capitalist with operational expertise. The profit is a share of value creation. It becomes ethically murkier when the complementary asset is power rather than skill, as in Zeckhauser's Gazprom example where the edge comes from access to political elites rather than from analytical or operational superiority."},
 ]
 +++
+
+{{< img src="edge-of-knowledge-5-cover.jpg" alt="Editorial illustration: two charcoal-silhouette figures facing each other across a small balance scale, the left figure stepping forward into the fog with hand outstretched while the right figure stands still on a darker side, visualizing the moral asymmetry of profiting from others' constraints" width="80%" priority="true" >}}
 
 *Investing at the Edge of Knowledge, Part 5 · [Start with Part 1](/posts/three-kinds-of-not-knowing/)*
 

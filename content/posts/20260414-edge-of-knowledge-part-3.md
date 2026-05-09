@@ -4,6 +4,7 @@ seoTitle = "Information Asymmetry: When Nobody Knows More Than You"
 date = 2026-04-13
 publishDate = 2026-04-13T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-geometry-who-knows-what.jpg"]
+card_image = "https://static.philippdubach.com/edge-of-knowledge-3-cover.jpg"
 description = "When neither side can define the states of the world, adverse selection fears are misplaced. Zeckhauser's information matrices and constraint arbitrage."
 keywords = ["information asymmetry investing", "adverse selection financial markets", "sidecar investing Zeckhauser", "Buffett California Earthquake Authority reinsurance", "winner's curse investing", "Aumann agreeing to disagree", "constraint arbitrage institutional investors", "limits to arbitrage institutional constraints", "Monday morning quarterback risk", "Akerlof lemons problem investing", "complementary skills investing edge", "Summers sidecar objection", "Robb uncommunicable knowledge", "fiduciary duty ambiguity avoidance"]
 categories = ["Quantitative Finance"]
@@ -23,6 +24,8 @@ faq = [
   {question = "Why did Wall Street reject the California Earthquake Authority reinsurance that Buffett accepted?", answer = "Not because they thought the Earthquake Authority had inside information about seismic risk. Because their internal processes required probability estimates, their compliance teams required distributional assumptions, and the honest assessment of 'we have no idea, but the price is very high' did not fit their institutional decision-making forms. The opportunity existed because institutional constraints prevented sophisticated capital from acting on it."},
 ]
 +++
+
+{{< img src="edge-of-knowledge-3-cover.jpg" alt="Editorial illustration: two mirror-image charcoal-silhouette figures face each other across a fog-filled gap, each holding a partial document, standing on an ochre-tinted grid floor that suggests an information matrix where neither side knows more than the other" width="80%" priority="true" >}}
 
 *Investing at the Edge of Knowledge, Part 3 · [Start with Part 1](/posts/three-kinds-of-not-knowing/)*
 

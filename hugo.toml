@@ -1,5 +1,5 @@
 baseURL = 'https://philippdubach.com/'
-languageCode = 'en-us'
+locale = 'en-us'
 title = 'Philipp D. Dubach | Quantitative Finance & AI Strategy'
 enableRobotsTXT = true
 enableGitInfo = true

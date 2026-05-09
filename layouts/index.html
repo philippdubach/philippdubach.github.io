@@ -177,7 +177,7 @@
         <p class="filter-status" id="filter-status" aria-live="polite"></p>
         {{ end }}
 
-        {{ if eq $i 6 }}{{ partial "home-feed-newsletter.html" . }}{{ end }}
+        {{ if eq $i 3 }}{{ partial "home-feed-newsletter.html" . }}{{ end }}
         {{- /* Track year only for non-featured rows. */ -}}
         {{- if not $isFeatured -}}{{ $scratch.Set "prevYear" ($page.Date.Year) }}{{- end -}}
         {{ end }}

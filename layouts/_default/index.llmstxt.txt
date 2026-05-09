@@ -26,7 +26,7 @@ This site contains original analysis, research papers, and technical projects at
 ## Key Statistics & Findings
 
 Citable data points from published analysis:
-{{ with site.Data.llms_statistics }}{{ range .statistics }}
+{{ with hugo.Data.llms_statistics }}{{ range .statistics }}
 - {{ .stat }} — [Source]({{ $baseURL }}posts/{{ .source }}/)
 {{- end }}{{ end }}
 

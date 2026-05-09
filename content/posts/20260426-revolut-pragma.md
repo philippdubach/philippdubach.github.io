@@ -5,6 +5,7 @@ date = 2026-04-26
 lastmod = 2026-04-26
 publishDate = 2026-04-26T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-pragma-revolut.jpg"]
+card_image = "https://static.philippdubach.com/revolut-cover.jpg"
 description = "Revolut's PRAGMA is a 1B-parameter encoder trained on 24B banking events. Reading the paper, comparing with Nubank's nuFormer, planning a rebuild."
 keywords = ["PRAGMA", "Revolut foundation model", "banking foundation model", "nuFormer Nubank", "transformer banking transactions", "self-supervised learning transactions"]
 categories = ["AI"]
@@ -25,6 +26,8 @@ faq = [
   {question = "How does PRAGMA compare to Stripe's Payments Foundation Model?", answer = "Stripe's PFM and PRAGMA both treat transaction sequences as the primary input and produce embeddings that feed downstream models. Stripe's model targets payment-flow understanding for fraud and risk on Stripe's own ledger. PRAGMA targets a broader retail-banking surface (credit, fraud, churn, communication, recommendation) on Revolut's ledger. The architectural details and evaluation tasks differ, but both make the same convergent bet: foundation models for tabular transaction streams beat hand-crafted features."},
 ]
 +++
+
+{{< img src="revolut-cover.jpg" alt="Editorial cover illustration for an analysis of Revolut's PRAGMA foundation model for banking, contrasting a small consumer banking app with the vast underlying transformer architecture" width="80%" priority="true" >}}
 
 This month, Revolut Research and NVIDIA published [PRAGMA](https://arxiv.org/abs/2604.08649): an encoder-only transformer trained on 26 million user histories spanning 24 billion events and 207 billion tokens across 111 countries. To my knowledge it is the largest encoder backbone for consumer banking event data anyone has put on arXiv. Nine months earlier, Nubank had published [nuFormer](https://arxiv.org/abs/2507.23267), a similar premise with the opposite architecture. Can you train a transformer on raw transaction ledgers and replace the gradient-boosted-tree models running production credit, fraud, and recommendation pipelines.
 

@@ -13,7 +13,7 @@
     <header class="post-header about-hero research-hero">
         <h1 class="post-title about-name">Research</h1>
         <p class="about-lede">Working papers and published research at the intersection of quantitative finance, machine learning, and market microstructure.</p>
-        {{ with site.Data.research.profiles }}
+        {{ with hugo.Data.research.profiles }}
         <p class="research-profiles">
             {{ with .google_scholar }}<a href="{{ . }}" target="_blank" rel="noopener">Google Scholar</a>{{ end }}
             {{ if and .google_scholar .researchgate }} · {{ end }}
@@ -30,7 +30,7 @@
         {{ .Content }}
     </div>
 
-    {{ range $yearGroup := site.Data.research.publications }}
+    {{ range $yearGroup := hugo.Data.research.publications }}
     <section class="research-year-group">
         <h2 class="section-label research-year">{{ $yearGroup.year }}</h2>
         {{ range $yearGroup.items }}
@@ -119,6 +119,6 @@
     </section>
     {{ end }}
 
-    <p class="page-footnote"><em>For papers I'm reading, see <a href="{{ site.Data.research.profiles.reading_list }}" target="_blank" rel="noopener">reading.philippdubach.com</a>. The full bibliography is on <a href="{{ site.Data.research.profiles.google_scholar }}" target="_blank" rel="noopener">Google Scholar</a>.</em></p>
+    <p class="page-footnote"><em>For papers I'm reading, see <a href="{{ hugo.Data.research.profiles.reading_list }}" target="_blank" rel="noopener">reading.philippdubach.com</a>. The full bibliography is on <a href="{{ hugo.Data.research.profiles.google_scholar }}" target="_blank" rel="noopener">Google Scholar</a>.</em></p>
 </article>
 {{ end }}

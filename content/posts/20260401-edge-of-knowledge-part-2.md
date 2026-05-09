@@ -5,6 +5,7 @@ date = 2026-04-08
 lastmod = 2026-04-26
 publishDate = 2026-04-08T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-ambiguity-by-design.jpg"]
+card_image = "https://static.philippdubach.com/edge-of-knowledge-2-cover.jpg"
 description = "Ellsberg proved people flee unknown odds. Zeckhauser showed their flight creates mispricing. Part 2 on ambiguity aversion, comparative ignorance, and investing."
 keywords = ["ambiguity aversion investing", "Ellsberg paradox finance", "Zeckhauser unknown unknowable", "comparative ignorance Fox Tversky", "Knightian uncertainty mispricing", "ambiguity aversion vs risk aversion", "Gilboa Schmeidler maxmin expected utility", "Bewley inertia uncertainty", "betrayal aversion Bohnet Zeckhauser", "SaaSpocalypse IGV sell-off ambiguity", "ambiguity premium equity mispricing", "Ellsberg paradox explained", "behavioral finance ambiguity aversion", "career risk ambiguity aversion", "institutional constraints uncertainty"]
 categories = ["Quantitative Finance"]
@@ -23,6 +24,8 @@ faq = [
   {question = "What is the comparative ignorance hypothesis?", answer = "Fox and Tversky (1995) showed that ambiguity aversion intensifies when people can compare themselves to someone who appears more knowledgeable. In financial markets, there is always someone who acts more confident, meaning the comparative ignorance effect is permanently activated, amplifying the flight from ambiguous assets beyond what the underlying uncertainty warrants."},
 ]
 +++
+
+{{< img src="edge-of-knowledge-2-cover.jpg" alt="Editorial illustration: a small figure at a table flanked by two large urns — a transparent glass urn full of mixed coloured marbles on the left, and an opaque dark ceramic urn on the right disappearing into a fog bank, visualizing Ellsberg's paradox of known versus unknown odds" width="80%" priority="true" >}}
 
 *Investing at the Edge of Knowledge, Part 2 · [Start with Part 1](/posts/three-kinds-of-not-knowing/)*
 

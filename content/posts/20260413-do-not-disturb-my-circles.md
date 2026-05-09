@@ -5,6 +5,7 @@ date = 2026-04-13
 lastmod = 2026-04-15
 publishDate = 2026-04-13T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-do-not-disturb-my-circles.jpg"]
+card_image = "https://static.philippdubach.com/circles-cover.jpg"
 description = "AlphaFold cost under $1M to train. OpenAI spends $2.3B on inference. The chatbot era consumed the talent and compute that could have cured diseases."
 keywords = ["AI for science vs chatbots", "Demis Hassabis AlphaFold Gemini", "AlphaFold training cost", "AI compute scientific research funding", "Bell Labs monopoly research decline", "AI chatbot misallocation", "AI opportunity cost", "AI brain drain academia", "scientific AI funding gap", "AI capital allocation 2026", "DeepMind scientific AI", "AI infrastructure spending science", "Hassabis cure cancer quote", "chatbot era capital misallocation", "AI for science underfunded", "fundamental research AI funding", "AI resource allocation science commercial"]
 categories = ["AI"]
@@ -24,6 +25,8 @@ faq = [
   {question = "Is AI for science underfunded compared to commercial AI?", answer = "By a wide margin. AlphaFold, which has been used by over 3 million scientists and predicted the structures of 200 million proteins, cost under $1 million to train. The entire DOE Genesis Mission for AI-driven science received $320 million in its first round, less than Meta spends on AI infrastructure in a single week. Yet the chatbot market absorbs the vast majority of AI talent, compute, and capital."},
 ]
 +++
+
+{{< img src="circles-cover.jpg" alt="Editorial cover illustration evoking Archimedes drawing geometric circles in the sand with the long shadow of an approaching soldier — paralleled to the conscription of AI for science into the chatbot arms race" width="80%" priority="true" >}}
 
 > If I'd had my way, we would have left it in the lab for longer and done more things like AlphaFold, maybe cured cancer or something like that.
 

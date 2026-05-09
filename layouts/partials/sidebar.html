@@ -12,7 +12,7 @@
 
         <nav class="navigation" aria-label="Main navigation">
             <ul>
-                {{ range site.Data.navigation.main }}
+                {{ range hugo.Data.navigation.main }}
                 {{ $isActive := or (eq $.RelPermalink .url) (and (ne .url "/") (hasPrefix $.RelPermalink .url)) }}
                 <li><a href="{{ .url }}"{{ if $isActive }} class="nav-active" aria-current="page"{{ end }}>{{ .name }}</a></li>
                 {{ end }}
