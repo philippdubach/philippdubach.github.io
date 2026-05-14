@@ -26,6 +26,7 @@ faq = [
   {question = "What is AI deskilling and why is it a risk?", answer = "AI deskilling occurs when professionals rely on AI before developing independent judgment, preventing them from building the pattern recognition needed to spot AI errors. Gartner predicts that by 2030, half of enterprises will face irreversible skill shortages in at least two critical job roles because of unchecked automation. This creates a vicious cycle: fewer skilled workers, greater dependence on AI, and higher costs to fill the gaps."},
 ]
 +++
+
 In the latest issue of [The AI Lab Newsletter](https://lab.philippdubach.com), I featured a ByteDance [Seedance 2.0](https://x.com/AngryTomtweets/status/2021194266517832057) clip: two men playing tennis at what looked like an ATP tournament. Photorealistic. I probably wouldn't be able to tell it wasn't real footage if I didn't know. A co-worker who played junior pro-am tennis watched the same clip and said: "That backhand doesn't exist. Nobody plays it like that." His domain expertise spotted an error that probably fooled everyone else.
 
 We ended up in a long conversation about what that means. AI can get to maybe the 95th or 98th percentile of creating something that looks perfect, but then it isn't, and if you have deep knowledge you can spot it immediately. The consensus narrative treats this as a temporary limitation. But it might be structural. And I think the evidence, once you lay it out, points to a genuinely contrarian conclusion: domain expertise is appreciating in value, not depreciating, precisely because AI hits a quality ceiling it can't easily push past.
@@ -101,3 +102,5 @@ David Autor's vision is more optimistic: AI could "extend the relevance, reach, 
 I'm more confident in the centaur framework than in any specific prediction about timelines or magnitudes. The ninth-power scaling curve, the 53-point gap on Humanity's Last Exam, the α=0.57 typicality bias in RLHF, the 69-88% hallucination rates in legal applications, and the 95% of [enterprises](/posts/enterprise-ai-strategy-is-backwards/) seeing no measurable P&L returns from AI investments all point in the same direction. The question of AI augmentation versus replacement has an empirical answer: AI is a tool that makes good practitioners better and bad practitioners worse. The [industry narrative](/posts/is-ai-really-eating-the-world/) demands a story about replacement. The data tells a story about partnership, one where the human's contribution is not a relic of an earlier era but the irreducible ingredient that makes the whole system work.
 
 The ability to spot the impossible backhand isn't going away. If anything, it's worth more every day.
+
+{{< disclaimer type="finance" >}}

@@ -28,7 +28,7 @@ faq = [
 
 {{< img src="midyear-cover.jpg" alt="Editorial cover illustration for the 2026 midyear portfolio review: a figure on a Swiss alpine balcony looking across a valley at a stylized financial skyline dominated by one disproportionately tall tower" width="80%" priority="true" >}}
 
-In December I rebalanced my portfolio around [five theses for 2026](/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/). Five months in, this (early; well just too much happened) midyear review puts four of them ahead of where I expected and one well behind. The one I had the most conviction in, an overweight in European equities by five percentage points, has trailed every other rotation it was meant to beat.
+This is a personal-portfolio review for my own long-term book — what I weighed, what I changed, and what the calls cost me through May 2026. It is not a recommendation. In December I rebalanced my own portfolio around [five theses for 2026](/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/). Five months in, this (early; well, just too much happened) midyear review puts four of them ahead of where I expected and one well behind. The one I had the most personal conviction in, an overweight in European equities by five percentage points, has trailed every other rotation it was meant to beat.
 
 ## Portfolio performance so far
 
@@ -92,8 +92,10 @@ Three themes that weren't on my radar in December.
 
 ## Je ne regrette rien
 
-Modest tilts, not regime change. A small rotation from CHF Corporate Bonds (which yielded zero in CHF) into IG credit, where UBS is recommending "lock in rates" at the May House View. Marginally less Europe, not because the case is wrong but because at 13% I'm taking position-sizing risk on a multi-quarter call without enough catalyst proximity. A smaller US Treasury allocation, since the FX drag is doing all the work and I would rather take duration in CHF Govt or hedged USD. The crypto sleeve takes a 12-point drawdown in CHF and I keep it where it is. It was sized at 4.5% precisely because of this kind of move.
+Modest tilts in my own book, not regime change. A small personal rotation from CHF Corporate Bonds (which yielded zero in CHF) into IG credit, where UBS is recommending "lock in rates" at the May House View. Marginally less Europe in my own allocation, not because the case is wrong but because at 13% I had been taking position-sizing risk on a multi-quarter call without enough catalyst proximity. A smaller personal US Treasury position, since the FX drag is doing all the work and I would rather take duration in CHF Govt or hedged USD in my own book. My own crypto sleeve takes a 12-point drawdown in CHF and I am holding it; the sleeve was sized at 4.5% precisely because of this kind of move.
 
-The one I am  undecided on is whether to thin gold. The hedge has been a cost. The unhedged version has done what gold should do in a year of fiscal stress. If I unwind the hedge mid-year, I am giving up the protection I bought it for; if I keep it and the dollar falls in H2 as the consensus still expects, the hedge starts paying again. I am leaving it as-is and adding the next gold dollar to the unhedged side.
+The one I am undecided on, in my own book, is whether to thin gold. The hedge has been a cost. The unhedged version has done what gold should do in a year of fiscal stress. If I unwind the hedge mid-year, I am giving up the protection I bought it for; if I keep it and the dollar falls in H2 as the consensus still expects, the hedge starts paying again. I am leaving it as-is for now and adding the next personal gold dollar to the unhedged side.
+
+None of the above is a recommendation. Readers should consult their own advisers about their own circumstances.
 
 {{< disclaimer type="finance" >}}
