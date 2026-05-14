@@ -1,9 +1,10 @@
 {{- /*
   Markdown variant of the {{< disclaimer >}} shortcode. Renders as a
   blockquote with a bold "Disclaimer." prefix — semantic, parseable,
-  no <aside> HTML. Same content variants as the .html sibling; AI
-  consumers ingesting the markdown stream get the editorial caveat
-  in a form their tooling can extract.
+  no <aside> HTML. AI consumers ingesting the markdown stream get
+  the editorial caveat in a form their tooling can extract. Each
+  variant carries the single most-critical jurisdictional concern
+  inline and links to /disclaimers/#variant for the full text.
 */ -}}
 {{- $type := .Get "type" | default "finance" -}}
 {{- $custom := .Get "text" -}}
@@ -11,16 +12,18 @@
 {{- if $custom -}}
   {{- $body = $custom -}}
 {{- else if eq $type "finance" -}}
-  {{- $body = "All opinions expressed are my own. This is not investment, financial, tax, or legal advice. Past performance does not indicate future results. Do your own research and consult qualified professionals before making financial decisions. No liability accepted for any losses." -}}
+  {{- $body = "Journalism, not investment advice or a recommendation. Not directed at UK persons; not a financial promotion under FSMA s.21. The author may hold positions in instruments discussed and receives no compensation from issuers. [Full disclaimer](/disclaimers/#finance)." -}}
 {{- else if eq $type "medical" -}}
-  {{- $body = "For informational purposes only, not medical advice. Consult a qualified healthcare provider for any medical questions or conditions." -}}
+  {{- $body = "Journalism on health topics, not medical advice and not a substitute for consulting a qualified clinician. No clinician-patient relationship is created. [Full disclaimer](/disclaimers/#medical)." -}}
+{{- else if eq $type "pom" -}}
+  {{- $body = "Journalistic reportage on prescription-only medicines. Not advertising under HMG / HMR / HWG / FDA frameworks, not medical advice. Prescription and use require a qualified clinician. [Full disclaimer](/disclaimers/#pom)." -}}
 {{- else if eq $type "general" -}}
-  {{- $body = "All opinions expressed are my own. Information may be incomplete or outdated. No warranties given. Use at your own risk." -}}
+  {{- $body = "Personal opinion of the author, offered as commentary on matters of public concern. Not professional advice. [Full disclaimer](/disclaimers/#general)." -}}
 {{- else if eq $type "ai" -}}
-  {{- $body = "AI capabilities evolve rapidly; information may become outdated. Code and implementations provided as-is without warranty." -}}
+  {{- $body = "AI/ML content. Code and model outputs are illustrative, provided without warranty, and may be wrong or unsafe; verify before relying. [Full disclaimer](/disclaimers/#ai)." -}}
 {{- else if eq $type "research" -}}
-  {{- $body = "Summarizes third-party research. No affiliation with cited researchers. Interpretations are my own and may differ from original authors' views." -}}
+  {{- $body = "Summary of third-party research under quotation-right exceptions. Interpretations are the author's own; consult the cited primary source. [Full disclaimer](/disclaimers/#research)." -}}
 {{- else if eq $type "gambling" -}}
-  {{- $body = "For informational purposes only, not financial or legal advice. Gambling involves significant risk of loss. You are responsible for compliance with your local laws and age restrictions. Gamble responsibly. Support: [BeGambleAware.org](https://www.gambleaware.org), [Gamblers Anonymous](https://gamblersanonymous.org)." -}}
+  {{- $body = "Industry commentary, not advertising, inducement, or advice to gamble. Gambling involves significant risk and may be illegal in your jurisdiction. Help: 1-800-GAMBLER (US) · 0800 040 080 (CH) · 0800 1 372 700 (DE) · BeGambleAware.org (UK). [Full disclaimer](/disclaimers/#gambling)." -}}
 {{- end -}}
 > **Disclaimer.** {{ $body }}

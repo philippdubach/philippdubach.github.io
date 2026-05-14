@@ -6,17 +6,19 @@
     {{- if $custom -}}
       {{ $custom | markdownify }}
     {{- else if eq $type "finance" -}}
-      <p><strong>Disclaimer:</strong> All opinions expressed are my own. This is not investment, financial, tax, or legal advice. Past performance does not indicate future results. Do your own research and consult qualified professionals before making financial decisions. No liability accepted for any losses.</p>
+      <p><strong>Disclaimer:</strong> Journalism, not investment advice or a recommendation. Not directed at UK persons; not a financial promotion under FSMA s.21. The author may hold positions in instruments discussed and receives no compensation from issuers. <a href="/disclaimers/#finance">Full disclaimer →</a></p>
     {{- else if eq $type "medical" -}}
-      <p><strong>Disclaimer:</strong> For informational purposes only, not medical advice. Consult a qualified healthcare provider for any medical questions or conditions.</p>
+      <p><strong>Disclaimer:</strong> Journalism on health topics, not medical advice and not a substitute for consulting a qualified clinician. No clinician-patient relationship is created. <a href="/disclaimers/#medical">Full disclaimer →</a></p>
+    {{- else if eq $type "pom" -}}
+      <p><strong>Disclaimer:</strong> Journalistic reportage on prescription-only medicines. Not advertising under HMG / HMR / HWG / FDA frameworks, not medical advice. Prescription and use require a qualified clinician. <a href="/disclaimers/#pom">Full disclaimer →</a></p>
     {{- else if eq $type "general" -}}
-      <p><strong>Disclaimer:</strong> All opinions expressed are my own. Information may be incomplete or outdated. No warranties given. Use at your own risk.</p>
+      <p><strong>Disclaimer:</strong> Personal opinion of the author, offered as commentary on matters of public concern. Not professional advice. <a href="/disclaimers/#general">Full disclaimer →</a></p>
     {{- else if eq $type "ai" -}}
-      <p><strong>Disclaimer:</strong> AI capabilities evolve rapidly; information may become outdated. Code and implementations provided as-is without warranty.</p>
+      <p><strong>Disclaimer:</strong> AI/ML content. Code and model outputs are illustrative, provided without warranty, and may be wrong or unsafe; verify before relying. <a href="/disclaimers/#ai">Full disclaimer →</a></p>
     {{- else if eq $type "research" -}}
-      <p><strong>Disclaimer:</strong> Summarizes third-party research. No affiliation with cited researchers. Interpretations are my own and may differ from original authors' views.</p>
+      <p><strong>Disclaimer:</strong> Summary of third-party research under quotation-right exceptions. Interpretations are the author's own; consult the cited primary source. <a href="/disclaimers/#research">Full disclaimer →</a></p>
     {{- else if eq $type "gambling" -}}
-      <p><strong>Disclaimer:</strong> For informational purposes only, not financial or legal advice. Gambling involves significant risk of loss. You are responsible for compliance with your local laws and age restrictions. Gamble responsibly. Support: <a href="https://www.gambleaware.org" target="_blank" rel="noopener">BeGambleAware.org</a>, <a href="https://gamblersanonymous.org" target="_blank" rel="noopener">Gamblers Anonymous</a>.</p>
+      <p><strong>Disclaimer:</strong> Industry commentary, not advertising, inducement, or advice to gamble. Gambling involves significant risk and may be illegal in your jurisdiction. Help: 1-800-GAMBLER (US) · 0800 040 080 (CH) · 0800 1 372 700 (DE) · BeGambleAware.org (UK). <a href="/disclaimers/#gambling">Full disclaimer →</a></p>
     {{- end -}}
   </div>
 </aside>

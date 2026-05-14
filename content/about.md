@@ -14,4 +14,4 @@ Readers tend to be portfolio managers, CTOs, founders, and researchers who want 
 
 {{< newsletter >}}
 
-<p class="page-footnote"><em>All opinions are the author's own and do not reflect the views of any employer, sponsors, or clients. The site does not collect personal data or use tracking cookies; anonymized access logs may be kept for performance. See the <a href="https://www.goatcounter.com/help/privacy">privacy policy</a>.</em></p>
+<p class="page-footnote"><em>All opinions are the author's own. <a href="/impressum/">Privacy &amp; contact</a>.</em></p>

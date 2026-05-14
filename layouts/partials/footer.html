@@ -32,6 +32,7 @@
             {{ if not $isPost }}
             <li><a href="{{ "/subscribe/" | relURL }}">Newsletter</a></li>
             {{ end }}
+            <li><a href="/feed/index.xml">RSS</a></li>
             {{ with .Site.Params.social.github }}
             <li><a href="https://github.com/{{ . }}" target="_blank" rel="me noopener noreferrer">GitHub</a></li>
             {{ end }}
@@ -42,11 +43,11 @@
             <li><a href="mailto:{{ . }}">Email</a></li>
             {{ end }}
         </ul>
-        <ul class="footer-utilities__group footer-utilities__feeds" aria-label="Machine-readable resources">
-            <li><a href="/feed/index.xml">RSS</a></li>
+        <ul class="footer-utilities__group footer-utilities__feeds" aria-label="Site resources">
             <li><a href="/feed.json">JSON Feed</a></li>
             <li><a href="/llms.txt">llms.txt</a></li>
             <li><a href="/api-catalog.json">API catalog</a></li>
+            <li><a href="{{ "/impressum/" | relURL }}">Privacy</a></li>
         </ul>
     </nav>
 

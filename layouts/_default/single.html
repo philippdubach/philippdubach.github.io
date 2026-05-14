@@ -2,8 +2,10 @@
 {{- $isAbout := eq .RelPermalink "/about/" -}}
 {{- $isSubscribe := eq .RelPermalink "/subscribe/" -}}
 {{- $isNewsletterArchive := eq .RelPermalink "/newsletter-archive/" -}}
+{{- $isImpressum := eq .RelPermalink "/impressum/" -}}
+{{- $isDisclaimers := eq .RelPermalink "/disclaimers/" -}}
 {{- $isProject := eq .Params.type "Project" -}}
-<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isSubscribe }} subscribe-page{{ end }}{{ if $isNewsletterArchive }} newsletter-archive-page{{ end }}{{ if $isProject }} project-post{{ end }}">
+<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isSubscribe }} subscribe-page{{ end }}{{ if $isNewsletterArchive }} newsletter-archive-page{{ end }}{{ if $isImpressum }} impressum-page{{ end }}{{ if $isDisclaimers }} disclaimers-page{{ end }}{{ if $isProject }} project-post{{ end }}">
     {{ if $isAbout }}
     {{/* About-page hero lockup — replaces standard post header. */}}
     <header class="post-header about-hero">
@@ -23,6 +25,16 @@
          a landing — body content does the orientation. Matches /, /projects/,
          /categories/, /faq/. */}}
     <h1 class="page-label section-label">{{ .Title }}</h1>
+    {{ else if or $isImpressum $isDisclaimers }}
+    {{/* Legal / utility pages — share the about-hero lockup so they read as
+         deliberate site sections rather than orphan boilerplate. Lede comes
+         from frontmatter `description`. Section-label overline frames the
+         register as compliance-tier without making the H1 shout. */}}
+    <header class="post-header about-hero impressum-hero">
+        <p class="section-label impressum-kicker">{{ if $isImpressum }}Privacy notice{{ else }}Disclaimers{{ end }}</p>
+        <h1 class="post-title about-name">{{ .Title }}</h1>
+        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
+    </header>
     {{ else }}
     <header class="post-header">
         <h1 class="post-title">

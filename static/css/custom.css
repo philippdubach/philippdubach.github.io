@@ -102,6 +102,95 @@
     letter-spacing: 0.01em;
 }
 
+/* === Impressum / Disclaimers — legal-utility pages ===
+   Composition: about-hero lockup with a small section-label kicker above
+   the H1 ("Legal notice" / "Disclaimers") so the page reads as a deliberate
+   compliance section rather than orphan boilerplate. Body uses a quiet H2
+   kicker register (ui-font small caps) instead of the heavy 1.777rem post H2,
+   because anchor-target headings shouldn't shout on a legal page. */
+.impressum-hero {
+    margin-bottom: 3em;
+}
+
+.impressum-kicker {
+    /* section-label inherits the accent rule + uppercase tracking; we
+       collapse the bottom-border + reduce the margin so it reads as an
+       overline kicker, not a section divider. */
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.6em;
+    font-size: 12px;
+}
+
+.impressum-page .post-content > section + section,
+.disclaimers-page .post-content > section + section {
+    margin-top: 3em;
+}
+
+.imprint-section {
+    margin: 2.5em 0;
+}
+
+.imprint-section:first-child {
+    margin-top: 0;
+}
+
+.imprint-section h2,
+.impressum-page .post-content h2,
+.disclaimers-page .post-content h2 {
+    font-family: var(--ui-font);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 1.25em;
+    padding-bottom: 0.55em;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 1.5em;
+}
+
+/* === Imprint address ===
+   Quiet inline address. No card, no rule. Reads as a continuation of the
+   prose rather than a callout — the page is plumbing, not a landing. */
+.imprint-address {
+    margin: 0.5em 0 1.75em;
+    font-style: normal;
+    font-family: var(--ui-font);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* === Imprint prose ===
+   Body-font paragraph register for privacy + regulatory prose. */
+.imprint-prose {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 1em;
+    max-width: 64ch;
+}
+
+.imprint-prose:last-child {
+    margin-bottom: 0;
+}
+
+.imprint-prose a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--text-meta);
+    text-decoration-thickness: from-font;
+    text-underline-offset: 0.18em;
+}
+
+.imprint-prose a:hover,
+.imprint-prose a:focus {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
 /* === Page-footnote ===
    Italic prose at page end for site-meta legal content (privacy + opinions).
    Same register as .post-biblio: thin grey rule + 13px ui-font grey. Used on
