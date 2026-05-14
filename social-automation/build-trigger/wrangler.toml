@@ -1,0 +1,14 @@
+name = "build-trigger"
+main = "src/index.js"
+compatibility_date = "2026-05-14"
+workers_dev = false
+preview_urls = false
+
+# Every 3 hours at minute 17. Replaces the unreliable
+# `schedule:` block in .github/workflows/hugo.yml.
+[triggers]
+crons = ["17 */3 * * *"]
+
+[observability]
+enabled = true
+head_sampling_rate = 1

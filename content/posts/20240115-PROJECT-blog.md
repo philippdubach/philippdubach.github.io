@@ -35,6 +35,8 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 
 > **May 2026**
 
+*Cron Reliability* — Scheduled rebuilds moved off GitHub Actions cron (drifts 30+ min, occasionally skips during platform incidents) onto a Cloudflare Worker that fires `workflow_dispatch` on a deterministic `17 */3 * * *` UTC schedule. Builds still run on Actions; only the trigger moved. Cadence increased from 3× daily to every 3 hours, so max publish delay for future-dated posts dropped from ~7h to ~3h. Worker source: `social-automation/build-trigger/`.
+
 *Hugo 0.161.1 Upgrade* — Bumped from 0.157.0. Byte-identical output, zero deprecation warnings. Added a local diff harness (`scripts/upgrade-diff.sh`) that builds with two Hugo versions and diffs `public/`, used to validate the bump as a no-op. The new release window opened up `strings.ReplacePairs` (collapsed an 8-call entity-decode chain in `llms-full.txt`) and fixed enough Goldmark / `RenderShortcodes` edge cases that 8 of 9 post-render regex passes in the markdown variant template could go. One was actively harmful: the math-delimiter regex was corrupting Wikipedia URLs like `Universal_Serial_Bus_\(USB\)` into `_$USB$_` because the pattern was over-eager.
 
 *Index Redesign* — Articles and projects now share the same structure: hero dropped, the featured row *is* the masthead (red overline, 1.5px red rule, large headline), hairline divider, filter chips reframed as "browse the archive" rather than page nav. Quiet `<h1 class="page-label">` for SEO and screen readers without competing visually with the featured headline. Featured card image now requests a 1200×630 landscape source matching the CSS aspect-ratio (was getting a 480×600 portrait stretched sideways, which clipped faces).
