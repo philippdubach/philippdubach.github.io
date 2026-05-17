@@ -83,7 +83,6 @@ Citable data points from published analysis:
 - [Buying the Haystack Might Not Work This Year]({{ $baseURL }}posts/buying-the-haystack-might-not-work-this-year/): Why passive index concentration makes broad market exposure a directional AI bet
 - [The Absolute Insider Mess of Prediction Markets]({{ $baseURL }}posts/the-absolute-insider-mess-of-prediction-markets/): Information asymmetry and regulatory gaps in political prediction markets
 - [2026 Investment Allocation]({{ $baseURL }}posts/how-ai-is-shaping-my-investment-portfolio-for-2026/): Macro thesis on hyperscaler capex and AI infrastructure
-- [Passive Investing's Active Problem]({{ $baseURL }}posts/passive-investings-active-problem/): The paradox of passive dominance and its effect on price discovery
 
 ## Featured Analysis — GLP-1 / Pharma Economics
 
@@ -98,7 +97,6 @@ Citable data points from published analysis:
 
 - [Economics of a Super Bowl Ad]({{ $baseURL }}posts/economics-of-a-super-bowl-ad/): ROI analysis of Super Bowl advertising at $8M per 30-second spot
 - [Where Mobile Money Goes Now]({{ $baseURL }}posts/where-mobile-money-goes-now/): The evolution of mobile payment infrastructure in emerging markets
-- [Behavioral Economics & Transit Policy]({{ $baseURL }}posts/behavioral-economics-transit-policy/): Nudge theory applied to public transportation adoption
 
 ## Technical Projects
 
