@@ -38,6 +38,8 @@ The quiet tell is how frontier labs are actually behaving. Major players are now
 
 >We need to go back to the age of research
 
+{{< readnext slug="the-impossible-backhand" >}}
+
 Shorting the scaling thesis has been a widow-maker trade for the better part of three years. Nvidia is up roughly 800% since 2022. As I've [written before](/posts/the-market-can-stay-irrational-longer-than-you-can-stay-solvent/), the market can remain irrational longer than you can remain solvent, and that applies to both directions. OpenAI reportedly burns around $3 billion monthly with a $40 billion funding round implying perhaps 13 months of runway. If the next mega-round prices down or requires distressed terms, that's your signal. Until then, the thesis may be directionally correct on the technical limitations while the timing remains treacherous.
 
 >We can only see a short distance ahead, but we can see plenty there that needs to be done.

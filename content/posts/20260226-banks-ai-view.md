@@ -69,7 +69,7 @@ But the comparison works less cleanly when you look at concentration rather than
 
 There's also a subtler version of the bubble question that none of the twelve reports asks directly. The "infrastructure comes before productivity" argument is historically correct: railroads were overbuilt before they transformed commerce; the internet fibre glut of 1999–2000 eventually became the backbone of the digital economy. But the investors who financed Global Crossing and 360networks still lost everything. The infrastructure thesis being correct in the long run isn't the same as every current valuation being justified. Goldman's report is particularly careful to avoid addressing that distinction. The implicit message, "we financed the pipes before and it worked out," skips past the question of which financiers got paid and which got wiped out in the transition.
 
-{{< readnext slug="buying-the-haystack-might-not-work-this-year" >}}
+{{< readnext slug="inside-pragma-revoluts-foundation-model-for-banking" >}}
 
 ## Sell side
 
