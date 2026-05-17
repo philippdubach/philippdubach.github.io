@@ -58,7 +58,7 @@ Joining to on-chain trades took most of the engineering time. Polymarket's CTF E
 
 The 600-market panel selection rule (volume metric, random-stratum eligibility threshold, random seed, category scheme) was committed in a [pre-registration document](https://github.com/philippdubach/polymarket-microstructure) before computing the panel. A deterministic build script emits the panel parquet, whose SHA-256 is recorded back into the pre-registration document before any analysis runs. This goes beyond the empirical-microstructure norm; the cost is one document and one hash, the benefit is that a reader can verify no market was added or removed after the analysis ran.
 
-{{< readnext slug="the-absolute-insider-mess-of-prediction-markets" >}}
+{{< readnext slug="is-private-equity-just-beta-with-a-lockup" >}}
 
 ## Eight stylized facts
 

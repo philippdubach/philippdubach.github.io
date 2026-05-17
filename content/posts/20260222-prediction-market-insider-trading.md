@@ -53,7 +53,7 @@ It's not just Compound AI. [Polysights](https://gizmodo.com/tracking-insider-tra
 
 The irony is rich. Blockchain's radical transparency, the thing that was supposed to make financial markets honest, is simultaneously enabling insider detection and insider copytrading. The same data pipeline that lets Compound AI catch cheaters also lets copytraders amplify their profits.
 
-{{< readnext slug="the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book" >}}
+{{< readnext slug="is-private-equity-just-beta-with-a-lockup" >}}
 
 ## Regulation
 

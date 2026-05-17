@@ -27,7 +27,7 @@ Last week I published a [Hacker News title sentiment analysis](https://philippdu
 
 > [Hacker News](https://news.ycombinator.com/news) (HN) is a social news website focusing on computer science and entrepreneurship. It is run by the investment fund and startup incubator [Y Combinator](https://www.ycombinator.com).
 
-{{< readnext slug="65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform" >}}
+{{< readnext slug="social-media-success-prediction-bert-models-for-post-titles" >}}
 
 This isn't new territory. [Max Woolf built a Reddit submission predictor](https://minimaxir.com/2017/06/reddit-deep-learning/) back in 2017, and [ontology2 trained an HN classifier](https://ontology2.com/essays/ClassifyingHackerNewsArticles/) using logistic regression on title words. Both found similar ceilings; around 0.76 AUC with classical approaches. I wanted to see what modern transformers could add.
 

@@ -72,7 +72,7 @@ If AI has already produced results in theoretical physics, materials science, fu
 
 >the value of truly breakthrough innovations that transform markets (if, for example, nuclear fusion was to enable limitless, clean electricity production).
 
-{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+{{< readnext slug="the-impossible-backhand" >}}
 
 ## The bear case: pattern matching is not physics
 

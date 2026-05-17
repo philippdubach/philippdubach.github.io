@@ -53,7 +53,7 @@ Isomorphic's competitive position is unusual. It leads on computational benchmar
 
 What Isomorphic has: the AlphaFold lineage, Alphabet-scale compute, and a unified architecture where each prediction task informs the others. On talent, the company appears to be doing well: 4.7/5 on Glassdoor, 100% CEO approval. They hired Dr. Ben Wolf as CMO in June 2025, formerly at Relay Therapeutics with FDA approval experience for Ayvakit and Gavreto. They opened a Cambridge, Massachusetts office. These are the moves of a company staffing up for clinical reality, not just publishing papers.
 
-{{< readnext slug="novo-nordisks-post-patent-strategy" >}}
+{{< readnext slug="glp-1-receptor-agonists-in-asud-treatment" >}}
 
 The open-source threat is real but manageable in the near term. [Chai Discovery](https://techcrunch.com/2026/01/16/from-openais-offices-to-a-deal-with-eli-lilly-how-chai-discovery-became-one-of-the-flashiest-names-in-ai-drug-development/) (backed by OpenAI at a [$1.3 billion valuation](https://techcrunch.com/2025/12/15/openai-backed-biotech-firm-chai-discovery-raises-130m-series-b-at-1-3b-valuation/), now partnered with Lilly on biologics) and [Boltz](https://www.genengnews.com/topics/artificial-intelligence/pharma-bets-big-on-ai-platforms-with-flurry-of-new-year-deals/) (partnered with Pfizer) are both making progress. But the gap between IsoDDE's numbers and the best open-source alternatives is wide enough that Isomorphic has time, maybe 18-24 months, to convert its computational lead into clinical evidence before the field catches up.
 

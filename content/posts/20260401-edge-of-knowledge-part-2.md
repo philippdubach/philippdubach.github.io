@@ -53,7 +53,7 @@ I think the answer is "it depends," and the distinction matters. Ambiguity avers
 
 This is where I land: ambiguity aversion is a sensible default that gets systematically overweighted in specific situations. The skill is the distinction. And the distinction is judgment, not math.
 
-{{< readnext slug="the-saaspocalypse-paradox" >}}
+{{< readnext slug="everything-is-a-dcf-model" >}}
 
 ## Discomfort as information
 

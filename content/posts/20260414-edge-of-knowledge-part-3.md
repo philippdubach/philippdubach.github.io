@@ -83,7 +83,7 @@ But complementary skills aren't the only form of advantage. In the [SaaSpocalyps
 
 [Richard Robb (2006)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2205858) pushes further. He argues that UU knowledge is "uncommunicable." If a mechanism for generating excess returns could be expressed as a process, someone would have arbitraged it away. Ricardo, on the eve of Waterloo, might have said "British Government bonds offer a high reward for the risk." But what would it look like for that statement to be proven false? The claim is unfalsifiable because it lives in the ignorance box where probability statements don't have clear empirical content. If the sidecar driver can't explain their edge in terms you can evaluate, how do you distinguish skill from survivorship bias?
 
-{{< readnext slug="the-saaspocalypse-paradox" >}}
+{{< readnext slug="bet-sizing-at-the-frontier" >}}
 
 I think both objections are correct and both miss something. They're correct that sidecar investing doesn't eliminate the evaluation problem. But they miss that the evaluation problem has different difficulty levels depending on context. Evaluating whether a real estate developer can build and lease a building is easier than evaluating whether a macro hedge fund can predict interest rates. Evaluating whether Buffett's insurance math is sound is easier than evaluating whether a biotech startup's drug candidate works. The sidecar concept isn't "trust someone blindly." It's "invest alongside someone whose edge you can partly verify, in situations where your own analytical advantage is zero."
 

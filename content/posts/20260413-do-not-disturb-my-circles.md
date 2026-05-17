@@ -86,7 +86,7 @@ The infrastructure being built is not for protein folding. It is not for materia
 
 The bottleneck for AI for science was never money. AlphaFold proved that. It was always about who works on what, and the chatbot economy answered that question for an entire generation of researchers.
 
-{{< readnext slug="ai-capex-arms-race-who-blinks-first" >}}
+{{< readnext slug="ai-models-as-standalone-pls" >}}
 
 ## What the circles produced
 
