@@ -39,6 +39,11 @@ const SECURITY_HEADERS = {
   "Cross-Origin-Embedder-Policy": "credentialless",
   "Cross-Origin-Opener-Policy": "same-origin",
   "X-XSS-Protection": "0",
+  // Content-Signal per draft-romm-aipref-contentsignals. Served as a
+  // response header because the equivalent robots.txt directive is
+  // flagged as unknown by generic validators. Spec-aware AI crawlers
+  // read this header on every response.
+  "Content-Signal": "search=yes, ai-input=yes, ai-train=yes",
 };
 
 const estimateTokens = (body) => Math.ceil(body.length / 4);

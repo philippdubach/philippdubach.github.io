@@ -1,18 +1,19 @@
-# Content-Signal (draft-romm-aipref-contentsignals)
+# Content-Signal (draft-romm-aipref-contentsignals) is served as an HTTP
+# response header by the security-headers Cloudflare Worker, not as a
+# robots.txt directive, because generic robots.txt validators flag the
+# directive as unknown. Spec-aware AI crawlers will read the header.
 # Site posture: maximally permissive — search, AI inference, and AI training all allowed.
 # Content negotiation: requests with Accept: text/markdown receive a markdown variant.
 
 User-agent: *
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /cdn-cgi/
 
-# AI Search & Training Agents — Content-Signal applied per group because named
-# user-agents do not inherit directives from the wildcard group.
+# Named AI Search & Training Agents (kept as transparency about which bots
+# are explicitly recognised; behaviour is identical to the wildcard above).
 {{ $aiBots := slice "GPTBot" "ChatGPT-User" "OAI-SearchBot" "ClaudeBot" "claude-web" "anthropic-ai" "Claude-User" "Claude-SearchBot" "PerplexityBot" "Perplexity-User" "Google-Extended" "Google-CloudVertexBot" "Gemini-Deep-Research" "Applebot-Extended" "meta-externalagent" "Meta-WebIndexer" "Amazonbot" "cohere-ai" "Bytespider" "YouBot" "DeepSeekBot" "DuckAssistBot" "MistralAI-User" "GrokBot" "CCBot" "Diffbot" -}}
 {{ range $aiBots }}
 User-agent: {{ . }}
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 {{ end }}
 # Sitemap
