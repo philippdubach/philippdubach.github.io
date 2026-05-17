@@ -67,6 +67,8 @@ Generalize this, and you get a structural feature of UU markets that doesn't go 
 
 [Aumann (1976)](https://projecteuclid.org/journals/annals-of-statistics/volume-4/issue-6/Agreeing-to-Disagree/10.1214/aos/1176343654.full) proved that rational agents with common priors who share their posterior beliefs must converge: they cannot "agree to disagree." The theorem is elegant and, in UU markets, irrelevant. Aumann assumes common priors and known state spaces. In Box 3, both assumptions fail. The state space is undefined, so there are no common priors to start from. Disagreement in UU isn't a puzzle to be resolved by more information exchange. It's the default condition. Two equally rational investors can look at the same situation and reach opposite conclusions without either one being wrong, because they're not disagreeing about probabilities. They're disagreeing about what world they're in.
 
+{{< readnext slug="is-private-equity-just-beta-with-a-lockup" >}}
+
 ## The advantage-versus-selection formula
 
 Zeckhauser offers a framework for deciding when to invest despite potential adverse selection. Your expected return depends on three things: your absolute advantage (*a*), the probability the other side is better informed (*p*), and the selection factor (*s*), how much their information hurts you. Invest when the combination exceeds the cost of entry.
@@ -80,6 +82,8 @@ But complementary skills aren't the only form of advantage. In the [SaaSpocalyps
 [Larry Summers (2006)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2205848) raises the obvious objection to the sidecar concept: "identifying skilled UU managers may be no easier than picking market-beating investments directly." The sidecar doesn't solve the epistemological problem. It relocates it from asset selection to manager selection. How do you know the driver is skilled rather than lucky?
 
 [Richard Robb (2006)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2205858) pushes further. He argues that UU knowledge is "uncommunicable." If a mechanism for generating excess returns could be expressed as a process, someone would have arbitraged it away. Ricardo, on the eve of Waterloo, might have said "British Government bonds offer a high reward for the risk." But what would it look like for that statement to be proven false? The claim is unfalsifiable because it lives in the ignorance box where probability statements don't have clear empirical content. If the sidecar driver can't explain their edge in terms you can evaluate, how do you distinguish skill from survivorship bias?
+
+{{< readnext slug="the-saaspocalypse-paradox" >}}
 
 I think both objections are correct and both miss something. They're correct that sidecar investing doesn't eliminate the evaluation problem. But they miss that the evaluation problem has different difficulty levels depending on context. Evaluating whether a real estate developer can build and lease a building is easier than evaluating whether a macro hedge fund can predict interest rates. Evaluating whether Buffett's insurance math is sound is easier than evaluating whether a biotech startup's drug candidate works. The sidecar concept isn't "trust someone blindly." It's "invest alongside someone whose edge you can partly verify, in situations where your own analytical advantage is zero."
 

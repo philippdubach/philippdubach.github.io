@@ -99,6 +99,8 @@ The core challenge was responsive images. Standard markdown `![alt](url)` doesn'
 
 *IndexNow Integration* — Automated submissions via GitHub Actions for faster search engine discovery. Only pings recently changed URLs based on `lastmod`.
 
+{{< readnext slug="building-a-no-tracking-newsletter-from-markdown-to-distribution" >}}
+
 > **December 2025**
 
 *Code Blocks* — Syntax highlighting via Chroma with line numbers in table layout. GitHub-inspired color theme.

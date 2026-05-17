@@ -56,6 +56,8 @@ Microsoft and Pacific Northwest National Lab [screened 32.6 million inorganic ma
 
 And then, GPT-5.2 produced a new result in theoretical physics. A proof that human physicists had not found. The mathematical reasoning timeline tells the story. [AlphaGeometry](https://deepmind.google/discover/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/) solved 25 of 30 Olympiad geometry problems in January 2024. By July 2024, [AlphaProof earned a silver medal](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/) at the International Mathematical Olympiad. By 2025, [Gemini Deep Think scored gold](https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/): 5 of 6 problems, 35 points, end-to-end in natural language. Terence Tao [revised his prediction](https://siliconreckoner.substack.com/p/terence-tao-on-machine-assisted-proofs) for superhuman AI mathematics from 2029 to 2026.
 
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+
 ## 75:1 compute gap
 
 Here is the number that matters. Big Tech spent over **$250 billion** on AI infrastructure in 2024 and 2025. Total US federal AI R&D spending: [**$3.3 billion** per year](https://federalbudgetiq.com/insights/federal-ai-and-it-research-and-development-spending-analysis/). That is a compute divide of roughly 75:1 between commercial and scientific AI investment. The [NAIRR pilot](https://cset.georgetown.edu/article/the-nairr-pilot-estimating-compute/) allocated about 3.2 yottaFLOPs to academic researchers, enough to train GPT-3.5 once but not enough for a single GPT-4-class run.

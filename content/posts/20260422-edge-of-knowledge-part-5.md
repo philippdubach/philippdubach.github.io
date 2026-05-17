@@ -63,6 +63,8 @@ It gets murkier when the complementary asset is power rather than skill. Zeckhau
 
 [Summers (2006)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2205848) observed that identifying skilled UU managers may be no easier than picking investments directly. I suspect this is too generous. In many cases, identifying whether a sidecar driver has skill, power, or luck is harder than evaluating the underlying asset, because the asset at least has observable characteristics. The driver's edge, by definition, doesn't.
 
+{{< readnext slug="is-private-equity-just-beta-with-a-lockup" >}}
+
 ## Blame, accountability, and the collective action problem
 
 The Monday Morning Quarterback problem runs through Zeckhauser's entire paper. Investors avoid Box F not because the expected value is negative but because a bad outcome will be judged harshly in retrospect. I've discussed this as a mechanism for mispricing (Parts [2](/posts/ambiguity-by-design/) and [3](/posts/the-geometry-of-who-knows-what/)). Here I want to name the distributional consequence.

@@ -45,6 +45,8 @@ The counterargument, and it's a reasonable one, is that IsoDDE represents a qual
 
 I find this plausible but unproven. We'll know more when Isomorphic's first candidates enter trials, targeted for late 2026.
 
+{{< readnext slug="the-most-expensive-assumption-in-ai" >}}
+
 ## Where Isomorphic fits in the competitive stack
 
 Isomorphic's competitive position is unusual. It leads on computational benchmarks but trails on clinical progress. [Insilico Medicine](https://insilico.com/) has the most advanced clinical portfolio: its IPF drug ISM001-055 (now called rentosertib) reached Phase IIa with [positive results published in *Nature Medicine* in June 2025](https://www.nature.com/articles/s41591-025-03743-2), and Insilico has 10+ IND approvals across 31 programs. [Recursion Pharmaceuticals](https://ir.recursion.com/news-releases/news-release-details/recursion-and-exscientia-two-leaders-ai-drug-discovery-space), which [absorbed Exscientia in a $688 million merger](https://pharmaphorum.com/news/ai-biotechs-exscientia-and-recursion-agree-688m-merger), takes a different approach entirely, running millions of phenomics experiments weekly on 65 petabytes of biological imaging data. Both companies own wet-lab infrastructure that Isomorphic lacks.

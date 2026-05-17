@@ -43,6 +43,8 @@ This matters because repo is not a peripheral market. It is the market through w
 
 On December 31, 2025, eligible financial firms borrowed a record $74.6 billion from the Fed's Standing Repo Facility, which is the highest since its launch in 2021. The Fed had just [eliminated the $500 billion daily cap](https://tellerwindow.newyorkfed.org/2025/12/23/standing-repo-operations-in-the-federal-reserves-monetary-policy-implementation-framework/) on this facility, a quiet acknowledgment that the ceiling might actually matter. Quantitative tightening officially ended on December 1, 2025. Reserves had fallen to $2.8 trillion, their lowest in four years.
 
+{{< readnext slug="pozsars-bretton-woods-iii-three-years-later-2/2" >}}
+
 The plumbing was straining again.
 
 Pozsar's 2014 OFR paper, "Shadow Banking: The Money View," introduced a framework that still haunts anyone who reads it carefully. At its core is a hierarchy of money. Currency sits at the top, the liability of the sovereign. Below that: bank deposits, insured and backstopped by the FDIC. Below that: repo, secured by collateral but not by any explicit government guarantee. Below that: the constant-NAV shares of money market funds, which promise par redemption but rest on layers of private credit puts, reputational commitments, and the fragile assumption that nothing will go wrong simultaneously.

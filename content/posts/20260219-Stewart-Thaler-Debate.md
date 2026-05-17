@@ -39,6 +39,8 @@ The episode's most telling exchange, in my reading, involved climate policy. Tha
 
 This moment captures, in my view, the central problem of the episode. Stewart's underlying instinct — that political feasibility should constrain policy design — is not the "bizarre non sequitur" some commentators called it; it is the reason a carbon tax hasn't been implemented in the form Thaler describes. But the framing that economics as a discipline has nothing to say about wellbeing is, in my view, a definitional mistake that matters. Thaler's own career is a direct counterexample: behavioral nudges have [enrolled 10 million UK workers](https://www.bi.team/about-us/who-we-are/) into pension savings, and Thaler [told Stewart](https://singjupost.com/the-irrational-economy-w-nobel-laureate-richard-thaler-transcript/) that renaming an ACA plan tier from "catastrophic" to "economy" cut the uninsured rate by **10%**. But I think the economists who piled on Stewart missed the more interesting question he was circling: if the economy is working well by standard measures, why does it feel broken to so many people? The answer is what I'd call the levels-vs-rates problem, and it explains both the vibecession and the trust gap between economists and the public they claim to serve.
 
+{{< readnext slug="nikes-crisis-and-the-economics-of-brand-decay" >}}
+
 ## Levels-vs-rates disconnect
 
 The headline data is strong. [GDP grew 4.4% annualized in Q3 2025](https://www.bea.gov/news/2026/gross-domestic-product-3rd-quarter-2025-updated-estimate-gdp-industry-and-corporate). [Unemployment sits at 4.3%](https://tradingeconomics.com/united-states/unemployment-rate). [Inflation has fallen to 2.4%](https://www.cnbc.com/2026/02/13/heres-the-inflation-breakdown-for-january-2026-in-one-chart.html), with core CPI at 2.5%, its lowest since April 2021. Real wages have outpaced inflation every month since June 2023. The S&P 500 posted [three consecutive years of double-digit gains](https://www.fool.com/investing/2026/01/22/the-sp-500-just-did-something-weve-never-seen-befo/), returning 86% cumulative. An economist looking at these numbers would say the economy is performing well. Thaler more or less said exactly that.
@@ -50,6 +52,8 @@ But rates and levels are different things, and people live in levels. The cumula
 {{< img src="levels-vs-rates1.png" alt="Exhibit showing cumulative price increases since March 2020 by essential spending category with housing up roughly 38 percent, food at home up 29.4 percent, health insurance premiums up 26 percent, and aggregate CPI up roughly 25 percent, contrasted with the current inflation rate of 2.4 percent, illustrating that the rate has normalized but the level shift is permanent" width="90%" >}}
 
 This is what Stewart was gesturing at. He expressed it as "economics doesn't care about people," which is wrong. What he actually meant: the metrics economists use to declare success (rates of change, aggregate growth, unemployment) don't capture what households experience at the grocery store, the mortgage broker, or the insurance renewal. The economic perception gap isn't irrational. It's a measurement problem.
+
+{{< readnext slug="pozsars-bretton-woods-iii-three-years-later-2/2" >}}
 
 ## K-shaped wages: the recovery that reversed
 
