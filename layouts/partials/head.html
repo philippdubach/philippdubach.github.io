@@ -12,6 +12,63 @@
     {{/* Note: preconnect implies dns-prefetch, so no need for both */}}
     {{/* Fonts: self-hosted at /fonts/ (Newsreader variable woff2). Wordmark on system sans. */}}
     <link rel="preload" href="/fonts/newsreader-upright.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
+
+    {{/* LCP preload for the homepage. The featured card image (1200×630
+         fit=crop, gravity=auto) is the LCP element. Without preload the
+         browser only discovers it during body parse, adding ~400ms to
+         resource-load delay. This block replicates the featured-card
+         resolution logic from layouts/index.html (kept in sync manually). */}}
+    {{- if .IsHome -}}
+        {{- $cdnBase := "https://static.philippdubach.com" -}}
+        {{- $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
+        {{- $articles := where $allPosts ".Params.type" "!=" "Project" -}}
+        {{- $articles = $articles.ByDate.Reverse -}}
+        {{- $pinned := where $articles "Params.featured" true -}}
+        {{- $featured := index $pinned 0 -}}
+        {{- if not $featured -}}{{- $featured = index $articles 0 -}}{{- end -}}
+
+        {{- $cardSrc := "" -}}
+        {{- $gravity := "auto" -}}
+        {{- $resolved := false -}}
+
+        {{- with $featured.Params.card_image -}}
+            {{- $cardSrc = . -}}
+            {{- if hasPrefix . "https://static.philippdubach.com/" -}}
+                {{- $cardSrc = replace . "https://static.philippdubach.com/" "" -}}
+            {{- end -}}
+            {{- $resolved = true -}}
+        {{- end -}}
+
+        {{- if not $resolved -}}
+            {{- $matches := findRESubmatch `\{\{[<%]\s*img\s+src="([^"]+)"` $featured.RawContent 1 -}}
+            {{- if $matches -}}
+                {{- $cardSrc = index (index $matches 0) 1 -}}
+                {{- if hasPrefix $cardSrc "https://static.philippdubach.com/" -}}
+                    {{- $cardSrc = replace $cardSrc "https://static.philippdubach.com/" "" -}}
+                {{- end -}}
+                {{- $resolved = true -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- if not $resolved -}}
+            {{- with $featured.Params.images -}}
+                {{- $cardSrc = replace (index . 0) "https://static.philippdubach.com/" "" -}}
+                {{- $gravity = "right" -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- with $featured.Params.card_gravity -}}{{- $gravity = . -}}{{- end -}}
+
+        {{- if $cardSrc -}}
+            {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
+    <link rel="preload" as="image"
+          href="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1200,height=630,quality=80,format=auto/{{ $cardSrc }}"
+          imagesrcset="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=600,height=315,quality=80,format=webp/{{ $cardSrc }} 600w, {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=800,height=420,quality=80,format=webp/{{ $cardSrc }} 800w, {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1000,height=525,quality=80,format=webp/{{ $cardSrc }} 1000w, {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1600,height=840,quality=80,format=webp/{{ $cardSrc }} 1600w"
+          imagesizes="(max-width: 768px) 100vw, 880px"
+          fetchpriority="high">
+        {{- end -}}
+    {{- end -}}
     {{/* Lighthouse caps useful preconnect at 4. Order by LCP impact: image
          CDN first, then analytics endpoints fired on page load. The
          newsletter API only fires on form submit (below fold, post-LCP);
