@@ -49,11 +49,10 @@ categories = ["AI", "Investing"]
 type = "Analysis"
 canonical = "/research/reconciling-enterprise-ai-revenue-2025/"
 takeaways = [
-  "Menlo Ventures ($37B), the bottom-up vendor run-rate sum ($100-135B), IDC ($307B), and Gartner ($1.478T) span a 40x range, but each is methodologically correct under its own perimeter; the reconciliation is definitional, not measurement error",
-  "The audit-grade floor of enterprise AI revenue under SEC and earnings-call disclosure standards is $63.2B narrow or about $72.5B broad, after netting silicon vendors, hardware OEM overlap (Arista's $3.5B FY26 raised guidance target excluded for consistency with ServiceNow's $1.5B FY26 ACV target), and the CoreWeave-Microsoft resale relationship; this is the only tier that defensibly underwrites $690B+ of disclosed hyperscaler capex",
-  "Tier A SEC-segment disclosures (NVIDIA, AMD, Broadcom silicon plus CoreWeave's $5.1B AI infrastructure pure-play) all sit structurally upstream of enterprise spend; under no-double-count treatment, Tier A contribution to enterprise-facing AI revenue collapses to a $2-10B band",
-  "The implied capex-to-AI-revenue ratio on the narrow audit-grade basis is 10.9x ($690B / $63.2B), against the 1990s telecom peak of roughly 3.5x; even if only $400-500B of hyperscaler capex is AI-incremental, the ratio remains historically extreme at 6.3-7.9x",
-  "Spread Index v1.0 (audit-grade over Gartner umbrella): 4.28% narrow / 4.90% broad, introduced as a quarterly metric to track how the disclosure gap moves through 10-Q seasons"
+  "Four widely-cited 2025 enterprise AI revenue figures span 40x ($37B Menlo, $100-135B vendor run-rate sum, $307B IDC, $1.478T Gartner); each is correct under its own perimeter, so the reconciliation is definitional rather than measurement error.",
+  "The audit-grade floor that defensibly underwrites $690B of 2026 hyperscaler capex is $63.2B narrow or $72.5B broad; looser numbers mix channel markup, third-party ARR claims, or full-retail device value into the same denominator.",
+  "Capex-to-revenue runs at 10.9x on the narrow audit-grade basis against the 1990s telecom peak of 3.5x; even after netting only AI-incremental capex, the ratio sits at 6.3-7.9x, worse than the closest historical analogue.",
+  "The Spread Index (audit-grade revenue over Gartner umbrella) opens at 4.28% narrow / 4.90% broad in May 2026; if it stays below 5% through Q4 2026, capex coverage cannot improve from disclosure alone and revenue itself must compound."
 ]
 faq = [
   {question = "What is Menlo Ventures' enterprise AI revenue estimate for 2025?", answer = "Menlo's December 2025 State of Generative AI in the Enterprise report puts US enterprise GenAI spending at $37B, drawn from a survey of 495 buyers about their GenAI line items. The figure is US-only, GenAI-only (no traditional or predictive ML), and enterprise-only (no consumer subscriptions). Worldwide vendor-recognized AI revenue is materially larger because Menlo's perimeter excludes non-US revenue, non-GenAI AI SKUs, and the consulting and channel-margin layer."},
