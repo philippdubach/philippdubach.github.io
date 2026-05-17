@@ -32,6 +32,14 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
   var privacy = document.getElementById('subscribe-newsletter-privacy');
   var emailInput = document.getElementById('subscribe-newsletter-email');
 
+  if (privacy && !privacy.dataset.countLoaded) {
+    privacy.dataset.countLoaded = 'true';
+    fetch('https://newsletter-api.philippd.workers.dev/api/subscriber-count')
+      .then(function(r){return r.json();})
+      .then(function(d){ if (d.display) privacy.insertBefore(document.createTextNode('Join ' + d.display + ' readers. '), privacy.firstChild); })
+      .catch(function(){});
+  }
+
   if (form && emailInput) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
