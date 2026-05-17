@@ -90,8 +90,6 @@ The category + log-volume specification is the conservative reading. Volume medi
 
 (SF3 covers Polygon block-clock alignment, SF5 the category-conditional spread, and SF6 the archive-ingestion latency. All three are in the paper. SF6 in particular is a property of the collector pipeline rather than of Polymarket; the median per-market p50 ingestion delay is 41.5 ms, which is a sanity check on the collector, not a microstructure result.)
 
-{{< readnext slug="gambling-vs.-investing" >}}
-
 ## The limits of orderbook-only inference
 
 Six standard direction-dependent microstructure measures (effective spread, realized spread, Roll, Abdi-Ranaldo, Kyle's $\lambda$, Amihud) need an aggressor sign for each trade. Empirical practice on equity venues sources that sign from a quote-driven feed via Lee-Ready or its variants. The Polymarket public feed does not expose enough information to do this reliably: the `change_side` field marks which side of the book *moved*, not which side *initiated* the trade.

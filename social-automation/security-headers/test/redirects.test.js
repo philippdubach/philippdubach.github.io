@@ -133,9 +133,12 @@ test("buildRedirectResponse: 301 sets Location header", () => {
   assert.match(res.headers.get("Cache-Control"), /max-age=86400/);
 });
 
-test("buildRedirectResponse: 410 returns Gone body", async () => {
+test("buildRedirectResponse: 410 returns HTML body with meta-refresh", async () => {
   const res = buildRedirectResponse({ status: 410 });
   assert.equal(res.status, 410);
-  assert.equal(await res.text(), "Gone");
-  assert.equal(res.headers.get("Content-Type"), "text/plain; charset=utf-8");
+  assert.equal(res.headers.get("Content-Type"), "text/html; charset=utf-8");
+  const body = await res.text();
+  assert.match(body, /<meta http-equiv="refresh" content="3;url=\/">/);
+  assert.match(body, /<meta name="robots" content="noindex">/);
+  assert.match(body, /This page has been removed/);
 });

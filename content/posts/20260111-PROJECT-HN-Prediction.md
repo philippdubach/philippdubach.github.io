@@ -57,6 +57,4 @@ The model now runs, scoring articles in an [RSS reader pipeline](https://github.
 
 On a side note: The patterns here aren't specific to Hacker News or online communities. Temporal leakage shows up whenever you're predicting something that evolves over time: credit defaults, client churn, market regimes. The fix is the same: validate on future data, not random holdouts. Calibration matters anywhere probabilities drive decisions. A loan approval model that says "70% chance of repayment" needs that number to mean something. Overfitting to training data is how banks end up with models that look great in backtests and fail in production.
 
-{{< readnext slug="the-model-said-so" >}}
-
 I've built [similar systems for other domains](https://philippdubach.com/projects/): sentiment-based trading signals, glycemic response prediction, portfolio optimization. The ML fundamentals transfer. What changes is the domain knowledge needed to avoid the obvious mistakes, like training on data that wouldn't have been available at prediction time, or trusting metrics that don't reflect real-world performance.

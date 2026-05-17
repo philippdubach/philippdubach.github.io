@@ -81,8 +81,6 @@ Applied to prediction markets: if insiders consistently win, uninformed particip
 
 Wall Street firms are entering prediction markets at speed: [DRW](https://www.drw.com/work-at-drw/listings/prediction-markets-trader-3332253) is building a dedicated desk at $175,000-$200,000 base salary, [Susquehanna became Kalshi's first official market maker](https://news.kalshi.com/p/liquid-prediction-markets-are-finally-here), [Jump Trading](https://www.bloomberg.com/news/articles/2026-02-09/jump-trading-poised-to-gain-stakes-in-kalshi-and-polymarket) is taking equity stakes in both platforms, and [Goldman Sachs CEO David Solomon](https://www.cnbc.com/2026/01/15/goldman-sachs-ceo-looks-at-how-to-get-involved-in-prediction-markets.html) has met leadership of both Kalshi and Polymarket. These firms are there to [make markets, not to bet on whether Israel will strike Iran](https://www.financemagnates.com/fintech/wall-street-quants-move-into-prediction-markets-to-hunt-for-arbitrage-not-to-bet/). Market makers who systematically take the other side of trades bleed money when their counterparties have inside information. If the institutional players conclude the game is rigged, the resulting liquidity withdrawal would hollow out the market.
 
-{{< readnext slug="gambling-vs.-investing" >}}
-
 Combined Polymarket and Kalshi weekly volume [exceeded $6 billion](https://europeanbusinessmagazine.com/business/prediction-markets-are-now-a-6b-a-week-industry-heres-whos-winning/) by early 2026. Full-year 2025 volume across all platforms [reached approximately **$44 billion**](https://www.gamblinginsider.com/in-depth/110180/prediction-market-statistics), a roughly 300x increase from early 2024. [Bloomberg terminals now carry prediction market data](https://www.npr.org/2026/01/17/nx-s1-5672615/kalshi-polymarket-prediction-market-boom-traders-slang-glossary). [CNN](https://www.npr.org/2026/01/17/nx-s1-5672615/kalshi-polymarket-prediction-market-boom-traders-slang-glossary) struck a deal to integrate Kalshi markets into its coverage.
 
 ## Prediction markets as macroeconomic forecasting tools
@@ -96,8 +94,6 @@ The paper identifies a specific structural advantage. [Fed funds futures](https:
 The Fed paper is preliminary research, not official policy. But the central bank's own economists are treating prediction markets as credible information infrastructure. The authors [intend to make the underlying data publicly available](https://natlawreview.com/article/federal-reserve-researchers-find-prediction-markets-deliver-forecasting-value), which would further normalize prediction market data as a standard input to policy analysis.
 
 If prediction markets are valuable enough that the Federal Reserve is studying them as forecasting tools for [monetary policy](https://en.wikipedia.org/wiki/Monetary_policy_of_the_United_States), the insider trading problem becomes a question of whether a tool the central bank wants to rely on can maintain the informational integrity that makes it useful. Insiders trading on classified military intelligence don't make the Fed's rate probability distributions more accurate. They make them less trustworthy.
-
-{{< readnext slug="dual-mandate-tensions" >}}
 
 ## The regulatory picture, fractured
 

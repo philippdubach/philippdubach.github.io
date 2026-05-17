@@ -30,13 +30,10 @@ const CURRENT_POST_SLUGS = new Set([
   "ai-capex-arms-race-who-blinks-first",
   "ai-models-are-the-new-rebar",
   "ai-models-as-standalone-pls",
-  "alphafold-3-free-for-science",
   "ambiguity-by-design",
   "apples-ai-bet-playing-the-long-game-or-missing-the-moment",
   "bandits-and-agents-netflix-and-spotify-recommender-stacks-in-2026",
-  "behavioral-economics-transit-policy",
   "bet-sizing-at-the-frontier",
-  "beyond-monte-carlo-tensor-based-market-modeling",
   "beyond-vector-search-why-llms-need-episodic-memory",
   "big-in-japan",
   "britains-strategic-limbo",
@@ -48,14 +45,12 @@ const CURRENT_POST_SLUGS = new Set([
   "do-not-disturb-my-circles",
   "does-ai-mean-the-demand-on-labor-goes-up",
   "dont-go-monolithic-the-agent-stack-is-stratifying",
-  "dual-mandate-tensions",
   "economics-of-a-super-bowl-ad",
   "enterprise-ai-strategy-is-backwards",
   "europes-24-trillion-payment-breakup-is-really-a-bet-on-infrastructure-arbitrage",
   "every-bulge-bracket-bank-agrees-on-ai",
   "everything-is-a-dcf-model",
   "f3ed-cant-call-an-ace-fixing-a-neurips-2024-tennis-model",
-  "gambling-vs.-investing",
   "glp-1-receptor-agonists-in-asud-treatment",
   "how-ai-is-shaping-my-investment-portfolio-for-2026",
   "i-built-a-cgm-data-reader",
@@ -63,7 +58,6 @@ const CURRENT_POST_SLUGS = new Set([
   "is-ai-really-eating-the-world-1/2",
   "is-ai-really-eating-the-world-agi-networks-value-2/2",
   "is-private-equity-just-beta-with-a-lockup",
-  "it-just-aint-so",
   "karpathys-software-3.0-playbook",
   "long-volatility-premium",
   "mcp-vs-a2a-in-2026-how-the-ai-protocol-war-ends",
@@ -71,13 +65,11 @@ const CURRENT_POST_SLUGS = new Set([
   "modeling-glycemic-response-with-xgboost",
   "my-first-optimal-portfolio",
   "nikes-crisis-and-the-economics-of-brand-decay",
-  "not-all-ai-skeptics-think-alike",
   "not-logan-roy-netflix-vs.-paramounts-bidding-war",
   "novo-nordisks-post-patent-strategy",
   "novo-was-europes-most-valuable-company",
   "on-device-ai-models-will-be-the-new-reason-to-upgrade-your-phone",
   "ozempic-is-reshaping-the-fast-food-industry",
-  "passive-investings-active-problem",
   "people-live-in-levels-not-rates",
   "peter-thiels-physics-department",
   "pozsars-bretton-woods-iii-the-framework-1/2",
@@ -85,16 +77,13 @@ const CURRENT_POST_SLUGS = new Set([
   "praise-by-name-criticize-by-category-warren-buffett-retires-at-95",
   "repo-might-be-even-bigger-than-we-thought",
   "rss-swipr-find-blogs-like-you-find-your-dates",
-  "sentiment-trading-revisited",
   "social-media-success-prediction-bert-models-for-post-titles",
   "the-absolute-insider-mess-of-prediction-markets",
   "the-anatomy-of-a-decentralized-prediction-market-notes-from-the-polymarket-order-book",
-  "the-bicycle-needs-riding-to-be-understood",
   "the-geometry-of-who-knows-what",
   "the-impossible-backhand",
   "the-last-architecture-designed-by-hand",
   "the-market-can-stay-irrational-longer-than-you-can-stay-solvent",
-  "the-model-said-so",
   "the-moral-philosophy-of-investing-in-ignorance",
   "the-most-expensive-assumption-in-ai",
   "the-rise-of-middle-power-realism",
@@ -165,6 +154,18 @@ const GONE_SLUGS = new Set([
   "gratitude",
   "how-some-active-funds-create-their-own-returns",
   "2026-investment-strategy-preparing-my-portfolio-for-ai-dollar-risks-and-europes-growth",
+  // May 2026 tail prune (low-traffic Commentary posts retired)
+  "the-model-said-so",
+  "not-all-ai-skeptics-think-alike",
+  "behavioral-economics-transit-policy",
+  "alphafold-3-free-for-science",
+  "the-bicycle-needs-riding-to-be-understood",
+  "dual-mandate-tensions",
+  "it-just-aint-so",
+  "sentiment-trading-revisited",
+  "beyond-monte-carlo-tensor-based-market-modeling",
+  "passive-investings-active-problem",
+  "gambling-vs.-investing",
 ]);
 
 // Old taxonomy paths that don't exist on the current site
@@ -256,10 +257,27 @@ export function buildRedirectResponse(redirect) {
     });
   }
   if (redirect.status === 410) {
-    return new Response("Gone", {
+    // HTTP 410 Gone tells crawlers the URL is permanently removed and should
+    // be deindexed. The HTML body adds a 3-second meta-refresh to the home
+    // page so a human visitor (vs a search engine) is not stranded.
+    const body = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gone</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="3;url=/">
+<style>body{font-family:system-ui,sans-serif;max-width:32rem;margin:4rem auto;padding:0 1rem;color:#333;line-height:1.5}a{color:#007acc}</style>
+</head>
+<body>
+<h1>This page has been removed</h1>
+<p>The article that lived here was retired. You will be forwarded to the <a href="/">home page</a> in a moment.</p>
+</body>
+</html>`;
+    return new Response(body, {
       status: 410,
       headers: {
-        "Content-Type": "text/plain; charset=utf-8",
+        "Content-Type": "text/html; charset=utf-8",
         "Cache-Control": "public, max-age=86400",
       },
     });
