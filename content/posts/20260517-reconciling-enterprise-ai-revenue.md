@@ -1,7 +1,7 @@
 +++
-title = "AI Capex Arms Race: $690B in Search of $63B"
+title = "Reconciling Enterprise AI Revenue"
 seoTitle = "AI Capex Arms Race Revenue: $690B vs $63B Audit-Grade Floor"
-slug = "ai-capex-arms-race-revenue-floor"
+slug = "reconciling-enterprise-ai-revenue"
 date = 2026-05-17
 lastmod = 2026-05-17
 publishDate = 2026-05-17T01:00:00Z
