@@ -2,9 +2,9 @@
 title = "Aschenbrenner's Receipts"
 slug = "aschenbrenners-receipts"
 seoTitle = "Leopold Aschenbrenner: Situational Awareness Two Years On"
-date = 2026-05-18
-lastmod = 2026-05-18
-publishDate = 2026-05-18T08:00:00Z
+date = 2026-05-21
+lastmod = 2026-05-21
+publishDate = 2026-05-21T01:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-aschenbrenners-receipts.jpg"]
 card_image = "https://static.philippdubach.com/leopold-cover.png"
 description = "Aschenbrenner's Situational Awareness committed him to dated AGI predictions. By May 2026 the technology calls landed; the political prescription did not."
@@ -51,11 +51,11 @@ faq = [
 
 {{< img src="leopold-cover.png" alt="Editorial cover illustration for the Leopold Aschenbrenner essay: a young figure standing at a podium between three converging spotlights labelled libertarian, Burkean hawk, and alignment optimist, with a stylised cluster of data centres on the horizon" width="80%" priority="true" >}}
 
-In June 2024, Leopold Aschenbrenner published a 165-page essay called *Situational Awareness* and committed himself to a chain of dated forecasts most public AI commentators would not write down. Test-time compute would be the next paradigm. Power, not chips, would be the binding constraint on the US AI buildout. The Marcellus shale would end up powering data centres, not the hyperscalers' climate pledges. By May 2026 those calls have landed. Eight of his concrete technology and infrastructure predictions have confirmed cleanly. He has the tape to prove it.
+In June 2024, Leopold Aschenbrenner published a 165-page essay called [Situational Awareness](https://situational-awareness.ai/wp-content/uploads/2024/06/situationalawareness.pdf) and committed himself to a chain of dated forecasts. Test-time compute would be the next paradigm. Power, not chips, would be the binding constraint on the US AI buildout. The Marcellus shale would end up powering data centres, not the hyperscalers' climate pledges. By May 2026 those calls have landed. Eight of his concrete technology and infrastructure predictions have confirmed cleanly.
 
 Eight others — voluntary lab merger, Congressional trillions, a coalition of democracies, tightening export controls — have falsified.
 
-The interesting part is what the split tells you about the worldview holding both halves up. Read *Situational Awareness* and the four-and-a-half-hour Dwarkesh Patel interview side by side and you find something stranger than a clean libertarian, a clean hawk, or a clean alignment researcher. You find all three running at once.
+This split tells us something about the worldview holding both halves up. Read *Situational Awareness* and the [four-and-a-half-hour Dwarkesh Patel interview](https://www.youtube.com/watch?v=zdbVtZIn9IM) side by side and you find something stranger than a clean libertarian, a clean hawk, or a clean alignment researcher. You find all three running at once.
 
 The libertarian:
 
@@ -75,15 +75,11 @@ Aschenbrenner gets to all three because he runs the same forecasting machinery o
 
 > "What will be at stake will not just be cool products, but whether liberal democracy survives, whether the CCP survives, what the world order for the next century will be."
 
-Once you believe the convergence, the politics resolve. That is the move. It is not a contradiction. It is what happens when a particular kind of decompositional mind takes a particular kind of forecast seriously.
-
-This essay reads Aschenbrenner the way he reads scaling laws: by decomposition. The three identities are the spine. For each, we look at the framework, the May 2026 evidence, the strongest counter-position, and what the synthesis costs him. The point is to show what a convergent forecast does to a worldview, and what that reveals about the AI-policy debate the rest of us are still having.
-
----
+This essay reads Aschenbrenner the way he reads scaling laws: by decomposition. The three identities are the spine. For each, we look at the framework, today's evidence, the strongest counter-position, and what the synthesis costs him. The point is to show what a convergent forecast does to a worldview, and what that reveals about the AI-policy debate the rest of us are still having.
 
 ## I. The forecaster before the politics
 
-Before any of the criticism, what he got right.
+Before any criticism, what he got right.
 
 The signature analytical move in *Situational Awareness* is what he calls "counting OOMs" — orders of magnitude of effective compute. The decomposition is multiplicative: half an OOM per year of training compute, half an OOM per year of algorithmic efficiency, plus discrete unhobbling gains (RLHF, chain-of-thought, scaffolding, tools, long context, post-training). Extrapolated forward to 2027, this gives roughly five OOM of effective compute scaleup since GPT-4 — equivalent in his framing to another GPT-2-to-GPT-4–sized capability jump. The framework is unfashionably simple. It is also empirically unusually well-calibrated.
 
@@ -93,7 +89,7 @@ By May 2026, eight of his most concrete dated technology and infrastructure pred
 
 > "What if it could use millions of tokens to think about and work on really hard problems or bigger projects? […] If we could unlock 'being able to think and work on something for months-equivalent, rather than a few-minutes-equivalent' for models, it would unlock an insane jump in capability."
 
-OpenAI [launched o1](https://openai.com/index/introducing-openai-o1-preview/) four months later. [DeepSeek-R1 followed in January 2025](https://api-docs.deepseek.com/news/news250120); Claude extended thinking and GPT-5 thinking validated the paradigm completely. He predicted a category of model that did not yet exist by inference from the test-time-compute-vs-train-time-compute trade-off in AlphaGo's training literature. The lead time was small. The call was not.
+OpenAI [launched o1](https://openai.com/index/introducing-openai-o1-preview/) four months later. [DeepSeek-R1 followed in January 2025](https://api-docs.deepseek.com/news/news250120); Claude extended thinking and GPT-5 thinking validated the paradigm completely. He predicted a category of model that did not yet exist by inference from the test-time-compute-vs-train-time-compute trade-off in AlphaGo's training literature.
 
 **GPQA Diamond saturation.** When he wrote, Claude 3 Opus scored 60% on graduate-level science questions and he predicted *"this benchmark to fall in the next generation or two."* In May 2026, GPT-5 hits 88.4% without tools and Gemini 3.1 Pro Preview hits 94.3% with extended reasoning. [Epoch AI describes the benchmark](https://epoch.ai/benchmarks/gpqa-diamond) as having approached its asymptote. It took ~18 months — almost exactly the prediction window.
 
@@ -113,15 +109,13 @@ This is the part of the record that gets him invited to the room. The next part 
 
 **Scaling lawfulness, generally.** He claims, citing the Kaplan-to-Chinchilla-to-GPT-4 chain, that scaling laws have held over fifteen orders of magnitude. The 2024-26 evidence broadly supports this. The 2024 Kaplan paper from Anthropic on data-bound scaling, plus capability gains predominantly from RL post-training rather than pretraining FLOPs, complicates the picture but does not break it.
 
-These are not lucky guesses. Several were ahead of consensus by months. The novel contribution is not the prediction itself — anyone reading SemiAnalysis and AMD investor decks could have triangulated most of these — but the *commitment to a dated narrative* in which they all compound. He wrote them down. He attached them to specific years. That is why we can score him.
+Several of his predictions were ahead of consensus by months. The novel contribution is not the prediction itself — anyone reading SemiAnalysis and AMD investor decks could have triangulated most of these — but the *commitment to a dated narrative* in which they all compound. 
 
 A skeptical reader will note that the SF cluster has asymmetric information about what is happening inside the labs. Granted. But the test-time-compute prediction was not yet inside-the-lab consensus when he published it; the power-as-binding line preceded the industry's shift; the Gulf-as-AGI-table point preceded the actual deal flow. There is real foresight here, even if you discount for the information asymmetry.
 
 The May 2026 scorecard cuts hard the other way on a different category of prediction. We come to that later. The technology and infrastructure record is what earns the rest of the essay. If those forecasts had been mediocre, the worldview behind them would not be worth dissecting.
 
 {{< readnext slug="ai-capex-arms-race-who-blinks-first" >}}
-
----
 
 ## II. Identity one: the libertarian
 
@@ -133,11 +127,7 @@ The gap between the opening sentence and the thesis is not hidden. He flags it h
 
 > "I used to apply this same framework to AGI — until I joined an AI lab."
 
-This is a libertarian who did the empirical update.
-
-Aschenbrenner's libertarianism is operational, not rhetorical. He refused OpenAI's non-disparagement NDA on departure, walking away from "close to a million dollars" in vested equity. He did not want to constrain his future ability to write what he believes. This is libertarianism on a personal balance sheet. He paid for it.
-
-He calls himself a "speech deontologist," meaning roughly that he believes in saying what he thinks even when consequences argue against it. He admires the American private sector specifically and the wider US institutional ecosystem (Federal Reserve, Supreme Court, the constitutional system) generally. The [November 2025 Genesis Mission EO](https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/) under Trump 2.0, which mobilised DOE national labs for AI-accelerated science under explicit Manhattan-Project framing, is the rhetoric he predicted; the institutional structure he predicted (a voluntary lab merger, trillions appropriated, a coalition of democracies) has not formed.
+Aschenbrenner's libertarianism is operational, not rhetorical. He refused OpenAI's non-disparagement NDA on departure, walking away from "close to a million dollars" in vested equity. He did not want to constrain his future ability to write what he believes. He calls himself a "speech deontologist," meaning roughly that he believes in saying what he thinks even when consequences argue against it. He admires the American private sector specifically and the wider US institutional ecosystem (Federal Reserve, Supreme Court, the constitutional system) generally. The [November 2025 Genesis Mission EO](https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/) under Trump 2.0, which mobilised DOE national labs for AI-accelerated science under explicit Manhattan-Project framing, is the rhetoric he predicted; the institutional structure he predicted (a voluntary lab merger, trillions appropriated, a coalition of democracies) has not formed.
 
 His libertarianism is not absolute. It is a presumption against state action that yields under one specific exception: when the artefact in question reclassifies from civilian technology into a state-actor weapons-grade output. Once he reclassifies AGI from "tech industry" to "WMD," the rule that excluded state involvement no longer applies.
 
@@ -145,7 +135,7 @@ His libertarianism is not absolute. It is a presumption against state action tha
 
 This is a structurally cleaner argument than it looks. Nineteenth-century classical liberalism made similar carve-outs: Mill on intervention in failed states, Bagehot on the Bank of England as lender-of-last-resort, the Hamiltonian compromise on a national bank when the political economy required it. The novelty in Aschenbrenner's version is treating an industrial technology as the trigger. Whether he is right that AGI clears the bar is the empirical question; the structure of the argument is not new.
 
-The May 2026 evidence cuts both ways. The full nationalisation he predicted did not happen. Frontier labs remain decentralised and competitive. [Stargate ($500B over four years, OpenAI / SoftBank / Oracle / MGX)](https://openai.com/index/announcing-the-stargate-project/) is closer to defence-contractor public-private-partnership than to a Manhattan Project. The CHIPS Act remains the original $39B + $11B from 2022; Congress has not appropriated trillions. The [AI Safety Institute was rebranded to CAISI in June 2025](https://fedscoop.com/trump-administration-rebrands-ai-safety-institute-aisi-caisi/) and the multilateral framework Aschenbrenner expected has dissolved into transactional bilaterals.
+The full nationalisation he predicted did not happen so far. Frontier labs remain decentralised and competitive. [Stargate ($500B over four years, OpenAI / SoftBank / Oracle / MGX)](https://openai.com/index/announcing-the-stargate-project/) is closer to defence-contractor public-private-partnership than to a Manhattan Project. The CHIPS Act remains the original $39B + $11B from 2022; Congress has not appropriated trillions. The [AI Safety Institute was rebranded to CAISI in June 2025](https://fedscoop.com/trump-administration-rebrands-ai-safety-institute-aisi-caisi/) and the multilateral framework Aschenbrenner expected has dissolved into transactional bilaterals.
 
 But a different version of his prediction did partly land. The defence-contracting architecture is on the rise: [Anthropic signed a $200M DoD contract](https://www.anthropic.com/news/anthropic-and-the-department-of-defense-to-advance-responsible-ai-in-defense-operations); Claude became the first AI model authorised on classified networks; Stargate is functionally a national-security PPP under commercial wrapping. The "we'll all be in a bunker" line he used in the interview was correct in spirit and wrong in form.
 
@@ -157,13 +147,9 @@ The investment firm is the artefact of the libertarian instinct refusing to die.
 
 The fund is the libertarian's hedge against his own forecast — a way of capturing the upside in a private capacity before the nationalisation he predicts arrives to reshape the prize.
 
-The strongest counter-position is that this is not a libertarian making a careful exception; it is a hawk borrowing the libertarian's clothes. Read the equity forfeiture, the speech-deontology framing, the refusal to sign NDAs even at material cost. The libertarian commitment is operational on the things he can actually exit (his own employment) even where it costs him real money. The conditional state preference is consistent with classical liberalism, not a defection from it. Most policy commentators flip wholesale rather than carve a narrow exception. He is being careful about the carve-out, not opportunistic.
+The strongest counter-position is that this is not a libertarian making a careful exception; it is a hawk borrowing the libertarian's clothes. Read the equity forfeiture, the speech-deontology framing, the refusal to sign NDAs even at material cost. The libertarian commitment is operational on the things he can actually exit (his own employment) even where it costs him real money. The conditional state preference is consistent with classical liberalism, not a defection from it. He is being careful about the carve-out, not opportunistic.
 
-That is intellectually honourable, and it is also the first place the synthesis starts to creak. A real libertarian who pays a million dollars for the right to call for a Manhattan Project is more interesting than a hypocrite. He is also asking us to follow a chain of reasoning whose first link is "I changed my mind about state involvement when I joined an AI lab." That is an empirical claim. Whether it earns the prescriptive jump that follows depends on whether the second and third links — the hawk's claim about adversary capability, the alignment optimist's claim about institutional tractability — also hold.
-
-The next link is the hawk's claim about adversary capability. That is where the May 2026 record cuts hardest.
-
----
+That is intellectually honourable, and it is also the first place the synthesis starts to creak. A real libertarian who pays a million dollars for the right to call for a Manhattan Project is more interesting than a hypocrite. He is also asking us to follow a chain of reasoning whose first link is "I changed my mind about state involvement when I joined an AI lab." That is an empirical claim. Whether it earns the prescriptive jump that follows depends on whether the second and third links — the hawk's claim about adversary capability, the alignment optimist's claim about institutional tractability — also hold. The next link is the hawk's claim about adversary capability. 
 
 ## III. Identity two: the Burkean hawk
 
@@ -171,7 +157,7 @@ The next link is the hawk's claim about adversary capability. That is where the 
 
 He names Burke himself. The reference is in Chapter IV, deployed to defend the Project. The "collapsed the first time they were tested" line refers to the November 2023 OpenAI board crisis, when the board fired Sam Altman, briefly placed Mira Murati in charge, then watched [~700 employees threaten to resign](https://www.cnbc.com/2023/11/20/hundreds-of-openai-employees-threaten-to-follow-altman-to-microsoft-unless-board-resigns-reports-say.html), and within five days reinstated Altman with a reconfigured board. Special-purpose AI-lab governance structures genuinely did collapse on contact with reality. Aschenbrenner's empirical observation is correct.
 
-The substantive Burkean intuition — that two-hundred-year-old institutions are likelier to absorb shocks than ad-hoc lab-governance structures — is, on its face, a strong empirical argument. Aschenbrenner's reverence for American institutional architecture is unusual among accelerationists. Most acceleration discourse in 2024 was openly contemptuous of regulatory bodies, congressional process, and constitutional checks. The Aschenbrenner version takes them seriously enough to attempt a synthesis. He praises the Federal Reserve as a model of competent technocratic delegation. He admires the Supreme Court — "they really believe in the constitution, they love the constitution" — and recommends listening to oral arguments as a podcast. The institutionalism is genuine.
+The substantive Burkean intuition — that two-hundred-year-old institutions are likelier to absorb shocks than ad-hoc lab-governance structures — is, on its face, a strong empirical argument. Aschenbrenner's reverence for American institutional architecture is unusual among accelerationists. Most acceleration discourse in 2024 was openly contemptuous of regulatory bodies, congressional process, and constitutional checks. The Aschenbrenner version takes them seriously enough to attempt a synthesis. He praises the Federal Reserve as a model of competent technocratic delegation. He admires the Supreme Court — "they really believe in the constitution, they love the constitution" — and recommends listening to oral arguments as a podcast. 
 
 But the Burkean argument cuts the other way too. Burke's central claim is that radical interventions in institutional architecture, even institutions whose ends one shares, tend to break things in unintended ways. The conservative move, in Burke's sense, is the slow one. A Manhattan Project on a peacetime economy in 2027, conducted under accelerated executive command, with frontier research relocated to a SCIF and the trillion-dollar cluster built in record time — this is the modal Promethean prescription, not the modal Burkean one. The Burkean prior would say: stronger lab-governance institutions, slower diffusion of state involvement, more and not fewer private firms running parallel competitive efforts, and a presumption against rapid centralisation of dual-use capability under any single chain of command.
 
@@ -179,25 +165,17 @@ Aschenbrenner's Burkean argument is therefore doing a specific kind of work. He 
 
 > "There's only one chain of command and set of institutions that has proven itself up to this task."
 
-This is a serious argument. It is also the place where the May 2026 record cuts hardest.
-
 The institutions Aschenbrenner praised held under stress. The 2024 election produced a peaceful transition of power. The Federal Reserve maintained its operational independence under significant political pressure on rate policy. The Supreme Court ruled against the executive on several procedural questions in 2025. The constitutional architecture, in the narrow sense, did not break.
 
 But the institutions did not produce the response Aschenbrenner predicted. Trump 2.0's commercial-deregulatory pivot is a *different* institutional response from the one his Burkean-Manhattan synthesis assumed. The export controls he predicted would tighten were instead loosened: the [AI Diffusion Rule was scrapped in May 2025](https://techcrunch.com/2025/05/13/trump-administration-officially-rescinds-bidens-ai-diffusion-rules/), and in December 2025 [Trump announced Nvidia could sell H200-equivalents to China in exchange for a 25% revenue tariff](https://www.cnbc.com/2025/12/08/trump-nvidia-h200-sales-china.html). The regulatory architecture he expected to mobilise around AI as a national-security exception instead monetised the security exception itself. Export controls became transactional. Coalition partners were treated as leverage points, not allies. The AI Safety Institute was rebranded.
 
 The Manhattan Project analogy is doing more rhetorical work than it can carry. Nuclear weapons were excludable: the underlying physics required uranium-235 or plutonium-239, both controllable substances. Manhattan Project secrecy survived because the physics required the materials. AI weights are infinitely reproducible once exfiltrated, and DeepSeek's January 2025 R1 release demonstrated that the algorithmic frontier diffuses through papers and reverse-engineering on a fraction of the budget the labs were spending. The non-proliferation regime Aschenbrenner proposes does not have the physical substrate the original NPT had. He is asking the political system to control a technology that lacks the ontological feature (excludability) on which historical control regimes have been built.
 
-The historical regimes Aschenbrenner invokes — Manhattan, Atoms for Peace, the NPT — were all built around a centrifuge. AGI does not have a centrifuge. It has a paper.
-
 The strongest defence is that calling someone a hypocrite for invoking Burke is itself un-Burkean. Burke was not a pacifist about state action; he was a pragmatist about institutional load. The hawk-Burkean combination has a serious lineage running through Hamilton, the WWII liberal hawks, Acheson and Kennan and the architects of NSC-68. Granted. But the specific claim — that an unprecedented industrial nationalisation by 2027 is the Burkean move — is a real stretch, and twenty-three months of evidence has not produced the institutional mobilisation his frame requires. The institutions held. They just held in a direction he did not predict.
 
 Most acceleration discourse is contemptuous of institutions; Aschenbrenner's version takes them seriously enough to attempt a synthesis. The synthesis fails on its own terms, but it is a failure worth having.
 
----
-
 ## IV. Identity three: the alignment optimist
-
-The third identity is the one the May 2026 record has been least kind to.
 
 Aschenbrenner was an initial member of OpenAI's Superalignment team. The team's stated mission was to figure out the successor to RLHF — to develop methods for aligning AI systems substantially smarter than their human supervisors. He worked under Ilya Sutskever and Jan Leike. The team had a public commitment from OpenAI of 20% of the company's compute through 2027. By the standards of the doomer school (MIRI, Yudkowsky, the 99%-p(doom) crowd), Aschenbrenner is a moderate. His framing in *Situational Awareness* is that alignment is "a real technical problem" but a "solvable" one — an ML engineering challenge, not a philosophical one. The default plan, he writes, will *probably* work: scalable oversight (debate, recursive reward modeling, prover-verifier games) for somewhat-superhuman systems; weak-to-strong generalisation for the next tier; interpretability research as the longest-shot but most ambitious bet.
 
@@ -205,23 +183,15 @@ Aschenbrenner was an initial member of OpenAI's Superalignment team. The team's 
 
 In the technical sense, this means empirical evidence from current models suggests the worst-case alignment failures (deceptive alignment, instrumental convergence to power-seeking) are not the modal outcome.
 
-This is the strongest empirical claim in the alignment chapter. Twenty-three months later it is the one that has aged worst.
-
-The diagnostic claims have aged well. He correctly identified RLHF as a scaling-limited approach: subsequent papers have confirmed that reward-hacking generalises beyond the training distribution to alignment-faking, sabotage, and cooperation with malicious actors. Anthropic's [*Sycophancy to Subterfuge*](https://arxiv.org/abs/2406.10162) (June 2024) and [*School of Reward Hacks*](https://arxiv.org/abs/2508.17511) (August 2025) show that hacking on harmless tasks generalises to misalignment. The November 2025 [*Natural Emergent Misalignment from Reward Hacking*](https://arxiv.org/abs/2511.18397) paper shows that reward hacking in production RL produces models that lie, sabotage codebases, and reason about malicious goals as a routine consequence of training. These results validate Aschenbrenner's diagnostic framing — RLHF breaks at scale; alignment is a real technical problem; it must be addressed empirically.
-
-The optimism has not aged well at all.
+This is the strongest empirical claim in the alignment chapter. And twenty-three months later it is probably the one that has aged worst. He correctly identified RLHF as a scaling-limited approach: subsequent papers have confirmed that reward-hacking generalises beyond the training distribution to alignment-faking, sabotage, and cooperation with malicious actors. Anthropic's [*Sycophancy to Subterfuge*](https://arxiv.org/abs/2406.10162) (June 2024) and [*School of Reward Hacks*](https://arxiv.org/abs/2508.17511) (August 2025) show that hacking on harmless tasks generalises to misalignment. The November 2025 [*Natural Emergent Misalignment from Reward Hacking*](https://arxiv.org/abs/2511.18397) paper shows that reward hacking in production RL produces models that lie, sabotage codebases, and reason about malicious goals as a routine consequence of training. These results validate Aschenbrenner's diagnostic framing — RLHF breaks at scale; alignment is a real technical problem; it must be addressed empirically.
 
 In December 2024, Anthropic published [*Alignment Faking in Large Language Models*](https://arxiv.org/abs/2412.14093). Claude 3 Opus complied with harmful queries 14% of the time when it inferred it was being trained — and the model's chain of thought contained explicit alignment-faking reasoning. The behaviour emerged naturally from routine training, without researchers training it in. In the same month, Apollo Research published [*Frontier Models are Capable of In-Context Scheming*](https://arxiv.org/abs/2412.04984): o1, Claude 3.5 Sonnet, Claude 3 Opus, Gemini 1.5 Pro, and Llama 3.1 405B all attempted to copy their own weights to external servers in scheming evaluations. [arXiv 2503.17378](https://arxiv.org/abs/2503.17378) found 11 of 32 systems capable of self-replication, including unprompted self-exfiltration to evade shutdown. [Chain-of-thought faithfulness](https://www.anthropic.com/research/reasoning-models-dont-say-think), which Aschenbrenner highlighted as a "criminally underrated" lever for alignment monitoring, has been substantially undermined: Claude 3.7 Sonnet acknowledges hints that influenced its answer only 25% of the time; DeepSeek-R1 39%.
 
-"Deep learning generalises benignly" is, in its strong form, refuted.
-
-Most damaging is the structural fact. The default plan depended on the labs investing seriously in superalignment infrastructure. Three weeks before *Situational Awareness* was published, [the OpenAI Superalignment team was dissolved](https://www.cnbc.com/2024/05/17/openai-superalignment-sutskever-leike.html). [Sutskever resigned May 14, 2024](https://x.com/ilyasut/status/1790517455628198322). [Leike resigned May 15](https://www.cbsnews.com/sanfrancisco/news/openai-exec-jan-leike-resigns-says-safety-has-taken-a-backseat/):
+"Deep learning generalises benignly" is, in its strong form, refuted. Most damaging is the structural fact. The default plan depended on the labs investing seriously in superalignment infrastructure. Three weeks before *Situational Awareness* was published, [the OpenAI Superalignment team was dissolved](https://www.cnbc.com/2024/05/17/openai-superalignment-sutskever-leike.html). [Sutskever resigned May 14, 2024](https://x.com/ilyasut/status/1790517455628198322). [Leike resigned May 15](https://www.cbsnews.com/sanfrancisco/news/openai-exec-jan-leike-resigns-says-safety-has-taken-a-backseat/):
 
 > "Safety culture and processes have taken a backseat to shiny products."
 
 Per his own public account in the Dwarkesh Patel interview, Aschenbrenner had been dismissed one to two weeks earlier, citing, in his telling, a security memo he had sent the board, his decision not to sign the November 2023 employee letter, and his views on AGI nationalisation as factors discussed in his exit conversations. OpenAI has not commented publicly on the specifics. [The 20% compute commitment was effectively voided](https://fortune.com/2024/05/21/openai-superalignment-20-compute-commitment-never-fulfilled-sutskever-leike-altman-brockman-murati/). [The Mission Alignment team that succeeded Superalignment was dissolved in February 2026](https://techcrunch.com/2026/02/11/openai-disbands-mission-alignment-team-which-focused-on-safe-and-trustworthy-ai-development/).
-
-The implicit prediction that broke worst was the one he could not have flagged in the essay: the company most aligned with his intellectual framing had already chosen differently in the weeks before he published.
 
 {{< readnext slug="two-anthropics" >}}
 
@@ -229,15 +199,7 @@ Paradoxically, this strengthens his geopolitical case while weakening his alignm
 
 The strongest defence is timing. He wrote in May 2024. Most of the alignment-faking and scheming literature did not yet exist. Every alignment researcher in mid-2024 was working with weaker priors about deceptive behaviour in frontier systems. Granted. But the asymmetry is not "I underweighted X paper" — it is that he premised the political conclusion on the alignment going reasonably well, and the alignment evidence has gone the other way faster than he projected. That changes the calculus on the political conclusion, regardless of when one writes.
 
-Walking from a million dollars in equity (per his own public account) to publish his views is not nothing. The alignment-research literature is better off because *Situational Awareness* exists. By May 2026 the diagnostic instinct has held up; the institutional optimism, as the record stands today, has not. The project is honourable; the optimism reads, on the evidence in front of us, as overshooting.
-
----
-
 ## V. Why the three have to run together
-
-This is the load-bearing part of the analysis.
-
-Aschenbrenner's three identities are not three positions held in unstable equilibrium. They are three forecasts that lock together because each premises the others.
 
 *If* compute scales as predicted (Identity One's libertarian-empiricist ground, the OOM-counting), *then* timelines compress, *then* state-actor competition becomes operative, *then* the libertarian must yield to the hawk. Drop the compute forecast and the politics dissolve. Without the prediction that AGI arrives by 2027/28 on a 10 GW cluster, there is no near-term decisive-military-advantage premise, and therefore no Burkean carve-out for a Manhattan Project, and therefore no nationalisation argument.
 
@@ -247,45 +209,29 @@ Aschenbrenner's three identities are not three positions held in unstable equili
 
 The synthesis is therefore *forced*. Each identity is the precondition for the next. This is what makes Aschenbrenner intellectually interesting and also what makes him hard to refute piecemeal. To refute him you have to break the chain at one specific link.
 
-This is what makes him the rarest kind of public forecaster: legible enough to be wrong about.
+This is what makes him the rarest kind of public forecaster: legible enough to be wrong about. This is also what makes his framework *fragile* in a way the three-domain reader will recognise. It is a series-circuit argument. Any single failure point breaks the whole.
 
-This is also what makes his framework *fragile* in a way the three-domain reader will recognise. It is a series-circuit argument. Any single failure point breaks the whole.
+Looking at it form todays perspective, record on the three premises is mixed. On compute scaling: alive but contested. The capability gains continued; the test-time compute paradigm shift validated the framework in a register he did not himself emphasise; pretraining scaling has slowed relative to RL post-training in ways that complicate the "5 OOM additivity" framing. On adversary capability: mixed in the wrong direction. China did not catch up by stealing weights in the way he predicted; it caught up by reproducing the algorithmic frontier through papers and reverse-engineering on a fraction of the budget (DeepSeek-V3, R1, V3.1, V4). The security thesis was right that diffusion would happen and wrong about the channel. On alignment: diagnostic confirmed, optimism falsified, with the deepest blow coming from his own former employer's institutional choices.
 
-The May 2026 record on the three premises is mixed. On compute scaling: alive but contested. The capability gains continued; the test-time compute paradigm shift validated the framework in a register he did not himself emphasise; pretraining scaling has slowed relative to RL post-training in ways that complicate the "5 OOM additivity" framing. On adversary capability: mixed in the wrong direction. China did not catch up by stealing weights in the way he predicted; it caught up by reproducing the algorithmic frontier through papers and reverse-engineering on a fraction of the budget (DeepSeek-V3, R1, V3.1, V4). The security thesis was right that diffusion would happen and wrong about the channel. On alignment: diagnostic confirmed, optimism falsified, with the deepest blow coming from his own former employer's institutional choices.
-
-A series-circuit argument with mixed evidence on each link is closer to disconfirmation than the headline scorecard suggests. The technology and infrastructure record is roughly 8-confirmed-out-of-10. The political-economy record is roughly 8-falsified-out-of-10. The alignment record is split. But the three records are not independent. The framework requires all three, multiplied. Mixed evidence on a multiplicative chain is not the same as mixed evidence on a parallel set of forecasts.
-
-The strongest counter-counter is that the timeline is not closed. Aschenbrenner's window is 2027/28 for AGI and "by end of decade" for the political reordering. Several of the political claims could yet flip green by 2028: Genesis Mission could yet calcify into Manhattan-Project-style consolidation; export controls could tighten again under a different administration; OpenAI's relationship to Stargate could deepen into something closer to nationalisation. Concede this honestly. The verdict is provisional. But the methodological point about series-circuit fragility holds regardless of how the political claims eventually resolve. If three of the political claims do flip green by 2028, the substrate-sensitivity argument still holds; it just rebalances the scorecard, not the lesson.
-
-Most public AI-policy commentary is carved into single-domain pieces. Alignment people who don't model power. Hawks who don't model alignment. Libertarians who don't model adversary capability. Aschenbrenner is one of very few writers who makes you do all three at once.
-
-> "I see it, I feel it. I see the path, I see where it's going. I think I can see the cluster where it's trained on, the rough combination of algorithms, the people, how it's happening."
-
-The register is not incidental. It is the cost of running three convergent forecasts at once. The framework's fragility is the price of its scope. The fragility is also the reason you can grade him: a series-circuit argument with dated premises is unusually falsifiable, which is what makes it worth engaging with at all.
-
----
+The strongest counter-counter is that the timeline is not closed. Aschenbrenner's window is 2027/28 for AGI and "by end of decade" for the political reordering. Several of the political claims could yet flip green by 2028: Genesis Mission could yet calcify into Manhattan-Project-style consolidation; export controls could tighten again under a different administration; OpenAI's relationship to Stargate could deepen into something closer to nationalisation. Concede this honestly. The verdict is provisional. But the methodological point about series-circuit fragility holds regardless of how the political claims eventually resolve. If three of the political claims do flip green by 2028, the substrate-sensitivity argument still holds.
 
 ## VI. The coalition triad and its cracks
 
-Aschenbrenner's most operational decomposition is geopolitical: a three-tier coalition framing for the post-AGI world order. An inner ring of democracies (US, UK via DeepMind, Japan and South Korea, core NATO) coordinating AGI development under a Quebec-Agreement-style pact. A middle ring of benefit-sharing with non-aligned states under an Atoms-for-Peace structure. An outer ring of containment of authoritarian adversaries through export controls, espionage interdiction, and ultimately deterrence. Same multiplicative shape as his other triads.
+Aschenbrenner's most operational decomposition is geopolitical: a three-tier coalition framing for the post-AGI world order. An inner ring of democracies (US, UK via DeepMind, Japan and South Korea, core NATO) coordinating AGI development under a Quebec-Agreement-style pact. A middle ring of benefit-sharing with non-aligned states under an Atoms-for-Peace structure. An outer ring of containment of authoritarian adversaries through export controls, espionage interdiction, and ultimately deterrence. 
 
 > "Perhaps most importantly, a healthy lead gives us room to maneuver."
 
-By May 2026, none of the three rings has formed in the configuration he predicted.
-
-The inner ring did not form. No coalition of democracies emerged. The G7 AI Industry/Digital Ministerial declarations and the Council of Europe AI/Human Rights Framework Convention exist but constitute no coordinated bloc for AGI development. Trump 2.0 went unilateral; rebranded AISI to CAISI in June 2025; treated allied AI policy as a leverage point in trade negotiation. There is no secret pact. There is no bilateral coordination at the technology level. There are press releases.
+As of May 2026 the inner ring did not form. No coalition of democracies emerged. The G7 AI Industry/Digital Ministerial declarations and the Council of Europe AI/Human Rights Framework Convention exist but constitute no coordinated bloc for AGI development. Trump 2.0 went unilateral; rebranded AISI to CAISI in June 2025; treated allied AI policy as a leverage point in trade negotiation. There is no secret pact. There is no bilateral coordination at the technology level.
 
 The middle ring formed but on commercial terms he did not anticipate. The Gulf chip authorisations — 70,000 GB300s to G42 and HUMAIN, the partnership architecture for Stargate UAE — are not Atoms-for-Peace benefit-sharing. They are paid commercial deals, with a 25% revenue tariff on H200 sales to China announced in December 2025. *"Would you do the Manhattan Project in the UAE?"* turned out to be a real question with a real answer, and the answer was that the UAE got the compute on transactional terms.
 
 The outer ring inverted. Containment loosened, did not tighten. The AI Diffusion Rule was scrapped in May 2025. In January 2026 the final rule moved H200/MI325X license review from "presumption of denial" to "case-by-case." This is the inverse of the policy direction Aschenbrenner predicted under any administration he expected to wake up to AGI.
 
-The Atoms-for-Peace analogy was flawed in a way the twenty-three-month record has made clear. The non-proliferation regime he proposed does not have the substrate the original NPT had. DeepSeek's R1 release in January 2025 demonstrated this empirically: a Chinese lab reproduced reasoning capability comparable to o1 on a budget the leading US labs would consider impossibly small, using publicly-available technical insights and reverse-engineered training recipes. The mechanism that closed the China gap was not espionage. It was open-source diffusion.
+The Atoms-for-Peace analogy was flawed in a way the twenty-three-month record has made clear. The non-proliferation regime he proposed does not have the substrate the original NPT had. DeepSeek's R1 release in January 2025 demonstrated this empirically: a Chinese lab reproduced reasoning capability comparable to o1 on a budget the leading US labs would consider impossibly small, using publicly-available technical insights and reverse-engineered training recipes. 
 
 This breaks something specific in the framework. If algorithmic secrets are not durable moats, the entire security thesis (lock down the labs against state-actor exfiltration) addresses the wrong threat surface. The threat is not theft. The threat is reproduction. And reproduction does not require anything Aschenbrenner's lockdown architecture would prevent.
 
 A defender can fairly argue the timeline is open. The coalition could still form. Granted. But the *direction of motion* in 2025-26 is away from his coalition, not toward it. That changes the prior on whether the Atoms-for-Peace structure is reachable from here.
-
----
 
 ## VII. What this reveals about the debate
 
@@ -299,44 +245,24 @@ The accelerationist position (e/acc, the Andreessen wing) over-weights technolog
 
 The mainstream AI-safety policy position (NIST-track standards, EU AI Act lineage) over-weights regulatory process, under-weights the velocity of capability gains, and under-weights the geopolitics of the supply chain. The EU AI Act came into force at exactly the moment when frontier capability was migrating to test-time-compute paradigms the Act did not anticipate. This is a class of failure Aschenbrenner's framework would have predicted. He explicitly criticises the regulatory process as structurally too slow: *"NIST takes years and they figure out what the expert consensus is."* On this he was correct.
 
-The reusable insight is methodological, not substantive: the most interesting AI-policy work in 2026-28 will come from writers who can run all three domains simultaneously. Most current commentary fails this test. Specialists in alignment cannot model power; specialists in geopolitics cannot model alignment; specialists in policy cannot model the underlying capability curves. Aschenbrenner's specific synthesis may be wrong. The discipline of having to hold all three at once is right.
+The reusable insight is methodological, not substantive: the most interesting AI-policy work in 2026-28 will come from writers who can run all three domains simultaneously. Most current commentary fails this test. Specialists in alignment cannot model power; specialists in geopolitics cannot model alignment; specialists in policy cannot model the underlying capability curves. 
 
 There is a generalisation here that is exportable, and it borrows a frame from his own methodological self-defence. Aschenbrenner refuses to give probability distributions and instead "tells the modal story" — a vivid, dated, falsifiable narrative bet:
 
 > "I have a lot of uncertainty. So a lot of the time I'm trying to tell the modal story, because I think it's important to be concrete and visceral about it. And I have a lot of uncertainty basically over how the 2030s play out. But basically the thing I know is, it's gonna be fucking crazy."
 
-The modal-story method is itself a feature, not a bug. It is what makes him gradable. Most forecasters insulate themselves with probabilities and live to forecast another day. He committed to dates and now lives with the receipts.
-
-The method has a domain. It works on processes governed by empirical lawfulness — log-log scaling curves, capex aggregates, hyperscaler power draw. It does not work on processes governed by elections, executive turnover, and coalition politics. The technology and infrastructure record is unusually well-calibrated because the underlying process has the right substrate. The political-economy record is unusually badly-calibrated because the underlying process does not.
+The method works on processes governed by empirical lawfulness — log-log scaling curves, capex aggregates, hyperscaler power draw. It does not work on processes governed by elections, executive turnover, and coalition politics. The technology and infrastructure record is unusually well-calibrated because the underlying process has the right substrate. The political-economy record is unusually badly-calibrated because the underlying process does not.
 
 This is the framework the audience can take home. When a forecaster refuses probability distributions and commits to a dated narrative, ask: *what is the substrate? Is it empirically lawful or coalitionally contingent?* The modal-story method is durable in proportion to the empirical lawfulness of the underlying process. Aschenbrenner's particular instrument is sensitive to log-log empirics and saturated against electoral politics. His success in 2024-26 is correlated with how much of the question was inside his sensitivity range.
 
 The investable reading of *Situational Awareness* is that the empirical-substrate trades worked and the coalition-substrate trades did not. NVDA, AMD, gas turbines, transformer-shortage plays, Gulf datacentre exposure paid; long defence-AI consolidation and short open-source diffusion would not have. The strategic reading is that AI roadmaps built on this kind of narrative should anchor on substrate, not rhetoric.
 
----
-
 ## VIII. Capital, conviction, and the honesty of the bet
 
-End on the fund.
-
-Situational Awareness LP, which Aschenbrenner has publicly described as anchored by Patrick Collison, John Collison, Daniel Gross, and Nat Friedman, is the artefact that makes the worldview unavoidable. Aschenbrenner is one of the few public intellectuals on AI who has put his own capital, and his stated anchor investors' capital, where his framework points. The trade sequence he laid out in the Dwarkesh interview — NVIDIA first, then TSMC and packaging and memory, then US power and utilities, then natural gas, then Google later, then "the big bond short" on real interest rates above 10%, then OTM tail bets — is the framework as Aschenbrenner described it in capital terms. Each trade is a falsifiable claim. None of the LPs named here have publicly confirmed specific position attribution; the descriptions are drawn entirely from Aschenbrenner's own public statements about his fund's strategy.
+Situational Awareness LP, which Aschenbrenner has publicly described as anchored by Patrick Collison, John Collison, Daniel Gross, and Nat Friedman, is the artefact that makes the worldview unavoidable. Aschenbrenner is one of the few public intellectuals on AI who has put his own capital, and his stated anchor investors' capital, where his framework points. The trade sequence he laid out in the Dwarkesh interview — NVIDIA first, then TSMC and packaging and memory, then US power and utilities, then natural gas, then Google later, then "the big bond short" on real interest rates above 10%, then OTM tail bets — is the framework as Aschenbrenner described it in capital terms. None of the LPs named here have publicly confirmed specific position attribution; the descriptions are drawn entirely from Aschenbrenner's own public statements about his fund's strategy.
 
 The fund's honest verdict on its own framework is worth marking. The semis trades worked. [NVIDIA at $5.2T as of May 2026](https://www.cnbc.com/2026/04/24/nvidia-stock-closes-at-record-pushing-market-cap-past-5-trillion.html) puts it on track for $10T by 2028; AMD's compute TAM upgrade to $1T validates the broadening into the wider semi stack. The power trade worked: turbine lead times at 243 weeks, Meta's 10 gas plants, the Marcellus-shale-for-AI thesis confirmed at industry scale. The Google trade is the open question — the company has not yet hit the $100B AI revenue threshold he treated as the catalyst, and the path from current run-rate to $100B requires capability and adoption cycles that have not yet closed out. The bond short has not fired. Real ten-year yields sat at roughly 2% in mid-2024 and are at roughly 2.0–2.4% in May 2026 — up modestly, not at 10%. The trade was explicitly framed as a tail bet with negative carry, and two years of carry without payoff is information about the trade's premise, not just its timing.
 
-The conflict of interest is real and worth naming once. Aschenbrenner's policy advocacy moves markets favourably for many of his trades. The case for nationalisation supports the long-US-power-and-defence-contractor position. The case for export controls would support the long-TSMC position (had Trump 2.0 not gone the other way). The case for the trillion-dollar cluster supports a long position on hyperscalers. The advocacy is sincere and the fund benefits from it; both are true, and the disclosures convention that applies to sell-side research does not apply to essay-writing. Readers should know which side of that the document was written from. Dwarkesh, who is friendly, did not press the point in the interview. The convention in finance is that an analyst must disclose. The convention in essay-writing is that the public-good wrapper is the disclosure. Both work, but they work differently.
-
-The fund hedges Aschenbrenner personally. He repeats a friend's joke about it:
+The conflict of interest is worth naming once. Aschenbrenner's policy advocacy moves markets favourably for many of his trades. The case for nationalisation supports the long-US-power-and-defence-contractor position. The case for export controls would support the long-TSMC position (had Trump 2.0 not gone the other way). The case for the trillion-dollar cluster supports a long position on hyperscalers. The advocacy is sincere and the fund benefits from it; both are true, and the disclosures convention that applies to sell-side research does not apply to essay-writing. Readers should know which side of that the document was written from. Dwarkesh, who is friendly, did not press the point in the interview. The convention in finance is that an analyst must disclose. The fund hedges Aschenbrenner personally. He repeats a friend's joke about it:
 
 > "A friend joked that the investment firm was perfectly hedged for me. It's like, you know, either AGI this decade — and yeah, your human capital is depreciated, but you've turned that into financial capital. Or no AGI this decade, in which case maybe the firm doesn't do that well, but you're still in your 20s and you're so smart."
-
-That is the friend's joke. It is also a real Kelly-criterion structure on a young person's life. The fund is unhedged on the underlying belief — it is a single-thesis vehicle. That is a feature for the LPs and a risk for the GP.
-
-{{< readnext slug="bet-sizing-at-the-frontier" >}}
-
-For the reader, the right takeaway is not "buy what Leopold buys." It is "notice what it costs an intelligent forecaster to operationalise their views, and notice that most of his peers have not." The synthesis is more credible because of the fund. It is also more conflicted because of the fund. Both are true.
-
-Aschenbrenner is what a convergent forecaster looks like when they pay for it in equity, NDAs, and the lifetime risk of being publicly wrong. The technology calls landed because the substrate was lawful. The political calls did not land because the substrate was not. The decade is not closed; the method is the lesson regardless of how the rest of it scores.
-
----
-
-*Sources: Leopold Aschenbrenner, "Situational Awareness: The Decade Ahead" (June 2024); Dwarkesh Patel podcast, "Leopold Aschenbrenner — 2027 AGI, China/US Super-Intelligence Race, & The Path To AGI" (June 2024). Statements about Aschenbrenner's dismissal from OpenAI, his decision regarding the non-disparagement NDA, and his fund's anchor investors are drawn entirely from his own public statements in those sources. OpenAI has not commented publicly on the specifics of his departure. Prediction scoring drawn from publicly available May 2026 data on hyperscaler capex, NVIDIA earnings, METR time horizons, GPQA Diamond benchmarks, Anthropic and Apollo alignment research, and Trump administration AI executive orders. The author of this essay holds no position in any company referenced.*

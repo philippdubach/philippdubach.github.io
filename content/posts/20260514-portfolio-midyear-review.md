@@ -2,9 +2,9 @@
 title = "Midyear Portfolio Review: The Rotation Worked. Europe Didn't."
 slug = "midyear-portfolio-review-the-rotation-worked-europe-didnt"
 seoTitle = "2026 Portfolio Midyear Review: Five Theses Scored, CAPE at 42"
-date = 2026-05-15
+date = 2026-05-14
 lastmod = 2026-05-15
-publishDate = 2026-05-13T23:00:00Z
+publishDate = 2026-05-14T23:00:00Z
 images = ["https://static.philippdubach.com/midyear-cover.jpg"]
 card_image = "https://static.philippdubach.com/midyear-cover.jpg"
 description = "Midyear review of the 2026 CHF portfolio: EM, small-cap and Japan paid off; the Europe overweight underperformed; CAPE rose to 42; the dollar didn't fall."
@@ -59,6 +59,8 @@ It compressed in neither direction. The [CAPE is now **42.0**](https://www.multp
 Concentration is messier. The December article said "approximately 45%" for the top 10. The actual figure today, from iShares' IVV holdings file, is **39.1%**. Either December's number was overstated or it has drifted down. NVIDIA, however, grew from 7.2% to **8.17%**. Microsoft slipped from 5.9% to 5.0%. Apple is flat. The concentration risk is now a single-name risk, not a Mag-7 risk.
 
 {{< img src="sp500_concentration_2026h1.png" alt="Horizontal bar chart of S&P 500 top 10 holdings as of May 7, 2026, with NVIDIA at 8.17% (up from 7.2% in December), Apple at 6.70%, Microsoft at 4.96% (down from 5.9%), and the top 10 totaling 39.1% of the index" width="80%" >}}
+
+{{< readnext slug="the-saaspocalypse-paradox" >}}
 
 ## The Europe trade is alive but not paying
 

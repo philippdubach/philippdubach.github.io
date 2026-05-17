@@ -136,8 +136,6 @@ For enterprise buyers, this raises the floor on what a foundation-model audit de
 
 The cases NLAs cannot see matter as much as the ones they can. Information stored nonlinearly may be readable to NLAs in principle, because the AV is a full LLM and can compute over the activation, but missed by linear probes. Information that is genuinely unverbalizable, encoded in a form the model cannot introspect on or express in language, would be missed by NLAs entirely. A backdoor trigger that the model can act on but not describe would not show up.
 
-{{< readnext slug="ai-models-are-the-new-rebar" >}}
-
 ## What changes
 
 This is the first interpretability tool whose output you can read on the train. That changes who can audit. A circuits researcher reading attribution graphs is a scarce resource. A safety reviewer reading paragraphs of decoded activations is not. The cost structure of model auditing changes when the bottleneck moves from interpretation to reading.
