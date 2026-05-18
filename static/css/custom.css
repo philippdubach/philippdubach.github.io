@@ -1194,6 +1194,32 @@ blockquote p {
     border-bottom-style: solid;
 }
 
+/* /subscribe/ is a full-width content page, not a narrow homepage card.
+   The shared .home-newsletter mobile rule forces the form to a column
+   layout (input full-width, button full-width below it), which is right
+   for the homepage card but blows the input up to viewport width on the
+   subscribe page. Override back to a single-row layout matching the
+   article-page .inline-newsletter shortcode. */
+@media screen and (max-width: 768px) {
+    .home-newsletter.subscribe-cta .home-newsletter__form {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    .home-newsletter.subscribe-cta .home-newsletter__input {
+        flex: 1 1 0;
+        width: auto;
+    }
+
+    .home-newsletter.subscribe-cta .home-newsletter__button {
+        flex: 0 0 auto;
+        width: auto;
+        padding: 0.7rem 1rem;
+    }
+}
+
 /* Latest-issue pointer below the subscribe card. Inherits .post-content
    prose link styling so it visually matches the "RSS feed" / "Bluesky"
    links a few lines below it. JS upgrades href + link text to the
