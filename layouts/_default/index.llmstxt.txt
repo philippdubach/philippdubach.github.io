@@ -40,6 +40,18 @@ Citable data points from published analysis:
 
 ## Featured Analysis — AI Economics & Strategy
 
+- [Reconciling Enterprise AI Revenue]({{ $baseURL }}posts/reconciling-enterprise-ai-revenue/): Four widely-cited 2025 enterprise AI revenue figures span 40x ($37B Menlo to $1.478T Gartner); the audit-grade floor is $63.2B narrow, and that is the only tier that defensibly underwrites $690B of hyperscaler capex
+- [What Claude Thinks But Doesn't Say]({{ $baseURL }}posts/what-claude-thinks-but-doesnt-say/): Anthropic's Natural Language Autoencoders translate Claude's activations into readable text; the method works but the press release skips three structural problems
+- [Karpathy's Software 3.0 Playbook]({{ $baseURL }}posts/karpathys-software-3.0-playbook/): 12 takeaways from Karpathy's Sequoia talk on natural-language programming, agentic AI, and what the production AI stack looks like in 2026
+- [Claude Opus 4.6]({{ $baseURL }}posts/claude-opus-4.6-anthropics-new-flagship-ai-model-for-agentic-coding/): Anthropic's flagship agentic-coding model: 1M context, 68.8% ARC-AGI-2, Agent Teams, and how the GPT-5.2 and Gemini 3 Pro tradeoffs land in practice
+- [The Impossible Backhand]({{ $baseURL }}posts/the-impossible-backhand/): The AI quality ceiling argument: where domain expertise becomes more valuable as models commoditize, and what the centaur model means for white-collar work
+- [Bandits and Agents: Netflix and Spotify Recommender Stacks in 2026]({{ $baseURL }}posts/bandits-and-agents-netflix-and-spotify-recommender-stacks-in-2026/): How recommendation systems at Netflix and Spotify are shifting from collaborative filtering to multi-armed bandits and LLM-augmented agents
+- [Does AI Mean the Demand on Labor Goes Up?]({{ $baseURL }}posts/does-ai-mean-the-demand-on-labor-goes-up/): The Jevons paradox applied to white-collar labor: cheaper cognitive work expands the total addressable market for thinking, and what the historical analogies actually predict
+- [Is AI Really Eating the World? Part 1]({{ $baseURL }}posts/is-ai-really-eating-the-world-1/2/): Where AI value accrues in the platform shift: the foundation-model layer, the application layer, and why the answer is probably both
+- [Is AI Really Eating the World? AGI, Networks, Value [2/2]]({{ $baseURL }}posts/is-ai-really-eating-the-world-agi-networks-value-2/2/): The follow-up: AGI timelines, network economics, and where the AI value chain settles when the technology stabilizes
+- [Apple's AI Bet]({{ $baseURL }}posts/apples-ai-bet-playing-the-long-game-or-missing-the-moment/): The LLM commoditization thesis applied to Apple: distribution and customer relationships versus R&D spend, and why the early iOS 26.4 build noise matters less than it looks
+- [AI Models as Standalone P&Ls]({{ $baseURL }}posts/ai-models-as-standalone-pls/): Reading frontier AI labs as standalone businesses: training cost amortization, inference margins, and what the public disclosures imply about the unit economics
+- [Working with Models]({{ $baseURL }}posts/working-with-models/): Practical patterns for productive work with LLMs in real workflows
 - [Do Not Disturb My Circles]({{ $baseURL }}posts/do-not-disturb-my-circles/): The chatbot era as capital misallocation. AlphaFold cost less to train than OpenAI spends on inference in a single day, Bell Labs as the cautionary tale
 - [Inside PRAGMA: Revolut's Foundation Model for Banking]({{ $baseURL }}posts/inside-pragma-revoluts-foundation-model-for-banking/): Revolut's 1B-parameter encoder trained on 24B banking events, compared with Nubank's nuFormer and the broader convergence in transaction foundation models
 - [On-Device AI Models Will Be The New Reason to Upgrade Your Phone]({{ $baseURL }}posts/on-device-ai-models-will-be-the-new-reason-to-upgrade-your-phone/): How on-device AI models distilled from Gemini could break the smartphone upgrade stalemate, with parameters becoming the new megapixels
@@ -60,6 +72,9 @@ Citable data points from published analysis:
 
 ## Featured Analysis — Quantitative Finance & Risk
 
+- [Everything is a DCF Model]({{ $baseURL }}posts/everything-is-a-dcf-model/): Mauboussin's valuation framework applied across asset classes; why every asset price is a DCF in disguise and what that means for "value" vs "growth" investing
+- [The Market Can Stay Irrational Longer Than You Can Stay Solvent]({{ $baseURL }}posts/the-market-can-stay-irrational-longer-than-you-can-stay-solvent/): Keynes's line applied to market decoupling from fundamentals, and why being early can be indistinguishable from being wrong
+- [Michael Burry's $379 Newsletter]({{ $baseURL }}posts/michael-burrys-379-newsletter/): Burry's AI-bubble thesis as a Nvidia-Cisco parallel, the GPU depreciation debate Nvidia disputed in a seven-page memo, and what hyperscalers need to justify their capex
 - [Three Kinds of Not-Knowing]({{ $baseURL }}posts/three-kinds-of-not-knowing/): Investing at the Edge of Knowledge Part 1. Knightian uncertainty splits not-knowing into risk, uncertainty, and ignorance, and most of investing only handles the first
 - [Ambiguity by Design]({{ $baseURL }}posts/ambiguity-by-design/): Investing at the Edge of Knowledge Part 2. Ellsberg proved people flee unknown odds; Zeckhauser showed their flight creates mispricing in financial markets
 - [The Geometry of Who Knows What]({{ $baseURL }}posts/the-geometry-of-who-knows-what/): Investing at the Edge of Knowledge Part 3. When neither side can define the states of the world, adverse selection fears are misplaced and constraint arbitrage emerges
@@ -73,15 +88,21 @@ Citable data points from published analysis:
 
 - [People Live in Levels, Not Rates]({{ $baseURL }}posts/people-live-in-levels-not-rates/): Why inflation rates declining doesn't help when price levels remain elevated
 - [Europe's $24 Trillion Payment Breakup]({{ $baseURL }}posts/europes-24-trillion-payment-breakup-is-really-a-bet-on-infrastructure-arbitrage/): The infrastructure arbitrage behind Europe's push for payment sovereignty
-- [Pozsar's Bretton Woods III]({{ $baseURL }}posts/pozsars-bretton-woods-iii-the-framework-1/2/): Two-part analysis of Zoltan Pozsar's framework for the shifting global monetary order
+- [Pozsar's Bretton Woods III: The Framework [1/2]]({{ $baseURL }}posts/pozsars-bretton-woods-iii-the-framework-1/2/): Zoltan Pozsar's framework for the post-2022 monetary order: inside money vs outside money, commodity-backed reserves, and why the dollar's safety premium is compressing
+- [Pozsar's Bretton Woods III: Three Years Later [2/2]]({{ $baseURL }}posts/pozsars-bretton-woods-iii-three-years-later-2/2/): What actually happened to the framework: dollar diversification gradual, gold up sharply, alternative payment systems developing, and the predictions tested against three years of data
+- [Repo Might Be Even Bigger Than We Thought]({{ $baseURL }}posts/repo-might-be-even-bigger-than-we-thought/): The $12.6T repo market's opacity, the Fed's December 2025 Standing Repo Facility surge, and why the plumbing is straining again
 - [Britain's Strategic Limbo]({{ $baseURL }}posts/britains-strategic-limbo/): Post-Brexit Britain's search for a coherent economic and geopolitical strategy
 - [The Rise of Middle Power Realism]({{ $baseURL }}posts/the-rise-of-middle-power-realism/): How middle powers are reshaping global order through pragmatic non-alignment
 - [Big in Japan]({{ $baseURL }}posts/big-in-japan/): Japan's macro position and the implications of yen normalization
 
 ## Featured Analysis — Investment Strategy
 
+- [Midyear Portfolio Review]({{ $baseURL }}posts/midyear-portfolio-review-the-rotation-worked-europe-didnt/): May 2026 portfolio review: EM, small-cap and Japan paid off, the Europe overweight underdelivered, CAPE rose to 42, and the dollar didn't fall
+- [Nike's Crisis and the Economics of Brand Decay]({{ $baseURL }}posts/nikes-crisis-and-the-economics-of-brand-decay/): How Nike lost $28B in market cap, the complementary-assets framework applied to brand strategy, and why the recovery may take longer than the bull case assumes
+- [Buffett Retires at 95]({{ $baseURL }}posts/praise-by-name-criticize-by-category-warren-buffett-retires-at-95/): 60 years of Berkshire shareholder letters distilled: praise by name, criticize by category, and what the capital allocator's playbook actually was
 - [Buying the Haystack Might Not Work This Year]({{ $baseURL }}posts/buying-the-haystack-might-not-work-this-year/): Why passive index concentration makes broad market exposure a directional AI bet
 - [The Absolute Insider Mess of Prediction Markets]({{ $baseURL }}posts/the-absolute-insider-mess-of-prediction-markets/): Information asymmetry and regulatory gaps in political prediction markets
+- [Not Logan Roy: Netflix vs. Paramount's Bidding War]({{ $baseURL }}posts/not-logan-roy-netflix-vs.-paramounts-bidding-war/): The Paramount sale process and why the deal economics are harder than the bidding-war headlines suggest
 - [2026 Investment Allocation]({{ $baseURL }}posts/how-ai-is-shaping-my-investment-portfolio-for-2026/): Macro thesis on hyperscaler capex and AI infrastructure
 
 ## Featured Analysis — GLP-1 / Pharma Economics
@@ -97,6 +118,8 @@ Citable data points from published analysis:
 
 - [Economics of a Super Bowl Ad]({{ $baseURL }}posts/economics-of-a-super-bowl-ad/): ROI analysis of Super Bowl advertising at $8M per 30-second spot
 - [Where Mobile Money Goes Now]({{ $baseURL }}posts/where-mobile-money-goes-now/): The evolution of mobile payment infrastructure in emerging markets
+- [Agent-Based Systems for Modeling Wealth Distribution]({{ $baseURL }}posts/agent-based-systems-for-modeling-wealth-distribution/): The Affine Wealth Model from Boghosian's group at Tufts implemented in Python; random transactions produce Pareto outcomes, and the simulation reproduces 27 years of US wealth data within 0.16% error
+- [Weather Forecasts Have Improved a Lot]({{ $baseURL }}posts/weather-forecasts-have-improved-a-lot/): How AI-based weather models now match or exceed traditional numerical-weather-prediction systems, and what that signals for the future of climate modeling
 
 ## Technical Projects
 
@@ -109,6 +132,10 @@ Citable data points from published analysis:
 - [CGM Data Reader]({{ $baseURL }}posts/i-built-a-cgm-data-reader/): Continuous glucose monitoring Python library
 - [RSS Swipr]({{ $baseURL }}posts/rss-swipr-find-blogs-like-you-find-your-dates/): Tinder-style blog discovery interface
 - [Crypto Seasonality Patterns]({{ $baseURL }}posts/crypto-mean-reversion-trading/): Statistical analysis of cryptocurrency market patterns
+- [The Tech Behind This Site]({{ $baseURL }}posts/the-tech-behind-this-site/): A walkthrough of the site stack: Hugo static generation, Cloudflare Workers for the edge layer, the OG image pipeline, and the operational footprint of running it
+- [Building a No-Tracking Newsletter from Markdown to Distribution]({{ $baseURL }}posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/): The end-to-end build of a privacy-first newsletter: no tracking pixels, no open-rate tracking, subscriber records on a domain I control, and the open-source pieces that make it work
+- [Trading on Market Sentiment]({{ $baseURL }}posts/trading-on-market-sentiment/): Building a sentiment-based trading signal with GPT-3.5 on news headlines, the technical performance, and the practical reasons it doesn't beat HFT desks
+- [Visualizing Gradients with PyTorch]({{ $baseURL }}posts/visualizing-gradients-with-pytorch/): A walkthrough of computing and visualizing gradients in PyTorch, illustrating how backpropagation flows through a neural network
 
 ## FAQ Pages
 
