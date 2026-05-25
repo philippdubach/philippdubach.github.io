@@ -1,121 +1,69 @@
 /**
- * LLM Integration using Cloudflare Workers AI
+ * Single-model JSON-mode generation. Returns the post message string.
+ * This is a Phase 2 transition module — Phase 3 replaces it with shared/generator.js.
  */
+import { buildSystemPrompt, buildUserPrompt } from './prompt.js';
 
-/**
- * Sanitize user input before inserting into LLM prompts
- * Prevents prompt injection attacks
- */
-function sanitizeForPrompt(text) {
-  if (!text || typeof text !== 'string') return '';
-  return text
-    // Remove markdown code blocks that could contain injected prompts
-    .replace(/```[\s\S]*?```/g, '[code block removed]')
-    // Remove potential prompt escape sequences
-    .replace(/\n{3,}/g, '\n\n')
-    // Limit length to prevent context overflow attacks
-    .substring(0, 3000)
-    .trim();
-}
+const MODEL = '@cf/meta/llama-4-scout-17b-16e-instruct';
 
-const SYSTEM_PROMPT = `You are writing a short social post to share an article from your own finance and technology blog. You are a person sharing something you wrote and found interesting, not a bot summarizing content.
-
-Your voice: dry, direct, occasionally wry. You have opinions and aren't afraid to state them plainly. You notice irony and contradictions. You prefer understatement to hype.
-
-Write ONE short post (under 250 characters). No emojis. No hashtags. No URLs.
-
-Pick ONE of these angles:
-- The single most surprising finding or number from the article
-- A tension, contradiction, or irony in the subject
-- A strong opinion stated plainly
-- A question the article raises but doesn't fully answer
-- A concrete observation that sets up the rest of the piece
-
-Do NOT start the post with "Worth reading", "Wrote about", "New post", "Just posted", "Check out", "Read this", or any similar self-referential framing. Open with the substance — the number, the claim, the tension — not a label.
-
-Examples of the voice and variety you should aim for:
-- Passive investing trends, the numbers were surprising.
-- Apple's AI strategy looks like deliberate restraint, not a stumble. The reasoning is more interesting than the headlines.
-- A 3x leveraged S&P ETF returned less than 2x over the last decade. The math of why is more interesting than you'd expect.
-- 85% of enterprise AI projects fail. The problem isn't the AI.
-- Hedge funds are shorting utilities at the 99th percentile. That's a bet against AI power demand.
-- An $8M Super Bowl spot actually costs $23M, and the ROI evidence is surprisingly thin.
-- The Fed decision and what it means for rates.
-- Private equity might just be leveraged beta with a lockup period attached.
-- Funny thing about variance drain: you can average +10% a year and still lose money.
-
-Never use these words: delve, realm, harness, unlock, tapestry, paradigm, cutting-edge, revolutionize, landscape, potential, findings, intricate, showcasing, crucial, pivotal, surpass, meticulously, vibrant, unparalleled, underscore, leverage, synergy, innovative, game-changer, testament, commendable, meticulous, groundbreaking, align, foster, showcase, enhance, holistic, garner, pioneering, trailblazing, unleash, versatile, transformative, redefine, seamless, optimize, scalable, robust, breakthrough, empower, streamline, frictionless, elevate, adaptive, effortless, data-driven, insightful, proactive, mission-critical, visionary, disruptive, reimagine, unprecedented, intuitive, leading-edge, democratize, state-of-the-art, dynamic, novel, unique, utilize, impactful
-
-Output ONLY the post text. No quotes. No labels. No explanation.`;
+const JSON_SCHEMA = {
+  type: 'object',
+  required: ['post', 'angle', 'anchored_on', 'opener_words'],
+  properties: {
+    post: { type: 'string' },
+    angle: { type: 'string', enum: ['surprise', 'tension', 'opinion', 'question', 'observation'] },
+    anchored_on: { type: 'string' },
+    opener_words: { type: 'array', items: { type: 'string' } },
+  },
+};
 
 export async function generatePostMessage(ai, title, description, fullText = '', takeaways = '', maxLength = 250) {
-  // Clamp maxLength to a sane band; callers who pass platform-specific
-  // budgets (e.g. Bluesky reserves URL + "\n\n" from 300) may compute
-  // values outside this range, so reject obvious nonsense without
-  // throwing — the LLM still produces a usable post at 80 chars and
-  // the caller will catch any platform-side rejection.
   const MAX_MSG_LENGTH = Math.max(80, Math.min(280, maxLength));
+
+  const articleData = {
+    title,
+    description: description || '',
+    takeaways: Array.isArray(takeaways)
+      ? takeaways
+      : (typeof takeaways === 'string' && takeaways.length > 0
+          ? takeaways.split('\n').filter(Boolean)
+          : []),
+    bodyExcerpt: (fullText || '').substring(0, 1500),
+  };
+
+  const system = buildSystemPrompt({ maxLength: MAX_MSG_LENGTH });
+  const user = buildUserPrompt({ articleData, recentPosts: [] });
+
   try {
-    const safeTitle = sanitizeForPrompt(title);
-
-    // Build structured user prompt with all available context
-    let userPrompt = `Article title: ${safeTitle}\n`;
-
-    if (description) {
-      userPrompt += `Author's summary: ${sanitizeForPrompt(description)}\n`;
-    }
-
-    if (takeaways) {
-      userPrompt += `\nKey points the author highlighted:\n${sanitizeForPrompt(takeaways)}\n`;
-    }
-
-    if (fullText) {
-      userPrompt += `\nArticle excerpt:\n${sanitizeForPrompt(fullText)}\n`;
-    }
-
-    userPrompt += '\nWrite your post.';
-
-    const response = await ai.run('@cf/meta/llama-4-scout-17b-16e-instruct', {
+    const response = await ai.run(MODEL, {
       messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: userPrompt },
+        { role: 'system', content: system },
+        { role: 'user', content: user },
       ],
-      max_tokens: 150,
+      response_format: { type: 'json_schema', json_schema: JSON_SCHEMA },
+      max_tokens: 250,
       temperature: 0.85,
     });
 
-    if (response?.response) {
-      let msg = response.response.trim()
-        // Strip surrounding quotes (single, double, or smart quotes)
-        .replace(/^[\u201C\u201D\u2018\u2019"']+|[\u201C\u201D\u2018\u2019"']+$/g, '')
-        // Strip URLs
-        .replace(/https?:\/\/[^\s]+/g, '')
-        // Replace em dashes with periods for deliberate pauses
-        .replace(/\s*—\s*/g, '. ')
-        // Clean up double periods
-        .replace(/\.\s*\./g, '.')
-        // Clean up double spaces
-        .replace(/\s{2,}/g, ' ')
-        .trim();
+    const raw = response?.response;
+    if (!raw) throw new Error('No LLM response');
 
-      // Truncate to caller-supplied budget with sentence-boundary awareness.
-      if (msg.length > MAX_MSG_LENGTH) {
-        const truncated = msg.substring(0, MAX_MSG_LENGTH);
-        const lastPeriod = truncated.lastIndexOf('.');
-        const lastQuestion = truncated.lastIndexOf('?');
-        const lastBreak = Math.max(lastPeriod, lastQuestion);
-        msg = lastBreak > MAX_MSG_LENGTH * 0.6
-          ? truncated.substring(0, lastBreak + 1)
-          : truncated.substring(0, MAX_MSG_LENGTH - 3) + '...';
-      }
+    const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
+    let msg = (parsed.post || '').trim();
+    if (!msg) throw new Error('Empty post field in JSON');
 
-      return msg;
+    if (msg.length > MAX_MSG_LENGTH) {
+      const truncated = msg.substring(0, MAX_MSG_LENGTH);
+      const lastBreak = Math.max(truncated.lastIndexOf('.'), truncated.lastIndexOf('?'));
+      msg = lastBreak > MAX_MSG_LENGTH * 0.6
+        ? truncated.substring(0, lastBreak + 1)
+        : truncated.substring(0, MAX_MSG_LENGTH - 3) + '...';
     }
-    throw new Error('No response');
+
+    return msg;
   } catch (e) {
-    // Use sanitized title in fallback
-    const safeTitle = sanitizeForPrompt(title);
-    const fallback = `New post: ${safeTitle}`;
+    console.error('LLM generation failed:', e?.message || e);
+    const fallback = title || '';
     return fallback.length > MAX_MSG_LENGTH ? fallback.substring(0, MAX_MSG_LENGTH - 3) + '...' : fallback;
   }
 }
