@@ -3,6 +3,7 @@ import { timingSafeEqual } from '@social/shared/auth';
 import { checkRateLimit } from '@social/shared/rate-limit';
 import { generate } from '@social/shared/generator';
 import { pick } from '@social/shared/scorer';
+import { recentPosts } from '@social/shared/state';
 import { postToTwitter } from './twitter.js';
 
 export default {
@@ -195,6 +196,8 @@ async function processNewPosts(env, dryRun = false) {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - 7);
 
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
   for (const post of posts) {
     const info = extractPostInfo(post);
     
@@ -245,10 +248,10 @@ async function processNewPosts(env, dryRun = false) {
             : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
           bodyExcerpt: (articleData.text || '').substring(0, 1500),
         },
-        recentPosts: [],
+        recentPosts: recent,
         maxLength: 257,
       });
-      const winner = pick(candidates, [], { maxLength: 257 });
+      const winner = pick(candidates, recent, { maxLength: 257 });
       if (!winner) {
         results.errors.push({ id, error: 'all candidates rejected by scorer' });
         continue;
@@ -325,6 +328,8 @@ async function postSingleUrl(env, url) {
   // Fetch full article text and takeaways
   const articleData = await fetchArticleData(url);
 
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
   // Generate tweet text via two-model generator + scorer
   const candidates = await generate(env.AI, {
     articleData: {
@@ -335,10 +340,10 @@ async function postSingleUrl(env, url) {
         : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
       bodyExcerpt: (articleData.text || '').substring(0, 1500),
     },
-    recentPosts: [],
+    recentPosts: recent,
     maxLength: 257,
   });
-  const winner = pick(candidates, [], { maxLength: 257 });
+  const winner = pick(candidates, recent, { maxLength: 257 });
   if (!winner) {
     throw new Error('all candidates rejected by scorer');
   }

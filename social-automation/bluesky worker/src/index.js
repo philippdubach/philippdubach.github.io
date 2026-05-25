@@ -3,6 +3,7 @@ import { timingSafeEqual } from '@social/shared/auth';
 import { checkRateLimit } from '@social/shared/rate-limit';
 import { generate } from '@social/shared/generator';
 import { pick } from '@social/shared/scorer';
+import { recentPosts } from '@social/shared/state';
 import { postToBluesky } from './bluesky.js';
 
 // Bluesky enforces a 300-character post limit. The link is appended after
@@ -202,6 +203,8 @@ async function processNewPosts(env, dryRun = false) {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - 7);
 
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
   for (const post of posts) {
     const info = extractPostInfo(post);
     
@@ -256,10 +259,10 @@ async function processNewPosts(env, dryRun = false) {
             : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
           bodyExcerpt: (articleData.text || '').substring(0, 1500),
         },
-        recentPosts: [],
+        recentPosts: recent,
         maxLength: maxMsgLen,
       });
-      const winner = pick(candidates, [], { maxLength: maxMsgLen });
+      const winner = pick(candidates, recent, { maxLength: maxMsgLen });
       if (!winner) {
         results.errors.push({ id, error: 'all candidates rejected by scorer' });
         continue;
@@ -322,6 +325,8 @@ async function postSingleUrl(env, url) {
   // above; in the scheduled path the unified fetch is the only one).
   const articleData = await fetchArticleData(url);
 
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
   // Reserve URL + "\n\n" budget against Bluesky's 300-char post limit.
   const maxMsgLen = BLUESKY_POST_LIMIT - 2 - url.length;
   const candidates = await generate(env.AI, {
@@ -333,10 +338,10 @@ async function postSingleUrl(env, url) {
         : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
       bodyExcerpt: (articleData.text || '').substring(0, 1500),
     },
-    recentPosts: [],
+    recentPosts: recent,
     maxLength: maxMsgLen,
   });
-  const winner = pick(candidates, [], { maxLength: maxMsgLen });
+  const winner = pick(candidates, recent, { maxLength: maxMsgLen });
   if (!winner) {
     throw new Error('all candidates rejected by scorer');
   }
