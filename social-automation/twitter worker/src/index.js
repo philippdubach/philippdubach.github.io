@@ -1,22 +1,8 @@
 import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
+import { timingSafeEqual } from '@social/shared/auth';
+import { checkRateLimit } from '@social/shared/rate-limit';
 import { generatePostMessage } from './llm.js';
 import { postToTwitter } from './twitter.js';
-
-/**
- * Timing-safe string comparison to prevent timing attacks
- */
-function timingSafeEqual(a, b) {
-  if (typeof a !== 'string' || typeof b !== 'string') return false;
-  if (a.length !== b.length) {
-    // Still do the comparison to maintain constant time
-    b = a;
-  }
-  let result = a.length === b.length ? 0 : 1;
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  }
-  return result === 0;
-}
 
 export default {
   async scheduled(event, env, ctx) {
@@ -43,7 +29,7 @@ export default {
 
     // Rate limit authenticated endpoints
     const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
-    if (!(await checkRateLimit(env, clientIP))) {
+    if (!(await checkRateLimit(env.POSTED_STATE, clientIP))) {
       return json({ error: 'rate limit exceeded', retry_after: 60 }, 429);
     }
 
@@ -109,49 +95,13 @@ export default {
 };
 
 function json(data, status = 200) {
-  return new Response(JSON.stringify(data), { 
-    status, 
-    headers: { 
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-store'
-    } 
-  });
-}
-
-/**
- * Simple rate limiter using KV - allows 10 requests per minute per IP
- * Uses sliding window algorithm for more accurate rate limiting
- */
-async function checkRateLimit(env, ip) {
-  // Sanitize IP to prevent KV key injection
-  const sanitizedIp = ip.replace(/[^a-zA-Z0-9.:]/g, '').substring(0, 45);
-  const key = `ratelimit:${sanitizedIp}`;
-  const now = Date.now();
-  const windowMs = 60000; // 1 minute
-  const maxRequests = 10;
-  
-  try {
-    const data = await env.POSTED_STATE.get(key, 'json');
-    const requests = data?.requests || [];
-    
-    // Filter to requests within the window
-    const recentRequests = requests.filter(ts => now - ts < windowMs);
-    
-    if (recentRequests.length >= maxRequests) {
-      return false; // Rate limited
     }
-    
-    // Add current request and store
-    recentRequests.push(now);
-    await env.POSTED_STATE.put(key, JSON.stringify({ requests: recentRequests }), {
-      expirationTtl: 120 // Expire after 2 minutes
-    });
-    
-    return true;
-  } catch (e) {
-    console.error('Rate limit check failed:', e);
-    return false; // Fail closed for security - block request on error
-  }
+  });
 }
 
 /**
