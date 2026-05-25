@@ -1,4 +1,4 @@
-import { parseRSS, extractPostInfo, fetchArticleData } from './rss.js';
+import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
 import { generatePostMessage } from './llm.js';
 import { postToBluesky } from './bluesky.js';
 

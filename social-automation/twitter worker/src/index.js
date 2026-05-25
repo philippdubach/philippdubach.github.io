@@ -1,4 +1,4 @@
-import { parseRSS, extractPostInfo, fetchFullArticleText } from './rss.js';
+import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
 import { generatePostMessage } from './llm.js';
 import { postToTwitter } from './twitter.js';
 
@@ -282,7 +282,7 @@ async function processNewPosts(env, dryRun = false) {
 
     try {
       // Fetch full article text and takeaways for LLM context
-      const { text: fullText, takeaways } = await fetchFullArticleText(info.link);
+      const { text: fullText, takeaways } = await fetchArticleData(info.link);
 
       // Generate tweet text with LLM
       const message = await generatePostMessage(env.AI, info.title, info.description, fullText, takeaways);
@@ -350,7 +350,7 @@ async function postSingleUrl(env, url) {
   }
   
   // Fetch full article text and takeaways
-  const { text: fullText, takeaways } = await fetchFullArticleText(url);
+  const { text: fullText, takeaways } = await fetchArticleData(url);
 
   // Generate message with LLM
   const message = await generatePostMessage(env.AI, title, '', fullText, takeaways);
