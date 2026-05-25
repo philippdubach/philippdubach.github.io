@@ -94,3 +94,17 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -H "Content-Type: application/json" \
             --data '{"purge_everything":true}'
+
+      - name: Notify social posters
+        if: success() && github.event_name == 'push'
+        env:
+          SOCIAL_API_SECRET: ${{ secrets.SOCIAL_API_SECRET }}
+          BLUESKY_TRIGGER_URL: ${{ secrets.BLUESKY_TRIGGER_URL }}
+          TWITTER_TRIGGER_URL: ${{ secrets.TWITTER_TRIGGER_URL }}
+        run: |
+          curl -X POST -H "Authorization: Bearer $SOCIAL_API_SECRET" \
+            --max-time 10 --retry 2 \
+            "$BLUESKY_TRIGGER_URL" || echo "bluesky webhook returned non-zero (fire-and-forget)"
+          curl -X POST -H "Authorization: Bearer $SOCIAL_API_SECRET" \
+            --max-time 10 --retry 2 \
+            "$TWITTER_TRIGGER_URL" || echo "twitter webhook returned non-zero (fire-and-forget)"

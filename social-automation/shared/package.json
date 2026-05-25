@@ -1,0 +1,20 @@
+{
+  "name": "@social/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    "./rss": "./src/rss.js",
+    "./prompt": "./src/prompt.js",
+    "./generator": "./src/generator.js",
+    "./scorer": "./src/scorer.js",
+    "./state": "./src/state.js",
+    "./auth": "./src/auth.js",
+    "./rate-limit": "./src/rate-limit.js",
+    "./llm": "./src/llm.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

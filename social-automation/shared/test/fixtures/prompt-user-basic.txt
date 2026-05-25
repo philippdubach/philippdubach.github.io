@@ -1,0 +1,12 @@
+ARTICLE
+Title: The SaaSpocalypse Paradox
+Author's description: The market is simultaneously pricing AI capex failure and AI destroying all software.
+
+Key takeaways (the author's pulled-out points):
+1. The IGV software ETF fell 32% to an RSI of 18, the most oversold reading since 1990.
+2. Software trades at 32.4x forward earnings versus 43.6x for semiconductors.
+
+Article excerpt (first ~1500 chars):
+On January 30 2026, Anthropic released 11 open-source plugins for Claude Cowork.
+
+Write the post. Output ONLY the JSON object.

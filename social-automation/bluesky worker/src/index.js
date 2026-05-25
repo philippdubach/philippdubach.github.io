@@ -1,5 +1,9 @@
-import { parseRSS, extractPostInfo, fetchArticleData } from './rss.js';
-import { generatePostMessage } from './llm.js';
+import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
+import { timingSafeEqual } from '@social/shared/auth';
+import { checkRateLimit } from '@social/shared/rate-limit';
+import { generate } from '@social/shared/generator';
+import { pick } from '@social/shared/scorer';
+import { recentPosts } from '@social/shared/state';
 import { postToBluesky } from './bluesky.js';
 
 // Bluesky enforces a 300-character post limit. The link is appended after
@@ -8,22 +12,6 @@ import { postToBluesky } from './bluesky.js';
 // typical 70-char link (322) overflowed and threw, leaving the post stuck
 // in a re-attempt loop forever (KV is only marked posted on success).
 const BLUESKY_POST_LIMIT = 300;
-
-/**
- * Timing-safe string comparison to prevent timing attacks
- */
-function timingSafeEqual(a, b) {
-  if (typeof a !== 'string' || typeof b !== 'string') return false;
-  if (a.length !== b.length) {
-    // Still do the comparison to maintain constant time
-    b = a;
-  }
-  let result = a.length === b.length ? 0 : 1;
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  }
-  return result === 0;
-}
 
 export default {
   async scheduled(event, env, ctx) {
@@ -50,7 +38,7 @@ export default {
 
     // Rate limit authenticated endpoints
     const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
-    if (!(await checkRateLimit(env, clientIP))) {
+    if (!(await checkRateLimit(env.POSTED_STATE, clientIP))) {
       return json({ error: 'rate limit exceeded', retry_after: 60 }, 429);
     }
 
@@ -65,9 +53,29 @@ export default {
     }
 
     if (url.pathname === '/status') {
-      const posted = await env.POSTED_STATE.list();
-      // Only return count, not keys (avoid information leakage)
-      return json({ posted: posted.keys.length });
+      const list = await env.POSTED_STATE.list({ prefix: 'posts:', limit: 1000 });
+      const entries = (await Promise.all(
+        list.keys.map(k => env.POSTED_STATE.get(k.name, 'json'))
+      )).filter(Boolean);
+
+      const dayAgo = Date.now() - 24 * 60 * 60 * 1000;
+      const last24h = entries.filter(e => new Date(e.at || 0).getTime() > dayAgo);
+
+      const angleStats = {};
+      for (const e of entries) {
+        if (e.angle) angleStats[e.angle] = (angleStats[e.angle] || 0) + 1;
+      }
+
+      const newest = entries.sort((a, b) => (b.at || '').localeCompare(a.at || ''))[0] || {};
+
+      return json({
+        posted_count: entries.length,
+        posted_last_24h: last24h.length,
+        last_posted_at: newest.at || null,
+        last_angle: newest.angle || null,
+        last_anchored_on: newest.anchored_on || null,
+        angle_stats: angleStats,
+      });
     }
 
     // Backfill endpoint - mark all current RSS items as posted without actually posting
@@ -116,49 +124,13 @@ export default {
 };
 
 function json(data, status = 200) {
-  return new Response(JSON.stringify(data), { 
-    status, 
-    headers: { 
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-store'
-    } 
-  });
-}
-
-/**
- * Simple rate limiter using KV - allows 10 requests per minute per IP
- * Uses sliding window algorithm for more accurate rate limiting
- */
-async function checkRateLimit(env, ip) {
-  // Sanitize IP to prevent KV key injection
-  const sanitizedIp = ip.replace(/[^a-zA-Z0-9.:]/g, '').substring(0, 45);
-  const key = `ratelimit:${sanitizedIp}`;
-  const now = Date.now();
-  const windowMs = 60000; // 1 minute
-  const maxRequests = 10;
-  
-  try {
-    const data = await env.POSTED_STATE.get(key, 'json');
-    const requests = data?.requests || [];
-    
-    // Filter to requests within the window
-    const recentRequests = requests.filter(ts => now - ts < windowMs);
-    
-    if (recentRequests.length >= maxRequests) {
-      return false; // Rate limited
     }
-    
-    // Add current request and store
-    recentRequests.push(now);
-    await env.POSTED_STATE.put(key, JSON.stringify({ requests: recentRequests }), {
-      expirationTtl: 120 // Expire after 2 minutes
-    });
-    
-    return true;
-  } catch (e) {
-    console.error('Rate limit check failed:', e);
-    return false; // Fail closed for security - block request on error
-  }
+  });
 }
 
 /**
@@ -183,16 +155,16 @@ async function backfillPostedState(env) {
                info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
     // Skip if already marked
-    if (await env.POSTED_STATE.get(id)) {
+    if (await env.POSTED_STATE.get(`posts:${id}`)) {
       results.skipped++;
       continue;
     }
 
     try {
-      await env.POSTED_STATE.put(id, JSON.stringify({ 
-        title: info.title, 
-        backfilled: true, 
-        at: new Date().toISOString() 
+      await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
+        title: info.title,
+        backfilled: true,
+        at: new Date().toISOString()
       }));
       results.marked.push({ id, title: info.title });
     } catch (e) {
@@ -251,6 +223,8 @@ async function processNewPosts(env, dryRun = false) {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - 7);
 
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
   for (const post of posts) {
     const info = extractPostInfo(post);
     
@@ -270,7 +244,7 @@ async function processNewPosts(env, dryRun = false) {
     const id = info.link.match(/\/posts\/([^\/]+)\/?$/)?.[1] || 
                info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
-    if (await env.POSTED_STATE.get(id)) {
+    if (await env.POSTED_STATE.get(`posts:${id}`)) {
       results.skipped++;
       continue;
     }
@@ -296,7 +270,24 @@ async function processNewPosts(env, dryRun = false) {
       // Reserve URL + "\n\n" budget so the LLM truncation respects the
       // 300-char Bluesky limit. See BLUESKY_POST_LIMIT comment at top.
       const maxMsgLen = BLUESKY_POST_LIMIT - 2 - info.link.length;
-      const message = await generatePostMessage(env.AI, info.title, info.description, articleData.text, articleData.takeaways, maxMsgLen);
+      const candidates = await generate(env.AI, {
+        articleData: {
+          title: info.title,
+          description: info.description,
+          takeaways: Array.isArray(articleData.takeaways)
+            ? articleData.takeaways
+            : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+          bodyExcerpt: (articleData.text || '').substring(0, 1500),
+        },
+        recentPosts: recent,
+        maxLength: maxMsgLen,
+      });
+      const winner = pick(candidates, recent, { maxLength: maxMsgLen });
+      if (!winner) {
+        results.errors.push({ id, error: 'all candidates rejected by scorer' });
+        continue;
+      }
+      const message = winner.message;
 
       if (dryRun) {
         results.posted.push({ id, title: info.title, message, image: info.image, description: info.ogDescription });
@@ -307,7 +298,16 @@ async function processNewPosts(env, dryRun = false) {
         throw new Error('BLUESKY_HANDLE and BLUESKY_APP_PASSWORD secrets are required');
       }
       const bsky = await postToBluesky(env.BLUESKY_HANDLE, env.BLUESKY_APP_PASSWORD, message, info.link, info.image, info.title, info.ogDescription);
-      await env.POSTED_STATE.put(id, JSON.stringify({ title: info.title, uri: bsky.uri, at: new Date().toISOString() }));
+      await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
+        title: info.title,
+        message,
+        angle: winner.angle,
+        anchored_on: winner.anchored_on,
+        score: winner.score,
+        candidates_considered: winner.candidates_considered,
+        uri: bsky.uri,
+        at: new Date().toISOString(),
+      }));
       results.posted.push({ id, title: info.title, uri: bsky.uri });
     } catch (e) {
       results.errors.push({ id, error: e.message });
@@ -345,10 +345,28 @@ async function postSingleUrl(env, url) {
   // above; in the scheduled path the unified fetch is the only one).
   const articleData = await fetchArticleData(url);
 
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
   // Reserve URL + "\n\n" budget against Bluesky's 300-char post limit.
   const maxMsgLen = BLUESKY_POST_LIMIT - 2 - url.length;
-  const message = await generatePostMessage(env.AI, title, '', articleData.text, articleData.takeaways, maxMsgLen);
-  
+  const candidates = await generate(env.AI, {
+    articleData: {
+      title,
+      description: '',
+      takeaways: Array.isArray(articleData.takeaways)
+        ? articleData.takeaways
+        : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+      bodyExcerpt: (articleData.text || '').substring(0, 1500),
+    },
+    recentPosts: recent,
+    maxLength: maxMsgLen,
+  });
+  const winner = pick(candidates, recent, { maxLength: maxMsgLen });
+  if (!winner) {
+    throw new Error('all candidates rejected by scorer');
+  }
+  const message = winner.message;
+
   // Validate credentials
   if (!env.BLUESKY_HANDLE || !env.BLUESKY_APP_PASSWORD) {
     throw new Error('BLUESKY_HANDLE and BLUESKY_APP_PASSWORD secrets are required');
@@ -369,6 +387,6 @@ async function postSingleUrl(env, url) {
     title,
     message,
     uri: bsky.uri,
-    fullTextLength: articleData.text.length,
+    fullTextLength: (articleData.text || '').length,
   };
 }

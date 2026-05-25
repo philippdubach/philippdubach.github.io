@@ -12,6 +12,9 @@
     "secret:bluesky-handle": "wrangler secret put BLUESKY_HANDLE",
     "secret:bluesky-password": "wrangler secret put BLUESKY_APP_PASSWORD"
   },
+  "dependencies": {
+    "@social/shared": "file:../shared"
+  },
   "devDependencies": {
     "wrangler": "^4.87.0"
   }

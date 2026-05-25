@@ -1,22 +1,10 @@
-import { parseRSS, extractPostInfo, fetchFullArticleText } from './rss.js';
-import { generatePostMessage } from './llm.js';
+import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
+import { timingSafeEqual } from '@social/shared/auth';
+import { checkRateLimit } from '@social/shared/rate-limit';
+import { generate } from '@social/shared/generator';
+import { pick } from '@social/shared/scorer';
+import { recentPosts } from '@social/shared/state';
 import { postToTwitter } from './twitter.js';
-
-/**
- * Timing-safe string comparison to prevent timing attacks
- */
-function timingSafeEqual(a, b) {
-  if (typeof a !== 'string' || typeof b !== 'string') return false;
-  if (a.length !== b.length) {
-    // Still do the comparison to maintain constant time
-    b = a;
-  }
-  let result = a.length === b.length ? 0 : 1;
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  }
-  return result === 0;
-}
 
 export default {
   async scheduled(event, env, ctx) {
@@ -43,7 +31,7 @@ export default {
 
     // Rate limit authenticated endpoints
     const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
-    if (!(await checkRateLimit(env, clientIP))) {
+    if (!(await checkRateLimit(env.POSTED_STATE, clientIP))) {
       return json({ error: 'rate limit exceeded', retry_after: 60 }, 429);
     }
 
@@ -58,9 +46,29 @@ export default {
     }
 
     if (url.pathname === '/status') {
-      const posted = await env.POSTED_STATE.list();
-      // Only return count, not keys (avoid information leakage)
-      return json({ posted: posted.keys.length });
+      const list = await env.POSTED_STATE.list({ prefix: 'posts:', limit: 1000 });
+      const entries = (await Promise.all(
+        list.keys.map(k => env.POSTED_STATE.get(k.name, 'json'))
+      )).filter(Boolean);
+
+      const dayAgo = Date.now() - 24 * 60 * 60 * 1000;
+      const last24h = entries.filter(e => new Date(e.at || 0).getTime() > dayAgo);
+
+      const angleStats = {};
+      for (const e of entries) {
+        if (e.angle) angleStats[e.angle] = (angleStats[e.angle] || 0) + 1;
+      }
+
+      const newest = entries.sort((a, b) => (b.at || '').localeCompare(a.at || ''))[0] || {};
+
+      return json({
+        posted_count: entries.length,
+        posted_last_24h: last24h.length,
+        last_posted_at: newest.at || null,
+        last_angle: newest.angle || null,
+        last_anchored_on: newest.anchored_on || null,
+        angle_stats: angleStats,
+      });
     }
 
     // Backfill endpoint - mark all current RSS items as posted without actually posting
@@ -109,49 +117,13 @@ export default {
 };
 
 function json(data, status = 200) {
-  return new Response(JSON.stringify(data), { 
-    status, 
-    headers: { 
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-store'
-    } 
-  });
-}
-
-/**
- * Simple rate limiter using KV - allows 10 requests per minute per IP
- * Uses sliding window algorithm for more accurate rate limiting
- */
-async function checkRateLimit(env, ip) {
-  // Sanitize IP to prevent KV key injection
-  const sanitizedIp = ip.replace(/[^a-zA-Z0-9.:]/g, '').substring(0, 45);
-  const key = `ratelimit:${sanitizedIp}`;
-  const now = Date.now();
-  const windowMs = 60000; // 1 minute
-  const maxRequests = 10;
-  
-  try {
-    const data = await env.POSTED_STATE.get(key, 'json');
-    const requests = data?.requests || [];
-    
-    // Filter to requests within the window
-    const recentRequests = requests.filter(ts => now - ts < windowMs);
-    
-    if (recentRequests.length >= maxRequests) {
-      return false; // Rate limited
     }
-    
-    // Add current request and store
-    recentRequests.push(now);
-    await env.POSTED_STATE.put(key, JSON.stringify({ requests: recentRequests }), {
-      expirationTtl: 120 // Expire after 2 minutes
-    });
-    
-    return true;
-  } catch (e) {
-    console.error('Rate limit check failed:', e);
-    return false; // Fail closed for security - block request on error
-  }
+  });
 }
 
 /**
@@ -176,16 +148,16 @@ async function backfillPostedState(env) {
                info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
     // Skip if already marked
-    if (await env.POSTED_STATE.get(id)) {
+    if (await env.POSTED_STATE.get(`posts:${id}`)) {
       results.skipped++;
       continue;
     }
 
     try {
-      await env.POSTED_STATE.put(id, JSON.stringify({ 
-        title: info.title, 
-        backfilled: true, 
-        at: new Date().toISOString() 
+      await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
+        title: info.title,
+        backfilled: true,
+        at: new Date().toISOString()
       }));
       results.marked.push({ id, title: info.title });
     } catch (e) {
@@ -244,6 +216,8 @@ async function processNewPosts(env, dryRun = false) {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - 7);
 
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
   for (const post of posts) {
     const info = extractPostInfo(post);
     
@@ -263,7 +237,7 @@ async function processNewPosts(env, dryRun = false) {
     const id = info.link.match(/\/posts\/([^\/]+)\/?$/)?.[1] || 
                info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
-    if (await env.POSTED_STATE.get(id)) {
+    if (await env.POSTED_STATE.get(`posts:${id}`)) {
       results.skipped++;
       continue;
     }
@@ -282,11 +256,28 @@ async function processNewPosts(env, dryRun = false) {
 
     try {
       // Fetch full article text and takeaways for LLM context
-      const { text: fullText, takeaways } = await fetchFullArticleText(info.link);
+      const articleData = await fetchArticleData(info.link);
 
-      // Generate tweet text with LLM
-      const message = await generatePostMessage(env.AI, info.title, info.description, fullText, takeaways);
-      
+      // Generate tweet text via two-model generator + scorer
+      const candidates = await generate(env.AI, {
+        articleData: {
+          title: info.title,
+          description: info.description,
+          takeaways: Array.isArray(articleData.takeaways)
+            ? articleData.takeaways
+            : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+          bodyExcerpt: (articleData.text || '').substring(0, 1500),
+        },
+        recentPosts: recent,
+        maxLength: 257,
+      });
+      const winner = pick(candidates, recent, { maxLength: 257 });
+      if (!winner) {
+        results.errors.push({ id, error: 'all candidates rejected by scorer' });
+        continue;
+      }
+      const message = winner.message;
+
       // Twitter free tier: 280 chars total, include URL
       // URLs are shortened to 23 chars by Twitter's t.co
       const tweetText = `${message}\n\n${info.link}`;
@@ -297,7 +288,7 @@ async function processNewPosts(env, dryRun = false) {
       }
 
       // Validate Twitter credentials
-      if (!env.TWITTER_API_KEY || !env.TWITTER_API_SECRET || 
+      if (!env.TWITTER_API_KEY || !env.TWITTER_API_SECRET ||
           !env.TWITTER_ACCESS_TOKEN || !env.TWITTER_ACCESS_TOKEN_SECRET) {
         throw new Error('Twitter API credentials not configured');
       }
@@ -310,10 +301,15 @@ async function processNewPosts(env, dryRun = false) {
       };
 
       const tweet = await postToTwitter(credentials, tweetText);
-      await env.POSTED_STATE.put(id, JSON.stringify({
+      await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
         title: info.title,
+        message,
+        angle: winner.angle,
+        anchored_on: winner.anchored_on,
+        score: winner.score,
+        candidates_considered: winner.candidates_considered,
         tweetId: tweet.data?.id,
-        at: new Date().toISOString()
+        at: new Date().toISOString(),
       }));
       results.posted.push({ id, title: info.title, tweetId: tweet.data?.id });
     } catch (e) {
@@ -350,11 +346,29 @@ async function postSingleUrl(env, url) {
   }
   
   // Fetch full article text and takeaways
-  const { text: fullText, takeaways } = await fetchFullArticleText(url);
+  const articleData = await fetchArticleData(url);
 
-  // Generate message with LLM
-  const message = await generatePostMessage(env.AI, title, '', fullText, takeaways);
-  
+  const recent = await recentPosts(env.POSTED_STATE, { n: 15 });
+
+  // Generate tweet text via two-model generator + scorer
+  const candidates = await generate(env.AI, {
+    articleData: {
+      title,
+      description: '',
+      takeaways: Array.isArray(articleData.takeaways)
+        ? articleData.takeaways
+        : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+      bodyExcerpt: (articleData.text || '').substring(0, 1500),
+    },
+    recentPosts: recent,
+    maxLength: 257,
+  });
+  const winner = pick(candidates, recent, { maxLength: 257 });
+  if (!winner) {
+    throw new Error('all candidates rejected by scorer');
+  }
+  const message = winner.message;
+
   // Build tweet
   const tweetText = `${message}\n\n${url}`;
   
@@ -378,6 +392,6 @@ async function postSingleUrl(env, url) {
     title,
     message: tweetText,
     tweetId: tweet.data?.id,
-    fullTextLength: fullText.length,
+    fullTextLength: (articleData.text || '').length,
   };
 }

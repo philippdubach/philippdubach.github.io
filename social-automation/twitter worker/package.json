@@ -8,6 +8,9 @@
     "deploy": "wrangler deploy",
     "tail": "wrangler tail"
   },
+  "dependencies": {
+    "@social/shared": "file:../shared"
+  },
   "devDependencies": {
     "wrangler": "^4.87.0"
   }
