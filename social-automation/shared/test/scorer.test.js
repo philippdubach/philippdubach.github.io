@@ -82,3 +82,38 @@ test('hard reject: contains hashtag', () => {
   const s = scoreCandidate(bad, [], { maxLength: 250 });
   assert.strictEqual(s.score, 0);
 });
+
+test('soft score: bonus for containing a specific number', () => {
+  const withNumber = { ...validCandidate, post: 'Hedge funds shorting utilities at the 99th percentile have increased positions dramatically.' };
+  const withoutNumber = { ...validCandidate, post: 'Hedge funds shorting utilities at peak levels have increased positions very dramatically so far.' };
+  const sNum = scoreCandidate(withNumber, [], { maxLength: 250 });
+  const sNo = scoreCandidate(withoutNumber, [], { maxLength: 250 });
+  assert.ok(sNum.score > sNo.score, 'number-bearing candidate should score higher');
+});
+
+test('soft score: bonus for angle differing from last 3', () => {
+  const recent = [
+    { message: 'a', angle: 'surprise' },
+    { message: 'b', angle: 'surprise' },
+    { message: 'c', angle: 'surprise' },
+  ];
+  const sameAngle = { ...validCandidate, angle: 'surprise', post: 'A different sentence with the word ninety-nine in it. Markets are shifting in unexpected directions.' };
+  const diffAngle = { ...validCandidate, angle: 'opinion', post: 'A different sentence with the word ninety-nine in it. Markets are shifting in unexpected directions.' };
+  const sSame = scoreCandidate(sameAngle, recent, { maxLength: 250 });
+  const sDiff = scoreCandidate(diffAngle, recent, { maxLength: 250 });
+  assert.ok(sDiff.score > sSame.score, 'differing angle should score higher');
+});
+
+test('pick chooses highest-scoring among survivors', () => {
+  const lowScore = { post: 'Hedge funds have been shorting utilities at peak levels during the most recent quarter ending last month.', angle: 'opinion', anchored_on: 'title', opener_words: ['Hedge', 'funds', 'have'] };
+  const highScore = { post: 'Hedge funds shorting utilities at the 99th percentile have increased positions dramatically against demand projections.', angle: 'surprise', anchored_on: 'title', opener_words: ['Hedge', 'funds', 'shorting'] };
+  const result = pick([lowScore, highScore], [], { maxLength: 250 });
+  assert.strictEqual(result.message, highScore.post);
+});
+
+test('pick returns null when all candidates hard-rejected', () => {
+  const bad1 = { ...validCandidate, post: 'Worth reading: this article on transformative paradigms.' };
+  const bad2 = { ...validCandidate, post: 'New post — check it out at https://example.com' };
+  const result = pick([bad1, bad2], [], { maxLength: 250 });
+  assert.strictEqual(result, null);
+});
