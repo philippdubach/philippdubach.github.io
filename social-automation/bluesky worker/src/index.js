@@ -1,7 +1,8 @@
 import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
 import { timingSafeEqual } from '@social/shared/auth';
 import { checkRateLimit } from '@social/shared/rate-limit';
-import { generatePostMessage } from '@social/shared/llm';
+import { generate } from '@social/shared/generator';
+import { pick } from '@social/shared/scorer';
 import { postToBluesky } from './bluesky.js';
 
 // Bluesky enforces a 300-character post limit. The link is appended after
@@ -246,7 +247,24 @@ async function processNewPosts(env, dryRun = false) {
       // Reserve URL + "\n\n" budget so the LLM truncation respects the
       // 300-char Bluesky limit. See BLUESKY_POST_LIMIT comment at top.
       const maxMsgLen = BLUESKY_POST_LIMIT - 2 - info.link.length;
-      const message = await generatePostMessage(env.AI, info.title, info.description, articleData.text, articleData.takeaways, maxMsgLen);
+      const candidates = await generate(env.AI, {
+        articleData: {
+          title: info.title,
+          description: info.description,
+          takeaways: Array.isArray(articleData.takeaways)
+            ? articleData.takeaways
+            : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+          bodyExcerpt: (articleData.text || '').substring(0, 1500),
+        },
+        recentPosts: [],
+        maxLength: maxMsgLen,
+      });
+      const winner = pick(candidates, [], { maxLength: maxMsgLen });
+      if (!winner) {
+        results.errors.push({ id, error: 'all candidates rejected by scorer' });
+        continue;
+      }
+      const message = winner.message;
 
       if (dryRun) {
         results.posted.push({ id, title: info.title, message, image: info.image, description: info.ogDescription });
@@ -257,7 +275,16 @@ async function processNewPosts(env, dryRun = false) {
         throw new Error('BLUESKY_HANDLE and BLUESKY_APP_PASSWORD secrets are required');
       }
       const bsky = await postToBluesky(env.BLUESKY_HANDLE, env.BLUESKY_APP_PASSWORD, message, info.link, info.image, info.title, info.ogDescription);
-      await env.POSTED_STATE.put(id, JSON.stringify({ title: info.title, uri: bsky.uri, at: new Date().toISOString() }));
+      await env.POSTED_STATE.put(id, JSON.stringify({
+        title: info.title,
+        message,
+        angle: winner.angle,
+        anchored_on: winner.anchored_on,
+        score: winner.score,
+        candidates_considered: winner.candidates_considered,
+        uri: bsky.uri,
+        at: new Date().toISOString(),
+      }));
       results.posted.push({ id, title: info.title, uri: bsky.uri });
     } catch (e) {
       results.errors.push({ id, error: e.message });
@@ -297,8 +324,24 @@ async function postSingleUrl(env, url) {
 
   // Reserve URL + "\n\n" budget against Bluesky's 300-char post limit.
   const maxMsgLen = BLUESKY_POST_LIMIT - 2 - url.length;
-  const message = await generatePostMessage(env.AI, title, '', articleData.text, articleData.takeaways, maxMsgLen);
-  
+  const candidates = await generate(env.AI, {
+    articleData: {
+      title,
+      description: '',
+      takeaways: Array.isArray(articleData.takeaways)
+        ? articleData.takeaways
+        : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+      bodyExcerpt: (articleData.text || '').substring(0, 1500),
+    },
+    recentPosts: [],
+    maxLength: maxMsgLen,
+  });
+  const winner = pick(candidates, [], { maxLength: maxMsgLen });
+  if (!winner) {
+    throw new Error('all candidates rejected by scorer');
+  }
+  const message = winner.message;
+
   // Validate credentials
   if (!env.BLUESKY_HANDLE || !env.BLUESKY_APP_PASSWORD) {
     throw new Error('BLUESKY_HANDLE and BLUESKY_APP_PASSWORD secrets are required');
@@ -319,6 +362,6 @@ async function postSingleUrl(env, url) {
     title,
     message,
     uri: bsky.uri,
-    fullTextLength: articleData.text.length,
+    fullTextLength: (articleData.text || '').length,
   };
 }

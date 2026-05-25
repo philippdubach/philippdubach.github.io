@@ -1,7 +1,8 @@
 import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
 import { timingSafeEqual } from '@social/shared/auth';
 import { checkRateLimit } from '@social/shared/rate-limit';
-import { generatePostMessage } from '@social/shared/llm';
+import { generate } from '@social/shared/generator';
+import { pick } from '@social/shared/scorer';
 import { postToTwitter } from './twitter.js';
 
 export default {
@@ -232,11 +233,28 @@ async function processNewPosts(env, dryRun = false) {
 
     try {
       // Fetch full article text and takeaways for LLM context
-      const { text: fullText, takeaways } = await fetchArticleData(info.link);
+      const articleData = await fetchArticleData(info.link);
 
-      // Generate tweet text with LLM
-      const message = await generatePostMessage(env.AI, info.title, info.description, fullText, takeaways, 257);
-      
+      // Generate tweet text via two-model generator + scorer
+      const candidates = await generate(env.AI, {
+        articleData: {
+          title: info.title,
+          description: info.description,
+          takeaways: Array.isArray(articleData.takeaways)
+            ? articleData.takeaways
+            : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+          bodyExcerpt: (articleData.text || '').substring(0, 1500),
+        },
+        recentPosts: [],
+        maxLength: 257,
+      });
+      const winner = pick(candidates, [], { maxLength: 257 });
+      if (!winner) {
+        results.errors.push({ id, error: 'all candidates rejected by scorer' });
+        continue;
+      }
+      const message = winner.message;
+
       // Twitter free tier: 280 chars total, include URL
       // URLs are shortened to 23 chars by Twitter's t.co
       const tweetText = `${message}\n\n${info.link}`;
@@ -247,7 +265,7 @@ async function processNewPosts(env, dryRun = false) {
       }
 
       // Validate Twitter credentials
-      if (!env.TWITTER_API_KEY || !env.TWITTER_API_SECRET || 
+      if (!env.TWITTER_API_KEY || !env.TWITTER_API_SECRET ||
           !env.TWITTER_ACCESS_TOKEN || !env.TWITTER_ACCESS_TOKEN_SECRET) {
         throw new Error('Twitter API credentials not configured');
       }
@@ -262,8 +280,13 @@ async function processNewPosts(env, dryRun = false) {
       const tweet = await postToTwitter(credentials, tweetText);
       await env.POSTED_STATE.put(id, JSON.stringify({
         title: info.title,
+        message,
+        angle: winner.angle,
+        anchored_on: winner.anchored_on,
+        score: winner.score,
+        candidates_considered: winner.candidates_considered,
         tweetId: tweet.data?.id,
-        at: new Date().toISOString()
+        at: new Date().toISOString(),
       }));
       results.posted.push({ id, title: info.title, tweetId: tweet.data?.id });
     } catch (e) {
@@ -300,11 +323,27 @@ async function postSingleUrl(env, url) {
   }
   
   // Fetch full article text and takeaways
-  const { text: fullText, takeaways } = await fetchArticleData(url);
+  const articleData = await fetchArticleData(url);
 
-  // Generate message with LLM
-  const message = await generatePostMessage(env.AI, title, '', fullText, takeaways, 257);
-  
+  // Generate tweet text via two-model generator + scorer
+  const candidates = await generate(env.AI, {
+    articleData: {
+      title,
+      description: '',
+      takeaways: Array.isArray(articleData.takeaways)
+        ? articleData.takeaways
+        : (articleData.takeaways ? articleData.takeaways.split('\n').filter(Boolean) : []),
+      bodyExcerpt: (articleData.text || '').substring(0, 1500),
+    },
+    recentPosts: [],
+    maxLength: 257,
+  });
+  const winner = pick(candidates, [], { maxLength: 257 });
+  if (!winner) {
+    throw new Error('all candidates rejected by scorer');
+  }
+  const message = winner.message;
+
   // Build tweet
   const tweetText = `${message}\n\n${url}`;
   
@@ -328,6 +367,6 @@ async function postSingleUrl(env, url) {
     title,
     message: tweetText,
     tweetId: tweet.data?.id,
-    fullTextLength: fullText.length,
+    fullTextLength: (articleData.text || '').length,
   };
 }
