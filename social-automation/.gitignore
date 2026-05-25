@@ -18,8 +18,9 @@ dist/
 # State files (can be added to git if you want to track posted history)
 # state/posted.json
 
-# Test files
+# Test files (except in shared/test/ where we maintain the test harness)
 *.test.js
+!shared/test/*.test.js
 test-output/
 
 # Logs
