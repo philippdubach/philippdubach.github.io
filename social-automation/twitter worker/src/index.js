@@ -1,7 +1,7 @@
 import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
 import { timingSafeEqual } from '@social/shared/auth';
 import { checkRateLimit } from '@social/shared/rate-limit';
-import { generatePostMessage } from './llm.js';
+import { generatePostMessage } from '@social/shared/llm';
 import { postToTwitter } from './twitter.js';
 
 export default {
@@ -235,7 +235,7 @@ async function processNewPosts(env, dryRun = false) {
       const { text: fullText, takeaways } = await fetchArticleData(info.link);
 
       // Generate tweet text with LLM
-      const message = await generatePostMessage(env.AI, info.title, info.description, fullText, takeaways);
+      const message = await generatePostMessage(env.AI, info.title, info.description, fullText, takeaways, 257);
       
       // Twitter free tier: 280 chars total, include URL
       // URLs are shortened to 23 chars by Twitter's t.co
@@ -303,7 +303,7 @@ async function postSingleUrl(env, url) {
   const { text: fullText, takeaways } = await fetchArticleData(url);
 
   // Generate message with LLM
-  const message = await generatePostMessage(env.AI, title, '', fullText, takeaways);
+  const message = await generatePostMessage(env.AI, title, '', fullText, takeaways, 257);
   
   // Build tweet
   const tweetText = `${message}\n\n${url}`;

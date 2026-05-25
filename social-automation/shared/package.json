@@ -11,7 +11,8 @@
     "./scorer": "./src/scorer.js",
     "./state": "./src/state.js",
     "./auth": "./src/auth.js",
-    "./rate-limit": "./src/rate-limit.js"
+    "./rate-limit": "./src/rate-limit.js",
+    "./llm": "./src/llm.js"
   },
   "scripts": {
     "test": "node --test test/"

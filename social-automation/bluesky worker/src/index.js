@@ -1,7 +1,7 @@
 import { parseRSS, extractPostInfo, fetchArticleData } from '@social/shared/rss';
 import { timingSafeEqual } from '@social/shared/auth';
 import { checkRateLimit } from '@social/shared/rate-limit';
-import { generatePostMessage } from './llm.js';
+import { generatePostMessage } from '@social/shared/llm';
 import { postToBluesky } from './bluesky.js';
 
 // Bluesky enforces a 300-character post limit. The link is appended after
