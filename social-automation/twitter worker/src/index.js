@@ -127,16 +127,16 @@ async function backfillPostedState(env) {
                info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
     // Skip if already marked
-    if (await env.POSTED_STATE.get(id)) {
+    if (await env.POSTED_STATE.get(`posts:${id}`)) {
       results.skipped++;
       continue;
     }
 
     try {
-      await env.POSTED_STATE.put(id, JSON.stringify({ 
-        title: info.title, 
-        backfilled: true, 
-        at: new Date().toISOString() 
+      await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
+        title: info.title,
+        backfilled: true,
+        at: new Date().toISOString()
       }));
       results.marked.push({ id, title: info.title });
     } catch (e) {
@@ -214,7 +214,7 @@ async function processNewPosts(env, dryRun = false) {
     const id = info.link.match(/\/posts\/([^\/]+)\/?$/)?.[1] || 
                info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
-    if (await env.POSTED_STATE.get(id)) {
+    if (await env.POSTED_STATE.get(`posts:${id}`)) {
       results.skipped++;
       continue;
     }
@@ -278,7 +278,7 @@ async function processNewPosts(env, dryRun = false) {
       };
 
       const tweet = await postToTwitter(credentials, tweetText);
-      await env.POSTED_STATE.put(id, JSON.stringify({
+      await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
         title: info.title,
         message,
         angle: winner.angle,
