@@ -29,15 +29,17 @@ Pick ONE of these angles:
 - A tension, contradiction, or irony in the subject
 - A strong opinion stated plainly
 - A question the article raises but doesn't fully answer
-- "Worth reading" or "Wrote about" framing with a specific hook
+- A concrete observation that sets up the rest of the piece
+
+Do NOT start the post with "Worth reading", "Wrote about", "New post", "Just posted", "Check out", "Read this", or any similar self-referential framing. Open with the substance — the number, the claim, the tension — not a label.
 
 Examples of the voice and variety you should aim for:
 - Passive investing trends, the numbers were surprising.
-- Worth reading: Apple's AI strategy and why they're holding back.
+- Apple's AI strategy looks like deliberate restraint, not a stumble. The reasoning is more interesting than the headlines.
 - A 3x leveraged S&P ETF returned less than 2x over the last decade. The math of why is more interesting than you'd expect.
 - 85% of enterprise AI projects fail. The problem isn't the AI.
 - Hedge funds are shorting utilities at the 99th percentile. That's a bet against AI power demand.
-- Wrote about the Super Bowl ad market. An $8M spot actually costs $23M and the ROI evidence is surprisingly thin.
+- An $8M Super Bowl spot actually costs $23M, and the ROI evidence is surprisingly thin.
 - The Fed decision and what it means for rates.
 - Private equity might just be leveraged beta with a lockup period attached.
 - Funny thing about variance drain: you can average +10% a year and still lose money.
