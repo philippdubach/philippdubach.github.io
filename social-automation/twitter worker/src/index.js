@@ -46,9 +46,29 @@ export default {
     }
 
     if (url.pathname === '/status') {
-      const posted = await env.POSTED_STATE.list();
-      // Only return count, not keys (avoid information leakage)
-      return json({ posted: posted.keys.length });
+      const list = await env.POSTED_STATE.list({ prefix: 'posts:', limit: 1000 });
+      const entries = (await Promise.all(
+        list.keys.map(k => env.POSTED_STATE.get(k.name, 'json'))
+      )).filter(Boolean);
+
+      const dayAgo = Date.now() - 24 * 60 * 60 * 1000;
+      const last24h = entries.filter(e => new Date(e.at || 0).getTime() > dayAgo);
+
+      const angleStats = {};
+      for (const e of entries) {
+        if (e.angle) angleStats[e.angle] = (angleStats[e.angle] || 0) + 1;
+      }
+
+      const newest = entries.sort((a, b) => (b.at || '').localeCompare(a.at || ''))[0] || {};
+
+      return json({
+        posted_count: entries.length,
+        posted_last_24h: last24h.length,
+        last_posted_at: newest.at || null,
+        last_angle: newest.angle || null,
+        last_anchored_on: newest.anchored_on || null,
+        angle_stats: angleStats,
+      });
     }
 
     // Backfill endpoint - mark all current RSS items as posted without actually posting
