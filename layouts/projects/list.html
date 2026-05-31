@@ -63,6 +63,10 @@
             {{- end -}}
         {{- end -}}
 
+        {{- /* Per-post gravity override for the smart-crop. Useful when
+              `gravity=auto` lands on the wrong subject for a wide cover. */ -}}
+        {{- with $page.Params.card_gravity -}}{{- $gravity = . -}}{{- end -}}
+
         {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
 
         {{- /* Format tag derivation.

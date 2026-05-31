@@ -66,9 +66,13 @@ const rewriteOriginPath = (url, wantsMd) => {
 };
 
 const fetchOrigin = async (request, originUrl) => {
+  // redirect: 'manual' so origin 3xx (e.g. Caddy `redir /old /new 301`)
+  // pass through to the client instead of being silently followed and
+  // served as 200 with the target's body.
   const originRequest = new Request(originUrl, {
     method: request.method,
     headers: request.headers,
+    redirect: "manual",
   });
   return fetch(originRequest);
 };
