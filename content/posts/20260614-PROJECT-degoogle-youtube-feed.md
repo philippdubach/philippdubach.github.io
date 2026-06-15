@@ -52,13 +52,12 @@ Shorts were the main thing I wanted gone, and one check doesn't catch them relia
 
 Click a thumbnail and the video plays inline through YouTube's nocookie IFrame player. The thumbnails are static images and the embed only loads on click, so no tracking cookies are set until you press play. It isn't perfect privacy, nocookie still writes a localStorage ID and sends your IP to Google once the player loads, but it's a long way better than the app. On iOS it autostarts muted with a "Tap for sound" overlay, because Apple blocks one-tap sound on the web and a muted-but-playing video is the least-bad workaround. Videos that block embedding get an "open on YouTube" fallback instead of a dead frame.
 
-
 ## Picture-in-picture came for free
 
-A side effect I didn't plan for. Because playback is a plain web video element and not the YouTube app, the system controls come with it. On iOS that means picture-in-picture and background audio for nothing: the floating window follows me across apps, and sound keeps going when the screen locks. 
+A side effect I didn't plan for. Because playback is a plain web video element and not the YouTube app, the system controls come with it. On iOS that means picture-in-picture and background audio for nothing: the floating window follows me across apps, and sound keeps going when the screen locks.
 
 {{< img src="degoogle-youtube-feed-pip.png" alt="An iPhone showing the feed with a video playing picture-in-picture: a floating rounded window of a Casey Neistat video hovers over the page while the underlying video, WWDC 2026 Impressions by Marques Brownlee, plays inline below it" width="60%" >}}
 
 ## Fast and hard to break
 
-Feeds fetch in parallel with `Promise.allSettled` and per-channel timeouts, so one slow or dead channel resolves to nothing instead of hanging the page. The merged result is edge-cached with the Cache API for 15 minutes, and the channels you add live in Cloudflare KV. The page is server-rendered to an HTML string and deployed with `wrangler`. 
+Feeds fetch in parallel with `Promise.allSettled` and per-channel timeouts, so one slow or dead channel resolves to nothing instead of hanging the page. The merged result is edge-cached with the Cache API for 15 minutes, and the channels you add live in Cloudflare KV. The page is server-rendered to an HTML string and deployed with `wrangler`.

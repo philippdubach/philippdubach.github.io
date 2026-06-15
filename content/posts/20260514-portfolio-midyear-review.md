@@ -54,7 +54,7 @@ The fourth rotation was Europe, and it didn't deliver. Up **+4.8%** in CHF, it t
 
 Bitcoin and Listed PE were the worst calls, down about **19%** and **13%** in CHF. Crypto I'll come back to, because what it did in March changed how I size it. Listed PE I'm watching more carefully, since the discount-to-NAV widening that drove the drawdown isn't a thesis call gone wrong so much as the trade getting more crowded into a year of higher dispersion.
 
-{{< readnext slug="the-illiquidity-premium-is-dead" >}}
+{{< readnext slug="is-private-equity-just-beta-with-a-lockup" >}}
 
 ## Valuations got more extreme, not less
 
@@ -86,7 +86,7 @@ Two quarters of strong US earnings ([Q1 2026 net margin hit 13.4%, a record per 
 
 **Fixed income.** This is the clean miss. I built the sleeve around two to three Fed cuts in 2026, and there have been none. Inflation reaccelerated toward 4% on the energy shock, the Fed held through every meeting, and by spring the market expected the ECB, not the Fed, to move next, and to move by hiking. CHF Corporate Bonds returned about **+0.2%** in CHF, Euro Govt CHF-Hedged about **-0.1%**, US Treasuries about **-1.3%** in CHF, the FX drag wiping out a roughly flat dollar return. Carry has been fine. The capital-gains case I was implicitly making, that falling policy rates would lift bond prices, simply hasn't arrived. 
 
-{{< readnext slug="ai-capex-arms-race" >}}
+{{< readnext slug="ai-capex-arms-race-who-blinks-first" >}}
 
 ## The two diversifiers split
 
