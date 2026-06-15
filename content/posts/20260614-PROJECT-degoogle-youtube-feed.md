@@ -28,7 +28,7 @@ faq = [
 
 {{< img src="degoogle-youtube-feed-cover.png" alt="The self-hosted feed open in a desktop browser window, titled Feed with an Updated just now label and an add-channel button. A vertical list of full-size video thumbnails from subscribed channels, each with its title, channel avatar circle, channel name, and a relative timestamp: Veritasium, Vizeh, First We Feast, and Saturday Night Live, newest first, with no comments, recommendations, or Shorts" width="80%" priority="true" >}}
 
-Part of degoogling my life meant dropping the YouTube app. The only thing I actually used it for was the subscription feed: what the 10 to 15 channels I follow have posted, newest first. No comments, no recommendations, no Shorts. So I rebuilt that one screen and nothing else, on the same edge layer as [the rest of this site](/posts/the-tech-behind-this-site/).
+Part of degoogling my life meant dropping the YouTube app. The only thing I actually used it for was the subscription feed: what the 10 to 15 channels I follow have posted, newest first. No comments, no recommendations, no Shorts. So I rebuilt that one screen and nothing else.
 
 ## Just the feed, nothing else
 
