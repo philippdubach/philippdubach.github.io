@@ -1297,20 +1297,35 @@ blockquote p {
    the post-end CTA). Used by shortcode `{{< newsletter >}}` and the post-end
    newsletter-cta partial. v2.6: red accent rule + accent tint + red Subscribe
    button so all newsletter cards across the site share one look. */
+/* Inline newsletter — v2.8: dropped the tinted panel + filled crimson button
+   (read as a marketing "ad flag" against the no-tracking/editorial brand). Now
+   a quiet ask framed by hairline rules, body serif, a → accent prefix mirroring
+   the readnext register, and an underlined text "Subscribe". Accent appears only
+   on the arrow, the focus underline, and the button text. */
 .inline-newsletter {
-    margin: 2.5rem 0 1.5rem;
-    padding: 1.4rem 1.6rem;
-    background: var(--accent-tint);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 6px 6px 0;
-    max-width: 100%;
+    margin: 2.5rem 0;
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    max-width: none;
 }
 
-/* "no-border" variant retained for backwards compat — still drops the rule
-   but keeps the new tint background so it reads as the same family */
+/* "no-border" variant retained for backwards compat — drops the rules for a
+   bare inline ask (e.g. when stacked next to other framed elements). */
 .inline-newsletter.no-border {
-    border-left: none;
-    border-radius: 6px;
+    border-top: none;
+    border-bottom: none;
+    padding: 0.6rem 0;
+}
+
+/* End-of-post instance: drops the bottom rule so it doesn't double up with the
+   Read Next block's own border-top below it. Keeps the top rule (topics → CTA
+   boundary). The mid-article shortcode keeps both borders — there the frame is
+   what reads it as a discrete unit. */
+.inline-newsletter--flush {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .inline-newsletter-headline {
@@ -1318,16 +1333,25 @@ blockquote p {
     font-size: 1.05rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.4;
-    color: var(--ink);
-    margin: 0 0 1rem 0;
-    max-width: 44ch;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    margin: 0 0 0.85rem 0;
+    max-width: 46ch;
+}
+
+.inline-newsletter-headline::before {
+    /* → accent prefix, mirrors the readnext "See also" cue. \fe0e forces text
+       presentation so iOS Safari renders an arrow, not a color emoji. */
+    content: "\2192\fe0e\00a0";
+    color: var(--accent);
+    font-style: normal;
 }
 
 .inline-newsletter-form {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.85rem;
     flex-wrap: wrap;
+    align-items: baseline;
     max-width: 100%;
     margin: 0 0 0.5rem;
 }
@@ -1335,19 +1359,20 @@ blockquote p {
 .inline-newsletter-input {
     flex: 1 1 220px;
     min-width: 0;
-    padding: 0.55rem 0.75rem;
+    padding: 0.4rem 0.15rem;
     font-family: var(--ui-font);
-    font-size: 14px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    background: #fff;
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid var(--text-meta);
+    border-radius: 0;
+    background: transparent;
     color: var(--text);
 }
 
 .inline-newsletter-input:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
-    border-color: var(--accent);
+    outline: none;
+    border-bottom-color: var(--accent);
+    box-shadow: 0 1px 0 0 var(--accent);
 }
 
 .inline-newsletter-input::placeholder {
@@ -1356,27 +1381,28 @@ blockquote p {
 
 .inline-newsletter-button {
     appearance: none;
-    background: var(--accent);
-    color: #fff;
+    background: none;
+    color: var(--accent);
     border: none;
-    padding: 0.55rem 1.1rem;
+    padding: 0.4rem 0.15rem;
     font-family: var(--ui-font);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: 0.02em;
-    text-transform: none;
-    border-radius: 4px;
+    letter-spacing: 0.01em;
     cursor: pointer;
     white-space: nowrap;
-    transition: background 0.15s ease;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease;
 }
 
 .inline-newsletter-button:hover:not(:disabled) {
-    background: var(--accent-hover);
+    color: var(--accent-hover);
 }
 
 .inline-newsletter-button:disabled {
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
@@ -1976,7 +2002,7 @@ blockquote p {
        Headline matches desktop size; previous override of flex-direction: column was
        expanding the input to 220px tall because flex-basis applies to main axis. */
     .inline-newsletter {
-        padding: 1.1rem 1.2rem;
+        padding: 1.1rem 0;
     }
 
     .inline-newsletter-form {

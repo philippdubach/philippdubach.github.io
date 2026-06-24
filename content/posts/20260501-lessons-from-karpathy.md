@@ -1,5 +1,6 @@
 +++
 title = "Karpathy's Software 3.0 Playbook"
+cta_pitch = "I write one of these every few weeks on AI and the future of software. Get the next one."
 seoTitle = "Karpathy's Software 3.0 Playbook: 12 Lessons from Sequoia"
 date = 2026-05-01
 publishDate = 2026-05-01T03:00:00Z
@@ -58,6 +59,8 @@ As agents do more of the thinking, the bottleneck moves into your head. You stil
 > "I'm still part of the system, and I still have to — somehow, information still has to make it into my brain. And I feel like I'm becoming a bottleneck of just even knowing what are we trying to build, why is it worth doing, how do I direct my agents."
 
 Your value sits upstream of execution. The bottleneck of the next decade is less about compute than about how fast humans can deepen comprehension to keep directing systems that out-execute them. That is why Karpathy keeps building knowledge bases out of his own reading. He wants another projection of the same data, faster.
+
+{{< newsletter >}}
 
 ## 3. Verifiability is the map of what automates next
 

@@ -1,5 +1,6 @@
 +++
 title = "Inside PRAGMA: Revolut's Foundation Model for Banking"
+cta_pitch = "I write one of these every few weeks on banking infrastructure and applied AI. Get the next one."
 seoTitle = "PRAGMA Explained: Revolut's Banking Foundation Model"
 date = 2026-04-26
 lastmod = 2026-04-26
@@ -62,6 +63,8 @@ Pre-training is masked language modelling, but with three masking sources blende
 (2) The profile-state ablation. Removing the dedicated profile-state branch tells you which tasks are driven by static user characteristics versus event sequences. Credit scoring loses **31.8%** PR-AUC without profile state, because account tenure and onboarding signals matter for identifying minority-class defaulters. Communication engagement actually gains 3% in PR-AUC without profile state, because re-engagement is a story about pre-drop-off behaviour, not about who the user is. The two-branch design keeps the static features when they help and ignores them when they do not.
 
 (3) The published limitation. The paper itself reports that PRAGMA, as a per-user encoder, drops **47.1%** on F-0.5 on the AML downstream task evaluated in the paper, and the authors flag this as an expected limitation rather than a benchmark to beat. AML detection is a relational problem run across users and across accounts; PRAGMA as published is a per-user encoder and not graph-aware. The lesson the paper draws is that backbones of this kind are complements to graph-aware components, not replacements. This is a property of the published research artifact, not a statement about Revolut's actual production AML stack, which is not described in the paper.
+
+{{< newsletter >}}
 
 ## How this compares to Nubank
 

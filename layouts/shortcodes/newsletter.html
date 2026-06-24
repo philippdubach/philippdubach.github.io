@@ -1,7 +1,10 @@
 {{- $id := printf "inline-newsletter-%d" .Ordinal -}}
 <aside class="inline-newsletter" aria-label="Newsletter signup">
   <div class="inline-newsletter-content">
-    <p class="inline-newsletter-headline">Enjoy this writing? Get new posts, projects, and articles delivered monthly.</p>
+    {{- /* Contextual pitch: mirrors the end-of-post CTA — uses the page's
+          `cta_pitch` front-matter when set so a mid-article ask ties to the
+          post's theme. Falls back to the generic line otherwise. */ -}}
+    <p class="inline-newsletter-headline">{{ with .Page.Params.cta_pitch }}{{ . }}{{ else }}Enjoy this writing? Get new posts, projects, and articles delivered monthly.{{ end }}</p>
     <form id="{{ $id }}-form" class="inline-newsletter-form">
       <label for="{{ $id }}-email" class="visually-hidden">Email address</label>
       <input 
@@ -13,7 +16,7 @@
         class="inline-newsletter-input"
         aria-label="Email address"
       />
-      <button type="submit" class="inline-newsletter-button">Sign Up</button>
+      <button type="submit" class="inline-newsletter-button">Subscribe</button>
     </form>
     <p id="{{ $id }}-privacy" class="inline-newsletter-privacy"><a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">No tracking</a>. Unsubscribe anytime.</p>
     <div id="{{ $id }}-message" class="inline-newsletter-message" style="display: none;"></div>
@@ -80,13 +83,13 @@
         } else {
           showMessage(data.error || 'Something went wrong. Please try again.', 'error');
           submitButton.disabled = false;
-          submitButton.textContent = 'Sign Up';
+          submitButton.textContent = 'Subscribe';
         }
       })
       .catch(function() {
         showMessage('Something went wrong. Please try again later.', 'error');
         submitButton.disabled = false;
-        submitButton.textContent = 'Sign Up';
+        submitButton.textContent = 'Subscribe';
       });
     });
     

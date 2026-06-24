@@ -1,5 +1,6 @@
 +++
 title = "The Last Architecture Designed by Hand"
+cta_pitch = "I write one of these every few weeks on AI architecture and infrastructure. Get the next one."
 seoTitle = "What Comes After Transformers: Hybrid AI Architecture in 2026"
 date = 2026-03-16
 lastmod = 2026-03-16
@@ -37,6 +38,8 @@ The problems run deeper than compute costs. [Kalai and Vempala](https://arxiv.or
 On reasoning: [Dziri et al.](https://arxiv.org/abs/2305.18654) showed transformers collapse multi-step reasoning into pattern matching. Performance drops exponentially as task complexity rises. GPT-4 gets **59%** on 3-digit multiplication. [Chowdhury](https://arxiv.org/abs/2603.10123) proved the "lost in the middle" problem, models performing 20-30% worse on information buried mid-context, is a geometric property of the architecture itself. Present at initialization already, before any training occurs.
 
 These are theorems. The architecture that runs every frontier AI system has a ceiling, and the ceiling is proved.
+
+{{< newsletter >}}
 
 {{< readnext slug="the-most-expensive-assumption-in-ai" >}}
 

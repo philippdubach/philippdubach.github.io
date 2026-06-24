@@ -124,11 +124,13 @@
 
 {{ if eq .Section "posts" }}
 
-{{/* Related Posts */}}
-{{ partial "related.html" . }}
-
-{{/* Newsletter CTA - inline signup form */}}
+{{/* Newsletter CTA — sits directly after the article at the peak-intent moment
+     (reader just finished), ahead of the Read Next exit ramp so the subscribe
+     ask gets first claim rather than being clustered in with the footer. */}}
 {{ partial "newsletter-cta.html" . }}
+
+{{/* Related Posts — onward discovery, below the subscribe ask */}}
+{{ partial "related.html" . }}
 
 {{ end }}
 

@@ -1,5 +1,6 @@
 +++
 title = "93% of Developers Use AI Coding Tools. Productivity Hasn't Moved."
+cta_pitch = "I write one of these every few weeks on AI and developer productivity. Get the next one."
 seoTitle = "AI Coding Productivity Paradox: 93% Adoption, 10% Gains"
 date = 2026-03-04
 lastmod = 2026-03-05
@@ -32,6 +33,8 @@ A [study published in July 2025](https://arxiv.org/abs/2507.09089) gave AI codin
 The developers themselves thought they were 20% faster.
 
 That **39-point gap** between perception and reality is the most important number in [METR's paper](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/). It lands inside two years of adoption data pointing in the opposite direction. [DX](https://getdx.com/) surveyed 121,000 developers across 450+ companies and found **92.6%** use AI coding tools at least monthly. [JetBrains' AI Pulse](https://blog.jetbrains.com/ai/2026/02/the-best-ai-models-for-coding-accuracy-integration-and-developer-fit/) measured 93%. The [DORA 2025 report](https://dora.dev/dora-report-2025) put it at 90%. On the productivity side: six independent research efforts converge on roughly the same ceiling, **10%** at the system level, if you're being generous.{{< img src="ai-coding-perception-gap.png" alt="Exhibit showing METR study results: developers using AI took 19% longer to complete tasks while believing they were 20% faster, a 39-point perception gap across 246 tasks with 56% of AI suggestions rejected" width="80%" >}}
+
+{{< newsletter >}}
 
 ## The bottleneck was never the typing
 

@@ -1,5 +1,6 @@
 +++
 title = "Nike's Crisis and the Economics of Brand Decay"
+cta_pitch = "I write one of these every few weeks on brand economics and competitive strategy. Get the next one."
 seoTitle = "Nike's Crisis: The Economics Behind a $28B Brand Collapse"
 date = 2025-12-02
 lastmod = 2026-03-15

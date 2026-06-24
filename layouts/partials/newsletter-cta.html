@@ -1,9 +1,12 @@
 {{/* Newsletter CTA - inline signup form for post pages.
      data-nosnippet keeps this navigation/conversion strip out of SERP/AIO
      snippet extraction (it is not content). */}}
-<aside class="inline-newsletter" aria-label="Newsletter signup" data-nosnippet>
+<aside class="inline-newsletter inline-newsletter--flush" aria-label="Newsletter signup" data-nosnippet>
   <div class="inline-newsletter-content">
-    <p class="inline-newsletter-headline">Enjoy this writing? Get new posts delivered monthly.</p>
+    {{- /* Contextual pitch: posts can set `cta_pitch` in front matter to tie
+          the ask to that post's theme at the moment of peak intent. Falls back
+          to the generic line when unset. */ -}}
+    <p class="inline-newsletter-headline">{{ with .Params.cta_pitch }}{{ . }}{{ else }}Enjoy this writing? Get new posts delivered monthly.{{ end }}</p>
     <form id="post-newsletter-form" class="inline-newsletter-form">
       <label for="post-newsletter-email" class="visually-hidden">Email address</label>
       <input
@@ -15,7 +18,7 @@
         class="inline-newsletter-input"
         aria-label="Email address"
       />
-      <button type="submit" class="inline-newsletter-button">Sign Up</button>
+      <button type="submit" class="inline-newsletter-button">Subscribe</button>
     </form>
     <p id="post-newsletter-privacy" class="inline-newsletter-privacy"><a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">No tracking</a>. Unsubscribe anytime.</p>
     <div id="post-newsletter-message" class="inline-newsletter-message" style="display: none;"></div>
@@ -80,13 +83,13 @@
         } else {
           showMessage(data.error || 'Something went wrong. Please try again.', 'error');
           submitButton.disabled = false;
-          submitButton.textContent = 'Sign Up';
+          submitButton.textContent = 'Subscribe';
         }
       })
       .catch(function() {
         showMessage('Something went wrong. Please try again later.', 'error');
         submitButton.disabled = false;
-        submitButton.textContent = 'Sign Up';
+        submitButton.textContent = 'Subscribe';
       });
     });
 
