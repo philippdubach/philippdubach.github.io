@@ -53,6 +53,9 @@ Written for analysts, engineers, and investors who want signal over noise. No tr
       .then(function(r) { return r.json(); })
       .then(function(d) {
         if (d.success) {
+          if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: 'subscribe' + location.pathname, title: 'Newsletter subscribe', event: true });
+          }
           form.style.display = 'none';
           if (privacy) privacy.style.display = 'none';
           show('Thanks. The next issue will land in your inbox. In the meantime, the <a href="/newsletter-archive/">archive</a> is here.', 'success');

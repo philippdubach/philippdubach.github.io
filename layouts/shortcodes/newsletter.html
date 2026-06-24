@@ -77,6 +77,11 @@
       .then(function(response) { return response.json(); })
       .then(function(data) {
         if (data.success) {
+          // Per-post conversion event (not a pageview). count.js is loaded
+          // site-wide; the guard fails silent if the reader blocks it.
+          if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: 'subscribe' + location.pathname, title: 'Newsletter subscribe', event: true });
+          }
           form.style.display = 'none';
           document.querySelector('#' + formId).closest('.inline-newsletter').querySelector('.inline-newsletter-privacy').style.display = 'none';
           showMessage('Thanks for subscribing! You\'ll receive the next newsletter in your inbox.', 'success');

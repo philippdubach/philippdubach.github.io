@@ -39,7 +39,7 @@
     })
     .then(function(r){return r.json();})
     .then(function(d){
-      if (d.success) { form.style.display='none'; meta.style.display='none'; show("Thanks for subscribing.", 'success'); }
+      if (d.success) { if (window.goatcounter && window.goatcounter.count) { window.goatcounter.count({ path: 'subscribe' + location.pathname, title: 'Newsletter subscribe', event: true }); } form.style.display='none'; meta.style.display='none'; show("Thanks for subscribing.", 'success'); }
       else { show(d.error || 'Something went wrong. Please try again.', 'error'); btn.disabled=false; btn.textContent='Subscribe'; }
     })
     .catch(function(){ show('Something went wrong. Please try again later.', 'error'); btn.disabled=false; btn.textContent='Subscribe'; });
