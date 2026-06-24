@@ -1,5 +1,6 @@
 +++
 title = "Krugman, Fable 5, and Europe in Decline?"
+cta_pitch = "I write one of these every few weeks on AI, sovereignty, and the European economy. Get the next one."
 seoTitle = "US AI Export Controls, Fable 5, and Europe's Real Decline"
 slug = "krugman-fable5-europe-decline"
 date = 2026-06-22
@@ -48,6 +49,8 @@ On the question, whether the typical European is getting poorer, I'm mostly with
 >the big benefits of IT come from applying it, rather than creating it
 
 and Europe applies it well. True. There's an assumption buried inside "apply, don't create," and it's that access stays frictionless and apolitical: the model, the GPUs under it, and the cloud it runs on will all be there at the world price. That assumption died on June 12. [Henry Farrell and Abraham Newman](https://www.foreignaffairs.com/united-states/weaponized-world-economy-farrell-newman) have a name for what replaced it, weaponized interdependence. They call it the chokepoint effect: when an economy runs through a few hubs, whoever owns a hub can shut off everyone downstream.
+
+{{< newsletter >}}
 
 ## Lithography
 
