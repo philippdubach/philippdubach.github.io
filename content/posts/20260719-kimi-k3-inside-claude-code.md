@@ -41,15 +41,11 @@ So I kept Claude Code and using [OpenRouter](https://openrouter.ai/), I routed t
 {{< img src="kimi-in-claude.png" alt="Claude Code configured to use Moonshot AI's Kimi K3 through OpenRouter." width="80%" >}}
 ## First impression: slow
 
-It felt slow. Very slow, at first.
-
-Which is odd, because the measured numbers say otherwise. [Artificial Analysis](https://artificialanalysis.ai/models/comparisons/kimi-k3-vs-claude-opus-4-8) reports about 62 output tokens per second for Kimi K3 and 57 for Claude Opus 4.8. It also measures a much shorter time to first token for K3.
+It felt slow. Very slow, at first. Which is odd, because the measured numbers say otherwise. [Artificial Analysis](https://artificialanalysis.ai/models/comparisons/kimi-k3-vs-claude-opus-4-8) reports about 62 output tokens per second for Kimi K3 and 57 for Claude Opus 4.8. It also measures a much shorter time to first token for K3.
 
 Maybe the difference was time spent reasoning before useful text appeared. Maybe it was the cadence of the stream. Maybe I have simply used Claude Code for long enough that anything with a different rhythm feels wrong. (_Or maybe it was just because I was going through openrouter._)
 
-Then, somewhere during the first hour, I stopped noticing.
-
-Not because K3 suddenly became faster. It handled files, edits and tool calls well enough that I forgot where the traffic was going.
+Then, somewhere during the first hour, I stopped noticing. Not because K3 suddenly became faster. It handled files, edits and tool calls well enough that I forgot where the traffic was going.
 
 ## A quick frontend test
 
