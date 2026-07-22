@@ -10,6 +10,13 @@ profiles:
 publications:
   - year: 2026
     items:
+      - title: "Synthetic Consumer Panels Without Microdata: Iterative Proportional Fitting from Open Aggregate Statistics"
+        authors: ["Dubach, P. D."]
+        summary: "Dubach shows that a nationally representative synthetic consumer panel can be built from only freely published aggregate cross-tabulations via iterative proportional fitting, with no individual-level microdata seed. The method is instantiated for Switzerland from two free Federal Statistical Office cubes, producing 10,000 personas whose marginals reproduce the population register and validated against real Swiss human ratings from the ENERGYSCAPE panel."
+        doi: "10.2139/ssrn.7122180"
+        language: "en"
+        keywords: ["synthetic survey respondents", "silicon sampling", "large language models", "semantic similarity rating", "iterative proportional fitting", "synthetic populations", "consumer research", "microdata access", "Switzerland"]
+
       - title: "The Anatomy of a Decentralized Prediction Market: Microstructure Evidence from the Polymarket Order Book"
         authors: ["Dubach, P. D."]
         summary: "Dubach analyzes 30 billion Polymarket order-book events across 52 days to identify eight microstructure patterns, including a longshot spread premium and the finding that public-feed trade direction matches on-chain ground truth only 59% of the time. Under review at the Journal of Financial Markets."
