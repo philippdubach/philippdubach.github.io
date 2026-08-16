@@ -134,24 +134,6 @@ A routine refactor can go to a cheaper model. A difficult architecture decision 
 
 This is also where open weights matter beyond price. They let an organisation fine-tune, quantise and deploy a model under its own controls. That does not automatically make the result secure or compliant, but it changes who gets to answer the hard questions about data location, retention, access and continuity.
 
-## Put the model in the basement
-
-Another thing I have been thinking about this for a while: In [How DORA Made Sovereignty a Bank Problem](https://philippdubach.com/posts/dora-critical-cloud-providers-sovereignty/) I argued that data sovereignty had made it's way into operations. Banks now have to think about concentration, exit plans, audit rights and what happens when a critical foreign provider changes the rules.
-
-AI will (_or does_) get the same treatment. Until recently that came with a large capability penalty. The newer releases make the calculation less silly. Kimi K3 is huge and its weights are due shortly. Alibaba is pushing the Qwen family in the same direction. Then there is [Inkling](https://thinkingmachines.ai/news/introducing-inkling/) which matters (_maybe even more_) because it adds a serious US-trained model with full weights available, one-million-token context and a clear focus on customisation.
-
-So let's do a back-of-the-napkin business case: Let's assume a Swiss provider running one 64-GPU cluster in Zurich and selling dedicated or managed K3-class inference to banks, pharmaceutical companies, government bodies and other customers that care about Swiss data residency.
-
-{{< img src="swiss-sovereign-ai-business-case.png" alt="Back-of-the-napkin business case for a Swiss sovereign AI provider, with infrastructure assumptions, capex, monthly operating costs, customer mix, five-year projections and sensitivity cases." width="80%" >}}
-
-The model uses roughly $7 million of initial capex, $370,000 of monthly operating cost, 70% utilisation and subscriptions between CHF 15,000 and CHF 50,000 per month. With those assumptions, one cluster reaches about CHF 7.4 million of annual revenue, CHF 3 million of EBITDA and a three-year payback.
-
-The product would not really be tokens. It would be control: Swiss residency, a defined security perimeter, no training on customer data, audit access, contractual continuity and an exit route if the operator fails. Most companies will not literally put the model in the basement. They may pay somebody local to give them the functional equivalent.
-
-There are reasons this may not work. A 2.8-trillion-parameter model is expensive to serve. One cluster is its own concentration risk. Hardware ages quickly. If utilisation drops, the economics get ugly. If a much smaller model performs nearly as well next year, the expensive rack becomes a monument to last year's benchmark. Even so, I think this market will exist. 
-
-{{< readnext slug="dora-critical-cloud-providers-sovereignty" >}}
-
 ## So what?!
 
 I do not think Kimi K3 kills Anthropic. I do not think one frontend reconstruction proves parity. And I would still choose Opus for the hardest coding work today.
@@ -159,3 +141,5 @@ I do not think Kimi K3 kills Anthropic. I do not think one frontend reconstructi
 But K3 was good enough that I forgot I was using it. It cost materially less. It ran inside the harness I already liked. Soon, its weights should be available to anybody willing to provide the hardware.
 
 The question is no longer whether open models will catch the frontier in some abstract future. It is how much of a lead the closed labs need, how long they can hold it, and which customers will still pay for every extra point once switching becomes routine.
+
+For the operational version of this argument, read [Put the Model in the Basement](https://philippdubach.com/posts/put-the-model-in-the-basement/). It tests a Swiss business case built around data residency, control and continuity.
