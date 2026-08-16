@@ -2,62 +2,72 @@
 title = "Degoogling cost me my YouTube feed, so I made my own"
 seoTitle = "Self-Hosted YouTube RSS Subscriptions Feed, No API Key"
 date = 2026-06-14
-lastmod = 2026-06-14
+lastmod = 2026-08-16
 publishDate = 2026-06-14T03:00:00Z
 images = ["https://static.philippdubach.com/degoogle-youtube-feed-cover.png"]
-description = "I dropped the YouTube app and rebuilt only my subscriptions feed as a self-hosted Cloudflare Worker that reads each channel's RSS, no API key, no tracking."
+description = "I dropped the YouTube app and rebuilt only my subscription feed. A self-hosted Cloudflare Worker reads public RSS feeds without an API key."
 keywords = ["self-hosted YouTube subscriptions feed", "YouTube subscriptions RSS feed", "watch YouTube without the app", "YouTube RSS feed without API key", "degoogle YouTube", "RSS feed for YouTube channel", "YouTube channel RSS videos.xml", "Cloudflare Worker RSS reader", "youtube-nocookie embed privacy", "YouTube picture-in-picture without Premium", "filter YouTube Shorts", "Piped Invidious FreeTube alternative", "watch YouTube without account", "vanilla JS Cloudflare Worker", "Cloudflare KV Cache API Worker", "fast-xml-parser Atom feed"]
 categories = ["Tech"]
 type = "Project"
 draft = false
 takeaways = [
-  "The replacement is one Cloudflare Worker that reads each channel's public RSS feed, with no YouTube API key and no framework; the whole page is server-rendered as an HTML string",
-  "Channel handles and URLs resolve to stable channel IDs by scraping the channel page, then the Atom XML is parsed with fast-xml-parser, so nothing depends on a Google API quota",
-  "Feeds fetch in parallel with Promise.allSettled, per-channel timeouts, and a 15-minute edge cache, so one dead channel never breaks the page",
+  "One Cloudflare Worker reads each channel's public RSS feed and returns a server-rendered page. It needs no YouTube API key or framework.",
+  "The Worker converts handles and URLs into stable channel IDs. It parses each Atom feed with fast-xml-parser and avoids Google API quotas.",
+  "It fetches channels in parallel, applies a timeout to each request, and caches results for 15 minutes. One failed channel cannot break the page.",
 ]
 faq = [
-  {question = "Why rebuild a YouTube feed instead of using the app?", answer = "I only ever used the app for one thing: seeing what the 10 to 15 channels I subscribe to had posted, newest first. Dropping the app as part of degoogling meant losing that. I never touched comments, recommendations, or Shorts, so rebuilding only the subscription feed got me the part I used without the rest of the app I didn't."},
-  {question = "Does this need a YouTube Data API key?", answer = "No. Every YouTube channel publishes a public RSS feed at feeds/videos.xml listing its recent uploads as Atom XML. The Worker reads that feed directly and parses it with fast-xml-parser, so there is no API key, no quota, and no Google project to manage."},
-  {question = "Can you watch YouTube subscriptions without a Google account?", answer = "Yes. The feed is built entirely from each channel's public RSS feed, which anyone can read without signing in, so there is no Google account, no login, and no subscription list stored on Google's side. You keep your own list of channels instead."},
-  {question = "How does it find a channel's videos without the API?", answer = "You add a channel by URL or @handle. The Worker scrapes the channel page to resolve that input to a stable channel ID, which never changes even if the handle does, then fetches the RSS feed for that ID. Resolved channels are saved so the resolution step only runs once per channel."},
-  {question = "How are YouTube Shorts filtered out?", answer = "Two independent checks. A title heuristic flags anything tagged #shorts, and a per-video redirect probe confirms whether a video is a Short, because Shorts and full videos resolve differently. Only full videos make it into the feed."},
-  {question = "Does watching a video track you?", answer = "Not until you press play. Thumbnails are static, and clicking one loads the video inline through YouTube's nocookie IFrame player, so no tracking cookies are set until playback starts. On iOS the player autostarts muted with a tap-for-sound overlay, because Apple blocks one-tap sound on the web."},
-  {question = "How are channels stored and the feed kept fast?", answer = "Channels you add at runtime persist in Cloudflare KV. The merged, sorted feed is edge-cached with the Cache API for 15 minutes, and all channel feeds are fetched in parallel with per-channel timeouts, so a slow or dead channel cannot stall or break the page."},
+  {question = "Why rebuild a YouTube feed instead of using the app?", answer = "I used the app only to see new videos from 10 to 15 channels. I did not use comments, recommendations, or Shorts. My replacement keeps only the subscription feed."},
+  {question = "Does this need a YouTube Data API key?", answer = "No. Each YouTube channel publishes recent uploads at feeds/videos.xml in Atom, a standard XML feed format. The Worker reads it directly. It needs no Google project, quota, or key."},
+  {question = "Can you watch YouTube subscriptions without a Google account?", answer = "Yes. Public channel feeds need no sign-in. You keep your own list of channels, and Google stores no subscription list for this feed."},
+  {question = "How does it find a channel's videos without the API?", answer = "You add a URL or @handle. The Worker reads the channel page once and finds its stable channel ID. It saves that ID and uses it for later feed requests."},
+  {question = "How are YouTube Shorts filtered out?", answer = "The Worker first checks the title for #shorts. It then tests how the video URL redirects, because Shorts and full videos resolve differently. A video appears only if it passes both checks."},
+  {question = "Does watching a video track you?", answer = "Not before you press play. The page shows static thumbnails. A click loads YouTube's privacy-enhanced player, which can then receive your IP address and store a local identifier. On iOS, the video starts muted because Apple blocks one-tap sound."},
+  {question = "How are channels stored and the feed kept fast?", answer = "Cloudflare KV stores the channel list. The Cache API keeps the merged feed near users for 15 minutes. Feed requests run in parallel and have timeouts, so one channel cannot stall the page."},
 ]
 +++
 
-{{< img src="degoogle-youtube-feed-cover.png" alt="The self-hosted feed open in a desktop browser window, titled Feed with an Updated just now label and an add-channel button. A vertical list of full-size video thumbnails from subscribed channels, each with its title, channel avatar circle, channel name, and a relative timestamp: Veritasium, Vizeh, First We Feast, and Saturday Night Live, newest first, with no comments, recommendations, or Shorts" width="80%" priority="true" >}}
+{{< img src="degoogle-youtube-feed-cover.png" alt="The feed lists new videos from Veritasium, Vizeh, First We Feast, and Saturday Night Live in a desktop browser. It shows no comments, recommendations, or Shorts." width="80%" priority="true" >}}
 
-Part of degoogling my life meant dropping the YouTube app. The only thing I actually used it for was the subscription feed: what the 10 to 15 channels I follow have posted, newest first. No comments, no recommendations, no Shorts. So I rebuilt that one screen and nothing else.
+I dropped the YouTube app as part of degoogling my life. I had used it for one screen: new videos from the 10 to 15 channels I follow. No comments, no recommendations, no Shorts. I rebuilt that screen and nothing else.
 
 ## Just the feed, nothing else
 
-It's one chronological list: the newest videos across every channel I follow, merged and sorted newest first. You add channels from the page by URL or @handle and they stick around.
+The result is one chronological list. It merges videos from every channel I follow and sorts them newest first. I can add a channel by URL or @handle, and it stays on the list.
 
-Everything YouTube stacks on top of the subscription feed is something I ignore or actively avoid, so building only the screen I use was less work than configuring the app to leave me alone.
+I ignore or avoid everything YouTube adds to the subscription feed. Building the one screen I use took less work than configuring the app to leave me alone.
 
 ## How it works without an API key
 
-Every channel publishes a public RSS feed at `feeds/videos.xml` with its recent uploads as Atom XML, and the Worker reads that directly, parsed with `fast-xml-parser`. No quota, no Google project, no token to rotate.
+Each channel publishes a public RSS feed at `feeds/videos.xml`. The file uses Atom, a standard XML format for content feeds. A Cloudflare Worker reads it, and `fast-xml-parser` converts the XML into structured data. The Worker is a small program that runs on Cloudflare's network.
 
-People add channels by handle or vanity URL, and those change, so the Worker scrapes the channel page once to resolve whatever you typed to a stable channel ID, then uses that ID from then on. The input goes through an SSRF guard first, because "fetch whatever URL the user pasted" is how you turn your own Worker into someone's proxy into your network.
+This route avoids the YouTube Data application programming interface (API), Google's official interface for software requests. It needs no quota, Google project, or token.
+
+A handle or vanity URL can change, but a channel ID remains stable. The Worker reads the channel page once to find that ID. It saves the result and uses the ID for later feed requests.
+
+Before the Worker fetches a user-supplied URL, it checks the destination. This guard prevents server-side request forgery (SSRF). Without it, someone could make the Worker fetch an unintended address.
 
 {{< readnext slug="moving-the-blog-stack-to-europe-kind-of" >}}
 
 ## Filtering out YouTube Shorts
 
-Shorts were the main thing I wanted gone, and one check doesn't catch them reliably. So there are two: a title heuristic for anything tagged `#shorts`, and a per-video redirect probe, since Shorts and full videos resolve through different URLs. A video has to clear both to show up.
+Shorts were the main thing I wanted gone, and one check does not catch them reliably. The first check looks for `#shorts` in the title. The second tests how the video URL redirects because Shorts and full videos resolve differently. A video must pass both checks to appear.
 
 ## Playback without the tracking
 
-Click a thumbnail and the video plays inline through YouTube's nocookie IFrame player. The thumbnails are static images and the embed only loads on click, so no tracking cookies are set until you press play. It isn't perfect privacy, nocookie still writes a localStorage ID and sends your IP to Google once the player loads, but it's a long way better than the app. On iOS it autostarts muted with a "Tap for sound" overlay, because Apple blocks one-tap sound on the web and a muted-but-playing video is the least-bad workaround. Videos that block embedding get an "open on YouTube" fallback instead of a dead frame.
+Clicking a thumbnail loads the video through YouTube's privacy-enhanced iframe player. An iframe places a page from one site inside another page. The embed does not load before that click, so the player cannot set cookies before playback.
+
+This is not perfect privacy. Once loaded, the player writes an identifier to local storage and sends your IP address to Google. It is still much less intrusive than the app.
+
+On iOS, the video starts muted with a "Tap for sound" overlay. Apple blocks one-tap sound on the web, so muted playback is the least-bad workaround. Videos that block embedding show an "open on YouTube" link instead of a dead frame.
 
 ## Picture-in-picture came for free
 
-A side effect I didn't plan for. Because playback is a plain web video element and not the YouTube app, the system controls come with it. On iOS that means picture-in-picture and background audio for nothing: the floating window follows me across apps, and sound keeps going when the screen locks.
+Picture-in-picture was an unplanned bonus. Playback uses a normal web video element, so it receives the system controls. On iOS, the floating window follows me across apps. Audio also continues when the screen locks.
 
-{{< img src="degoogle-youtube-feed-pip.png" alt="An iPhone showing the feed with a video playing picture-in-picture: a floating rounded window of a Casey Neistat video hovers over the page while the underlying video, WWDC 2026 Impressions by Marques Brownlee, plays inline below it" width="60%" >}}
+{{< img src="degoogle-youtube-feed-pip.png" alt="An iPhone plays Casey Neistat in a floating picture-in-picture window above the feed. A Marques Brownlee video remains open on the page below." width="60%" >}}
 
 ## Fast and hard to break
 
-Feeds fetch in parallel with `Promise.allSettled` and per-channel timeouts, so one slow or dead channel resolves to nothing instead of hanging the page. The merged result is edge-cached with the Cache API for 15 minutes, and the channels you add live in Cloudflare KV. The page is server-rendered to an HTML string and deployed with `wrangler`.
+The Worker starts all feed requests together. JavaScript's `Promise.allSettled` waits for every result without rejecting the group when one request fails. Each request also has a timeout. A slow or dead channel therefore returns nothing instead of hanging the page.
+
+The Cache API stores the merged feed on Cloudflare's network for 15 minutes. Cloudflare KV, a key-value database, stores the channel list. The Worker builds the complete HTML page before sending it to the browser. I deploy it with Cloudflare's `wrangler` command-line tool.
