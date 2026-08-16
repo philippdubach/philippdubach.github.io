@@ -71,7 +71,10 @@ export default defineConfig({
             maxBatchTimeout: 1,
             maxRetries: 3,
             deadLetterQueue: 'twitter-poster-post-jobs-dlq',
-            retryDelay: 300,
+            // The official pool exposes no Queue broker clock advancement.
+            // Compress only broker time so exhaustion/DLQ transfer is testable;
+            // handler-level tests separately assert the production 300s retry.
+            retryDelay: 0,
           },
           'twitter-poster-post-jobs-dlq': {
             maxBatchSize: 1,

@@ -80,6 +80,13 @@ function authenticatedRequest(path, ip = '192.0.2.10') {
   });
 }
 
+async function stageJobMetadata(job, metadata = {}) {
+  await env.POSTED_STATE.put(
+    `jobmeta:v1:${job.platform}:${job.articleId}`,
+    JSON.stringify(metadata),
+  );
+}
+
 afterEach(() => {
   vi.restoreAllMocks();
 });
@@ -130,8 +137,65 @@ describe('queue-backed Twitter delivery', () => {
     expect(await env.POSTED_STATE.get('jobmeta:v1:twitter:metadata-read-failure')).toBe('{not-json');
   });
 
+  it('retries when staged metadata is temporarily invisible, then publishes with full scorer state', async () => {
+    const job = postJob('metadata-visibility-delay');
+    const key = 'v1:twitter:metadata-visibility-delay';
+    const metadataKey = `jobmeta:${key}`;
+    const metadata = {
+      angle: 'tension',
+      anchored_on: 'eventual KV visibility',
+      score: 23,
+      candidates_considered: 2,
+    };
+    await env.POSTED_STATE.put(metadataKey, JSON.stringify(metadata));
+    const realGet = env.POSTED_STATE.get.bind(env.POSTED_STATE);
+    let hideMetadata = true;
+    vi.spyOn(env.POSTED_STATE, 'get').mockImplementation((requestedKey, ...args) => {
+      if (requestedKey === metadataKey && hideMetadata) {
+        hideMetadata = false;
+        return Promise.resolve(null);
+      }
+      return realGet(requestedKey, ...args);
+    });
+    const gate = env.POST_GATE.getByName(key);
+    const { calls } = installTwitterFetch();
+    const firstBatch = messageBatch(job, { id: 'metadata-hidden-1' });
+    const firstRetry = vi.spyOn(firstBatch.messages[0], 'retry');
+
+    const first = await deliver(firstBatch);
+
+    expect(first.retryMessages).toEqual([{ msgId: 'metadata-hidden-1' }]);
+    expect(firstRetry).toHaveBeenCalledWith({ delaySeconds: 300 });
+    expect(calls.createTweet).toBe(0);
+    expect(await gate.getState()).toMatchObject({
+      status: 'pending',
+      error: { code: 'FETCH_FAILED', stage: 'pre-send' },
+    });
+    expect(await realGet(metadataKey, 'json')).toEqual(metadata);
+
+    const second = await deliver(messageBatch(job, {
+      id: 'metadata-visible-2',
+      attempts: 2,
+    }));
+
+    expect(second.explicitAcks).toEqual(['metadata-visible-2']);
+    expect(calls.createTweet).toBe(1);
+    expect(await gate.getState()).toMatchObject({
+      status: 'published',
+      result: { tweetId: 'tweet-1' },
+    });
+    expect(await realGet('posts:metadata-visibility-delay', 'json')).toMatchObject({
+      ...metadata,
+      title: job.title,
+      message: job.message,
+      tweetId: 'tweet-1',
+    });
+    expect(await realGet(metadataKey)).toBeNull();
+  });
+
   it('persists attempting before fetch and concurrent duplicates create one tweet', async () => {
     const job = postJob('concurrent-delivery');
+    await stageJobMetadata(job);
     const gate = env.POST_GATE.getByName('v1:twitter:concurrent-delivery');
     let observedState;
     let releaseCreate;
@@ -244,6 +308,7 @@ describe('queue-backed Twitter delivery', () => {
 
   it('429 returns the gate to pending and requests a 300-second retry', async () => {
     const job = postJob('rate-limited');
+    await stageJobMetadata(job);
     const gate = env.POST_GATE.getByName('v1:twitter:rate-limited');
     const { calls } = installTwitterFetch(() => jsonResponse(
       { error: 'RateLimitExceeded', message: 'private-response-token' },
@@ -316,6 +381,7 @@ describe('queue-backed Twitter delivery', () => {
     error,
   }) => {
     const job = postJob(articleId);
+    await stageJobMetadata(job);
     const gate = env.POST_GATE.getByName(`v1:twitter:${articleId}`);
     const { calls } = installTwitterFetch(reply);
 
@@ -338,6 +404,7 @@ describe('queue-backed Twitter delivery', () => {
     articleId,
   }) => {
     const job = postJob(articleId);
+    await stageJobMetadata(job);
     const gate = env.POST_GATE.getByName(`v1:twitter:${articleId}`);
     const { calls } = installTwitterFetch(() => jsonResponse(
       { detail: 'private-response-token' },
@@ -445,6 +512,57 @@ describe('queue-backed Twitter delivery', () => {
     expect(del.mock.invocationCallOrder[0]).toBeLessThan(ack.mock.invocationCallOrder[0]);
   });
 
+  it('the real Queue broker exhausts main retries into DLQ without a second tweet', async () => {
+    const job = postJob('broker-dlq-transfer');
+    const key = 'v1:twitter:broker-dlq-transfer';
+    await env.POSTED_STATE.put(`jobmeta:${key}`, JSON.stringify({
+      angle: 'tension',
+      anchored_on: 'the broker retry boundary',
+      score: 19,
+      candidates_considered: 2,
+    }));
+    const { calls } = installTwitterFetch(() => jsonResponse(
+      { error: 'ServiceUnavailable', token: 'private-response-token' },
+      503,
+    ));
+    const deliveries = [];
+    const realQueue = worker.queue;
+    vi.spyOn(worker, 'queue').mockImplementation(async (batch, runtimeEnv, ctx) => {
+      deliveries.push(...batch.messages.map((message) => ({
+        queue: batch.queue,
+        id: message.id,
+        attempts: message.attempts,
+      })));
+      return realQueue(batch, runtimeEnv, ctx);
+    });
+
+    await env.POST_QUEUE.send(job);
+    await vi.waitFor(async () => {
+      expect(await env.POSTED_STATE.get(`failed:${key}`)).not.toBeNull();
+    }, { timeout: 5000, interval: 10 });
+
+    expect(deliveries.map(({ queue, attempts }) => ({ queue, attempts }))).toEqual([
+      { queue: MAIN_QUEUE, attempts: 1 },
+      { queue: MAIN_QUEUE, attempts: 2 },
+      { queue: MAIN_QUEUE, attempts: 3 },
+      { queue: MAIN_QUEUE, attempts: 4 },
+      { queue: DLQ, attempts: 1 },
+    ]);
+    expect(new Set(deliveries.map(({ id }) => id)).size).toBe(1);
+    expect(calls.createTweet).toBe(1);
+    expect(await env.POST_GATE.getByName(key).getState()).toMatchObject({
+      status: 'uncertain',
+      error: { status: 503, stage: 'response' },
+    });
+    expect(await env.POSTED_STATE.get(`failed:${key}`, 'json')).toMatchObject({
+      job,
+      messageId: deliveries[0].id,
+      attempts: 1,
+      gateState: { status: 'uncertain' },
+    });
+    expect(await env.POSTED_STATE.get(`jobmeta:${key}`)).toBeNull();
+  });
+
   it('DLQ archives a failed delivery before removing its staged metadata', async () => {
     const job = postJob('failed-dlq');
     const gate = env.POST_GATE.getByName('v1:twitter:failed-dlq');
@@ -477,6 +595,7 @@ describe('queue-backed Twitter delivery', () => {
 
   it('dry trigger generates and scores a qualifying post without Queue, KV, DO, or Twitter writes', async () => {
     const queue = vi.spyOn(worker, 'queue').mockImplementation(async () => {});
+    const queueSend = vi.spyOn(env.POST_QUEUE, 'send');
     const kvPut = vi.spyOn(env.POSTED_STATE, 'put');
     const kvDelete = vi.spyOn(env.POSTED_STATE, 'delete');
     const { calls } = installTwitterFetch();
@@ -499,11 +618,13 @@ describe('queue-backed Twitter delivery', () => {
     expect(kvDelete).not.toHaveBeenCalled();
     expect((await listDurableObjectIds(env.POST_GATE)).map((id) => id.toString()).sort()).toEqual(gateIdsBefore);
     expect(queue).not.toHaveBeenCalled();
+    expect(queueSend).not.toHaveBeenCalled();
     expect(calls.createTweet).toBe(0);
   });
 
   it('dry test route traverses article generation without Queue, KV, DO, or Twitter writes', async () => {
     const queue = vi.spyOn(worker, 'queue').mockImplementation(async () => {});
+    const queueSend = vi.spyOn(env.POST_QUEUE, 'send');
     const kvPut = vi.spyOn(env.POSTED_STATE, 'put');
     const kvDelete = vi.spyOn(env.POSTED_STATE, 'delete');
     const { calls } = installTwitterFetch();
@@ -526,6 +647,7 @@ describe('queue-backed Twitter delivery', () => {
     expect(kvDelete).not.toHaveBeenCalled();
     expect((await listDurableObjectIds(env.POST_GATE)).map((id) => id.toString()).sort()).toEqual(gateIdsBefore);
     expect(queue).not.toHaveBeenCalled();
+    expect(queueSend).not.toHaveBeenCalled();
     expect(calls.createTweet).toBe(0);
   });
 

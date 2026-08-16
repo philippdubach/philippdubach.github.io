@@ -465,11 +465,16 @@ async function enqueuePostJob(env, job, metadata) {
 }
 
 async function jobMetadata(env, job) {
+  let metadata;
   try {
-    return await env.POSTED_STATE.get(`jobmeta:${jobKey(job)}`, 'json') || {};
+    metadata = await env.POSTED_STATE.get(`jobmeta:${jobKey(job)}`, 'json');
   } catch (cause) {
     throw preSendInfrastructureError('Post metadata is unavailable', cause);
   }
+  if (metadata === null) {
+    throw preSendInfrastructureError('Post metadata is not visible');
+  }
+  return metadata;
 }
 
 function legacyMetadata(metadata) {
