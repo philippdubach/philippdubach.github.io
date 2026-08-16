@@ -434,6 +434,8 @@ describe('queue-backed Bluesky delivery', () => {
 
   it('dry trigger generates and scores a qualifying post without Queue, KV, DO, or Bluesky writes', async () => {
     const queue = vi.spyOn(worker, 'queue').mockImplementation(async () => {});
+    const kvPut = vi.spyOn(env.POSTED_STATE, 'put');
+    const kvDelete = vi.spyOn(env.POSTED_STATE, 'delete');
     const { calls } = installBlueskyFetch();
     const gateIdsBefore = (await listDurableObjectIds(env.POST_GATE)).map((id) => id.toString()).sort();
 
@@ -457,6 +459,8 @@ describe('queue-backed Bluesky delivery', () => {
       errors: [],
     });
     expect((await env.POSTED_STATE.list()).keys).toEqual([]);
+    expect(kvPut).not.toHaveBeenCalled();
+    expect(kvDelete).not.toHaveBeenCalled();
     expect((await listDurableObjectIds(env.POST_GATE)).map((id) => id.toString()).sort()).toEqual(gateIdsBefore);
     expect(queue).not.toHaveBeenCalled();
     expect(calls).toEqual({ session: 0, createRecord: 0 });
