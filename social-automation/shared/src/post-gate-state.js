@@ -1,6 +1,7 @@
 import { parsePostJob } from './post-job.js';
 
-const ERROR_FIELDS = ['name', 'message', 'code', 'status', 'stage', 'retryAfter'];
+const ERROR_FIELDS = ['code', 'status', 'stage', 'retryAfter'];
+const SAFE_ERROR_VALUE = /^[a-zA-Z0-9_.:/-]{1,64}$/;
 
 function isoTimestamp(now) {
   if (!(now instanceof Date) || !Number.isFinite(now.getTime())) {
@@ -22,11 +23,14 @@ function cloneJson(value, field) {
 function errorMetadata(error) {
   const source = error && (typeof error === 'object' || typeof error === 'function')
     ? error
-    : { message: String(error) };
+    : {};
   const metadata = {};
   for (const field of ERROR_FIELDS) {
     const value = source[field];
-    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+    if (
+      (typeof value === 'string' && SAFE_ERROR_VALUE.test(value))
+      || (typeof value === 'number' && Number.isFinite(value))
+    ) {
       metadata[field] = value;
     }
   }
@@ -37,14 +41,15 @@ function isStatus(state, status) {
   return state !== null && typeof state === 'object' && state.status === status;
 }
 
-export function createPendingPostState(now = new Date()) {
+export function createPendingPostState(now) {
   return {
     status: 'pending',
     updatedAt: isoTimestamp(now),
   };
 }
 
-export function claimPost(state, job, now = new Date()) {
+export function claimPost(state, job, now) {
+  const updatedAt = isoTimestamp(now);
   if (!isStatus(state, 'pending')) {
     return { claimed: false, state };
   }
@@ -54,57 +59,62 @@ export function claimPost(state, job, now = new Date()) {
     state: {
       status: 'attempting',
       job: parsePostJob(job),
-      updatedAt: isoTimestamp(now),
+      updatedAt,
     },
   };
 }
 
-export function markPostPending(state, error, now = new Date()) {
+export function markPostPending(state, error, now) {
+  const updatedAt = isoTimestamp(now);
   if (!isStatus(state, 'attempting')) return state;
   return {
     status: 'pending',
     job: state.job,
     error: errorMetadata(error),
-    updatedAt: isoTimestamp(now),
+    updatedAt,
   };
 }
 
-export function markPostPublished(state, result, now = new Date()) {
+export function markPostPublished(state, result, now) {
+  const updatedAt = isoTimestamp(now);
   if (!isStatus(state, 'attempting')) return state;
   return {
     status: 'published',
     job: state.job,
     result: cloneJson(result, 'result'),
-    updatedAt: isoTimestamp(now),
+    updatedAt,
   };
 }
 
-export function markPostFailed(state, error, now = new Date()) {
+export function markPostFailed(state, error, now) {
+  const updatedAt = isoTimestamp(now);
   if (!isStatus(state, 'attempting')) return state;
   return {
     status: 'failed',
     job: state.job,
     error: errorMetadata(error),
-    updatedAt: isoTimestamp(now),
+    updatedAt,
   };
 }
 
-export function markPostUncertain(state, error, now = new Date()) {
+export function markPostUncertain(state, error, now) {
+  const updatedAt = isoTimestamp(now);
   if (!isStatus(state, 'attempting')) return state;
   return {
     status: 'uncertain',
     job: state.job,
     error: errorMetadata(error),
-    updatedAt: isoTimestamp(now),
+    updatedAt,
   };
 }
 
-export function markPostBackfilled(state, metadata, now = new Date()) {
+export function markPostBackfilled(state, metadata, now) {
+  const updatedAt = isoTimestamp(now);
   if (!isStatus(state, 'pending')) return state;
   return {
     status: 'backfilled',
     metadata: cloneJson(metadata, 'metadata'),
-    updatedAt: isoTimestamp(now),
+    updatedAt,
   };
 }
 
@@ -137,7 +147,8 @@ export function classifyPublishError(error) {
   }
 
   if (
-    status >= 500
+    status === 408
+    || status >= 500
     || stage === 'response-parse'
     || stage === 'post-response'
     || /network|fetch failed|abort|timeout|timed out|etimedout|econn|enotfound|eai_again|socket/.test(marker)

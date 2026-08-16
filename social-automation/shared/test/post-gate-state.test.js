@@ -95,6 +95,49 @@ test('published, failed, uncertain, and backfilled transitions store their termi
   }
 });
 
+test('all pure transition helpers require an explicit clock value', () => {
+  const pending = createPendingPostState(firstTransitionAt);
+  const attempting = claimPost(pending, job, firstTransitionAt).state;
+  const callsWithoutNow = [
+    () => createPendingPostState(),
+    () => claimPost(pending, job),
+    () => markPostPending(attempting, { status: 429 }),
+    () => markPostPublished(attempting, { id: 'post-123' }),
+    () => markPostFailed(attempting, { code: 'INVALID_PAYLOAD' }),
+    () => markPostUncertain(attempting, { code: 'ETIMEDOUT' }),
+    () => markPostBackfilled(pending, { source: 'rss' }),
+  ];
+
+  for (const call of callsWithoutNow) {
+    assert.throws(call, /now must be a valid Date/);
+  }
+});
+
+test('error state excludes response text and credentials but retains routing metadata', () => {
+  const state = markPostUncertain(
+    attemptingState(),
+    {
+      name: 'PublishError',
+      message: 'Authorization: Bearer top-secret response {"access_token":"top-secret"}',
+      body: '{"access_token":"top-secret"}',
+      token: 'top-secret',
+      code: 'ETIMEDOUT',
+      status: 504,
+      stage: 'response',
+      retryAfter: 300,
+    },
+    secondTransitionAt,
+  );
+
+  assert.deepStrictEqual(state.error, {
+    code: 'ETIMEDOUT',
+    status: 504,
+    stage: 'response',
+    retryAfter: 300,
+  });
+  assert.doesNotMatch(JSON.stringify(state), /top-secret|Bearer|access_token/);
+});
+
 test('429 and known pre-send failures classify retryable', () => {
   assert.strictEqual(classifyPublishError({ status: 429, stage: 'response' }), 'retryable');
   assert.strictEqual(
@@ -107,6 +150,11 @@ test('network and timeout errors after an attempted request classify uncertain',
   assert.strictEqual(classifyPublishError(new TypeError('fetch failed')), 'uncertain');
   assert.strictEqual(classifyPublishError({ name: 'AbortError' }), 'uncertain');
   assert.strictEqual(classifyPublishError({ code: 'ETIMEDOUT' }), 'uncertain');
+});
+
+test('HTTP timeout status codes classify uncertain', () => {
+  assert.strictEqual(classifyPublishError({ status: 408 }), 'uncertain');
+  assert.strictEqual(classifyPublishError({ status: 504, stage: 'response' }), 'uncertain');
 });
 
 test('5xx and post-response parse failures classify uncertain', () => {

@@ -23,7 +23,7 @@ export class PostGate extends DurableObject {
       `);
       this.sql.exec(
         'INSERT OR IGNORE INTO post_gate_state (singleton, value) VALUES (1, ?)',
-        JSON.stringify(createPendingPostState()),
+        JSON.stringify(createPendingPostState(new Date())),
       );
     });
   }
@@ -43,37 +43,37 @@ export class PostGate extends DurableObject {
   }
 
   async claim(job) {
-    const result = claimPost(this._readState(), job);
+    const result = claimPost(this._readState(), job, new Date());
     this._writeState(result.state);
     return result;
   }
 
   async markPending(error) {
-    const state = markPostPending(this._readState(), error);
+    const state = markPostPending(this._readState(), error, new Date());
     this._writeState(state);
     return state;
   }
 
   async markPublished(result) {
-    const state = markPostPublished(this._readState(), result);
+    const state = markPostPublished(this._readState(), result, new Date());
     this._writeState(state);
     return state;
   }
 
   async markFailed(error) {
-    const state = markPostFailed(this._readState(), error);
+    const state = markPostFailed(this._readState(), error, new Date());
     this._writeState(state);
     return state;
   }
 
   async markUncertain(error) {
-    const state = markPostUncertain(this._readState(), error);
+    const state = markPostUncertain(this._readState(), error, new Date());
     this._writeState(state);
     return state;
   }
 
   async markBackfilled(metadata) {
-    const state = markPostBackfilled(this._readState(), metadata);
+    const state = markPostBackfilled(this._readState(), metadata, new Date());
     this._writeState(state);
     return state;
   }
