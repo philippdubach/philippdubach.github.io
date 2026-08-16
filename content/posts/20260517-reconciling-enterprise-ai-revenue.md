@@ -1,48 +1,34 @@
 +++
 title = "Reconciling Enterprise AI Revenue"
-seoTitle = "AI Capex Arms Race Revenue: $690B vs $63B Audit-Grade Floor"
+seoTitle = "Enterprise AI Revenue: Reconciling Four Market Estimates"
 slug = "reconciling-enterprise-ai-revenue"
 date = 2026-05-17
 lastmod = 2026-08-16
 publishDate = 2026-05-17T01:00:00Z
 images = ["https://static.philippdubach.com/cover-capex.png"]
 card_image = "https://static.philippdubach.com/cover-capex.png"
-description = "Four enterprise AI revenue figures span a 40x range. The $63.2B audit-grade floor is the only tier that defensibly underwrites $690B of hyperscaler capex."
+description = "Four enterprise AI revenue estimates span 40x. See why a $63.2 billion audit-grade floor is the defensible basis for testing $690 billion of AI capex."
 keywords = [
   "enterprise AI revenue 2025",
   "AI capex revenue gap",
-  "$690 billion AI capex 2026",
-  "AI capex coverage ratio 2026",
-  "Menlo Ventures AI report 2025",
-  "$37 billion enterprise AI Menlo",
-  "Gartner $1.5 trillion AI spending 2025",
-  "IDC AI solutions spending guide",
-  "SaaSpocalypse paradox",
-  "audit-grade AI revenue",
-  "vendor census enterprise AI",
-  "AI model API revenue",
-  "OpenAI ARR 2025",
-  "Anthropic ARR 2025",
-  "Anthropic 40% LLM API market share",
-  "Microsoft Azure AI revenue",
-  "AWS AI run-rate",
   "hyperscaler AI capex 2026",
-  "AI revenue reconciliation framework",
-  "disclosure tier framework AI",
-  "Tier A SEC AI disclosure",
-  "Tier B earnings call AI",
-  "NVIDIA Data Center segment AI",
-  "Broadcom AI semi revenue",
-  "Spread Index AI",
+  "Gartner AI spending 2025",
+  "Menlo enterprise AI 2025",
+  "AI revenue reconciliation",
+  "audit-grade AI revenue",
+  "enterprise AI market size",
+  "IDC AI spending guide",
+  "vendor AI revenue run rate",
+  "AI revenue double counting",
+  "AI annual recurring revenue",
+  "recognized AI revenue",
+  "AI revenue disclosure tiers",
+  "AI capex coverage ratio",
+  "AI infrastructure debt",
   "AI capex sustainability",
-  "CoreWeave revenue 2025",
-  "Dell AI server revenue",
-  "SuperMicro AI revenue",
-  "Palantir AIP revenue",
-  "Baidu AI Cloud disclosure",
-  "vendor run-rate sum AI",
-  "BofA hyperscaler debt 2026",
-  "telecom 1999 capex coverage comparison"
+  "telecom capex comparison",
+  "Spread Index AI",
+  "vendor census enterprise AI"
 ]
 draft = false
 categories = ["AI", "Investing"]
@@ -56,15 +42,15 @@ takeaways = [
 ]
 faq = [
   {question = "What is Menlo Ventures' enterprise AI revenue estimate for 2025?", answer = "Menlo's December 2025 State of Generative AI in the Enterprise report puts US enterprise generative AI spending at $37B. Menlo and its research partner surveyed 495 buyers about their 2025 generative AI budgets. The figure covers only US enterprise generative AI. It excludes traditional or predictive machine learning and consumer subscriptions. Worldwide vendor-recognized AI revenue is materially larger because Menlo excludes several categories. These include non-US revenue, AI products that do not use generative models, consulting, and channel margins."},
-  {question = "Why do IDC and Gartner publish different AI revenue numbers?", answer = "IDC's AI Solutions Spending Guide puts 2025 worldwide AI spending at $307B. Gartner's September 2025 forecast puts it at $1.478T. Definitions explain the 4.8x gap. Gartner includes $389B of AI-enabled devices at full retail value, $282B of broad AI services, and $268B of AI-optimized servers. IDC measures a tighter enterprise AI solutions perimeter and excludes consumer devices. Both figures follow their published methods, but they measure different perimeters."},
-  {question = "How much enterprise AI revenue is SEC-audited?", answer = "Tier A uses segment filings with the US Securities and Exchange Commission (SEC) under generally accepted accounting principles (GAAP). At the May 2026 cutoff, only four of 68 vendors qualified. They were NVIDIA Data Center ($249B annualized), AMD Data Center ($23B), Broadcom AI semiconductors ($34B), and CoreWeave ($5.1B in fiscal year 2025). All four sold mainly to cloud providers or hardware manufacturers rather than enterprise end users. CoreWeave routed 67% of its revenue through Microsoft, which resold the capacity as Azure AI. After subtracting revenue that resellers counted again, Tier A contributed $2B to $10B of enterprise-facing AI revenue. Tier B consists of dollar amounts that executives disclose on earnings calls. The defensible audit-grade floor relies on this second tier. It totals $63.2B narrow or roughly $72.5B broad after netting silicon, hardware-manufacturer overlap, and resale. The broad figure adds hardware integration and CoreWeave revenue from non-Microsoft customers; the narrow figure excludes both. The hardware calculation excludes Arista's fiscal-year 2026 guidance figure."},
+  {question = "Why do enterprise AI revenue estimates from Menlo, IDC, and Gartner differ?", answer = "IDC's AI Solutions Spending Guide puts 2025 worldwide AI spending at $307B. Gartner's September 2025 forecast puts it at $1.478T. Definitions explain the 4.8x gap. Gartner includes $389B of AI-enabled devices at full retail value, $282B of broad AI services, and $268B of AI-optimized servers. IDC measures a tighter enterprise AI solutions perimeter and excludes consumer devices. Both figures follow their published methods, but they measure different perimeters."},
+  {question = "How much enterprise AI revenue is supported by SEC filings?", answer = "Tier A uses segment filings with the US Securities and Exchange Commission (SEC) under generally accepted accounting principles (GAAP). At the May 2026 cutoff, only four of 68 vendors qualified. They were NVIDIA Data Center ($249B annualized), AMD Data Center ($23B), Broadcom AI semiconductors ($34B), and CoreWeave ($5.1B in fiscal year 2025). All four sold mainly to cloud providers or hardware manufacturers rather than enterprise end users. CoreWeave routed 67% of its revenue through Microsoft, which resold the capacity as Azure AI. After subtracting revenue that resellers counted again, Tier A contributed $2B to $10B of enterprise-facing AI revenue. Tier B consists of dollar amounts that executives disclose on earnings calls. The defensible audit-grade floor relies on this second tier. It totals $63.2B narrow or roughly $72.5B broad after netting silicon, hardware-manufacturer overlap, and resale. The broad figure adds hardware integration and CoreWeave revenue from non-Microsoft customers; the narrow figure excludes both. The hardware calculation excludes Arista's fiscal-year 2026 guidance figure."},
   {question = "What is the Spread Index?", answer = "The Spread Index divides audit-grade enterprise AI revenue by Gartner's umbrella AI spending figure. At version 1.0 in May 2026, $63.2B / $1.478T = 4.28% narrow. The broad calculation is $72.5B / $1.478T = 4.90%. The index measures the gap between revenue supported by filings and earnings-call disclosures and the broadest market estimate. Version 1.0 uses May 2026 data; I intend to update the index with future quarterly SEC filing cycles. Faster audit-grade growth improves capital expenditure coverage. Slower growth weakens the underwriting case without changing the headline figures."},
-  {question = "Does $690B of AI capex match disclosed AI revenue?", answer = "No. Combined 2026 capital expenditure guidance from Microsoft, Alphabet, Amazon, Meta, and Oracle approaches $690B. These large cloud providers are hyperscalers. The capital-expenditure-to-revenue ratio is 10.9x against the $63.2B narrow floor. It is 9.5x against the roughly $72.5B broad floor and 5.6x against the $123B midpoint. The 1990s telecom buildout peaked at roughly 3.5x. If only $400B to $500B is attributable to AI, the ratio remains 6.3x to 7.9x. With 3-year economic amortization for the graphics-processing-unit subset, AI revenue would need to reach approximately $400B by 2028. A looser 5-to-6-year assumption covering the complete infrastructure stack implies a roughly $250B 2028 target. That case requires revenue to roughly quadruple in 30 months. The gap between those scenarios is the live finance question."},
+  {question = "Does enterprise AI revenue justify $690B of AI capex?", answer = "No. Combined 2026 capital expenditure guidance from Microsoft, Alphabet, Amazon, Meta, and Oracle approaches $690B. These large cloud providers are hyperscalers. The capital-expenditure-to-revenue ratio is 10.9x against the $63.2B narrow floor. It is 9.5x against the roughly $72.5B broad floor and 5.6x against the $123B midpoint. The 1990s telecom buildout peaked at roughly 3.5x. If only $400B to $500B is attributable to AI, the ratio remains 6.3x to 7.9x. With 3-year economic amortization for the graphics-processing-unit subset, AI revenue would need to reach approximately $400B by 2028. A looser 5-to-6-year assumption covering the complete infrastructure stack implies a roughly $250B 2028 target. That case requires revenue to roughly quadruple in 30 months. The gap between those scenarios is the live finance question."},
   {question = "What is the relationship between Microsoft Azure AI revenue and OpenAI's revenue?", answer = "Microsoft disclosed a $37B annualized Azure AI revenue pace in the third quarter of fiscal year 2026. At the May 2026 cutoff, third-party reporting put OpenAI at $25B of annual recurring revenue. About $11B overlaps because OpenAI uses Azure infrastructure and Microsoft also resells OpenAI models through Azure OpenAI Service. Microsoft's chief financial officer supplied the amount on an earnings call, so this report classifies it as Tier B. OpenAI's $25B comes from third-party reporting, so this report classifies it as Tier D. Sacra reported the amount, and OpenAI's chief financial officer discussed it publicly. Adding both figures would double-count $11B. The audit-grade calculation nets that overlap from Microsoft. A smaller overlap exists among Amazon Web Services, Google Cloud Platform, and Anthropic. This report treats it as $7B, an analytical assumption rather than vendor disclosure."}
 ]
 +++
 
-{{< img src="cover-capex.png" alt="White report cover with a crimson four-step path from an X at the top to a red dot at the bottom. The path represents the revenue reconciliation." width="80%" priority="true" >}}
+{{< img src="cover-capex.png" alt="White enterprise AI revenue report cover with a crimson four-step reconciliation path from an X to a red dot" width="80%" priority="true" >}}
 
 *This article accompanies the full research report,* [Reconciling Enterprise AI Revenue: A Methodological Crosswalk and Vendor-Level Census, 2025](https://static.philippdubach.com/pdf/reconciling-enterprise-ai-revenue-2025.pdf)*. The PDF contains the 68-vendor census, the six-tier framework, each sourced deduction, and the netting of structural double-counts.*
 
@@ -76,7 +62,7 @@ The trade press calls all four figures "the AI market." Menlo is not the cautiou
 
 Why does this even matter? At the report's May 17, 2026 cutoff, combined hyperscaler guidance approached $690B of 2026 capital expenditure (capex). Sell-side analysts projected roughly $1.5T of AI-related debt issuance for the planned infrastructure build. JPMorgan, Apollo, Blackstone, and KKR were helping structure that debt. Capex coverage is revenue divided by capital expenditure. I call revenue supported by regulatory filings and executive dollar disclosures audit-grade. Against its $63.2B narrow floor, coverage was 9.2%. The 1990s telecom buildout peaked at roughly 28% coverage. That is the inverse of 3.5x capex-to-revenue.
 
-## Four numbers
+## Four enterprise AI revenue estimates
 
 ### Menlo Ventures: $37B
 
@@ -178,7 +164,7 @@ Gartner's $1.478T is the right figure for this question. Willingness to pay incl
 
 {{< readnext slug="the-saaspocalypse-paradox" >}}
 
-## What this means for the capex thesis
+## What enterprise AI revenue means for the capex thesis
 
 At the report cutoff, combined 2026 hyperscaler capex guidance from Microsoft, Alphabet, Amazon, Meta, and Oracle approached [$690B](/posts/ai-capex-arms-race-who-blinks-first/). Revenue covered 9.2% of capex on the $63.2B narrow floor. Coverage rose to 10.5% on the \~$72.5B broad floor and 17.8% on the $123B reconciled midpoint. A plausible $150B ceiling gave 21.7% coverage. That ceiling included undisclosed Tier C AI revenue at Google Cloud, Meta, Oracle, and the software-as-a-service cohort.
 

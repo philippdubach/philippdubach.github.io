@@ -1,34 +1,34 @@
 +++
 title = "Aschenbrenner's Receipts"
 slug = "aschenbrenners-receipts"
-seoTitle = "Leopold Aschenbrenner: Situational Awareness Two Years On"
+seoTitle = "Leopold Aschenbrenner Predictions: A Two-Year Scorecard"
 date = 2026-05-21
 lastmod = 2026-08-16
 publishDate = 2026-05-21T01:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-aschenbrenners-receipts.jpg"]
 card_image = "https://static.philippdubach.com/leopold-cover.png"
-description = "Aschenbrenner's Situational Awareness committed him to dated AGI predictions. By May 2026, many technology and infrastructure calls had landed or were tracking, while the political programme remained largely unfulfilled."
+description = "Leopold Aschenbrenner made dated AGI, infrastructure, and political forecasts in Situational Awareness. See which calls held up by May 2026, two years on."
 keywords = [
-  "Leopold Aschenbrenner Situational Awareness predictions",
-  "Situational Awareness essay scorecard",
+  "Leopold Aschenbrenner predictions",
+  "Situational Awareness AGI 2027",
+  "Situational Awareness essay summary",
+  "Leopold Aschenbrenner Manhattan Project",
+  "Situational Awareness LP portfolio",
+  "Situational Awareness prediction scorecard",
   "AGI 2027 prediction accuracy",
-  "Aschenbrenner AI Manhattan Project critique",
-  "Situational Awareness LP portfolio thesis",
+  "counting OOMs AI",
+  "test-time compute prediction",
+  "AI power constraint",
+  "trillion dollar cluster",
+  "AI nationalisation",
+  "AI lab security",
   "Burkean accelerationist",
   "modal story forecasting",
-  "test-time compute prediction vindicated",
   "OpenAI Superalignment dissolution",
   "alignment faking large language models",
   "DeepSeek R1 algorithmic frontier",
-  "trillion dollar cluster 2030",
-  "Stargate UAE 2026",
-  "Genesis Mission AI executive order",
-  "AI Diffusion Rule scrapped",
-  "Marcellus shale AI gas",
-  "compute orders of magnitude OOMs",
   "Aschenbrenner Dwarkesh Patel interview",
-  "Patrick Collison Daniel Gross Nat Friedman",
-  "GPQA Diamond saturation"
+  "AI infrastructure investment thesis"
 ]
 categories = ["AI", "Investing"]
 type = "Analysis"
@@ -41,15 +41,15 @@ takeaways = [
 ]
 faq = [
   {question = "Did Leopold Aschenbrenner's Situational Awareness predictions come true?", answer = "Partially. By May 2026, most technology and infrastructure calls examined here had landed, received support, or remained on track. They concerned test-time compute, GPQA Diamond, power, gas, the Gulf chip pivot, AMD's $1T compute-market forecast, and continued scaling. Most political prescriptions remained unfulfilled or reversed. There was no voluntary consolidation, Congressional trillions, or coordinated democratic coalition. The US government did not invoke the Defense Production Act (DPA) for the proposed project. Export controls loosened. This verdict remains provisional because some deadlines extend to 2027–28 or the end of the decade."},
-  {question = "Is AGI by 2027 still on track per Situational Awareness?", answer = "Artificial general intelligence (AGI) means broad human-level or greater cognitive ability. Aschenbrenner's 2027 window remained open but contested in May 2026. Test-time compute gives a model more processing while it produces an answer. This development supported his framework in a way that he did not emphasise. Pretraining, the initial learning from broad data, had slowed relative to reinforcement-learning (RL) post-training. This shift complicates the additive five-order-of-magnitude (5-OOM) framing. Capability gains continued. The open question is whether models reach his 'drop-in remote worker' threshold by 2027. Such a model could perform the cognitive tasks of a remote employee. His investment firm is positioned around that outcome."},
+  {question = "What is Leopold Aschenbrenner's AGI 2027 prediction?", answer = "Artificial general intelligence (AGI) means broad human-level or greater cognitive ability. Aschenbrenner's 2027 window remained open but contested in May 2026. Test-time compute gives a model more processing while it produces an answer. This development supported his framework in a way that he did not emphasise. Pretraining, the initial learning from broad data, had slowed relative to reinforcement-learning (RL) post-training. This shift complicates the additive five-order-of-magnitude (5-OOM) framing. Capability gains continued. The open question is whether models reach his 'drop-in remote worker' threshold by 2027. Such a model could perform the cognitive tasks of a remote employee. His investment firm is positioned around that outcome."},
   {question = "What is the Burkean Accelerationist worldview?", answer = "Aschenbrenner combines three normally separate positions. He starts with a libertarian presumption against state action. He also reveres two-hundred-year-old institutions in the tradition of Edmund Burke. Finally, he is empirically optimistic that researchers can align advanced AI. The three positions form a series circuit, where each premise supports the next. He argues that artificial general intelligence (AGI) will decide national security and that existing constitutional institutions must absorb it. This Burkean premise produces a Promethean prescription: peacetime industrial nationalisation."},
   {question = "Why was Leopold Aschenbrenner dismissed from OpenAI?", answer = "Aschenbrenner was a member of OpenAI's Superalignment team. He has said publicly that OpenAI dismissed him in spring 2024. He says the dismissal came one to two weeks before Ilya Sutskever and Jan Leike resigned. According to his account, exit discussions covered a security memo that he sent to the board. They also covered his decision not to sign the November 2023 employee letter supporting Sam Altman's reinstatement. His account says that his views on AGI nationalisation were another factor. He has said that he declined a non-disclosure agreement (NDA) with a non-disparagement clause. He says that this decision cost him approximately one million dollars in vested equity. OpenAI has not commented publicly on the specifics. OpenAI dissolved the Superalignment team within five weeks."},
-  {question = "What is Situational Awareness LP?", answer = "Situational Awareness LP is the San Francisco investment firm that Aschenbrenner co-founded in mid-2024. Here, LP identifies the firm's legal structure. In interviews, he has named Patrick Collison, John Collison, Daniel Gross, and Nat Friedman as anchor investors. He says the fund turns his framework into capital positions. A long position gains when an asset's price rises. Behind-the-meter power is generated at or near the customer site. AGI-adjacent infrastructure supports artificial general intelligence without producing the models itself. His described positions include semiconductors, power utilities, behind-the-meter gas, and related infrastructure. The 'big bond short' on real interest rates above 10% had not fired by May 21, 2026. None of the named limited partners has independently confirmed a specific position. Every position description comes from Aschenbrenner's public statements."},
-  {question = "What is the modal-story method of forecasting?", answer = "Aschenbrenner rejects probability distributions and instead 'tells the modal story'. A modal story is a vivid, dated, and falsifiable narrative about the decade. The method is gradable because readers can test dated claims against events. Its weakness is sensitivity to the underlying process. It works better with empirically lawful processes, including scaling curves plotted on logarithmic axes, capital-expenditure aggregates, and power use by the largest cloud companies. It works worse when elections, executive turnover, and coalition politics determine outcomes."},
+  {question = "What is Situational Awareness LP's investment thesis?", answer = "Situational Awareness LP is the San Francisco investment firm that Aschenbrenner co-founded in mid-2024. Here, LP identifies the firm's legal structure. In interviews, he has named Patrick Collison, John Collison, Daniel Gross, and Nat Friedman as anchor investors. He says the fund turns his framework into capital positions. A long position gains when an asset's price rises. Behind-the-meter power is generated at or near the customer site. AGI-adjacent infrastructure supports artificial general intelligence without producing the models itself. His described positions include semiconductors, power utilities, behind-the-meter gas, and related infrastructure. The 'big bond short' on real interest rates above 10% had not fired by May 21, 2026. None of the named limited partners has independently confirmed a specific position. Every position description comes from Aschenbrenner's public statements."},
+  {question = "How does Aschenbrenner's modal-story forecasting method work?", answer = "Aschenbrenner rejects probability distributions and instead 'tells the modal story'. A modal story is a vivid, dated, and falsifiable narrative about the decade. The method is gradable because readers can test dated claims against events. Its weakness is sensitivity to the underlying process. It works better with empirically lawful processes, including scaling curves plotted on logarithmic axes, capital-expenditure aggregates, and power use by the largest cloud companies. It works worse when elections, executive turnover, and coalition politics determine outcomes."},
 ]
 +++
 
-{{< img src="leopold-cover.png" alt="Young figure at a podium beneath spotlights labelled libertarian, Burkean hawk, and alignment optimist, with data centres on the horizon" width="80%" priority="true" >}}
+{{< img src="leopold-cover.png" alt="Leopold Aschenbrenner at a podium beneath spotlights labelled libertarian, Burkean hawk, and alignment optimist" width="80%" priority="true" >}}
 
 In June 2024, Leopold Aschenbrenner published a 165-page essay called [Situational Awareness](https://situational-awareness.ai/wp-content/uploads/2024/06/situationalawareness.pdf). He committed himself to a chain of dated forecasts. Models would get more processing while producing answers, a method called test-time compute. Power, not chips, would constrain the US AI buildout. The Marcellus shale would power data centres despite climate pledges by the largest cloud companies. By May 21, 2026, most technology and infrastructure calls examined here had landed, received supporting evidence, or were tracking.
 
@@ -81,7 +81,7 @@ Aschenbrenner reaches all three positions by using the same forecasting machiner
 
 CCP refers to the Chinese Communist Party. I read Aschenbrenner the way he reads scaling laws: by decomposition. The three identities form the spine. For each one, I examine the framework, the evidence available by May 21, 2026, and the strongest counter-position. I also examine what the synthesis costs him. The result shows what a convergent forecast does to a worldview. It also reveals something about the AI-policy debate that the rest of us are still having.
 
-## I. The forecaster before the politics
+## I. The forecaster before the politics: a prediction scorecard
 
 Before any criticism, what he got right.
 
@@ -361,7 +361,7 @@ Aschenbrenner's instrument is sensitive to log-log evidence and saturated agains
 
 The market moves favoured the empirical-substrate trades that he described, but not the coalition-substrate trades. Nvidia, AMD, gas turbines, transformer-shortage positions, and Gulf data-centre exposure gained. Bets on defence-AI consolidation and against open-source diffusion would not have paid. Strategically, an AI roadmap built on this narrative should anchor on substrate rather than rhetoric.
 
-## VIII. Capital, conviction, and the honesty of the bet
+## VIII. Situational Awareness LP: capital, conviction, and the honesty of the bet
 
 Situational Awareness LP makes the worldview unavoidable because it reveals a capital position. Aschenbrenner has publicly described Patrick Collison, John Collison, Daniel Gross, and Nat Friedman as anchor investors. By his account, he put his own capital and their capital where his framework points.
 

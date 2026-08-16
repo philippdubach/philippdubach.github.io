@@ -1,13 +1,13 @@
 +++
 title = "Long Volatility Premium"
 aliases = ["/posts/the-long-volatility-premium/"]
-seoTitle = "Long Volatility Premium: Beta-Adjusted Tail Hedging as a Compensated Factor"
+seoTitle = "Long Volatility Premium: Can Tail Hedging Improve Returns?"
 date = 2026-02-14
 lastmod = 2026-08-16
 publishDate = 2026-02-14T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-long-volatility-premium3.jpg"]
-description = "One River's data show beta-adjusted long volatility outperformed the S&P 500 over 40 years. Goldman, AQR, and Universa agree on the mechanism but disagree on implementation. A synthesis of the evidence."
-keywords = ["long volatility premium", "beta-adjusted tail hedging", "volatility risk premium", "tail risk hedging portfolio construction", "variance tax compounding", "put options convexity gamma", "trend following vs put hedging", "Universa Investments Spitznagel", "rebalancing premium volatility", "Goldman Sachs tail risk", "AQR tortoise hare hedging", "CAIA tail risk comparison"]
+description = "Can tail hedging improve compound returns? Review 40 years of beta-adjusted long-volatility evidence, plus AQR, Goldman, Universa, puts, trends, and costs."
+keywords = ["long volatility premium", "tail risk hedging", "beta-adjusted tail hedging", "volatility risk premium", "put options vs trend following", "long volatility strategy", "tail hedge portfolio", "S&P 500 put options", "portfolio convexity", "option delta gamma vega", "variance tax compounding", "rebalancing premium", "portable alpha", "crisis alpha", "Universa Investments", "risk budget reallocation", "negative carry", "VIX futures contango", "out-of-the-money puts", "managed futures trend following"]
 draft = false
 categories = ["Quantitative Finance"]
 takeaways = [
@@ -22,12 +22,12 @@ faq = [
   {question = "What is the variance tax and how does it relate to tail hedging?", answer = "The variance tax is volatility's drag on compound returns. The compound growth rate is approximately the arithmetic mean minus half the variance: G ≈ μ − ½σ². Here, G is the compound growth rate, μ is arithmetic mean return, and σ² is return variance. Because the penalty is quadratic, reducing drawdown severity can have a nonlinear effect on terminal wealth. A portfolio that falls 50% needs a 100% gain to recover. A costly tail hedge can still increase compound wealth by limiting severe losses."},
   {question = "Should investors use puts or trend-following for tail hedging?", answer = "AQR's research shows that the two approaches complement each other. Put strategies can deliver spectacular returns in sudden crashes such as COVID-19. They are expensive to maintain and have negative long-run expected returns. Trend-following has positive long-run expected returns and performs well during long bear markets such as the dot-com bust. Academic research combined both through portable alpha, which adds the hedge without replacing the core equity exposure. It produced statistically significant alpha of 0.25% per month after controlling for equity factors."},
   {question = "How much should a portfolio allocate to tail hedging?", answer = "Practitioner allocations discussed here generally range from 1% to 5% of portfolio value. The Wall Street Journal reported on a portfolio with 3.3% in Universa Investments and the rest in the S&P 500. It achieved a 12.3% compound annual return over 10 years and beat the index. The optimal size is ultimately psychological rather than mathematical. It must tolerate years of negative carry, the recurring cost of maintaining the hedge, without forcing the investor to abandon it."},
-  {question = "Why do most tail-risk strategies fail?", answer = "A CAIA Association study tested several popular tail-risk strategies against cash. Short-dated Cboe Volatility Index (VIX) futures and one-month variance swaps failed to beat that benchmark. They lagged it by 355 and 203 basis points, respectively. One basis point is 0.01 percentage points. A variance swap pays according to the difference between realized variance and a fixed strike. For a long VIX-futures strategy, persistent contango can create negative roll yield. This happens when the strategy replaces expiring contracts with more expensive later-dated contracts. The result shows that implementation matters because many long-VIX approaches face this structural cost."},
+  {question = "Why do some tail-risk hedging strategies underperform cash?", answer = "A CAIA Association study tested several popular tail-risk strategies against cash. Short-dated Cboe Volatility Index (VIX) futures and one-month variance swaps failed to beat that benchmark. They lagged it by 355 and 203 basis points, respectively. One basis point is 0.01 percentage points. A variance swap pays according to the difference between realized variance and a fixed strike. For a long VIX-futures strategy, persistent contango can create negative roll yield. This happens when the strategy replaces expiring contracts with more expensive later-dated contracts. The result shows that implementation matters because many long-VIX approaches face this structural cost."},
 ]
 +++
 >Tail hedging earns its keep through what it lets the rest of the portfolio do.
 
-In [The Variance Tax](/posts/the-variance-tax/), I wrote about the ½σ² formula. Compound returns are approximately equal to arithmetic returns minus half the variance, where σ² is return variance. The penalty is quadratic, so large drawdowns destroy wealth in ways that are hard to recover from. A portfolio that falls 50% needs 100% just to break even. That article described the problem; this one tests whether crash protection can improve total returns instead of dragging them down.
+In [The Variance Tax](/posts/the-variance-tax/), I wrote about the ½σ² formula. Compound returns are approximately equal to arithmetic returns minus half the variance, where σ² is return variance. The penalty is quadratic, so large drawdowns destroy wealth in ways that are hard to recover from. A portfolio that falls 50% needs 100% just to break even. That article described the problem; this one tests the long volatility premium: whether tail risk hedging can improve total returns instead of dragging them down.
 
 There is a chart circulating in quantitative finance circles that should not exist. It shows a strategy that buys put options on the S&P 500. A put gives its owner the right to sell the underlying asset at a fixed price. When added to a stock portfolio, this strategy *improves* total returns while reducing volatility and maximum drawdown.
 
@@ -95,7 +95,7 @@ Universa's live track record puts numbers on the argument. During Q1 2020, the C
 
 [The Wall Street Journal reported](https://en.wikipedia.org/wiki/Universa_Investments) on a portfolio that allocated **3.3%** to Universa and the rest to the S&P 500. It compounded at **12.3%** a year for 10 years through February 2018. That result beat the S&P 500 itself. A 3.3% tail position improving total returns over a decade is counterintuitive, but the variance-tax arithmetic explains it.
 
-## IV. Puts vs. trend: the tortoise and the hare
+## IV. Put options vs. trend-following: the tortoise and the hare
 
 [AQR's research on tail hedging](https://www.aqr.com/Insights/Research/White-Papers/Tail-Risk-Hedging-Contrasting-Put-and-Trend-Strategies) appeared in the *Journal of Systematic Investing*. It complicates the picture in a way I find genuinely useful for portfolio construction. The paper compares out-of-the-money puts with multi-asset trend-following. Trend-following takes positions in several asset classes when their prices move persistently in one direction.
 

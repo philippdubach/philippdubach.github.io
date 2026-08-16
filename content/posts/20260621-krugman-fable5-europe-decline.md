@@ -1,15 +1,15 @@
 +++
 title = "Krugman, Fable 5, and Europe in Decline?"
 cta_pitch = "I write one of these every few weeks on AI, sovereignty, and the European economy. Get the next one."
-seoTitle = "US AI Export Controls, Fable 5, and Europe's Real Decline"
+seoTitle = "European Tech Sovereignty: Lessons From the Fable 5 Cutoff"
 slug = "krugman-fable5-europe-decline"
 date = 2026-06-22
 lastmod = 2026-08-16
 publishDate = 2026-06-21T03:00:00Z
 images = ["https://static.philippdubach.com/cover-fable5-europe-decline1.png"]
 card_image = "https://static.philippdubach.com/cover-fable5-europe-decline1.png"
-description = "US export controls switched off Anthropic's Fable 5 worldwide after targeting foreign nationals. Europe's strategic decline is its revocable access to frontier AI."
-keywords = ["US AI export controls", "AI kill switch Europe", "European tech sovereignty", "is Europe in economic decline", "Anthropic Fable 5 Mythos 5", "AI Diffusion Rule", "weaponized interdependence", "frontier model export controls", "AI model weights export control", "ASML EUV lithography", "Draghi report", "Cloud and AI Development Act", "Chips Act 2.0", "AI compute gap Europe", "US CLOUD Act data sovereignty", "Paul Krugman Europe productivity", "sovereign AI Europe"]
+description = "European tech sovereignty became concrete when US export controls shut off Fable 5 worldwide. The deeper risk is revocable access to AI, cloud, and chips."
+keywords = ["European tech sovereignty", "European AI sovereignty", "AI kill switch Europe", "US AI export controls", "Europe US productivity gap", "Fable 5 shutdown", "Anthropic Fable 5", "frontier AI access", "AI Diffusion Rule", "weaponised interdependence", "European cloud sovereignty", "AI compute gap Europe", "ASML EUV lithography", "EU Chips Act 2.0", "Cloud and AI Development Act", "Draghi report", "sovereign AI Europe", "open-weight models", "technology chokepoints", "European economic decline"]
 categories = ["AI", "Macro"]
 type = "Analysis"
 draft = false
@@ -21,11 +21,11 @@ takeaways = [
   "Europe held 4.8% of measured global GPU-cluster performance. The United States held 74.5%.",
 ]
 faq = [
-  {question = "Did the US shut off AI access for Europe?", answer = "Effectively, yes. On June 12, 2026, a US export-control directive required Anthropic to suspend Fable 5 and Mythos 5 for foreign nationals. Anthropic could not check nationality in real time, so it disabled the models worldwide. Access remained off through June 21. I treat this as the first clear use of an AI 'kill switch'."},
+  {question = "What was the Fable 5 AI kill switch?", answer = "On June 12, 2026, a US export-control directive required Anthropic to suspend Fable 5 and Mythos 5 for foreign nationals. Anthropic could not check nationality in real time, so it disabled the models worldwide. Access remained off through June 21. I treat this as the first clear use of an AI 'kill switch'."},
   {question = "Why did Anthropic suspend Fable 5 and Mythos 5?", answer = "A US export-control order required the suspension after the government cited national security and a claimed jailbreak. A jailbreak uses prompts to bypass a model's safeguards. Anthropic disputed the basis. It called the flaw a 'narrow, non-universal jailbreak' available from other models. The company complied because it could not screen users by nationality in real time."},
   {question = "What was the AI Diffusion Rule, and why was it rescinded?", answer = "The January 2025 US rule divided countries into three tiers for access to AI computing power. It placed European Union members in two different tiers. The government rescinded it in May 2025. The official notice said the rule had 'downgraded' allies to second-tier status. Allied access was therefore a discretionary privilege."},
   {question = "Is Europe in economic decline compared with the US?", answer = "On living standards, mostly no. Paul Krugman argued that much of the measured productivity decline came from price-index methods. A price index tracks changes in prices over time. The median living-standard gap remained roughly stable. The strategic problem is different: Europe uses frontier technology that it neither builds nor controls."},
-  {question = "What is the EU technology-sovereignty package?", answer = "The June 2026 European Union proposals included Chips Act 2.0 and the Cloud and AI Development Act. They aimed to reduce dependence on foreign chips, cloud services, and AI. The launch line, 'we want to be sure nobody has a kill switch,' acknowledged the problem directly."},
+  {question = "What does European tech sovereignty mean?", answer = "It means Europe can control essential chips, cloud services, AI models, data, and infrastructure without revocable dependence on foreign providers. The June 2026 European Union proposals included Chips Act 2.0 and the Cloud and AI Development Act."},
   {question = "Why does ASML matter for European technology sovereignty?", answer = "ASML is the only maker of extreme-ultraviolet (EUV) lithography systems. Chipmakers use these machines to produce leading-edge chips. ASML is therefore Europe's strongest technology chokepoint. Yet Europe still depends on foreign graphics processors, design software, cloud services, and frontier models. One chokepoint does not create autonomy."},
   {question = "What is weaponised interdependence?", answer = "Henry Farrell and Abraham Newman use this term for power created by control of economic networks. When an economy relies on a few hubs, a hub owner can cut off downstream users. They call this the chokepoint effect. The US-controlled AI stack of chips, cloud services, and models fits that pattern."},
   {question = "Do open-weight models such as DeepSeek bypass US export controls?", answer = "Partly. Open weights are model parameters that users can download and run. They are difficult to embargo once distributed. However, cloud services, application programming interfaces, and advanced chips cannot be downloaded with the model. These dependencies preserve the chokepoint."},
@@ -36,7 +36,7 @@ faq = [
 
 On May 21, 2026, [Paul Krugman](https://paulkrugman.substack.com/p/challenging-the-narrative-of-european-478) concluded a long argument that Europe was not really in economic decline. He made one exception. Europe, he wrote, "can't be sure that it will always have access to new technologies developed and produced in the other superpowers." He added that "the risk of being cut off from strategically important technologies, once minimal, is now very real."
 
-Twenty-two days later, a US directive switched off a frontier AI model for every non-American. Well, technically, it also switched the model off for every American.
+Twenty-two days later, a US directive switched off a frontier AI model for every non-American. Well, technically, it also switched the model off for every American. The episode turned European tech sovereignty from an abstract policy goal into an operational risk.
 
 His argument turns on a measurement paradox. [Noah Smith](https://www.noahpinion.blog/p/yes-europeans-are-poorer-than-americans) and the Garicano brothers take the other side. Since 2000, measured US productivity grew much faster than Europe's when economists held prices constant.
 
@@ -60,7 +60,7 @@ Europe applies information technology well. True. But "apply, don't create" assu
 
 {{< newsletter >}}
 
-## Lithography
+## Europe's ASML lithography chokepoint
 
 Extreme-ultraviolet (EUV) lithography uses light to print the smallest circuits on advanced chips. [ASML](https://www.asml.com/en/investors) is the only supplier and earned €32.7 billion in 2025 sales. That is Europe's one real card.
 
@@ -80,7 +80,7 @@ Even the ASML card is partly held in Washington. ASML machines contain US techno
 
 {{< readnext slug="when-ai-labs-become-defense-contractors" >}}
 
-## At Washington's discretion
+## US AI export controls at Washington's discretion
 
 The usual objection is that governments threaten technology restrictions but rarely apply them to allies. By June 2026, they had started doing so.
 
@@ -110,7 +110,7 @@ ASML gives Europe some leverage in return. A US cutoff could invite a Dutch resp
 
 China's parallel stack shows that separation is survivable. It also shows that separation is expensive and probably leaves the parallel system a step behind.
 
-## Scorecard
+## European technology sovereignty: the scorecard
 
 The giveaway is that Europe's own institutions already accept the argument under gentler names. Mario Draghi's [competitiveness report](https://commission.europa.eu/topics/eu-competitiveness/draghi-report_en) called the dependence an existential challenge. It warned of "slow agony" and proposed roughly €800 billion in annual investment.
 

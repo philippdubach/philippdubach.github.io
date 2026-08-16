@@ -1,46 +1,35 @@
 +++
 title = "How DORA Made Sovereignty a Bank Problem"
 cta_pitch = "I write one of these every few weeks on financial regulation and cloud sovereignty. Get the next one."
-seoTitle = "DORA 19 Critical Providers: Sovereignty Is a Bank Problem"
+seoTitle = "DORA Critical ICT Providers: Cloud Sovereignty for Banks"
 slug = "dora-critical-cloud-providers-sovereignty"
 date = 2026-05-24
 lastmod = 2026-08-16
 publishDate = 2026-05-24T01:00:00Z
 images = ["https://static.philippdubach.com/cover-dora-sovereignty.png"]
 card_image = "https://static.philippdubach.com/cover-dora-sovereignty.png"
-description = "DORA's 19 Critical ICT Providers list collides with the CLOUD Act and EU Data Act. Sovereignty is now a documented bank deliverable, not a debate."
+description = "DORA’s 19 critical ICT providers put bank cloud sovereignty under direct EU oversight. Learn how exit plans, concentration risk, and the CLOUD Act collide."
 keywords = [
   "DORA critical ICT third-party providers",
+  "DORA cloud exit strategy",
+  "DORA third-party risk management",
+  "EU data sovereignty CLOUD Act",
+  "DORA concentration risk",
   "DORA CTPP list 2025",
-  "EU data sovereignty 2026",
-  "CLOUD Act EU compliance",
-  "DORA cloud exit plan",
-  "EU Data Act Article 32",
-  "EU Tech Sovereignty Package",
-  "Cloud and AI Development Act CADA",
-  "Regulation EU 2022/2554",
-  "Regulation EU 2023/2854",
-  "EU AI Act Regulation 2024/1689",
-  "ICT third-party risk management",
-  "DORA exit plan testing tabletop",
-  "Article 28 DORA contractual exit strategy",
-  "CLOUD Act extraterritorial reach",
-  "18 U.S.C. 2713",
-  "Executive Order 14203 ICC Karim Khan",
-  "FISA Section 702 RISAA",
-  "Schrems II Latombe Data Privacy Framework",
-  "GDPR Article 48 third-country access",
+  "Digital Operational Resilience Act",
+  "DORA bank compliance",
+  "DORA cloud outsourcing",
+  "DORA Article 28 exit plan",
+  "DORA Article 29 concentration risk",
+  "DORA Article 30 contract requirements",
   "ECB Cloud Outsourcing Guide 2025",
-  "BaFin BAIT cloud guidance",
-  "MaRisk AT 9 outsourcing",
-  "FINMA Circular 2018/3 cloud outsourcing",
-  "EUCS SecNumCloud sovereign cloud",
+  "EU Data Act Article 32",
+  "CLOUD Act EU compliance",
+  "sovereign cloud banking",
+  "DACH bank cloud regulation",
+  "cloud provider audit rights",
   "AWS European Sovereign Cloud Brandenburg",
-  "Microsoft court-fight clause European Digital Commitments",
-  "Schwarz Digits StackIT Dutch Central Bank",
-  "Schleswig-Holstein openDesk Airbus sovereign cloud",
-  "IPCEI-CIS EuroStack sovereign cloud funding",
-  "DACH bank cloud exit plan"
+  "EU digital sovereignty"
 ]
 categories = ["AI", "Investing"]
 type = "Analysis"
@@ -62,9 +51,9 @@ faq = [
 ]
 +++
 
-{{< img src="cover-dora-sovereignty.png" alt="A green printed circuit board shaped like a map of Europe. Copper traces mark national borders, and electronic components mark major cities." width="80%" priority="true" >}}
+{{< img src="cover-dora-sovereignty.png" alt="A green circuit board shaped like Europe represents bank cloud sovereignty. Copper traces mark borders, and electronic components mark cities." width="80%" priority="true" >}}
 
-I've heard variants of the same line from probably a dozen people in the last six months. A consultant I know has done more US-to-EU migrations this calendar year than in his entire career before. A founder on LinkedIn wrote the other day: Trump effectively has a kill-switch to our highly digitalised society, and the thought of that is frightening. None of those people would have used the word "sovereignty" in 2023. All of them now use it without explanation.
+I've heard variants of the same line from probably a dozen people in the last six months. A consultant I know has done more US-to-EU migrations this calendar year than in his entire career before. A founder on LinkedIn wrote the other day: Trump effectively has a kill-switch to our highly digitalised society, and the thought of that is frightening. None of those people would have used the word "sovereignty" in 2023. All of them now use it without explanation. For European banks, the Digital Operational Resilience Act (DORA) turns that language into an operating requirement.
 
 Schleswig-Holstein is a German state with 2.9 million residents. By late 2025, it had moved roughly 80% of about 30,000 state workstations from Microsoft Office to LibreOffice. Linux pilots were also running, and the state targeted full migration for 2026 ([*The Register*, 15 Oct 2025](https://www.theregister.com/2025/10/15/schleswig_holstein_office_swap/)).
 
@@ -88,7 +77,7 @@ Sovereignty has therefore become a regulatory deliverable with a last-test date.
 
 {{< img src="dora-sovereignty-19-critical-providers-1.png" alt="Diagram of selected DORA Critical ICT Third-Party Providers by headquarters. Five US providers are shaded orange, while three European and Asian providers use blue or grey." width="80%" >}}
 
-## Policy shift
+## DORA, cloud sovereignty, and the policy shift
 
 The sovereignty debate in 2026 is no longer mainly about the General Data Protection Regulation (GDPR); that battle is six years old. Four legal pressures now collide. The market was willing to ignore that collision until 2024.
 
@@ -152,7 +141,7 @@ Europe in 2026 is trying to *distance* more than it is trying to *grow*. The sov
 
 Airbus is doing fine. Schwarz Digits, the IT arm of Lidl and Kaufland, won the Dutch Central Bank's cloud business from AWS. OVHcloud passed €1B in fiscal year 2025 revenue, with 9.3% like-for-like (LFL) growth. In September 2025, Mistral closed a €1.7B Series C led by ASML. It plans a Swedish datacenter worth more than $1B. The fragmentation critique is valid, but it does not justify stopping.
 
-## What I'd hold
+## What I'd hold: DORA makes cloud sovereignty operational
 
 I keep coming back to two extreme facts that coexist.
 

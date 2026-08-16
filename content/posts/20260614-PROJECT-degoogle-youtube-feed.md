@@ -1,12 +1,12 @@
 +++
 title = "Degoogling cost me my YouTube feed, so I made my own"
-seoTitle = "Self-Hosted YouTube RSS Subscriptions Feed, No API Key"
+seoTitle = "My Self-Hosted YouTube Subscription Feed Built With RSS"
 date = 2026-06-14
 lastmod = 2026-08-16
 publishDate = 2026-06-14T03:00:00Z
 images = ["https://static.philippdubach.com/degoogle-youtube-feed-cover.png"]
-description = "I dropped the YouTube app and rebuilt only my subscription feed. A self-hosted Cloudflare Worker reads public RSS feeds without an API key."
-keywords = ["self-hosted YouTube subscriptions feed", "YouTube subscriptions RSS feed", "watch YouTube without the app", "YouTube RSS feed without API key", "degoogle YouTube", "RSS feed for YouTube channel", "YouTube channel RSS videos.xml", "Cloudflare Worker RSS reader", "youtube-nocookie embed privacy", "YouTube picture-in-picture without Premium", "filter YouTube Shorts", "Piped Invidious FreeTube alternative", "watch YouTube without account", "vanilla JS Cloudflare Worker", "Cloudflare KV Cache API Worker", "fast-xml-parser Atom feed"]
+description = "See how I built a self-hosted YouTube subscription feed with public RSS, no API key, Shorts filtering, privacy-enhanced embeds, caching, and timeouts."
+keywords = ["self-hosted YouTube subscription feed", "YouTube subscriptions RSS feed", "YouTube RSS feed without API key", "watch YouTube without Google account", "filter YouTube Shorts from RSS", "degoogle YouTube", "YouTube channel RSS feed", "YouTube feeds videos.xml", "YouTube subscription feed alternative", "Cloudflare Worker RSS reader", "YouTube Atom feed", "YouTube privacy-enhanced embed", "youtube-nocookie", "YouTube picture-in-picture", "Cloudflare KV", "Cloudflare Cache API", "fast-xml-parser", "self-hosted YouTube frontend"]
 categories = ["Tech"]
 type = "Project"
 draft = false
@@ -17,8 +17,8 @@ takeaways = [
 ]
 faq = [
   {question = "Why rebuild a YouTube feed instead of using the app?", answer = "I used the app only to see new videos from 10 to 15 channels. I did not use comments, recommendations, or Shorts. My replacement keeps only the subscription feed."},
-  {question = "Does this need a YouTube Data API key?", answer = "No. Each YouTube channel publishes recent uploads at feeds/videos.xml in Atom, a standard XML feed format. The Worker reads it directly. It needs no Google project, quota, or key."},
-  {question = "Can you watch YouTube subscriptions without a Google account?", answer = "Yes. Public channel feeds need no sign-in. You keep your own list of channels, and Google stores no subscription list for this feed."},
+  {question = "How do I use a YouTube RSS feed without an API key?", answer = "Read each channel's public feeds/videos.xml endpoint. It publishes recent uploads in Atom, a standard XML feed format. The Worker reads that feed directly, so it needs no Google project, quota, or key."},
+  {question = "Can I follow YouTube subscriptions without a Google account?", answer = "Yes. Public YouTube channel feeds need no sign-in. You keep your own list of channels, and Google stores no subscription list for this feed."},
   {question = "How does it find a channel's videos without the API?", answer = "You add a URL or @handle. The Worker reads the channel page once and finds its stable channel ID. It saves that ID and uses it for later feed requests."},
   {question = "How are YouTube Shorts filtered out?", answer = "The Worker first checks the title for #shorts. It then tests how the video URL redirects, because Shorts and full videos resolve differently. A video appears only if it passes both checks."},
   {question = "Does watching a video track you?", answer = "Not before you press play. The page shows static thumbnails. A click loads YouTube's privacy-enhanced player, which can then receive your IP address and store a local identifier. On iOS, the video starts muted because Apple blocks one-tap sound."},
@@ -28,15 +28,15 @@ faq = [
 
 {{< img src="degoogle-youtube-feed-cover.png" alt="The feed lists new videos from Veritasium, Vizeh, First We Feast, and Saturday Night Live in a desktop browser. It shows no comments, recommendations, or Shorts." width="80%" priority="true" >}}
 
-I dropped the YouTube app as part of degoogling my life. I had used it for one screen: new videos from the 10 to 15 channels I follow. No comments, no recommendations, no Shorts. I rebuilt that screen and nothing else.
+I dropped the YouTube app as part of degoogling my life. My self-hosted YouTube subscription feed shows one thing: new videos from the 10 to 15 channels I follow. No comments, no recommendations, no Shorts. I rebuilt that screen and nothing else.
 
-## Just the feed, nothing else
+## A self-hosted YouTube subscription feed
 
 The result is one chronological list. It merges videos from every channel I follow and sorts them newest first. I can add a channel by URL or @handle, and it stays on the list.
 
 I ignore or avoid everything YouTube adds to the subscription feed. Building the one screen I use took less work than configuring the app to leave me alone.
 
-## How it works without an API key
+## YouTube RSS feeds without an API key
 
 Each channel publishes a public RSS feed at `feeds/videos.xml`. The file uses Atom, a standard XML format for content feeds. A Cloudflare Worker reads it, and `fast-xml-parser` converts the XML into structured data. The Worker is a small program that runs on Cloudflare's network.
 
@@ -48,7 +48,7 @@ Before the Worker fetches a user-supplied URL, it checks the destination. This g
 
 {{< readnext slug="moving-the-blog-stack-to-europe-kind-of" >}}
 
-## Filtering out YouTube Shorts
+## How to filter YouTube Shorts from RSS
 
 Shorts were the main thing I wanted gone, and one check does not catch them reliably. The first check looks for `#shorts` in the title. The second tests how the video URL redirects because Shorts and full videos resolve differently. A video must pass both checks to appear.
 

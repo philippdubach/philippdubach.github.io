@@ -1,12 +1,12 @@
 +++
 title = "Europe's $24 Trillion Payment Breakup Is Really a Bet on Infrastructure Arbitrage"
-seoTitle = "European Payments Initiative Wero: EPI vs Visa Mastercard A2A Infrastructure Arbitrage"
+seoTitle = "Wero Payment System: How Europe Could Challenge Card Fees"
 date = 2026-02-16
 lastmod = 2026-08-16
 publishDate = 2026-02-16T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-european-payments-arbitrage3.jpg"]
-description = "In February 2026, EuroPA connected 130 million users across 13 countries. Wero targeted a 1.0–1.2 percentage-point cost gap between card networks and instant bank transfers. The EU's own fee cap helped protect the networks it was meant to weaken."
-keywords = ["European Payments Initiative EPI", "Wero payment system", "Visa Mastercard European market", "SEPA Instant Credit Transfer", "payment sovereignty Europe", "account-to-account payments A2A", "EuroPA alliance Bizum Bancomat", "interchange fee regulation EU", "digital euro ECB", "India UPI Brazil Pix comparison", "European payment infrastructure", "scheme fees Visa Mastercard"]
+description = "The Wero payment system targets a 1.0–1.2 percentage-point fee gap through SEPA Instant. See how EuroPA could challenge Visa and Mastercard across Europe."
+keywords = ["Wero payment system", "European Payments Initiative", "European payment sovereignty", "account-to-account payments Europe", "Wero vs Visa Mastercard", "SEPA Instant Credit Transfer", "EuroPA payment alliance", "European payment infrastructure", "Wero merchant fees", "Visa Mastercard scheme fees", "interchange fee regulation EU", "pan-European payments", "instant bank payments", "EPI digital wallet", "Wero EuroPA", "Bizum Bancomat interoperability", "digital euro vs Wero", "open banking payments", "UPI Pix comparison", "merchant payment costs Europe"]
 draft = false
 categories = ["Macro"]
 takeaways = [
@@ -16,7 +16,7 @@ takeaways = [
   "In February 2026, Mastercard had over 900 million branded cards in EU circulation, compared with Wero's 47 million users. Wero launched first in Germany, but German users generated only 5% of its transaction volume.",
 ]
 faq = [
-  {question = "What is the European Payments Initiative and how does Wero work?", answer = "The European Payments Initiative (EPI) is a consortium of 16 major European banks. It built Wero, a digital wallet that uses Single Euro Payments Area (SEPA) Instant Credit Transfer infrastructure. Wero moves money directly between bank accounts in under 10 seconds. Users identify the recipient with a phone number, email address, or QR code. The payment bypasses card networks. By February 2026, EPI had committed roughly €500 million in capital and had over 1,100 member institutions."},
+  {question = "What is the Wero payment system, and how does it work?", answer = "The Wero payment system is a digital wallet built by the European Payments Initiative (EPI), a consortium of 16 major European banks. It uses Single Euro Payments Area (SEPA) Instant Credit Transfer infrastructure. Wero moves money directly between bank accounts in under 10 seconds. Users identify the recipient with a phone number, email address, or QR code. The payment bypasses card networks. By February 2026, EPI had committed roughly €500 million in capital and had over 1,100 member institutions."},
   {question = "What is the EuroPA alliance and why does it matter?", answer = "EPI, Bancomat, Bizum, SIBS, and Vipps MobilePay signed a Memorandum of Understanding on February 2, 2026, formalizing the EuroPA alliance. Its hub connects Wero with Spain's Bizum, which had 30.6 million users at the time of publication. It also connects Italy's Bancomat, Portugal's SIBS, and Nordic wallet Vipps MobilePay, which had 12.5 million users. The alliance created a network of 130 million users across 13 countries overnight. It covers 72% of the EU population and could make merchant support more likely."},
   {question = "How much cheaper is Wero than Visa or Mastercard for merchants?", answer = "A Visa or Mastercard transaction can cost a European merchant up to 2%. That price includes interchange, scheme, and processing fees. Interchange is the fee that the merchant's acquiring bank pays to the cardholder's issuing bank. Scheme fees are card-network charges, while processing fees pay for transaction handling. Wero's proposed German price is 0.77% plus fees charged by the merchant's checkout gateway. The difference is about 100 to 120 basis points per transaction. One basis point is 0.01 percentage points. This cost advantage exists because account-to-account (A2A) payments bypass the card network."},
   {question = "Why did the EU's Interchange Fee Regulation accidentally help Visa and Mastercard?", answer = "The 2015 Interchange Fee Regulation capped consumer debit interchange at 0.2% and credit interchange at 0.3%. Visa and Mastercard responded by increasing unregulated scheme fees by 33.9% between 2018 and 2022. The average net merchant service charge nearly doubled from 0.27% to 0.44%, which neutralized the regulatory benefit. The cap also reduced the revenue available to fund new payment networks, which made entry harder for competitors."},
@@ -30,11 +30,11 @@ faq = [
 
 On February 2, 2026, the European Payments Initiative (EPI) signed a [Memorandum of Understanding](https://epicompany.eu/media-insights/bancomat-bizum-epi-sibs-and-vipps-mobilepay-sign-mou-to-accelerate-the-rollout-of-sovereign-pan-european-payment-solutions) with Alliance EuroPA. The alliance links Spain's Bizum, Italy's Bancomat, Portugal's SIBS, and the Nordic Vipps MobilePay system. The agreement connects 130 million users across 13 countries through one interoperable payment network.
 
-Headlines described the agreement as Europe's breakup with Visa and Mastercard. The more interesting story is an infrastructure arbitrage. If it works, it could change the price of moving money across Europe.
+Headlines described the agreement as Europe's breakup with Visa and Mastercard. The more interesting story behind the Wero payment system is infrastructure arbitrage. If it works, it could change the price of moving money across Europe.
 
 Politicians sell the project as payment sovereignty, but that is not its main economic purpose. EPI is targeting a structural pricing gap that Visa and Mastercard have maintained for decades. EU regulation accidentally made those networks harder to dislodge.
 
-## I. The hidden fee structure 
+## I. Why Wero can undercut card fees
 
 The EU adopted the [Interchange Fee Regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32015R0751) (IFR) in 2015. It capped consumer debit interchange at 0.2% and credit interchange at 0.3%. Interchange is the fee that the merchant's acquiring bank pays to the cardholder's issuing bank. Merchants initially celebrated the cap.
 
@@ -142,7 +142,7 @@ In June 2025, the UK [Competition Appeal Tribunal](https://www.rte.ie/news/busin
 
 {{< readnext slug="repo-might-be-even-bigger-than-we-thought" >}}
 
-## VI. Visa and Mastercard
+## VI. Wero vs. Visa and Mastercard
 
 Neither company had said much publicly about Wero by February 2026, and I read that silence as strategy. A response would raise the challenger's profile. When pressed, the networks emphasized their value. On an October 2025 earnings call, Mastercard chief executive Michael Miebach argued that consumers and businesses choose cards in competitive markets because cards offer protection.
 

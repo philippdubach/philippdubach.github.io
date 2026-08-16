@@ -1,14 +1,14 @@
 +++
 title = "Midyear Portfolio Review: Valuations got more extreme, not less"
 slug = "midyear-portfolio-review-the-rotation-worked-europe-didnt"
-seoTitle = "2026 Portfolio Midyear Review: +5.2% in CHF, CAPE 42.7, No Fed Cuts"
+seoTitle = "Midyear Portfolio Review 2026: 5.2% CHF Return, CAPE 42.7"
 date = 2026-05-31
 lastmod = 2026-08-16
 publishDate = 2026-05-31T10:00:00Z
 images = ["https://static.philippdubach.com/midyear-cover.jpg"]
 card_image = "https://static.philippdubach.com/midyear-cover.jpg"
-description = "My CHF portfolio gained 5.2% through May 29, 2026. It matched a global 60/40 portfolio, trailed the S&P 500, and missed on rates. I made three small changes."
-keywords = ["midyear portfolio review 2026", "Shiller CAPE 42.7", "S&P 500 Shiller CAPE 2026", "no Fed rate cuts 2026", "emerging markets rotation 2026", "Europe overweight underperform 2026", "USD CHF outlook 2026", "S&P 500 concentration NVIDIA", "NVIDIA 8.17% S&P 500 weight", "60/40 portfolio benchmark CHF", "AI capex hyperscaler 2026", "JPM S&P 500 7600 target", "Mike Wilson 7800 target", "Germany fiscal pivot equities", "European equity valuation discount", "US Treasury safety premium", "IMF Fiscal Monitor April 2026", "Bitcoin allocation portfolio 2026", "small cap rotation 2026", "gold UBS 5900 target 2026", "CHF hedged Japan ETF IJPC", "currency hedging Swiss investor", "Strait of Hormuz oil shock 2026"]
+description = "This 2026 midyear portfolio review tracks a 5.2% CHF gain against global 60/40 and the S&P 500. See what worked, what failed, and three allocation changes."
+keywords = ["midyear portfolio review 2026", "portfolio performance review", "Shiller CAPE ratio 2026", "currency hedging Swiss investors", "portfolio rebalancing 2026", "CHF portfolio returns", "global 60/40 portfolio", "S&P 500 valuation 2026", "CAPE 42.7", "S&P 500 concentration", "Nvidia S&P 500 weight", "emerging markets rotation", "Europe equities valuation", "Federal Reserve rate cuts 2026", "gold portfolio allocation", "Bitcoin portfolio diversification", "Japan CHF hedged ETF", "AI capex portfolio exposure", "time-weighted return", "asset allocation review"]
 categories = ["Investing"]
 type = "Analysis"
 draft = false
@@ -30,9 +30,9 @@ faq = [
 
 {{< img src="midyear-cover.jpg" alt="Figure on a Swiss alpine balcony facing a financial skyline dominated by one unusually tall tower" width="80%" priority="true" >}}
 
-Last December, I rebalanced around [five theses for 2026](/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/). Five months later, moving money from US large companies into cheaper markets had mostly worked. Europe was the exception. As always, this is a review of my portfolio, not a recommendation.
+Last December, I rebalanced around [five theses for 2026](/posts/how-ai-is-shaping-my-investment-portfolio-for-2026/). Five months later, moving money from US large companies into cheaper markets had mostly worked. Europe was the exception. As always, this is my 2026 midyear portfolio review, not a recommendation.
 
-## Portfolio performance so far
+## Portfolio performance review through May
 
 Through May 29, the portfolio gained **5.2%** in Swiss francs on a time-weighted basis. A time-weighted return removes the effect of deposits and withdrawals.
 
@@ -134,7 +134,7 @@ Over the full five months, my Swiss-franc-hedged gold holding gained only about 
 
 Bitcoin did not. During the March drawdown, it fell with equities and fell further than they did. It was down about **19%** in francs for the year through May 29. Bitcoin behaved like an amplified bet on risk appetite and market liquidity, not like ballast.
 
-## Three changes
+## Three portfolio allocation changes
 
 I made three small changes. None reversed the strategy. A midyear review mostly earns the right to leave things alone, and that is what this one did.
 

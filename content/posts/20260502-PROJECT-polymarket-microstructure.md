@@ -1,14 +1,14 @@
 +++
 title = "The Anatomy of a Decentralized Prediction Market: Notes from the Polymarket Order Book"
-seoTitle = "Polymarket Order-Book Microstructure: Stylized Facts and Measurement"
+seoTitle = "Polymarket Microstructure: 30 Billion Order-Book Events"
 date = 2026-05-02
 lastmod = 2026-08-16
 publishDate = 2026-05-02T05:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-polymarket-microstructure.jpg"]
 card_image = "sf8_depth_decay.png"
-description = "The study joins a 624 GB event-level archive of Polymarket's WebSocket feed to on-chain trades. It reports eight stylized facts and finds that the feed recovers trade direction only 59% of the time."
+description = "Explore Polymarket microstructure using 30.3 billion order-book events: spreads, depth, wash trading, and a key trade-direction error for researchers."
 doi = "10.48550/arXiv.2604.24366"
-keywords = ["Polymarket microstructure", "decentralized prediction market order book", "Polymarket WebSocket feed", "CTF Exchange OrderFilled", "longshot spread premium prediction markets", "trade direction inference Polymarket", "Lee-Ready algorithm crypto", "Kyle's lambda Polymarket", "prediction market wash trading", "Polygon CLOB microstructure", "decentralized finance market microstructure", "on-chain trade direction", "30 billion order book events", "Polymarket research replication"]
+keywords = ["Polymarket microstructure", "Polymarket order book data", "Polymarket WebSocket feed", "prediction market liquidity", "Polymarket wash trading", "decentralized prediction market order book", "Polymarket CLOB", "on-chain trade direction", "CTF Exchange OrderFilled", "prediction market bid-ask spread", "longshot spread premium", "Lee-Ready trade classification", "Kyle's lambda", "order-book depth", "Polygon prediction market", "trade-direction inference", "Polymarket dataset", "prediction market research"]
 categories = ["Quantitative Finance"]
 type = "Project"
 math = true
@@ -20,22 +20,22 @@ takeaways = [
   "The archive covers 30.3 billion order-book events across 52 days. The panel uses a 28-day window. Its on-chain source scrape contains 255,425,405 fills, of which 6.4M trades are in the 600 selected markets. The full pipeline is available in a Zenodo replication package.",
 ]
 faq = [
-  {question = "What does Polymarket's public WebSocket feed actually expose?", answer = "An order book lists resting buy and sell orders by price. Level 2 (L2) data show the aggregate size at each price. Polymarket exposes two event types. book_snapshot gives a complete L2 snapshot of one market side at subscription and at irregular intervals. price_change gives the new resting size at one level. change_side identifies the side that moved, not the side that initiated the trade. The feed never identifies the taker. An algorithm that uses only the feed therefore cannot identify whether a buyer or seller initiated the trade reliably."},
+  {question = "How does Polymarket's public order-book WebSocket feed work?", answer = "An order book lists resting buy and sell orders by price. Level 2 (L2) data show the aggregate size at each price. Polymarket exposes two event types. book_snapshot gives a complete L2 snapshot of one market side at subscription and at irregular intervals. price_change gives the new resting size at one level. change_side identifies the side that moved, not the side that initiated the trade. The feed never identifies the taker. An algorithm that uses only the feed therefore cannot identify whether a buyer or seller initiated the trade reliably."},
   {question = "Why does trade-direction inference fail on Polymarket?", answer = "Equity researchers often use Lee-Ready or a variant to distinguish buyer-initiated from seller-initiated trades. These methods assume that the feed contains enough information. Polymarket's feed does not. change_side identifies the side that moved, not the side that initiated the trade. Across the 100 highest-volume markets and four 7-day windows, volume-weighted sign agreement is about 59%. This is just above the 50% chance baseline. It is well below the approximately 80% Lee-Ready accuracy on Nasdaq."},
   {question = "How wide are spreads on Polymarket compared with equity markets?", answer = "A quoted spread is the gap between the best buy and sell prices. The mid-price is their average. One basis point is 0.01 percentage point. The quoted half-spread is half the quoted spread relative to the mid-price. On Polymarket's central price decile, it is around 200 basis points. It reaches 650-900 basis points in the lowest-probability decile. The effective half-spread measures a trade's execution cost relative to the mid-price. On liquid US equities after decimalization, it is in the single-digit basis-point range. Polymarket is roughly an order of magnitude wider. This is consistent with longer prediction-market holding periods and substantially less market-maker capital."},
   {question = "Is wash trading a problem on Polymarket?", answer = "This study flags direct self-matches and one-step round trips as wash-suspect trades. Across the 600-market panel, the median self-counterparty wash share is 0.97% per market. The 90th percentile is 4.5%, the 99th is 10.6%, and the maximum is 22.2%. These results are lower bounds. The detector does not cover multi-counterparty graph patterns. Cong et al. (2023) report 25-70% wash shares on unregulated cryptocurrency token exchanges. Polymarket is well below that range, although the venue-class incentives differ."},
-  {question = "What is the longshot spread premium?", answer = "The longshot spread premium is the extra spread charged on low-probability contracts. The mid-price is the average of the best buy and sell prices. One basis point is 0.01 percentage point. The quoted half-spread is about 200 basis points in the central [0.4, 0.6] mid-price range. The full quoted spread reaches 1,300-1,800 basis points in the lowest-probability decile. Its half-spread is 650-900 basis points. The low-probability side is wider than the high-probability side. This magnitude looks less like a behavioral longshot bias and more like a liquidity-provision constraint. Low-probability binary contracts give market makers bounded upside and asymmetric downside. Market makers therefore charge a larger inventory-risk premium than on a continuous-payoff sportsbook market."},
+  {question = "Why are Polymarket spreads wider for longshots?", answer = "The longshot spread premium is the extra spread charged on low-probability contracts. The mid-price is the average of the best buy and sell prices. One basis point is 0.01 percentage point. The quoted half-spread is about 200 basis points in the central [0.4, 0.6] mid-price range. The full quoted spread reaches 1,300-1,800 basis points in the lowest-probability decile. Its half-spread is 650-900 basis points. The low-probability side is wider than the high-probability side. This magnitude looks less like a behavioral longshot bias and more like a liquidity-provision constraint. Low-probability binary contracts give market makers bounded upside and asymmetric downside. Market makers therefore charge a larger inventory-risk premium than on a continuous-payoff sportsbook market."},
   {question = "How can microstructure researchers correctly measure Polymarket?", answer = "Researchers should source trade direction from on-chain OrderFilled events on the Conditional Token Framework (CTF) Exchange smart contract. They should not infer it from the public WebSocket feed. In OrderFilled, makerAssetId and takerAssetId show which side held US Dollar Coin (USDC). This shows directly whether a buyer or seller initiated the trade. The replication package at github.com/philippdubach/polymarket-microstructure joins off-chain and on-chain records. It also provides patches that let existing measurement code accept those on-chain records as the trade-direction source."},
 ]
 +++
 
 <br>
 
-I spent two months running a Polymarket order-book collector. An order book lists resting buy and sell orders by price. My collector runs on a small virtual machine (VM) and subscribes to Polymarket's WebSocket feed. It writes one file in the columnar Parquet format per Coordinated Universal Time (UTC) hour.
+I spent two months collecting Polymarket order-book data to study its market microstructure. An order book lists resting buy and sell orders by price. My collector runs on a small virtual machine (VM) and subscribes to Polymarket's WebSocket feed. It writes one file in the columnar Parquet format per Coordinated Universal Time (UTC) hour.
 
 By 2026-04-15, the archive contained 1,262 hourly files and 30,287,264,368 events. It occupied 623.8 GB and covered 52 calendar days and 385,198 distinct market ids. As of May 2, 2026, the first version of the [paper](https://arxiv.org/abs/2604.24366) is on arXiv. The [replication package](https://github.com/philippdubach/polymarket-microstructure) is on GitHub and Zenodo. Its DOI is [10.5281/zenodo.19811426](https://doi.org/10.5281/zenodo.19811426). The manuscript is under review at the [Journal of Financial Markets](https://www.sciencedirect.com/journal/journal-of-financial-markets).
 
-## Why bother
+## Why Polymarket microstructure matters
 
 A prediction market lets participants trade contracts whose payoff depends on an event's outcome. It aggregates dispersed beliefs into one price. In equilibrium, that price behaves like a probability, a number between zero and one that represents likelihood.
 
@@ -45,7 +45,7 @@ Prediction-market microstructure remains under-studied. Liquidity is the ability
 
 Polymarket changed this. Since 2021, it has operated a limit-order-book exchange on Polygon. Trades settle in US Dollar Coin (USDC) against an on-chain conditional-token contract. The infrastructure is finally there. What's missing is the data work to actually use it.
 
-## Two contributions
+## Two Polymarket microstructure findings
 
 The paper has two empirical contributions, ordered by weight for the literature.
 
@@ -55,7 +55,7 @@ The second contribution consists of eight cross-sectional stylized facts from a 
 
 The stylized facts describe Polymarket's microstructure on its own terms. The measurement result defines when a trade-direction-dependent claim about Polymarket is credible.
 
-## The data
+## Polymarket order-book and on-chain data
 
 The primary input is a continuous tick-level archive of the public WebSocket feed. It runs from 2026-02-21 16:00 UTC through 2026-04-15 08:00 UTC. I preserved the WebSocket payload schema verbatim. Eager Pydantic parsing was a multi-hour operation at this row count. I therefore parsed JavaScript Object Notation (JSON) only after the market-id and time-window filters.
 
@@ -137,7 +137,7 @@ The paper also reports three other stylized facts. SF3 covers Polygon block-cloc
 
 {{< readnext slug="the-absolute-insider-mess-of-prediction-markets" >}}
 
-## The limits of order-book-only inference
+## Why Polymarket order-book data cannot infer trade direction
 
 Six standard microstructure measures depend on trade direction. They are effective spread, realized spread, Roll, Abdi-Ranaldo, Kyle's $\lambda$, and Amihud. Kyle's $\lambda$ estimates price impact from signed trade flow. Each measure needs an aggressor sign. The aggressor is the order that executes against a resting order. Its sign identifies whether a buyer or seller initiated the trade.
 
@@ -183,7 +183,7 @@ I recently had a long-ish exchange with someone scoping research on the same dat
 
 {{< readnext slug="against-all-odds-the-mathematics-of-provably-fair-casino-games" >}}
 
-## Replication
+## Polymarket order-book data and replication
 
 Everything is reproducible from the public on-chain record and your own WebSocket capture. I am not redistributing the rounded 624 GB raw archive. It is too large to move around practically. The panel artifacts and on-chain scrape pipeline are public:
 

@@ -1,15 +1,15 @@
 +++
 title = "I Tried Kimi K3 Inside Claude Code"
 cta_pitch = "I write every few weeks about AI, sovereignty and the economics underneath both. Get the next one."
-seoTitle = "Testing Moonshot AI's Kimi K3 Inside Claude Code"
+seoTitle = "My Kimi K3 in Claude Code Test: Cost, Speed, and Verdict"
 slug = "kimi-k3-inside-claude-code"
 date = 2026-07-19
 lastmod = 2026-08-16
 publishDate = 2026-07-19T10:00:00Z
 images = ["https://static.philippdubach.com/kimi-k3-cover1.png"]
 card_image = "https://static.philippdubach.com/kimi-k3-cover1.png"
-description = "I routed Claude Code through Moonshot AI's Kimi K3 and rebuilt a frontend for $7.18. I then estimated the same recorded token mix at Claude list prices and examined sovereign AI."
-keywords = ["Kimi K3", "Moonshot AI", "Claude Code", "OpenRouter", "open-weight models", "AI coding models", "Frontend Arena", "Claude Opus 4.8", "Claude Fable 5", "Qwen 3.8", "Inkling", "sovereign AI", "on-premise AI", "Swiss AI infrastructure"]
+description = "I tested Kimi K3 in Claude Code through OpenRouter and rebuilt a frontend for $7.18. See the fixed-token-mix Claude costs and open-weight economics in practice."
+keywords = ["Kimi K3", "Kimi K3 Claude Code", "Kimi K3 review", "Kimi K3 vs Claude", "Kimi K3 open weights", "Moonshot AI Kimi K3", "Kimi K3 pricing", "Kimi K3 coding", "OpenRouter Kimi K3", "Claude Code alternative model", "Kimi K3 frontend test", "AI coding model comparison", "2.8 trillion parameter model", "mixture-of-experts model", "one million token context", "Claude Opus 4.8", "Claude Fable 5", "open-weight AI economics", "sovereign AI", "on-premise AI"]
 categories = ["AI"]
 type = "Experiment"
 draft = false
@@ -22,8 +22,8 @@ takeaways = [
 ]
 faq = [
   {question = "Can Kimi K3 be used inside Claude Code?", answer = "Yes. Claude Code is an agent interface for coding tasks. I used OpenRouter, a request-routing service, to send its requests to Moonshot AI's Kimi K3. The interface and most of my workflow stayed the same."},
-  {question = "Is Kimi K3 better than Claude Opus 4.8?", answer = "Not in my single-run experience. Opus still felt more dependable on difficult coding work. Kimi K3 was closer than I expected and cheaper for the recorded token mix."},
-  {question = "How much did the Kimi K3 activity cost?", answer = "The exported activity log contained 115 requests and 13.64 million prompt tokens, which carry instructions and context. It also contained 82,307 output tokens, which carry model responses. The activity cost $7.18. Reuse of 12.95 million cached prompt tokens helped reduce that cost."},
+  {question = "How does Kimi K3 compare with Claude Opus 4.8?", answer = "In my single-run experience, Opus still felt more dependable on difficult coding work. Kimi K3 was closer than I expected and cheaper for the recorded token mix."},
+  {question = "How much did Kimi K3 cost in Claude Code?", answer = "The exported activity log contained 115 requests and 13.64 million prompt tokens, which carry instructions and context. It also contained 82,307 output tokens, which carry model responses. The activity cost $7.18. Reuse of 12.95 million cached prompt tokens helped reduce that cost."},
   {question = "What would the same traffic have cost on Claude?", answer = "I applied Anthropic's published input, output, and cache-hit prices to the recorded token mix. This calculation gives about $11.96 for Claude Opus 4.8 and $23.92 for Claude Fable 5. These are fixed-mix estimates, not bills from separate Claude runs."},
   {question = "Can a company run Kimi K3 on premises?", answer = "In principle, a company could run it after Moonshot releases the model weights. As of July 19, 2026, Moonshot said release would occur by July 27. K3 has 2.8 trillion parameters, the values learned during training. Its mixture-of-experts design activates only part of the model for each token. Moonshot recommended at least 64 accelerators. This is data-centre infrastructure, not a server under somebody's desk."}
 ]
@@ -31,7 +31,7 @@ faq = [
 
 {{< img src="kimi-k3-cover1.png" alt="Claude Code running Moonshot AI's Kimi K3." width="80%" priority="true" >}}
 
-[Kimi K3 is Moonshot's new 2.8-trillion-parameter mixture-of-experts model](https://www.kimi.com/blog/kimi-k3). Its parameters are values learned during training. Because K3 uses several specialised components, only part of the model handles each token. It also accepts images and up to one million tokens of context in a request.
+[Kimi K3 is Moonshot's new 2.8-trillion-parameter mixture-of-experts model](https://www.kimi.com/blog/kimi-k3). I tested Kimi K3 in Claude Code to see whether those specifications mattered in a familiar workflow. Its parameters are values learned during training. Because K3 uses several specialised components, only part of the model handles each token. It also accepts images and up to one million tokens of context in a request.
 
 Together, those learned parameters form the model weights. Open weights are available for others to download and run. This is narrower than open source, which usually also provides training code and data.
 
@@ -43,7 +43,7 @@ I have burned millions of tokens through Claude Code by now. It is the agent har
 
 I kept Claude Code and changed only the model behind it. [OpenRouter](https://openrouter.ai/), a request-routing service, sent the requests to Kimi K3.
 {{< img src="kimi-in-claude.png" alt="Claude Code configured to use Moonshot AI's Kimi K3 through OpenRouter." width="80%" >}}
-## First impression: slow
+## First impression in Claude Code: slow
 
 It felt slow. Very slow, at first. That was odd because third-party measurements pointed the other way. [Artificial Analysis](https://artificialanalysis.ai/models/comparisons/kimi-k3-vs-claude-opus-4-8) reported speed in output tokens, the small units of a model's response. Around July 19, 2026, it measured about 62 per second for Kimi K3 and 57 for Claude Opus 4.8. K3 also began its responses sooner.
 
@@ -51,7 +51,7 @@ Maybe the difference was time spent reasoning before useful text appeared. Maybe
 
 Then, somewhere during the first hour, I stopped noticing. K3 had not suddenly become faster. It handled files, edits, and tool calls well enough that I forgot where the traffic was going.
 
-## A quick frontend test
+## A quick Kimi K3 frontend test
 
 K3 was getting attention for frontend work when I tested it. [It ranked first on Code Arena](https://arena.ai/leaderboard/code/webdev) around July 19, 2026. Code Arena is a public leaderboard for generated web interfaces. I wanted a visual test rather than another coding benchmark. A benchmark is a standard task used to compare models.
 
@@ -67,7 +67,7 @@ I reused the detailed prompt and original assets from [this Lafys build](https:/
 
 _I know this is one run, with very specific instructions and the original assets. Give the model a vaguer prompt and the result may fall apart. I did not run a control trial or calculate an objective similarity score._
 
-## Cost
+## Kimi K3 cost in Claude Code
 
 The OpenRouter export covered 115 requests. It logged 13.64 million prompt tokens carrying instructions and context, plus 82,307 output tokens carrying model responses. Of those prompt tokens, 12.95 million were cache hits, which reuse earlier input at a lower price. Nearly 95% of the prompt tokens were cached. Total cost: $7.18.
 
@@ -75,7 +75,7 @@ I then applied Anthropic's published list prices to that recorded traffic mix. T
 
 Under this fixed-mix assumption, Kimi was roughly 40% cheaper than Opus and 70% cheaper than Fable.
 
-## Is it an Opus replacement?
+## Is Kimi K3 a Claude Opus replacement?
 
 No. Not for me.
 
