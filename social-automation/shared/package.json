@@ -12,7 +12,10 @@
     "./state": "./src/state.js",
     "./auth": "./src/auth.js",
     "./rate-limit": "./src/rate-limit.js",
-    "./llm": "./src/llm.js"
+    "./llm": "./src/llm.js",
+    "./post-job": "./src/post-job.js",
+    "./post-gate-state": "./src/post-gate-state.js",
+    "./post-gate-do": "./src/post-gate-do.js"
   },
   "scripts": {
     "test": "node --test test/*.test.js"
