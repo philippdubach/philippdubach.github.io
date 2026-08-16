@@ -452,6 +452,14 @@ function terminalError(message, code = 'AUTH_FAILED') {
   return error;
 }
 
+function preSendInfrastructureError(message, cause) {
+  const error = new Error(message, { cause });
+  error.code = 'FETCH_FAILED';
+  error.stage = 'pre-send';
+  error.requestSent = false;
+  return error;
+}
+
 async function enqueuePostJob(env, job, metadata) {
   const metadataKey = `jobmeta:${jobKey(job)}`;
   await env.POSTED_STATE.put(metadataKey, JSON.stringify(metadata));
@@ -464,7 +472,11 @@ async function enqueuePostJob(env, job, metadata) {
 }
 
 async function jobMetadata(env, job) {
-  return await env.POSTED_STATE.get(`jobmeta:${jobKey(job)}`, 'json') || {};
+  try {
+    return await env.POSTED_STATE.get(`jobmeta:${jobKey(job)}`, 'json') || {};
+  } catch (cause) {
+    throw preSendInfrastructureError('Post metadata is unavailable', cause);
+  }
 }
 
 function legacyMetadata(metadata) {
@@ -496,7 +508,7 @@ async function writePublishedReadModel(
   await env.POSTED_STATE.delete(`jobmeta:${jobKey(job)}`);
 }
 
-async function handleDeniedClaim(env, gateState, message) {
+async function handleDeniedClaim(env, job, gateState, message) {
   if (gateState?.status === 'published') {
     if (!(await env.POSTED_STATE.get(`posts:${gateState.job.articleId}`))) {
       await writePublishedReadModel(
@@ -505,11 +517,14 @@ async function handleDeniedClaim(env, gateState, message) {
         gateState.result,
         gateState.updatedAt,
       );
+    } else {
+      await env.POSTED_STATE.delete(`jobmeta:${jobKey(job)}`);
     }
     message.ack();
     return;
   }
   if (gateState?.status === 'backfilled') {
+    await env.POSTED_STATE.delete(`jobmeta:${jobKey(job)}`);
     message.ack();
     return;
   }
@@ -525,10 +540,15 @@ async function deliverPostJob(env, message) {
     return;
   }
 
+  if (job.platform !== 'bluesky') {
+    message.retry();
+    return;
+  }
+
   const gate = env.POST_GATE.getByName(jobKey(job));
   const claim = await gate.claim(job);
   if (!claim.claimed) {
-    await handleDeniedClaim(env, claim.state, message);
+    await handleDeniedClaim(env, job, claim.state, message);
     return;
   }
 
@@ -582,5 +602,6 @@ async function archiveFailedDelivery(env, message) {
     gateState,
     archivedAt: new Date().toISOString(),
   }));
+  await env.POSTED_STATE.delete(`jobmeta:${key}`);
   message.ack();
 }
