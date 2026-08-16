@@ -51,7 +51,7 @@ faq = [
 
 > Anthropic was founded as the safety lab that would pull rivals upward. Five years later, it was one of the most aggressive frontier scalers, with a **$380 billion** valuation. Its founding thesis treats capability at that scale as the reason safeguards are necessary.
 
-_A personal note first. This post is an outtake from a [14,000-word profile of Dario Amodei](https://phil-dubach.com/dario-amodei-profile/) that I published on May 9, 2026. I don't like Anthropic noticeably more than I dislike the other giant cloud platforms and AI model providers. Amodei is probably the AI chief executive whose language and thinking land closest to mine. During April and early May 2026, I worked through a dozen of his interviews and a stack of his essays. I also watched many hours of him on YouTube. The longform is the portrait. This post is the structural argument that fell out of it. If you want the character work, family backstory, and scenes that a paradox piece can't carry, read the full thing._
+_A personal note first. This post is an outtake from a 14,000-word profile of Dario Amodei that I published on May 9, 2026. I don't like Anthropic noticeably more than I dislike the other giant cloud platforms and AI model providers. Amodei is probably the AI chief executive whose language and thinking land closest to mine. During April and early May 2026, I worked through a dozen of his interviews and a stack of his essays. I also watched many hours of him on YouTube. The longform is the portrait. This post is the structural argument that fell out of it. If you want the character work, family backstory, and scenes that a paradox piece can't carry, read the full thing._
 
 Dario Amodei founded Anthropic in 2021 with six other former OpenAI researchers. Their artificial-intelligence (AI) thesis had two halves.
 
@@ -61,7 +61,7 @@ Second came the load-bearing claim: competition on safety would pull rivals upwa
 
 A Series A is an early institutional funding round. Anthropic's [Series A raised $124 million](https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems) in May 2021. The [Lightspeed round added $3.5 billion](https://www.anthropic.com/news/anthropic-raises-series-e-at-usd61-5b-post-money-valuation) in early 2025. By September 2025, [investors valued Anthropic at $183 billion](https://www.bloomberg.com/news/articles/2025-09-02/anthropic-completes-new-funding-round-at-183-billion-valuation). The valuation reached $380 billion by February 2026.
 
-Revenue rose from zero to roughly $10 billion annualized within three years, with tenfold year-on-year growth each year. Annualized revenue extends the current pace across a full year. The character work is in [Inside the Mind of Dario Amodei](https://phil-dubach.com/dario-amodei-profile/). This post makes the strategic argument that emerged from it.
+Revenue rose from zero to roughly $10 billion annualized within three years, with tenfold year-on-year growth each year. Annualized revenue extends the current pace across a full year. The character work is in *Inside the Mind of Dario Amodei*. This post makes the strategic argument that emerged from it.
 
 ## Race to the top, on paper
 
@@ -186,4 +186,4 @@ Evidence through May 9, 2026, leans toward the second case. One European Union e
 
 The thesis is a 2021 framing under growing structural strain. My longform argues that Dario sees the tension. This piece argues that the tension exists. What anyone does with that observation is their own call.
 
-_Based on twenty-five hours of Dario Amodei's on-record interviews and six long-form essays. The full reported profile, [Inside the Mind of Dario Amodei](https://phil-dubach.com/dario-amodei-profile/), runs 14,000 words at the author's newsletter._
+_Based on twenty-five hours of Dario Amodei's on-record interviews and six long-form essays. The full reported profile, Inside the Mind of Dario Amodei, runs 14,000 words at the author's newsletter._
