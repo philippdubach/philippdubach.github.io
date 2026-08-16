@@ -1,6 +1,6 @@
 # philippdubach.com
 
-Personal blog on quantitative finance, AI/ML, and technology.
+Quantitative Finance, Machine Learning, and Complex Systems.
 
 **👉 [philippdubach.com](https://philippdubach.com)**
 
@@ -19,16 +19,14 @@ Personal blog on quantitative finance, AI/ML, and technology.
 | Layer | Technology |
 |-------|------------|
 | **Site Generator** | Hugo v0.165.0 Extended |
-| **Hosting** | GitHub Pages |
+| **Hosting** | Hetzner (primary), GitHub Pages (warm standby) |
 | **CDN** | Cloudflare |
 | **Images** | Cloudflare R2 (`static.philippdubach.com`) |
 | **Analytics** | GoatCounter (privacy-first, no cookies) |
 | **Security Headers** | Cloudflare Worker (HSTS, CSP, COEP, COOP) |
 | **Math** | MathJax 3.2.2 (SRI-verified) |
 | **Code Highlighting** | Chroma (Hugo built-in) |
-| **Social Automation** | Cloudflare Workers + Workers AI (Llama 4 Scout 17B) |
-| **Composer Tool** | Cloudflare Pages |
-| **URL Shortener** | Cloudflare Workers + KV + D1 |
+| **Social Automation** | Cloudflare Workers AI + Queues + Durable Objects |
 
 ---
 
@@ -51,10 +49,12 @@ Personal blog on quantitative finance, AI/ML, and technology.
 │   ├── navigation.yaml       # Nav menu config
 │   └── research.yaml         # Research publications (SSRN papers, DOIs)
 └── social-automation/
+    ├── shared/               # Shared discovery, generation, scoring, and delivery gate
     ├── bluesky worker/       # Auto-post to Bluesky
     ├── twitter worker/       # Auto-post to Twitter/X
     ├── goatcounter-worker/   # "Most Read" posts API proxy
-    └── security-headers/     # HTTP security headers Worker
+    ├── security-headers/     # HTTP security headers Worker
+    └── build-trigger/        # Scheduled publication build trigger
 ```
 
 ---
@@ -98,12 +98,13 @@ takeaways = [             # Key Takeaways box (GEO)
 
 ## Social Automation
 
-Cloudflare Workers automatically generate and post social content when new articles are published.
+Cloudflare Workers discover new articles, generate social copy, and deliver it through a Queue-backed side-effect gate. Deployment notifications provide prompt discovery; a six-hour cron remains as the recovery path.
 
 ### Architecture
 
-```
-RSS Feed → Worker (cron/manual) → Workers AI → Social Platform
+```text
+RSS / manual trigger → Workers AI → Queue → Durable Object gate → Social platform
+                                      └────→ DLQ + KV archive on exhaustion
 ```
 
 ### Bluesky Worker
@@ -111,35 +112,46 @@ RSS Feed → Worker (cron/manual) → Workers AI → Social Platform
 | | |
 |---|---|
 | URL | `social-poster.philippd.workers.dev` |
-| Trigger | Cron schedule or `POST /trigger` |
-| AI Model | `@cf/meta/llama-4-scout-17b-16e-instruct` |
-| Features | RSS parsing, AI post generation, link card embedding |
+| Trigger | Deployment notification, six-hour cron, or `POST /trigger` |
+| Models | `@cf/openai/gpt-oss-120b` and `@cf/openai/gpt-oss-20b` |
+| Delivery | Queue + SQLite Durable Object gate + DLQ |
+| Features | RSS parsing, candidate scoring, link card embedding |
 
 ### Twitter Worker
 
 | | |
 |---|---|
 | URL | `twitter-poster.philippd.workers.dev` |
-| Trigger | Cron schedule or `POST /trigger` |
-| AI Model | `@cf/meta/llama-4-scout-17b-16e-instruct` |
+| Trigger | Deployment notification, six-hour cron, or `POST /trigger` |
+| Models | `@cf/openai/gpt-oss-120b` and `@cf/openai/gpt-oss-20b` |
+| Delivery | Queue + SQLite Durable Object gate + DLQ |
 | Auth | OAuth 1.0a |
 
 ### AI Post Generation
 
-The workers use Llama 4 Scout 17B to generate social posts with specific style constraints:
+The Workers generate candidates with two models, validate the structured output, and select a candidate with deterministic scoring. The style constraints include:
+
 - Neutral, factual tone (no clickbait)
 - Max 200 characters
 - No emojis or hashtags
 - Varied sentence structure
 - Extensive banned word list (AI slop words filtered)
 
-**Deploy workers:**
+Non-dry manual routes return HTTP 202 after enqueue. Dry routes remain synchronous and do not mutate Queue, KV, Durable Object, or social-platform state. Ambiguous external writes become terminal `uncertain` and are not replayed automatically.
+
+Validate and deploy from the workspace root with Node 24.19.0 and the committed Wrangler 4.123.0 lock:
+
 ```bash
-cd social-automation/bluesky\ worker && npx wrangler deploy
-cd social-automation/twitter\ worker && npx wrangler deploy
-cd social-automation/goatcounter-worker && npx wrangler deploy
-cd social-automation/security-headers && npx wrangler deploy
+cd social-automation
+nvm use
+npm ci --ignore-scripts
+npm test
+npm run check
+npm run deploy --workspace social-poster-worker
+npm run deploy --workspace twitter-poster
 ```
+
+Queue names, individual Worker release commands, rollback steps, and DLQ reconciliation are in [OPERATIONS.md](OPERATIONS.md).
 
 ---
 
@@ -193,6 +205,10 @@ Context-aware disclaimers that:
 
 ### August 2026
 - Upgraded Hugo from v0.161.1 to v0.165.0; canonicalized RSS discovery at `/index.xml` while retaining permanent redirects from legacy `/feed/` paths; refreshed the local diff harness for the paired toolchain versions
+- Upgraded the primary host to Forgejo 15.0.6 and the current Debian kernel after a successful isolated PostgreSQL and repository restore drill; preserved paired recovery backups and exact rollback artifacts
+- Standardized all five Workers on Node 24.19.0, Wrangler 4.123.0, one committed lockfile, compatibility date `2026-08-16`, structured observability, and dry-run packaging in CI
+- Moved Bluesky and Twitter publication behind platform Queues, DLQs, and SQLite Durable Object gates; ambiguous external writes are terminal and require reviewed reconciliation instead of automatic replay
+- Documented the Forgejo/Hetzner primary deployment, GitHub Pages standby, backup gate, Worker release process, and incident rollback in `OPERATIONS.md`
 
 ### May 2026
 - Upgraded Hugo from v0.157.0 to v0.161.1; byte-identical output, zero deprecation warnings; added a local diff harness (`scripts/upgrade-diff.sh`) for validating future upgrades against two binaries
@@ -210,7 +226,7 @@ Context-aware disclaimers that:
 - Shipped agent-readiness improvements: RFC 8288 `Link` headers on every response advertising machine-readable resources (api-catalog, sitemap, RSS, JSON Feed, llms.txt, per-page `.md` alternate)
 - Added `/.well-known/api-catalog` (RFC 9264 Linkset / RFC 9727) enumerating discoverable endpoints
 - Added markdown content negotiation: `Accept: text/markdown` returns a markdown variant of any post, section, or homepage with `Content-Type: text/markdown`, `Vary: Accept`, and `x-markdown-tokens`
-- Refactored security-headers Worker into four modules (`accept`, `links`, `cache`, `index`) with 32 unit tests, using the Cache API with variant-aware keys to keep HTML and Markdown isolated under the same URL
+- Refactored security-headers Worker into focused modules with a 58-test suite, using the Cache API with variant-aware keys to keep HTML and Markdown isolated under the same URL
 - Declared `Content-Signal: search=yes, ai-input=yes, ai-train=yes` in robots.txt per draft-romm-aipref-contentsignals
 - Hugo now emits `Markdown` output for `home`, `section`, and `term` (post-level was already in place)
 
