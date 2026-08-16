@@ -6,12 +6,10 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
+    "check": "wrangler deploy --dry-run --outdir .wrangler/dry-run",
     "tail": "wrangler tail"
   },
   "dependencies": {
     "@social/shared": "file:../shared"
-  },
-  "devDependencies": {
-    "wrangler": "^4.87.0"
   }
 }

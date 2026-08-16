@@ -2,6 +2,10 @@ name = "weekly-top-goatcounter-api"
 main = "src/index.js"
 compatibility_date = "2026-01-01"
 
+[observability]
+enabled = true
+head_sampling_rate = 0.05
+
 # Environment variables (non-secret)
 [vars]
 # None needed - all config is in code

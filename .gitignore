@@ -22,6 +22,7 @@ logs/
 # Node.js (if using npm packages)
 **/node_modules/
 **/package-lock.json
+!social-automation/package-lock.json
 
 # Environment and secret files - NEVER commit these!
 **/.env

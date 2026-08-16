@@ -6,3 +6,7 @@ compatibility_date = "2024-12-01"
 routes = [
   { pattern = "philippdubach.com/*", zone_id = "196e2d71114ade4f3a276715b5bd1c8d" }
 ]
+
+[observability]
+enabled = true
+head_sampling_rate = 0.01

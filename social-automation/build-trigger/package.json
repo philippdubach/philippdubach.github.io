@@ -1,9 +1,8 @@
 {
-  "name": "security-headers",
+  "name": "build-trigger",
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test 'test/*.test.js'",
     "check": "wrangler deploy --dry-run --outdir .wrangler/dry-run"
   }
 }
