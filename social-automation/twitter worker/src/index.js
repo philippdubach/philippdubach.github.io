@@ -4,7 +4,15 @@ import { checkRateLimit } from '@social/shared/rate-limit';
 import { generate } from '@social/shared/generator';
 import { pick } from '@social/shared/scorer';
 import { recentPosts } from '@social/shared/state';
+import { createPostJob, jobKey, parsePostJob } from '@social/shared/post-job';
+import { classifyPublishError } from '@social/shared/post-gate-state';
 import { postToTwitter } from './twitter.js';
+
+export { PostGate } from '@social/shared/post-gate-do';
+
+const MAIN_QUEUE = 'twitter-poster-post-jobs';
+const DEAD_LETTER_QUEUE = 'twitter-poster-post-jobs-dlq';
+const RETRY_DELAY_SECONDS = 300;
 
 export default {
   async scheduled(event, env, ctx) {
@@ -13,6 +21,18 @@ export default {
         console.error('Scheduled task failed:', err);
       })
     );
+  },
+
+  async queue(batch, env) {
+    for (const message of batch.messages) {
+      if (batch.queue === DEAD_LETTER_QUEUE) {
+        await archiveFailedDelivery(env, message);
+      } else if (batch.queue === MAIN_QUEUE) {
+        await deliverPostJob(env, message);
+      } else {
+        message.retry();
+      }
+    }
   },
 
   async fetch(request, env) {
@@ -29,16 +49,29 @@ export default {
       return json({ error: 'unauthorized' }, 401);
     }
 
-    // Rate limit authenticated endpoints
+    const dryRunRequest = (
+      (url.pathname === '/trigger' || url.pathname === '/test')
+      && url.searchParams.get('dry') === 'true'
+    );
+
+    // Dry previews enforce existing recorded limits without mutating KV.
+    // Non-dry authenticated endpoints retain the existing sliding-window
+    // accounting behavior.
     const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
-    if (!(await checkRateLimit(env.POSTED_STATE, clientIP))) {
+    const rateLimitState = dryRunRequest
+      ? {
+          get: (...args) => env.POSTED_STATE.get(...args),
+          put: async () => {},
+        }
+      : env.POSTED_STATE;
+    if (!(await checkRateLimit(rateLimitState, clientIP))) {
       return json({ error: 'rate limit exceeded', retry_after: 60 }, 429);
     }
 
     if (url.pathname === '/trigger') {
       const dryRun = url.searchParams.get('dry') === 'true';
       try {
-        return json(await processNewPosts(env, dryRun));
+        return json(await processNewPosts(env, dryRun), dryRun ? 200 : 202);
       } catch (err) {
         console.error('Trigger error:', err);
         return json({ error: 'Processing failed' }, 500);
@@ -85,6 +118,7 @@ export default {
     // Test endpoint - post a specific URL directly
     if (url.pathname === '/test') {
       const testUrl = url.searchParams.get('url');
+      const dryRun = url.searchParams.get('dry') === 'true';
       if (!testUrl) {
         return json({ error: 'url parameter required' }, 400);
       }
@@ -104,8 +138,8 @@ export default {
       }
 
       try {
-        const result = await postSingleUrl(env, testUrl);
-        return json(result);
+        const result = await postSingleUrl(env, testUrl, dryRun);
+        return json(result, dryRun ? 200 : 202);
       } catch (err) {
         console.error('Test post error:', err);
         return json({ error: 'Post failed' }, 500);
@@ -147,13 +181,22 @@ async function backfillPostedState(env) {
     const id = info.link.match(/\/posts\/([^\/]+)\/?$/)?.[1] || 
                info.link.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
 
-    // Skip if already marked
-    if (await env.POSTED_STATE.get(`posts:${id}`)) {
-      results.skipped++;
-      continue;
-    }
-
     try {
+      const key = `v1:twitter:${id}`;
+      const gate = env.POST_GATE.getByName(key);
+      const gateState = await gate.markBackfilled({
+        articleId: id,
+        title: info.title,
+      });
+      if (gateState.status !== 'backfilled') {
+        results.skipped++;
+        continue;
+      }
+      await env.POSTED_STATE.delete(`jobmeta:${key}`);
+      if (await env.POSTED_STATE.get(`posts:${id}`)) {
+        results.skipped++;
+        continue;
+      }
       await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
         title: info.title,
         backfilled: true,
@@ -169,7 +212,9 @@ async function backfillPostedState(env) {
 }
 
 async function processNewPosts(env, dryRun = false) {
-  const results = { posted: [], skipped: 0, errors: [] };
+  const results = dryRun
+    ? { posted: [], skipped: 0, errors: [] }
+    : { queued: 0, skipped: 0, errors: [] };
 
   // Validate required environment variables
   if (!env.RSS_URL) {
@@ -287,31 +332,18 @@ async function processNewPosts(env, dryRun = false) {
         continue;
       }
 
-      // Validate Twitter credentials
-      if (!env.TWITTER_API_KEY || !env.TWITTER_API_SECRET ||
-          !env.TWITTER_ACCESS_TOKEN || !env.TWITTER_ACCESS_TOKEN_SECRET) {
-        throw new Error('Twitter API credentials not configured');
-      }
-
-      const credentials = {
-        apiKey: env.TWITTER_API_KEY,
-        apiSecret: env.TWITTER_API_SECRET,
-        accessToken: env.TWITTER_ACCESS_TOKEN,
-        accessTokenSecret: env.TWITTER_ACCESS_TOKEN_SECRET,
-      };
-
-      const tweet = await postToTwitter(credentials, tweetText);
-      await env.POSTED_STATE.put(`posts:${id}`, JSON.stringify({
+      const job = createPostJob('twitter', {
+        id,
+        url: info.link,
         title: info.title,
-        message,
+      }, message);
+      await enqueuePostJob(env, job, {
         angle: winner.angle,
         anchored_on: winner.anchored_on,
         score: winner.score,
         candidates_considered: winner.candidates_considered,
-        tweetId: tweet.data?.id,
-        at: new Date().toISOString(),
-      }));
-      results.posted.push({ id, title: info.title, tweetId: tweet.data?.id });
+      });
+      results.queued++;
     } catch (e) {
       results.errors.push({ id, error: e.message });
     } finally {
@@ -327,7 +359,7 @@ async function processNewPosts(env, dryRun = false) {
 /**
  * Post a single URL directly (for testing)
  */
-async function postSingleUrl(env, url) {
+async function postSingleUrl(env, url, dryRun = false) {
   // Fetch page metadata
   const response = await fetch(url, { headers: { 'User-Agent': 'TwitterPoster/1.0' } });
   if (!response.ok) throw new Error(`Failed to fetch URL: ${response.status}`);
@@ -371,27 +403,206 @@ async function postSingleUrl(env, url) {
 
   // Build tweet
   const tweetText = `${message}\n\n${url}`;
-  
-  // Validate credentials
-  if (!env.TWITTER_API_KEY || !env.TWITTER_API_SECRET || 
-      !env.TWITTER_ACCESS_TOKEN || !env.TWITTER_ACCESS_TOKEN_SECRET) {
-    throw new Error('Twitter API credentials not configured');
+
+  if (dryRun) {
+    return {
+      success: true,
+      dry_run: true,
+      title,
+      message: tweetText,
+      fullTextLength: (articleData.text || '').length,
+    };
   }
-  
-  const credentials = {
-    apiKey: env.TWITTER_API_KEY,
-    apiSecret: env.TWITTER_API_SECRET,
-    accessToken: env.TWITTER_ACCESS_TOKEN,
-    accessTokenSecret: env.TWITTER_ACCESS_TOKEN_SECRET,
-  };
-  
-  const tweet = await postToTwitter(credentials, tweetText);
-  
+
+  const id = articleId(url);
+  const job = createPostJob('twitter', { id, url, title }, message);
+  await enqueuePostJob(env, job, {
+    angle: winner.angle,
+    anchored_on: winner.anchored_on,
+    score: winner.score,
+    candidates_considered: winner.candidates_considered,
+  });
+
   return {
-    success: true,
+    queued: 1,
+    id,
     title,
     message: tweetText,
-    tweetId: tweet.data?.id,
     fullTextLength: (articleData.text || '').length,
   };
+}
+
+function articleId(url) {
+  return url.match(/\/posts\/([^\/]+)\/?$/)?.[1]
+    || url.replace(/[^a-zA-Z0-9-]/g, '-').replace(/-+/g, '-').substring(0, 100);
+}
+
+function terminalError(message, code = 'AUTH_FAILED') {
+  const error = new Error(message);
+  error.code = code;
+  error.stage = 'pre-send';
+  error.requestSent = false;
+  return error;
+}
+
+function preSendInfrastructureError(message, cause) {
+  const error = new Error(message, { cause });
+  error.code = 'FETCH_FAILED';
+  error.stage = 'pre-send';
+  error.requestSent = false;
+  return error;
+}
+
+async function enqueuePostJob(env, job, metadata) {
+  const metadataKey = `jobmeta:${jobKey(job)}`;
+  await env.POSTED_STATE.put(metadataKey, JSON.stringify(metadata));
+  try {
+    await env.POST_QUEUE.send(job);
+  } catch (error) {
+    await env.POSTED_STATE.delete(metadataKey).catch(() => {});
+    throw error;
+  }
+}
+
+async function jobMetadata(env, job) {
+  try {
+    return await env.POSTED_STATE.get(`jobmeta:${jobKey(job)}`, 'json') || {};
+  } catch (cause) {
+    throw preSendInfrastructureError('Post metadata is unavailable', cause);
+  }
+}
+
+function legacyMetadata(metadata) {
+  const value = {};
+  if (typeof metadata.angle === 'string') value.angle = metadata.angle;
+  if (typeof metadata.anchored_on === 'string') value.anchored_on = metadata.anchored_on;
+  if (Number.isFinite(metadata.score)) value.score = metadata.score;
+  if (Number.isInteger(metadata.candidates_considered)) {
+    value.candidates_considered = metadata.candidates_considered;
+  }
+  return value;
+}
+
+async function writePublishedReadModel(
+  env,
+  job,
+  result,
+  at = new Date().toISOString(),
+  metadata,
+) {
+  const staged = metadata || await jobMetadata(env, job);
+  await env.POSTED_STATE.put(`posts:${job.articleId}`, JSON.stringify({
+    title: job.title,
+    message: job.message,
+    ...legacyMetadata(staged),
+    tweetId: result.tweetId,
+    at,
+  }));
+  await env.POSTED_STATE.delete(`jobmeta:${jobKey(job)}`);
+}
+
+async function handleDeniedClaim(env, job, gateState, message) {
+  if (gateState?.status === 'published') {
+    if (!(await env.POSTED_STATE.get(`posts:${gateState.job.articleId}`))) {
+      await writePublishedReadModel(
+        env,
+        gateState.job,
+        gateState.result,
+        gateState.updatedAt,
+      );
+    } else {
+      await env.POSTED_STATE.delete(`jobmeta:${jobKey(job)}`);
+    }
+    message.ack();
+    return;
+  }
+  if (gateState?.status === 'backfilled') {
+    await env.POSTED_STATE.delete(`jobmeta:${jobKey(job)}`);
+    message.ack();
+    return;
+  }
+  message.retry();
+}
+
+async function deliverPostJob(env, message) {
+  let job;
+  try {
+    job = parsePostJob(message.body);
+  } catch {
+    message.retry();
+    return;
+  }
+
+  if (job.platform !== 'twitter') {
+    message.retry();
+    return;
+  }
+
+  const gate = env.POST_GATE.getByName(jobKey(job));
+  const claim = await gate.claim(job);
+  if (!claim.claimed) {
+    await handleDeniedClaim(env, job, claim.state, message);
+    return;
+  }
+
+  try {
+    if (!env.TWITTER_API_KEY || !env.TWITTER_API_SECRET
+        || !env.TWITTER_ACCESS_TOKEN || !env.TWITTER_ACCESS_TOKEN_SECRET) {
+      throw terminalError('Twitter credentials are required');
+    }
+    const metadata = await jobMetadata(env, job);
+    const credentials = {
+      apiKey: env.TWITTER_API_KEY,
+      apiSecret: env.TWITTER_API_SECRET,
+      accessToken: env.TWITTER_ACCESS_TOKEN,
+      accessTokenSecret: env.TWITTER_ACCESS_TOKEN_SECRET,
+    };
+    const tweet = await postToTwitter(
+      credentials,
+      `${job.message}\n\n${job.url}`,
+    );
+    const result = { tweetId: tweet.data.id };
+    const gateState = await gate.markPublished(result);
+    await writePublishedReadModel(env, job, result, gateState.updatedAt, metadata);
+    message.ack();
+  } catch (error) {
+    const classification = classifyPublishError(error);
+    if (classification === 'retryable') {
+      await gate.markPending(error);
+      message.retry({ delaySeconds: RETRY_DELAY_SECONDS });
+    } else if (classification === 'uncertain') {
+      await gate.markUncertain(error);
+      message.retry();
+    } else {
+      await gate.markFailed(error);
+      message.retry();
+    }
+  }
+}
+
+async function archiveFailedDelivery(env, message) {
+  let job;
+  try {
+    job = parsePostJob(message.body);
+  } catch {
+    message.retry();
+    return;
+  }
+
+  if (job.platform !== 'twitter') {
+    message.retry();
+    return;
+  }
+
+  const key = jobKey(job);
+  const gateState = await env.POST_GATE.getByName(key).getState();
+  await env.POSTED_STATE.put(`failed:${key}`, JSON.stringify({
+    job,
+    messageId: message.id,
+    attempts: message.attempts,
+    gateState,
+    archivedAt: new Date().toISOString(),
+  }));
+  await env.POSTED_STATE.delete(`jobmeta:${key}`);
+  message.ack();
 }

@@ -1,6 +1,6 @@
 name = "twitter-poster"
 main = "src/index.js"
-compatibility_date = "2026-01-01"
+compatibility_date = "2026-08-16"
 
 [observability]
 enabled = true
@@ -23,3 +23,31 @@ crons = ["0 */6 * * *"]
 [vars]
 RSS_URL = "https://philippdubach.com/posts/index.xml"
 SITE_NAME = "philippdubach.com"
+
+[[queues.producers]]
+binding = "POST_QUEUE"
+queue = "twitter-poster-post-jobs"
+
+[[queues.consumers]]
+queue = "twitter-poster-post-jobs"
+max_batch_size = 1
+max_batch_timeout = 1
+max_retries = 3
+dead_letter_queue = "twitter-poster-post-jobs-dlq"
+max_concurrency = 1
+retry_delay = 300
+
+[[queues.consumers]]
+queue = "twitter-poster-post-jobs-dlq"
+max_batch_size = 1
+max_batch_timeout = 1
+max_retries = 3
+max_concurrency = 1
+
+[[durable_objects.bindings]]
+name = "POST_GATE"
+class_name = "PostGate"
+
+[exports.PostGate]
+type = "durable-object"
+storage = "sqlite"
