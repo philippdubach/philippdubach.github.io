@@ -17,6 +17,10 @@ This is the non-secret runbook for `philippdubach.com`. It records the state ver
 | Cloudflare | DNS, CDN, Workers, Queues, R2 | External edge services |
 | GitHub Pages | Warm standby | Built by the pinned GitHub Actions workflow |
 
+## Legacy administrative-host decommission
+
+A former, non-production administrative host is powered off and scheduled for deletion. It is not an origin or dependency for the site, Forgejo, Listmonk, GoatCounter, backups, or direct production administration. Do not add it to deployment, recovery, or troubleshooting paths. A separate endpoint historically ran on that host; its retirement is tracked outside this repository.
+
 Application services bind to loopback. Caddy is the public HTTP boundary. The production site is an immutable Hugo release under `/var/lib/site-build/public-*`; `/var/www/site/current` points atomically to the active release.
 
 ## Source and deployment
