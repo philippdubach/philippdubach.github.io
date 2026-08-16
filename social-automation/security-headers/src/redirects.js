@@ -176,6 +176,11 @@ const TAXONOMY_RENAMES = {
   "/categories/finance": "/categories/investing/",
 };
 
+const EXACT_REDIRECTS = new Map([
+  ["/feed/index.xml", { status: 301, location: "/index.xml" }],
+  ["/feed/", { status: 301, location: "/index.xml" }],
+]);
+
 // Substack-era date-prefix URL pattern: /YYYY/MM/DD/slug/
 // Group 1 captures the slug (everything after the date).
 const DATE_PREFIX_REGEX = /^\/(\d{4})\/(\d{2})\/(\d{2})\/([^?]+?)\/?$/;
@@ -190,18 +195,24 @@ const WP_PAGINATION_REGEX = /^\/page\/(\d+)\/?$/;
  * @returns {{ status: 301 | 410, location?: string } | null}
  */
 export function resolveRedirect(pathname) {
-  // 1. Taxonomy renames (exact-match paths)
+  // 1. Exact redirects
+  const exactRedirect = EXACT_REDIRECTS.get(pathname);
+  if (exactRedirect) {
+    return { ...exactRedirect };
+  }
+
+  // 2. Taxonomy renames (exact-match paths)
   if (pathname in TAXONOMY_RENAMES) {
     return { status: 301, location: TAXONOMY_RENAMES[pathname] };
   }
 
-  // 2. WordPress-style pagination → Hugo pagination
+  // 3. WordPress-style pagination → Hugo pagination
   const wpPaginationMatch = pathname.match(WP_PAGINATION_REGEX);
   if (wpPaginationMatch) {
     return { status: 301, location: `/posts/page/${wpPaginationMatch[1]}/` };
   }
 
-  // 3. /posts/<slug>/ paths — check rename map and gone set
+  // 4. /posts/<slug>/ paths — check rename map and gone set
   if (pathname.startsWith("/posts/")) {
     // Strip leading /posts/ and trailing slash to get the slug part.
     let slug = pathname.slice("/posts/".length);
@@ -218,7 +229,7 @@ export function resolveRedirect(pathname) {
     return null;
   }
 
-  // 4. Substack-era /YYYY/MM/DD/<slug>/ paths
+  // 5. Substack-era /YYYY/MM/DD/<slug>/ paths
   const datePrefixMatch = pathname.match(DATE_PREFIX_REGEX);
   if (datePrefixMatch) {
     const slug = datePrefixMatch[4];

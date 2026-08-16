@@ -2,6 +2,24 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { resolveRedirect, buildRedirectResponse } from "../src/redirects.js";
 
+test("rss: legacy feed file permanently redirects to canonical feed", () => {
+  assert.deepEqual(resolveRedirect("/feed/index.xml"), {
+    status: 301,
+    location: "/index.xml",
+  });
+});
+
+test("rss: legacy feed directory permanently redirects to canonical feed", () => {
+  assert.deepEqual(resolveRedirect("/feed/"), {
+    status: 301,
+    location: "/index.xml",
+  });
+});
+
+test("rss: canonical feed passes through", () => {
+  assert.equal(resolveRedirect("/index.xml"), null);
+});
+
 // --- Slug rename: 301 to current canonical ---
 test("rename: truncated share URL → current slug", () => {
   const r = resolveRedirect("/posts/ai-models-are-the-=/");

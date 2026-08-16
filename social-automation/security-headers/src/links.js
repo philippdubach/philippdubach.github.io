@@ -1,7 +1,7 @@
 const SITE_WIDE = [
   '</.well-known/api-catalog>; rel="api-catalog"',
   '</sitemap.xml>; rel="sitemap"',
-  '</feed/index.xml>; rel="alternate"; type="application/rss+xml"; title="RSS"',
+  '</index.xml>; rel="alternate"; type="application/rss+xml"; title="RSS"',
   '</feed.json>; rel="alternate"; type="application/feed+json"; title="JSON Feed"',
   '</llms.txt>; rel="describedby"; type="text/plain"',
 ];

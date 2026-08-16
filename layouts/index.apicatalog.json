@@ -8,7 +8,7 @@
         { "href": "{{ $base }}/llms-full.txt", "type": "text/plain", "title": "LLM discovery full content" }
       ],
       "alternate": [
-        { "href": "{{ $base }}/feed/index.xml", "type": "application/rss+xml", "title": "RSS feed" },
+        { "href": "{{ $base }}/index.xml", "type": "application/rss+xml", "title": "RSS feed" },
         { "href": "{{ $base }}/feed.json", "type": "application/feed+json", "title": "JSON Feed" }
       ],
       "items": [

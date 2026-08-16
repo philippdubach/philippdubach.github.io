@@ -25,7 +25,7 @@ content_signal: search=yes, ai-input=yes, ai-train=yes
 {{ end -}}
 {{- $pages := where .RegularPagesRecursive "Params.unlisted" "!=" true -}}
 {{- $cap := cond (eq .Kind "home") 500 50 -}}
-*{{ len $pages }} {{ if eq (len $pages) 1 }}post{{ else }}posts{{ end }}. Machine-readable feeds: [/api/posts.json]({{ "/api/posts.json" | absURL }}) · [/feed.json]({{ "/feed.json" | absURL }}) · [/feed/index.xml]({{ "/feed/index.xml" | absURL }}) · [/llms.txt]({{ "/llms.txt" | absURL }}).*
+*{{ len $pages }} {{ if eq (len $pages) 1 }}post{{ else }}posts{{ end }}. Machine-readable feeds: [/api/posts.json]({{ "/api/posts.json" | absURL }}) · [/feed.json]({{ "/feed.json" | absURL }}) · [/index.xml]({{ "/index.xml" | absURL }}) · [/llms.txt]({{ "/llms.txt" | absURL }}).*
 
 ---
 

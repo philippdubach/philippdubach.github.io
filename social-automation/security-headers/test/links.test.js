@@ -80,6 +80,8 @@ test("buildLinkHeader: homepage gets all site-wide rels + per-page alternate", (
   const header = buildLinkHeader("/");
   assert.match(header, /rel="api-catalog"/);
   assert.match(header, /rel="sitemap"/);
+  assert.match(header, /<\/index\.xml>/);
+  assert.doesNotMatch(header, /<\/feed\/index\.xml>/);
   assert.match(header, /rel="alternate".*application\/rss\+xml/);
   assert.match(header, /rel="alternate".*application\/feed\+json/);
   assert.match(header, /rel="describedby"/);

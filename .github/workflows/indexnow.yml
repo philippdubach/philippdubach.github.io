@@ -19,9 +19,9 @@ jobs:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Submit to IndexNow
-        # Pinned to v2.1.0 commit SHA for supply chain security
+        # Pinned to v3.0.0 commit SHA for supply chain security
         # Check for updates: https://github.com/bojieyang/indexnow-action/releases
-        uses: bojieyang/indexnow-action@cd6d1576582c1839b80dd71f418f172aa40d6552 # v2.1.0
+        uses: bojieyang/indexnow-action@38ddfbd93579a8a44c0dee662121bf9d51098f71 # v3.0.0
         with:
           sitemap-location: 'https://philippdubach.com/sitemap.xml'
           key: ${{ secrets.INDEXNOW_KEY }}

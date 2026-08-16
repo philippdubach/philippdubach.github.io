@@ -6,7 +6,7 @@ Personal blog on quantitative finance, AI/ML, and technology.
 
 | | |
 |---|---|
-| RSS | [philippdubach.com/feed/](https://philippdubach.com/feed/) |
+| RSS | [philippdubach.com/index.xml](https://philippdubach.com/index.xml) |
 | JSON Feed | [philippdubach.com/feed.json](https://philippdubach.com/feed.json) |
 | Newsletter | [philippdubach.com/subscribe](https://philippdubach.com/subscribe/) |
 | Bluesky | [@philippdubach.com](https://bsky.app/profile/philippdubach.com) |
@@ -18,7 +18,7 @@ Personal blog on quantitative finance, AI/ML, and technology.
 
 | Layer | Technology |
 |-------|------------|
-| **Site Generator** | Hugo v0.161.1 Extended |
+| **Site Generator** | Hugo v0.165.0 Extended |
 | **Hosting** | GitHub Pages |
 | **CDN** | Cloudflare |
 | **Images** | Cloudflare R2 (`static.philippdubach.com`) |
@@ -163,7 +163,7 @@ Context-aware disclaimers that:
 - Types: finance, medical, ai, research, gambling
 
 ### Machine-Readable Outputs
-- `/feed/index.xml` — RSS 2.0 with XSLT stylesheet
+- `/index.xml` — RSS 2.0 with XSLT stylesheet
 - `/feed.json` — JSON Feed 1.1
 - `/api/posts.json` — Posts API for programmatic access
 - `/llms.txt`, `/llms-full.txt` — AI/LLM crawler discovery
@@ -190,6 +190,9 @@ Context-aware disclaimers that:
 ---
 
 ## Changelog
+
+### August 2026
+- Upgraded Hugo from v0.161.1 to v0.165.0; canonicalized RSS discovery at `/index.xml` while retaining permanent redirects from legacy `/feed/` paths; refreshed the local diff harness for the paired toolchain versions
 
 ### May 2026
 - Upgraded Hugo from v0.157.0 to v0.161.1; byte-identical output, zero deprecation warnings; added a local diff harness (`scripts/upgrade-diff.sh`) for validating future upgrades against two binaries

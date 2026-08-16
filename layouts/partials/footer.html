@@ -32,7 +32,7 @@
             {{ if not $isPost }}
             <li><a href="{{ "/subscribe/" | relURL }}">Newsletter</a></li>
             {{ end }}
-            <li><a href="/feed/index.xml">RSS</a></li>
+            <li><a href="/index.xml">RSS</a></li>
             {{ with .Site.Params.social.github }}
             <li><a href="https://github.com/{{ . }}" target="_blank" rel="me noopener noreferrer">GitHub</a></li>
             {{ end }}
