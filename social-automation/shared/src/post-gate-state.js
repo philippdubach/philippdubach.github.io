@@ -1,7 +1,31 @@
 import { parsePostJob } from './post-job.js';
 
-const ERROR_FIELDS = ['code', 'status', 'stage', 'retryAfter'];
-const SAFE_ERROR_VALUE = /^[a-zA-Z0-9_.:/-]{1,64}$/;
+const ERROR_CODES = new Set([
+  'ABORT_ERR',
+  'AUTH_FAILED',
+  'ECONNREFUSED',
+  'ECONNRESET',
+  'EAI_AGAIN',
+  'ENOTFOUND',
+  'ETIMEDOUT',
+  'FETCH_FAILED',
+  'FORBIDDEN',
+  'INVALID_PAYLOAD',
+  'NETWORK_ERROR',
+  'RATE_LIMITED',
+  'RESPONSE_PARSE_FAILED',
+  'SOCKET_ERROR',
+  'TIMEOUT',
+  'UNAUTHORIZED',
+  'VALIDATION_ERROR',
+]);
+const ERROR_STAGES = new Set([
+  'before-send',
+  'pre-send',
+  'post-response',
+  'response',
+  'response-parse',
+]);
 
 function isoTimestamp(now) {
   if (!(now instanceof Date) || !Number.isFinite(now.getTime())) {
@@ -25,14 +49,24 @@ function errorMetadata(error) {
     ? error
     : {};
   const metadata = {};
-  for (const field of ERROR_FIELDS) {
-    const value = source[field];
-    if (
-      (typeof value === 'string' && SAFE_ERROR_VALUE.test(value))
-      || (typeof value === 'number' && Number.isFinite(value))
-    ) {
-      metadata[field] = value;
-    }
+
+  if (typeof source.code === 'string') {
+    const code = source.code.trim().toUpperCase().replaceAll('-', '_');
+    if (ERROR_CODES.has(code)) metadata.code = code;
+  }
+  if (Number.isInteger(source.status) && source.status >= 100 && source.status <= 599) {
+    metadata.status = source.status;
+  }
+  if (typeof source.stage === 'string') {
+    const stage = source.stage.trim().toLowerCase().replaceAll('_', '-');
+    if (ERROR_STAGES.has(stage)) metadata.stage = stage;
+  }
+  if (
+    Number.isFinite(source.retryAfter)
+    && source.retryAfter >= 0
+    && source.retryAfter <= 86400
+  ) {
+    metadata.retryAfter = source.retryAfter;
   }
   return metadata;
 }

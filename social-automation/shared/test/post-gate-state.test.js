@@ -138,6 +138,38 @@ test('error state excludes response text and credentials but retains routing met
   assert.doesNotMatch(JSON.stringify(state), /top-secret|Bearer|access_token/);
 });
 
+test('error metadata allowlists stage and code instead of accepting token-shaped strings', () => {
+  const unsafe = markPostUncertain(
+    attemptingState(),
+    {
+      stage: 'sk_live_51AbCdEfGhIj',
+      code: 'eyJhbGciOiJIUzI1NiJ9.e30.sig',
+      status: 503,
+      retryAfter: 300,
+    },
+    secondTransitionAt,
+  );
+  const controlled = markPostUncertain(
+    attemptingState(),
+    {
+      stage: 'response-parse',
+      code: 'ETIMEDOUT',
+      status: 504,
+      retryAfter: 300,
+    },
+    secondTransitionAt,
+  );
+
+  assert.deepStrictEqual(unsafe.error, { status: 503, retryAfter: 300 });
+  assert.doesNotMatch(JSON.stringify(unsafe), /sk_live|eyJhbGciOiJIUzI1NiJ9/);
+  assert.deepStrictEqual(controlled.error, {
+    code: 'ETIMEDOUT',
+    status: 504,
+    stage: 'response-parse',
+    retryAfter: 300,
+  });
+});
+
 test('429 and known pre-send failures classify retryable', () => {
   assert.strictEqual(classifyPublishError({ status: 429, stage: 'response' }), 'retryable');
   assert.strictEqual(
