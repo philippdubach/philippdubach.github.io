@@ -77,6 +77,30 @@ Items 1-4 are ~1-2 hours and the responsible baseline before adding more feature
 
 ---
 
+## Deferred maintenance assessment — 2026-08-16
+
+This is a saved decision log for a later maintenance pass. It supersedes the historical version anchors above, but does not authorise a blind bulk upgrade.
+
+1. **Hugo: upgrade 0.161.1 → 0.165.0 Extended in a dedicated change.** The newer releases add template and URL hardening, fix a build-performance regression affecting larger sites, and fix macOS `hugo server` static-file and atomic-save issues. Update the CI version and verified `.deb` checksum together; first run a local production build and `scripts/upgrade-diff.sh`, then inspect HTML, RSS, JSON Feed, Posts API, LLM text outputs, Markdown variants, sitemap and robots output. Do not combine this with template refactors.
+
+2. **Forgejo: take the 15.x LTS patch first.** The public instance reported 15.0.2 during the audit; 15.0.5 was the current 15.x patch. Back up and test the patch upgrade in the normal server-maintenance window. Keep a 16.x major upgrade separate until its migration impact has been assessed.
+
+3. **Workers: establish a reproducible toolchain before changing runtime behaviour.** Bluesky, Twitter and GoatCounter declare `wrangler: ^4.87.0`, while their local locks resolve 4.94.0; audit findings identified Wrangler 4.115.0 as current. Standardise the Worker manifests, committed lockfiles and a supported Node policy (use an active LTS release, not Node 25), then test each Worker before deployment. Refresh compatibility dates one Worker at a time, starting with the security-headers Worker at `2024-12-01`; retain its explicit Cache API `Accept`-variant logic unless a staged test proves a replacement safe.
+
+4. **Workers: pursue operational features as separate design work.** Enable structured observability with deliberate sampling on the Workers that lack it. For social delivery, evaluate Queues plus a dead-letter queue and idempotent delivery state; it would reduce lost posts after upstream failures, but requires a design for at-least-once delivery. Do not enable declarative Worker caching blindly, because the current cache key distinguishes HTML from Markdown.
+
+5. **Deployment and discovery: reconcile the primary path.** Forgejo and the self-hosted Hetzner site are documented as the source of truth and primary deployment, but this repository only contains GitHub Pages workflows. Record the real Forgejo webhook/build/deploy path and its owner outside this repository, and decide whether IndexNow should follow the primary deployment instead of only the Pages workflow. The IndexNow action can then be reviewed separately for its v3 update.
+
+6. **Self-hosted maintenance: create an access-controlled inventory before version upgrades.** Capture actual versions, ownership, backup/restore checks and maintenance windows for Forgejo, Caddy, Listmonk, self-hosted GoatCounter, Postgres, restic, the deploy hook, Cloudflare and Resend. Do not infer deployed versions from this repository or site prose.
+
+### Sources for the deferred assessment
+
+- [Hugo releases](https://github.com/gohugoio/hugo/releases)
+- [Forgejo releases](https://forgejo.org/releases/)
+- [Wrangler releases](https://www.npmjs.com/package/wrangler?activeTab=versions)
+- [Cloudflare compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/)
+- [Cloudflare Workers observability](https://developers.cloudflare.com/workers/observability/logs/workers-logs/)
+
 ## Sources
 
 - [Hugo releases on GitHub](https://github.com/gohugoio/hugo/releases)
