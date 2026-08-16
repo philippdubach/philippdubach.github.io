@@ -83,6 +83,13 @@ function installBlueskyFetch(recordReply = () => jsonResponse({
   return { calls, spy };
 }
 
+async function stageJobMetadata(job, metadata = {}) {
+  await env.POSTED_STATE.put(
+    `jobmeta:v1:${job.platform}:${job.articleId}`,
+    JSON.stringify(metadata),
+  );
+}
+
 afterEach(() => {
   vi.restoreAllMocks();
 });
@@ -124,8 +131,68 @@ describe('queue-backed Bluesky delivery', () => {
     expect(await env.POSTED_STATE.get('jobmeta:v1:bluesky:metadata-read-failure')).toBe('{not-json');
   });
 
+  it('retries when staged metadata is temporarily invisible, then publishes with full scorer state', async () => {
+    const job = postJob('metadata-visibility-delay');
+    const key = 'v1:bluesky:metadata-visibility-delay';
+    const metadataKey = `jobmeta:${key}`;
+    const metadata = {
+      angle: 'tension',
+      anchored_on: 'eventual KV visibility',
+      score: 23,
+      candidates_considered: 2,
+    };
+    await stageJobMetadata(job, metadata);
+    const realGet = env.POSTED_STATE.get.bind(env.POSTED_STATE);
+    let hideMetadata = true;
+    vi.spyOn(env.POSTED_STATE, 'get').mockImplementation((requestedKey, ...args) => {
+      if (requestedKey === metadataKey && hideMetadata) {
+        hideMetadata = false;
+        return Promise.resolve(null);
+      }
+      return realGet(requestedKey, ...args);
+    });
+    const gate = env.POST_GATE.getByName(key);
+    const { calls } = installBlueskyFetch();
+    const firstBatch = messageBatch(job, { id: 'metadata-hidden-1' });
+    const firstRetry = vi.spyOn(firstBatch.messages[0], 'retry');
+
+    const first = await deliver(firstBatch);
+
+    expect(first.retryMessages).toEqual([{ msgId: 'metadata-hidden-1' }]);
+    expect(firstRetry).toHaveBeenCalledWith({ delaySeconds: 300 });
+    expect(calls).toEqual({ session: 0, createRecord: 0 });
+    expect(await gate.getState()).toMatchObject({
+      status: 'pending',
+      error: { code: 'FETCH_FAILED', stage: 'pre-send' },
+    });
+    expect(await realGet(metadataKey, 'json')).toEqual(metadata);
+
+    const second = await deliver(messageBatch(job, {
+      id: 'metadata-visible-2',
+      attempts: 2,
+    }));
+
+    expect(second.explicitAcks).toEqual(['metadata-visible-2']);
+    expect(calls).toEqual({ session: 1, createRecord: 1 });
+    expect(await gate.getState()).toMatchObject({
+      status: 'published',
+      result: {
+        uri: 'at://did:plc:alice/app.bsky.feed.post/post-1',
+        cid: 'bafy-post-1',
+      },
+    });
+    expect(await realGet('posts:metadata-visibility-delay', 'json')).toMatchObject({
+      ...metadata,
+      title: job.title,
+      message: job.message,
+      uri: 'at://did:plc:alice/app.bsky.feed.post/post-1',
+    });
+    expect(await realGet(metadataKey)).toBeNull();
+  });
+
   it('persists attempting before fetch and concurrent duplicates create one record', async () => {
     const job = postJob('concurrent-delivery');
+    await stageJobMetadata(job);
     const gate = env.POST_GATE.getByName('v1:bluesky:concurrent-delivery');
     let observedState;
     let releaseCreate;
@@ -234,6 +301,7 @@ describe('queue-backed Bluesky delivery', () => {
 
   it('429 returns the gate to pending and requests a 300-second retry', async () => {
     const job = postJob('rate-limited');
+    await stageJobMetadata(job);
     const gate = env.POST_GATE.getByName('v1:bluesky:rate-limited');
     const { calls } = installBlueskyFetch(() => jsonResponse(
       { error: 'RateLimitExceeded', message: 'private-response-token' },
@@ -296,6 +364,7 @@ describe('queue-backed Bluesky delivery', () => {
     error,
   }) => {
     const job = postJob(articleId);
+    await stageJobMetadata(job);
     const gate = env.POST_GATE.getByName(`v1:bluesky:${articleId}`);
     const { calls } = installBlueskyFetch(reply);
 
@@ -402,6 +471,57 @@ describe('queue-backed Bluesky delivery', () => {
     expect(await env.POSTED_STATE.get('jobmeta:v1:bluesky:uncertain-dlq')).toBeNull();
   });
 
+  it('the real Queue broker exhausts main retries into DLQ without a second record', async () => {
+    const job = postJob('broker-dlq-transfer');
+    const key = 'v1:bluesky:broker-dlq-transfer';
+    await stageJobMetadata(job, {
+      angle: 'tension',
+      anchored_on: 'the broker retry boundary',
+      score: 19,
+      candidates_considered: 2,
+    });
+    const { calls } = installBlueskyFetch(() => jsonResponse(
+      { error: 'ServiceUnavailable', token: 'private-response-token' },
+      503,
+    ));
+    const deliveries = [];
+    const realQueue = worker.queue;
+    vi.spyOn(worker, 'queue').mockImplementation(async (batch, runtimeEnv, ctx) => {
+      deliveries.push(...batch.messages.map((message) => ({
+        queue: batch.queue,
+        id: message.id,
+        attempts: message.attempts,
+      })));
+      return realQueue(batch, runtimeEnv, ctx);
+    });
+
+    await env.POST_QUEUE.send(job);
+    await vi.waitFor(async () => {
+      expect(await env.POSTED_STATE.get(`failed:${key}`)).not.toBeNull();
+    }, { timeout: 5000, interval: 10 });
+
+    expect(deliveries.map(({ queue, attempts }) => ({ queue, attempts }))).toEqual([
+      { queue: MAIN_QUEUE, attempts: 1 },
+      { queue: MAIN_QUEUE, attempts: 2 },
+      { queue: MAIN_QUEUE, attempts: 3 },
+      { queue: MAIN_QUEUE, attempts: 4 },
+      { queue: DLQ, attempts: 1 },
+    ]);
+    expect(new Set(deliveries.map(({ id }) => id)).size).toBe(1);
+    expect(calls).toEqual({ session: 1, createRecord: 1 });
+    expect(await env.POST_GATE.getByName(key).getState()).toMatchObject({
+      status: 'uncertain',
+      error: { status: 503, stage: 'response' },
+    });
+    expect(await env.POSTED_STATE.get(`failed:${key}`, 'json')).toMatchObject({
+      job,
+      messageId: deliveries[0].id,
+      attempts: 1,
+      gateState: { status: 'uncertain' },
+    });
+    expect(await env.POSTED_STATE.get(`jobmeta:${key}`)).toBeNull();
+  });
+
   it('DLQ archives a failed delivery before removing its staged metadata', async () => {
     const job = postJob('failed-dlq');
     const gate = env.POST_GATE.getByName('v1:bluesky:failed-dlq');
@@ -434,6 +554,7 @@ describe('queue-backed Bluesky delivery', () => {
 
   it('dry trigger generates and scores a qualifying post without Queue, KV, DO, or Bluesky writes', async () => {
     const queue = vi.spyOn(worker, 'queue').mockImplementation(async () => {});
+    const queueSend = vi.spyOn(env.POST_QUEUE, 'send');
     const kvPut = vi.spyOn(env.POSTED_STATE, 'put');
     const kvDelete = vi.spyOn(env.POSTED_STATE, 'delete');
     const { calls } = installBlueskyFetch();
@@ -463,6 +584,42 @@ describe('queue-backed Bluesky delivery', () => {
     expect(kvDelete).not.toHaveBeenCalled();
     expect((await listDurableObjectIds(env.POST_GATE)).map((id) => id.toString()).sort()).toEqual(gateIdsBefore);
     expect(queue).not.toHaveBeenCalled();
+    expect(queueSend).not.toHaveBeenCalled();
+    expect(calls).toEqual({ session: 0, createRecord: 0 });
+  });
+
+  it('dry test route traverses article generation without Queue, KV, DO, or Bluesky writes', async () => {
+    const queue = vi.spyOn(worker, 'queue').mockImplementation(async () => {});
+    const queueSend = vi.spyOn(env.POST_QUEUE, 'send');
+    const kvPut = vi.spyOn(env.POSTED_STATE, 'put');
+    const kvDelete = vi.spyOn(env.POSTED_STATE, 'delete');
+    const { calls } = installBlueskyFetch();
+    const gateIdsBefore = (await listDurableObjectIds(env.POST_GATE)).map((id) => id.toString()).sort();
+    const articleUrl = 'https://philippdubach.com/posts/route-qualified/';
+
+    const response = await worker.fetch(new Request(
+      `https://worker.example/test?dry=true&url=${encodeURIComponent(articleUrl)}`,
+      {
+        headers: {
+          Authorization: 'Bearer test-api-secret',
+          'CF-Connecting-IP': '192.0.2.14',
+        },
+      },
+    ), env);
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({
+      success: true,
+      dry_run: true,
+      title: 'Queue Safety Under Ambiguity',
+      message: 'Queue-backed delivery forces an uncomfortable tradeoff: ambiguity must stop retries even when publication cannot be confirmed.',
+    });
+    expect((await env.POSTED_STATE.list()).keys).toEqual([]);
+    expect(kvPut).not.toHaveBeenCalled();
+    expect(kvDelete).not.toHaveBeenCalled();
+    expect((await listDurableObjectIds(env.POST_GATE)).map((id) => id.toString()).sort()).toEqual(gateIdsBefore);
+    expect(queue).not.toHaveBeenCalled();
+    expect(queueSend).not.toHaveBeenCalled();
     expect(calls).toEqual({ session: 0, createRecord: 0 });
   });
 
