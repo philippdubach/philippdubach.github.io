@@ -17,14 +17,18 @@ async function withRetry(fn, maxRetries = 3, baseDelay = 1000) {
       return await fn();
     } catch (error) {
       lastError = error;
-      const isRateLimit = error.message?.includes('429') || error.message?.includes('rate');
-      const isServerError = error.message?.includes('5');
+      const isRateLimit = error.status === 429;
+      const isServerError = error.status >= 500;
+      const isNetworkError = error.code === 'NETWORK_ERROR';
       
-      // Only retry on rate limits or server errors
-      if (!isRateLimit && !isServerError) throw error;
+      // Authentication/session requests are safe to repeat because they do not
+      // create a social post. The create-record request never uses this helper.
+      if (!isRateLimit && !isServerError && !isNetworkError) throw error;
       
       // Exponential backoff with jitter
-      const delay = baseDelay * Math.pow(2, attempt) + Math.random() * 1000;
+      const delay = error.retryAfter !== undefined
+        ? error.retryAfter * 1000
+        : baseDelay * Math.pow(2, attempt) + Math.random() * 1000;
       console.log(`Retry ${attempt + 1}/${maxRetries} after ${Math.round(delay)}ms`);
       await new Promise(resolve => setTimeout(resolve, delay));
     }
@@ -32,35 +36,64 @@ async function withRetry(fn, maxRetries = 3, baseDelay = 1000) {
   throw lastError;
 }
 
+class BlueskyPublishError extends Error {
+  constructor(message, { code, status, stage, retryAfter, cause } = {}) {
+    super(message, cause === undefined ? undefined : { cause });
+    this.name = 'BlueskyPublishError';
+    if (code !== undefined) this.code = code;
+    if (status !== undefined) this.status = status;
+    if (stage !== undefined) this.stage = stage;
+    if (retryAfter !== undefined) this.retryAfter = retryAfter;
+  }
+}
+
+function retryAfterSeconds(response) {
+  const value = response.headers.get('Retry-After');
+  if (!value) return undefined;
+  const seconds = Number(value);
+  if (Number.isFinite(seconds) && seconds >= 0) return seconds;
+  const date = new Date(value).getTime();
+  if (!Number.isFinite(date)) return undefined;
+  return Math.max(0, Math.ceil((date - Date.now()) / 1000));
+}
+
+function statusCode(status) {
+  if (status === 429) return 'RATE_LIMITED';
+  if (status === 401) return 'UNAUTHORIZED';
+  if (status === 403) return 'FORBIDDEN';
+  return undefined;
+}
+
 /**
  * Post to Bluesky
  */
 export async function postToBluesky(handle, appPassword, message, url, imageUrl, title, description) {
-  return withRetry(async () => {
-    const session = await createSession(handle, appPassword);
-    const { accessJwt, did } = session;
+  const MAX_POST_LENGTH = 300;
+  const fullText = url ? `${message}\n\n${url}` : message;
+  if (fullText.length > MAX_POST_LENGTH) {
+    throw new BlueskyPublishError('Bluesky post exceeds the platform limit', {
+      code: 'VALIDATION_ERROR',
+      stage: 'pre-send',
+    });
+  }
 
-    const MAX_POST_LENGTH = 300;
-    const fullText = url ? `${message}\n\n${url}` : message;
-    if (fullText.length > MAX_POST_LENGTH) {
-      throw new Error(`Bluesky post exceeds ${MAX_POST_LENGTH} characters (got ${fullText.length})`);
-    }
-    const facets = detectFacets(fullText);
+  const session = await withRetry(() => createSession(handle, appPassword));
+  const { accessJwt, did } = session;
+  const record = {
+    $type: 'app.bsky.feed.post',
+    text: fullText,
+    createdAt: new Date().toISOString(),
+    facets: detectFacets(fullText),
+  };
 
-    const record = {
-      $type: 'app.bsky.feed.post',
-      text: fullText,
-      createdAt: new Date().toISOString(),
-      facets,
-    };
+  if (url) {
+    const embed = await createEmbed(url, imageUrl, title, description, accessJwt);
+    if (embed) record.embed = embed;
+  }
 
-    if (url) {
-      const embed = await createEmbed(url, imageUrl, title, description, accessJwt);
-      if (embed) record.embed = embed;
-    }
-
-    // Create the post
-    const response = await fetch(`${BLUESKY_API}/com.atproto.repo.createRecord`, {
+  let response;
+  try {
+    response = await fetch(`${BLUESKY_API}/com.atproto.repo.createRecord`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${accessJwt}`,
@@ -72,35 +105,84 @@ export async function postToBluesky(handle, appPassword, message, url, imageUrl,
         record,
       }),
     });
+  } catch (cause) {
+    throw new BlueskyPublishError('Bluesky create-record request had an ambiguous outcome', {
+      code: 'NETWORK_ERROR',
+      stage: 'post-response',
+      cause,
+    });
+  }
 
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Bluesky post error: ${response.status} - ${error}`);
+  if (!response.ok) {
+    throw new BlueskyPublishError('Bluesky create-record request failed', {
+      code: statusCode(response.status),
+      status: response.status,
+      stage: 'response',
+      retryAfter: retryAfterSeconds(response),
+    });
+  }
+
+  try {
+    const result = await response.json();
+    if (!result || typeof result.uri !== 'string' || typeof result.cid !== 'string') {
+      throw new TypeError('Malformed create-record response');
     }
-
-    return response.json();
-  }); // End withRetry
+    return result;
+  } catch (cause) {
+    throw new BlueskyPublishError('Bluesky create-record response could not be validated', {
+      code: 'RESPONSE_PARSE_FAILED',
+      status: response.status,
+      stage: 'response-parse',
+      cause,
+    });
+  }
 }
 
 /**
  * Create Bluesky session
  */
 async function createSession(handle, appPassword) {
-  const response = await fetch(`${BLUESKY_API}/com.atproto.server.createSession`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      identifier: handle,
-      password: appPassword,
-    }),
-  });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Bluesky auth error: ${response.status} - ${error}`);
+  let response;
+  try {
+    response = await fetch(`${BLUESKY_API}/com.atproto.server.createSession`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        identifier: handle,
+        password: appPassword,
+      }),
+    });
+  } catch (cause) {
+    throw new BlueskyPublishError('Bluesky session request failed', {
+      code: 'NETWORK_ERROR',
+      stage: 'pre-send',
+      cause,
+    });
   }
 
-  return response.json();
+  if (!response.ok) {
+    throw new BlueskyPublishError('Bluesky session request was rejected', {
+      code: statusCode(response.status),
+      status: response.status,
+      stage: 'pre-send',
+      retryAfter: retryAfterSeconds(response),
+    });
+  }
+
+  try {
+    const session = await response.json();
+    if (!session || typeof session.accessJwt !== 'string' || typeof session.did !== 'string') {
+      throw new TypeError('Malformed session response');
+    }
+    return session;
+  } catch (cause) {
+    throw new BlueskyPublishError('Bluesky session response could not be validated', {
+      code: 'RESPONSE_PARSE_FAILED',
+      status: response.status,
+      stage: 'pre-send',
+      cause,
+    });
+  }
 }
 
 /**
@@ -229,8 +311,7 @@ async function uploadImage(imageUrl, accessJwt) {
     });
 
     if (!uploadResponse.ok) {
-      const error = await uploadResponse.text();
-      console.warn('Image upload failed:', error);
+      console.warn(`Image upload failed with status ${uploadResponse.status}`);
       return null;
     }
 
