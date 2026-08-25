@@ -1,42 +1,26 @@
 baseURL = 'https://philippdubach.com/'
 locale = 'en-us'
 title = 'Philipp D. Dubach | Quantitative Finance & AI Strategy'
+timeZone = 'Europe/Zurich'
 enableRobotsTXT = true
 enableGitInfo = true
-
-[security]
-  [security.funcs]
-    getenv = ['^HUGO_', '^CI$', '^GOATCOUNTER_API_TOKEN$']
+capitalizeListTitles = false
 
 [pagination]
-  pagerSize = 10
-  path = "page"
-
+  pagerSize = 20
+  path = 'page'
 
 [params]
-  author = "Philipp D. Dubach"
-  # SEO Description
+  author = 'Philipp D. Dubach'
   description = "Exploring the intersection of Macroeconomics, Quantitative Finance, and AI infrastructure. Analysis of LLM unit economics, global monetary frameworks, and systemic liquidity."
   keywords = ["Quantitative Finance", "Macro Strategy", "AI Infrastructure", "Machine Learning", "Asset Allocation", "Bretton Woods III", "Python for Finance"]
-  rssFeedDescription = "full"
+  rssFeedDescription = 'full'
+  site_name = 'Philipp D. Dubach'
+  locale = 'en_US'
+  default_image = 'https://static.philippdubach.com/ograph/ograph-post.jpg'
+  theme_color = '#ffffff'
+  msapplication_tile_color = '#ffffff'
 
-  # VISUAL SETTINGS
-  sidebar_title = "philippdubach"
-  # Sidebar lede. Different from `description` above (which is tuned for
-  # <meta description> — two sentences, ~217 chars), but reinforces the same
-  # topical claim in editorial italic register. Reads in Newsreader serif,
-  # wraps to 2-3 lines inside the 200px rail. No contradictory entity claim.
-  sidebar_description = "Quantitative Finance, Machine Learning, and Complex Systems."
-  
-  favicon = "/favicon.ico"
-  math = false
-  site_name = "Philipp D. Dubach - Finance, Tech & Strategy"
-  locale = "en_US"
-  default_image = "https://static.philippdubach.com/ograph/ograph-post.jpg"
-  theme_color = "#2c3e50"
-  msapplication_tile_color = "#2c3e50"
-  
- 
   [params.social]
     github = "philippdubach"
     email = "me@philippdubach.com"
@@ -44,12 +28,17 @@ enableGitInfo = true
     twitter = "philippdubach"
     linkedin = "philippdubach"
 
+  [params.newsletter]
+    preview = false
+    endpoint = 'https://newsletter-api.philippd.workers.dev/api/subscribe'
+    count_endpoint = 'https://newsletter-api.philippd.workers.dev/api/subscriber-count'
+
   [params.academic]
-    google_scholar = "https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en"
-    researchgate = "https://www.researchgate.net/profile/Philipp-Dubach"
-    orcid = "https://orcid.org/0009-0002-3126-6760"
-    ssrn = "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1"
-    arxiv = "https://arxiv.org/search/q-fin?searchtype=author&query=Dubach,+P+D"
+    google_scholar = 'https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en'
+    researchgate = 'https://www.researchgate.net/profile/Philipp-Dubach'
+    orcid = 'https://orcid.org/0009-0002-3126-6760'
+    ssrn = 'https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9538192#form1'
+    arxiv = 'https://arxiv.org/search/q-fin?searchtype=author&query=Dubach,+P+D'
 
 [markup]
   [markup.highlight]
@@ -62,9 +51,6 @@ enableGitInfo = true
     tabWidth = 4
   [markup.goldmark]
     [markup.goldmark.renderer]
-      # unsafe = true allows raw HTML in markdown files
-      # Required for: <br>, <a>, <section>, <h6> tags used in content files
-      # Content is author-controlled, not user-submitted, so security risk is minimal
       unsafe = true
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
@@ -72,90 +58,80 @@ enableGitInfo = true
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
 
 [permalinks]
-  posts = "/posts/:slug/"
+  posts = '/posts/:slug/'
 
 [frontmatter]
-  date = ["date", "publishDate", "lastmod"]
-  lastmod = [":git", "lastmod", "date", "publishDate"]
-  publishDate = ["publishDate", "date"]
-  expiryDate = ["expiryDate"]
-
-[caches]
-  [caches.images]
-    dir = ':cacheDir/images'
-    
-[minify]
-  minifyOutput = true
-
-[sitemap]
-  changefreq = 'weekly' 
-  priority = 0.8 
-  filename = 'sitemap.xml'
+  date = ['date', 'publishDate', 'lastmod']
+  lastmod = [':git', 'lastmod', 'date', 'publishDate']
+  publishDate = ['publishDate', 'date']
+  expiryDate = ['expiryDate']
 
 [taxonomies]
   category = 'categories'
   type = 'types'
   tag = 'tags'
 
-# Custom media types for JSON Feed, Posts API, and Linkset
-[mediaTypes]
-  [mediaTypes."application/feed+json"]
-    suffixes = ["json"]
-  [mediaTypes."application/linkset+json"]
-    suffixes = ["json"]
-
-# Output formats for JSON Feed, Posts API, LLM discovery, and api-catalog
-[outputFormats]
-  [outputFormats.JSONFeed]
-    mediaType = "application/feed+json"
-    baseName = "feed"
-    isPlainText = true
-    notAlternative = false
-  [outputFormats.PostsAPI]
-    mediaType = "application/json"
-    baseName = "posts"
-    isPlainText = true
-    path = "api"
-  [outputFormats.LLMSTxt]
-    mediaType = "text/plain"
-    baseName = "llms"
-    isPlainText = true
-    notAlternative = true
-  [outputFormats.LLMSFullTxt]
-    mediaType = "text/plain"
-    baseName = "llms-full"
-    isPlainText = true
-    notAlternative = true
-  [outputFormats.Markdown]
-    notAlternative = true
-  [outputFormats.APICatalog]
-    mediaType = "application/linkset+json"
-    baseName = "api-catalog"
-    isPlainText = true
-    notAlternative = true
-    rel = "api-catalog"
-
 [related]
   includeNewer = true
   threshold = 20
   toLower = true
   [[related.indices]]
-    name = "categories"
+    name = 'categories'
     weight = 100
   [[related.indices]]
-    name = "tags"
+    name = 'tags'
     weight = 80
   [[related.indices]]
-    name = "keywords"
+    name = 'keywords'
     weight = 60
   [[related.indices]]
-    name = "date"
+    name = 'date'
     weight = 10
 
+[mediaTypes]
+  [mediaTypes.'application/feed+json']
+    suffixes = ['json']
+  [mediaTypes.'application/linkset+json']
+    suffixes = ['json']
+
+[outputFormats]
+  [outputFormats.JSONFeed]
+    mediaType = 'application/feed+json'
+    baseName = 'feed'
+    isPlainText = true
+  [outputFormats.PostsAPI]
+    mediaType = 'application/json'
+    baseName = 'posts'
+    isPlainText = true
+    path = 'api'
+  [outputFormats.LLMSTxt]
+    mediaType = 'text/plain'
+    baseName = 'llms'
+    isPlainText = true
+    notAlternative = true
+  [outputFormats.LLMSFullTxt]
+    mediaType = 'text/plain'
+    baseName = 'llms-full'
+    isPlainText = true
+    notAlternative = true
+  [outputFormats.Markdown]
+    notAlternative = true
+  [outputFormats.APICatalog]
+    mediaType = 'application/linkset+json'
+    baseName = 'api-catalog'
+    isPlainText = true
+    notAlternative = true
+    rel = 'api-catalog'
+
 [outputs]
-  home = ['HTML', 'RSS', 'JSONFeed', 'PostsAPI', 'LLMSTxt', 'LLMSFullTxt', 'SiteMap', 'Markdown', 'APICatalog']
+  home = ['HTML', 'RSS', 'JSONFeed', 'PostsAPI', 'LLMSTxt', 'LLMSFullTxt', 'Sitemap', 'Markdown', 'APICatalog']
   page = ['HTML', 'Markdown']
-  section = ['HTML', 'RSS', 'SiteMap', 'Markdown']
+  section = ['HTML', 'RSS', 'Sitemap', 'Markdown']
+  taxonomy = ['HTML', 'RSS', 'Markdown']
   term = ['HTML', 'RSS', 'Markdown']

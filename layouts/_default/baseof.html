@@ -1,237 +1,29 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.Language.Locale | default "en" }}">
-{{ partial "head.html" . }}
-<body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    {{/* Mobile header - visible only on small screens. v2.6: hamburger replaced by bottom dock. */}}
-    <header class="mobile-header" role="banner">
-        <a href="{{ .Site.BaseURL }}" class="mobile-logo">{{ .Site.Params.sidebar_title | default .Site.Title }}</a>
-    </header>
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  {{ $isArticle := and .IsPage (eq .Section "posts") }}
+  {{ $hasTimeline := and $isArticle (gt (len (.Params.timeline | default (slice))) 0) }}
+  <body class="{{ if .IsHome }}page-home{{ else if $isArticle }}page-article{{ else }}page-list{{ end }} section-{{ .Section }}">
+    <!--
+      THESIS: A quiet editorial frame keeps attention on one readable serif column.
+      VARIANCE: Editorial minimalism at level 5, with restrained utility details.
+      MOTION: Functional state changes at level 2, with reduced-motion support.
+      DENSITY: Low-density reading at level 3, with compact navigation.
+      REFERENCE: The supplied sparse portfolio screenshots guide the hierarchy and rhythm.
+      FINISH: Review responsive spacing, theme contrast, focus behavior, and generated anchors.
+    -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {{ partial "mobile-header.html" . }}
 
-    <div class="container">
-        {{ partial "sidebar.html" . }}
-        <main id="main-content" class="content" role="main">
-            {{ block "main" . }}{{ end }}
-            {{ partial "footer.html" . }}
-        </main>
+    <div class="site-layout{{ if $hasTimeline }} has-timeline{{ end }}">
+      {{ partial "site-rail.html" . }}
+      {{ block "main" . }}{{ end }}
+      {{ block "timeline" . }}{{ end }}
     </div>
 
-    {{/* Mobile bottom dock - v2.6 IA primary nav for small screens */}}
-    {{ partial "mobile-dock.html" . }}
-
-    {{/* Scroll-aware mobile dock — only on individual article/project pages.
-         List pages, taxonomy pages, and standalone pages (about/research/
-         subscribe) keep the dock pinned at all times because the user is
-         not in a long-form reading flow there. The shortcode below renders
-         the script ONLY when this is a single post (.Kind=="page" AND
-         .Section=="posts"); both essays and project posts live there.
-
-         HIDE: ≥150ms continuous downward AND mean velocity ≥350 px/sec over that window.
-               (Slow reader scrolls don't trigger; intentional swipes do.)
-         SHOW: ≥15px cumulative upward in a 250ms rolling window. No velocity gate.
-         Always-show: first 100px from top; within 240px of document end.
-         Anti-flicker: 150ms lockout after any state change.
-         Anchor-click suppression: 400ms. rAF-throttled, passive listener. */}}
-    {{ if and (eq .Kind "page") (eq .Section "posts") }}
-    <script>(function(){
-      var d=document.querySelector('[data-mobile-dock]');if(!d)return;
-      // Rolling sample buffer of {t, y}. Velocity is computed over the last 200ms
-      // of samples — never accumulated since-page-load — so big jumps (anchors,
-      // address-bar collapse) age out naturally.
-      var samples=[], lastY=window.scrollY||0,
-          upAcc=0, upAccSince=0,
-          ticking=false, anchorSuppress=0, lockUntil=0, hidden=false;
-      var WIN=200, MIN_DUR=150, HIDE_VEL=350, REVEAL_DIST=15, REVEAL_WIN=250, LOCK=150;
-      function setHidden(v){
-        if(v===hidden)return;
-        var now=performance.now();
-        if(now<lockUntil)return;
-        hidden=v;
-        if(v)d.setAttribute('data-hidden','true');else d.removeAttribute('data-hidden');
-        lockUntil=now+LOCK;
-      }
-      function update(){
-        ticking=false;
-        var now=performance.now(),
-            y=Math.max(0,window.scrollY||0),
-            h=document.documentElement.scrollHeight,
-            vh=window.innerHeight,
-            dy=y-lastY;
-        lastY=y;
-        if(anchorSuppress>Date.now())return;
-        if(y<100||y+vh>=h-240){
-          setHidden(false);
-          samples.length=0; upAcc=0;
-          return;
-        }
-        // Push current sample, expire stale ones outside the rolling window.
-        samples.push({t:now,y:y});
-        while(samples.length>1 && now-samples[0].t>WIN) samples.shift();
-        // Hide gate: window must span ≥150ms and mean downward velocity ≥350 px/sec.
-        if(samples.length>=2){
-          var span=now-samples[0].t;
-          var travel=y-samples[0].y;
-          if(span>=MIN_DUR && (travel/span)*1000>=HIDE_VEL) setHidden(true);
-        }
-        // Reveal: cumulative upward travel within a 250ms reset window.
-        if(dy<0){
-          if(now-upAccSince>REVEAL_WIN) upAcc=0;
-          upAccSince=now;
-          upAcc+=-dy;
-          if(upAcc>=REVEAL_DIST) setHidden(false);
-        }else if(dy>0){
-          upAcc=0;
-        }
-      }
-      window.addEventListener('scroll',function(){
-        if(!ticking){requestAnimationFrame(update);ticking=true;}
-      },{passive:true});
-      document.addEventListener('click',function(e){
-        var a=e.target.closest&&e.target.closest('a[href^="#"]');
-        if(a)anchorSuppress=Date.now()+400;
-      },true);
-    })();</script>
-    {{ end }}
-
-    <script>(function(){
-      // <dialog> lightbox v3.0 — opens on .img-trigger click, closes on
-      // backdrop click. ESC closes via native <dialog> behavior; submit of
-      // the inline <form method="dialog"> closes via the × button.
-      //
-      // Performance: the dialog's <img> ships with no src; the high-res URL
-      // sits on data-hires. First open hydrates src once and caches.
-      //
-      // Motion: when supported and the user hasn't requested reduced
-      // motion, the open/close runs inside startViewTransition() with a
-      // shared view-transition-name on the thumbnail picture and the
-      // dialog img — the browser FLIPs the morph between captured rects.
-      // We attach the name only for the duration of one transition so the
-      // next click can morph a different image.
-      var VT_NAME = 'lb-img';
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-      function canMorph(){
-        return typeof document.startViewTransition === 'function'
-            && !(reduce && reduce.matches);
-      }
-      function withMorph(thumbEl, dlgImg, run){
-        if (!canMorph()){ run(); return; }
-        thumbEl.style.viewTransitionName = VT_NAME;
-        dlgImg.style.viewTransitionName = VT_NAME;
-        var t = document.startViewTransition(run);
-        t.finished.finally(function(){
-          thumbEl.style.viewTransitionName = '';
-          dlgImg.style.viewTransitionName = '';
-        });
-      }
-      document.addEventListener('click', function(e) {
-        var trigger = e.target.closest('.img-trigger');
-        if (trigger) {
-          var id = trigger.dataset.lightboxTarget;
-          var dlg = document.getElementById(id);
-          if (!dlg || typeof dlg.showModal !== 'function') return;
-          var img = dlg.querySelector('img');
-          if (img && !img.src && dlg.dataset.hires) {
-            img.src = dlg.dataset.hires;
-          }
-          var thumb = trigger.querySelector('picture') || trigger.querySelector('img') || trigger;
-          dlg._lbThumb = thumb;
-          withMorph(thumb, img, function(){ dlg.showModal(); });
-          e.preventDefault();
-          return;
-        }
-        // Backdrop click: <dialog> click events fire on the dialog itself
-        // when the user clicks outside the content.
-        var dlg = e.target.closest('.lightbox-dialog');
-        if (dlg && e.target === dlg) {
-          var img = dlg.querySelector('img');
-          var thumb = dlg._lbThumb || dlg;
-          withMorph(thumb, img, function(){ dlg.close(); });
-        }
-      });
-      // Form-submit close (× button) and ESC close — wrap with morph too.
-      document.addEventListener('submit', function(e){
-        var form = e.target.closest('.lightbox-close-form');
-        if (!form) return;
-        var dlg = form.closest('.lightbox-dialog');
-        if (!dlg) return;
-        e.preventDefault();
-        var img = dlg.querySelector('img');
-        var thumb = dlg._lbThumb || dlg;
-        withMorph(thumb, img, function(){ dlg.close(); });
-      });
-      document.addEventListener('keydown', function(e){
-        if (e.key !== 'Escape') return;
-        var dlg = document.querySelector('.lightbox-dialog[open]');
-        if (!dlg) return;
-        e.preventDefault();
-        var img = dlg.querySelector('img');
-        var thumb = dlg._lbThumb || dlg;
-        withMorph(thumb, img, function(){ dlg.close(); });
-      });
-    })();</script>
-
-    <script>(function(){
-      // Footnote popovers — copy each #fn:N content into a span next to its
-      // .footnote-ref superscript. Hover/focus to reveal. The bottom-of-page
-      // <ol class="footnotes"> stays for print, screen readers, and RSS. */
-      var refs = document.querySelectorAll('.footnote-ref');
-      refs.forEach(function(ref) {
-        var href = ref.getAttribute('href');
-        if (!href || !href.startsWith('#fn:')) return;
-        var target = document.querySelector(href);
-        if (!target) return;
-        var content = target.cloneNode(true);
-        var backref = content.querySelector('.footnote-backref');
-        if (backref) backref.remove();
-        var popover = document.createElement('span');
-        popover.className = 'footnote-popover';
-        popover.setAttribute('role', 'tooltip');
-        popover.innerHTML = content.innerHTML.trim();
-        ref.parentElement.appendChild(popover);
-        var show = function() { popover.classList.add('is-visible'); };
-        var hide = function() { popover.classList.remove('is-visible'); };
-        ref.addEventListener('mouseenter', show);
-        ref.addEventListener('mouseleave', hide);
-        ref.addEventListener('focus', show);
-        ref.addEventListener('blur', hide);
-      });
-    })();</script>
-
-    <script>(function(){
-      // Code-block copy button — event-delegated so it covers all .code-copy
-      // buttons rendered by layouts/_markup/render-codeblock.html.
-      document.addEventListener('click', function(e) {
-        var btn = e.target.closest('.code-copy');
-        if (!btn) return;
-        var block = btn.closest('.code-block');
-        if (!block) return;
-        var code = block.querySelector('pre code') || block.querySelector('pre');
-        if (!code || !navigator.clipboard) return;
-        var text = code.innerText.replace(/^\n+|\n+$/g, '');
-        navigator.clipboard.writeText(text).then(function() {
-          btn.dataset.copied = 'true';
-          var original = btn.querySelector('.code-copy-text');
-          if (original) {
-            var prev = original.textContent;
-            original.textContent = 'Copied';
-            setTimeout(function() {
-              original.textContent = prev;
-              delete btn.dataset.copied;
-            }, 1400);
-          }
-        }).catch(function() { /* silent fail */ });
-      });
-    })();</script>
-
-    {{- if .Param "math" -}}
-        {{ partialCached "math.html" . }}
-    {{- end -}}
-
-    {{ if not hugo.IsServer }}
-    {{/* GoatCounter Analytics via custom domain */}}
-    <script data-goatcounter="https://stats.philippdubach.com/count"
-            async src="//gc.zgo.at/count.js"></script>
-    {{ end }}
-</body>
+    {{ partial "footer.html" . }}
+    {{ partial "mobile-menu.html" . }}
+  </body>
 </html>

@@ -1,51 +1,6 @@
 {{ define "main" }}
-{{- /*
-  FAQ Hub (v3.0 audit) — lists all category FAQ pages with their counts.
-  About-hero lockup matches /about/, /research/, /categories/, /subscribe/.
-  Replaces the gray .faq-category-card grid with an editorial list register
-  matching the rest of the site.
-*/ -}}
-
-{{- /* Site-wide totals. */ -}}
-{{ $totalFAQs := 0 }}
-{{ $totalPosts := 0 }}
-{{ range where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
-    {{ if .Params.faq }}
-        {{ $totalPosts = add $totalPosts 1 }}
-        {{ $totalFAQs = add $totalFAQs (len .Params.faq) }}
-    {{ end }}
-{{ end }}
-
-<article class="post single faq-hub">
-    <h1 class="page-label section-label">{{ .Title }}</h1>
-
-    {{ with .Content }}
-    <div class="post-content faq-hub-intro">{{ . }}</div>
-    {{ end }}
-
-    <p class="faq-stats">{{ $totalFAQs }} questions from {{ $totalPosts }} posts across {{ len .Pages }} topics</p>
-
-    <ul class="faq-hub-list">
-        {{ range .Pages }}
-        {{ $category := .Params.category }}
-        {{ $categoryLower := $category | lower }}
-        {{ $faqCount := 0 }}
-        {{ $postCount := 0 }}
-        {{ range where (where $.Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
-            {{ if and .Params.faq (intersect (apply .Params.categories "lower" ".") (slice $categoryLower)) }}
-                {{ $postCount = add $postCount 1 }}
-                {{ $faqCount = add $faqCount (len .Params.faq) }}
-            {{ end }}
-        {{ end }}
-        <li class="faq-hub-item">
-            <a href="{{ .Permalink }}" class="faq-hub-link">
-                <span class="faq-hub-title">{{ .Title }}</span>
-                <span class="faq-hub-meta">{{ $faqCount }} questions · {{ $postCount }} posts</span>
-            </a>
-            {{ with .Params.description }}<p class="faq-hub-desc">{{ . }}</p>{{ end }}
-        </li>
-        {{ end }}
-    </ul>
-</article>
-
+  <main id="main-content" class="standalone-page" tabindex="-1">
+    <header class="page-heading"><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}</header>
+    <ul class="section-list">{{ range .Pages.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}</ul>
+  </main>
 {{ end }}

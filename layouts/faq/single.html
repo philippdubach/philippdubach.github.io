@@ -1,87 +1,9 @@
 {{ define "main" }}
-{{- /*
-  FAQ Category Page (v3.0 audit) — aggregates Q&A from posts in the
-  matching category. Visual register matches /about/, /research/,
-  /categories/<term>/, /subscribe/ via the about-hero lockup. Each
-  question has a stable id for deep-linking; the question text is
-  itself an anchor link, so clicking it copies the URL with hash.
-  FAQPage schema is now emitted from layouts/partials/structured-data.html
-  where it's integrated into the @graph alongside Person and WebSite.
-*/ -}}
-{{ $category := .Params.category }}
-{{ $categoryLower := $category | lower }}
-
-{{- /* Aggregate posts in this category that have FAQ frontmatter.
-       Cached partial — single scan per category across the build,
-       shared with the FAQPage schema emitter in structured-data.html. */ -}}
-{{ $postsWithFAQ := partialCached "faq-posts-by-category.html" $categoryLower $categoryLower }}
-
-{{- /* Flatten Q&A entries with source attribution, newest first. */ -}}
-{{ $allFAQs := slice }}
-{{ range $postsWithFAQ }}
-    {{ $post := . }}
-    {{ range .Params.faq }}
-        {{ $faqItem := dict "question" .question "answer" .answer "sourceURL" $post.Permalink "sourceTitle" $post.Title "sourceDate" $post.Date }}
-        {{ $allFAQs = $allFAQs | append $faqItem }}
-    {{ end }}
-{{ end }}
-
-{{- /* 20-FAQ display cap — page weight + clean UX. Schema mirrors what
-       renders so rich-result eligibility stays intact. */ -}}
-{{ $faqCount := len $allFAQs }}
-{{ $postCount := len $postsWithFAQ }}
-{{ $displayFAQs := first 20 $allFAQs }}
-{{ $displayCount := len $displayFAQs }}
-
-{{- /* Resolve parent category page for breadcrumb middle-link and
-       footer cross-link. */ -}}
-{{ $parentCategory := false }}
-{{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-    {{ if eq ($name | lower) $categoryLower }}
-        {{ $parentCategory = $taxonomy.Page }}
-    {{ end }}
-{{ end }}
-
-<article class="post single faq-page">
-    {{ if $parentCategory }}
-    <nav class="faq-breadcrumb" aria-label="Breadcrumb">
-        <a href="{{ "/" | relURL }}">Home</a> ›
-        <a href="{{ $parentCategory.RelPermalink }}">{{ $parentCategory.Title }}</a> ›
-        <span>FAQ</span>
-    </nav>
-    {{ end }}
-    <h1 class="page-label section-label">{{ .Title }}</h1>
-
-    {{ with .Content }}
-    <div class="post-content faq-intro">{{ . }}</div>
-    {{ end }}
-
-    <p class="faq-stats">
-        {{ if gt $faqCount $displayCount }}{{ $displayCount }} most recent of {{ $faqCount }} questions{{ else }}{{ $displayCount }} questions{{ end }} from {{ $postCount }} posts
-    </p>
-
-    <div class="faq-list">
-        {{ range $displayFAQs }}
-        {{- $slug := .question | anchorize }}
-        <div id="{{ $slug }}" class="faq-item">
-            <h2 class="faq-question">
-                <a href="#{{ $slug }}" class="faq-question-anchor" aria-label="Permalink to this question">{{ .question }}</a>
-            </h2>
-            <div class="faq-answer">
-                <p>{{ .answer }}</p>
-            </div>
-            <p class="faq-source">
-                <a href="{{ .sourceURL }}">From: {{ .sourceTitle }}</a>
-            </p>
-        </div>
-        {{ end }}
-    </div>
-
-    {{ if $parentCategory }}
-    <p class="faq-explore">
-        <a href="{{ $parentCategory.RelPermalink }}">Browse all {{ $parentCategory.Title }} articles →</a>
-    </p>
-    {{ end }}
-</article>
-
+  <main id="main-content" class="standalone-page faq-page" tabindex="-1">
+    <article>
+      <header class="page-heading"><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}</header>
+      <div class="article-body">{{ .Content }}</div>
+      {{ with .Params.faq }}<dl class="faq-list">{{ range . }}<dt>{{ .question }}</dt><dd>{{ .answer | markdownify }}</dd>{{ end }}</dl>{{ end }}
+    </article>
+  </main>
 {{ end }}

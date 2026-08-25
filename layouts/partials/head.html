@@ -1,175 +1,44 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    {{/* Content Security Policy - allows GoatCounter, MathJax CDN, and necessary scripts */}}
-    {{/* Note: frame-ancestors directive only works via HTTP headers, not meta tags */}}
-    {{/* Synced with static/_headers CSP - keep both in sync when updating */}}
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; media-src 'self' https://static.philippdubach.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://cdn.jsdelivr.net https://cloudflareinsights.com; object-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self' https://newsletter-api.philippd.workers.dev; upgrade-insecure-requests;">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+{{- $description := .Description | default site.Params.description | plainify -}}
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="{{ site.Params.author }}">
+<meta name="robots" content="{{ .Params.robots | default "index, follow" }}">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Params.seoTitle | default .Title }} · {{ site.Title }}{{ end }}</title>
+<link rel="canonical" href="{{ .Permalink }}">
+{{ with .OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">{{ end }}
+{{ with .OutputFormats.Get "JSONFeed" }}<link rel="alternate" type="application/feed+json" href="{{ .RelPermalink }}" title="{{ site.Title }}">{{ end }}
+{{ with .OutputFormats.Get "Markdown" }}<link rel="alternate" type="text/markdown" href="{{ .RelPermalink }}" title="{{ $.Title }} in Markdown">{{ end }}
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM discovery file">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if eq .Section "posts" }}article{{ else }}website{{ end }}">
+{{ with .Params.images }}<meta property="og:image" content="{{ index . 0 }}">{{ else }}<meta property="og:image" content="{{ site.Params.default_image }}">{{ end }}
+<meta name="twitter:card" content="summary_large_image">
+{{ hugo.Generator }}
+<script type="application/ld+json">
+{{- if eq .Section "posts" -}}
+{"@context":"https://schema.org","@type":"Article","headline":{{ .Title | jsonify | safeJS }},"url":{{ .Permalink | jsonify | safeJS }},"datePublished":{{ .Date.Format "2006-01-02" | jsonify | safeJS }},"dateModified":{{ .Lastmod.Format "2006-01-02" | jsonify | safeJS }},"author":{"@type":"Person","name":"Philipp D. Dubach"}}
+{{- else -}}
+{"@context":"https://schema.org","@type":"WebPage","name":{{ .Title | jsonify | safeJS }},"url":{{ .Permalink | jsonify | safeJS }} }
+{{- end -}}
+</script>
 
-    {{/* Preconnect to external domains for faster resource loading */}}
-    {{/* Note: preconnect implies dns-prefetch, so no need for both */}}
-    {{/* Fonts: self-hosted at /fonts/ (Newsreader variable woff2). Wordmark on system sans. */}}
-    <link rel="preload" href="/fonts/newsreader-upright.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+  (() => {
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem("pdd-theme"); } catch {}
+    const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+  })();
+</script>
 
-    {{/* LCP preload for the homepage. The featured card image (1200×630
-         fit=crop, gravity=auto) is the LCP element. Without preload the
-         browser only discovers it during body parse, adding ~400ms to
-         resource-load delay. This block replicates the featured-card
-         resolution logic from layouts/index.html (kept in sync manually). */}}
-    {{- if .IsHome -}}
-        {{- $cdnBase := "https://static.philippdubach.com" -}}
-        {{- $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
-        {{- $articles := where $allPosts ".Params.type" "!=" "Project" -}}
-        {{- $articles = $articles.ByDate.Reverse -}}
-        {{- $pinned := where $articles "Params.featured" true -}}
-        {{- $featured := index $pinned 0 -}}
-        {{- if not $featured -}}{{- $featured = index $articles 0 -}}{{- end -}}
-
-        {{- $cardSrc := "" -}}
-        {{- $gravity := "auto" -}}
-        {{- $resolved := false -}}
-
-        {{- with $featured.Params.card_image -}}
-            {{- $cardSrc = . -}}
-            {{- if hasPrefix . "https://static.philippdubach.com/" -}}
-                {{- $cardSrc = replace . "https://static.philippdubach.com/" "" -}}
-            {{- end -}}
-            {{- $resolved = true -}}
-        {{- end -}}
-
-        {{- if not $resolved -}}
-            {{- $matches := findRESubmatch `\{\{[<%]\s*img\s+src="([^"]+)"` $featured.RawContent 1 -}}
-            {{- if $matches -}}
-                {{- $cardSrc = index (index $matches 0) 1 -}}
-                {{- if hasPrefix $cardSrc "https://static.philippdubach.com/" -}}
-                    {{- $cardSrc = replace $cardSrc "https://static.philippdubach.com/" "" -}}
-                {{- end -}}
-                {{- $resolved = true -}}
-            {{- end -}}
-        {{- end -}}
-
-        {{- if not $resolved -}}
-            {{- with $featured.Params.images -}}
-                {{- $cardSrc = replace (index . 0) "https://static.philippdubach.com/" "" -}}
-                {{- $gravity = "right" -}}
-            {{- end -}}
-        {{- end -}}
-
-        {{- with $featured.Params.card_gravity -}}{{- $gravity = . -}}{{- end -}}
-
-        {{- if $cardSrc -}}
-            {{- $cropArgs := printf "fit=crop,gravity=%s," $gravity -}}
-    <link rel="preload" as="image"
-          href="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1200,height=630,quality=80,format=auto/{{ $cardSrc }}"
-          imagesrcset="{{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=600,height=315,quality=80,format=webp/{{ $cardSrc }} 600w, {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=800,height=420,quality=80,format=webp/{{ $cardSrc }} 800w, {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1000,height=525,quality=80,format=webp/{{ $cardSrc }} 1000w, {{ $cdnBase }}/cdn-cgi/image/{{ $cropArgs }}width=1600,height=840,quality=80,format=webp/{{ $cardSrc }} 1600w"
-          imagesizes="(max-width: 768px) 100vw, 880px"
-          fetchpriority="high">
-        {{- end -}}
-    {{- end -}}
-    {{/* Lighthouse caps useful preconnect at 4. Order by LCP impact: image
-         CDN first, then analytics endpoints fired on page load. The
-         newsletter API only fires on form submit (below fold, post-LCP);
-         dropped from preconnect because Lighthouse flagged it as unused. */}}
-    <link rel="preconnect" href="https://static.philippdubach.com" crossorigin>
-    <link rel="preconnect" href="https://stats.philippdubach.com" crossorigin>
-    <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
-    {{/* Preconnect to MathJax CDN — only used on math-enabled posts but
-         loaded on every page via the math partial guard, so warm anyway. */}}
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    
-    {{/* SEO Meta Tags. 404 forces noindex,follow: hard 404 status is the
-         primary signal, but GPTBot/ClaudeBot/PerplexityBot honor noindex
-         more reliably than they honor status codes (per their docs). The
-         `follow` keeps the recovery links discoverable as a navigation
-         hop, not as an indexable resource. */}}
-    {{- $is404 := eq .Kind "404" -}}
-    <meta name="robots" content="{{ if $is404 }}noindex, follow{{ else if .Params.robots }}{{ .Params.robots }}{{ else }}index, follow{{ end }}">
-    {{/* Use seoTitle if available (for shorter SEO-optimized titles), otherwise use Title */}}
-    {{- $pageTitle := .Params.seoTitle | default .Title -}}
-    <title>
-	{{- if $is404 -}}
-		Page not found - philippdubach.com
-	{{- else if .IsHome -}}
-    	{{ .Site.Params.site_name }}
-	{{- else if $pageTitle -}}
-		{{ $pageTitle }}
-	{{- else -}}
-    	philippdubach.com
-	{{- end -}}
-	</title>
-    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-
-    {{/* Use post-specific keywords if available, otherwise site-wide */}}
-    {{ if .Params.keywords }}
-    <meta name="keywords" content="{{ delimit .Params.keywords "," }}">
-    {{ else if .Site.Params.keywords }}
-    <meta name="keywords" content="{{ delimit .Site.Params.keywords "," }}">
-    {{ end }}
-
-    {{ if .Site.Params.author }}
-    <meta name="author" content="{{ .Site.Params.author }}">
-    {{ end }}
-
-    {{/* Hugo Generator */}}
-    {{ hugo.Generator }}
-
-    {{/* Canonical URL — skip on 404 so we don't tell crawlers /404.html
-         is itself a navigable resource. Pointing at the homepage instead
-         would imply the missing URL was meant to be /, which is wrong. */}}
-    {{ if not $is404 }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
-    
-    {{/* RSS Feed */}}
-    {{- with .OutputFormats.Get "RSS" }}
-    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
-    <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}">
-    {{- end }}
-
-    {{/* JSON Feed */}}
-    {{- with .OutputFormats.Get "JSONFeed" }}
-    <link href="{{ .RelPermalink }}" rel="alternate" type="application/feed+json" title="{{ $.Site.Title }}">
-    {{- end }}
-
-    {{/* LLMs.txt - AI crawler discovery */}}
-    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt">
-
-    {{/* Markdown alternate - AI-readable version of posts */}}
-    {{ if eq .Section "posts" }}
-    {{ with .OutputFormats.Get "Markdown" }}
-    <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}" title="{{ $.Title }} (Markdown)">
-    {{ end }}
-    {{ end }}
-
-	<style>
-	{{ readFile "static/css/custom.css" | safeCSS }}
-	</style>
-    
-    {{/* Favicons */}}
-	<link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-	<link rel="shortcut icon" href="/icons/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="{{ .Site.Params.site_name | default 	.Site.Title }}" />
-	<link rel="manifest" href="/icons/site.webmanifest" />
-    <meta name="theme-color" content="{{ .Site.Params.theme_color | default "#434648" }}">
-    <meta name="msapplication-TileColor" content="{{ .Site.Params.msapplication_tile_color | default "#434648" }}">
-
-    {{/* OpenGraph, Twitter, JSON-LD — skip on 404. Otherwise stale links
-         shared in Slack/Discord unfurl with the default OG image and a
-         "404 Page not found" title (an own-goal social card), and the
-         structured-data partial emits a BreadcrumbList that asserts
-         /404.html is a real navigable resource. Strip everything optional
-         and let the chrome (nav + footer) carry the recovery surface. */}}
-    {{ if not $is404 }}
-    {{/* Open Graph */}}
-    {{ partial "opengraph.html" . }}
-
-    {{/* Twitter Cards */}}
-    {{ partial "twitter.html" . }}
-
-    {{/* Structured Data */}}
-    {{ partial "structured-data.html" . }}
-    {{ end }}
-</head>
+{{ $styles := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{ $script := resources.Get "js/site.js" | minify | fingerprint }}
+<script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+<link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/icons/site.webmanifest">

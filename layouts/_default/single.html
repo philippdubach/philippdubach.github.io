@@ -1,137 +1,51 @@
 {{ define "main" }}
-{{- $isAbout := eq .RelPermalink "/about/" -}}
-{{- $isSubscribe := eq .RelPermalink "/subscribe/" -}}
-{{- $isNewsletterArchive := eq .RelPermalink "/newsletter-archive/" -}}
-{{- $isImpressum := eq .RelPermalink "/impressum/" -}}
-{{- $isDisclaimers := eq .RelPermalink "/disclaimers/" -}}
-{{- $isProject := eq .Params.type "Project" -}}
-<article class="post single{{ with .Section }} {{ . }}{{ end }}{{ if $isAbout }} about{{ end }}{{ if $isSubscribe }} subscribe-page{{ end }}{{ if $isNewsletterArchive }} newsletter-archive-page{{ end }}{{ if $isImpressum }} impressum-page{{ end }}{{ if $isDisclaimers }} disclaimers-page{{ end }}{{ if $isProject }} project-post{{ end }}">
-    {{ if $isAbout }}
-    {{/* About-page hero lockup — replaces standard post header. */}}
-    <header class="post-header about-hero">
-        <h1 class="post-title about-name">About</h1>
-        <p class="about-lede">Strategy consultant and independent researcher in quantitative finance, machine learning, and AI economics.</p>
-    </header>
-    {{ else if $isSubscribe }}
-    {{/* Subscribe-page hero lockup — matches /about/ and /research/. The
-         lede comes from frontmatter `description` so it stays editable
-         from the markdown source without template changes. */}}
-    <header class="post-header about-hero subscribe-hero">
-        <h1 class="post-title about-name">Subscribe</h1>
-        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
-    </header>
-    {{ else if $isNewsletterArchive }}
-    {{/* Newsletter archive — quiet kicker register. The page is a list, not
-         a landing — body content does the orientation. Matches /, /projects/,
-         /categories/, /faq/. */}}
-    <h1 class="page-label section-label">{{ .Title }}</h1>
-    {{ else if or $isImpressum $isDisclaimers }}
-    {{/* Legal / utility pages — share the about-hero lockup so they read as
-         deliberate site sections rather than orphan boilerplate. Lede comes
-         from frontmatter `description`. Section-label overline frames the
-         register as compliance-tier without making the H1 shout. */}}
-    <header class="post-header about-hero impressum-hero">
-        <p class="section-label impressum-kicker">{{ if $isImpressum }}Privacy notice{{ else }}Disclaimers{{ end }}</p>
-        <h1 class="post-title about-name">{{ .Title }}</h1>
-        {{ with .Description }}<p class="about-lede">{{ . }}</p>{{ end }}
-    </header>
-    {{ else }}
-    <header class="post-header">
-        <h1 class="post-title">
-            {{ .Title }}
-        </h1>
-        {{ if not .Date.IsZero }}
-        {{- /* Slim post-meta — date + category only. Wordcount, reading-time,
-              "Updated", and "via" moved to the bottom post-biblio strip. */ -}}
-        <div class="post-meta">
-            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
-            {{- with .Params.categories }} · {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relURL }}{{ $cat | urlize }}/" class="post-category">{{ $cat }}</a>{{ end }}{{ end }}
-            {{- if .Params.external_url }} · <a href="{{ .Params.external_url }}" target="_blank" rel="noopener external">via</a>{{ end }}
-        </div>
+  {{ $isPost := eq .Section "posts" }}
+  {{ $isProject := eq .Params.type "Project" }}
+  <main id="main-content" class="{{ if $isPost }}article-content{{ else }}standalone-page{{ end }}" tabindex="-1">
+    <article>
+      <header class="{{ if $isPost }}article-header{{ else }}page-heading{{ end }}">
+        <h1>{{ .Title }}</h1>
+        {{ if $isPost }}
+          <p class="article-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+            <span aria-hidden="true">·</span>
+            <span>{{ .ReadingTime }} min read</span>
+            {{ with .Params.categories }}<span aria-hidden="true">·</span><span>{{ delimit . ", " }}</span>{{ end }}
+          </p>
+          {{ if and (not .Lastmod.IsZero) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}
+            <p class="article-updated">Updated {{ .Lastmod.Format "2 January 2006" }}</p>
+          {{ end }}
+        {{ else }}
+          {{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}
         {{ end }}
+      </header>
 
-        {{- /* Project lockup — when type=Project. Status badge (Production /
-              Archived / WIP via frontmatter `status`) + repo CTA (frontmatter
-              `repo` or auto-detected from body) + tech-stack chips
-              (frontmatter `stack` array). Sits below post-meta but inside the
-              header so it stays in the title group. */ -}}
-        {{ if $isProject }}
-        <div class="project-lockup">
-            {{ with .Params.status }}<span class="project-status project-status--{{ . | lower }}">{{ . }}</span>{{ end }}
-            {{- $repo := .Params.repo -}}
-            {{- if not $repo -}}
-                {{- $matches := findRE `https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+` .RawContent 1 -}}
-                {{- with $matches -}}{{ $repo = index . 0 }}{{- end -}}
-            {{- end -}}
-            {{ with $repo }}<a href="{{ . }}" class="project-repo" target="_blank" rel="noopener external">View on GitHub →</a>{{ end }}
-            {{ with .Params.doi }}<a href="https://doi.org/{{ . }}" class="project-doi" target="_blank" rel="noopener external">DOI →</a>{{ end }}
-            {{ with .Params.stack }}<span class="project-stack">{{ range $i, $s := . }}{{ if $i }} · {{ end }}<span class="project-stack-chip">{{ $s }}</span>{{ end }}</span>{{ end }}
-        </div>
-        {{ end }}
-    </header>
-    {{ end }}
-    {{- /* Takeaways are suppressed on project posts — projects are artifacts,
-          not argument-driven essays, and the takeaways register doesn't fit. */ -}}
-    {{ if not $isProject }}{{ with .Params.takeaways }}
-    {{- /* Key Takeaways: italic standfirst register. Each takeaway is wrapped in
-          <blockquote class="claim" cite="{permalink}"> so AI engines (Perplexity,
-          ChatGPT, Google AIO) treat each as an atomic, citation-ready claim.
-          Paired with `mentions[]` of Claim entities in structured-data.html.
-          aria-label provides the screen-reader equivalent of the dropped H2. */ -}}
-    <aside class="key-takeaways" aria-label="Key takeaways">
-        {{ range . }}
-        <blockquote class="claim" cite="{{ $.Permalink }}">{{ . | markdownify }}</blockquote>
-        {{ end }}
-    </aside>
-    {{ end }}{{ end }}
-    <div class="post-content">
+      {{ if and $isPost (in .TableOfContents "<li>") }}{{ partial "article-toc-mobile.html" . }}{{ end }}
+      {{ if and $isPost (not $isProject) }}{{ with .Params.takeaways }}
+        <aside class="key-takeaways" aria-labelledby="takeaways-title">
+          <h2 id="takeaways-title">Key takeaways</h2>
+          <ul>{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>
+        </aside>
+      {{ end }}{{ end }}
+
+      <div class="article-body{{ if .Params.math }} has-math{{ end }}">
         {{ .Content }}
-    </div>
+      </div>
 
-    {{- /* Subscribe page: render curated sample issues from the data file
-           when present. Hand-rotated; empty default keeps the section
-           hidden until the first issue is public. */ -}}
-    {{ if $isSubscribe }}{{ $samplesData := index hugo.Data "newsletter-samples" }}{{ with $samplesData }}{{ with .samples }}
-    <section class="subscribe-samples" aria-labelledby="samples-heading">
-        <h2 class="section-label subscribe-samples__heading" id="samples-heading">Recent issues</h2>
-        <ul class="subscribe-samples__list">
-            {{ range . }}
-            <li class="subscribe-samples__item">
-                <a href="{{ .url }}" class="subscribe-samples__link">
-                    <span class="subscribe-samples__meta">Issue #{{ .number }} · <time datetime="{{ .date }}">{{ dateFormat "Jan 2, 2006" .date }}</time></span>
-                    <span class="subscribe-samples__title">{{ .title }}</span>
-                    <span class="subscribe-samples__excerpt">{{ .excerpt }}</span>
-                </a>
-            </li>
-            {{ end }}
-        </ul>
-    </section>
-    {{ end }}{{ end }}{{ end }}
-    {{ if eq .Section "posts" }}{{ partial "post-biblio.html" . }}{{ end }}
-    {{ if eq .Section "posts" }}{{ with .Params.keywords }}
-    {{- /* Topics — non-clickable keyword strip. Present in HTML for LLM and
-          search-engine entity extraction (frontmatter `keywords` aren't all
-          mapped to category pages, so making them links would 404). data-
-          nosnippet keeps this index out of SERP snippet text. */ -}}
-    <aside class="post-topics" aria-label="Topics" data-nosnippet>
-        <span class="post-topics-label">Topics:</span>
-        <ul class="post-topics-list">
-            {{ range first 5 . }}<li>{{ . }}</li>{{ end }}
-        </ul>
-    </aside>
-    {{ end }}{{ end }}
-</article>
-
-{{ if eq .Section "posts" }}
-
-{{/* Newsletter CTA — sits directly after the article at the peak-intent moment
-     (reader just finished), ahead of the Read Next exit ramp so the subscribe
-     ask gets first claim rather than being clustered in with the footer. */}}
-{{ partial "newsletter-cta.html" . }}
-
-{{/* Related Posts — onward discovery, below the subscribe ask */}}
-{{ partial "related.html" . }}
-
+      {{ if $isPost }}
+        <footer class="article-footer">
+          {{ with .Params.keywords }}<p><strong>Topics:</strong> {{ delimit (first 5 .) ", " }}</p>{{ end }}
+          {{ if $isProject }}
+            {{ with .Params.repo }}<a href="{{ . }}" rel="external noopener">Repository</a>{{ end }}
+            {{ with .Params.doi }}<a href="https://doi.org/{{ . }}" rel="external noopener">DOI</a>{{ end }}
+          {{ end }}
+        </footer>
+        {{ partial "newsletter-form.html" (dict "id" "post-newsletter-email") }}
+        {{ $related := site.RegularPages.Related . | first 3 }}
+        {{ with $related }}<aside class="related-reading" aria-labelledby="related-title"><h2 id="related-title">Related reading</h2><ul>{{ range . }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}</ul></aside>{{ end }}
+      {{ end }}
+    </article>
+  </main>
 {{ end }}
 
-{{ end }}
+{{ define "timeline" }}{{ partial "timeline.html" . }}{{ end }}

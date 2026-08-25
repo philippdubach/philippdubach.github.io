@@ -1,55 +1,8 @@
-{{/* Site footer — appears on every page. v3.x audit:
-     - Left-aligned editorial register (was 2018-style centered middot row).
-     - Identity byline above copyright for E-E-A-T + GEO trust. Sole
-       site-wide identity surface (the post-end .author-entity aside was
-       removed in favor of this single footer byline).
-     - Machine-readable resources strip surfaces RSS / JSON Feed /
-       llms.txt / api-catalog to humans (developers, journalists). They
-       were previously discoverable only via <link rel> in <head>.
-     - rel="me" on GitHub/Bluesky enables IndieWeb + Bluesky verification
-       round-trip; the @graph Person.sameAs already covers crawler-side
-       entity binding.
-     - Newsletter still drops on post pages where the inline CTA covers
-       conversion. */}}
-<footer class="site-footer" role="contentinfo">
-    {{- $isPost := and .IsPage (eq .Section "posts") -}}
-    {{- /* Hairline rule precedes the footer except where the page already
-           closes with its own .page-footnote rule (about, research) — avoid
-           stacking two rules. Posts also skip; the related-posts and
-           newsletter CTA already create their own visual seam. */ -}}
-    {{- $hasFootnote := or (eq .RelPermalink "/about/") (eq .RelPermalink "/research/") -}}
-    {{ if and (not $isPost) (not $hasFootnote) }}
-    <hr class="footer-divider" aria-hidden="true">
-    {{ end }}
-
-    <p class="footer-byline">
-        <a href="{{ "/about/" | relURL }}" class="footer-byline__name">{{ .Site.Params.author | default "Philipp D. Dubach" }}</a><span class="footer-byline__role">, strategy consultant and independent researcher in quantitative finance, machine learning, and AI economics.</span>
-    </p>
-
-    <nav class="footer-utilities" aria-label="Footer navigation">
-        <ul class="footer-utilities__group">
-            <li><a href="{{ "/faq/" | relURL }}">FAQ</a></li>
-            {{ if not $isPost }}
-            <li><a href="{{ "/subscribe/" | relURL }}">Newsletter</a></li>
-            {{ end }}
-            <li><a href="/index.xml">RSS</a></li>
-            {{ with .Site.Params.social.github }}
-            <li><a href="https://github.com/{{ . }}" target="_blank" rel="me noopener noreferrer">GitHub</a></li>
-            {{ end }}
-            {{ with .Site.Params.social.bluesky }}
-            <li><a href="https://bsky.app/profile/{{ . }}" target="_blank" rel="me noopener noreferrer">Bluesky</a></li>
-            {{ end }}
-            {{ with .Site.Params.social.email }}
-            <li><a href="mailto:{{ . }}">Email</a></li>
-            {{ end }}
-        </ul>
-        <ul class="footer-utilities__group footer-utilities__feeds" aria-label="Site resources">
-            <li><a href="/feed.json">JSON Feed</a></li>
-            <li><a href="/llms.txt">llms.txt</a></li>
-            <li><a href="/api-catalog.json">API catalog</a></li>
-            <li><a href="{{ "/impressum/" | relURL }}">Privacy</a></li>
-        </ul>
-    </nav>
-
-    <p class="copyright">© {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}</p>
+<footer class="site-footer">
+  <p>© {{ now.Year }} Philipp D. Dubach</p>
+  <nav aria-label="Footer navigation">
+    <a href="/about/">About</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/impressum/">Privacy and contact</a>
+  </nav>
 </footer>

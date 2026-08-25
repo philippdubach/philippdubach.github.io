@@ -1,36 +1,9 @@
 {{ define "main" }}
-<div class="archive">
-    <h1>Archive</h1>
-    
-    {{ if .Content }}
-    <div class="archive-description">
-        {{ .Content }}
-    </div>
-    {{ end }}
-    
-    {{ $posts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true }}
-    {{ $posts := $posts.ByDate.Reverse }}
-    {{ range $posts.GroupByDate "2006" }}
-    <section class="year">
-        <h2>{{ .Key }}</h2>
-        {{ range .Pages }}
-        <article class="archive-item">
-            <div class="archive-meta">
-                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                    {{ .Date.Format "Jan 2" }}
-                </time>
-            </div>
-            <div class="archive-title">
-                <a href="{{ .Permalink }}">
-                    {{ .Title }}
-                    {{ if eq .Params.type "Project" }}
-                       <span class="project-tag">PROJECT</span>
-                    {{ end }}
-                </a>
-            </div>
-        </article>
-        {{ end }}
-    </section>
-    {{ end }}
-</div>
+  <main id="main-content" class="standalone-page" tabindex="-1">
+    <header class="page-heading"><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}</header>
+    {{ with .Content }}<div class="article-body">{{ . }}</div>{{ end }}
+    <ul class="section-list">
+      {{ range .Pages.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Description }}<p>{{ . }}</p>{{ end }}</li>{{ end }}
+    </ul>
+  </main>
 {{ end }}

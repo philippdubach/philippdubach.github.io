@@ -1,5 +1,6 @@
----
-title: "Articles"
-seoTitle: "Quantitative Finance, AI & Technology Essays | Philipp D. Dubach"
-description: "Long-form essays and analyses on quantitative finance, AI, and technology by Philipp D. Dubach. Independent writing, not commentary, not aggregation."
----
++++
+title = "Philipp D. Dubach"
+description = "Independent writing and research on quantitative finance, machine learning, and complex systems."
++++
+
+Philipp D. Dubach writes about the structural mechanics of artificial intelligence, capital markets, and complex systems.
