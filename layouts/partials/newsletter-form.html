@@ -1,11 +1,12 @@
-<aside class="newsletter-preview" aria-label="Newsletter preview">
+<aside class="newsletter-preview" aria-label="Newsletter signup">
   <p class="newsletter-preview__title">Monthly notes</p>
-  <form class="newsletter-preview__form" data-newsletter-preview novalidate>
+  <form class="newsletter-preview__form" {{ if site.Params.newsletter.preview }}data-newsletter-preview{{ else }}data-newsletter-endpoint="{{ site.Params.newsletter.endpoint }}" data-newsletter-count-endpoint="{{ site.Params.newsletter.count_endpoint }}"{{ end }} novalidate>
     <label for="{{ .id }}">Email address</label>
     <div class="newsletter-preview__controls">
       <input id="{{ .id }}" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
       <button type="submit">Subscribe</button>
     </div>
+    <p class="newsletter-preview__note" data-newsletter-note><a href="/posts/building-a-no-tracking-newsletter-from-markdown-to-distribution/">No tracking</a>. Unsubscribe anytime.</p>
     <p class="newsletter-preview__message" data-newsletter-message role="status" aria-live="polite"></p>
   </form>
 </aside>

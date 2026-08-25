@@ -1,12 +1,1 @@
-{{- $id := printf "newsletter-%d" .Ordinal -}}
-<aside class="newsletter-preview" aria-label="Newsletter preview">
-  <p class="newsletter-preview__title">Monthly notes</p>
-  <form class="newsletter-preview__form" data-newsletter-preview novalidate>
-    <label for="{{ $id }}">Email address</label>
-    <div class="newsletter-preview__controls">
-      <input id="{{ $id }}" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
-      <button type="submit">Subscribe</button>
-    </div>
-    <p class="newsletter-preview__message" data-newsletter-message role="status" aria-live="polite"></p>
-  </form>
-</aside>
+{{ partial "newsletter-form.html" (dict "id" (printf "newsletter-%d" .Ordinal)) }}

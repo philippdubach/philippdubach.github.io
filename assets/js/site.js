@@ -142,6 +142,71 @@
     });
   }
 
+  const localHosts = ["localhost", "127.0.0.1"];
+
+  for (const form of document.querySelectorAll("[data-newsletter-endpoint]")) {
+    const note = form.querySelector("[data-newsletter-note]");
+    const countEndpoint = form.dataset.newsletterCountEndpoint;
+    if (note instanceof HTMLElement && countEndpoint && !localHosts.includes(location.hostname)) {
+      fetch(countEndpoint)
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data || !data.display) return;
+          note.insertBefore(document.createTextNode(`Join ${data.display} readers. `), note.firstChild);
+        })
+        .catch(() => {});
+    }
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = form.querySelector('input[type="email"]');
+      const message = form.querySelector("[data-newsletter-message]");
+      const button = form.querySelector('button[type="submit"]');
+      if (!(input instanceof HTMLInputElement) || !(message instanceof HTMLElement)) return;
+      if (!input.checkValidity() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
+        message.textContent = "Enter a valid email address.";
+        input.reportValidity();
+        return;
+      }
+      if (localHosts.includes(location.hostname)) {
+        message.textContent = "Preview only — no subscription was created";
+        return;
+      }
+      if (button instanceof HTMLButtonElement) {
+        button.disabled = true;
+        button.textContent = "Subscribing…";
+      }
+      fetch(form.dataset.newsletterEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: input.value.trim() }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data && data.success) {
+            if (window.goatcounter && window.goatcounter.count) {
+              window.goatcounter.count({ path: `subscribe${location.pathname}`, title: "Newsletter subscribe", event: true });
+            }
+            const controls = form.querySelector(".newsletter-preview__controls");
+            if (controls instanceof HTMLElement) controls.hidden = true;
+            message.textContent = "Thanks for subscribing! You'll receive the next newsletter in your inbox.";
+          } else {
+            message.textContent = (data && data.error) || "Something went wrong. Please try again.";
+            if (button instanceof HTMLButtonElement) {
+              button.disabled = false;
+              button.textContent = "Subscribe";
+            }
+          }
+        })
+        .catch(() => {
+          message.textContent = "Something went wrong. Please try again later.";
+          if (button instanceof HTMLButtonElement) {
+            button.disabled = false;
+            button.textContent = "Subscribe";
+          }
+        });
+    });
+  }
+
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const ambientVideos = [...document.querySelectorAll("[data-ambient-video]")];
 

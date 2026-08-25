@@ -1,5 +1,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{/* Content Security Policy - allows GoatCounter, MathJax CDN, and necessary scripts */}}
+{{/* Note: frame-ancestors directive only works via HTTP headers, not meta tags */}}
+{{/* Synced with static/_headers CSP and social-automation/security-headers/src/index.js - keep all three in sync when updating */}}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; media-src 'self' https://static.philippdubach.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://cdn.jsdelivr.net https://cloudflareinsights.com; object-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self' https://newsletter-api.philippd.workers.dev; upgrade-insecure-requests;">
 <meta name="color-scheme" content="light dark">
 {{- $description := .Description | default site.Params.description | plainify -}}
 <meta name="description" content="{{ $description }}">
@@ -18,13 +22,7 @@
 {{ with .Params.images }}<meta property="og:image" content="{{ index . 0 }}">{{ else }}<meta property="og:image" content="{{ site.Params.default_image }}">{{ end }}
 <meta name="twitter:card" content="summary_large_image">
 {{ hugo.Generator }}
-<script type="application/ld+json">
-{{- if eq .Section "posts" -}}
-{"@context":"https://schema.org","@type":"Article","headline":{{ .Title | jsonify | safeJS }},"url":{{ .Permalink | jsonify | safeJS }},"datePublished":{{ .Date.Format "2006-01-02" | jsonify | safeJS }},"dateModified":{{ .Lastmod.Format "2006-01-02" | jsonify | safeJS }},"author":{"@type":"Person","name":"Philipp D. Dubach"}}
-{{- else -}}
-{"@context":"https://schema.org","@type":"WebPage","name":{{ .Title | jsonify | safeJS }},"url":{{ .Permalink | jsonify | safeJS }} }
-{{- end -}}
-</script>
+{{ partial "structured-data.html" . }}
 
 <script>
   (() => {

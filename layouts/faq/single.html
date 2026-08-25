@@ -3,7 +3,28 @@
     <article>
       <header class="page-heading"><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}</header>
       <div class="article-body">{{ .Content }}</div>
-      {{ with .Params.faq }}<dl class="faq-list">{{ range . }}<dt>{{ .question }}</dt><dd>{{ .answer | markdownify }}</dd>{{ end }}</dl>{{ end }}
+      {{- /* Aggregate Q&A from posts in this category, newest first.
+             Cached partial shared with the FAQPage schema emitter in
+             structured-data.html; the 20-item cap mirrors the schema so
+             rich-result eligibility matches the visible page. */ -}}
+      {{- $categoryLower := .Params.category | lower -}}
+      {{- $postsWithFAQ := partialCached "faq-posts-by-category.html" $categoryLower $categoryLower -}}
+      {{- $allFAQs := slice -}}
+      {{- range $postsWithFAQ -}}
+        {{- $post := . -}}
+        {{- range .Params.faq -}}
+          {{- $allFAQs = $allFAQs | append (dict "question" .question "answer" .answer "sourceURL" $post.RelPermalink "sourceTitle" $post.Title) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $displayFAQs := first 20 $allFAQs -}}
+      {{- if gt (len $displayFAQs) 0 -}}
+      <dl class="faq-list">
+        {{- range $displayFAQs -}}
+        <dt>{{ .question }}</dt>
+        <dd>{{ .answer | markdownify }} <span class="faq-source">From <a href="{{ .sourceURL }}">{{ .sourceTitle }}</a>.</span></dd>
+        {{- end -}}
+      </dl>
+      {{- end -}}
     </article>
   </main>
 {{ end }}

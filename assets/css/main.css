@@ -1490,6 +1490,13 @@ strong {
   cursor: pointer;
 }
 
+.newsletter-preview__note {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+}
+
 .newsletter-preview__message {
   min-height: 1.4rem;
   margin: 0.55rem 0 0;
@@ -1570,6 +1577,11 @@ strong {
 
 .faq-list dd {
   margin: 0.45rem 0 0;
+}
+
+.faq-source {
+  color: var(--muted);
+  font-size: 0.85em;
 }
 
 .section-list li {
