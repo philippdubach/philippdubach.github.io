@@ -1,12 +1,12 @@
 {
-  "name": "philipp-d-dubach-editorial-site",
+  "name": "philippdubach.com",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "hugo server --disableFastRender",
     "build": "hugo --gc --minify --panicOnWarning",
-    "check": "npm run build && node scripts/check-build.mjs && node scripts/check-layout.mjs && node scripts/check-migration.mjs"
+    "check": "npm run build && node scripts/check-build.mjs && node scripts/check-layout.mjs && node scripts/check-migration.mjs . /private/tmp/pdd-main-worktree"
   },
   "engines": {
     "node": ">=22"

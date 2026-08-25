@@ -3,7 +3,9 @@ import { basename, extname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 
 const projectRoot = resolve(process.argv[2] ?? ".");
-const sourceRoot = resolve(process.argv[3] ?? "/private/tmp/pdd-current-site");
+// Comparison source: a pinned worktree of the pre-redesign site state.
+// Create it with: git worktree add --detach /private/tmp/pdd-main-worktree 1f4c38dc
+const sourceRoot = resolve(process.argv[3] ?? "/private/tmp/pdd-main-worktree");
 const outputRoot = join(projectRoot, "public");
 const failures = [];
 
@@ -112,7 +114,7 @@ for (const filename of destinationPosts) {
       `${filename}: canonical URL does not preserve ${destinationURL}`,
     );
     record(/<main\b[^>]*id=(?:"main-content"|main-content)/i.test(html), `${filename}: missing main landmark`);
-    record(!/<script\b[^>]*(?:data-goatcounter|src=[^>]*(?:gc\.zgo\.at|cloudflareinsights))/i.test(html), `${filename}: local output includes analytics`);
+    record(/<script\b[^>]*data-goatcounter="?https:\/\/stats\.philippdubach\.com\/count"?/i.test(html), `${filename}: missing GoatCounter analytics`);
     record(!/UIcons by Flaticon/i.test(html), `${filename}: local output includes removed attribution`);
   } catch {
     failures.push(`${filename}: missing generated route ${destinationURL}`);
@@ -173,7 +175,12 @@ for (const slug of ["lorem-ipsum", "dolor-sit-amet", "consectetur-adipiscing", "
 }
 
 const siteScript = await readFile(join(projectRoot, "assets", "js", "site.js"), "utf8");
-record(!/fetch\s*\(/.test(siteScript), "Local site JavaScript must not make network requests.");
+const hardcodedURLs = siteScript.match(/https?:\/\/[^\s"'`)]+/g) ?? [];
+record(
+  hardcodedURLs.every((url) => url.startsWith("https://newsletter-api.philippd.workers.dev/")),
+  "Site JavaScript may only reference the newsletter API host.",
+);
+record(siteScript.includes("[data-newsletter-endpoint]"), "Live newsletter submit handler is missing.");
 record(siteScript.includes("Preview only — no subscription was created"), "Newsletter preview message is missing.");
 record(!siteScript.includes("navigator.clipboard"), "Removed code-copy behavior must not remain in local JavaScript.");
 record(siteScript.includes('matchMedia("(prefers-reduced-motion: reduce)")'), "Ambient video must respect reduced motion.");

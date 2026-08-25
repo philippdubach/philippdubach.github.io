@@ -70,7 +70,8 @@ async function inspectPage(path) {
   record(duplicateIds.length === 0, `${label}: duplicate ids ${duplicateIds.join(", ")}`);
   record(!/UIcons by Flaticon/i.test(markup), `${label}: includes removed attribution`);
   record(!/\bcode-(?:lang|copy)\b/i.test(markup), `${label}: code blocks must not show language or copy controls`);
-  record(!/<script\b[^>]*(?:data-goatcounter|src=[^>]*(?:gc\.zgo\.at|cloudflareinsights))/i.test(markup), `${label}: includes analytics`);
+  record(/<script\b[^>]*data-goatcounter="?https:\/\/stats\.philippdubach\.com\/count"?/i.test(markup), `${label}: missing GoatCounter analytics`);
+  record(/<meta\b[^>]*http-equiv="?Content-Security-Policy"?/i.test(markup), `${label}: missing Content-Security-Policy meta tag`);
   inspectNavigation(markup, label);
 
   if (label === "/") {
@@ -133,8 +134,13 @@ async function inspectPage(path) {
   }
 
   for (const attributes of tags(markup, "script")) {
-    const resource = values(`<script ${attributes}>`, "src")[0] ?? "";
-    record(!/^https?:\/\//.test(resource), `${label}: remote script resource ${resource}`);
+    const scriptTag = `<script ${attributes}>`;
+    const resource = values(scriptTag, "src")[0] ?? "";
+    const integrity = values(scriptTag, "integrity")[0] ?? "";
+    const allowedRemote =
+      (resource.startsWith("https://cdn.jsdelivr.net/") && integrity.length > 0) ||
+      resource === "//gc.zgo.at/count.js";
+    record(!/^(?:https?:)?\/\//.test(resource) || allowedRemote, `${label}: remote script resource ${resource}`);
   }
   for (const attributes of tags(markup, "video")) {
     const video = `<video ${attributes}>`;
