@@ -1,10 +1,16 @@
-# Philipp D. Dubach Editorial Site
+# philippdubach.com
 
-This repository contains the Hugo source for Philipp D. Dubach's editorial website.
+This repository contains the Hugo source for philippdubach.com.
 It combines the current articles, projects, and research records with a custom reading-focused design.
 
-The repository produces a local preview only.
-It does not deploy the site or change production services.
+## Production
+
+Forgejo at `code.philippdubach.com` is the source of truth.
+A Forgejo webhook builds and releases the site on the production host.
+A push to GitHub builds the GitHub Pages warm standby through `.github/workflows/hugo.yml`, purges the Cloudflare cache, and notifies the social Workers; a successful Pages build starts IndexNow.
+Deployments run only from `main`.
+
+See `OPERATIONS.md` for the production runbook, `HUGO_UPGRADE.md` for the Hugo upgrade procedure, and `social-automation/` for the Cloudflare Worker sources.
 
 ## Features
 
@@ -15,7 +21,8 @@ It does not deploy the site or change production services.
 - Writing filters that support URLs such as `/writing/?topic=ai`.
 - Article contents, scroll tracking, link previews, figures, and callouts.
 - Projects, research records, feeds, structured data, and discovery files.
-- A safe local newsletter preview with no subscription request.
+- GoatCounter analytics, MathJax rendering, and a Content Security Policy synced with the security-headers Worker.
+- A live newsletter form that keeps a safe preview mode on localhost.
 - Accessible landmarks, focus styles, and 44 px control targets.
 
 ## Requirements

@@ -53,3 +53,23 @@ The source suppresses the `/posts/` index, so the migration also suppresses it.
 Run `npm run check` to create a clean build and run all checks.
 The checks compare the source and destination post manifests.
 They also check canonical URLs, landmarks, headings, links, image text, feeds, and local side effects.
+
+## Branch re-integration (editorial-redesign)
+
+This branch merges the editorial design into the production repository and restores the systems that the standalone migration excluded:
+
+- GoatCounter analytics in `layouts/_default/baseof.html`, guarded against the development server.
+- The Content Security Policy meta tag in `layouts/partials/head.html`, synced with `static/_headers` and `social-automation/security-headers/src/index.js`.
+- MathJax 3.2.2 with subresource integrity in `layouts/partials/math.html`, mounted for pages with `math = true`.
+- The full structured data graph in `layouts/partials/structured-data.html` with speakable selectors mapped to the editorial markup (`.page-intro`, `.article-body p`, `.faq-list dd`, `.key-takeaways li`, `.article-header h1`).
+- FAQ pages that aggregate question and answer pairs from posts through `layouts/partials/faq-posts-by-category.html`, capped at 20 items to match the FAQPage schema.
+- A live newsletter form: `layouts/partials/newsletter-form.html` posts to the newsletter API, shows the subscriber count, and records a GoatCounter event. Localhost keeps the preview behavior and sends no request.
+- Production configuration: git-based lastmod, full-content RSS with stripped asides, social parameters, and the production title and description.
+
+The migration checks now compare against a pinned git worktree:
+
+```sh
+git worktree add --detach /private/tmp/pdd-main-worktree 1f4c38dc
+```
+
+Deployment workflows, Cloudflare Worker sources, operations documentation, and SEO briefs were never removed from this repository and require no re-import.
