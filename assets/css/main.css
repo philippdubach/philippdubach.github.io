@@ -1249,7 +1249,7 @@ strong {
   text-decoration: none;
 }
 
-.topic-filter a[aria-pressed="true"] {
+.topic-filter a[aria-current="true"] {
   border-bottom-color: var(--heading);
   color: var(--heading);
 }

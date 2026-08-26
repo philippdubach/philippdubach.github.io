@@ -98,7 +98,8 @@
       if (visible) visibleCount += 1;
     }
     for (const link of topicFilter.querySelectorAll("[data-topic]")) {
-      link.setAttribute("aria-pressed", String(link.dataset.topic === normalizedTopic));
+      if (link.dataset.topic === normalizedTopic) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
     }
     if (filterStatus) {
       filterStatus.textContent = normalizedTopic === "all"

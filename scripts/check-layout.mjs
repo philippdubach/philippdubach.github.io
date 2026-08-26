@@ -44,7 +44,7 @@ function integerProperty(source, selector, property) {
 }
 
 const topicLinkCss = declarations(css, ".topic-filter a");
-const activeTopicCss = declarations(css, '.topic-filter a[aria-pressed="true"]');
+const activeTopicCss = declarations(css, '.topic-filter a[aria-current="true"]');
 
 if (/border-radius\s*:/.test(topicLinkCss) || /border\s*:\s*1px\s+solid/.test(topicLinkCss)) {
   throw new Error("The writing topic filter still uses bordered pill controls.");
@@ -82,6 +82,19 @@ const tabletStart = css.indexOf("@media (min-width: 48rem)");
 const wideStart = css.indexOf("@media (min-width: 80rem)");
 const finePointerStart = css.indexOf('@media (min-width: 80rem) and (hover: hover) and (pointer: fine)');
 const timelineStart = css.indexOf("@media (min-width: 105rem)");
+// A missing marker means the slices below silently degrade to near-empty
+// strings and several later checks pass vacuously — fail loudly instead.
+for (const [name, offset] of [
+  ["48rem media query", tabletStart],
+  ["80rem media query", wideStart],
+  ["80rem fine-pointer media query", finePointerStart],
+  ["105rem media query", timelineStart],
+]) {
+  if (offset < 0) throw new Error(`Layout check lost its ${name} anchor in main.css.`);
+}
+if (!(tabletStart < wideStart && wideStart < finePointerStart && finePointerStart < timelineStart)) {
+  throw new Error("Layout check media-query anchors are out of order in main.css.");
+}
 const tabletCss = css.slice(tabletStart, wideStart);
 const wideCss = css.slice(wideStart, finePointerStart);
 const finePointerCss = css.slice(finePointerStart, timelineStart);

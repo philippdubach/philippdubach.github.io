@@ -72,21 +72,19 @@
        collection via numberOfItems below. */ -}}
 {{- $articleItemsSrc := first 20 $articles -}}
 {{- $articleItems := slice -}}
+{{- /* Keep the per-item payload lean: url/headline/date/author cover Google's
+       ItemList guidance; the abstracts and keyword arrays made the homepage
+       ~80% JSON-LD by bytes with no rich-result upside. Full BlogPosting
+       graphs live on the article pages themselves. */ -}}
 {{- range $i, $page := $articleItemsSrc -}}
   {{- $bp := dict
     "@type" "BlogPosting"
     "headline" $page.Title
-    "name" $page.Title
     "url" $page.Permalink
     "datePublished" ($page.Date.Format "2006-01-02")
-    "inLanguage" "en"
     "author" (dict "@id" $personId)
     "isPartOf" (dict "@id" $homeId)
-    "mainEntityOfPage" $page.Permalink
   -}}
-  {{- with $page.Params.description -}}{{- $bp = merge $bp (dict "abstract" .) -}}{{- end -}}
-  {{- with $page.Params.images -}}{{- $bp = merge $bp (dict "image" (index . 0)) -}}{{- end -}}
-  {{- with $page.Params.keywords -}}{{- $bp = merge $bp (dict "keywords" .) -}}{{- end -}}
   {{- $articleItems = $articleItems | append (dict
     "@type" "ListItem"
     "position" (add $i 1)

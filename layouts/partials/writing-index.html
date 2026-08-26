@@ -4,8 +4,10 @@
 {{ range $articles }}{{ range .Params.categories }}{{ $categories = $categories | append . }}{{ end }}{{ end }}
 {{ $categories = sort (uniq $categories) }}
 <nav class="topic-filter" aria-label="Filter writing by topic" data-topic-filter>
-  <a href="{{ .RelPermalink }}" data-topic="all" aria-pressed="true">All</a>
-  {{ range $categories }}<a href="{{ $.RelPermalink }}?topic={{ . | urlize }}" data-topic="{{ . | urlize }}" aria-pressed="false">{{ . }}</a>{{ end }}
+  {{- /* aria-current, not aria-pressed: these are links (aria-pressed is
+         invalid on role=link); "current item in a set" is the right state. */ -}}
+  <a href="{{ .RelPermalink }}" data-topic="all" aria-current="true">All</a>
+  {{ range $categories }}<a href="{{ $.RelPermalink }}?topic={{ . | urlize }}" data-topic="{{ . | urlize }}">{{ . }}</a>{{ end }}
 </nav>
 <p class="filter-status" data-filter-status role="status" aria-live="polite"></p>
 <ol class="writing-index" data-writing-index>

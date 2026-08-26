@@ -23,9 +23,15 @@
 {{- $imgHeight := .Get "imgHeight" | default "auto" -}}
 {{- $priority := .Get "priority" | default "false" -}}
 {{- $id := printf "%s-%d" (replace (replace $src "/" "-") "." "-") .Ordinal -}}
+{{- /* The reading column is capped at 720px, so a percentage width maps to
+       at most that fraction of 720px on desktop. A bare "80vw" told browsers
+       the slot was 80% of the viewport and steered them to ~2x-too-large
+       srcset candidates on wide screens. */ -}}
 {{- $sizes := $width -}}
 {{- if hasSuffix $width "%" -}}
-    {{- $sizes = replace $width "%" "vw" -}}
+    {{- $percent := float (strings.TrimSuffix "%" $width) -}}
+    {{- $desktopPx := int (math.Round (mul 720 (div $percent 100))) -}}
+    {{- $sizes = printf "(max-width: 768px) %s, %dpx" (replace $width "%" "vw") $desktopPx -}}
 {{- end -}}
 {{- $hires := printf "%s/cdn-cgi/image/width=2000,quality=85,format=auto/%s" $baseUrl $src -}}
 
@@ -53,7 +59,7 @@
            alt="{{ $alt }}"
            class="{{ $class }}"
            width="{{ $imgWidth }}"
-           {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}"{{ end }}
+           {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}" style="aspect-ratio: {{ $imgWidth }} / {{ $imgHeight }}"{{ end }}
            {{ if eq $priority "true" }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
            decoding="async">
     </picture>

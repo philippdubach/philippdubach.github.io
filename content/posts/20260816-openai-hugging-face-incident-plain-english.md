@@ -7,8 +7,8 @@ date = 2026-08-16
 lastmod = 2026-08-16
 publishDate = 2026-08-16T03:00:00Z
 description = "The OpenAI–Hugging Face incident involved about 17,600 recovered agent actions. See what they accessed, what did not ship, and which evaluation controls matter."
-images = ["https://static.philippdubach.com/openai-hugging-face-incident-cover-v2.png"]
-card_image = "https://static.philippdubach.com/openai-hugging-face-incident-cover-v2.png"
+images = ["https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=85,format=jpeg/openai-hugging-face-incident-cover-v2.png"]
+card_image = "https://static.philippdubach.com/cdn-cgi/image/width=1200,quality=85,format=jpeg/openai-hugging-face-incident-cover-v2.png"
 keywords = ["OpenAI Hugging Face incident", "Hugging Face security incident July 2026", "AI agent security incident", "AI agent evaluation containment", "17,600 agent actions", "Hugging Face security incident", "OpenAI model evaluation", "AI agent sandbox escape", "ExploitGym evaluation", "GPT-5.6 Sol", "cyber capability evaluation", "evaluation cheating", "benchmark cheating", "Internet egress", "package proxy security", "production security boundaries", "AI agent incident response", "AI agent monitoring", "software supply chain security", "Simplified Technical English"]
 categories = ["AI"]
 type = "Analysis"

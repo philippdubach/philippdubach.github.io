@@ -1,0 +1,52 @@
+# Site quality gates: build with --panicOnWarning and run the three check
+# scripts (check-build, check-layout, check-migration) that previously ran
+# only on a developer machine. Runs on every branch so regressions surface
+# before they reach either deploy path.
+name: Site checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.165.0
+      # Pinned pre-redesign commit that check-migration compares against.
+      # Update only when the migration baseline deliberately moves.
+      MIGRATION_BASELINE: 1f4c38dc0316a87079ec492f9458b2f0ad4ffd97
+    steps:
+      - name: Install Hugo CLI
+        # Same pinned version + checksum as hugo.yml — keep the two in sync.
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && echo "b4fab4477743c0f1fcfe85072a71156d78f97e4724f0d8bb3b1b1ff2f53ce3ac  ${{ runner.temp }}/hugo.deb" | sha256sum -c \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          # Full history: enableGitInfo needs it, and the migration baseline
+          # commit must be reachable for the comparison worktree.
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24.19.0
+      - name: Create migration comparison worktree
+        run: git worktree add --detach "${{ runner.temp }}/pdd-main-worktree" "$MIGRATION_BASELINE"
+      - name: Build site
+        env:
+          HUGO_ENVIRONMENT: production
+        run: hugo --gc --minify --panicOnWarning
+      - name: Run checks
+        run: |
+          node scripts/check-build.mjs
+          node scripts/check-layout.mjs
+          node scripts/check-migration.mjs . "${{ runner.temp }}/pdd-main-worktree"

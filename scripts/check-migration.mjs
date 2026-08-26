@@ -1,5 +1,5 @@
 import { access, readFile, readdir } from "node:fs/promises";
-import { basename, extname, join, resolve } from "node:path";
+import { extname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 
 const projectRoot = resolve(process.argv[2] ?? ".");
@@ -72,7 +72,7 @@ function csvRow(row) {
 }
 
 function hugoPostManifest(directory) {
-  const result = spawnSync("hugo", ["list", "all"], { cwd: directory, encoding: "utf8" });
+  const result = spawnSync(process.env.HUGO_BIN ?? "hugo", ["list", "all"], { cwd: directory, encoding: "utf8" });
   if (result.status !== 0) throw new Error(`hugo list all failed in ${directory}: ${result.stderr}`);
   const rows = result.stdout.trim().split(/\r?\n/).map(csvRow);
   const headers = rows.shift();
@@ -97,11 +97,21 @@ record(
   `Post manifest mismatch: source=${sourcePosts.length}, destination=${destinationPosts.length}`,
 );
 
+// Posts deliberately edited after the migration freeze. Each entry needs a
+// reason; anything not listed here must stay byte-identical to the baseline.
+const intentionalPostEdits = new Set([
+  // og:image repointed from the raw 1.8 MB PNG to a 60 KB resized JPEG.
+  "20260816-openai-hugging-face-incident-plain-english.md",
+]);
+
 for (const filename of destinationPosts) {
   const contentPath = `content/posts/${filename}`;
   const sourceMarkdown = await readFile(join(sourcePostDirectory, filename), "utf8");
   const destinationMarkdown = await readFile(join(destinationPostDirectory, filename), "utf8");
-  record(sourceMarkdown === destinationMarkdown, `${filename}: imported Markdown differs from the source`);
+  record(
+    sourceMarkdown === destinationMarkdown || intentionalPostEdits.has(filename),
+    `${filename}: imported Markdown differs from the source`,
+  );
   const sourceURL = sourceRoutes.get(contentPath);
   const destinationURL = destinationRoutes.get(contentPath);
   record(sourceURL === destinationURL, `${filename}: route changed from ${sourceURL} to ${destinationURL}`);

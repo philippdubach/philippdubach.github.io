@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "hugo server --disableFastRender",
-    "build": "hugo --gc --minify --panicOnWarning",
+    "build": "hugo --gc --minify --panicOnWarning --cleanDestinationDir",
     "check": "npm run build && node scripts/check-build.mjs && node scripts/check-layout.mjs && node scripts/check-migration.mjs . /private/tmp/pdd-main-worktree"
   },
   "engines": {
