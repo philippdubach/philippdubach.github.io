@@ -6,7 +6,7 @@ const RSS_FIXTURE = `<?xml version="1.0"?>
   <title>Queue Safety Under Ambiguity</title>
   <link>https://philippdubach.com/posts/route-qualified/</link>
   <description>A qualifying post about safe queued social delivery.</description>
-  <pubDate>Sun, 16 Aug 2026 12:00:00 GMT</pubDate>
+  <pubDate>${new Date(Date.now() - 24 * 60 * 60 * 1000).toUTCString()}</pubDate>
   <guid>route-qualified</guid>
 </item></channel></rss>`;
 
