@@ -1,9 +1,21 @@
+import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
 
 const outputDirectory = resolve(process.argv[2] ?? "public");
 const failures = [];
 const expectedNavigation = ["/", "/writing/", "/projects/", "/research/", "https://link.philippdubach.com/", "/subscribe/"];
+
+// CSP script-src hash allowlist. Every executable inline script in the built
+// output must hash to one of these values, which must match the hashes in
+// layouts/partials/head.html, static/_headers, and
+// social-automation/security-headers/src/index.js. When an inline script
+// changes: rebuild, take the new hash this check reports, update all three
+// CSP copies, then update this list.
+const inlineScriptHashes = new Set([
+  "sha256-i4Wj54cu/w/KZy91/+HVWZ9VsbDh+5DeAX0Lt5u+DCQ=", // theme snippet (head.html)
+  "sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=", // MathJax config (math.html)
+]);
 
 function record(condition, message) {
   if (!condition) failures.push(message);
@@ -137,10 +149,13 @@ async function inspectPage(path) {
     const scriptTag = `<script ${attributes}>`;
     const resource = values(scriptTag, "src")[0] ?? "";
     const integrity = values(scriptTag, "integrity")[0] ?? "";
-    const allowedRemote =
-      (resource.startsWith("https://cdn.jsdelivr.net/") && integrity.length > 0) ||
-      resource === "//gc.zgo.at/count.js";
+    const allowedRemote = resource.startsWith("https://cdn.jsdelivr.net/") && integrity.length > 0;
     record(!/^(?:https?:)?\/\//.test(resource) || allowedRemote, `${label}: remote script resource ${resource}`);
+  }
+  for (const match of markup.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+    if (/\bsrc\s*=/.test(match[1]) || /ld\+json/.test(match[1])) continue;
+    const hash = `sha256-${createHash("sha256").update(match[2], "utf8").digest("base64")}`;
+    record(inlineScriptHashes.has(hash), `${label}: inline script not in CSP hash allowlist (${hash})`);
   }
   for (const attributes of tags(markup, "video")) {
     const video = `<video ${attributes}>`;

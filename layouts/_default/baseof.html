@@ -29,9 +29,12 @@
     {{ partialCached "math.html" . }}
     {{- end -}}
     {{ if not hugo.IsServer }}
-    {{/* GoatCounter Analytics via custom domain */}}
+    {{/* GoatCounter Analytics via custom domain. count.js is self-hosted
+         (vendored from the stats instance) so it is version-pinned, SRI
+         verified, and needs no third-party script origin in the CSP. */}}
+    {{ $count := resources.Get "js/count.js" | minify | fingerprint }}
     <script data-goatcounter="https://stats.philippdubach.com/count"
-            async src="//gc.zgo.at/count.js"></script>
+            async src="{{ $count.RelPermalink }}" integrity="{{ $count.Data.Integrity }}"></script>
     {{ end }}
   </body>
 </html>

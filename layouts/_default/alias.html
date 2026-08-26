@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <link rel="canonical" href="{{ .Permalink }}">
+    {{- /* Meta refresh only — no inline script. Each alias page's script body
+           would need its own CSP hash, which would break the hash-based
+           script-src. The live domain 301s these paths at the edge anyway;
+           these pages are the GitHub Pages standby fallback. */}}
     <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
-    <script>
-        window.location.replace("{{ .Permalink }}");
-    </script>
 </head>
 <body>
     <p>Redirecting to <a href="{{ .Permalink }}">{{ .Permalink }}</a>...</p>

@@ -17,12 +17,14 @@ import { resolveRedirect, buildRedirectResponse } from "./redirects.js";
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' https://gc.zgo.at https://cdn.jsdelivr.net https://static.cloudflareinsights.com; " +
+    // Inline scripts are hash-allowlisted (theme snippet + MathJax config);
+    // re-hash via scripts/check-build.mjs guidance when either changes.
+    "script-src 'self' 'sha256-i4Wj54cu/w/KZy91/+HVWZ9VsbDh+5DeAX0Lt5u+DCQ=' 'sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; " +
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; " +
     "media-src 'self' https://static.philippdubach.com; " +
     "font-src 'self' data: https://cdn.jsdelivr.net; " +
-    "connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://gc.zgo.at https://cdn.jsdelivr.net https://cloudflareinsights.com; " +
+    "connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; " +
     "object-src 'none'; " +
     "worker-src 'self'; " +
     "manifest-src 'self'; " +
