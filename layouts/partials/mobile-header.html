@@ -1,5 +1,6 @@
 <header class="mobile-header">
-  <a class="mobile-brand" href="{{ site.Home.RelPermalink }}" aria-label="Philipp D. Dubach, home">PDD</a>
+  {{- /* The accessible name must contain the visible text (label-in-name). */ -}}
+  <a class="mobile-brand" href="{{ site.Home.RelPermalink }}" aria-label="PDD, Philipp D. Dubach, home">PDD</a>
   <div class="mobile-actions">
     {{ partial "theme-button.html" (dict "class" "theme-toggle--mobile") }}
     <button class="icon-button" type="button" data-menu-open aria-label="Open menu" aria-haspopup="dialog" aria-expanded="false">
@@ -7,3 +8,14 @@
     </button>
   </div>
 </header>
+{{- /* The dialog menu needs JavaScript and the desktop rail is hidden on
+       mobile widths, so no-JS mobile readers get plain navigation links. */ -}}
+<noscript>
+  <nav class="noscript-nav" aria-label="Site">
+    <a href="/">Articles</a>
+    <a href="/writing/">Writing</a>
+    <a href="/projects/">Projects</a>
+    <a href="/research/">Research</a>
+    <a href="/subscribe/">Subscribe</a>
+  </nav>
+</noscript>

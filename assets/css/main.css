@@ -170,6 +170,16 @@ strong {
   backdrop-filter: blur(14px);
 }
 
+.noscript-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+
 .mobile-brand {
   display: grid;
   min-width: 2.75rem;
@@ -826,6 +836,10 @@ strong {
 
 @media (min-width: 48rem) {
   .mobile-header {
+    display: none;
+  }
+
+  .noscript-nav {
     display: none;
   }
 

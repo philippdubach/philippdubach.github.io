@@ -58,9 +58,15 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
+          # baseURL is hardcoded: the Pages deployment exists solely as a warm
+          # standby for the apex domain, so its absolute URLs must match
+          # production regardless of the Pages custom-domain setting.
+          # --panicOnWarning keeps CI as strict as the local npm run build.
           hugo \
+            --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --panicOnWarning \
+            --baseURL "https://philippdubach.com/"
       - name: Setup IndexNow key file
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
@@ -88,7 +94,11 @@ jobs:
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
 
       - name: Purge Cloudflare Cache
-        if: success()
+        # Push events only: scheduled workflow_dispatch rebuilds refresh the
+        # Pages standby, which the edge does not serve — purging for them
+        # evicts the whole cache 8x/day and stampedes the origin for nothing.
+        # Scheduled publications on the primary purge from the Hetzner build.
+        if: success() && github.event_name == 'push'
         run: |
           curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \

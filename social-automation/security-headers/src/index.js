@@ -116,7 +116,13 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
 };
 
 export default {
-  async fetch(request) {
+  async fetch(request, _env, ctx) {
+    // Fail open: an unhandled exception here must degrade to the plain origin
+    // response, never a Cloudflare error page — header decoration is cosmetic
+    // relative to serving content at all.
+    if (ctx && typeof ctx.passThroughOnException === "function") {
+      ctx.passThroughOnException();
+    }
     const url = new URL(request.url);
 
     // Legacy URL redirects (slug renames, deleted posts, Substack-era date-prefix
@@ -127,7 +133,13 @@ export default {
     if (request.method === "GET" || request.method === "HEAD") {
       const redirect = resolveRedirect(url.pathname);
       if (redirect) {
-        return buildRedirectResponse(redirect);
+        // Redirects and 410s carry the security headers too — HSTS in
+        // particular must appear on every response for preload consistency.
+        const redirectResponse = buildRedirectResponse(redirect);
+        for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
+          redirectResponse.headers.set(k, v);
+        }
+        return redirectResponse;
       }
     }
 

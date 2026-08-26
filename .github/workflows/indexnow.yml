@@ -12,6 +12,9 @@ on:
   # Manual trigger for testing
   workflow_dispatch:
 
+# The job uses no GitHub token; grant it nothing.
+permissions: {}
+
 jobs:
   submit-urls:
     runs-on: ubuntu-latest
