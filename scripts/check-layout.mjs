@@ -61,6 +61,12 @@ if (!/border-bottom-color\s*:\s*var\(--heading\)/.test(activeTopicCss) || /backg
 const themeToggleCss = declarations(css, ".theme-toggle");
 const themeTrackCss = declarations(css, ".theme-toggle__track");
 const externalIndicatorCss = declarations(css, ".external-link-indicator");
+const calloutCss = declarations(css, ".callout");
+const readnextCss = declarations(css, ".readnext");
+const newsletterTitleCss = declarations(css, ".newsletter-preview .newsletter-preview__title");
+const newsletterMessageCss = declarations(css, ".newsletter-preview .newsletter-preview__message");
+const newsletterMessageEmptyCss = declarations(css, ".newsletter-preview__message:empty");
+const newsletterControlsCss = declarations(css, ".newsletter-preview input");
 
 if (!/width\s*:\s*2\.75rem/.test(themeToggleCss) || !/height\s*:\s*2\.75rem/.test(themeToggleCss)) {
   throw new Error("The theme switch needs a 44px interaction target.");
@@ -76,6 +82,34 @@ if (
   !/transform\s*:\s*translateY\(-0\.18em\)/.test(externalIndicatorCss)
 ) {
   throw new Error("The external-link indicator needs compact superscript styling.");
+}
+
+if (!/padding\s*:\s*1\.1rem/.test(calloutCss)) {
+  throw new Error("Callouts must keep compact 1.1rem insets.");
+}
+
+if (!/padding\s*:\s*0\.85rem\s+1rem/.test(readnextCss)) {
+  throw new Error("Related and disclaimer panels must keep compact insets.");
+}
+
+if (!/margin\s*:\s*0\s+0\s+0\.55rem/.test(newsletterTitleCss)) {
+  throw new Error("Newsletter titles must override article paragraph spacing.");
+}
+
+if (!/min-height\s*:\s*0/.test(newsletterMessageCss) || !/display\s*:\s*none/.test(newsletterMessageEmptyCss)) {
+  throw new Error("Empty newsletter status messages must not reserve vertical space.");
+}
+
+if (!/min-height\s*:\s*2\.75rem/.test(newsletterControlsCss)) {
+  throw new Error("Compact newsletter controls must retain 44px touch targets.");
+}
+
+if (!/\.key-takeaways,\s*\.newsletter-preview,\s*\.related-reading\s*\{[^}]*padding\s*:\s*1rem/s.test(css)) {
+  throw new Error("Editorial panels must share compact 1rem insets.");
+}
+
+if (!/\.disclaimer-content\s*>\s*:last-child\s*\{[^}]*margin-bottom\s*:\s*0/s.test(css)) {
+  throw new Error("Disclaimers must not retain article paragraph space at the bottom.");
 }
 
 const tabletStart = css.indexOf("@media (min-width: 48rem)");
