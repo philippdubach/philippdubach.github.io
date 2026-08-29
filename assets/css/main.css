@@ -4,6 +4,7 @@
   --surface: #f4f2eb;
   --surface-raised: #ffffff;
   --text: #4a4a4a;
+  --reading-text: #4a4a4a;
   --heading: #1a1a1a;
   --muted: #6f6e69;
   --faint: #c7c5bf;
@@ -23,6 +24,7 @@
   --surface: #171512;
   --surface-raised: #12100e;
   --text: #b8b3a8;
+  --reading-text: #d9d5cc;
   --heading: #e8e4d8;
   --muted: #a09a90;
   --faint: #5c5851;
@@ -534,7 +536,7 @@ strong {
 }
 
 .article-body {
-  color: var(--text);
+  color: var(--reading-text);
   font-size: clamp(1.075rem, 4.7vw, 1.16rem);
   line-height: 1.78;
 }
@@ -1658,6 +1660,7 @@ strong {
     color-scheme: light;
     --background: #ffffff;
     --text: #222222;
+    --reading-text: #222222;
     --heading: #000000;
   }
 
