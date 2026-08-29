@@ -102,6 +102,16 @@ npx --no-install wrangler secret put INDEXNOW_KEY --config security-headers/wran
 curl --fail "https://philippdubach.com/<key>.txt"
 ```
 
+On Hetzner, `/etc/site-build/indexnow-key` must remain owned by
+`root:site-build` with mode `0640`. The build runs as `site-build`, so verify
+the service account can read the rotated file before the next deployment:
+
+```bash
+sudo chown root:site-build /etc/site-build/indexnow-key
+sudo chmod 0640 /etc/site-build/indexnow-key
+sudo -u site-build test -r /etc/site-build/indexnow-key
+```
+
 The IndexNow workflow now verifies the apex key response before submitting any
 URLs, so a missing or mismatched binding fails before the external API call.
 
