@@ -14,7 +14,7 @@ const expectedNavigation = ["/", "/writing/", "/projects/", "/research/", "https
 // changes: rebuild, take the new hash this check reports, update all three
 // CSP copies, then update this list.
 const inlineScriptHashes = new Set([
-  "sha256-d4wsPymw6uWbB13KwrsPBaotieKs0IeVCj3hCyGVIxc=", // theme snippet (head.html)
+  "sha256-RBavWsCHzy8pY5yYq+Fcr1YOGBQ8N1wO2ojltcQWRPQ=", // theme snippet (head.html)
   "sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=", // MathJax config (math.html)
 ]);
 

@@ -7,14 +7,16 @@ const resolver = scripts.find(([, attributes, source]) => !/\bsrc\s*=/.test(attr
 
 if (!resolver) throw new Error("Generated homepage is missing the inline theme resolver.");
 
-function resolveTheme({ saved = null, systemDark = false, supportsMatchMedia = true, storageThrows = false }) {
+function resolveTheme({ saved = null, legacySaved = null, systemDark = false, supportsMatchMedia = true, storageThrows = false }) {
   const document = { documentElement: { dataset: {} } };
   const context = {
     document,
     localStorage: {
-      getItem() {
+      getItem(key) {
         if (storageThrows) throw new Error("Storage unavailable");
-        return saved;
+        if (key === "pdd-theme-v2") return saved;
+        if (key === "pdd-theme") return legacySaved;
+        return null;
       },
     },
   };
@@ -28,6 +30,7 @@ const cases = [
   ["saved light overrides a dark system", { saved: "light", systemDark: true }, "light"],
   ["dark system defaults to dark", { systemDark: true }, "dark"],
   ["light system defaults to light", { systemDark: false }, "light"],
+  ["legacy dark preference does not override a light system", { legacySaved: "dark", systemDark: false }, "light"],
   ["missing matchMedia defaults to light", { supportsMatchMedia: false }, "light"],
   ["unavailable storage defaults to light", { supportsMatchMedia: false, storageThrows: true }, "light"],
 ];

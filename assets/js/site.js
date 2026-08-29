@@ -1,6 +1,7 @@
 (() => {
   const root = document.documentElement;
   const themeButtons = [...document.querySelectorAll("[data-theme-toggle]")];
+  const themeStorageKey = "pdd-theme-v2";
   const darkModeQuery = typeof window.matchMedia === "function"
     ? window.matchMedia("(prefers-color-scheme: dark)")
     : null;
@@ -22,7 +23,7 @@
     root.dataset.theme = theme;
     if (persist) {
       try {
-        localStorage.setItem("pdd-theme", theme);
+        localStorage.setItem(themeStorageKey, theme);
       } catch {}
     }
     syncThemeControls(theme);
@@ -30,7 +31,7 @@
 
   function hasSavedTheme() {
     try {
-      const savedTheme = localStorage.getItem("pdd-theme");
+      const savedTheme = localStorage.getItem(themeStorageKey);
       return savedTheme === "dark" || savedTheme === "light";
     } catch {
       return false;
@@ -50,7 +51,7 @@
   });
 
   window.addEventListener("storage", (event) => {
-    if (event.key !== "pdd-theme") return;
+    if (event.key !== themeStorageKey) return;
     const theme = event.newValue === "dark" || event.newValue === "light"
       ? event.newValue
       : systemTheme();
