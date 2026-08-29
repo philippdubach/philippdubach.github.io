@@ -1,7 +1,13 @@
 (() => {
   const root = document.documentElement;
   const themeButtons = [...document.querySelectorAll("[data-theme-toggle]")];
-  const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const darkModeQuery = typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-color-scheme: dark)")
+    : null;
+
+  function systemTheme() {
+    return darkModeQuery?.matches ? "dark" : "light";
+  }
 
   function syncThemeControls(theme) {
     const dark = theme === "dark";
@@ -24,13 +30,14 @@
 
   function hasSavedTheme() {
     try {
-      return Boolean(localStorage.getItem("pdd-theme"));
+      const savedTheme = localStorage.getItem("pdd-theme");
+      return savedTheme === "dark" || savedTheme === "light";
     } catch {
       return false;
     }
   }
 
-  syncThemeControls(root.dataset.theme ?? (darkModeQuery.matches ? "dark" : "light"));
+  syncThemeControls(root.dataset.theme ?? systemTheme());
 
   for (const button of themeButtons) {
     button.addEventListener("click", () => {
@@ -38,7 +45,7 @@
     });
   }
 
-  darkModeQuery.addEventListener("change", (event) => {
+  darkModeQuery?.addEventListener?.("change", (event) => {
     if (!hasSavedTheme()) applyTheme(event.matches ? "dark" : "light");
   });
 
@@ -46,7 +53,7 @@
     if (event.key !== "pdd-theme") return;
     const theme = event.newValue === "dark" || event.newValue === "light"
       ? event.newValue
-      : darkModeQuery.matches ? "dark" : "light";
+      : systemTheme();
     applyTheme(theme);
   });
 

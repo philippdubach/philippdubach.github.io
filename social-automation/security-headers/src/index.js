@@ -19,7 +19,7 @@ const SECURITY_HEADERS = {
     "default-src 'self'; " +
     // Inline scripts are hash-allowlisted (theme snippet + MathJax config);
     // re-hash via scripts/check-build.mjs guidance when either changes.
-    "script-src 'self' 'sha256-i4Wj54cu/w/KZy91/+HVWZ9VsbDh+5DeAX0Lt5u+DCQ=' 'sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; " +
+    "script-src 'self' 'sha256-d4wsPymw6uWbB13KwrsPBaotieKs0IeVCj3hCyGVIxc=' 'sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; " +
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; " +
     "media-src 'self' https://static.philippdubach.com; " +

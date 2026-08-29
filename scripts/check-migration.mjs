@@ -194,6 +194,8 @@ record(siteScript.includes("[data-newsletter-endpoint]"), "Live newsletter submi
 record(siteScript.includes("Preview only — no subscription was created"), "Newsletter preview message is missing.");
 record(!siteScript.includes("navigator.clipboard"), "Removed code-copy behavior must not remain in local JavaScript.");
 record(siteScript.includes('matchMedia("(prefers-reduced-motion: reduce)")'), "Ambient video must respect reduced motion.");
+record(siteScript.includes('typeof window.matchMedia === "function"'), "Theme detection must tolerate browsers without matchMedia.");
+record(siteScript.includes('return darkModeQuery?.matches ? "dark" : "light"'), "Theme detection must fall back to light mode.");
 record(siteScript.includes('button.setAttribute("aria-checked", String(dark))'), "Theme controls must expose their switch state.");
 
 if (failures.length) {

@@ -7,7 +7,7 @@
 {{/* scripts/check-build.mjs asserts every emitted inline script matches this allowlist. */}}
 {{/* Production only: the dev server does not minify, so the inline-script bytes */}}
 {{/* (and therefore hashes) differ and the policy would block the theme snippet. */}}
-{{ if not hugo.IsServer }}<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-i4Wj54cu/w/KZy91/+HVWZ9VsbDh+5DeAX0Lt5u+DCQ=' 'sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; media-src 'self' https://static.philippdubach.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; object-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self' https://newsletter-api.philippd.workers.dev; upgrade-insecure-requests;">{{ end }}
+{{ if not hugo.IsServer }}<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-d4wsPymw6uWbB13KwrsPBaotieKs0IeVCj3hCyGVIxc=' 'sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; media-src 'self' https://static.philippdubach.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; object-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self' https://newsletter-api.philippd.workers.dev; upgrade-insecure-requests;">{{ end }}
 <meta name="color-scheme" content="light dark">
 {{- $description := .Description | default site.Params.description | plainify -}}
 {{- $brand := site.Params.site_name | default site.Title -}}
@@ -35,10 +35,13 @@
 
 <script>
   (() => {
-    let savedTheme = null;
-    try { savedTheme = localStorage.getItem("pdd-theme"); } catch {}
-    const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+    let theme = "light";
+    try {
+      const savedTheme = localStorage.getItem("pdd-theme");
+      if (savedTheme === "dark" || savedTheme === "light") theme = savedTheme;
+      else if (typeof matchMedia === "function" && matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+    } catch {}
+    document.documentElement.dataset.theme = theme;
   })();
 </script>
 

@@ -14,7 +14,7 @@ const expectedNavigation = ["/", "/writing/", "/projects/", "/research/", "https
 // changes: rebuild, take the new hash this check reports, update all three
 // CSP copies, then update this list.
 const inlineScriptHashes = new Set([
-  "sha256-i4Wj54cu/w/KZy91/+HVWZ9VsbDh+5DeAX0Lt5u+DCQ=", // theme snippet (head.html)
+  "sha256-d4wsPymw6uWbB13KwrsPBaotieKs0IeVCj3hCyGVIxc=", // theme snippet (head.html)
   "sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=", // MathJax config (math.html)
 ]);
 
@@ -90,6 +90,8 @@ async function inspectPage(path) {
   record(!/\bcode-(?:lang|copy)\b/i.test(markup), `${label}: code blocks must not show language or copy controls`);
   record(/<script\b[^>]*data-goatcounter="?https:\/\/stats\.philippdubach\.com\/count"?/i.test(markup), `${label}: missing GoatCounter analytics`);
   record(/<meta\b[^>]*http-equiv="?Content-Security-Policy"?/i.test(markup), `${label}: missing Content-Security-Policy meta tag`);
+  record(/typeof matchMedia\s*={2,3}\s*["']function["']/.test(markup), `${label}: theme resolver must detect matchMedia support`);
+  record(/prefers-color-scheme:\s*dark/.test(markup), `${label}: theme resolver must follow the system dark-mode preference`);
   inspectNavigation(markup, label);
 
   if (label === "/") {
