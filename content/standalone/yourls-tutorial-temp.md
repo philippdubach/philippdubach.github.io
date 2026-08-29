@@ -27,7 +27,7 @@ The setup is straightforward. You'll need a VM instance, a domain name pointing 
 1. Log into the [Azure Portal](https://portal.azure.com) and navigate to "Virtual Machines"
 2. Click "Create" → "Azure virtual machine"
 
-{{< img src="azure-tutorial-screen1.jpg" alt="alt" width="80%" >}}
+{{< img src="azure-tutorial-screen1.jpg" alt="Azure Portal showing the option to create a new virtual machine" width="80%" >}}
 
 
 3. Fill in the basic details:
@@ -38,7 +38,7 @@ The setup is straightforward. You'll need a VM instance, a domain name pointing 
    - **Image**: Select "Ubuntu Server 22.04 LTS"
    - **Size**: For the free tier, select "Standard_B1s" (1 vCPU, 1 GiB RAM)
 
-{{< img src="azure-tutorial-screen2.jpg" alt="alt" width="80%" >}}
+{{< img src="azure-tutorial-screen2.jpg" alt="Azure virtual machine basics configured with Ubuntu Server and a Standard B1s instance" width="80%" >}}
 
 4. Under "Administrator account":
    - **Authentication type**: SSH public key (recommended) or Password
@@ -50,7 +50,7 @@ The setup is straightforward. You'll need a VM instance, a domain name pointing 
    - **Public inbound ports**: Allow selected ports
    - **Select inbound ports**: SSH (22), HTTP (80), HTTPS (443)
 
-{{< img src="azure-tutorial-screen3.jpg" alt="alt" width="80%" >}}
+{{< img src="azure-tutorial-screen3.jpg" alt="Azure virtual machine networking settings allowing SSH, HTTP, and HTTPS inbound traffic" width="80%" >}}
 
 6. Review and create the VM. This may take a few minutes.
 
@@ -486,11 +486,11 @@ If this runs without errors, your database connection is working.
 1. Open your browser and navigate to: `https://yourdomain.com/admin/`
 2. You should see the YOURLS setup page
 
-{{< img src="azure-tutorial-screen4.jpg" alt="alt" width="80%" >}}
+{{< img src="azure-tutorial-screen4.jpg" alt="YOURLS setup page opened at the site's admin address" width="80%" >}}
 
 3. Run the automatic installation
 
-{{< img src="azure-tutorial-screen5.jpg" alt="alt" width="80%" >}}
+{{< img src="azure-tutorial-screen5.jpg" alt="YOURLS installation confirmation after the automatic setup completes" width="80%" >}}
 
 4. Reload the page
 
@@ -498,7 +498,7 @@ If this runs without errors, your database connection is working.
    - **Username**: `admin` (or whatever you set in config.php)
    - **Password**: The admin password you generated in Step 7
 
-{{< img src="azure-tutorial-screen6.jpg" alt="alt" width="80%" >}}
+{{< img src="azure-tutorial-screen6.jpg" alt="YOURLS administrator login form requesting a username and password" width="80%" >}}
 
 ### Test Creating a Short URL
 
@@ -508,7 +508,7 @@ Once logged in, create a short URL to verify everything works:
 2. Optionally, specify a custom keyword
 3. Click "Shorten The URL"
 
-{{< img src="azure-tutorial-screen7.jpg" alt="alt" width="80%" >}}
+{{< img src="azure-tutorial-screen7.jpg" alt="YOURLS administrator interface for entering a long URL and creating a short link" width="80%" >}}
 
 
 ## Troubleshooting

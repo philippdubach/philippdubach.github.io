@@ -108,6 +108,8 @@ const intentionalPostEdits = new Set([
   "20260215-a-bull-case.md",
   // Normalized an internal link to the canonical trailing-slash route.
   "20251224-PROJECT-Newsletter-Setup.md",
+  // Replaced placeholder image alt text with descriptive alternatives.
+  "20250706-PROJECT-BlackJack.md",
 ]);
 
 for (const filename of destinationPosts) {

@@ -160,6 +160,7 @@ async function inspectPage(path) {
   for (const attributes of tags(markup, "img")) {
     const alt = values(`<img ${attributes}>`, "alt")[0];
     record(alt !== undefined && alt.trim().length > 0, `${label}: image needs alt text`);
+    record(!/^alt(?: text here)?$/i.test(alt?.trim() ?? ""), `${label}: image has placeholder alt text`);
     const src = values(`<img ${attributes}>`, "src")[0] ?? "";
     record(!/^https?:\/\//.test(src) || src.startsWith("https://static.philippdubach.com/"), `${label}: unapproved image host ${src}`);
   }
