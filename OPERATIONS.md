@@ -63,7 +63,7 @@ The 2026-08-16 drill replayed a complete dump in an isolated cluster and restore
 
 ## Worker toolchain
 
-The only supported release toolchain is Node 24.19.0 with the repository-pinned Wrangler 4.123.0:
+The only supported release toolchain is Node 24.19.0 with the repository-pinned Wrangler 4.127.1:
 
 ```bash
 cd social-automation

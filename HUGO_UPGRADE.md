@@ -7,7 +7,7 @@ The current production baseline was verified on 2026-08-16. The earlier Hugo 0.1
 | Hugo Extended | 0.165.0 |
 | Forgejo | 15.0.6 LTS patch |
 | Node.js | 24.19.0 |
-| Wrangler | 4.123.0, exact repository pin |
+| Wrangler | 4.127.1, exact repository pin |
 | Worker compatibility date | 2026-08-16 |
 
 The operational deployment, backup, rollback, and Queue procedures are in [OPERATIONS.md](OPERATIONS.md).
@@ -97,7 +97,7 @@ The maintenance pass was completed as separate, tested, reversible changes:
 
 2. **Forgejo completed.** Production moved from 15.0.2 to the verified 15.0.6 LTS patch after an isolated PostgreSQL restore and repository `git fsck`. Fresh PostgreSQL and Restic backups, the old binary, and rollback packages were preserved. A 16.x major upgrade remains separate.
 
-3. **Worker toolchain completed.** All five Workers share Node 24.19.0, exact Wrangler 4.123.0, one lockfile, compatibility date `2026-08-16`, runtime tests, and dry-run packaging. The security Worker retains its explicit HTML/Markdown Cache API variant key.
+3. **Worker toolchain completed.** All five Workers share Node 24.19.0, exact Wrangler 4.127.1, one lockfile, compatibility date `2026-08-16`, runtime tests, and dry-run packaging. The security Worker retains its explicit HTML/Markdown Cache API variant key.
 
 4. **Worker reliability completed.** Observability sampling is explicit. Bluesky and Twitter now use separate Queues and DLQs with deterministic jobs and SQLite Durable Object delivery gates. The design chooses at-most-once behavior at the external social boundary: ambiguous writes become `uncertain` and are not automatically replayed.
 

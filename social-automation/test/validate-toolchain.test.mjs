@@ -14,7 +14,7 @@ const validRootManifest = {
   private: true,
   engines: { node: ">=24.19.0 <25" },
   workspaces: REQUIRED_WORKSPACES,
-  devDependencies: { wrangler: "4.123.0" },
+  devDependencies: { wrangler: "4.127.1" },
 };
 
 const validWorkerManifest = {
@@ -66,12 +66,12 @@ test("rejects Node versions at or above 25", async () => {
 
 test("rejects a ranged Wrangler version", async () => {
   const rootDir = await makeWorkspace({
-    root: { devDependencies: { wrangler: "^4.123.0" } },
+    root: { devDependencies: { wrangler: "^4.127.1" } },
   });
 
   await assert.rejects(
     validateToolchain({ rootDir, nodeVersion: "24.19.0" }),
-    { message: 'Root devDependency "wrangler" must be pinned to exactly 4.123.0; found "^4.123.0".' },
+    { message: 'Root devDependency "wrangler" must be pinned to exactly 4.127.1; found "^4.127.1".' },
   );
 });
 
@@ -98,7 +98,7 @@ test("rejects a missing committed root lockfile", async () => {
 test("reports every independent workspace contract violation", async () => {
   const rootDir = await makeWorkspace({
     lockfile: false,
-    root: { devDependencies: { wrangler: "~4.123.0" } },
+    root: { devDependencies: { wrangler: "~4.127.1" } },
     workers: { "security-headers": { scripts: {} } },
   });
 
@@ -107,7 +107,7 @@ test("reports every independent workspace contract violation", async () => {
     {
       message: [
         "Toolchain validation failed:",
-        '- Root devDependency "wrangler" must be pinned to exactly 4.123.0; found "~4.123.0".',
+        '- Root devDependency "wrangler" must be pinned to exactly 4.127.1; found "~4.127.1".',
         "- Missing committed root lockfile package-lock.json.",
         '- Workspace "security-headers" must provide the Wrangler dry-run check script.',
       ].join("\n"),
