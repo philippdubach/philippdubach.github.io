@@ -95,7 +95,7 @@ async function inspectPage(path) {
   inspectNavigation(markup, label);
 
   if (label === "/") {
-    record(documentTitle === brand, `${label}: homepage title must be the brand only (${documentTitle})`);
+    record(documentTitle === `${brand} — Quantitative Finance, AI & Macro`, `${label}: homepage needs its descriptive SEO title (${documentTitle})`);
     record(!/\bhome-biography\b/i.test(markup), `${label}: homepage must not repeat the full biography`);
     const introduction = markup.match(/<p\b[^>]*\bhome-intro\b[^>]*>([\s\S]*?)<\/p>/i)?.[1] ?? "";
     const introductionLinks = tags(introduction, "a")

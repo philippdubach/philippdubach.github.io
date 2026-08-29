@@ -23,7 +23,7 @@ faq = [
 ]
 +++
 
-[Warren Buffett](https://en.wikipedia.org/wiki/Warren_Buffett) has stepped down as CEO at 95. [Greg Abel](https://en.wikipedia.org/wiki/Greg_Abel) inherits a company that paid [$26.8 billion in federal income taxes](https://www.berkshirehathaway.com/letters/2024ltr.pdf) last year, roughly 5% of what all of corporate America paid combined. I do not have [much in common with Buffett](/posts/damodaran-on-golds-2025-surge/), but I will miss his shareholder letters. Berkshire's archive is a rare case of a public company explaining decisions candidly to its owners.
+[Warren Buffett](https://en.wikipedia.org/wiki/Warren_Buffett) has stepped down as CEO at 95. [Greg Abel](https://en.wikipedia.org/wiki/Greg_Abel) inherits a company that paid [$26.8 billion in federal income taxes](https://www.berkshirehathaway.com/letters/2024ltr.pdf) last year, roughly 5% of what all of corporate America paid combined. I do not have much in common with Buffett, but I will miss his shareholder letters. Berkshire's archive is a rare case of a public company explaining decisions candidly to its owners.
 
 In the [2024 letter](https://www.berkshirehathaway.com/letters/2024ltr.pdf) Buffett repeats Tom Murphy's rule: "Praise by name, criticize by category." Murphy gave him this advice 60 years ago. The letter closes with another line worth keeping: "Kindness is costless but priceless."
 

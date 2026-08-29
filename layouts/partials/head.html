@@ -12,11 +12,19 @@
 {{- $description := .Description | default site.Params.description | plainify -}}
 {{- $brand := site.Params.site_name | default site.Title -}}
 {{- $pageTitle := .Params.seoTitle | default .Title -}}
+{{- $isError := eq .Kind "404" -}}
+{{- $defaultRobots := cond $isError "noindex, nofollow" "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" -}}
+{{- $robots := .Params.robots | default $defaultRobots -}}
+{{- $image := site.Params.default_image -}}
+{{- with .Params.images }}{{ $image = index . 0 }}{{ end -}}
+{{- with .Params.image }}{{ $image = . }}{{ end -}}
+{{- if and $image (not (hasPrefix $image "http")) }}{{ $image = $image | absURL }}{{ end -}}
 <meta name="description" content="{{ $description }}">
 <meta name="author" content="{{ site.Params.author }}">
-<meta name="robots" content="{{ .Params.robots | default "index, follow" }}">
-<title>{{ if .IsHome }}{{ $brand }}{{ else if strings.Contains $pageTitle $brand }}{{ $pageTitle }}{{ else }}{{ $pageTitle }} · {{ $brand }}{{ end }}</title>
-<link rel="canonical" href="{{ .Permalink }}">
+<meta name="robots" content="{{ $robots }}">
+<title>{{ if strings.Contains $pageTitle $brand }}{{ $pageTitle }}{{ else }}{{ $pageTitle }} · {{ $brand }}{{ end }}</title>
+{{ if not $isError }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
+<link rel="author" href="{{ "/about/" | absURL }}">
 {{- /* Body images and video load from the image CDN; warming the connection
        takes DNS+TCP+TLS off the first image's critical path. */}}
 {{ if eq .Section "posts" }}<link rel="preconnect" href="https://static.philippdubach.com">{{ end }}
@@ -24,12 +32,24 @@
 {{ with .OutputFormats.Get "JSONFeed" }}<link rel="alternate" type="application/feed+json" href="{{ .RelPermalink }}" title="{{ site.Title }}">{{ end }}
 {{ with .OutputFormats.Get "Markdown" }}<link rel="alternate" type="text/markdown" href="{{ .RelPermalink }}" title="{{ $.Title }} in Markdown">{{ end }}
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM discovery file">
-<meta property="og:title" content="{{ .Title }}">
+<meta property="og:title" content="{{ $pageTitle }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="{{ if eq .Section "posts" }}article{{ else }}website{{ end }}">
-{{ with .Params.images }}<meta property="og:image" content="{{ index . 0 }}">{{ else }}<meta property="og:image" content="{{ site.Params.default_image }}">{{ end }}
+<meta property="og:site_name" content="{{ $brand }}">
+<meta property="og:locale" content="{{ site.Params.locale }}">
+{{ with $image }}<meta property="og:image" content="{{ . }}">
+<meta property="og:image:alt" content="{{ $pageTitle }}">{{ end }}
+{{ if eq .Section "posts" }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{ with .Params.categories }}<meta property="article:section" content="{{ index . 0 }}">{{ end }}
+{{ with .Params.keywords }}{{ range first 8 . }}<meta property="article:tag" content="{{ . }}">{{ end }}{{ end }}{{ end }}
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@{{ site.Params.social.twitter }}">
+<meta name="twitter:title" content="{{ $pageTitle }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{ with $image }}<meta name="twitter:image" content="{{ . }}">
+<meta name="twitter:image:alt" content="{{ $pageTitle }}">{{ end }}
 {{ hugo.Generator }}
 {{ partial "structured-data.html" . }}
 

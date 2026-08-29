@@ -18,14 +18,14 @@ const CONTENT_EXACT = new Set([
   "/",
   "/about/",
   "/research/",
-  "/newsletter/",
+  "/subscribe/",
+  "/writing/",
 ]);
 
 // Taxonomy listing roots — Hugo does not emit `<root>/index.md` for these,
 // so they must not be treated as content paths even though /categories/<term>/
 // (matching the prefix) is valid.
 const CONTENT_EXCLUDE = new Set([
-  "/categories/",
   "/tags/",
   "/types/",
 ]);
@@ -39,19 +39,46 @@ const PAGINATED_PATH = /\/page\/\d+\/?$/;
 // file and layouts/index.apicatalog.json.
 
 export const isContentPath = (path) => {
+  if (path.endsWith(".md")) return false;
   if (CONTENT_EXCLUDE.has(path)) return false;
   if (PAGINATED_PATH.test(path)) return false;
   if (CONTENT_EXACT.has(path)) return true;
   return CONTENT_PREFIXES.some((p) => path.startsWith(p));
 };
 
+export const isMarkdownPath = (path) =>
+  path === "/index.md" || path.endsWith("/index.md");
+
+export const canonicalPathForMarkdown = (path) => {
+  if (!isMarkdownPath(path)) return null;
+  if (path === "/index.md") return "/";
+  return path.slice(0, -"index.md".length);
+};
+
+export const isMachineReadablePath = (path) =>
+  isMarkdownPath(path) ||
+  path === "/robots.txt" ||
+  path === "/sitemap.xml" ||
+  path === "/index.xml" ||
+  path === "/feed.json" ||
+  path === "/llms.txt" ||
+  path === "/llms-full.txt" ||
+  path === "/api-catalog" ||
+  path === "/.well-known/api-catalog" ||
+  path.startsWith("/api/") ||
+  path.endsWith("/index.xml");
+
 const perPageAlternate = (path) => {
   const mdPath = path.endsWith("/") ? `${path}index.md` : `${path}/index.md`;
   return `<${mdPath}>; rel="alternate"; type="text/markdown"`;
 };
 
-export const buildLinkHeader = (path) => {
+export const buildLinkHeader = (path, { includePageRelations = true } = {}) => {
   const parts = [...SITE_WIDE];
-  if (isContentPath(path)) parts.push(perPageAlternate(path));
+  if (includePageRelations) {
+    if (isContentPath(path)) parts.push(perPageAlternate(path));
+    const canonicalPath = canonicalPathForMarkdown(path);
+    if (canonicalPath) parts.push(`<${canonicalPath}>; rel="canonical"`);
+  }
   return parts.join(", ");
 };

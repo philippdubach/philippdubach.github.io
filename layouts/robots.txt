@@ -1,25 +1,11 @@
-# Content-Signal (draft-romm-aipref-contentsignals) is declared here and
-# mirrored by the security-headers Cloudflare Worker response header.
-# Site posture: maximally permissive — search, AI inference, and AI training all allowed.
-# Content negotiation: requests with Accept: text/markdown receive a markdown variant.
-
+# Search, AI-search, user-directed, and training crawlers are all permitted.
+# One RFC 9309 wildcard group avoids bot-specific rules silently replacing
+# shared directives as crawler names evolve.
 User-agent: *
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /cdn-cgi/
 
-# Named AI Search & Training Agents (kept as transparency about which bots
-# are explicitly recognised; behaviour is identical to the wildcard above).
-{{ $aiBots := slice "GPTBot" "ChatGPT-User" "OAI-SearchBot" "ClaudeBot" "claude-web" "anthropic-ai" "Claude-User" "Claude-SearchBot" "PerplexityBot" "Perplexity-User" "Google-Extended" "Google-CloudVertexBot" "Gemini-Deep-Research" "Applebot-Extended" "meta-externalagent" "Meta-WebIndexer" "Amazonbot" "cohere-ai" "Bytespider" "YouBot" "DeepSeekBot" "DuckAssistBot" "MistralAI-User" "GrokBot" "CCBot" "Diffbot" -}}
-{{ range $aiBots }}
-User-agent: {{ . }}
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
-Allow: /
-{{ end }}
-# Sitemap
 Sitemap: {{ .Site.BaseURL }}sitemap.xml
 
-# AI Content Discovery
-# LLMs.txt: {{ .Site.BaseURL }}llms.txt
-# LLMs-full.txt: {{ .Site.BaseURL }}llms-full.txt
-# Markdown versions: append index.md to any post URL
+# Optional machine-readable discovery for non-Google consumers:
+# {{ .Site.BaseURL }}llms.txt

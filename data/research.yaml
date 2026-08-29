@@ -57,7 +57,7 @@ publications:
         authors: ["Dubach, P. D."]
         summary: "Dubach studies attention dynamics in online communities through 38 million Hacker News submissions, examining power laws in content visibility and early predictors of engagement."
         doi: "10.2139/ssrn.5910263"
-        commentary: "/standalone/hn-research/"
+        commentary: "/posts/65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/"
         language: "en"
         keywords: ["attention dynamics online communities", "Hacker News research", "power laws content visibility", "preferential attachment", "engagement prediction", "computational social science"]
 

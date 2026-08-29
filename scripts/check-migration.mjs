@@ -102,6 +102,12 @@ record(
 const intentionalPostEdits = new Set([
   // og:image repointed from the raw 1.8 MB PNG to a 60 KB resized JPEG.
   "20260816-openai-hugging-face-incident-plain-english.md",
+  // Removed an internal link to an intentionally retired (410) article.
+  "20260106-Buffet-Retirement.md",
+  // Replaced a legacy redirect hop with the article's canonical URL.
+  "20260215-a-bull-case.md",
+  // Normalized an internal link to the canonical trailing-slash route.
+  "20251224-PROJECT-Newsletter-Setup.md",
 ]);
 
 for (const filename of destinationPosts) {

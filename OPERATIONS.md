@@ -93,6 +93,18 @@ npx --no-install wrangler rollback <previous-version-id> --config security-heade
 
 For the security Worker, validate HTML and `Accept: text/markdown` variants, `Vary: Accept`, CSP/HSTS, permanent RSS redirects, 410/redirect rules, and cache behavior. Purge Cloudflare cache after the final validated version. Deploy GoatCounter and build-trigger separately; observe one safe scheduled build-trigger execution.
 
+The security Worker also serves the intentionally public IndexNow verification
+file from its `INDEXNOW_KEY` secret binding. Keep that binding equal to the
+GitHub Actions `INDEXNOW_KEY` secret before deploying or rotating the key:
+
+```bash
+npx --no-install wrangler secret put INDEXNOW_KEY --config security-headers/wrangler.toml
+curl --fail "https://philippdubach.com/<key>.txt"
+```
+
+The IndexNow workflow now verifies the apex key response before submitting any
+URLs, so a missing or mismatched binding fails before the external API call.
+
 ## Social Queues
 
 Resources:

@@ -1,5 +1,5 @@
 # Submit recently updated URLs to search engines via IndexNow protocol
-# Runs daily and after each deployment to notify Bing, Yandex, etc. of changes
+# Runs after each successful standby deployment and on manual dispatch.
 name: IndexNow
 
 on:
@@ -18,9 +18,16 @@ permissions: {}
 jobs:
   submit-urls:
     runs-on: ubuntu-latest
-    # Only run if deployment succeeded (or on schedule/manual trigger)
+    # Only run if standby deployment succeeded (or on manual trigger)
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
+      - name: Verify apex IndexNow key
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          test -n "$INDEXNOW_KEY"
+          response="$(curl --fail --silent --show-error --max-time 15 "https://philippdubach.com/${INDEXNOW_KEY}.txt")"
+          test "$response" = "$INDEXNOW_KEY"
       - name: Submit to IndexNow
         # Pinned to v3.0.0 commit SHA for supply chain security
         # Check for updates: https://github.com/bojieyang/indexnow-action/releases

@@ -1,6 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildLinkHeader, isContentPath } from "../src/links.js";
+import {
+  buildLinkHeader,
+  canonicalPathForMarkdown,
+  isContentPath,
+  isMachineReadablePath,
+  isMarkdownPath,
+} from "../src/links.js";
 
 test("isContentPath: homepage", () => {
   assert.equal(isContentPath("/"), true);
@@ -18,6 +24,13 @@ test("isContentPath: research page", () => {
   assert.equal(isContentPath("/research/"), true);
 });
 
+test("isContentPath: all top-level Markdown pages that Hugo emits", () => {
+  for (const path of ["/subscribe/", "/writing/", "/categories/"]) {
+    assert.equal(isContentPath(path), true, path);
+  }
+  assert.equal(isContentPath("/newsletter/"), false);
+});
+
 test("isContentPath: api JSON", () => {
   assert.equal(isContentPath("/api/posts.json"), false);
 });
@@ -26,18 +39,31 @@ test("isContentPath: sitemap", () => {
   assert.equal(isContentPath("/sitemap.xml"), false);
 });
 
+test("isContentPath: direct Markdown alternate is not rewritten again", () => {
+  assert.equal(isContentPath("/posts/foo/index.md"), false);
+});
+
+test("Markdown paths map back to canonical HTML paths", () => {
+  assert.equal(isMarkdownPath("/index.md"), true);
+  assert.equal(isMarkdownPath("/posts/foo/index.md"), true);
+  assert.equal(canonicalPathForMarkdown("/index.md"), "/");
+  assert.equal(canonicalPathForMarkdown("/posts/foo/index.md"), "/posts/foo/");
+  assert.equal(canonicalPathForMarkdown("/posts/foo/"), null);
+});
+
+test("machine-readable discovery surfaces are marked for noindex headers", () => {
+  for (const path of ["/index.xml", "/feed.json", "/api/posts.json", "/llms.txt", "/posts/foo/index.md"]) {
+    assert.equal(isMachineReadablePath(path), true, path);
+  }
+  assert.equal(isMachineReadablePath("/posts/foo/"), false);
+});
+
 test("isContentPath: well-known", () => {
   assert.equal(isContentPath("/.well-known/api-catalog"), false);
 });
 
 test("isContentPath: cdn-cgi", () => {
   assert.equal(isContentPath("/cdn-cgi/foo"), false);
-});
-
-test("isContentPath: bare /categories/ excluded (no taxonomy listing .md)", () => {
-  // Hugo generates /categories/<term>/index.md but not /categories/index.md.
-  // Treating bare /categories/ as a content path would rewrite to a 404.
-  assert.equal(isContentPath("/categories/"), false);
 });
 
 test("isContentPath: bare /tags/ excluded", () => {
@@ -70,10 +96,10 @@ test("buildLinkHeader: paginated path has no per-page md alternate", () => {
   assert.doesNotMatch(header, /<\/posts\/page\/2\/index\.md>/);
 });
 
-test("buildLinkHeader: bare /categories/ has no per-page md alternate", () => {
+test("buildLinkHeader: bare /categories/ advertises its generated Markdown alternate", () => {
   const header = buildLinkHeader("/categories/");
   assert.match(header, /rel="api-catalog"/);
-  assert.doesNotMatch(header, /<\/categories\/index\.md>/);
+  assert.match(header, /<\/categories\/index\.md>/);
 });
 
 test("buildLinkHeader: homepage gets all site-wide rels + per-page alternate", () => {
@@ -91,6 +117,12 @@ test("buildLinkHeader: homepage gets all site-wide rels + per-page alternate", (
 test("buildLinkHeader: post page includes its own .md alternate", () => {
   const header = buildLinkHeader("/posts/foo/");
   assert.match(header, /<\/posts\/foo\/index\.md>;\s*rel="alternate";\s*type="text\/markdown"/);
+});
+
+test("buildLinkHeader: direct Markdown variant points to canonical HTML", () => {
+  const header = buildLinkHeader("/posts/foo/index.md");
+  assert.match(header, /<\/posts\/foo\/>;\s*rel="canonical"/);
+  assert.doesNotMatch(header, /index\.md\/index\.md/);
 });
 
 test("buildLinkHeader: non-content path has site-wide only, no per-page alternate", () => {

@@ -12,7 +12,6 @@ description: {{ . | jsonify }}
 type: index
 canonical_url: {{ .Permalink | jsonify }}
 source_url: {{ printf "%sindex.md" .Permalink | jsonify }}
-content_signal: search=yes, ai-input=yes, ai-train=yes
 ---
 
 # {{ .Title }}
@@ -39,5 +38,4 @@ content_signal: search=yes, ai-input=yes, ai-train=yes
 ---
 
 Canonical: {{ .Permalink }}
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
 This file is the canonical machine-readable variant of {{ .Permalink }}. Author: {{ .Site.Params.author }} ({{ .Site.BaseURL }}).

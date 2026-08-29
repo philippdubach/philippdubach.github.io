@@ -20,6 +20,22 @@ test("rss: canonical feed passes through", () => {
   assert.equal(resolveRedirect("/index.xml"), null);
 });
 
+test("Hugo aliases receive one-hop edge redirects", () => {
+  const aliases = new Map([
+    ["/backwards/", "/posts/enterprise-ai-strategy-is-backwards/"],
+    ["/posts/a-bull-case/", "/posts/the-impossible-backhand/"],
+    ["/posts/ai-productivity/", "/posts/93-of-developers-use-ai-coding-tools.-productivity-hasnt-moved./"],
+    ["/posts/the-long-volatility-premium/", "/posts/long-volatility-premium/"],
+    ["/posts/the-variance-tax/", "/posts/variance-tax/"],
+    ["/standalone/hn-prediction/", "/posts/social-media-success-prediction-bert-models-for-post-titles/"],
+    ["/standalone/hn-sentiment/", "/posts/65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/"],
+    ["/standalone/rss-tinder/", "/posts/rss-swipr-find-blogs-like-you-find-your-dates/"],
+  ]);
+  for (const [source, location] of aliases) {
+    assert.deepEqual(resolveRedirect(source), { status: 301, location }, source);
+  }
+});
+
 // --- Slug rename: 301 to current canonical ---
 test("rename: truncated share URL → current slug", () => {
   const r = resolveRedirect("/posts/ai-models-are-the-=/");
@@ -42,10 +58,9 @@ test("rename: works without trailing slash", () => {
   );
 });
 
-test("rename: gambling-vs-investing → gambling-vs.-investing", () => {
+test("gone: gambling-vs-investing has no redirect hop to a retired target", () => {
   const r = resolveRedirect("/posts/gambling-vs-investing/");
-  assert.equal(r.status, 301);
-  assert.equal(r.location, "/posts/gambling-vs.-investing/");
+  assert.equal(r.status, 410);
 });
 
 // --- Gone slugs: 410 ---
@@ -78,6 +93,21 @@ test("date-prefix: with current canonical slug → /posts/<slug>/", () => {
   assert.equal(r.location, "/posts/nikes-crisis-and-the-economics-of-brand-decay/");
 });
 
+test("date-prefix: latest posts are present in the canonical inventory", () => {
+  for (const slug of [
+    "openai-hugging-face-incident-plain-english",
+    "put-the-model-in-the-basement",
+    "kimi-k3-inside-claude-code",
+    "reconciling-enterprise-ai-revenue",
+  ]) {
+    assert.deepEqual(
+      resolveRedirect(`/2026/08/01/${slug}/`),
+      { status: 301, location: `/posts/${slug}/` },
+      slug,
+    );
+  }
+});
+
 test("date-prefix: deleted post slug → 410", () => {
   const r = resolveRedirect("/2026/01/02/bitcoin-security/");
   assert.equal(r.status, 410);
@@ -101,23 +131,23 @@ test("date-prefix: works without trailing slash", () => {
 });
 
 // --- Pagination ---
-test("pagination: /page/2/ → /posts/page/2/", () => {
+test("pagination: /page/2/ → /writing/", () => {
   const r = resolveRedirect("/page/2/");
   assert.equal(r.status, 301);
-  assert.equal(r.location, "/posts/page/2/");
+  assert.equal(r.location, "/writing/");
 });
 
-test("pagination: /page/3 (no slash) → /posts/page/3/", () => {
+test("pagination: /page/3 (no slash) → /writing/", () => {
   const r = resolveRedirect("/page/3");
   assert.equal(r.status, 301);
-  assert.equal(r.location, "/posts/page/3/");
+  assert.equal(r.location, "/writing/");
 });
 
 // --- Taxonomy renames ---
-test("taxonomy: /categories/commentary/ → /types/commentary/", () => {
+test("taxonomy: /categories/commentary/ → /writing/", () => {
   const r = resolveRedirect("/categories/commentary/");
   assert.equal(r.status, 301);
-  assert.equal(r.location, "/types/commentary/");
+  assert.equal(r.location, "/writing/");
 });
 
 test("taxonomy: /categories/finance/ → /categories/investing/", () => {

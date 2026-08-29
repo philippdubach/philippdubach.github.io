@@ -11,7 +11,7 @@
     frontmatter.parse, and every major LLM tooling SDK)
   - Drop the eq .Section "posts" gate so /about/, /research/,
     /subscribe/, etc. now ship real markdown content
-  - Structured footer with canonical URL + Content-Signal posture
+  - Structured footer with the canonical URL and author identity
 
   Hugo 0.161.1 audit (May 2026): the post-render pipeline previously
   ran nine regex passes over the body. Eight were dead or harmful:
@@ -57,7 +57,6 @@ doi: {{ . | jsonify }}
 {{- end }}
 canonical_url: {{ .Permalink | jsonify }}
 source_url: {{ printf "%sindex.md" .Permalink | jsonify }}
-content_signal: search=yes, ai-input=yes, ai-train=yes
 ---
 
 # {{ .Title }}
@@ -112,5 +111,4 @@ content_signal: search=yes, ai-input=yes, ai-train=yes
 ---
 
 Canonical: {{ .Permalink }}
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
 This file is the canonical machine-readable variant of {{ .Permalink }}. Author: {{ .Site.Params.author }} ({{ .Site.BaseURL }}).

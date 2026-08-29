@@ -3,10 +3,7 @@
     <article>
       <header class="page-heading"><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}</header>
       <div class="article-body">{{ .Content }}</div>
-      {{- /* Aggregate Q&A from posts in this category, newest first.
-             Cached partial shared with the FAQPage schema emitter in
-             structured-data.html; the 20-item cap mirrors the schema so
-             rich-result eligibility matches the visible page. */ -}}
+      {{- /* Aggregate Q&A from posts in this category, newest first. */ -}}
       {{- $categoryLower := .Params.category | lower -}}
       {{- $postsWithFAQ := partialCached "faq-posts-by-category.html" $categoryLower $categoryLower -}}
       {{- $allFAQs := slice -}}

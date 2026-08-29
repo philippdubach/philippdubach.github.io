@@ -1,32 +1,25 @@
 {{- $baseURL := .Site.BaseURL -}}
 {{- $allPosts := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
-{{- $displayNames := dict "ai" "AI" "investing" "Investing" "quantitative finance" "Quantitative Finance" "macro" "Macro" "economics" "Economics" "medicine" "Medicine" "tech" "Tech" -}}
-{{- $categoryOrder := slice "ai" "investing" "quantitative finance" "macro" "economics" "medicine" "tech" -}}
-# Philipp D. Dubach - Full Content Index
+{{- $allPosts = $allPosts.ByDate.Reverse -}}
+{{- $latest := index $allPosts 0 -}}
+# Philipp D. Dubach - Extended Summary Index
 
-> This is the extended version of llms.txt with full article summaries inline. For the compact version, see [llms.txt]({{ $baseURL }}llms.txt).
+> This is the extended version of llms.txt with each article listed once and its summary inline. For the compact version, see [llms.txt]({{ $baseURL }}llms.txt).
 
 Independent researcher and strategy consultant specializing in quantitative finance, AI infrastructure economics, and macroeconomic analysis.
 
-- Last Updated: {{ now.Format "2006-01-02" }}
+- Last Updated: {{ $latest.Lastmod.Format "2006-01-02" }}
 - Total Articles: {{ len $allPosts }}
 - Site: {{ $baseURL }}
-{{ range $categoryOrder }}
-{{- $term := . -}}
-{{- $taxonomy := index $.Site.Taxonomies.categories $term -}}
-{{- if $taxonomy -}}
-{{- $name := index $displayNames $term | default (humanize $term) }}
 
-## {{ $name }} ({{ len $taxonomy }} articles)
-{{ range sort $taxonomy "Page.Date" "desc" }}
-### [{{ .Page.Title }}]({{ .Page.Permalink }})
-Published: {{ .Page.Date.Format "2006-01-02" }}
-Description: {{ .Page.Params.description }}
-{{ $summary := .Page.Summary | plainify | chomp | strings.ReplacePairs "&rsquo;" "'" "&lsquo;" "'" "&ldquo;" "\"" "&rdquo;" "\"" "&amp;" "&" "&hellip;" "..." "&lt;" "<" "&gt;" ">" }}
+## Articles ({{ len $allPosts }})
+{{ range $allPosts }}
+### [{{ .Title }}]({{ .Permalink }})
+Published: {{ .Date.Format "2006-01-02" }}
+Description: {{ .Params.description }}
+{{ $summary := .Summary | plainify | chomp | strings.ReplacePairs "&rsquo;" "'" "&lsquo;" "'" "&ldquo;" "\"" "&rdquo;" "\"" "&amp;" "&" "&hellip;" "..." "&lt;" "<" "&gt;" ">" }}
 Summary: {{ $summary }}
-{{ with .Page.Params.takeaways }}Key findings:
+{{ with .Params.takeaways }}Key findings:
 {{ range . }}- {{ . }}
 {{ end }}{{ end }}
 {{ end }}
-{{- end -}}
-{{- end -}}

@@ -8,7 +8,6 @@
   - BreadcrumbList — navigation hierarchy
   - ProfilePage — about page
   - CollectionPage — research page
-  - FAQPage — posts with FAQ frontmatter
 ============================================================ */}}
 
 {{/* Build unified sameAs array from hugo.toml params */}}
@@ -27,9 +26,7 @@
 {{- $personId := printf "%s#person" .Site.BaseURL -}}
 {{- $websiteId := printf "%s#website" .Site.BaseURL -}}
 
-{{/* Person entity — consistent across all pages.
-     v2.6: added image, worksFor, hasOccupation; description sharpened with
-     domain anchors for AI search citation (Google AIO, Perplexity, ChatGPT). */}}
+{{/* Person entity — consistent across all pages. */}}
 {{- $person := dict
   "@type" "Person"
   "@id" $personId
@@ -38,7 +35,6 @@
   "jobTitle" "Strategy Consultant & Independent Researcher"
   "description" "Strategy consultant and independent researcher. Peer-reviewed work in quantitative finance and machine learning. Writes about unit economics, capital markets, and AI infrastructure at philippdubach.com."
   "image" (dict "@type" "ImageObject" "url" "https://static.philippdubach.com/ograph/ograph-post.jpg" "width" 1200 "height" 630)
-  "worksFor" (dict "@type" "Organization" "name" "philippdubach.com" "url" (string .Site.BaseURL))
   "hasOccupation" (dict "@type" "Occupation" "name" "Strategy Consultant and Independent Researcher" "occupationalCategory" "15-2099")
   "alumniOf" (dict "@type" "CollegeOrUniversity" "name" "Imperial College London")
   "knowsAbout" .Site.Params.keywords
@@ -50,57 +46,20 @@
   "@type" "WebSite"
   "@id" $websiteId
   "name" .Site.Title
+  "alternateName" .Site.Params.alternate_site_name
   "url" (print .Site.BaseURL)
   "description" .Site.Params.description
   "inLanguage" (.Site.Language.Lang | default "en")
   "publisher" (dict "@id" $personId)
 -}}
 
-{{/* ===== HOMEPAGE: Person + WebSite + CollectionPage with ItemList of BlogPosting =====
-     Mirrors the /projects/ schema register. The homepage IS the articles index;
-     emitting CollectionPage + ItemList lets the page surface as a topic hub for
-     "essays on quantitative finance / AI / technology" and gives AI search engines
-     citation-extractable item list for entity association. */}}
+{{/* ===== HOMEPAGE: Person + WebSite + CollectionPage ===== */}}
 {{ if .IsHome }}
 {{- $homeId := printf "%s#articles" .Site.BaseURL -}}
 {{- $articles := where (where .Site.RegularPages "Section" "posts") ".Params.unlisted" "ne" true -}}
 {{- $articles = where $articles ".Params.type" "!=" "Project" -}}
 {{- $articles = $articles.ByDate.Reverse -}}
-{{- /* Cap at 20 — Google rich-result eligibility for ItemList sits in the
-       10-20 band; emitting all 87+ articles is page-weight bloat without
-       SEO upside. The ItemList schema continues to express the full
-       collection via numberOfItems below. */ -}}
-{{- $articleItemsSrc := first 20 $articles -}}
-{{- $articleItems := slice -}}
-{{- /* Keep the per-item payload lean: url/headline/date/author cover Google's
-       ItemList guidance; the abstracts and keyword arrays made the homepage
-       ~80% JSON-LD by bytes with no rich-result upside. Full BlogPosting
-       graphs live on the article pages themselves. */ -}}
-{{- range $i, $page := $articleItemsSrc -}}
-  {{- $bp := dict
-    "@type" "BlogPosting"
-    "headline" $page.Title
-    "url" $page.Permalink
-    "datePublished" ($page.Date.Format "2006-01-02")
-    "author" (dict "@id" $personId)
-    "isPartOf" (dict "@id" $homeId)
-  -}}
-  {{- $articleItems = $articleItems | append (dict
-    "@type" "ListItem"
-    "position" (add $i 1)
-    "url" $page.Permalink
-    "item" $bp
-  ) -}}
-{{- end -}}
-
-{{- $articleItemList := dict
-  "@type" "ItemList"
-  "itemListOrder" "https://schema.org/ItemListOrderDescending"
-  "numberOfItems" (len $articles)
-  "itemListElement" $articleItems
--}}
-
-{{- /* about[] — entity-association for AI search. */ -}}
+{{- /* about[] keeps the page's visible editorial domains machine-readable. */ -}}
 {{- $homeAbout := slice
   (dict "@id" $personId)
   (dict
@@ -126,49 +85,31 @@
   "name" "Articles"
   "url" .Site.BaseURL
   "description" $.Params.description
-  "mainEntity" $articleItemList
   "about" $homeAbout
   "isPartOf" (dict "@id" $websiteId)
   "author" (dict "@id" $personId)
   "dateModified" ($homeLastmod.Format "2006-01-02")
 -}}
 
-{{- /* About-these-articles FAQ — paired 1:1 with the visible <dl> in
-       layouts/index.html. Q&A copy must stay in sync with the HTML. */ -}}
-{{- $homeFaq := dict
-  "@type" "FAQPage"
-  "@id" (printf "%s#faq" $homeId)
-  "isPartOf" (dict "@id" $homeId)
-  "mainEntity" (slice
-    (dict
-      "@type" "Question"
-      "name" "What does Philipp Dubach write about?"
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" "Long-form essays, analyses, and notes on quantitative finance, AI, and technology. Independent research-style writing — not commentary, not aggregation. Some essays are formalized as peer-reviewed papers and pre-prints with DOIs on SSRN and arXiv."))
-    (dict
-      "@type" "Question"
-      "name" "How often are essays published?"
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" "There is no fixed schedule. Essays appear when an idea is worth writing up, typically a few times a month. Subscribers receive new essays by email; the RSS and JSON feeds carry the same content."))
-    (dict
-      "@type" "Question"
-      "name" "Where can I find the source code or papers behind these essays?"
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" "Essays that ship with code link to public GitHub repositories inline. Peer-reviewed papers and pre-prints are listed on the Research page with DOI links to SSRN and arXiv. Builds and reproducible projects are catalogued on the Projects page.")))
--}}
-
 <script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $homeCollection $homeFaq) | jsonify | safeJS }}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $homeCollection) | jsonify | safeJS }}
 </script>
 {{ end }}
 
 {{/* ===== ABOUT PAGE: Person + ProfilePage ===== */}}
 {{ if eq .RelPermalink "/about/" }}
+{{- $profilePage := dict
+  "@type" "ProfilePage"
+  "@id" (printf "%s#profile" .Permalink)
+  "url" .Permalink
+  "name" .Title
+  "description" (.Description | default .Site.Params.description)
+  "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+  "isPartOf" (dict "@id" $websiteId)
+  "mainEntity" (dict "@id" $personId)
+-}}
 <script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" (slice $person (dict "@type" "ProfilePage" "mainEntity" (dict "@id" $personId))) | jsonify | safeJS }}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $profilePage) | jsonify | safeJS }}
 </script>
 {{ end }}
 
@@ -369,40 +310,13 @@
   "dateModified" ($.Lastmod.Format "2006-01-02")
 -}}
 
-{{- /* About-these-projects FAQ — paired 1:1 with the visible <dl> in
-       layouts/projects/list.html. Q&A copy must stay in sync with the HTML. */ -}}
-{{- $faq := dict
-  "@type" "FAQPage"
-  "@id" (printf "%s#faq" $collectionId)
-  "isPartOf" (dict "@id" $collectionId)
-  "mainEntity" (slice
-    (dict
-      "@type" "Question"
-      "name" "What domains does Philipp Dubach work in?"
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" "Quantitative finance (market microstructure, portfolio construction), machine-learning systems, computer vision, and the occasional hardware experiment. Several builds have been formalized as peer-reviewed papers and pre-prints with DOIs on SSRN and arXiv."))
-    (dict
-      "@type" "Question"
-      "name" "Are the projects open source?"
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" "Yes. Every project ships with a public repository, a write-up, and reproducible data when sharing it does not break licensing or privacy."))
-    (dict
-      "@type" "Question"
-      "name" "Where can I find the code and papers?"
-      "acceptedAnswer" (dict
-        "@type" "Answer"
-        "text" "Each row links to its full write-up; format tags (Paper, arXiv, SSRN, Code, Hardware) link out directly to the artifact's home: an arXiv abstract, an SSRN page, or a GitHub repo.")))
--}}
-
 <script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $collection $breadcrumb $faq) | jsonify | safeJS }}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $collection $breadcrumb) | jsonify | safeJS }}
 </script>
 {{ end }}
 
 {{/* ===== BREADCRUMBS: Single pages ===== */}}
-{{ if .IsPage }}
+{{ if and .IsPage (ne .Kind "404") }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -433,11 +347,31 @@
 </script>
 {{ end }}
 
+{{/* ===== FAQ CATEGORY PAGES: visible Q&A only =====
+     This mirrors layouts/faq/single.html exactly. It is intentionally not
+     emitted on articles or collection pages where the Q&A is not visible. */}}
+{{ if and .IsPage (eq .Section "faq") }}
+{{- $categoryLower := .Params.category | lower -}}
+{{- $postsWithFAQ := partialCached "faq-posts-by-category.html" $categoryLower $categoryLower -}}
+{{- $allFAQs := slice -}}
+{{- range $postsWithFAQ -}}
+  {{- range .Params.faq -}}
+    {{- $allFAQs = $allFAQs | append (dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" (.answer | markdownify | plainify))) -}}
+  {{- end -}}
+{{- end -}}
+{{- $displayFAQs := first 20 $allFAQs -}}
+{{- if gt (len $displayFAQs) 0 -}}
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $displayFAQs | jsonify | safeJS }}
+</script>
+{{- end -}}
+{{ end }}
+
 {{/* ===== BREADCRUMBS: Section and taxonomy pages =====
      Excluded: /projects/ — the projects @graph block above already declares a
      cross-referenced BreadcrumbList with @id so the CollectionPage.breadcrumb
      property dereferences correctly. */}}
-{{ if and (not .IsPage) (not .IsHome) (ne .RelPermalink "/projects/") }}
+{{ if and (not .IsPage) (not .IsHome) (ne .Kind "404") (ne .RelPermalink "/projects/") }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -491,85 +425,14 @@
             "author" (dict "@id" $personId)
         )
     )
-    "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".page-intro" ".article-body p"))
 -}}
 <script type="application/ld+json">
 {{ dict "@context" "https://schema.org" "@graph" (slice (dict "@id" $personId) (dict "@id" $websiteId) $webpage) | jsonify | safeJS }}
 </script>
 {{ end }}
 
-{{/* ===== FAQ CATEGORY PAGES: Person + WebSite + FAQPage @graph =====
-     Replaces the standalone FAQPage schema previously emitted from
-     layouts/faq/single.html. Now @graph-integrated with @id refs to
-     the canonical Person and WebSite, plus DefinedTerm + Wikidata
-     sameAs on `about`, SpeakableSpecification on .faq-answer p,
-     dateModified from the newest contributing post, and a relatedLink
-     to the parent /categories/<slug>/. */}}
-{{ if and (eq .Section "faq") .IsPage }}
-{{- $category := .Params.category -}}
-{{- $categoryLower := $category | lower -}}
-{{- /* Cached partial returns the same sorted, FAQ-bearing post list
-       used by layouts/faq/single.html — single scan per category. */ -}}
-{{- $postsWithFAQ := partialCached "faq-posts-by-category.html" $categoryLower $categoryLower -}}
-{{- $allFAQs := slice -}}
-{{- range $postsWithFAQ -}}
-    {{- $post := . -}}
-    {{- range .Params.faq -}}
-        {{- $faqItem := dict "question" .question "answer" .answer "sourceURL" $post.Permalink -}}
-        {{- $allFAQs = $allFAQs | append $faqItem -}}
-    {{- end -}}
-{{- end -}}
-{{- $displayFAQs := first 20 $allFAQs -}}
-{{- if gt (len $displayFAQs) 0 -}}
-{{- $personId := printf "%s#person" .Site.BaseURL -}}
-{{- $websiteId := printf "%s#website" .Site.BaseURL -}}
-{{- /* dateModified = .Date of the newest contributing post. */ -}}
-{{- $newest := index $postsWithFAQ 0 -}}
-{{- /* Resolve parent category page for relatedLink + breadcrumb. */ -}}
-{{- $parentCategoryURL := "" -}}
-{{- range $name, $taxonomy := .Site.Taxonomies.categories -}}
-    {{- if eq ($name | lower) $categoryLower -}}
-        {{- $parentCategoryURL = $taxonomy.Page.Permalink -}}
-    {{- end -}}
-{{- end -}}
-{{- /* DefinedTerm + Wikidata sameAs from frontmatter. */ -}}
-{{- $about := dict "@type" "DefinedTerm" "name" $category -}}
-{{- with .Params.wikidata -}}
-    {{- $about = merge $about (dict "sameAs" (printf "https://www.wikidata.org/wiki/%s" .)) -}}
-{{- end -}}
-{{- $mainEntity := slice -}}
-{{- range $displayFAQs -}}
-    {{- $slug := .question | anchorize -}}
-    {{- $q := dict
-        "@type" "Question"
-        "name" .question
-        "url" (printf "%s#%s" $.Permalink $slug)
-        "acceptedAnswer" (dict "@type" "Answer" "text" .answer)
-    -}}
-    {{- $mainEntity = $mainEntity | append $q -}}
-{{- end -}}
-{{- $faqPage := dict
-    "@type" "FAQPage"
-    "@id" (printf "%s#faqpage" .Permalink)
-    "url" .Permalink
-    "name" .Title
-    "description" (.Description | default (printf "%s frequently asked questions" $category))
-    "isPartOf" (dict "@id" $websiteId)
-    "author" (dict "@id" $personId)
-    "about" $about
-    "dateModified" ($newest.Date.Format "2006-01-02")
-    "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".page-intro" ".faq-list dd"))
-    "mainEntity" $mainEntity
--}}
-{{- if $parentCategoryURL -}}{{ $faqPage = merge $faqPage (dict "relatedLink" (slice $parentCategoryURL)) }}{{- end -}}
-<script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" (slice (dict "@id" $personId) (dict "@id" $websiteId) $faqPage) | jsonify | safeJS }}
-</script>
-{{- end -}}
-{{ end }}
-
 {{/* ===== ARTICLE PAGES: Person + WebSite + Article @graph ===== */}}
-{{ if and .IsPage (ne .RelPermalink "/about/") (ne .RelPermalink "/subscribe/") (ne .Section "faq") }}
+{{ if and .IsPage (eq .Section "posts") }}
 {{- $articleType := "BlogPosting" -}}
 {{- if eq .Params.type "Project" }}{{ $articleType = "TechArticle" }}{{ end -}}
 {{- if eq .Params.type "Essay" }}{{ $articleType = "Article" }}{{ end -}}
@@ -578,14 +441,8 @@
 {{- $desc := .Description -}}
 {{- if not $desc }}{{ $desc = .Summary | plainify | truncate 160 }}{{ end -}}
 
-{{- /* v2.7 audit changes:
-       - Dropped articleBody (Mueller 2024 guidance: payload-bloat anti-pattern;
-         wordCount + description + abstract suffice).
-       - Added abstract (description = SERP snippet, abstract = full TL;DR;
-         AI engines preferentially extract abstract).
-       - Repointed speakable cssSelector to the takeaway claims and the H1.
-         Takeaways are the citation-ready passage; the first body paragraph is
-         not. */ -}}
+{{- /* Keep the article graph compact: canonical identity, dates, author,
+       description, media, and content classification. */ -}}
 {{- $article := dict
   "@type" $articleType
   "@id" (printf "%s#article" .Permalink)
@@ -601,8 +458,9 @@
   "author" (dict "@id" $personId)
   "publisher" (dict "@id" $personId)
   "isPartOf" (dict "@id" $websiteId)
+  "url" .Permalink
+  "isAccessibleForFree" true
   "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
-  "speakable" (dict "@type" "SpeakableSpecification" "cssSelector" (slice ".key-takeaways li" ".article-header h1"))
 -}}
 
 {{/* Conditional: keywords */}}
@@ -631,13 +489,7 @@
   {{- $article = merge $article (dict "citation" (dict "@type" "CreativeWork" "url" .)) -}}
 {{- end }}
 
-{{/* mentions[] accumulator. v2.7 audit: each takeaway is emitted as a
-     schema.org Claim entity so AI search engines (ChatGPT, Perplexity, Google
-     AIO) treat them as discrete citation-ready atomic claims. Combined with
-     the visible <blockquote class="claim"> rendering, this is the single
-     biggest GEO win on the post template.
-     The DOI cross-link to a ScholarlyArticle is also emitted as a mention
-     when the post has frontmatter `doi` (editorial commentary on a paper). */}}
+{{/* Cross-link a source ScholarlyArticle when the page carries a DOI. */}}
 {{- $mentions := slice -}}
 {{- with .Params.doi -}}
   {{- $doiUrl := printf "https://doi.org/%s" . -}}
@@ -647,15 +499,6 @@
     "sameAs" $doiUrl
     "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)
   ) -}}
-{{- end -}}
-{{- with .Params.takeaways -}}
-  {{- range . -}}
-    {{- $mentions = $mentions | append (dict
-      "@type" "Claim"
-      "text" .
-      "appearance" (dict "@id" (printf "%s#article" $.Permalink))
-    ) -}}
-  {{- end -}}
 {{- end -}}
 {{- if $mentions -}}
   {{- $article = merge $article (dict "mentions" $mentions) -}}
@@ -672,23 +515,14 @@
   {{- $image = .Site.Params.default_image -}}
 {{- end }}
 {{- if $image }}
-  {{- $article = merge $article (dict "image" (dict "@type" "ImageObject" "url" $image "width" 1200 "height" 630)) -}}
+  {{- $article = merge $article (dict
+    "image" (dict "@type" "ImageObject" "url" $image)
+    "thumbnailUrl" $image
+  ) -}}
 {{- end }}
 
 <script type="application/ld+json">
 {{ dict "@context" "https://schema.org" "@graph" (slice $person $website $article) | jsonify | safeJS }}
 </script>
 
-{{/* FAQPage Schema — for posts with FAQ frontmatter */}}
-{{ with .Params.faq }}
-{{- $mainEntity := slice }}
-{{- range . }}
-{{- $questionItem := dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer) }}
-{{- $mainEntity = $mainEntity | append $questionItem }}
-{{- end }}
-{{- $schema := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $mainEntity }}
-<script type="application/ld+json">
-{{ $schema | jsonify | safeJS }}
-</script>
-{{ end }}
 {{ end }}

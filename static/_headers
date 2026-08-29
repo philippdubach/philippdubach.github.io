@@ -74,8 +74,25 @@
   Content-Type: application/json
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
   Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex, follow
 
 # LLM discovery file
 /llms.txt
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex, follow
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex, follow
+
+/*.xml
+  X-Robots-Tag: noindex, follow
+
+/feed.json
+  X-Robots-Tag: noindex, follow
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex, follow

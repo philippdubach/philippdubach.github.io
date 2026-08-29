@@ -10,7 +10,12 @@
  */
 
 import { wantsMarkdown } from "./accept.js";
-import { buildLinkHeader, isContentPath } from "./links.js";
+import {
+  buildLinkHeader,
+  isContentPath,
+  isMachineReadablePath,
+  isMarkdownPath,
+} from "./links.js";
 import { cacheKeyFor } from "./cache.js";
 import { resolveRedirect, buildRedirectResponse } from "./redirects.js";
 
@@ -41,12 +46,35 @@ const SECURITY_HEADERS = {
   "Cross-Origin-Embedder-Policy": "credentialless",
   "Cross-Origin-Opener-Policy": "same-origin",
   "X-XSS-Protection": "0",
-  // Content-Signal per draft-romm-aipref-contentsignals. This mirrors the
-  // robots.txt directive and provides the same policy on every response.
+  // Experimental Cloudflare compatibility signal. The originating IETF draft
+  // expired in April 2026; this is an explicit permissive preference, not a
+  // finalized standard, crawler instruction, or licensing substitute.
   "Content-Signal": "search=yes, ai-input=yes, ai-train=yes",
 };
 
 const estimateTokens = (body) => Math.ceil(body.length / 4);
+
+const validIndexNowKey = (key) =>
+  typeof key === "string" && /^[A-Za-z0-9-]{8,128}$/.test(key);
+
+export const buildIndexNowKeyResponse = (request, url, env) => {
+  const key = env?.INDEXNOW_KEY;
+  if (!validIndexNowKey(key) || url.pathname !== `/${key}.txt`) return null;
+  if (request.method !== "GET" && request.method !== "HEAD") return null;
+
+  const response = new Response(request.method === "HEAD" ? null : key, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=86400",
+      "X-Robots-Tag": "noindex, nofollow",
+    },
+  });
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    response.headers.set(name, value);
+  }
+  return response;
+};
 
 // Path rewrites:
 // - /.well-known/api-catalog and /api-catalog → /api-catalog.json on origin
@@ -77,7 +105,7 @@ const fetchOrigin = async (request, originUrl) => {
   return fetch(originRequest);
 };
 
-const decorate = async (response, { url, wantsMd, isCatalog }) => {
+export const decorate = async (response, { url, servedMarkdown, isCatalog }) => {
   const newResponse = new Response(response.body, response);
 
   for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
@@ -92,7 +120,23 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
     newResponse.headers.set("Access-Control-Allow-Origin", "*");
   }
 
-  newResponse.headers.set("Link", buildLinkHeader(url.pathname));
+  // A missing content page may resemble a negotiable route syntactically,
+  // but must not advertise a nonexistent Markdown alternate or canonical.
+  newResponse.headers.set("Link", buildLinkHeader(url.pathname, {
+    includePageRelations: newResponse.ok,
+  }));
+
+  // Feeds, APIs, discovery files, and Markdown alternates are useful crawler
+  // inputs but should not compete with their canonical HTML pages in search.
+  if (isMachineReadablePath(url.pathname)) {
+    newResponse.headers.set("X-Robots-Tag", "noindex, follow");
+  }
+
+  // Error documents must never enter the index, even when an origin-generated
+  // 404 page contains otherwise complete site metadata.
+  if (newResponse.status === 404) {
+    newResponse.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
 
   // Vary on every content-negotiable response so downstream caches (browser,
   // corporate proxies) know HTML and Markdown variants differ. The CF edge
@@ -108,7 +152,7 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
   // path slips past isContentPath without having an .md variant on origin.
   if (isCatalog) {
     newResponse.headers.set("Content-Type", "application/linkset+json");
-  } else if (wantsMd && newResponse.ok) {
+  } else if (servedMarkdown && newResponse.ok) {
     const body = await newResponse.clone().text();
     newResponse.headers.set("Content-Type", "text/markdown; charset=utf-8");
     newResponse.headers.set("x-markdown-tokens", String(estimateTokens(body)));
@@ -118,7 +162,7 @@ const decorate = async (response, { url, wantsMd, isCatalog }) => {
 };
 
 export default {
-  async fetch(request, _env, ctx) {
+  async fetch(request, env, ctx) {
     // Fail open: an unhandled exception here must degrade to the plain origin
     // response, never a Cloudflare error page — header decoration is cosmetic
     // relative to serving content at all.
@@ -126,6 +170,12 @@ export default {
       ctx.passThroughOnException();
     }
     const url = new URL(request.url);
+
+    // IndexNow requires the submitted key to be publicly retrievable from the
+    // apex host. The primary Hetzner build cannot materialize GitHub Actions
+    // secrets, so the edge serves this intentionally public verification file.
+    const indexNowKeyResponse = buildIndexNowKeyResponse(request, url, env);
+    if (indexNowKeyResponse) return indexNowKeyResponse;
 
     // Legacy URL redirects (slug renames, deleted posts, Substack-era date-prefix
     // paths, /page/N pagination, old taxonomy aliases). Evaluated before cache
@@ -140,6 +190,9 @@ export default {
         const redirectResponse = buildRedirectResponse(redirect);
         for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
           redirectResponse.headers.set(k, v);
+        }
+        if (redirect.status === 410) {
+          redirectResponse.headers.set("X-Robots-Tag", "noindex, follow");
         }
         return redirectResponse;
       }
@@ -159,6 +212,8 @@ export default {
     }
 
     const rewritePath = rewriteOriginPath(url, wantsMd);
+    const servedMarkdown = isMarkdownPath(url.pathname) ||
+      (Boolean(rewritePath) && rewritePath.endsWith(".md"));
     let originUrl = url.toString();
     if (rewritePath) {
       const u = new URL(url.toString());
@@ -167,7 +222,7 @@ export default {
     }
 
     const originResponse = await fetchOrigin(request, originUrl);
-    const decorated = await decorate(originResponse, { url, wantsMd, isCatalog });
+    const decorated = await decorate(originResponse, { url, servedMarkdown, isCatalog });
 
     // Cache stores the fully-decorated response. Header changes (CSP,
     // Permissions-Policy, Link) only propagate after entries expire or are

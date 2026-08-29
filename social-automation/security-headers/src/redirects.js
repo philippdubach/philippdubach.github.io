@@ -99,6 +99,17 @@ const CURRENT_POST_SLUGS = new Set([
   "where-mobile-money-goes-now",
   "why-lillys-weight-loss-pill-isnt-a-peptide",
   "working-with-models",
+  "openai-hugging-face-incident-plain-english",
+  "put-the-model-in-the-basement",
+  "kimi-k3-inside-claude-code",
+  "krugman-fable5-europe-decline",
+  "degoogling-cost-me-my-youtube-feed-so-i-made-my-own",
+  "midyear-portfolio-review-the-rotation-worked-europe-didnt",
+  "dora-critical-cloud-providers-sovereignty",
+  "moving-the-blog-stack-to-europe-kind-of",
+  "aschenbrenners-receipts",
+  "reconciling-enterprise-ai-revenue",
+  "what-claude-thinks-but-doesnt-say",
 ]);
 
 // Slug renames: old slug → new slug. The old URL is /posts/<old>/ and the
@@ -122,7 +133,6 @@ const SLUG_RENAMES = {
   "summarizing-conversation-history": "beyond-vector-search-why-llms-need-episodic-memory",
   "pozsar-bretton-woods-framework": "pozsars-bretton-woods-iii-the-framework-1/2",
   "prediction-market-insider-trading": "the-absolute-insider-mess-of-prediction-markets",
-  "gambling-vs-investing": "gambling-vs.-investing",
   "ozempic-and-the-fast-food-industry": "ozempic-is-reshaping-the-fast-food-industry",
   "the-tech-behind-this-site-1": "the-tech-behind-this-site",
   "the-stewart-thaler-debate": "people-live-in-levels-not-rates",
@@ -165,13 +175,14 @@ const GONE_SLUGS = new Set([
   "sentiment-trading-revisited",
   "beyond-monte-carlo-tensor-based-market-modeling",
   "passive-investings-active-problem",
+  "gambling-vs-investing",
   "gambling-vs.-investing",
 ]);
 
 // Old taxonomy paths that don't exist on the current site
 const TAXONOMY_RENAMES = {
-  "/categories/commentary/": "/types/commentary/",
-  "/categories/commentary": "/types/commentary/",
+  "/categories/commentary/": "/writing/",
+  "/categories/commentary": "/writing/",
   "/categories/finance/": "/categories/investing/",
   "/categories/finance": "/categories/investing/",
 };
@@ -179,13 +190,26 @@ const TAXONOMY_RENAMES = {
 const EXACT_REDIRECTS = new Map([
   ["/feed/index.xml", { status: 301, location: "/index.xml" }],
   ["/feed/", { status: 301, location: "/index.xml" }],
+  ["/backwards/", { status: 301, location: "/posts/enterprise-ai-strategy-is-backwards/" }],
+  ["/posts/a-bull-case/", { status: 301, location: "/posts/the-impossible-backhand/" }],
+  ["/posts/ai-productivity/", { status: 301, location: "/posts/93-of-developers-use-ai-coding-tools.-productivity-hasnt-moved./" }],
+  ["/posts/most-enterprise-ai-strategy-is-backwards/", { status: 301, location: "/posts/enterprise-ai-strategy-is-backwards/" }],
+  ["/posts/rss-swipr-find-your-blogs-like-you-find-your-dates/", { status: 301, location: "/posts/rss-swipr-find-blogs-like-you-find-your-dates/" }],
+  ["/posts/the-economics-of-a-super-bowl-ad/", { status: 301, location: "/posts/economics-of-a-super-bowl-ad/" }],
+  ["/posts/the-long-volatility-premium/", { status: 301, location: "/posts/long-volatility-premium/" }],
+  ["/posts/the-variance-tax/", { status: 301, location: "/posts/variance-tax/" }],
+  ["/standalone/hackerbook-stats/", { status: 301, location: "/posts/65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/" }],
+  ["/standalone/hn-prediction/", { status: 301, location: "/posts/social-media-success-prediction-bert-models-for-post-titles/" }],
+  ["/standalone/hn-sentiment/", { status: 301, location: "/posts/65-of-hacker-news-posts-have-negative-sentiment-and-they-outperform/" }],
+  ["/standalone/rss-tinder/", { status: 301, location: "/posts/rss-swipr-find-blogs-like-you-find-your-dates/" }],
 ]);
 
 // Substack-era date-prefix URL pattern: /YYYY/MM/DD/slug/
 // Group 1 captures the slug (everything after the date).
 const DATE_PREFIX_REGEX = /^\/(\d{4})\/(\d{2})\/(\d{2})\/([^?]+?)\/?$/;
 
-// WordPress-style root pagination: /page/N/  → /posts/page/N/
+// WordPress-style root pagination: the old paginated archive was replaced by
+// the complete /writing/ index, so every legacy page consolidates there.
 const WP_PAGINATION_REGEX = /^\/page\/(\d+)\/?$/;
 
 /**
@@ -206,10 +230,10 @@ export function resolveRedirect(pathname) {
     return { status: 301, location: TAXONOMY_RENAMES[pathname] };
   }
 
-  // 3. WordPress-style pagination → Hugo pagination
+  // 3. WordPress-style pagination → canonical writing archive
   const wpPaginationMatch = pathname.match(WP_PAGINATION_REGEX);
   if (wpPaginationMatch) {
-    return { status: 301, location: `/posts/page/${wpPaginationMatch[1]}/` };
+    return { status: 301, location: "/writing/" };
   }
 
   // 4. /posts/<slug>/ paths — check rename map and gone set
