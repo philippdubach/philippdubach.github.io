@@ -79,6 +79,7 @@ async function inspectPage(path) {
   const mainAttributes = tags(markup, "main");
   const anchorAttributes = tags(markup, "a");
   record(/<html\b[^>]*lang=(?:"en|en)/i.test(markup), `${label}: missing language`);
+  record(/<meta\b(?=[^>]*name=(?:"viewport"|viewport))(?=[^>]*content=(?:"[^"]*viewport-fit=cover[^"]*"|[^\s>]*viewport-fit=cover))[^>]*>/i.test(markup), `${label}: viewport must expose safe-area insets`);
   record(/<header\b/i.test(markup), `${label}: missing header landmark`);
   record(mainAttributes.some((attributes) => values(`<main ${attributes}>`, "id")[0] === "main-content"), `${label}: missing main landmark`);
   record(/<footer\b/i.test(markup), `${label}: missing footer landmark`);
