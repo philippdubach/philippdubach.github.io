@@ -183,8 +183,14 @@ async function inspectPage(path) {
     record(values(video, "autoplay").length === 0 && !/\sautoplay(?:\s|>|$)/i.test(video), `${label}: video must not autoplay in markup`);
   }
   for (const attributes of tags(markup, "link")) {
-    const rel = values(`<link ${attributes}>`, "rel")[0] ?? "";
-    const resource = values(`<link ${attributes}>`, "href")[0] ?? "";
+    const link = `<link ${attributes}>`;
+    const rel = values(link, "rel")[0] ?? "";
+    const resource = values(link, "href")[0] ?? "";
+    if (rel.split(/\s+/).includes("icon")) {
+      record(resource === "/icons/favicon-96x96.png", `${label}: favicon must use the compact PNG (${resource})`);
+      record(values(link, "type")[0] === "image/png", `${label}: favicon needs its image/png MIME declaration`);
+      record(values(link, "sizes")[0] === "96x96", `${label}: favicon needs its intrinsic 96x96 size`);
+    }
     if (/stylesheet|preload|modulepreload|manifest/i.test(rel)) {
       record(!/^https?:\/\//.test(resource), `${label}: remote link resource ${resource}`);
     }
@@ -194,6 +200,20 @@ async function inspectPage(path) {
 const files = await htmlFiles(outputDirectory);
 record(files.length >= 90, `Expected at least 90 generated HTML pages, found ${files.length}`);
 await Promise.all(files.map(inspectPage));
+
+const favicon = await readFile(join(outputDirectory, "icons", "favicon-96x96.png"));
+record(favicon.byteLength <= 8192, `Compact favicon exceeds its 8 KiB budget (${favicon.byteLength} bytes)`);
+try {
+  await readFile(join(outputDirectory, "icons", "favicon.svg"));
+  record(false, "Obsolete embedded-raster favicon.svg is present in the generated site");
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
+const referenceHeaders = await readFile(join(outputDirectory, "_headers"), "utf8");
+record(
+  /\/icons\/site\.webmanifest\s+Content-Type:\s*application\/manifest\+json; charset=utf-8/i.test(referenceHeaders),
+  "Reference _headers must declare the web app manifest MIME type",
+);
 
 if (failures.length) {
   console.error(`Build checks failed (${failures.length}):`);

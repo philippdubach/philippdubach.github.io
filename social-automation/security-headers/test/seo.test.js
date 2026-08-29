@@ -55,6 +55,21 @@ test("404 responses are excluded from indexing", async () => {
   assert.doesNotMatch(decorated.headers.get("Link"), /\/missing\/index\.md/);
 });
 
+test("web app manifest receives the standards-defined MIME type", async () => {
+  const response = new Response('{"name":"philippdubach.com"}', {
+    headers: { "Content-Type": "text/plain" },
+  });
+  const decorated = await decorate(response, {
+    url: new URL("https://philippdubach.com/icons/site.webmanifest"),
+    servedMarkdown: false,
+    isCatalog: false,
+  });
+  assert.equal(
+    decorated.headers.get("Content-Type"),
+    "application/manifest+json; charset=utf-8",
+  );
+});
+
 test("IndexNow key verification is served only for the configured key", async () => {
   const key = "ABCDEF12-test-key";
   const request = new Request(`https://philippdubach.com/${key}.txt`);

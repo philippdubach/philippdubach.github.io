@@ -120,6 +120,13 @@ export const decorate = async (response, { url, servedMarkdown, isCatalog }) => 
     newResponse.headers.set("Access-Control-Allow-Origin", "*");
   }
 
+  // Caddy does not recognize the .webmanifest extension and otherwise serves
+  // the application manifest as text/plain. Keep the standards-defined MIME
+  // type at the edge, where production response headers are authoritative.
+  if (url.pathname === "/icons/site.webmanifest" && newResponse.ok) {
+    newResponse.headers.set("Content-Type", "application/manifest+json; charset=utf-8");
+  }
+
   // A missing content page may resemble a negotiable route syntactically,
   // but must not advertise a nonexistent Markdown alternate or canonical.
   newResponse.headers.set("Link", buildLinkHeader(url.pathname, {

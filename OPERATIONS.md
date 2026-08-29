@@ -105,6 +105,44 @@ curl --fail "https://philippdubach.com/<key>.txt"
 The IndexNow workflow now verifies the apex key response before submitting any
 URLs, so a missing or mismatched binding fails before the external API call.
 
+## Browser analytics
+
+GoatCounter is the site's browser analytics path. Hugo serves a fingerprinted,
+self-hosted copy of `count.js`, which sends page views to
+`https://stats.philippdubach.com/count`. Cloudflare Web Analytics/RUM is
+redundant, so its currently active automatic JavaScript injection should be
+disabled.
+
+This is an account-level Cloudflare Web Analytics setting, not a Hugo or Worker
+setting. In the Cloudflare dashboard, open **Web Analytics**, select the site
+for `philippdubach.com`, choose **Manage site**, and set automatic setup to
+**Disable**. The equivalent API operation requires an API token with Account
+Settings Write permission:
+
+```bash
+curl --fail --silent --show-error \
+  "https://api.cloudflare.com/client/v4/accounts/<account-id>/rum/site_info/list" \
+  --header "Authorization: Bearer <api-token>"
+
+curl --fail --silent --show-error \
+  --request PUT \
+  "https://api.cloudflare.com/client/v4/accounts/<account-id>/rum/site_info/<site-id>" \
+  --header "Authorization: Bearer <api-token>" \
+  --header "Content-Type: application/json" \
+  --data '{"auto_install":true,"enabled":false,"zone_tag":"<zone-id>"}'
+```
+
+Resolve the site ID from the list response and preserve the matching zone ID;
+never place the token or identifiers in the repository. Verify from a non-EU
+vantage point, because the `lite` mode can suppress injection only for EU/EEA
+visitors. Once the deployed HTML no longer contains or requests
+`static.cloudflareinsights.com/beacon.min.js`, remove
+`https://static.cloudflareinsights.com` from `script-src` and
+`https://cloudflareinsights.com` from `connect-src` in all three CSP copies:
+the Hugo meta policy, `static/_headers`, and the security Worker. Keep both
+`'self'` and the explicit `https://stats.philippdubach.com` allowance in
+`connect-src`; GoatCounter depends on the latter.
+
 ## Social Queues
 
 Resources:
