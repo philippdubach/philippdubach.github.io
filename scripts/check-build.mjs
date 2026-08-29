@@ -134,6 +134,16 @@ async function inspectPage(path) {
     );
   }
 
+  if (label === "/newsletter-archive/") {
+    record(/data-newsletter-archive(?:\s|>)/i.test(markup), `${label}: missing embedded archive container`);
+    record(/data-newsletter-archive-endpoint=(?:"https:\/\/newsletter-api\.philippd\.workers\.dev\/api\/newsletters"|https:\/\/newsletter-api\.philippd\.workers\.dev\/api\/newsletters)(?:\s|>)/i.test(markup), `${label}: missing archive API endpoint`);
+    record(/data-newsletter-archive-base-url=(?:"https:\/\/static\.philippdubach\.com\/newsletter\/"|https:\/\/static\.philippdubach\.com\/newsletter\/)(?:\s|>)/i.test(markup), `${label}: missing archive fallback URL`);
+    record(/Loading issues…/i.test(markup), `${label}: missing accessible loading state`);
+    record(/href=(?:"\/subscribe\/"|\/subscribe\/)[^>]*>Subscribe to get the next issue →<\/a>/i.test(markup), `${label}: missing archive subscription link`);
+    record(/<script\b(?=[^>]*src=(?:"\/js\/newsletter-archive\.[^\"]+\.js"|\/js\/newsletter-archive\.[^\s>]+\.js))(?=[^>]*integrity=)[^>]*><\/script>/i.test(markup), `${label}: missing fingerprinted archive script`);
+    record(!/not loaded in the local preview|makes no newsletter API request/i.test(markup), `${label}: stale preview placeholder remains`);
+  }
+
   const themeControls = [...markup.matchAll(/<button\b([^>]*data-theme-toggle[^>]*)>([\s\S]*?)<\/button>/gi)];
   record(themeControls.length === 2, `${label}: expected two theme switches`);
   for (const [, attributes, content] of themeControls) {

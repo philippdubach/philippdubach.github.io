@@ -118,6 +118,7 @@ if (!/\.disclaimer-content\s*>\s*:last-child\s*\{[^}]*margin-bottom\s*:\s*0/s.te
 }
 
 const tabletStart = css.indexOf("@media (min-width: 48rem)");
+const tabletFinePointerStart = css.indexOf('@media (min-width: 48rem) and (hover: hover) and (pointer: fine)');
 const wideStart = css.indexOf("@media (min-width: 80rem)");
 const finePointerStart = css.indexOf('@media (min-width: 80rem) and (hover: hover) and (pointer: fine)');
 const timelineStart = css.indexOf("@media (min-width: 105rem)");
@@ -125,19 +126,23 @@ const timelineStart = css.indexOf("@media (min-width: 105rem)");
 // strings and several later checks pass vacuously — fail loudly instead.
 for (const [name, offset] of [
   ["48rem media query", tabletStart],
+  ["48rem fine-pointer media query", tabletFinePointerStart],
   ["80rem media query", wideStart],
   ["80rem fine-pointer media query", finePointerStart],
   ["105rem media query", timelineStart],
 ]) {
   if (offset < 0) throw new Error(`Layout check lost its ${name} anchor in main.css.`);
 }
-if (!(tabletStart < wideStart && wideStart < finePointerStart && finePointerStart < timelineStart)) {
+if (!(tabletStart < tabletFinePointerStart && tabletFinePointerStart < wideStart && wideStart < finePointerStart && finePointerStart < timelineStart)) {
   throw new Error("Layout check media-query anchors are out of order in main.css.");
 }
-const tabletCss = css.slice(tabletStart, wideStart);
+const tabletCss = css.slice(tabletStart, tabletFinePointerStart);
+const tabletFinePointerCss = css.slice(tabletFinePointerStart, wideStart);
 const wideCss = css.slice(wideStart, finePointerStart);
 const finePointerCss = css.slice(finePointerStart, timelineStart);
 const railToolsCss = declarations(tabletCss, ".rail-tools");
+const tabletNavigationCss = declarations(tabletCss, ".site-navigation");
+const tabletNavigationLinkCss = declarations(tabletCss, ".site-navigation a");
 const baseWidth = remMaxWidth(".site-layout", wideStart);
 const timelineWidth = remMaxWidth(".site-layout.has-timeline", wideStart) ?? baseWidth;
 
@@ -147,6 +152,22 @@ if (baseWidth === null || timelineWidth === null) {
 
 if (!/margin:\s*1\.45rem\s+0\s+1\.75rem\s+-0\.125rem/.test(railToolsCss)) {
   throw new Error("The visible theme-switch track is not aligned with the navigation text.");
+}
+
+if (!/gap:\s*0/.test(tabletNavigationCss)) {
+  throw new Error("Medium-width navigation must use the compact full-width row rhythm.");
+}
+
+if (
+  !/padding:\s*0/.test(tabletNavigationLinkCss) ||
+  !/font-size:\s*1rem/.test(tabletNavigationLinkCss) ||
+  !/line-height:\s*1\.5/.test(tabletNavigationLinkCss)
+) {
+  throw new Error("Medium-width navigation typography must match the full-width rail.");
+}
+
+if (remProperty(tabletFinePointerCss, ".site-navigation a", "min-height") !== 1.75) {
+  throw new Error("Medium-width fine-pointer navigation rows must match the compact full-width height.");
 }
 
 const viewport = 1800;

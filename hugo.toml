@@ -39,6 +39,8 @@ capitalizeListTitles = false
     preview = false
     endpoint = 'https://newsletter-api.philippd.workers.dev/api/subscribe'
     count_endpoint = 'https://newsletter-api.philippd.workers.dev/api/subscriber-count'
+    archive_endpoint = 'https://newsletter-api.philippd.workers.dev/api/newsletters'
+    archive_base_url = 'https://static.philippdubach.com/newsletter/'
 
   [params.academic]
     google_scholar = 'https://scholar.google.com/citations?user=-69oS2wAAAAJ&hl=en'

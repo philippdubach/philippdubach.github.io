@@ -1,11 +1,11 @@
 ---
 title: "Past issues"
 slug: newsletter-archive
-description: "The newsletter archive is not loaded in the local preview."
+description: "Browse every issue of the Philipp D. Dubach newsletter by date."
 robots: "noindex, nofollow"
 draft: false
 ---
 
-The local preview makes no newsletter API request. Production archive data remains unchanged.
+Every issue, newest first.
 
-[Subscribe to the next issue](/subscribe/).
+{{< newsletter-archive >}}

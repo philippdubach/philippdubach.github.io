@@ -868,16 +868,16 @@ strong {
 
   .site-navigation {
     display: grid;
-    gap: 0.1rem;
+    gap: 0;
   }
 
   .site-navigation a {
     width: fit-content;
     min-height: 2.75rem;
-    padding: 0.25rem 0;
+    padding: 0;
     color: var(--muted);
-    font-size: 1.08rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.5;
     text-decoration: none;
   }
 
@@ -986,6 +986,13 @@ strong {
   .site-footer {
     max-width: 62.5rem;
     padding: 0 1.25rem calc(2.5rem + env(safe-area-inset-bottom, 0px)) calc(14.5rem + 1.25rem);
+  }
+}
+
+@media (min-width: 48rem) and (hover: hover) and (pointer: fine) {
+  .site-navigation a,
+  .page-home .article-links a {
+    min-height: 1.75rem;
   }
 }
 
@@ -1223,6 +1230,46 @@ strong {
 
 .compact-index a {
   font-style: italic;
+}
+
+.archive-issues {
+  min-height: 11rem;
+  margin-top: 1.5rem;
+}
+
+.archive-issues[aria-busy="false"] {
+  min-height: 0;
+}
+
+.archive-issues__list {
+  border-top: 1px solid var(--line);
+}
+
+.archive-issues__list li {
+  align-items: baseline;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.archive-issues__list a {
+  color: var(--heading);
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.archive-issues__status,
+.archive-issues__cta {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+}
+
+.archive-issues__status {
+  margin: 0;
+}
+
+.archive-issues__cta {
+  margin-top: 1.25rem;
 }
 
 .topic-filter {
