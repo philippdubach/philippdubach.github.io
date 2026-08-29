@@ -1,6 +1,6 @@
 ---
 title: "Projects"
-seoTitle: "Projects — Open-Source Quant, ML, and Computer Vision Builds | Philipp D. Dubach"
+seoTitle: "Open-Source Quant, ML, and Computer Vision Projects"
 description: "Open-source projects in quantitative finance, machine learning, and computer vision by Philipp D. Dubach. Code, papers, and full write-ups."
 keywords: [
   "Philipp Dubach projects",

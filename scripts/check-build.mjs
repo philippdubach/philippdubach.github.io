@@ -4,6 +4,7 @@ import { join, relative, resolve } from "node:path";
 
 const outputDirectory = resolve(process.argv[2] ?? "public");
 const failures = [];
+const brand = "Philipp D. Dubach";
 const expectedNavigation = ["/", "/writing/", "/projects/", "/research/", "https://link.philippdubach.com/", "/subscribe/"];
 
 // CSP script-src hash allowlist. Every executable inline script in the built
@@ -63,7 +64,12 @@ function inspectNavigation(markup, label) {
 async function inspectPage(path) {
   const label = `/${relative(outputDirectory, path).replace(/index\.html$/, "")}`;
   const markup = await readFile(path, "utf8");
+  const documentTitle = markup.match(/<title>([\s\S]*?)<\/title>/i)?.[1].trim() ?? "";
+  const brandOccurrences = documentTitle.match(/Philipp D\. Dubach/g)?.length ?? 0;
+  record(Boolean(documentTitle), `${label}: missing document title`);
+  record(brandOccurrences === 1, `${label}: document title must contain the brand exactly once (${documentTitle})`);
   if (/<meta\b[^>]*http-equiv=(?:"refresh"|refresh)/i.test(markup)) {
+    record(documentTitle === `Redirecting · ${brand}`, `${label}: inconsistent redirect title (${documentTitle})`);
     record(/<a\b[^>]*href=/i.test(markup), `${label}: alias redirect needs a fallback link`);
     return;
   }
@@ -87,12 +93,15 @@ async function inspectPage(path) {
   inspectNavigation(markup, label);
 
   if (label === "/") {
+    record(documentTitle === brand, `${label}: homepage title must be the brand only (${documentTitle})`);
     record(!/\bhome-biography\b/i.test(markup), `${label}: homepage must not repeat the full biography`);
     const introduction = markup.match(/<p\b[^>]*\bhome-intro\b[^>]*>([\s\S]*?)<\/p>/i)?.[1] ?? "";
     const introductionLinks = tags(introduction, "a")
       .map((attributes) => values(`<a ${attributes}>`, "href")[0])
       .filter(Boolean);
     record(introductionLinks.includes("/about/"), `${label}: homepage introduction must link to /about/`);
+  } else {
+    record(documentTitle.endsWith(` · ${brand}`), `${label}: document title must end with the brand (${documentTitle})`);
   }
 
   if (label === "/projects/") {

@@ -2,7 +2,7 @@
 <html lang="{{ .Site.Language.Locale | default "en" }}">
 <head>
     <meta charset="utf-8">
-    <title>Redirecting...</title>
+    <title>Redirecting · {{ .Site.Params.site_name | default .Site.Title }}</title>
     <link rel="canonical" href="{{ .Permalink }}">
     {{- /* Meta refresh only — no inline script. Each alias page's script body
            would need its own CSP hash, which would break the hash-based
@@ -14,4 +14,3 @@
     <p>Redirecting to <a href="{{ .Permalink }}">{{ .Permalink }}</a>...</p>
 </body>
 </html>
-

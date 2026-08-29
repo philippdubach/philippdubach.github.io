@@ -1,6 +1,6 @@
 +++
 title = "About"
-seoTitle = "Philipp D. Dubach — Strategy Consultant & Researcher"
+seoTitle = "Strategy Consultant & Independent Researcher"
 description = "Philipp D. Dubach is an Imperial College London-trained strategy consultant and independent researcher in quantitative finance, AI economics, and computational medicine."
 keywords = ["Philipp Dubach", "Philipp D. Dubach", "quantitative finance researcher", "AI economics", "machine learning strategy", "capital markets analyst", "SSRN author", "Imperial College London", "LLM unit economics", "strategy consultant researcher"]
 +++

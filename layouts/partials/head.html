@@ -10,10 +10,12 @@
 {{ if not hugo.IsServer }}<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-i4Wj54cu/w/KZy91/+HVWZ9VsbDh+5DeAX0Lt5u+DCQ=' 'sha256-4qVeyGJe9myWelMbNnOnhUsPBgSyDNusLjIA/+DdyA0=' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://static.philippdubach.com https://imagedelivery.net; media-src 'self' https://static.philippdubach.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://stats.philippdubach.com https://weekly-top-goatcounter-api.philippd.workers.dev https://newsletter-api.philippd.workers.dev https://cdn.jsdelivr.net https://cloudflareinsights.com; object-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self' https://newsletter-api.philippd.workers.dev; upgrade-insecure-requests;">{{ end }}
 <meta name="color-scheme" content="light dark">
 {{- $description := .Description | default site.Params.description | plainify -}}
+{{- $brand := site.Params.site_name | default site.Title -}}
+{{- $pageTitle := .Params.seoTitle | default .Title -}}
 <meta name="description" content="{{ $description }}">
 <meta name="author" content="{{ site.Params.author }}">
 <meta name="robots" content="{{ .Params.robots | default "index, follow" }}">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Params.seoTitle | default .Title }} · {{ site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ $brand }}{{ else if strings.Contains $pageTitle $brand }}{{ $pageTitle }}{{ else }}{{ $pageTitle }} · {{ $brand }}{{ end }}</title>
 <link rel="canonical" href="{{ .Permalink }}">
 {{- /* Body images and video load from the image CDN; warming the connection
        takes DNS+TCP+TLS off the first image's critical path. */}}

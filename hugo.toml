@@ -1,6 +1,6 @@
 baseURL = 'https://philippdubach.com/'
 locale = 'en-us'
-title = 'Philipp D. Dubach | Quantitative Finance & AI Strategy'
+title = 'Philipp D. Dubach'
 timeZone = 'Europe/Zurich'
 enableRobotsTXT = true
 enableGitInfo = true
