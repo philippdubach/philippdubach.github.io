@@ -1185,7 +1185,6 @@ strong {
 }
 
 .section-heading-row > a,
-.home-paths,
 .article-meta,
 .article-updated,
 .item-meta,
@@ -1222,11 +1221,6 @@ strong {
 
 .compact-index a {
   font-style: italic;
-}
-
-.home-paths {
-  display: flex;
-  gap: 1.25rem;
 }
 
 .topic-filter {

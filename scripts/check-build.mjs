@@ -100,6 +100,14 @@ async function inspectPage(path) {
       .map((attributes) => values(`<a ${attributes}>`, "href")[0])
       .filter(Boolean);
     record(introductionLinks.includes("/about/"), `${label}: homepage introduction must link to /about/`);
+    const projectsSection = markup.match(/<section\b(?=[^>]*aria-labelledby=(?:"projects-title"|projects-title))[^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? "";
+    const projectItems = [...projectsSection.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)];
+    const projectDates = projectItems.map((match) => match[1].match(/<time\b[^>]*>([^<]+)<\/time>/i)?.[1].trim() ?? "");
+    record(/<h2\b[^>]*>Latest projects<\/h2>/i.test(projectsSection), `${label}: missing Latest projects heading`);
+    record(/<a\b[^>]*href=(?:"\/projects\/"|\/projects\/)[^>]*>All projects<\/a>/i.test(projectsSection), `${label}: missing All projects archive link`);
+    record(projectItems.length === 4, `${label}: expected four latest projects, found ${projectItems.length}`);
+    record(projectDates.every((date) => /^\d{2} [A-Z][a-z]{2} \d{4}$/.test(date)), `${label}: latest project dates must match the writing date format`);
+    record(!/\bhome-paths\b/i.test(markup), `${label}: redundant Projects and Research footer links remain`);
   } else {
     record(documentTitle.endsWith(` · ${brand}`), `${label}: document title must end with the brand (${documentTitle})`);
   }
