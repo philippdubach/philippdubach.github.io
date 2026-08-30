@@ -48,7 +48,7 @@ I moved more of my workload to GPT-5.6 Sol. Naturally, I selected the biggest se
 
 Sol can also get stuck without Ultra. I watched it inspect a problem, revise the plan, inspect again, and then produce another plan instead of the change I asked for. The model was busy. I was not getting an answer.
 
-{{< img src="openai_vs_anthropic_time_light.png" alt="GPT-5.6 Sol vs Claude Opus 5 and 20 other OpenAI and Anthropic configurations plotted by Intelligence Index and total working time." width="100%" imgWidth="2920" imgHeight="1360" priority="true" caption="Twenty-two configurations using the same nine evaluations. Higher scores and lower working time are better." >}}
+{{< img src="openai_vs_anthropic_time_light.png" alt="GPT-5.6 Sol vs Claude Opus 5 and 20 other OpenAI and Anthropic configurations plotted by Intelligence Index and total working time." width="100%" imgWidth="2920" imgHeight="1360" priority="true" >}}
 
 ## The GPT-5.6 Sol reasoning effort curve bends at High
 
@@ -68,7 +68,7 @@ Medium is the obvious bargain. High adds only one point, but it gives the model 
 
 After High, the trade gets worse. Xhigh costs about 47% more for two points. Max costs more than twice as much as High for four points. These figures estimate the cost of the benchmark tasks. They are not my subscription bill.
 
-{{< img src="gpt56_speed_vs_intelligence_light.png" alt="GPT-5.6 Sol reasoning effort from Low through Max compared by Intelligence Index and time to first token in Standard and Fast modes." width="100%" imgWidth="2640" imgHeight="1200" caption="Output speed changes little. Most of the extra delay happens before the first token." >}}
+{{< img src="gpt56_speed_vs_intelligence_light.png" alt="GPT-5.6 Sol reasoning effort from Low through Max compared by Intelligence Index and time to first token in Standard and Fast modes." width="100%" imgWidth="2640" imgHeight="1200" >}}
 
 The wait grows faster than the score. In my data, Sol Max spends about 146 seconds thinking before it starts writing in Standard mode. Moving from Xhigh to Max adds about 52.6 seconds of waiting for two points.
 
@@ -78,7 +78,7 @@ The wait grows faster than the score. In my data, Sol Max spends about 146 secon
 
 Time to first token is the pause before a model starts its answer. Output speed tells me how quickly it writes after that. I combined both into working time: the initial pause plus the time needed to generate the full response.
 
-{{< img src="gpt56_time_vs_intelligence_light.png" alt="GPT-5.6 Sol, Terra, and Luna reasoning levels compared by Intelligence Index and total working time." width="100%" imgWidth="2880" imgHeight="1320" caption="Sol leads Terra and Luna at similar working times. Each family still shows diminishing returns at higher effort." >}}
+{{< img src="gpt56_time_vs_intelligence_light.png" alt="GPT-5.6 Sol, Terra, and Luna reasoning levels compared by Intelligence Index and total working time." width="100%" imgWidth="2880" imgHeight="1320" >}}
 
 On the full test set, Sol takes about 88 hours at High and 150 at Xhigh. That is 1.7 times the working time for two points. Max rises to roughly 270 hours.
 
@@ -90,7 +90,7 @@ The same problem appeared when I tried [Kimi K3 inside Claude Code](/posts/kimi-
 
 OpenAI dominates my normal time budget. Anthropic still has the highest scores in this comparison. [Opus 5 Xhigh scores 63](https://artificialanalysis.ai/models/claude-opus-5-xhigh). Fable 5 scores 62. Sol Max reaches 61.
 
-{{< img src="claude_time_vs_intelligence_light.png" alt="Claude Opus 5, Fable 5, Opus 4.8, and Sonnet 5 compared by Intelligence Index and total working time." width="100%" imgWidth="2880" imgHeight="1320" caption="Anthropic reaches the highest scores, but more effort eventually adds time without adding performance." >}}
+{{< img src="claude_time_vs_intelligence_light.png" alt="Claude Opus 5, Fable 5, Opus 4.8, and Sonnet 5 compared by Intelligence Index and total working time." width="100%" imgWidth="2880" imgHeight="1320" >}}
 
 Anthropic has the same problem at its upper end. Opus 5 reaches about 63 at Xhigh. Max stays near 63 after adding roughly 87 hours across the test set. More effort does not guarantee a better result.
 
