@@ -1541,8 +1541,8 @@ strong {
   border-radius: 0.25rem;
 }
 
-.emoji-cover--dreamscape {
-  background: linear-gradient(90deg, #fa8bff 0%, #2bd2ff 50%, #2bff88 100%);
+.emoji-cover--sweet-spot {
+  background: linear-gradient(90deg, #5efce8 0%, #736efe 100%);
 }
 
 .emoji-cover__glyph {

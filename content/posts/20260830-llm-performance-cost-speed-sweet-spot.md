@@ -30,7 +30,7 @@ faq = [
 ]
 +++
 
-{{< emoji-cover emoji="🤝" label="A handshake centered on a pink, blue, and green gradient, representing the balance between LLM performance, cost, and speed." >}}
+{{< emoji-cover emoji="🤝" label="A handshake centered on a cyan-to-indigo gradient, representing the balance between LLM performance, cost, and speed." >}}
 
 I have spent an unreasonable amount of time using large language models. Most of that time went to Anthropic and OpenAI, with plenty of Kimi and Qwen mixed in. I used them for research, writing, coding, and long agent runs.
 
