@@ -1568,14 +1568,15 @@ strong {
   z-index: 0;
   top: 72%;
   left: 50%;
-  width: 34%;
-  height: 8%;
+  width: 38%;
+  height: 10%;
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgb(30 24 88 / 0.30) 0%,
-    rgb(30 24 88 / 0.12) 44%,
-    transparent 74%
+    rgb(30 24 88 / 0.22) 0%,
+    rgb(30 24 88 / 0.10) 38%,
+    rgb(30 24 88 / 0.03) 72%,
+    transparent 100%
   );
   content: "";
   pointer-events: none;
