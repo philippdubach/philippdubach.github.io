@@ -110,6 +110,7 @@ const CURRENT_POST_SLUGS = new Set([
   "aschenbrenners-receipts",
   "reconciling-enterprise-ai-revenue",
   "what-claude-thinks-but-doesnt-say",
+  "llm-performance-cost-speed-sweet-spot",
 ]);
 
 // Slug renames: old slug → new slug. The old URL is /posts/<old>/ and the

@@ -91,9 +91,19 @@ const destinationPosts = await markdownFiles(destinationPostDirectory);
 const sourceRoutes = hugoPostManifest(sourceRoot);
 const destinationRoutes = hugoPostManifest(projectRoot);
 
+// New editorial work is not part of the frozen migration baseline. Keep this
+// list explicit so an accidental post addition still fails the manifest check.
+const intentionalNewPosts = new Set([
+  "20260830-llm-performance-cost-speed-sweet-spot.md",
+]);
+const expectedDestinationPosts = [
+  ...sourcePosts,
+  ...intentionalNewPosts,
+].sort();
+
 record(sourcePosts.length > 0, "The source post manifest is empty.");
 record(
-  JSON.stringify(destinationPosts) === JSON.stringify(sourcePosts),
+  JSON.stringify(destinationPosts) === JSON.stringify(expectedDestinationPosts),
   `Post manifest mismatch: source=${sourcePosts.length}, destination=${destinationPosts.length}`,
 );
 
@@ -112,7 +122,7 @@ const intentionalPostEdits = new Set([
   "20250706-PROJECT-BlackJack.md",
 ]);
 
-for (const filename of destinationPosts) {
+for (const filename of sourcePosts) {
   const contentPath = `content/posts/${filename}`;
   const sourceMarkdown = await readFile(join(sourcePostDirectory, filename), "utf8");
   const destinationMarkdown = await readFile(join(destinationPostDirectory, filename), "utf8");

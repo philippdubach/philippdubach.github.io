@@ -99,6 +99,7 @@ test("date-prefix: latest posts are present in the canonical inventory", () => {
     "put-the-model-in-the-basement",
     "kimi-k3-inside-claude-code",
     "reconciling-enterprise-ai-revenue",
+    "llm-performance-cost-speed-sweet-spot",
   ]) {
     assert.deepEqual(
       resolveRedirect(`/2026/08/01/${slug}/`),

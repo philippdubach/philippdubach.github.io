@@ -1528,6 +1528,31 @@ strong {
   max-width: 100%;
 }
 
+.emoji-cover {
+  display: grid;
+  width: 80%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  container-type: inline-size;
+  place-items: center;
+  margin: 1.5rem auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+}
+
+.emoji-cover--dreamscape {
+  background: linear-gradient(90deg, #fa8bff 0%, #2bd2ff 50%, #2bff88 100%);
+}
+
+.emoji-cover__glyph {
+  display: block;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: clamp(4rem, 27vw, 12rem);
+  font-size: 33.75cqi;
+  line-height: 1;
+}
+
 .img-trigger {
   width: 100%;
   padding: 0;
