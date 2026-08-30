@@ -165,6 +165,7 @@
     menu.dataset.state = reducedMotionQuery?.matches ? "open" : "opening";
     lockMenuScroll();
     menu.showModal();
+    menuCloseButton?.focus({ preventScroll: true });
     if (menu.dataset.state === "open") return;
     menuPanel?.getBoundingClientRect();
     requestAnimationFrame(() => {

@@ -840,6 +840,7 @@ strong {
   max-height: none;
   margin: 0;
   padding: 0;
+  overflow: clip;
   border: 0;
   background: transparent;
   color: var(--text);

@@ -13,13 +13,14 @@ function requireSource(source, pattern, message) {
 }
 
 requireSource(header, /data-menu-open[^>]*aria-controls="mobile-menu"[^>]*aria-expanded="false"/, "The menu opener must expose its controlled dialog and initial state.");
-requireSource(menu, /<dialog[^>]*id="mobile-menu"[^>]*closedby="any"/, "The mobile menu must retain native modal and light-dismiss semantics.");
-requireSource(menu, /data-menu-close[^>]*aria-label="Close menu"[^>]*autofocus/, "The close control must receive initial dialog focus.");
+requireSource(menu, /<dialog[^>]*id="mobile-menu"[^>]*closedby="any"[^>]*autofocus[^>]*tabindex="-1"/, "The mobile menu must retain native modal semantics and focus the stationary dialog before the translated panel.");
+requireSource(menu, /data-menu-close[^>]*aria-label="Close menu"(?![^>]*autofocus)/, "The off-screen close control must not trigger native autofocus scrolling.");
 requireSource(menu, /<nav[^>]*mobile-menu__navigation[^>]*>[\s\S]*<ul>[\s\S]*<li>/, "Mobile navigation must use an ordinary semantic link list.");
 requireSource(menu, /control-symbol--menu|control-symbol--close/, "Mobile menu controls must use CSS-drawn symbols.");
 if (/[☰×]/.test(header + menu)) throw new Error("Platform-dependent menu glyphs must not return.");
 
 requireSource(script, /menu\.showModal\(\)/, "The menu must open through the native modal dialog API.");
+requireSource(script, /menu\.showModal\(\);\s*menuCloseButton\?\.focus\(\{ preventScroll: true \}\)/, "The close control must receive focus without scrolling the translated panel into view.");
 requireSource(script, /menu\?\.addEventListener\("cancel"[\s\S]*event\.preventDefault\(\)[\s\S]*closeMenu\(\)/, "Escape must use the race-safe animated close path.");
 requireSource(script, /backdropPointerStarted[\s\S]*pointerdown[\s\S]*pointerup/, "Backdrop dismissal must validate both pointer edges.");
 requireSource(script, /desktopMenuQuery[\s\S]*min-width: 48rem[\s\S]*closeMenu\(\{ immediate: true \}\)/, "The modal must close when the desktop navigation takes over.");
@@ -29,6 +30,7 @@ requireSource(script, /lockMenuScroll[\s\S]*position = "fixed"[\s\S]*unlockMenuS
 requireSource(styles, /\.mobile-menu__panel\s*\{[^}]*height:\s*100dvh[^}]*overflow-y:\s*auto[^}]*overscroll-behavior:\s*contain/s, "The sheet needs dynamic-height scrolling and contained overscroll.");
 requireSource(styles, /\.mobile-menu__panel\s*\{[^}]*safe-area-inset-right[^}]*safe-area-inset-bottom[^}]*safe-area-inset-left/s, "The sheet must respect mobile safe areas.");
 requireSource(styles, /\.mobile-menu__panel\s*\{[^}]*transform:\s*translateX\(100%\)/s, "The sheet must enter with a compositor-friendly transform.");
+requireSource(styles, /\.mobile-menu\s*\{[^}]*overflow:\s*clip/s, "The dialog viewport must not accumulate a horizontal scroll offset while the panel is translated.");
 requireSource(styles, /transform 240ms cubic-bezier\(0\.2, 0\.8, 0\.2, 1\)/, "The menu must retain its restrained 240ms interaction beat.");
 requireSource(styles, /@media \(hover: hover\) and \(pointer: fine\)[\s\S]*\.icon-button:hover/, "Menu hover feedback must be restricted to fine pointers.");
 if (/\.mobile-menu::backdrop\s*\{[^}]*backdrop-filter/s.test(styles)) throw new Error("The mobile-menu backdrop must remain blur-free.");
