@@ -4,7 +4,8 @@ compatibility_date = "2026-08-16"
 
 # Route: all requests to philippdubach.com
 routes = [
-  { pattern = "philippdubach.com/*", zone_id = "196e2d71114ade4f3a276715b5bd1c8d" }
+  { pattern = "philippdubach.com/*", zone_id = "196e2d71114ade4f3a276715b5bd1c8d" },
+  { pattern = "new.philippdubach.com/*", zone_id = "196e2d71114ade4f3a276715b5bd1c8d" }
 ]
 
 [observability]

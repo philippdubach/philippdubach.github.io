@@ -57,6 +57,27 @@ const estimateTokens = (body) => Math.ceil(body.length / 4);
 const validIndexNowKey = (key) =>
   typeof key === "string" && /^[A-Za-z0-9-]{8,128}$/.test(key);
 
+export const buildPreviewHostRedirect = (url) => {
+  if (url.hostname !== "new.philippdubach.com") return null;
+
+  const destination = new URL("https://philippdubach.com/");
+  destination.pathname = url.pathname;
+  destination.search = url.search;
+
+  const response = new Response(null, {
+    status: 301,
+    headers: {
+      Location: destination.toString(),
+      "Cache-Control": "public, max-age=3600",
+      "X-Robots-Tag": "noindex, follow",
+    },
+  });
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    response.headers.set(name, value);
+  }
+  return response;
+};
+
 export const buildIndexNowKeyResponse = (request, url, env) => {
   const key = env?.INDEXNOW_KEY;
   if (!validIndexNowKey(key) || url.pathname !== `/${key}.txt`) return null;
@@ -177,6 +198,13 @@ export default {
       ctx.passThroughOnException();
     }
     const url = new URL(request.url);
+
+    // The retired editorial preview now has one purpose: permanently forward
+    // every path and query to the corresponding canonical production URL.
+    // Handle this before cache lookup or origin access so the old Pages site
+    // can be deleted without leaving a dependency behind.
+    const previewRedirect = buildPreviewHostRedirect(url);
+    if (previewRedirect) return previewRedirect;
 
     // IndexNow requires the submitted key to be publicly retrievable from the
     // apex host. The primary Hetzner build cannot materialize GitHub Actions

@@ -93,6 +93,12 @@ npx --no-install wrangler rollback <previous-version-id> --config security-heade
 
 For the security Worker, validate HTML and `Accept: text/markdown` variants, `Vary: Accept`, CSP/HSTS, permanent RSS redirects, 410/redirect rules, and cache behavior. Purge Cloudflare cache after the final validated version. Deploy GoatCounter and build-trigger separately; observe one safe scheduled build-trigger execution.
 
+The `security-headers` Worker also owns the `new.philippdubach.com/*` route.
+It permanently redirects each path and query to the matching canonical URL on
+`philippdubach.com`. The former `philippdubach-text-preview` Pages project was
+deleted on 2026-08-30. Retain the proxied DNS record required to invoke the
+Worker route; it is redirect plumbing, not a Pages origin dependency.
+
 The security Worker also serves the intentionally public IndexNow verification
 file from its `INDEXNOW_KEY` secret binding. Keep that binding equal to the
 GitHub Actions `INDEXNOW_KEY` secret before deploying or rotating the key:
