@@ -40,7 +40,7 @@ That sounds like a small choice. It took me months to make it because I kept ass
 
 ## I kept choosing the highest reasoning effort
 
-Until this year, I was completely Anthropic-pilled. Claude was the model I opened first. That changed after the [Fable 5 incident](/posts/krugman-fable5-europe-decline/). Anthropic [released Fable 5](https://www.anthropic.com/news/claude-fable-5-mythos-5), suspended it days later, and later [brought it back with new safeguards](https://www.anthropic.com/news/redeploying-fable-5).
+Until this year, I was completely Claude-pilled. Claude was the model I opened first. That changed after the [Fable 5 incident](/posts/krugman-fable5-europe-decline/). Anthropic [released Fable 5](https://www.anthropic.com/news/claude-fable-5-mythos-5), suspended it days later, and later [brought it back with new safeguards](https://www.anthropic.com/news/redeploying-fable-5).
 
 I continued to use Anthropic after that. Opus 4.8 was good. Fable 5 was often very good, but too verbose for my taste. Then came Opus 5. Yes, it is good. I still do not like it. It is somewhat slow and, gosh, it is hard to read.
 
