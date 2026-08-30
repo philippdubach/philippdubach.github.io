@@ -5,7 +5,7 @@
         <h1>{{ .Title }}</h1>
         {{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}
       </header>
-      {{ $profileLabels := dict "arxiv" "arXiv" "google_scholar" "Google Scholar" "reading_list" "Reading List" "researchgate" "ResearchGate" "ssrn" "SSRN" }}
+      {{ $profileLabels := dict "arxiv" "arXiv" "google_scholar" "Google Scholar" "researchgate" "ResearchGate" "ssrn" "SSRN" }}
       <nav class="research-profiles" aria-label="Research profiles">
         {{ range $name, $url := hugo.Data.research.profiles }}<a href="{{ $url }}" rel="external noopener">{{ index $profileLabels $name }}</a>{{ end }}
       </nav>

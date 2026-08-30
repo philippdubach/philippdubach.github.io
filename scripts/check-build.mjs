@@ -129,7 +129,7 @@ async function inspectPage(path) {
     const profiles = markup.match(/<nav\b(?=[^>]*\bclass=(?:"[^"]*\bresearch-profiles\b[^"]*"|research-profiles\b))[^>]*>([\s\S]*?)<\/nav>/i)?.[1] ?? "";
     const profileLabels = [...profiles.matchAll(/<a\b[^>]*>([^<]+)<\/a>/gi)].map((match) => match[1].trim());
     record(
-      JSON.stringify(profileLabels) === JSON.stringify(["arXiv", "Google Scholar", "Reading List", "ResearchGate", "SSRN"]),
+      JSON.stringify(profileLabels) === JSON.stringify(["arXiv", "Google Scholar", "ResearchGate", "SSRN"]),
       `${label}: research profile labels have incorrect brand capitalization: ${JSON.stringify(profileLabels)}`,
     );
   }
