@@ -205,6 +205,11 @@ record(siteScript.includes('matchMedia("(prefers-reduced-motion: reduce)")'), "A
 record(siteScript.includes('typeof window.matchMedia === "function"'), "Theme detection must tolerate browsers without matchMedia.");
 record(siteScript.includes('return darkModeQuery?.matches ? "dark" : "light"'), "Theme detection must fall back to light mode.");
 record(siteScript.includes('button.setAttribute("aria-checked", String(dark))'), "Theme controls must expose their switch state.");
+record(siteScript.includes('button.setAttribute("aria-label", "Dark mode")'), "Theme controls need a stable accessible name.");
+record(siteScript.includes('document.startViewTransition'), "Theme controls must progressively enhance with View Transitions.");
+record(siteScript.includes('reducedMotionQuery?.matches'), "Theme transitions must respect reduced-motion preferences.");
+record(siteScript.includes('previousTransition.skipTransition?.()'), "Rapid theme changes must retire an active transition.");
+record(siteScript.includes('transition.ready.catch(() => {})'), "Skipped theme transitions must not emit unhandled rejections.");
 
 if (failures.length) {
   console.error(`Migration checks failed (${failures.length}):`);

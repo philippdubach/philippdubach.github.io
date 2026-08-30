@@ -5,6 +5,11 @@
   const darkModeQuery = typeof window.matchMedia === "function"
     ? window.matchMedia("(prefers-color-scheme: dark)")
     : null;
+  const reducedMotionQuery = typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-reduced-motion: reduce)")
+    : null;
+  let selectedTheme = root.dataset.theme === "dark" ? "dark" : "light";
+  let activeThemeTransition = null;
 
   function systemTheme() {
     return darkModeQuery?.matches ? "dark" : "light";
@@ -14,12 +19,13 @@
     const dark = theme === "dark";
     for (const button of themeButtons) {
       button.setAttribute("aria-checked", String(dark));
-      button.setAttribute("aria-label", dark ? "Use light theme" : "Use dark theme");
-      button.title = dark ? "Use light theme" : "Use dark theme";
+      button.setAttribute("aria-label", "Dark mode");
+      button.title = dark ? "Switch to light theme" : "Switch to dark theme";
     }
   }
 
   function applyTheme(theme, persist = false) {
+    selectedTheme = theme;
     root.dataset.theme = theme;
     if (persist) {
       try {
@@ -27,6 +33,54 @@
       } catch {}
     }
     syncThemeControls(theme);
+  }
+
+  function transitionTheme(theme, persist, button) {
+    if (activeThemeTransition) {
+      const previousTransition = activeThemeTransition;
+      activeThemeTransition = null;
+      previousTransition.skipTransition?.();
+    }
+
+    selectedTheme = theme;
+    if (typeof document.startViewTransition !== "function" || reducedMotionQuery?.matches) {
+      applyTheme(theme, persist);
+      return;
+    }
+
+    const bounds = button.getBoundingClientRect();
+    const originX = bounds.left + bounds.width / 2;
+    const originY = bounds.top + bounds.height / 2;
+    const radius = Math.hypot(
+      Math.max(originX, window.innerWidth - originX),
+      Math.max(originY, window.innerHeight - originY),
+    );
+    root.style.setProperty("--theme-transition-x", `${originX}px`);
+    root.style.setProperty("--theme-transition-y", `${originY}px`);
+    root.style.setProperty("--theme-transition-radius", `${radius}px`);
+    root.classList.add("is-theme-transitioning");
+
+    let transition;
+    try {
+      transition = document.startViewTransition(() => applyTheme(theme, persist));
+    } catch {
+      root.classList.remove("is-theme-transitioning");
+      applyTheme(theme, persist);
+      return;
+    }
+
+    activeThemeTransition = transition;
+    transition.ready.catch(() => {});
+    transition.finished
+      .catch(() => {})
+      .finally(() => {
+        if (activeThemeTransition !== transition) return;
+        activeThemeTransition = null;
+        root.classList.remove("is-theme-transitioning");
+        root.style.removeProperty("--theme-transition-x");
+        root.style.removeProperty("--theme-transition-y");
+        root.style.removeProperty("--theme-transition-radius");
+      });
   }
 
   function hasSavedTheme() {
@@ -38,11 +92,12 @@
     }
   }
 
-  syncThemeControls(root.dataset.theme ?? systemTheme());
+  syncThemeControls(selectedTheme);
 
   for (const button of themeButtons) {
     button.addEventListener("click", () => {
-      applyTheme(root.dataset.theme === "dark" ? "light" : "dark", true);
+      const nextTheme = selectedTheme === "dark" ? "light" : "dark";
+      transitionTheme(nextTheme, true, button);
     });
   }
 
@@ -59,36 +114,105 @@
   });
 
   const menu = document.querySelector("[data-mobile-menu]");
+  const menuPanel = menu?.querySelector(".mobile-menu__panel");
   const menuOpenButtons = [...document.querySelectorAll("[data-menu-open]")];
   const menuCloseButton = document.querySelector("[data-menu-close]");
+  const desktopMenuQuery = typeof window.matchMedia === "function"
+    ? window.matchMedia("(min-width: 48rem)")
+    : null;
   let menuInvoker = null;
+  let menuCloseTimer = 0;
+  let backdropPointerStarted = false;
+  let menuScrollPosition = 0;
+  let menuBodyStyles = null;
 
-  function openMenu(invoker) {
-    if (!(menu instanceof HTMLDialogElement) || menu.open) return;
-    menuInvoker = invoker;
-    invoker.setAttribute("aria-expanded", "true");
-    menu.showModal();
+  function lockMenuScroll() {
+    if (menuBodyStyles) return;
+    menuScrollPosition = window.scrollY;
+    menuBodyStyles = {
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+    };
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${menuScrollPosition}px`;
+    document.body.style.width = "100%";
   }
 
-  function closeMenu() {
+  function unlockMenuScroll() {
+    if (!menuBodyStyles) return;
+    const savedStyles = menuBodyStyles;
+    menuBodyStyles = null;
+    document.body.style.position = savedStyles.position;
+    document.body.style.top = savedStyles.top;
+    document.body.style.width = savedStyles.width;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, menuScrollPosition);
+    root.style.scrollBehavior = previousScrollBehavior;
+  }
+
+  function finishMenuClose() {
+    window.clearTimeout(menuCloseTimer);
+    menuCloseTimer = 0;
     if (menu instanceof HTMLDialogElement && menu.open) menu.close();
+  }
+
+  function openMenu(invoker) {
+    if (!(menu instanceof HTMLDialogElement) || menu.open || desktopMenuQuery?.matches) return;
+    menuInvoker = invoker;
+    invoker.setAttribute("aria-expanded", "true");
+    menu.dataset.state = reducedMotionQuery?.matches ? "open" : "opening";
+    lockMenuScroll();
+    menu.showModal();
+    if (menu.dataset.state === "open") return;
+    menuPanel?.getBoundingClientRect();
+    requestAnimationFrame(() => {
+      if (menu.open && menu.dataset.state === "opening") menu.dataset.state = "open";
+    });
+  }
+
+  function closeMenu({ immediate = false } = {}) {
+    if (!(menu instanceof HTMLDialogElement) || !menu.open) return;
+    if (immediate || reducedMotionQuery?.matches) {
+      finishMenuClose();
+      return;
+    }
+    if (menu.dataset.state === "closing") return;
+    menu.dataset.state = "closing";
+    menuCloseTimer = window.setTimeout(finishMenuClose, 220);
   }
 
   for (const button of menuOpenButtons) {
     button.addEventListener("click", () => openMenu(button));
   }
 
-  menuCloseButton?.addEventListener("click", closeMenu);
-  menu?.addEventListener("click", (event) => {
-    if (event.target === menu) closeMenu();
+  menuCloseButton?.addEventListener("click", () => closeMenu());
+  menu?.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeMenu();
   });
-  menu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  menu?.addEventListener("pointerdown", (event) => {
+    backdropPointerStarted = event.target === menu;
+  });
+  menu?.addEventListener("pointerup", (event) => {
+    if (backdropPointerStarted && event.target === menu) closeMenu();
+    backdropPointerStarted = false;
+  });
+  menu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => closeMenu()));
   menu?.addEventListener("close", () => {
+    window.clearTimeout(menuCloseTimer);
+    menuCloseTimer = 0;
+    delete menu.dataset.state;
     if (menuInvoker instanceof HTMLElement) {
       menuInvoker.setAttribute("aria-expanded", "false");
-      menuInvoker.focus();
+      if (!desktopMenuQuery?.matches && menuInvoker.isConnected) menuInvoker.focus({ preventScroll: true });
     }
+    unlockMenuScroll();
     menuInvoker = null;
+  });
+  desktopMenuQuery?.addEventListener?.("change", (event) => {
+    if (event.matches) closeMenu({ immediate: true });
   });
 
   const topicFilter = document.querySelector("[data-topic-filter]");
@@ -216,7 +340,6 @@
     });
   }
 
-  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const ambientVideos = [...document.querySelectorAll("[data-ambient-video]")];
 
   function syncAmbientVideos(reduceMotion) {
@@ -228,8 +351,8 @@
   }
 
   if (ambientVideos.length > 0) {
-    syncAmbientVideos(reducedMotionQuery.matches);
-    reducedMotionQuery.addEventListener("change", (event) => syncAmbientVideos(event.matches));
+    syncAmbientVideos(reducedMotionQuery?.matches ?? false);
+    reducedMotionQuery?.addEventListener?.("change", (event) => syncAmbientVideos(event.matches));
   }
 
   for (const trigger of document.querySelectorAll("[data-lightbox-target]")) {

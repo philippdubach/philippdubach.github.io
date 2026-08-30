@@ -150,6 +150,8 @@ async function inspectPage(path) {
     const control = `<button ${attributes}>`;
     record(values(control, "role")[0] === "switch", `${label}: theme control needs switch semantics`);
     record(values(control, "aria-checked")[0] === "false", `${label}: theme switch needs an initial checked state`);
+    record(values(control, "aria-label")[0] === "Dark mode", `${label}: theme switch needs a stable accessible name`);
+    record(values(control, "title")[0] === "Switch to dark theme", `${label}: theme switch needs its initial action hint`);
     record(/theme-toggle__track/.test(content) && /theme-toggle__thumb/.test(content), `${label}: theme switch needs a track and thumb`);
     record(!/theme-icon|☾|☀/.test(content), `${label}: theme switch still contains theme icons`);
   }

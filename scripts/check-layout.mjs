@@ -68,6 +68,10 @@ const newsletterMessageCss = declarations(css, ".newsletter-preview .newsletter-
 const newsletterMessageEmptyCss = declarations(css, ".newsletter-preview__message:empty");
 const newsletterControlsCss = declarations(css, ".newsletter-preview input");
 const siteFooterCss = declarations(css, ".site-footer");
+const mobileTocSummaryCss = declarations(css, ".mobile-toc summary");
+const mobileTocNavCss = declarations(css, ".mobile-toc nav");
+const mobileTocListCss = declarations(css, ".mobile-toc ol");
+const mobileTocLinkCss = declarations(css, ".mobile-toc nav a");
 
 if (!/width\s*:\s*2\.75rem/.test(themeToggleCss) || !/height\s*:\s*2\.75rem/.test(themeToggleCss)) {
   throw new Error("The theme switch needs a 44px interaction target.");
@@ -107,6 +111,18 @@ if (!/min-height\s*:\s*2\.75rem/.test(newsletterControlsCss)) {
 
 if (!/padding\s*:\s*0\s+var\(--mobile-gutter\)\s+calc\(3\.5rem\s*\+\s*env\(safe-area-inset-bottom,\s*0px\)\)/.test(siteFooterCss)) {
   throw new Error("The mobile footer must clear browser chrome and the bottom safe area.");
+}
+
+if (
+  !/min-height\s*:\s*3rem/.test(mobileTocSummaryCss) ||
+  !/padding\s*:\s*0\s+0\s+0\.65rem/.test(mobileTocNavCss) ||
+  !/gap\s*:\s*0/.test(mobileTocListCss)
+) {
+  throw new Error("The mobile contents overview must retain its compact vertical rhythm.");
+}
+
+if (!/min-height\s*:\s*2\.75rem/.test(mobileTocLinkCss)) {
+  throw new Error("Compact contents links must retain 44px touch targets.");
 }
 
 if (!/\.key-takeaways,\s*\.newsletter-preview,\s*\.related-reading\s*\{[^}]*padding\s*:\s*1rem/s.test(css)) {
