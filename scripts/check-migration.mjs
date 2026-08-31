@@ -210,6 +210,8 @@ record(
 );
 record(siteScript.includes("[data-newsletter-endpoint]"), "Live newsletter submit handler is missing.");
 record(siteScript.includes("Preview only — no subscription was created"), "Newsletter preview message is missing.");
+record(siteScript.includes('path: "/events/newsletter-subscribe"'), "Newsletter success events need one stable GoatCounter path.");
+record(!siteScript.includes("subscribe${location.pathname}"), "Newsletter events must not duplicate the current page path.");
 record(!siteScript.includes("navigator.clipboard"), "Removed code-copy behavior must not remain in local JavaScript.");
 record(siteScript.includes('matchMedia("(prefers-reduced-motion: reduce)")'), "Ambient video must respect reduced motion.");
 record(siteScript.includes('typeof window.matchMedia === "function"'), "Theme detection must tolerate browsers without matchMedia.");

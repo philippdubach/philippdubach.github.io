@@ -318,7 +318,7 @@
         .then((data) => {
           if (data && data.success) {
             if (window.goatcounter && window.goatcounter.count) {
-              window.goatcounter.count({ path: `subscribe${location.pathname}`, title: "Newsletter subscribe", event: true });
+              window.goatcounter.count({ path: "/events/newsletter-subscribe", title: "Newsletter subscribe", event: true });
             }
             const controls = form.querySelector(".newsletter-preview__controls");
             if (controls instanceof HTMLElement) controls.hidden = true;
