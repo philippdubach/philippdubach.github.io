@@ -156,7 +156,11 @@ const fetchOrigin = async (request, originUrl) => {
   // served as 200 with the target's body.
   // Request as the init object preserves method, headers and streaming body.
   const originRequest = new Request(originUrl, request);
-  return fetch(new Request(originRequest, { redirect: "manual" }));
+  return fetch(new Request(originRequest, { redirect: "manual" }), {
+    // The origin CDN cache is separate from our synthetic Cache API. Exclude
+    // errors before storage there, too; final response no-store is too late.
+    cf: { cacheTtlByStatus: { "400-599": -1 } },
+  });
 };
 
 export const decorate = async (response, { url, servedMarkdown, isCatalog }) => {

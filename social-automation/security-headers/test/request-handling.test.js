@@ -9,8 +9,10 @@ const mockRuntime = (t, { origin, match, put } = {}) => {
   const reads = [];
   const writes = [];
   const requests = [];
-  t.mock.method(globalThis, "fetch", async (request) => {
+  const fetchOptions = [];
+  t.mock.method(globalThis, "fetch", async (request, options) => {
     requests.push(request);
+    fetchOptions.push(options);
     return origin ? origin(request) : new Response("origin", {
       headers: { "Content-Type": "text/html", "Cache-Control": "public, max-age=3600" },
     });
@@ -30,7 +32,7 @@ const mockRuntime = (t, { origin, match, put } = {}) => {
     if (originalCaches === undefined) delete globalThis.caches;
     else globalThis.caches = originalCaches;
   });
-  return { pending, reads, writes, requests, ctx: { waitUntil(promise) { pending.push(promise); } } };
+  return { pending, reads, writes, requests, fetchOptions, ctx: { waitUntil(promise) { pending.push(promise); } } };
 };
 
 test("POST bypasses cached GET responses and forwards the complete body without a Markdown rewrite", async (t) => {
@@ -145,5 +147,14 @@ test("origin redirects preserve their status and destination", async (t) => {
   assert.equal(response.status, 301);
   assert.equal(response.headers.get("Location"), "/writing/");
   assert.equal(runtime.requests[0].redirect, "manual");
+  assert.equal(runtime.writes.length, 0);
+});
+
+test("origin CDN caching excludes errors without overriding successful response TTLs", async (t) => {
+  const runtime = mockRuntime(t, { origin: () => new Response("not found", { status: 404 }) });
+  const response = await worker.fetch(new Request(`${site}/missing/`), {}, runtime.ctx);
+  assert.deepEqual(runtime.fetchOptions[0], { cf: { cacheTtlByStatus: { "400-599": -1 } } });
+  assert.equal(response.status, 404);
+  assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(runtime.writes.length, 0);
 });
