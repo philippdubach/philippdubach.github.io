@@ -1,0 +1,14 @@
+{{- /* Hugo's page Lastmod tracks its content file, not data dependencies.
+      Research records keep their actual edit time beside the data. Reuse this
+      value in machine-readable outputs only; never substitute build time or
+      filesystem mtime, and leave visible article dates unchanged. */ -}}
+{{- $lastmod := .Lastmod -}}
+{{- if eq .RelPermalink "/research/" -}}
+  {{- with hugo.Data.research.lastmod -}}
+    {{- $dataLastmod := time.AsTime . -}}
+    {{- if or $lastmod.IsZero ($dataLastmod.After $lastmod) -}}
+      {{- $lastmod = $dataLastmod -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $lastmod -}}

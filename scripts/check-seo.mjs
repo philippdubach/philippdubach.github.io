@@ -1,5 +1,7 @@
 import { readFile, readdir } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 import { join, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { resolveRedirect } from "../social-automation/security-headers/src/redirects.js";
 
 const outputDirectory = resolve(process.argv[2] ?? "public");
@@ -8,6 +10,7 @@ const indexableCanonicals = new Set();
 const documentTitles = new Map();
 const internalLinks = new Map();
 const breadcrumbLinks = new Map();
+let researchModified;
 
 function record(condition, message) {
   if (!condition) failures.push(message);
@@ -116,6 +119,10 @@ for (const path of await htmlFiles(outputDirectory)) {
   const graphDefinitions = new Map(schemaObjects
     .filter((object) => object["@id"] && object["@type"])
     .map((object) => [object["@id"], object]));
+  if (pathname === "/research/") {
+    researchModified = graphDefinitions.get(canonical)?.dateModified;
+    record(Number.isFinite(Date.parse(researchModified)), "research: missing or invalid collection modification time");
+  }
   for (const object of schemaObjects) {
     const type = object["@type"];
     record(!["Claim", "SpeakableSpecification"].includes(type), `${pathname}: unsupported ${type} schema remains`);
@@ -196,6 +203,43 @@ const sitemap = await readFile(join(outputDirectory, "sitemap.xml"), "utf8");
 const sitemapUrls = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
 record(!/<(?:changefreq|priority)>/.test(sitemap), "sitemap: ignored priority/changefreq fields remain");
 record(JSON.stringify([...sitemapUrls].sort()) === JSON.stringify([...indexableCanonicals].sort()), "sitemap: URLs must exactly match canonical indexable HTML pages");
+const researchSitemapEntry = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)]
+  .find((match) => match[1].includes("<loc>https://philippdubach.com/research/</loc>"))?.[1] ?? "";
+const researchSitemapModified = researchSitemapEntry.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];
+record(Number.isFinite(Date.parse(researchSitemapModified)) && Date.parse(researchSitemapModified) === Date.parse(researchModified),
+  "research: sitemap and collection schema modification times must agree");
+const researchMarkdown = await readFile(join(outputDirectory, "research/index.md"), "utf8");
+const researchMarkdownDate = researchMarkdown.match(/^updated:\s*(\d{4}-\d{2}-\d{2})\s*$/m)?.[1];
+const researchMarkdownByline = researchMarkdown.match(/· Updated ([^*\n]+)\*/)?.[1];
+const researchMarkdownBylineTime = Date.parse(`${researchMarkdownByline} UTC`);
+record(researchMarkdownDate === researchModified?.slice(0, 10),
+  "research: Markdown modification date must agree with collection schema");
+record(Number.isFinite(researchMarkdownBylineTime) && new Date(researchMarkdownBylineTime).toISOString().slice(0, 10) === researchMarkdownDate,
+  "research: Markdown byline must agree with its modification metadata");
+
+// The YAML timestamp is an editorial field, not a checkout/build timestamp.
+// Match only changes to the rendered payload: adding/updating lastmod or a
+// comment must not require (or justify) artificially freshening the page.
+const projectRoot = fileURLToPath(new URL("../", import.meta.url));
+const researchSource = await readFile(join(projectRoot, "data/research.yaml"), "utf8");
+const researchDataModified = researchSource.match(/^lastmod:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2}))"\s*$/m)?.[1];
+record(Number.isFinite(Date.parse(researchDataModified)), "research data: record an explicit ISO lastmod for substantive record changes");
+record(Date.parse(researchModified) >= Date.parse(researchDataModified),
+  "research: emitted modification time must include publication/profile data changes");
+record(Date.parse(researchDataModified) <= Date.now(), "research data: lastmod must not be in the future");
+try {
+  const dataCommitDate = execFileSync("git", ["log", "-1", "--format=%aI",
+    "-G", "^(profiles:|publications:|[[:space:]]+[^#[:space:]])", "--", "data/research.yaml"],
+  { cwd: projectRoot, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  // Comparing calendar days allows a recorded edit to precede its commit by
+  // minutes; a subsequent metadata-only commit is intentionally ignored.
+  if (dataCommitDate) {
+    record(researchDataModified?.slice(0, 10) >= dataCommitDate.slice(0, 10),
+      "research data: update lastmod when changing publication or profile records");
+  }
+} catch {
+  // Source archives may not contain .git; explicit dates still remain testable.
+}
 for (const [target, sources] of breadcrumbLinks) {
   // A noindexed utility may still include itself as the last breadcrumb.
   const isCurrentPage = [...sources].every((pathname) => target === `https://philippdubach.com${pathname}`);

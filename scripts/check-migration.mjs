@@ -122,12 +122,39 @@ const intentionalPostEdits = new Set([
   "20250706-PROJECT-BlackJack.md",
 ]);
 
+// Citation repairs remain exact transformations of the frozen source, not
+// blanket exemptions for the affected posts. Any other text/link edit fails.
+const citationRepairs = JSON.parse(await readFile(join(projectRoot, "scripts", "citation-repairs.json"), "utf8"));
+for (const filename of Object.keys(citationRepairs.posts)) {
+  record(sourcePosts.includes(filename), `Citation repair references an unknown baseline post: ${filename}`);
+}
+
+function reviewedSource(source, filename) {
+  const repair = citationRepairs.posts[filename];
+  if (!repair) return source;
+  let expected = source;
+  for (const replacement of repair.replacements) {
+    record(expected.includes(replacement.old), `${filename}: reviewed citation source URL is missing: ${replacement.old}`);
+    expected = expected.split(replacement.old).join(replacement.new);
+  }
+  if (repair.preservedLastmod) {
+    record(!/^lastmod\s*=/m.test(expected.split("\n+++", 1)[0]), `${filename}: preservation must not replace an explicit lastmod`);
+    expected = expected.replace(/^(date\s*=.*)$/m, `$1\nlastmod = "${repair.preservedLastmod}"`);
+  }
+  // apply_patch normalized EOF in two reviewed files; allow only the exact
+  // recorded final-newline result, with all other whitespace still checked.
+  if (repair.terminalNewlines !== undefined) {
+    expected = expected.replace(/\n*$/, "\n".repeat(repair.terminalNewlines));
+  }
+  return expected;
+}
+
 for (const filename of sourcePosts) {
   const contentPath = `content/posts/${filename}`;
   const sourceMarkdown = await readFile(join(sourcePostDirectory, filename), "utf8");
   const destinationMarkdown = await readFile(join(destinationPostDirectory, filename), "utf8");
   record(
-    sourceMarkdown === destinationMarkdown || intentionalPostEdits.has(filename),
+    reviewedSource(sourceMarkdown, filename) === destinationMarkdown || intentionalPostEdits.has(filename),
     `${filename}: imported Markdown differs from the source`,
   );
   const sourceURL = sourceRoutes.get(contentPath);

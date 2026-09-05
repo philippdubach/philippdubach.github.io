@@ -25,6 +25,7 @@
   The HTML siblings keep all the lightbox + responsive-srcset machinery;
   this template gets the clean version.
 */ -}}
+{{- $modified := partial "metadata/lastmod.html" . -}}
 ---
 title: {{ .Title | jsonify }}
 {{- with .Description }}
@@ -33,8 +34,8 @@ description: {{ . | jsonify }}
 {{- if not .Date.IsZero }}
 date: {{ .Date.Format "2006-01-02" }}
 {{- end }}
-{{- if and (not .Lastmod.IsZero) (or .Date.IsZero (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02"))) }}
-updated: {{ .Lastmod.Format "2006-01-02" }}
+{{- if and (not $modified.IsZero) (or .Date.IsZero (ne ($modified.Format "2006-01-02") (.Date.Format "2006-01-02"))) }}
+updated: {{ $modified.Format "2006-01-02" }}
 {{- end }}
 author: {{ .Site.Params.author | jsonify }}
 {{- with .Params.categories }}
@@ -61,7 +62,7 @@ source_url: {{ printf "%sindex.md" .Permalink | jsonify }}
 
 # {{ .Title }}
 
-{{ if not .Date.IsZero }}*{{ .Site.Params.author }} · Published {{ .Date.Format "January 2, 2006" }}{{ if and (not .Lastmod.IsZero) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }} · Updated {{ .Lastmod.Format "January 2, 2006" }}{{ end }}*{{ else }}*{{ .Site.Params.author }}{{ if not .Lastmod.IsZero }} · Updated {{ .Lastmod.Format "January 2, 2006" }}{{ end }}*{{ end }}
+{{ if not .Date.IsZero }}*{{ .Site.Params.author }} · Published {{ .Date.Format "January 2, 2006" }}{{ if and (not $modified.IsZero) (ne ($modified.Format "2006-01-02") (.Date.Format "2006-01-02")) }} · Updated {{ $modified.Format "January 2, 2006" }}{{ end }}*{{ else }}*{{ .Site.Params.author }}{{ if not $modified.IsZero }} · Updated {{ $modified.Format "January 2, 2006" }}{{ end }}*{{ end }}
 
 {{ with .Params.takeaways }}
 ## Key Takeaways

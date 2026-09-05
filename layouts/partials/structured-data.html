@@ -204,7 +204,7 @@
   "about" (dict "@id" $personId)
   "isPartOf" (dict "@id" $websiteId)
   "author" (dict "@id" $personId)
-  "dateModified" ($.Lastmod.Format "2006-01-02")
+  "dateModified" ((partial "metadata/lastmod.html" $).Format "2006-01-02T15:04:05Z07:00")
   "hasPart" $articles
 -}}
 

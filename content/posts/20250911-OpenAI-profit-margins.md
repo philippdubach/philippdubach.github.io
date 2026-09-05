@@ -2,6 +2,7 @@
 title = "AI Models as Standalone P&Ls"
 seoTitle = "Why OpenAI Loses Billions But Each AI Model May Profit"
 date = 2025-11-09
+lastmod = "2026-05-14T23:52:49+02:00"
 images = ["https://static.philippdubach.com/ograph/ograph-aipnl.jpg"]
 description = "OpenAI lost $11.5B in one quarter. But Anthropic CEO Dario Amodei argues each AI model is independently profitable. Here's why the math is complicated."
 keywords = ["OpenAI losses", "AI model profitability", "AI training costs", "OpenAI business model", "Dario Amodei profitability"]
@@ -66,6 +67,6 @@ If the improvements stop delivering proportional returns before reaching natural
 
 >And then perhaps there'll be some overhang, so there'll be a one-time, 'Oh man, we spent a lot of money and we didn't get anything for it,' and then the business returns to whatever scale it was at.
 
-What Amodei's framework doesn't directly address is the open-source problem. If training Model C costs $10 billion but open-source alternatives [reach comparable performance six months later](https://synaptic.com/resources/open-source-ai-2024), that 2x return window might not materialize. The entire argument depends on maintaining a significant capability lead that customers will pay premium prices for. There's also the question of whether the 2x return assumption holds as models become more expensive. The jump from $100 million to $1 billion to $10 billion in training costs assumes that customers will consistently value the improvements enough to double revenue.
+What Amodei's framework doesn't directly address is the open-source problem. If training Model C costs $10 billion but open-source alternatives [reach comparable performance six months later](https://synaptic.com/resources/market-overviews/open-source-ai-a-fast-forward), that 2x return window might not materialize. The entire argument depends on maintaining a significant capability lead that customers will pay premium prices for. There's also the question of whether the 2x return assumption holds as models become more expensive. The jump from $100 million to $1 billion to $10 billion in training costs assumes that customers will consistently value the improvements enough to double revenue.
 
 {{< disclaimer type="finance" >}}

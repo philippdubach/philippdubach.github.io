@@ -113,9 +113,9 @@ The strategies still complement each other. [Recent academic work](https://www.t
 
 ## Where most tail hedges fail, and the benchmark problem
 
-Implementation is where most investors get burned. A [CAIA Association paper](https://www.caia.org/sites/default/files/2013-aiar-q1-comparison.pdf) compared several tail-risk strategies with a deliberately boring benchmark: cash. Against an S&P 500-only portfolio, cash reduced tail risk by 80% and standard deviation by 81%. Its information ratio was 0.67. This ratio measures active return per unit of benchmark-relative risk.
+Implementation is where most investors get burned. A [CAIA Association paper](https://web.archive.org/web/20260617190341/https://www.caia.org/sites/default/files/2013-aiar-q1-comparison.pdf) compared several tail-risk strategies with a deliberately boring benchmark: cash. Against an S&P 500-only portfolio, cash reduced tail risk by 80% and standard deviation by 81%. Its information ratio was 0.67. This ratio measures active return per unit of benchmark-relative risk.
 
-[The CAIA study](https://www.caia.org/sites/default/files/2013-aiar-q1-comparison.pdf) found that several popular strategies failed to beat cash. These included short-dated VIX futures and one-month variance swaps. Their performance drags were 355 and 203 basis points, respectively.
+[The CAIA study](https://web.archive.org/web/20260617190341/https://www.caia.org/sites/default/files/2013-aiar-q1-comparison.pdf) found that several popular strategies failed to beat cash. These included short-dated VIX futures and one-month variance swaps. Their performance drags were 355 and 203 basis points, respectively.
 
 {{< img src="chart7-strategy-efficiency.png" alt="Scatter quadrant chart plotting annual cost in basis points versus crisis return for six tail-risk strategies. Trend following sits in the ideal quadrant with low cost and high crisis return. VIX futures and variance swaps fall in the expensive quadrant, underperforming even a simple cash allocation" width="90%" >}}
 

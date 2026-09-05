@@ -1,0 +1,139 @@
+{
+  "description": "Reviewed same-resource citation maintenance, 2026-09-05. No prose changes; exact current lastmod preserved for Git-dated articles.",
+  "sourceSHA": "16d7c7d794149d512f18edfff15b0fda42cdff7f",
+  "posts": {
+    "20250410-PROJECT-Sentiment-Trading.md": {
+      "preservedLastmod": "2026-05-17T20:42:31+02:00",
+      "replacements": [
+        {
+          "old": "https://platform.openai.com/docs/models/gpt-3-5-turbo",
+          "new": "https://developers.openai.com/api/docs/models/gpt-3.5-turbo",
+          "evidence": "Current official documentation for the exact GPT-3.5 Turbo model; original URL has 3-5 rather than 3.5."
+        }
+      ]
+    },
+    "20250627-NOVO-Amycretin.md": {
+      "preservedLastmod": "2026-05-14T23:52:49+02:00",
+      "replacements": [
+        {
+          "old": "https://www.novonordisk-trials.com/trials-conditions/all-trials-v2/NN9541-4919.html",
+          "new": "https://clinicaltrials.gov/study/NCT06642571",
+          "evidence": "Official ClinicalTrials.gov API confirms exact sponsor study ID NN9541-4919 and Novo Nordisk sponsorship; same clinical study, destination 200."
+        },
+        {
+          "old": "https://www.novonordisk-trials.com/trials-conditions/all-trials-v2/NN9662-7694.html",
+          "new": "https://clinicaltrials.gov/study/NCT06737536",
+          "evidence": "Official ClinicalTrials.gov API confirms exact sponsor study ID NN9662-7694 and Novo Nordisk sponsorship; same clinical study, destination 200."
+        }
+      ]
+    },
+    "20250911-OpenAI-profit-margins.md": {
+      "preservedLastmod": "2026-05-14T23:52:49+02:00",
+      "replacements": [
+        {
+          "old": "https://synaptic.com/resources/open-source-ai-2024",
+          "new": "https://synaptic.com/resources/market-overviews/open-source-ai-a-fast-forward",
+          "evidence": "Synaptic's 29 August 2024 Open Source AI: A Fast Forward overview; historical old-link/title mapping also preserved in a public 2025 market-map dataset."
+        }
+      ]
+    },
+    "20251115-Weather-forecasts.md": {
+      "preservedLastmod": "2026-02-22T20:27:01+01:00",
+      "replacements": [
+        {
+          "old": "https://deepmind.google/discover/blog/weathernext-2-our-most-advanced-weather-forecasting-model/",
+          "new": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2/",
+          "evidence": "Google DeepMind's official WeatherNext repository links to this same-title WeatherNext 2 announcement, dated 17 November 2025, by the WeatherNext team."
+        }
+      ]
+    },
+    "20251201-Nike-Crisis.md": {
+      "replacements": [
+        {
+          "old": "https://www.deckers.com/investors/financial-information/annual-reports",
+          "new": "https://ir.deckers.com/sec-filings/annual-reports",
+          "evidence": "Deckers' current official annual-report archive, linked by its investor-site navigation and retaining historical annual reports."
+        }
+      ]
+    },
+    "20260109-summarizing-conversation-history.md": {
+      "replacements": [
+        {
+          "old": "https://mem0.ai/blog/llm-chat-history-summarization",
+          "new": "https://mem0.ai/blog/llm-chat-history-summarization-guide",
+          "evidence": "Publisher's 6 October 2025 chat-history summarization guide; exact cited 80–90% cost reduction and 26% quality claim."
+        }
+      ]
+    },
+    "20260207-where-mobile-money-goes-now.md": {
+      "replacements": [
+        {
+          "old": "https://sensortower.com/state-of-mobile-2026",
+          "new": "https://sensortower.com/report/state-of-mobile-2026",
+          "evidence": "Exact State of Mobile 2026 report on publisher's current /report/ route."
+        }
+      ]
+    },
+    "20260212-the-long-volatility-premium.md": {
+      "replacements": [
+        {
+          "old": "https://www.caia.org/sites/default/files/2013-aiar-q1-comparison.pdf",
+          "new": "https://web.archive.org/web/20260617190341/https://www.caia.org/sites/default/files/2013-aiar-q1-comparison.pdf",
+          "evidence": "Internet Archive June 17, 2026 snapshot of the exact original CAIA PDF; matching title and authors, confirmed 200 by Archive availability API and fetch."
+        }
+      ]
+    },
+    "20260222-prediction-market-insider-trading.md": {
+      "terminalNewlines": 1,
+      "replacements": [
+        {
+          "old": "https://faculty.tuck.dartmouth.edu/eric-zitzewitz/",
+          "new": "https://faculty-directory.dartmouth.edu/eric-w-zitzewitz",
+          "evidence": "Current official Dartmouth directory profile for the same Eric W. Zitzewitz, economics professor studying prediction markets; destination 200 and matching canonical."
+        }
+      ]
+    },
+    "20260304-ai-coding-productivity.md": {
+      "replacements": [
+        {
+          "old": "https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation",
+          "new": "https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report",
+          "evidence": "Publisher's 17 December 2025 State of AI vs Human Code Generation report; same named report and 2.74x security finding."
+        }
+      ]
+    },
+    "20260413-do-not-disturb-my-circles.md": {
+      "terminalNewlines": 1,
+      "replacements": [
+        {
+          "old": "https://www.energy.gov/science/articles/doe-announces-genesis-mission-advance-ai-science",
+          "new": "https://www.energy.gov/articles/energy-department-advances-investments-ai-science",
+          "evidence": "DOE's 10 December 2025 official announcement of over $320 million in Genesis Mission investments; same specific funding announcement cited in the article."
+        }
+      ]
+    },
+    "20260517-reconciling-enterprise-ai-revenue.md": {
+      "replacements": [
+        {
+          "old": "https://investors.hpe.com/financial-information",
+          "new": "https://investors.hpe.com/financial",
+          "evidence": "HPE homepage Financial Information / Explore all Financial now links to /financial, the same financial report hub."
+        }
+      ]
+    },
+    "20260524-dora-sovereignty-bank-problem.md": {
+      "replacements": [
+        {
+          "old": "https://www.theregister.com/2025/10/15/schleswig_holstein_office_swap/",
+          "new": "https://www.theregister.com/software/2025/10/15/schleswig-holstein-waves-auf-wiedersehen-to-microsoft-stack/1543638",
+          "evidence": "Same publisher, 15 October 2025 Schleswig-Holstein Microsoft migration story; current publisher route uses section/title/numeric ID."
+        },
+        {
+          "old": "https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-first-list-critical-ict-third-party-service-providers",
+          "new": "https://www.eba.europa.eu/publications-and-media/press-releases/european-supervisory-authorities-designate-critical-ict-third-party-providers-under-digital",
+          "evidence": "EBA's 18 November 2025 announcement of the first list of 19 designated critical ICT third-party providers under DORA."
+        }
+      ]
+    }
+  }
+}

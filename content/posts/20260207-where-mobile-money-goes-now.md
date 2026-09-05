@@ -27,7 +27,7 @@ faq = [
 ]
 +++
 
-Sensor Tower's [State of Mobile 2026](https://sensortower.com/state-of-mobile-2026) report confirms what had been building for years: the mobile app economy has permanently shifted. For the first decade of mobile, games made more money than everything else combined. Clash of Clans and Candy Crush built empires on freemium. King went public. Supercell sold for $10 billion. That changed in 2025.
+Sensor Tower's [State of Mobile 2026](https://sensortower.com/report/state-of-mobile-2026) report confirms what had been building for years: the mobile app economy has permanently shifted. For the first decade of mobile, games made more money than everything else combined. Clash of Clans and Candy Crush built empires on freemium. King went public. Supercell sold for $10 billion. That changed in 2025.
 
 ## Apps Overtake Games in Mobile Revenue
 

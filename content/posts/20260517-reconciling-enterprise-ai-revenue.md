@@ -124,7 +124,7 @@ The [vendor census](https://static.philippdubach.com/pdf/reconciling-enterprise-
 
 Tier A gross disclosure is large, but its net contribution falls into a narrow band. Every qualifying vendor sits upstream of enterprise spending. The three silicon vendors sell into cloud and OEM layers. At the report cutoff, CoreWeave received 67% of its revenue from Microsoft. Microsoft resold that capacity as Azure AI Services.
 
-Hardware OEMs also resell silicon to hyperscalers. The report annualized [Dell](https://www.delltechnologies.com/en-us/dt/financial-information.htm) AI revenue at $36B. It used $33B for [SuperMicro](https://ir.supermicro.com/financials), $4.4B for [HPE](https://investors.hpe.com/financial-information), and $3.5B for [Arista](https://investors.arista.com/financial-information). After applying the report's overlap adjustments, Tier A contributes $2B to $10B of net enterprise-facing AI revenue.
+Hardware OEMs also resell silicon to hyperscalers. The report annualized [Dell](https://www.delltechnologies.com/en-us/dt/financial-information.htm) AI revenue at $36B. It used $33B for [SuperMicro](https://ir.supermicro.com/financials), $4.4B for [HPE](https://investors.hpe.com/financial), and $3.5B for [Arista](https://investors.arista.com/financial-information). After applying the report's overlap adjustments, Tier A contributes $2B to $10B of net enterprise-facing AI revenue.
 
 {{< img src="reconciling-ai-revenue-disclosure-tiers-1.png" alt="Six-tier framework ranks AI revenue sources from SEC filings to extrapolated estimates. Tier A reports $311B gross but only $2B to $10B after overlap adjustments." width="80%" >}}
 

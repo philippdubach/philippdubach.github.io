@@ -6,7 +6,7 @@
   {{ if and (not .Draft) (not .Params.private) (not .Params.unlisted) (not (strings.Contains $robots "noindex")) (not $emptyTaxonomy) }}
   <url>
     <loc>{{ .Permalink }}</loc>
-    {{- $lm := .Lastmod -}}
+    {{- $lm := partial "metadata/lastmod.html" . -}}
     {{- if and (.IsHome) (gt (len .Site.RegularPages) 0) -}}
       {{- $candidate := (index (.Site.RegularPages.ByLastmod.Reverse) 0).Lastmod -}}
       {{- if or ($lm.IsZero) ($candidate.After $lm) -}}
