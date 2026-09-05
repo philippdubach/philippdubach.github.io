@@ -1,0 +1,12 @@
+[Unit]
+Description=Weekly full restic repository integrity check
+After=network-online.target
+Wants=network-online.target
+OnFailure=alert@%n.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/restic/r2-credentials.env
+Environment=RESTIC_PASSWORD_FILE=/etc/restic/passphrase
+ExecStart=/usr/local/sbin/restic-check.sh
+TimeoutStartSec=1800

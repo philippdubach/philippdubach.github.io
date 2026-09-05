@@ -13,7 +13,7 @@ This is the non-secret runbook for `philippdubach.com`. The service map and depl
 | PostgreSQL | Forgejo and Listmonk data | 17.11 |
 | Listmonk | Newsletter | 6.2.0 |
 | GoatCounter | Privacy-preserving analytics | 2.7.0 |
-| Restic | Encrypted off-host backups | 0.18.0 |
+| Restic | Encrypted off-host backups | 0.19.1, verified upstream binary |
 | Cloudflare | DNS, CDN, Workers, Queues, R2 | External edge services |
 | GitHub Pages | Warm standby | Built by the pinned GitHub Actions workflow |
 
@@ -69,7 +69,40 @@ For a site rollback, resolve one exact known-good `/var/lib/site-build/public-<t
 
 - `pg-backup.timer` creates compressed PostgreSQL dumps.
 - `restic-backup.timer` creates daily encrypted snapshots.
-- `restic-check.timer` performs a weekly repository check.
+- `restic-check.timer` performs a weekly full-data repository check. The prior
+  random 10% sample did not guarantee full coverage. Full verification of the
+  pre-upgrade 81 packs took about 13 seconds in the 2026-09-05 maintenance test;
+  the final 83-pack check took about nine seconds.
+
+Restic's signed upstream 0.19.1 binary is installed at `/usr/local/bin/restic`;
+the Debian-managed `/usr/bin/restic` (0.18.0) remains intact for rollback.
+The backup/check scripts explicitly use the upstream path. The release's
+signed SHA256SUMS was verified against the documented publisher fingerprint
+`CF8F18F2844575973F79D4E191A6868BD3F7A907` before execution. A package-manager
+version query alone therefore does not identify the running backup tool.
+`scripts/ops/restic-backup.sh`, `scripts/ops/restic-check.sh`, and
+`scripts/ops/restic-check.service` track the installed scripts/unit. Their cache
+directory is `/var/cache/restic` (root-only). Set `RESTIC_SKIP_PRUNE=1` only for
+a deliberate maintenance backup that must preserve all earlier snapshots;
+normal timer runs retain the established 7-daily/4-weekly/12-monthly policy.
+Never migrate the repository format as part of an ordinary binary update;
+preserve old-version read compatibility.
+
+The 2026-09-05 check read every pack, restored and verified the complete latest
+nightly snapshot, passed SQLite integrity checks and full Git checks for all
+82 repositories, and replayed the PostgreSQL dump in an isolated socket-only
+cluster. A fresh backup with 0.19.1 then passed full repository verification;
+the retained 0.18.0 binary could read that snapshot. Production databases and
+repositories were not replaced. This is backup recovery verification, not a
+full-host failover or application/email-delivery drill.
+
+For a binary rollback, restore the retained pre-maintenance backup/check scripts
+and check unit, move `/usr/local/bin/restic` out of PATH into a new, explicitly
+named rollback artifact, and reload systemd. Confirm `command -v restic` now
+resolves to `/usr/bin/restic` before testing a backup. The original files and
+verified upstream binary are root-only under
+`/var/lib/restic-maintenance/20260905/`. Do not run old/new checks or pruning
+concurrently, and do not delete snapshots as an upgrade step.
 
 Before a Forgejo, PostgreSQL, or host upgrade:
 
@@ -144,14 +177,18 @@ URLs, so a missing or mismatched binding fails before the external API call.
 
 ## Browser analytics
 
-GoatCounter is the site's browser analytics path. Hugo serves a fingerprinted,
+GoatCounter is the site's traffic analytics path. Hugo serves a fingerprinted,
 self-hosted copy of `count.js`, which sends page views to
-`https://stats.philippdubach.com/count`. Cloudflare Web Analytics/RUM is
-redundant, so its currently active automatic JavaScript injection should be
-disabled.
+`https://stats.philippdubach.com/count`. Cloudflare Web Analytics/RUM has a
+different purpose: it measures real-user LCP, INP and CLS. Retain the existing
+beacon while those measurements are useful. The September audit found no
+measured blocking impact warranting removal; its small cache/legacy-JavaScript
+notices alone are not evidence that it is unnecessary.
 
-This is an account-level Cloudflare Web Analytics setting, not a Hugo or Worker
-setting. In the Cloudflare dashboard, open **Web Analytics**, select the site
+If fewer third-party requests are deliberately preferred over field-performance
+measurement, disable injection only after accepting that trade-off. This is an
+account-level Cloudflare Web Analytics setting, not a Hugo or Worker setting.
+In the Cloudflare dashboard, open **Web Analytics**, select the site
 for `philippdubach.com`, choose **Manage site**, and set automatic setup to
 **Disable**. The equivalent API operation requires an API token with Account
 Settings Write permission:
