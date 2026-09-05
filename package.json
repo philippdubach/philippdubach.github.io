@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "hugo server --disableFastRender",
     "build": "hugo --gc --minify --panicOnWarning --cleanDestinationDir",
-    "check": "npm run build && node scripts/check-theme.mjs && node scripts/check-menu.mjs && node scripts/check-build.mjs && node scripts/check-seo.mjs && node scripts/check-layout.mjs && node scripts/check-migration.mjs . /private/tmp/pdd-main-worktree"
+    "check:built": "node scripts/check-theme.mjs && node scripts/check-menu.mjs && node scripts/check-build.mjs && node scripts/check-seo.mjs && node scripts/check-layout.mjs && python3 scripts/check-release.py && python3 -m unittest discover -s scripts -p test_check_release.py",
+    "check": "npm run build && npm run check:built && node scripts/check-migration.mjs . /private/tmp/pdd-main-worktree"
   },
   "engines": {
     "node": ">=22"

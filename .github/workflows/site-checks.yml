@@ -1,7 +1,5 @@
-# Site quality gates: build with --panicOnWarning and run the three check
-# scripts (check-build, check-layout, check-migration) that previously ran
-# only on a developer machine. Runs on every branch so regressions surface
-# before they reach either deploy path.
+# Run the same build, theme, menu, SEO, layout, and migration gates as local
+# releases on every branch so regressions surface before deployment.
 name: Site checks
 
 on:
@@ -47,6 +45,5 @@ jobs:
         run: hugo --gc --minify --panicOnWarning
       - name: Run checks
         run: |
-          node scripts/check-build.mjs
-          node scripts/check-layout.mjs
+          npm run check:built
           node scripts/check-migration.mjs . "${{ runner.temp }}/pdd-main-worktree"

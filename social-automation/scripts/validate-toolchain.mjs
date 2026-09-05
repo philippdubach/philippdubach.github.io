@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const REQUIRED_NODE_RANGE = ">=24.19.0 <25";
-export const REQUIRED_WRANGLER_VERSION = "4.127.1";
+export const REQUIRED_WRANGLER_VERSION = "4.129.0";
 export const REQUIRED_WORKSPACES = [
   "shared",
   "security-headers",

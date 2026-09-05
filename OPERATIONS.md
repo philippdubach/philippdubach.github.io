@@ -1,17 +1,17 @@
 # Production operations
 
-This is the non-secret runbook for `philippdubach.com`. It records the state verified on 2026-08-16. Credentials, backup repository details, protected configuration values, and host addresses stay outside the repository.
+This is the non-secret runbook for `philippdubach.com`. The service map and deployment safeguards were rechecked on 2026-09-05. Credentials, backup repository details, protected configuration values, and host addresses stay outside the repository.
 
 ## Service map
 
 | Component | Role | Verified version / state |
 |---|---|---|
 | Hetzner, Debian 13 | Primary production host | Static site and self-hosted services |
-| Forgejo | Source of truth and Git endpoint | 15.0.6 LTS, loopback behind Caddy |
+| Forgejo | Source of truth and Git endpoint | 15.0.7 LTS, loopback behind Caddy |
 | Hugo Extended | Production site builder | 0.165.0 |
 | Caddy | TLS and reverse proxy | 2.11.4 |
 | PostgreSQL | Forgejo and Listmonk data | 17.11 |
-| Listmonk | Newsletter | 6.1.0 |
+| Listmonk | Newsletter | 6.2.0 |
 | GoatCounter | Privacy-preserving analytics | 2.7.0 |
 | Restic | Encrypted off-host backups | 0.18.0 |
 | Cloudflare | DNS, CDN, Workers, Queues, R2 | External edge services |
@@ -23,6 +23,17 @@ A former, non-production administrative host is powered off and scheduled for de
 
 Application services bind to loopback. Caddy is the public HTTP boundary. The production site is an immutable Hugo release under `/var/lib/site-build/public-*`; `/var/www/site/current` points atomically to the active release.
 
+The apex content handler accepts only Cloudflare socket-peer IP ranges and
+loopback health checks. Client-supplied forwarding headers cannot bypass this
+gate. Keep the IPv4/IPv6 list in the `cloudflare_origin` Caddy snippet aligned
+with [Cloudflare's published ranges](https://www.cloudflare.com/ips/); recheck
+on infrastructure maintenance. This is a network allowlist, not per-zone
+authenticated origin pulls. The `new` and `www` origins only redirect to the
+canonical site, even when contacted directly. Mail, analytics and Forgejo
+retain their existing direct access. Back up, validate and gracefully reload
+Caddy for any changes; test both uncached public content and a direct-origin
+403 afterward.
+
 ## Source and deployment
 
 Forgejo is authoritative. The local `origin` has separate GitHub and Forgejo push URLs, so verify both before release:
@@ -33,6 +44,16 @@ git push origin main
 ```
 
 A Forgejo webhook starts the primary `site-build.service`. `site-build.timer` is a roughly 12-hour recovery path. The build updates `/var/www/site/current` only after Hugo succeeds. The GitHub push builds the Pages standby, purges Cloudflare cache, and invokes social trigger notifications. A successful Pages workflow starts IndexNow. The `build-trigger` Worker also dispatches the Hugo workflow for scheduled publication checks.
+
+Both CI paths run `npm run check:built` (theme, menu, markup, schema, layout and
+release-artifact checks); Site checks additionally enforces migration parity.
+The primary runs Hugo with `--panicOnWarning`, then the dependency-free
+`scripts/check-release.py`, installed as `/usr/local/sbin/check-site-release.py`,
+before swapping the live symlink. Keep that installed copy synchronized when
+the script changes. It rejects a missing/empty homepage, missing local assets,
+invalid or empty feeds/API, and a malformed/empty sitemap. A failed check leaves
+the previous release serving. Pages cache-purge failures now fail their step
+instead of silently reporting success.
 
 Release checks:
 
@@ -63,7 +84,7 @@ The 2026-08-16 drill replayed a complete dump in an isolated cluster and restore
 
 ## Worker toolchain
 
-The only supported release toolchain is Node 24.19.0 with the repository-pinned Wrangler 4.127.1:
+The only supported release toolchain is Node 24.19.0 with the repository-pinned Wrangler 4.129.0:
 
 ```bash
 cd social-automation

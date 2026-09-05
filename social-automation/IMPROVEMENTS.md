@@ -8,7 +8,7 @@ Both platform Workers run every six hours as a recovery path and receive deploym
 
 Publication is Queue-backed. `attempting` is persisted before one platform create request. A known pre-send failure or 429 returns to `pending`; an ambiguous request becomes terminal `uncertain` and is never replayed automatically. Exhausted messages move to a platform DLQ and are archived in KV. The two Workers preserve their existing `posts:` read model and authenticated dry/status/backfill interfaces.
 
-The workspace uses Node 24.19.0, exact Wrangler 4.127.1, one committed lockfile, Workers observability, Workers-runtime Queue/KV/DO tests, and dry-run packaging for all five Workers.
+The workspace uses Node 24.19.0, exact Wrangler 4.129.0 (updated 2026-09-05), one committed lockfile, Workers observability, Workers-runtime Queue/KV/DO tests, and dry-run packaging for all five Workers.
 
 ## Completed foundation
 

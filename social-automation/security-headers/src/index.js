@@ -16,7 +16,7 @@ import {
   isMachineReadablePath,
   isMarkdownPath,
 } from "./links.js";
-import { cacheKeyFor } from "./cache.js";
+import { cacheKeyFor, canReadCache, canWriteCache } from "./cache.js";
 import { resolveRedirect, buildRedirectResponse } from "./redirects.js";
 
 const SECURITY_HEADERS = {
@@ -52,7 +52,43 @@ const SECURITY_HEADERS = {
   "Content-Signal": "search=yes, ai-input=yes, ai-train=yes",
 };
 
-const estimateTokens = (body) => Math.ceil(body.length / 4);
+const logFailure = (operation, error) => console.error(JSON.stringify({
+  message: "security_worker_failure", operation,
+  error: error instanceof Error ? error.name : "UnknownError",
+}));
+
+// Token counts are a convenience, not a reason to buffer unbounded content.
+// Count normal article exports incrementally and omit the estimate if an
+// unexpected origin payload exceeds the per-article budget.
+const estimateTokens = async (response) => {
+  if (!response.body) return null;
+  const reader = response.clone().body.getReader();
+  const decoder = new TextDecoder();
+  let bytes = 0;
+  let characters = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) return Math.ceil((characters + decoder.decode().length) / 4);
+      bytes += value.byteLength;
+      if (bytes > 512 * 1024) {
+        // A tee branch's cancellation waits for the response branch too.
+        // Do not await it before returning that response to the client.
+        void reader.cancel().catch(() => {});
+        return null;
+      }
+      characters += decoder.decode(value, { stream: true }).length;
+    }
+  } catch (error) {
+    logFailure("markdown_estimate", error);
+    return null;
+  } finally {
+    reader.releaseLock();
+  }
+};
+
+const forRequest = (response, request) =>
+  request.method === "HEAD" ? new Response(null, response) : response;
 
 const validIndexNowKey = (key) =>
   typeof key === "string" && /^[A-Za-z0-9-]{8,128}$/.test(key);
@@ -118,12 +154,9 @@ const fetchOrigin = async (request, originUrl) => {
   // redirect: 'manual' so origin 3xx (e.g. Caddy `redir /old /new 301`)
   // pass through to the client instead of being silently followed and
   // served as 200 with the target's body.
-  const originRequest = new Request(originUrl, {
-    method: request.method,
-    headers: request.headers,
-    redirect: "manual",
-  });
-  return fetch(originRequest);
+  // Request as the init object preserves method, headers and streaming body.
+  const originRequest = new Request(originUrl, request);
+  return fetch(new Request(originRequest, { redirect: "manual" }));
 };
 
 export const decorate = async (response, { url, servedMarkdown, isCatalog }) => {
@@ -136,7 +169,7 @@ export const decorate = async (response, { url, servedMarkdown, isCatalog }) => 
   // Self-hosted font assets: 1-year immutable cache + CORS for cross-subdomain
   // <link rel="preload" crossorigin>. Files in /fonts/ are content-stable
   // (rename on re-subset).
-  if (url.pathname.startsWith("/fonts/")) {
+  if (url.pathname.startsWith("/fonts/") && (newResponse.ok || newResponse.status === 304)) {
     newResponse.headers.set("Cache-Control", "public, max-age=31536000, immutable");
     newResponse.headers.set("Access-Control-Allow-Origin", "*");
   }
@@ -162,15 +195,21 @@ export const decorate = async (response, { url, servedMarkdown, isCatalog }) => 
 
   // Error documents must never enter the index, even when an origin-generated
   // 404 page contains otherwise complete site metadata.
-  if (newResponse.status === 404) {
+  if (newResponse.status >= 400) {
     newResponse.headers.set("X-Robots-Tag", "noindex, nofollow");
+    newResponse.headers.set("Cache-Control", "no-store");
   }
 
   // Vary on every content-negotiable response so downstream caches (browser,
   // corporate proxies) know HTML and Markdown variants differ. The CF edge
   // cache uses the synthetic _v key in cacheKeyFor for the same purpose.
   if (isContentPath(url.pathname)) {
-    newResponse.headers.set("Vary", "Accept");
+    const vary = (newResponse.headers.get("Vary") || "").split(",")
+      .map((name) => name.trim()).filter(Boolean);
+    if (!vary.some((name) => name === "*" || name.toLowerCase() === "accept")) {
+      vary.push("Accept");
+    }
+    newResponse.headers.set("Vary", vary.join(", "));
   }
 
   // Catalog and markdown branches are mutually exclusive: the catalog has
@@ -178,12 +217,12 @@ export const decorate = async (response, { url, servedMarkdown, isCatalog }) => 
   // Accept header asked for. The wantsMd branch additionally guards on
   // newResponse.ok so we don't stamp text/markdown on 4xx/5xx bodies if a
   // path slips past isContentPath without having an .md variant on origin.
-  if (isCatalog) {
+  if (isCatalog && (newResponse.ok || newResponse.status === 304)) {
     newResponse.headers.set("Content-Type", "application/linkset+json");
   } else if (servedMarkdown && newResponse.ok) {
-    const body = await newResponse.clone().text();
     newResponse.headers.set("Content-Type", "text/markdown; charset=utf-8");
-    newResponse.headers.set("x-markdown-tokens", String(estimateTokens(body)));
+    const tokens = await estimateTokens(newResponse);
+    if (tokens !== null) newResponse.headers.set("x-markdown-tokens", String(tokens));
   }
 
   return newResponse;
@@ -191,12 +230,6 @@ export const decorate = async (response, { url, servedMarkdown, isCatalog }) => 
 
 export default {
   async fetch(request, env, ctx) {
-    // Fail open: an unhandled exception here must degrade to the plain origin
-    // response, never a Cloudflare error page — header decoration is cosmetic
-    // relative to serving content at all.
-    if (ctx && typeof ctx.passThroughOnException === "function") {
-      ctx.passThroughOnException();
-    }
     const url = new URL(request.url);
 
     // The retired editorial preview now has one purpose: permanently forward
@@ -229,24 +262,30 @@ export default {
         if (redirect.status === 410) {
           redirectResponse.headers.set("X-Robots-Tag", "noindex, follow");
         }
-        return redirectResponse;
+        return forRequest(redirectResponse, request);
       }
     }
 
-    const wantsMd = wantsMarkdown(request);
+    const safeMethod = request.method === "GET" || request.method === "HEAD";
+    const wantsMd = safeMethod && wantsMarkdown(request);
     const isCatalog =
-      url.pathname === "/.well-known/api-catalog" || url.pathname === "/api-catalog";
+      url.pathname === "/.well-known/api-catalog" || url.pathname === "/api-catalog" ||
+      url.pathname === "/api-catalog.json";
 
     const cache = caches.default;
     const cacheKey = cacheKeyFor(request, wantsMd);
 
-    const cached = await cache.match(cacheKey);
-    if (cached) {
-      // Cached response already carries our headers. Just return it.
-      return cached;
+    if (canReadCache(request)) {
+      try {
+        const cached = await cache.match(cacheKey);
+        if (cached) return forRequest(cached, request);
+      } catch (error) {
+        // Cache outages must not discard the origin response or its headers.
+        logFailure("cache_read", error);
+      }
     }
 
-    const rewritePath = rewriteOriginPath(url, wantsMd);
+    const rewritePath = safeMethod ? rewriteOriginPath(url, wantsMd) : null;
     const servedMarkdown = isMarkdownPath(url.pathname) ||
       (Boolean(rewritePath) && rewritePath.endsWith(".md"));
     let originUrl = url.toString();
@@ -256,17 +295,34 @@ export default {
       originUrl = u.toString();
     }
 
-    const originResponse = await fetchOrigin(request, originUrl);
+    let originResponse;
+    try {
+      originResponse = await fetchOrigin(request, originUrl);
+    } catch (error) {
+      logFailure("origin_fetch", error);
+      originResponse = new Response("The site is temporarily unavailable. Please try again shortly.\n", {
+        status: 502,
+        headers: { "Content-Type": "text/plain; charset=utf-8", "Retry-After": "60" },
+      });
+    }
     const decorated = await decorate(originResponse, { url, servedMarkdown, isCatalog });
 
     // Cache stores the fully-decorated response. Header changes (CSP,
     // Permissions-Policy, Link) only propagate after entries expire or are
     // purged — pair such changes with `wrangler deploy` plus a CF cache
     // purge to avoid serving stale headers.
-    if (decorated.ok && request.method === "GET") {
-      await cache.put(cacheKey, decorated.clone());
+    if (canWriteCache(request, decorated)) {
+      const write = (async () => {
+        try {
+          await cache.put(cacheKey, decorated.clone());
+        } catch (error) {
+          logFailure("cache_write", error);
+        }
+      })();
+      if (ctx?.waitUntil) ctx.waitUntil(write);
+      else await write;
     }
 
-    return decorated;
+    return forRequest(decorated, request);
   },
 };

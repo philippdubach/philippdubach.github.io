@@ -33,9 +33,9 @@
   "name" .Site.Params.author
   "url" (printf "%sabout/" .Site.BaseURL)
   "jobTitle" "Strategy Consultant & Independent Researcher"
-  "description" "Strategy consultant and independent researcher. Peer-reviewed work in quantitative finance and machine learning. Writes about unit economics, capital markets, and AI infrastructure at philippdubach.com."
+  "description" ((.Site.GetPage "/about").Description | default .Site.Params.description)
   "image" (dict "@type" "ImageObject" "url" "https://static.philippdubach.com/ograph/ograph-post.jpg" "width" 1200 "height" 630)
-  "hasOccupation" (dict "@type" "Occupation" "name" "Strategy Consultant and Independent Researcher" "occupationalCategory" "15-2099")
+  "hasOccupation" (dict "@type" "Occupation" "name" "Strategy Consultant and Independent Researcher")
   "alumniOf" (dict "@type" "CollegeOrUniversity" "name" "Imperial College London")
   "knowsAbout" .Site.Params.keywords
   "sameAs" $sameAs
@@ -124,11 +124,9 @@
 {{- $collectionId := printf "%sresearch/" $.Site.BaseURL -}}
 {{- /* Build all ScholarlyArticle items as a slice of dicts */ -}}
 {{- $articles := slice -}}
-{{- $itemCount := 0 -}}
 {{- range .publications -}}
   {{- $year := .year -}}
   {{- range .items -}}
-    {{- $itemCount = add $itemCount 1 -}}
     {{- $art := dict
       "@type" "ScholarlyArticle"
       "headline" .title
@@ -207,7 +205,6 @@
   "isPartOf" (dict "@id" $websiteId)
   "author" (dict "@id" $personId)
   "dateModified" ($.Lastmod.Format "2006-01-02")
-  "numberOfItems" $itemCount
   "hasPart" $articles
 -}}
 
@@ -219,8 +216,7 @@
 
 {{/* ===== PROJECTS PAGE: Person + WebSite + CollectionPage with ItemList of TechArticle =====
      Mirrors research CollectionPage register. Each project = TechArticle ListItem with
-     position, url, headline, datePublished, optional codeRepository (inferred from
-     post body's first GitHub link via regex), optional inLanguage. */}}
+     position, url, headline, datePublished, and inLanguage. */}}
 {{ if eq .RelPermalink "/projects/" }}
 {{- $collectionId := printf "%sprojects/" .Site.BaseURL -}}
 {{- $projects := where (where .Site.RegularPages "Params.type" "Project") ".Params.unlisted" "ne" true -}}
@@ -244,15 +240,14 @@
   -}}
   {{- with $page.Params.description -}}{{- $art = merge $art (dict "abstract" .) -}}{{- end -}}
   {{- with $page.Params.keywords -}}{{- $art = merge $art (dict "keywords" .) -}}{{- end -}}
-  {{- /* DOI cross-link to ScholarlyArticle when project was formalized as a paper */ -}}
+  {{- /* The project commentary cites a paper; it is not the same work. */ -}}
   {{- with $page.Params.doi -}}
-    {{- $art = merge $art (dict "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)) -}}
-    {{- $art = merge $art (dict "sameAs" (slice (printf "https://doi.org/%s" .))) -}}
+    {{- $art = merge $art (dict "citation" (dict
+      "@type" "ScholarlyArticle"
+      "url" (printf "https://doi.org/%s" .)
+      "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)
+    )) -}}
   {{- end -}}
-  {{- /* GitHub repo: detect first github.com link in post body for codeRepository */ -}}
-  {{- $body := $page.RawContent -}}
-  {{- $repoMatch := findRE `https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+` $body 1 -}}
-  {{- with $repoMatch -}}{{- $art = merge $art (dict "codeRepository" (index . 0)) -}}{{- end -}}
   {{- $items = $items | append (dict
     "@type" "ListItem"
     "position" (add $i 1)
@@ -317,6 +312,17 @@
 
 {{/* ===== BREADCRUMBS: Single pages ===== */}}
 {{ if and .IsPage (ne .Kind "404") }}
+{{- $hasSection := and .Section (not .CurrentSection.Params.headless) -}}
+{{- $sectionName := .Section | humanize -}}
+{{- $sectionURL := printf "%s%s/" .Site.BaseURL .Section -}}
+{{- if eq .Section "posts" -}}
+  {{- $sectionName = "Writing" -}}
+  {{- $sectionURL = "/writing/" | absURL -}}
+  {{- if eq .Params.type "Project" -}}
+    {{- $sectionName = "Projects" -}}
+    {{- $sectionURL = "/projects/" | absURL -}}
+  {{- end -}}
+{{- end -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -328,17 +334,17 @@
       "name": "Home",
       "item": "{{ .Site.BaseURL }}"
     }
-    {{ if .Section }},
+    {{ if $hasSection }},
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "{{ .Section | humanize }}",
-      "item": "{{ .Site.BaseURL }}{{ .Section }}/"
+      "name": "{{ $sectionName }}",
+      "item": "{{ $sectionURL }}"
     }
     {{ end }},
     {
       "@type": "ListItem",
-      "position": {{ if .Section }}3{{ else }}2{{ end }},
+      "position": {{ if $hasSection }}3{{ else }}2{{ end }},
       "name": "{{ .Title }}",
       "item": "{{ .Permalink }}"
     }
@@ -409,7 +415,6 @@
     "description" (.Description | default (printf "Subscribe to %s" .Site.Title))
     "isPartOf" (dict "@id" $websiteId)
     "about" (dict "@id" $personId)
-    "primaryImageOfPage" (dict "@id" (printf "%s#primaryimage" .Permalink))
     "potentialAction" (dict
         "@type" "SubscribeAction"
         "name" "Subscribe to the newsletter"
@@ -427,7 +432,7 @@
     )
 -}}
 <script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" (slice (dict "@id" $personId) (dict "@id" $websiteId) $webpage) | jsonify | safeJS }}
+{{ dict "@context" "https://schema.org" "@graph" (slice $person $website $webpage) | jsonify | safeJS }}
 </script>
 {{ end }}
 
@@ -485,23 +490,22 @@
 {{- end }}
 
 {{/* Conditional: external source citation */}}
+{{- $citations := slice -}}
 {{- with .Params.external_url }}
-  {{- $article = merge $article (dict "citation" (dict "@type" "CreativeWork" "url" .)) -}}
+  {{- $citations = $citations | append (dict "@type" "CreativeWork" "url" .) -}}
 {{- end }}
 
-{{/* Cross-link a source ScholarlyArticle when the page carries a DOI. */}}
-{{- $mentions := slice -}}
+{{/* A project write-up and its source paper have separate identities. */}}
 {{- with .Params.doi -}}
   {{- $doiUrl := printf "https://doi.org/%s" . -}}
-  {{- $article = merge $article (dict "sameAs" $doiUrl) -}}
-  {{- $mentions = $mentions | append (dict
+  {{- $citations = $citations | append (dict
     "@type" "ScholarlyArticle"
-    "sameAs" $doiUrl
+    "url" $doiUrl
     "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)
   ) -}}
 {{- end -}}
-{{- if $mentions -}}
-  {{- $article = merge $article (dict "mentions" $mentions) -}}
+{{- if $citations -}}
+  {{- $article = merge $article (dict "citation" $citations) -}}
 {{- end -}}
 
 {{/* Conditional: image */}}

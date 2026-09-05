@@ -86,6 +86,13 @@ test("pass-through: unknown slug returns null (origin will 404)", () => {
   assert.equal(r, null);
 });
 
+test("inherited object properties are never interpreted as slug renames", () => {
+  for (const slug of ["toString", "constructor", "__proto__", "hasOwnProperty"]) {
+    assert.equal(resolveRedirect(`/posts/${slug}/`), null);
+    assert.deepEqual(resolveRedirect(`/2026/01/01/${slug}/`), { status: 410 });
+  }
+});
+
 // --- Date-prefix paths ---
 test("date-prefix: with current canonical slug → /posts/<slug>/", () => {
   const r = resolveRedirect("/2025/12/01/nikes-crisis-and-the-economics-of-brand-decay/");

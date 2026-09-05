@@ -13,7 +13,7 @@ This workspace contains the five production Workers and their shared social-deli
 
 ## Toolchain
 
-Use Node 24.19.0 and the exact root Wrangler 4.127.1 pin. The root lockfile is the only lockfile.
+Use Node 24.19.0 and the exact root Wrangler 4.129.0 pin. The root lockfile is the only lockfile.
 
 ```bash
 cd social-automation

@@ -321,7 +321,11 @@
               window.goatcounter.count({ path: "/events/newsletter-subscribe", title: "Newsletter subscribe", event: true });
             }
             const controls = form.querySelector(".newsletter-preview__controls");
-            if (controls instanceof HTMLElement) controls.hidden = true;
+            if (controls instanceof HTMLElement) {
+              controls.hidden = true;
+              // The component's display rule otherwise overrides [hidden].
+              controls.style.display = "none";
+            }
             message.textContent = "Thanks for subscribing! You'll receive the next newsletter in your inbox.";
           } else {
             message.textContent = (data && data.error) || "Something went wrong. Please try again.";

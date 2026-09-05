@@ -5,6 +5,7 @@ import { join } from "node:path";
 import test from "node:test";
 
 import {
+  REQUIRED_WRANGLER_VERSION,
   REQUIRED_WORKSPACES,
   validateToolchain,
 } from "../scripts/validate-toolchain.mjs";
@@ -14,7 +15,7 @@ const validRootManifest = {
   private: true,
   engines: { node: ">=24.19.0 <25" },
   workspaces: REQUIRED_WORKSPACES,
-  devDependencies: { wrangler: "4.127.1" },
+  devDependencies: { wrangler: REQUIRED_WRANGLER_VERSION },
 };
 
 const validWorkerManifest = {
@@ -71,7 +72,7 @@ test("rejects a ranged Wrangler version", async () => {
 
   await assert.rejects(
     validateToolchain({ rootDir, nodeVersion: "24.19.0" }),
-    { message: 'Root devDependency "wrangler" must be pinned to exactly 4.127.1; found "^4.127.1".' },
+    { message: `Root devDependency "wrangler" must be pinned to exactly ${REQUIRED_WRANGLER_VERSION}; found "^4.127.1".` },
   );
 });
 
@@ -107,7 +108,7 @@ test("reports every independent workspace contract violation", async () => {
     {
       message: [
         "Toolchain validation failed:",
-        '- Root devDependency "wrangler" must be pinned to exactly 4.127.1; found "~4.127.1".',
+        `- Root devDependency "wrangler" must be pinned to exactly ${REQUIRED_WRANGLER_VERSION}; found "~4.127.1".`,
         "- Missing committed root lockfile package-lock.json.",
         '- Workspace "security-headers" must provide the Wrangler dry-run check script.',
       ].join("\n"),

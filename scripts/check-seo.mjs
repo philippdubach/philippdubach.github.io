@@ -7,6 +7,7 @@ const failures = [];
 const indexableCanonicals = new Set();
 const documentTitles = new Map();
 const internalLinks = new Map();
+const breadcrumbLinks = new Map();
 
 function record(condition, message) {
   if (!condition) failures.push(message);
@@ -37,12 +38,12 @@ async function htmlFiles(directory) {
   return files;
 }
 
-function visitTypes(value, callback) {
+function visitObjects(value, callback) {
   if (!value || typeof value !== "object") return;
-  if (typeof value["@type"] === "string") callback(value["@type"]);
+  callback(value);
   for (const child of Object.values(value)) {
-    if (Array.isArray(child)) child.forEach((item) => visitTypes(item, callback));
-    else visitTypes(child, callback);
+    if (Array.isArray(child)) child.forEach((item) => visitObjects(item, callback));
+    else visitObjects(child, callback);
   }
 }
 
@@ -102,16 +103,40 @@ for (const path of await htmlFiles(outputDirectory)) {
   }
   record(metadata(markup, "property", "og:url")[0] === canonical, `${pathname}: og:url must match canonical`);
 
+  const schemaObjects = [];
   for (const match of markup.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
     if (!/ld\+json/i.test(match[1])) continue;
     try {
       const graph = JSON.parse(match[2]);
-      visitTypes(graph, (type) => {
-        record(!["Claim", "SpeakableSpecification"].includes(type), `${pathname}: unsupported ${type} schema remains`);
-        record(type !== "FAQPage" || pathname.startsWith("/faq/"), `${pathname}: FAQ schema must describe visible FAQ content`);
-      });
+      visitObjects(graph, (object) => schemaObjects.push(object));
     } catch (error) {
       record(false, `${pathname}: invalid JSON-LD (${error.message})`);
+    }
+  }
+  const graphDefinitions = new Map(schemaObjects
+    .filter((object) => object["@id"] && object["@type"])
+    .map((object) => [object["@id"], object]));
+  for (const object of schemaObjects) {
+    const type = object["@type"];
+    record(!["Claim", "SpeakableSpecification"].includes(type), `${pathname}: unsupported ${type} schema remains`);
+    record(type !== "FAQPage" || pathname.startsWith("/faq/"), `${pathname}: FAQ schema must describe visible FAQ content`);
+    if (object["@id"] && Object.keys(object).length === 1) {
+      record(graphDefinitions.has(object["@id"]), `${pathname}: unresolved schema reference ${object["@id"]}`);
+    }
+    record(object.codeRepository === undefined || type === "SoftwareSourceCode", `${pathname}: codeRepository must describe software source, not an article`);
+    record(object.numberOfItems === undefined || type === "ItemList", `${pathname}: numberOfItems belongs to ItemList`);
+    if (type === "BreadcrumbList") {
+      const items = object.itemListElement ?? [];
+      record(items.length >= 2, `${pathname}: breadcrumb needs at least two items`);
+      items.forEach((item, index) => {
+        record(item.position === index + 1 && item.name, `${pathname}: breadcrumb positions/names are invalid`);
+        const target = typeof item.item === "string" ? item.item : item.item?.["@id"];
+        if (target) {
+          const sources = breadcrumbLinks.get(target) ?? new Set();
+          sources.add(pathname);
+          breadcrumbLinks.set(target, sources);
+        }
+      });
     }
   }
 
@@ -119,6 +144,16 @@ for (const path of await htmlFiles(outputDirectory)) {
     record(metadata(markup, "property", "article:published_time").length === 1, `${pathname}: missing article publication time`);
     record(metadata(markup, "property", "article:modified_time").length === 1, `${pathname}: missing article modification time`);
     record((metadata(markup, "property", "article:tag").length) <= 8, `${pathname}: too many article tags`);
+    const article = graphDefinitions.get(`${canonical}#article`);
+    record(Boolean(article), `${pathname}: missing canonical article identity`);
+    if (article) {
+      const published = metadata(markup, "property", "article:published_time")[0];
+      const modified = metadata(markup, "property", "article:modified_time")[0];
+      record(article.datePublished === published && article.dateModified === modified, `${pathname}: article dates must agree across schema and Open Graph`);
+      record(Number.isFinite(Date.parse(published)) && Date.parse(modified) >= Date.parse(published), `${pathname}: invalid article chronology`);
+      record(graphDefinitions.get(article.author?.["@id"])?.name, `${pathname}: article author must resolve to a named entity`);
+      record(![].concat(article.sameAs ?? []).some((url) => url.startsWith("https://doi.org/")), `${pathname}: source paper DOI must be a citation, not an identity alias`);
+    }
     const slug = pathname.slice("/posts/".length).replace(/\/$/, "");
     const legacyResolution = resolveRedirect(`/2000/01/01/${slug}/`);
     record(legacyResolution?.status === 301 && legacyResolution.location === pathname,
@@ -161,6 +196,12 @@ const sitemap = await readFile(join(outputDirectory, "sitemap.xml"), "utf8");
 const sitemapUrls = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
 record(!/<(?:changefreq|priority)>/.test(sitemap), "sitemap: ignored priority/changefreq fields remain");
 record(JSON.stringify([...sitemapUrls].sort()) === JSON.stringify([...indexableCanonicals].sort()), "sitemap: URLs must exactly match canonical indexable HTML pages");
+for (const [target, sources] of breadcrumbLinks) {
+  // A noindexed utility may still include itself as the last breadcrumb.
+  const isCurrentPage = [...sources].every((pathname) => target === `https://philippdubach.com${pathname}`);
+  record(indexableCanonicals.has(target) || isCurrentPage,
+    `${[...sources].slice(0, 3).join(", ")}: breadcrumb target ${target} is not a canonical indexable page`);
+}
 
 const robotsText = await readFile(join(outputDirectory, "robots.txt"), "utf8");
 record((robotsText.match(/^User-agent:/gm) ?? []).length === 1, "robots.txt: use one complete wildcard group");

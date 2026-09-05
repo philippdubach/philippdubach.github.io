@@ -33,6 +33,17 @@ test("equal q values prefer markdown", () => {
   assert.equal(wantsMarkdown(req("text/html;q=0.5,text/markdown;q=0.5")), true);
 });
 
+test("q=0 never selects a forbidden Markdown representation", () => {
+  for (const accept of ["text/markdown;q=0", "text/markdown;q=0, text/html;q=0", "text/markdown;q=0, */*"])
+    assert.equal(wantsMarkdown(req(accept)), false, accept);
+});
+
+test("HTML wildcard preference and specificity are respected", () => {
+  assert.equal(wantsMarkdown(req("text/markdown;q=0.5, */*")), false);
+  assert.equal(wantsMarkdown(req("text/markdown;q=0.5, text/*;q=0.2, */*")), true);
+  assert.equal(wantsMarkdown(req("text/markdown;q=0.5, text/html;q=0.2, */*")), true);
+});
+
 test("malformed q-value defaults to 1 (no NaN propagation)", () => {
   // Without a guard, parseFloat("abc") yields NaN, which then poisons
   // Math.max comparisons (NaN < 0 is false), producing brittle behavior.

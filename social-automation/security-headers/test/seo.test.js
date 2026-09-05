@@ -81,3 +81,33 @@ test("IndexNow key verification is served only for the configured key", async ()
   const other = new Request("https://philippdubach.com/not-the-key.txt");
   assert.equal(buildIndexNowKeyResponse(other, new URL(other.url), { INDEXNOW_KEY: key }), null);
 });
+
+test("Vary preserves origin cache dimensions when adding Accept", async () => {
+  for (const [value, expected] of [["Accept-Encoding", "Accept-Encoding, Accept"], ["*", "*"], ["accept", "accept"]]) {
+    const response = await decorate(new Response("body", { headers: { Vary: value } }), {
+      url: new URL("https://philippdubach.com/"), servedMarkdown: false, isCatalog: false,
+    });
+    assert.equal(response.headers.get("Vary"), expected);
+  }
+});
+
+test("missing fonts and failed catalogs preserve error types and cannot be cached", async () => {
+  for (const [path, isCatalog] of [["/fonts/missing.woff2", false], ["/.well-known/api-catalog", true]]) {
+    const response = await decorate(new Response("<h1>Not found</h1>", {
+      status: 404, headers: { "Content-Type": "text/html", "Cache-Control": "public, max-age=3600" },
+    }), { url: new URL(`https://philippdubach.com${path}`), servedMarkdown: false, isCatalog });
+    assert.equal(response.headers.get("Content-Type"), "text/html");
+    assert.equal(response.headers.get("Cache-Control"), "no-store");
+    assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow");
+  }
+});
+
+test("large Markdown remains readable without unbounded token counting", async () => {
+  const body = "# Large article\n" + "x".repeat(600 * 1024);
+  const response = await decorate(new Response(body), {
+    url: new URL("https://philippdubach.com/posts/large/"), servedMarkdown: true, isCatalog: false,
+  });
+  assert.equal(response.headers.get("Content-Type"), "text/markdown; charset=utf-8");
+  assert.equal(response.headers.get("x-markdown-tokens"), null);
+  assert.equal(await response.text(), body);
+});

@@ -9,7 +9,7 @@ const parseAccept = (header) => {
         const parsed = parseFloat(v);
         // Malformed q-values default to 1 (HTTP weight default). Without
         // this guard, NaN propagates through Math.max and breaks ordering.
-        q = Number.isFinite(parsed) ? parsed : 1;
+        q = Number.isFinite(parsed) && parsed >= 0 && parsed <= 1 ? parsed : 1;
       }
     }
     return { type: type.trim().toLowerCase(), q };
@@ -23,12 +23,19 @@ export const wantsMarkdown = (request) => {
   const entries = parseAccept(accept);
   let mdQ = -1;
   let htmlQ = -1;
+  let textQ = -1;
+  let wildcardQ = -1;
   for (const { type, q } of entries) {
     if (type === "text/markdown") mdQ = Math.max(mdQ, q);
     if (type === "text/html") htmlQ = Math.max(htmlQ, q);
+    if (type === "text/*") textQ = Math.max(textQ, q);
+    if (type === "*/*") wildcardQ = Math.max(wildcardQ, q);
   }
 
-  if (mdQ < 0) return false;
+  // q=0 explicitly forbids a representation, even when it is the only
+  // named type. Wildcards may prefer HTML, but never opt clients into Markdown.
+  if (mdQ <= 0) return false;
+  if (htmlQ < 0) htmlQ = textQ >= 0 ? textQ : wildcardQ;
   if (htmlQ < 0) return true;
   return mdQ >= htmlQ;
 };

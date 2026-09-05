@@ -227,7 +227,7 @@ export function resolveRedirect(pathname) {
   }
 
   // 2. Taxonomy renames (exact-match paths)
-  if (pathname in TAXONOMY_RENAMES) {
+  if (Object.hasOwn(TAXONOMY_RENAMES, pathname)) {
     return { status: 301, location: TAXONOMY_RENAMES[pathname] };
   }
 
@@ -244,7 +244,7 @@ export function resolveRedirect(pathname) {
     if (slug.endsWith("/")) slug = slug.slice(0, -1);
     if (slug.length === 0) return null;
 
-    if (slug in SLUG_RENAMES) {
+    if (Object.hasOwn(SLUG_RENAMES, slug)) {
       return { status: 301, location: `/posts/${SLUG_RENAMES[slug]}/` };
     }
     if (GONE_SLUGS.has(slug)) {
@@ -260,7 +260,7 @@ export function resolveRedirect(pathname) {
     const slug = datePrefixMatch[4];
 
     // Renamed first
-    if (slug in SLUG_RENAMES) {
+    if (Object.hasOwn(SLUG_RENAMES, slug)) {
       return { status: 301, location: `/posts/${SLUG_RENAMES[slug]}/` };
     }
     // Then known-gone

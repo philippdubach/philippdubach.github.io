@@ -43,6 +43,12 @@ test("isContentPath: direct Markdown alternate is not rewritten again", () => {
   assert.equal(isContentPath("/posts/foo/index.md"), false);
 });
 
+test("resources beneath content prefixes never advertise or rewrite Markdown alternates", () => {
+  for (const path of ["/posts/index.xml", "/posts/example/chart.png", "/projects/tool/app.js", "/posts/example/index.html"])
+    assert.equal(isContentPath(path), false, path);
+  assert.equal(isContentPath("/posts/an-article-with-a-period./"), true);
+});
+
 test("Markdown paths map back to canonical HTML paths", () => {
   assert.equal(isMarkdownPath("/index.md"), true);
   assert.equal(isMarkdownPath("/posts/foo/index.md"), true);

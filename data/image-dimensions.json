@@ -1,0 +1,1122 @@
+{
+  "00_architecture.png": {
+    "width": 1744,
+    "height": 816
+  },
+  "01_outcome_transitions.png": {
+    "width": 1216,
+    "height": 623
+  },
+  "02_calibration.png": {
+    "width": 786,
+    "height": 824
+  },
+  "02_pose_coverage_by_resolution.png": {
+    "width": 1296,
+    "height": 620
+  },
+  "03_bounce_filter_waterfall.png": {
+    "width": 1264,
+    "height": 623
+  },
+  "03_roc_curve.png": {
+    "width": 786,
+    "height": 824
+  },
+  "04_direction_distribution.png": {
+    "width": 1234,
+    "height": 623
+  },
+  "05_set1_ace_corrected.png": {
+    "width": 1920,
+    "height": 1080
+  },
+  "06_match2_rally_panel.png": {
+    "width": 1280,
+    "height": 720
+  },
+  "06_score_by_category.png": {
+    "width": 1036,
+    "height": 708
+  },
+  "08_calibration_error.png": {
+    "width": 1053,
+    "height": 755
+  },
+  "10_title_length_performance.png": {
+    "width": 1062,
+    "height": 708
+  },
+  "a16z-ai-revenue-capex-targets.png": {
+    "width": 1908,
+    "height": 926
+  },
+  "a16z-companies-public-vs-private.png": {
+    "width": 1514,
+    "height": 1218
+  },
+  "a16z-gpu-utilization-vs-fiber.png": {
+    "width": 2104,
+    "height": 1384
+  },
+  "a16z-irr-dispersion-by-strategy.png": {
+    "width": 1432,
+    "height": 1348
+  },
+  "a16z-pe-multiples-vs-dotcom.png": {
+    "width": 2718,
+    "height": 1500
+  },
+  "a16z-tech-margins.png": {
+    "width": 1352,
+    "height": 1350
+  },
+  "a16z-top-10-private-companies.png": {
+    "width": 1968,
+    "height": 1730
+  },
+  "a16z-value-creation-shift-private.png": {
+    "width": 1482,
+    "height": 1164
+  },
+  "adverse-selection-spiral.png": {
+    "width": 1760,
+    "height": 2132
+  },
+  "agentic-ai-market-trajectory.png": {
+    "width": 1760,
+    "height": 1504
+  },
+  "ai_advertising_skew.png": {
+    "width": 1906,
+    "height": 1128
+  },
+  "ai_api_pricing.png": {
+    "width": 2286,
+    "height": 1050
+  },
+  "ai_capex_comparison.png": {
+    "width": 2119,
+    "height": 1021
+  },
+  "ai_capex_historical2.png": {
+    "width": 1396,
+    "height": 771
+  },
+  "ai_retail_referrals.png": {
+    "width": 2096,
+    "height": 1041
+  },
+  "ai-capex-hockey-stick.png": {
+    "width": 1760,
+    "height": 1528
+  },
+  "ai-coding-bottleneck-shift.png": {
+    "width": 1760,
+    "height": 1614
+  },
+  "ai-coding-impact-ceiling.png": {
+    "width": 1760,
+    "height": 1632
+  },
+  "ai-coding-perception-gap.png": {
+    "width": 1760,
+    "height": 1280
+  },
+  "ai-drug-phase2-wall.png": {
+    "width": 1760,
+    "height": 1498
+  },
+  "ai-inference-cost-cliff.png": {
+    "width": 1760,
+    "height": 1494
+  },
+  "ai-performance-vs-price.png": {
+    "width": 1760,
+    "height": 1668
+  },
+  "ai-revenue-coverage-gap.png": {
+    "width": 1760,
+    "height": 1578
+  },
+  "ai-science-paradox.png": {
+    "width": 1760,
+    "height": 1280
+  },
+  "allocation_composite3.png": {
+    "width": 2848,
+    "height": 1080
+  },
+  "allocation_decisions_2026h1.png": {
+    "width": 2725,
+    "height": 1520
+  },
+  "apps_vs_games_revenue.png": {
+    "width": 2119,
+    "height": 1018
+  },
+  "aqr-expected-returns-equities.png": {
+    "width": 2116,
+    "height": 834
+  },
+  "aqr-expected-returns-private-assets.png": {
+    "width": 2238,
+    "height": 1296
+  },
+  "aqr-expected-returns-summary.png": {
+    "width": 2160,
+    "height": 1290
+  },
+  "attention_inequality_hackerbook2.png": {
+    "width": 1180,
+    "height": 779
+  },
+  "azure-tutorial-screen1.jpg": {
+    "width": 2430,
+    "height": 1692
+  },
+  "azure-tutorial-screen2.jpg": {
+    "width": 1828,
+    "height": 1468
+  },
+  "azure-tutorial-screen3.jpg": {
+    "width": 1782,
+    "height": 1248
+  },
+  "azure-tutorial-screen4.jpg": {
+    "width": 1109,
+    "height": 459
+  },
+  "azure-tutorial-screen5.jpg": {
+    "width": 1128,
+    "height": 576
+  },
+  "azure-tutorial-screen6.jpg": {
+    "width": 2198,
+    "height": 996
+  },
+  "azure-tutorial-screen7.jpg": {
+    "width": 2110,
+    "height": 954
+  },
+  "black_jack_odds_demo.gif": {
+    "width": 600,
+    "height": 216
+  },
+  "cape_ratio_2026h1.png": {
+    "width": 2899,
+    "height": 1325
+  },
+  "cape_ratio_chart.png": {
+    "width": 1883,
+    "height": 909
+  },
+  "centaur-effect.png": {
+    "width": 1760,
+    "height": 1538
+  },
+  "cgm-dashboard.jpg": {
+    "width": 2168,
+    "height": 1226
+  },
+  "cgm-fitted-curve-large1.jpg": {
+    "width": 1836,
+    "height": 1160
+  },
+  "cgm-workflow-graph.jpg": {
+    "width": 3776,
+    "height": 1925
+  },
+  "chart1-growth-of-dollar.png": {
+    "width": 1760,
+    "height": 1526
+  },
+  "chart2-volatility-risk-premium.png": {
+    "width": 1760,
+    "height": 1704
+  },
+  "chart4-volatility-tax.png": {
+    "width": 1760,
+    "height": 1582
+  },
+  "chart5-tortoise-vs-hare.png": {
+    "width": 1760,
+    "height": 1688
+  },
+  "chart6-portfolio-construction.png": {
+    "width": 1760,
+    "height": 1304
+  },
+  "chart7-strategy-efficiency.png": {
+    "width": 1760,
+    "height": 1750
+  },
+  "chip-cover.jpg": {
+    "width": 7008,
+    "height": 3942
+  },
+  "circadian_patterns_hackerbook2.png": {
+    "width": 1381,
+    "height": 878
+  },
+  "circles-cover.jpg": {
+    "width": 3707,
+    "height": 2085
+  },
+  "classification.gif": {
+    "width": 600,
+    "height": 426
+  },
+  "claude_time_vs_intelligence_light.png": {
+    "width": 2880,
+    "height": 1320
+  },
+  "claude_vision_workflow_results.png": {
+    "width": 3290,
+    "height": 1324
+  },
+  "claude-thinks-eval-awareness-gap-1.png": {
+    "width": 1376,
+    "height": 768
+  },
+  "claude-thinks-layer-sensitivity-1.png": {
+    "width": 1376,
+    "height": 768
+  },
+  "claude-thinks-method-comparison-1.png": {
+    "width": 1376,
+    "height": 768
+  },
+  "claude-thinks-reward-intervention-1.png": {
+    "width": 1376,
+    "height": 768
+  },
+  "claude-thinks-round-trip-1.png": {
+    "width": 1376,
+    "height": 768
+  },
+  "claude46.png": {
+    "width": 2136,
+    "height": 1748
+  },
+  "colab-training-hn.png": {
+    "width": 2078,
+    "height": 1972
+  },
+  "compound_wealth_growth.png": {
+    "width": 2157,
+    "height": 1050
+  },
+  "compounding-flywheel.png": {
+    "width": 1760,
+    "height": 2274
+  },
+  "compute-gap-75-to-1.png": {
+    "width": 1760,
+    "height": 1708
+  },
+  "context-depth-comparison.png": {
+    "width": 1760,
+    "height": 2082
+  },
+  "cover-capex.png": {
+    "width": 2122,
+    "height": 1190
+  },
+  "cover-dora-sovereignty.png": {
+    "width": 1316,
+    "height": 759
+  },
+  "cover-fable5-europe-decline1.png": {
+    "width": 1892,
+    "height": 1068
+  },
+  "cover.png": {
+    "width": 1360,
+    "height": 768
+  },
+  "crash_game_stats.png": {
+    "width": 1276,
+    "height": 546
+  },
+  "crm-stock-sentiment.jpg": {
+    "width": 2744,
+    "height": 994
+  },
+  "crypto-changepoint-returns.jpg": {
+    "width": 391,
+    "height": 257
+  },
+  "dashboard-hn-scoring.png": {
+    "width": 2354,
+    "height": 1682
+  },
+  "degoogle-youtube-feed-cover.png": {
+    "width": 2064,
+    "height": 1674
+  },
+  "degoogle-youtube-feed-pip.png": {
+    "width": 1179,
+    "height": 1387
+  },
+  "direct_comments_ccdf_hackerbook2.png": {
+    "width": 1181,
+    "height": 781
+  },
+  "distribution-of-sentiment-openai-rpa.jpg": {
+    "width": 2523,
+    "height": 1360
+  },
+  "dod-ai-budget-context.png": {
+    "width": 1760,
+    "height": 1514
+  },
+  "dollar_reserve_status.png": {
+    "width": 1939,
+    "height": 1004
+  },
+  "domain-risk-map.png": {
+    "width": 1760,
+    "height": 1632
+  },
+  "dora-sovereignty-19-critical-providers-1.png": {
+    "width": 1376,
+    "height": 768
+  },
+  "dora-sovereignty-four-statute-convergence-1.png": {
+    "width": 1376,
+    "height": 670
+  },
+  "download_overview.png": {
+    "width": 3144,
+    "height": 1251
+  },
+  "earnings-vs-stock-disconnect.png": {
+    "width": 1760,
+    "height": 1479
+  },
+  "edge-of-knowledge-1-cover.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "edge-of-knowledge-2-cover.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "edge-of-knowledge-3-cover.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "edge-of-knowledge-4-cover.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "edge-of-knowledge-5-cover.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "efficient-frontier.jpg": {
+    "width": 4320,
+    "height": 2880
+  },
+  "emerging-agent-stack.png": {
+    "width": 1880,
+    "height": 2150
+  },
+  "ETHUSD-pelt-changepoint.png": {
+    "width": 757,
+    "height": 376
+  },
+  "eu-move-cover.png": {
+    "width": 1307,
+    "height": 685
+  },
+  "europa-network-scale.png": {
+    "width": 1760,
+    "height": 1466
+  },
+  "european_valuation_discount.png": {
+    "width": 1397,
+    "height": 791
+  },
+  "example-fitted-cgm-measurements.jpg": {
+    "width": 995,
+    "height": 737
+  },
+  "exhibit-1-macro-conviction1.png": {
+    "width": 1760,
+    "height": 1678
+  },
+  "exhibit-2-value-chain1.png": {
+    "width": 1760,
+    "height": 1736
+  },
+  "exhibit-3-risk-bullishness1.png": {
+    "width": 1760,
+    "height": 1678
+  },
+  "exhibit-4-disruption-timeline1.png": {
+    "width": 1760,
+    "height": 1736
+  },
+  "fable5-europe-decline-ai-stack-chokepoints1.png": {
+    "width": 1200,
+    "height": 749
+  },
+  "fable5-europe-decline-chip-funding-gap1.png": {
+    "width": 1200,
+    "height": 762
+  },
+  "fable5-europe-decline-productivity-paradox1.png": {
+    "width": 1200,
+    "height": 786
+  },
+  "fee-arbitrage-european-payments.png": {
+    "width": 1760,
+    "height": 1680
+  },
+  "fig_distribution2.png": {
+    "width": 1323,
+    "height": 1025
+  },
+  "fig_qq_enhanced.png": {
+    "width": 1321,
+    "height": 1024
+  },
+  "fig_strategies.png": {
+    "width": 1321,
+    "height": 1025
+  },
+  "fig_survival_annotated.png": {
+    "width": 1325,
+    "height": 1025
+  },
+  "fig_trajectories.png": {
+    "width": 1322,
+    "height": 1024
+  },
+  "fig1-headline.png": {
+    "width": 1317,
+    "height": 506
+  },
+  "fig2-timeline.png": {
+    "width": 1500,
+    "height": 620
+  },
+  "fig4-architecture.png": {
+    "width": 1391,
+    "height": 580
+  },
+  "financing_structure3.png": {
+    "width": 1822,
+    "height": 1095
+  },
+  "flight-game.gif": {
+    "width": 762,
+    "height": 480
+  },
+  "genai_demographics.png": {
+    "width": 1883,
+    "height": 1269
+  },
+  "genai_revenue_growth.png": {
+    "width": 2045,
+    "height": 1083
+  },
+  "genai_rise.png": {
+    "width": 2196,
+    "height": 1018
+  },
+  "germany_fiscal_pivot.png": {
+    "width": 1398,
+    "height": 791
+  },
+  "global-a2a-payment-scale.png": {
+    "width": 1760,
+    "height": 1544
+  },
+  "glp1_adoption_timeline.png": {
+    "width": 3000,
+    "height": 1804
+  },
+  "glp1_category_spending.png": {
+    "width": 3000,
+    "height": 2101
+  },
+  "gold_dollar_chart2.png": {
+    "width": 1389,
+    "height": 694
+  },
+  "government-revenue-dependency.png": {
+    "width": 1760,
+    "height": 1676
+  },
+  "gpt56_speed_vs_intelligence_light.png": {
+    "width": 2640,
+    "height": 1200
+  },
+  "gpt56_time_vs_intelligence_light.png": {
+    "width": 2880,
+    "height": 1320
+  },
+  "gpu_setup_colab.png": {
+    "width": 1555,
+    "height": 373
+  },
+  "hackerbook_stats_table2.png": {
+    "width": 2458,
+    "height": 2398
+  },
+  "headline-market-impact.jpg": {
+    "width": 2548,
+    "height": 384
+  },
+  "historic_crisis_returns.png": {
+    "width": 2397,
+    "height": 1189
+  },
+  "hle-gap-chart.png": {
+    "width": 1760,
+    "height": 1618
+  },
+  "hn-sentiment.png": {
+    "width": 1512,
+    "height": 1958
+  },
+  "https://static.philippdubach.com/claude_understanding_image.jpg": {
+    "width": 1920,
+    "height": 1080
+  },
+  "https://static.philippdubach.com/hn_post_frontpage2.png": {
+    "width": 1696,
+    "height": 1810
+  },
+  "hyperscaler_capex2.png": {
+    "width": 2262,
+    "height": 1166
+  },
+  "hyperscaler-capex-vs-cashflow.png": {
+    "width": 1760,
+    "height": 1589
+  },
+  "inference-cost-collapse.png": {
+    "width": 1760,
+    "height": 1558
+  },
+  "isodde-benchmark-performance.png": {
+    "width": 1760,
+    "height": 1942
+  },
+  "isomorphic-deal-structure.png": {
+    "width": 1760,
+    "height": 1608
+  },
+  "jpm-murphy-note-spread.png": {
+    "width": 1936,
+    "height": 1344
+  },
+  "k-shaped-wage-divergence2.png": {
+    "width": 1760,
+    "height": 1584
+  },
+  "kalshi-vs-polymarket-regulation.png": {
+    "width": 1760,
+    "height": 1822
+  },
+  "karpathy_header.png": {
+    "width": 3392,
+    "height": 1814
+  },
+  "kimi-in-claude.png": {
+    "width": 898,
+    "height": 142
+  },
+  "kimi-k3-cover1.png": {
+    "width": 1280,
+    "height": 720
+  },
+  "last-architecture-hybrid-layer-stack-1.png": {
+    "width": 2752,
+    "height": 1536
+  },
+  "last-architecture-moe-routing-1.png": {
+    "width": 2752,
+    "height": 1536
+  },
+  "last-architecture-quadratic-attention-1.png": {
+    "width": 2752,
+    "height": 1536
+  },
+  "leopold-cover.png": {
+    "width": 1360,
+    "height": 768
+  },
+  "levels-vs-rates1.png": {
+    "width": 1760,
+    "height": 1662
+  },
+  "leverage_curve.png": {
+    "width": 2144,
+    "height": 1050
+  },
+  "libre-measurements.jpg": {
+    "width": 2030,
+    "height": 1248
+  },
+  "llm-memory-architecture2.png": {
+    "width": 1965,
+    "height": 980
+  },
+  "local_run_interference_visual.png": {
+    "width": 2130,
+    "height": 1044
+  },
+  "lockin-vs-rebuild-scatter.png": {
+    "width": 1760,
+    "height": 1764
+  },
+  "macro-vs-sentiment-disconnect.png": {
+    "width": 1760,
+    "height": 1676
+  },
+  "market_cap_comparison.png": {
+    "width": 2397,
+    "height": 1189
+  },
+  "mcp-vs-a2a-protocol-race.png": {
+    "width": 1760,
+    "height": 1876
+  },
+  "mean_score_vs_direct_comments_binned_hackerbook2.png": {
+    "width": 1281,
+    "height": 881
+  },
+  "midyear-cover.jpg": {
+    "width": 947,
+    "height": 532
+  },
+  "mode-basement-cover-image.png": {
+    "width": 1731,
+    "height": 909
+  },
+  "model_size_vs_performance2.png": {
+    "width": 2118,
+    "height": 1166
+  },
+  "msft-quarterly-capex.png": {
+    "width": 1760,
+    "height": 1404
+  },
+  "news-relevance-timeline.jpg": {
+    "width": 3686,
+    "height": 1471
+  },
+  "newsletter_architecture2.png": {
+    "width": 1970,
+    "height": 335
+  },
+  "Newsletter_Overview.png": {
+    "width": 2406,
+    "height": 2060
+  },
+  "Newsletter_Overview2.jpg": {
+    "width": 2578,
+    "height": 1123
+  },
+  "newsletter_scetch3.jpg": {
+    "width": 825,
+    "height": 518
+  },
+  "nike_final.png": {
+    "width": 2187,
+    "height": 1018
+  },
+  "nike_revenue_comparison.png": {
+    "width": 2326,
+    "height": 1050
+  },
+  "nike_strategic_cascade_v2.png": {
+    "width": 1823,
+    "height": 1112
+  },
+  "ninth-power-curve-2.png": {
+    "width": 1760,
+    "height": 1596
+  },
+  "novo-2026-guidance.png": {
+    "width": 1760,
+    "height": 1182
+  },
+  "novo-efficacy-comparison.png": {
+    "width": 1760,
+    "height": 1766
+  },
+  "novo-institutional-positioning.png": {
+    "width": 1760,
+    "height": 1448
+  },
+  "novo-margin-erosion.png": {
+    "width": 1760,
+    "height": 1536
+  },
+  "novo-peer-valuation.png": {
+    "width": 1760,
+    "height": 1096
+  },
+  "novo-revenue-growth-inflection.png": {
+    "width": 1760,
+    "height": 1514
+  },
+  "novo-valuation-compression.png": {
+    "width": 1760,
+    "height": 1434
+  },
+  "novo-vs-lilly-duopoly.png": {
+    "width": 1760,
+    "height": 1842
+  },
+  "oos-performance-table.jpg": {
+    "width": 1566,
+    "height": 656
+  },
+  "openai_vs_anthropic_time_light.png": {
+    "width": 2920,
+    "height": 1360
+  },
+  "openai-hugging-face-incident-cover-v2.png": {
+    "width": 1600,
+    "height": 840
+  },
+  "openai-margin-squeeze.png": {
+    "width": 1760,
+    "height": 2086
+  },
+  "openness-retreat-timeline.png": {
+    "width": 1760,
+    "height": 2178
+  },
+  "opus46-benchmarks.png": {
+    "width": 1364,
+    "height": 688
+  },
+  "opus46-context.png": {
+    "width": 1143,
+    "height": 778
+  },
+  "opus46-elo.png": {
+    "width": 1328,
+    "height": 619
+  },
+  "oral-bioavailability-trap.png": {
+    "width": 1760,
+    "height": 1722
+  },
+  "oral-glp1-pipeline.png": {
+    "width": 1760,
+    "height": 1900
+  },
+  "pdf_covers_overview.png": {
+    "width": 2200,
+    "height": 2278
+  },
+  "peptide-vs-small-molecule.png": {
+    "width": 1760,
+    "height": 2098
+  },
+  "pill-cover.jpg": {
+    "width": 4065,
+    "height": 2286
+  },
+  "portfolio_performance_2026h1.png": {
+    "width": 2888,
+    "height": 1321
+  },
+  "portfolio_performance.png": {
+    "width": 2231,
+    "height": 1043
+  },
+  "reconciling-ai-revenue-capex-coverage-1.png": {
+    "width": 1365,
+    "height": 631
+  },
+  "reconciling-ai-revenue-disclosure-tiers-1.png": {
+    "width": 1367,
+    "height": 594
+  },
+  "reconciling-ai-revenue-nested-circles-1.png": {
+    "width": 1376,
+    "height": 695
+  },
+  "reconciling-ai-revenue-waterfall-1.png": {
+    "width": 1376,
+    "height": 704
+  },
+  "regional_pe_2026h1.png": {
+    "width": 2772,
+    "height": 1271
+  },
+  "results-vs-benchmark-table.jpg": {
+    "width": 2662,
+    "height": 958
+  },
+  "revolut-cover.jpg": {
+    "width": 4690,
+    "height": 2638
+  },
+  "risk-aversion-parameters.jpg": {
+    "width": 2608,
+    "height": 1716
+  },
+  "rss-tinder-demo2.gif": {
+    "width": 500,
+    "height": 344
+  },
+  "run_best.png": {
+    "width": 3217,
+    "height": 994
+  },
+  "run1_results.png": {
+    "width": 3217,
+    "height": 994
+  },
+  "saaspocalypse-paradox.png": {
+    "width": 1760,
+    "height": 1477
+  },
+  "score_power_law_hackerbook2.png": {
+    "width": 1181,
+    "height": 781
+  },
+  "score_vs_direct_comments_hackerbook2.png": {
+    "width": 1280,
+    "height": 882
+  },
+  "score-comparison-openai-rpa.jpg": {
+    "width": 2548,
+    "height": 380
+  },
+  "screenshot_colab_head1.png": {
+    "width": 2726,
+    "height": 2046
+  },
+  "screenshot_colab_results1.png": {
+    "width": 2726,
+    "height": 2046
+  },
+  "screenshot_export1.png": {
+    "width": 2726,
+    "height": 2046
+  },
+  "screenshot_feed_import1.png": {
+    "width": 2726,
+    "height": 2046
+  },
+  "screenshot_model_selection1.png": {
+    "width": 2726,
+    "height": 2046
+  },
+  "section-1-productivity.png": {
+    "width": 3580,
+    "height": 1150
+  },
+  "section-2-flexibility.png": {
+    "width": 3580,
+    "height": 1150
+  },
+  "section-3-unify-teams.png": {
+    "width": 3580,
+    "height": 1150
+  },
+  "section-4-team-created.png": {
+    "width": 3580,
+    "height": 1150
+  },
+  "sentiment_models_comparison_6models.png": {
+    "width": 3135,
+    "height": 1034
+  },
+  "sentiment-trading-results.jpg": {
+    "width": 2588,
+    "height": 600
+  },
+  "sf1_longshot.png": {
+    "width": 900,
+    "height": 600
+  },
+  "sf2_depth_profile.png": {
+    "width": 1050,
+    "height": 600
+  },
+  "sf4_herfindahl.png": {
+    "width": 1050,
+    "height": 600
+  },
+  "sf7_wash.png": {
+    "width": 1050,
+    "height": 600
+  },
+  "sf8_depth_decay.png": {
+    "width": 1050,
+    "height": 600
+  },
+  "slide10.png": {
+    "width": 720,
+    "height": 405
+  },
+  "slide12.png": {
+    "width": 720,
+    "height": 405
+  },
+  "slide28.png": {
+    "width": 720,
+    "height": 405
+  },
+  "slide41.png": {
+    "width": 720,
+    "height": 405
+  },
+  "software-bifurcation-map.png": {
+    "width": 1760,
+    "height": 1737
+  },
+  "sp500_concentration_2026h1.png": {
+    "width": 2823,
+    "height": 1399
+  },
+  "spread_decomposition.png": {
+    "width": 1650,
+    "height": 600
+  },
+  "standards-war-precedents.png": {
+    "width": 1760,
+    "height": 1998
+  },
+  "streaming_market_cap2.png": {
+    "width": 2144,
+    "height": 1018
+  },
+  "Summarizing_conversation_history.png": {
+    "width": 556,
+    "height": 66
+  },
+  "super-bowl-price-history.png": {
+    "width": 1760,
+    "height": 1582
+  },
+  "super-bowl-prisoners-dilemma.png": {
+    "width": 1760,
+    "height": 1528
+  },
+  "super-bowl-spike-vs-sustain.png": {
+    "width": 1760,
+    "height": 1492
+  },
+  "swiss-sovereign-ai-business-case.png": {
+    "width": 2544,
+    "height": 1808
+  },
+  "table_01_benchmarks.png": {
+    "width": 1392,
+    "height": 362
+  },
+  "table_02_outcomes.png": {
+    "width": 1074,
+    "height": 487
+  },
+  "table_03_ocr_parse_rates.png": {
+    "width": 2014,
+    "height": 300
+  },
+  "table_lift_analysis.png": {
+    "width": 761,
+    "height": 380
+  },
+  "table_title_workshop.png": {
+    "width": 1153,
+    "height": 560
+  },
+  "table_version_comparison.png": {
+    "width": 2110,
+    "height": 500
+  },
+  "table2-results.png": {
+    "width": 900,
+    "height": 523
+  },
+  "tam-expansion-bull-case.png": {
+    "width": 1760,
+    "height": 1669
+  },
+  "tfp-growth-stagnation.png": {
+    "width": 1760,
+    "height": 1350
+  },
+  "thesis_scorecard_2026h1.png": {
+    "width": 3004,
+    "height": 1466
+  },
+  "three-boxes-of-not-knowing.png": {
+    "width": 1760,
+    "height": 1566
+  },
+  "three-insider-cases.png": {
+    "width": 1760,
+    "height": 1480
+  },
+  "torch-gradients_Figure_2.png": {
+    "width": 1200,
+    "height": 800
+  },
+  "treemap_fixed4.png": {
+    "width": 1172,
+    "height": 958
+  },
+  "tv_viewing_share2.png": {
+    "width": 2053,
+    "height": 1050
+  },
+  "unsubscribe2.png": {
+    "width": 1184,
+    "height": 418
+  },
+  "UPRO_factsheet.png": {
+    "width": 2204,
+    "height": 428
+  },
+  "valuation-inversion.png": {
+    "width": 1760,
+    "height": 1424
+  },
+  "variance_drain_by_vol.png": {
+    "width": 2144,
+    "height": 1050
+  },
+  "variance_table.png": {
+    "width": 1971,
+    "height": 478
+  },
+  "waymo_penetration.png": {
+    "width": 2085,
+    "height": 1018
+  },
+  "wbd_offer_comparison2.png": {
+    "width": 2040,
+    "height": 1050
+  },
+  "wealth-dist-0-tp5-tax.gif": {
+    "width": 800,
+    "height": 248
+  },
+  "wero-execution-timeline.png": {
+    "width": 1760,
+    "height": 1664
+  },
+  "working_paper_overview.jpg": {
+    "width": 1048,
+    "height": 984
+  },
+  "youtube_dominance.png": {
+    "width": 2385,
+    "height": 1485
+  }
+}

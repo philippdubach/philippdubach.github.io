@@ -21,6 +21,16 @@
        differed (e.g. wide charts). Pass an explicit imgHeight to reserve
        space and prevent CLS when you know the dimensions. */ -}}
 {{- $imgHeight := .Get "imgHeight" | default "auto" -}}
+{{- /* Verified source dimensions reserve space before a CDN image loads.
+       CSS keeps width:100% and height:auto, so its final appearance still
+       follows the downloaded image. Explicit shortcode dimensions win. */ -}}
+{{- $hasExplicitHeight := ne $imgHeight "auto" -}}
+{{- if not $hasExplicitHeight -}}
+    {{- with index hugo.Data "image-dimensions" $src -}}
+        {{- $imgWidth = .width -}}
+        {{- $imgHeight = .height -}}
+    {{- end -}}
+{{- end -}}
 {{- $priority := .Get "priority" | default "false" -}}
 {{- $id := printf "%s-%d" (replace (replace $src "/" "-") "." "-") .Ordinal -}}
 {{- /* The reading column is capped at 720px, so a percentage width maps to
@@ -59,7 +69,7 @@
            alt="{{ $alt }}"
            class="{{ $class }}"
            width="{{ $imgWidth }}"
-           {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}" style="aspect-ratio: {{ $imgWidth }} / {{ $imgHeight }}"{{ end }}
+           {{ if ne $imgHeight "auto" }}height="{{ $imgHeight }}"{{ if $hasExplicitHeight }} style="aspect-ratio: {{ $imgWidth }} / {{ $imgHeight }}"{{ end }}{{ end }}
            {{ if eq $priority "true" }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
            decoding="async">
     </picture>

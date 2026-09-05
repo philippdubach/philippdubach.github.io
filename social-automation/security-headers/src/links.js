@@ -39,7 +39,10 @@ const PAGINATED_PATH = /\/page\/\d+\/?$/;
 // file and layouts/index.apicatalog.json.
 
 export const isContentPath = (path) => {
-  if (path.endsWith(".md")) return false;
+  // Prefixes also contain feeds, images, scripts and other page resources.
+  // Only directory-style URLs can have an index.md alternate. Keep dotted
+  // article slugs with their canonical trailing slash eligible.
+  if (!path.endsWith("/") && /\.[^/]+$/.test(path)) return false;
   if (CONTENT_EXCLUDE.has(path)) return false;
   if (PAGINATED_PATH.test(path)) return false;
   if (CONTENT_EXACT.has(path)) return true;
@@ -64,6 +67,7 @@ export const isMachineReadablePath = (path) =>
   path === "/llms.txt" ||
   path === "/llms-full.txt" ||
   path === "/api-catalog" ||
+  path === "/api-catalog.json" ||
   path === "/.well-known/api-catalog" ||
   path.startsWith("/api/") ||
   path.endsWith("/index.xml");
