@@ -1,0 +1,66 @@
+{
+  "Newsletter_Overview.png": {
+    "frame": "none",
+    "reason": "Browser window screenshot with transparent margins and its own window edge"
+  },
+  "Newsletter_Overview2.jpg": {
+    "frame": "none",
+    "reason": "Two native window screenshots with baked-in shadows and an intentional outer canvas"
+  },
+  "claude46.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  },
+  "claude_vision_workflow_results.png": {
+    "frame": "none",
+    "reason": "Two-panel composition separated by intentional transparent space"
+  },
+  "colab-training-hn.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  },
+  "crash_game_stats.png": {
+    "frame": "none",
+    "reason": "Terminal window screenshot with a native shadow and transparent outer canvas"
+  },
+  "dashboard-hn-scoring.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  },
+  "degoogle-youtube-feed-cover.png": {
+    "frame": "none",
+    "reason": "Browser window screenshot with transparent margins and its own rounded window edge"
+  },
+  "download_overview.png": {
+    "frame": "none",
+    "reason": "Report-cover and page-preview composition with intentional transparent spacing"
+  },
+  "hn-sentiment.png": {
+    "frame": "none",
+    "reason": "Narrow browser window screenshot with a native shadow and transparent outer canvas"
+  },
+  "https://static.philippdubach.com/hn_post_frontpage2.png": {
+    "frame": "none",
+    "reason": "macOS window screenshot with a native shadow and transparent outer canvas"
+  },
+  "screenshot_colab_head1.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  },
+  "screenshot_colab_results1.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  },
+  "screenshot_export1.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  },
+  "screenshot_feed_import1.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  },
+  "screenshot_model_selection1.png": {
+    "frame": "none",
+    "reason": "macOS browser screenshot with a native shadow and transparent outer canvas"
+  }
+}

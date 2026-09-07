@@ -14,6 +14,12 @@
 {{- $alt := .Get "alt" | default "" -}}
 {{- $caption := .Get "caption" | default "" -}}
 {{- $class := .Get "class" | default "" -}}
+{{- /* Reviewed per-source exceptions preserve native screenshot shadows and
+       transparent artwork without changing article sources or their dates. */ -}}
+{{- $unframed := false -}}
+{{- with index hugo.Data "image-presentation" $src -}}
+    {{- $unframed = eq .frame "none" -}}
+{{- end -}}
 {{- $width := .Get "width" | default "80%" -}}
 {{- $imgWidth := .Get "imgWidth" | default "1200" -}}
 {{- /* Default imgHeight to auto: forcing 630 baked the OG aspect ratio onto
@@ -45,7 +51,7 @@
 {{- end -}}
 {{- $hires := printf "%s/cdn-cgi/image/width=2000,quality=85,format=auto/%s" $baseUrl $src -}}
 
-<figure class="post-figure" style="width: {{ $width }}; margin: 1.5rem auto;">
+<figure class="post-figure{{ if $unframed }} post-figure--unframed{{ end }}" style="width: {{ $width }}; margin: 1.5rem auto;">
   <button type="button" class="img-trigger" data-lightbox-target="lightbox-{{ $id }}" aria-label="View full-size image">
     <picture class="img-lightbox">
       <source media="(max-width: 768px)"

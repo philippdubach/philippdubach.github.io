@@ -6,6 +6,14 @@ const outputDirectory = resolve(process.argv[2] ?? "public");
 const failures = [];
 const brand = "Philipp D. Dubach";
 const expectedNavigation = ["/", "/writing/", "/projects/", "/research/", "https://link.philippdubach.com/", "/subscribe/"];
+const imagePresentation = JSON.parse(await readFile(new URL("../data/image-presentation.json", import.meta.url), "utf8"));
+const imageDimensions = JSON.parse(await readFile(new URL("../data/image-dimensions.json", import.meta.url), "utf8"));
+const seenUnframedSources = new Set();
+for (const [source, presentation] of Object.entries(imagePresentation)) {
+  record(presentation?.frame === "none" && typeof presentation.reason === "string" && presentation.reason.trim().length > 0,
+    `${source}: image presentation needs an explicit frame:none and review reason`);
+  record(Object.hasOwn(imageDimensions, source), `${source}: unrecognized image presentation source`);
+}
 
 // CSP script-src hash allowlist. Every executable inline script in the built
 // output must hash to one of these values, which must match the hashes in
@@ -178,6 +186,20 @@ async function inspectPage(path) {
     record(!/^https?:\/\//.test(src) || src.startsWith("https://static.philippdubach.com/"), `${label}: unapproved image host ${src}`);
   }
 
+  for (const [, attributes, content] of markup.matchAll(/<figure\b([^>]*)>([\s\S]*?)<\/figure>/gi)) {
+    const classes = (values(`<figure ${attributes}>`, "class")[0] ?? "").split(/\s+/);
+    if (!classes.includes("post-figure")) continue;
+    const imageAttributes = tags(content, "img")[0] ?? "";
+    const src = values(`<img ${imageAttributes}>`, "src")[0] ?? "";
+    const source = src.match(/^https:\/\/static\.philippdubach\.com\/cdn-cgi\/image\/[^/]+\/(.+)$/)?.[1];
+    record(Boolean(source), `${label}: article image source cannot be resolved for frame selection`);
+    const expectedUnframed = Object.hasOwn(imagePresentation, source ?? "");
+    record(classes.includes("post-figure--unframed") === expectedUnframed,
+      `${label}: only reviewed images may be unframed (${source})`);
+    if (expectedUnframed) seenUnframedSources.add(source);
+    record(/<button\b[^>]*data-lightbox-target=/.test(content), `${label}: image frame selection must retain the lightbox trigger`);
+  }
+
   for (const attributes of tags(markup, "script")) {
     const scriptTag = `<script ${attributes}>`;
     const resource = values(scriptTag, "src")[0] ?? "";
@@ -213,6 +235,9 @@ async function inspectPage(path) {
 const files = await htmlFiles(outputDirectory);
 record(files.length >= 90, `Expected at least 90 generated HTML pages, found ${files.length}`);
 await Promise.all(files.map(inspectPage));
+for (const source of Object.keys(imagePresentation)) {
+  record(seenUnframedSources.has(source), `${source}: reviewed image is absent from the built pages`);
+}
 
 const favicon = await readFile(join(outputDirectory, "icons", "favicon-96x96.png"));
 record(favicon.byteLength <= 8192, `Compact favicon exceeds its 8 KiB budget (${favicon.byteLength} bytes)`);

@@ -1632,6 +1632,13 @@ strong {
   border-radius: 0.25rem;
 }
 
+/* Keep the border's space so removing its visible frame cannot resize the
+   image or move surrounding content. Native PNG shadows remain untouched. */
+.post-figure--unframed > .img-trigger > .img-lightbox > img {
+  border-color: transparent;
+  border-radius: 0;
+}
+
 .video-loop {
   margin: 1.5rem auto;
   padding: 0;

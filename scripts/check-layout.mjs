@@ -43,6 +43,13 @@ function integerProperty(source, selector, property) {
   return value ? Number(value) : null;
 }
 
+const unframedImageCss = declarations(css, ".post-figure--unframed > .img-trigger > .img-lightbox > img");
+if (!/border-color\s*:\s*transparent\s*;/.test(unframedImageCss)
+  || !/border-radius\s*:\s*0\s*;/.test(unframedImageCss)
+  || /(?:^|[;{}])\s*(?:border|border-width|width|height|padding|margin)\s*:/.test(unframedImageCss)) {
+  throw new Error("Reviewed frameless images must hide only the frame, preserving border width and image geometry.");
+}
+
 const topicLinkCss = declarations(css, ".topic-filter a");
 const activeTopicCss = declarations(css, '.topic-filter a[aria-current="true"]');
 

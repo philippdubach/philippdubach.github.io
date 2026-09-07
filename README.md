@@ -157,6 +157,13 @@ Do not remove or replace content silently.
 Article images can remain on `static.philippdubach.com`.
 The templates preserve the existing responsive image transformations.
 
+Reviewed transparent artwork and screenshots with native window shadows use
+`frame: "none"` in `data/image-presentation.json`, keyed by the exact `img`
+shortcode source. Include a short visual reason for each entry. Other images
+keep their normal frame; a PNG extension alone is not an exemption. This
+build-time selection adds no browser JavaScript or image requests and does not
+alter article sources, publication/update dates, image sizes, or the lightbox.
+
 The local site makes no analytics, automation, webhook, or newsletter request.
 It loads no remote font.
 
