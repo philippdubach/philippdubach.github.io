@@ -680,6 +680,7 @@ strong {
   background: var(--surface);
   font-family: var(--mono);
   font-size: 0.82em;
+  overflow-wrap: anywhere;
 }
 
 .article-body pre {
@@ -698,6 +699,7 @@ strong {
   padding: 0;
   background: transparent;
   font-size: inherit;
+  overflow-wrap: normal;
 }
 
 .article-body hr {
@@ -1519,9 +1521,43 @@ strong {
   vertical-align: top;
 }
 
-.article-body :is(table, pre, .has-math) {
+.table-scroll {
+  min-width: 0;
+  max-width: 100%;
+  margin: 1.75rem 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.article-body .table-scroll > table {
+  margin: 0;
+}
+
+/* Contain only the equation, not the reading column. MathJax 3 cannot
+   automatically wrap display math; keep wide expressions intact and reachable. */
+.article-body mjx-container[display="true"] {
   max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.15em;
+  overscroll-behavior-inline: contain;
+}
+
+.article-body mjx-container[data-overflowing] {
+  text-align: left;
+}
+
+.article-body mjx-container:not([display="true"])[data-overflowing] {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  vertical-align: middle;
+}
+
+.table-scroll:focus-visible,
+.article-body pre:focus-visible,
+.article-body mjx-container:focus-visible {
+  outline-offset: -3px;
 }
 
 .post-figure {

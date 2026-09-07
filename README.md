@@ -67,6 +67,22 @@ hugo --gc --minify --panicOnWarning --templateMetrics --templateMetricsHints
 Generated files go to `public/`.
 Git ignores this directory.
 
+For a real-browser overflow audit (including unlisted pages and the 404 page):
+
+```sh
+python3 -m venv /tmp/pdd-browser-venv
+/tmp/pdd-browser-venv/bin/pip install -r scripts/requirements-browser.txt
+/tmp/pdd-browser-venv/bin/python -m playwright install chromium
+/tmp/pdd-browser-venv/bin/python scripts/check-overflow.py
+```
+
+The audit serves the production build on loopback, blocks analytics and form
+submissions, waits for fonts and equations, and checks narrow mobile through
+desktop widths. Use `--help` for a route subset, an existing preview, or a local
+Chrome executable. Wide tables, code, and equations scroll independently; only
+overflowing table/code regions enter the keyboard tab order. MathJax retains its
+own accessibility controls. The article column must never hide overflowing text.
+
 ## Project structure
 
 ```text

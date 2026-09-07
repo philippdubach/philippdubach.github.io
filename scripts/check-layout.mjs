@@ -3,6 +3,8 @@ import { resolve } from "node:path";
 
 const cssPath = resolve(process.argv[2] ?? "assets/css/main.css");
 const css = await readFile(cssPath, "utf8");
+const siteScript = await readFile(new URL("../assets/js/site.js", import.meta.url), "utf8");
+const tableHook = await readFile(new URL("../layouts/_markup/render-table.html", import.meta.url), "utf8");
 
 function remMaxWidth(selector, startAt = 0) {
   const source = css.slice(startAt);
@@ -48,6 +50,27 @@ if (!/border-color\s*:\s*transparent\s*;/.test(unframedImageCss)
   || !/border-radius\s*:\s*0\s*;/.test(unframedImageCss)
   || /(?:^|[;{}])\s*(?:border|border-width|width|height|padding|margin)\s*:/.test(unframedImageCss)) {
   throw new Error("Reviewed frameless images must hide only the frame, preserving border width and image geometry.");
+}
+
+for (const selector of [".table-scroll", '.article-body mjx-container[display="true"]', ".article-body pre"]) {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const blocks = [...css.matchAll(new RegExp(`${escaped}\\s*\\{([^}]*)\\}`, "g"))].map((match) => match[1]);
+  if (!blocks.some((block) => /max-width:\s*100%/.test(block) && /overflow-x:\s*auto/.test(block))) {
+    throw new Error(`${selector} must contain wide content in a local scroll area.`);
+  }
+}
+if (!/<div class="table-scroll"[^>]*tabindex="0"[^>]*role="region"[^>]*aria-label=/.test(tableHook)
+  || !/<table\b/.test(tableHook) || !/<th scope="col"/.test(tableHook)) {
+  throw new Error("Tables need a named, keyboard-accessible wrapper without losing native table semantics.");
+}
+if (!/element\.scrollWidth > element\.clientWidth \+ 1/.test(siteScript)
+  || !/element\.removeAttribute\("tabindex"\)/.test(siteScript)
+  || !/startup\?\.promise\?\.then\(registerMathRegions\)/.test(siteScript)) {
+  throw new Error("Overflow accessibility must follow actual content width and asynchronous math rendering.");
+}
+if (/\.article-body\s*:is\([^)]*\.has-math/.test(css)
+  || /overflow(?:-x)?:\s*(?:hidden|clip)/.test(declarations(css, "body"))) {
+  throw new Error("Do not hide page overflow or turn the entire math article into a scroll area.");
 }
 
 const topicLinkCss = declarations(css, ".topic-filter a");

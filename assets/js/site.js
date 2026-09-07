@@ -373,6 +373,73 @@
 
   const article = document.querySelector(".article-body");
   if (article) {
+    // Only overflowing blocks need an extra keyboard stop. Native scrolling
+    // preserves code/table contents; MathJax keeps its own focus and a11y roles.
+    const scrollRegions = new Map();
+    let scrollFrame = 0;
+    function inlineMathOverflows(element) {
+      const formula = element.querySelector("mjx-math");
+      if (!formula) return false;
+      // Inline emphasis/link wrappers have no clientWidth. Measure the nearest
+      // real content box, excluding its padding, rather than treating it as 0.
+      let container = element.parentElement;
+      while (container && container !== article && !container.clientWidth) container = container.parentElement;
+      if (!container) return false;
+      const style = getComputedStyle(container);
+      const available = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      return formula.getBoundingClientRect().width > available + 1;
+    }
+    function updateScrollRegions() {
+      scrollFrame = 0;
+      for (const [element, label] of scrollRegions) {
+        const math = element.matches("mjx-container");
+        const inlineMath = math && element.getAttribute("display") !== "true";
+        const overflowing = inlineMath
+          ? inlineMathOverflows(element)
+          : element.scrollWidth > element.clientWidth + 1;
+        element.toggleAttribute("data-overflowing", overflowing);
+        if (math) continue;
+        if (overflowing) {
+          element.setAttribute("tabindex", "0");
+          element.setAttribute("role", "region");
+          element.setAttribute("aria-label", label);
+        } else {
+          element.removeAttribute("tabindex");
+          element.removeAttribute("role");
+          element.removeAttribute("aria-label");
+        }
+      }
+    }
+    function scheduleScrollRegions() {
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollRegions);
+    }
+    const scrollObserver = typeof ResizeObserver === "function"
+      ? new ResizeObserver(scheduleScrollRegions) : null;
+    function registerScrollRegion(element, label) {
+      if (scrollRegions.has(element)) return;
+      scrollRegions.set(element, label);
+      scrollObserver?.observe(element);
+    }
+    article.querySelectorAll(".table-scroll").forEach((element, index) => {
+      registerScrollRegion(element, `Table ${index + 1} (scroll horizontally)`);
+    });
+    article.querySelectorAll("pre").forEach((element, index) => {
+      registerScrollRegion(element, `Code block ${index + 1} (scroll horizontally)`);
+    });
+    function registerMathRegions() {
+      article.querySelectorAll("mjx-container").forEach((element) => registerScrollRegion(element, ""));
+      scheduleScrollRegions();
+    }
+    function waitForMath() {
+      window.MathJax?.startup?.promise?.then(registerMathRegions).catch(() => {});
+    }
+    document.getElementById("MathJax-script")?.addEventListener("load", waitForMath, { once: true });
+    waitForMath();
+    scrollObserver?.observe(article);
+    window.addEventListener("resize", scheduleScrollRegions, { passive: true });
+    document.fonts?.ready.then(scheduleScrollRegions);
+    scheduleScrollRegions();
+
     const headings = [...article.querySelectorAll(":scope > h2[id], :scope > h3[id]")];
     const tocLinks = [...document.querySelectorAll("[data-desktop-toc] a, [data-mobile-toc] a")];
     const timelineGroups = [...document.querySelectorAll("[data-timeline-section]")];

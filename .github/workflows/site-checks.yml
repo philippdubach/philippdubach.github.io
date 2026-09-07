@@ -47,3 +47,10 @@ jobs:
         run: |
           npm run check:built
           node scripts/check-migration.mjs . "${{ runner.temp }}/pdd-main-worktree"
+      - name: Install browser checks
+        run: |
+          python3 -m venv "${{ runner.temp }}/browser-venv"
+          "${{ runner.temp }}/browser-venv/bin/pip" install -r scripts/requirements-browser.txt
+          "${{ runner.temp }}/browser-venv/bin/python" -m playwright install --with-deps chromium
+      - name: Check responsive overflow
+        run: '"${{ runner.temp }}/browser-venv/bin/python" scripts/check-overflow.py --output-dir "${{ runner.temp }}/overflow-report"'

@@ -22,6 +22,7 @@
             padding: 2rem;
             max-width: 800px;
             margin: 0 auto;
+            overflow-wrap: anywhere;
           }
           .feed-header {
             margin-bottom: 2rem;
@@ -118,6 +119,46 @@
             color: #595959;
             line-height: 1.5;
           }
+          /* Feed entries contain full article HTML, but do not load the site
+             stylesheet. Constrain media here as well as in the main site. */
+          img, video, picture, figure {
+            max-width: 100%;
+          }
+          img, video {
+            display: block;
+            height: auto;
+          }
+          .img-trigger, .img-lightbox {
+            display: block;
+            width: 100%;
+          }
+          .img-trigger {
+            padding: 0;
+            border: 0;
+            background: transparent;
+          }
+          .img-trigger img {
+            width: 100%;
+          }
+          pre, .table-scroll {
+            max-width: 100%;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            margin: 1rem 0;
+          }
+          pre {
+            padding: 0.75rem;
+            background: #f8f9fa;
+            overflow-wrap: normal;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          th, td {
+            padding: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+          }
           @media (max-width: 600px) {
             body {
               padding: 1rem;
@@ -152,7 +193,7 @@
                   <a href="{link}"><xsl:value-of select="title"/></a>
                 </h3>
                 <p class="item-date"><xsl:value-of select="substring(pubDate, 6, 11)"/></p>
-                <p class="item-description"><xsl:value-of select="description" disable-output-escaping="yes"/></p>
+                <div class="item-description"><xsl:value-of select="description" disable-output-escaping="yes"/></div>
               </li>
             </xsl:for-each>
           </ul>

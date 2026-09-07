@@ -88,6 +88,13 @@ normal timer runs retain the established 7-daily/4-weekly/12-monthly policy.
 Never migrate the repository format as part of an ordinary binary update;
 preserve old-version read compatibility.
 
+Daily and weekly performance digests also use
+`/usr/local/bin/restic --cache-dir /var/cache/restic` explicitly. Their systemd
+environment does not supply `HOME` or `XDG_CACHE_HOME`. A failed snapshot listing
+must produce a warning and leave the report with a nonzero exit status, even
+if later metric sections succeed. Both reporting paths were repaired and tested
+under an empty environment on 2026-09-07; the backup/check jobs were unaffected.
+
 The 2026-09-05 check read every pack, restored and verified the complete latest
 nightly snapshot, passed SQLite integrity checks and full Git checks for all
 82 repositories, and replayed the PostgreSQL dump in an isolated socket-only
