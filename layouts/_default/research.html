@@ -20,7 +20,15 @@
                 <p class="research-authors">{{ delimit .authors ", " }}{{ if .draft }} · Working paper{{ end }}</p>
                 <p>{{ .summary }}</p>
                 <p class="research-links">
-                  {{ with .doi }}<a href="https://doi.org/{{ . }}" rel="external noopener">DOI</a>{{ end }}
+                  {{ with .doi }}
+                    {{ $label := "Read paper" }}
+                    {{ if hasPrefix (lower .) "10.48550/arxiv." }}
+                      {{ $label = "Read on arXiv" }}
+                    {{ else if hasPrefix (lower .) "10.2139/ssrn." }}
+                      {{ $label = "Read on SSRN" }}
+                    {{ end }}
+                    <a href="https://doi.org/{{ . }}" rel="external noopener">{{ $label }}</a>
+                  {{ end }}
                   {{ with .commentary }}<a href="{{ . }}">Commentary</a>{{ end }}
                   {{ with .code }}<a href="{{ . }}" rel="external noopener">Code</a>{{ end }}
                   {{ with .data }}<a href="{{ . }}" rel="external noopener">Data</a>{{ end }}

@@ -9,6 +9,8 @@ const expectedNavigation = ["/", "/writing/", "/projects/", "/research/", "https
 const imagePresentation = JSON.parse(await readFile(new URL("../data/image-presentation.json", import.meta.url), "utf8"));
 const imageDimensions = JSON.parse(await readFile(new URL("../data/image-dimensions.json", import.meta.url), "utf8"));
 const seenUnframedSources = new Set();
+const researchData = await readFile(new URL("../data/research.yaml", import.meta.url), "utf8");
+const researchDois = [...researchData.matchAll(/^\s+doi:\s*"([^"]+)"\s*$/gm)].map((match) => match[1]);
 for (const [source, presentation] of Object.entries(imagePresentation)) {
   record(presentation?.frame === "none" && typeof presentation.reason === "string" && presentation.reason.trim().length > 0,
     `${source}: image presentation needs an explicit frame:none and review reason`);
@@ -140,6 +142,24 @@ async function inspectPage(path) {
       JSON.stringify(profileLabels) === JSON.stringify(["arXiv", "Google Scholar", "ResearchGate", "SSRN"]),
       `${label}: research profile labels have incorrect brand capitalization: ${JSON.stringify(profileLabels)}`,
     );
+    const publicationLinks = [...markup.matchAll(/<p\b[^>]*\bresearch-links\b[^>]*>([\s\S]*?)<\/p>/gi)]
+      .flatMap((block) => [...block[1].matchAll(/<a\b([^>]*)>([^<]+)<\/a>/gi)])
+      .map((link) => ({ href: values(`<a ${link[1]}>`, "href")[0], label: link[2].trim() }));
+    const doiLinks = publicationLinks.filter((link) => link.href?.startsWith("https://doi.org/"));
+    record(doiLinks.length === researchDois.length, `${label}: every published DOI must retain its paper link`);
+    for (const doi of researchDois) {
+      const platformLabel = doi.toLowerCase().startsWith("10.48550/arxiv.") ? "Read on arXiv"
+        : doi.toLowerCase().startsWith("10.2139/ssrn.") ? "Read on SSRN" : "Read paper";
+      const link = doiLinks.find((link) => link.href === `https://doi.org/${doi}`);
+      record(link?.label === platformLabel, `${label}: ${doi} must keep its URL and use the label ${platformLabel}`);
+    }
+    for (const [field, linkLabel] of [["commentary", "Commentary"], ["code", "Code"], ["data", "Data"]]) {
+      const sources = [...researchData.matchAll(new RegExp(`^\\s+${field}:\\s*"([^"]+)"\\s*$`, "gm"))];
+      for (const source of sources) {
+        record(publicationLinks.some((link) => link.href === source[1] && link.label === linkLabel),
+          `${label}: ${linkLabel} link changed for ${source[1]}`);
+      }
+    }
   }
 
   if (label === "/newsletter-archive/") {
