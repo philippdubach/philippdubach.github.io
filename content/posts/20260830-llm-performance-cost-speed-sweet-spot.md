@@ -1,5 +1,5 @@
 +++
-title = "I Found the Performance–Cost–Speed Sweet Spot With LLMs"
+title = "Finding the Performance–Cost–Speed Sweet Spot With LLMs"
 cta_pitch = "I write every few weeks about AI systems, their economics, and what actually works in practice. Get the next one."
 seoTitle = "GPT-5.6 Sol Reasoning Effort: Why High Became My Default"
 slug = "llm-performance-cost-speed-sweet-spot"
