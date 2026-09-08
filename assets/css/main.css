@@ -390,7 +390,7 @@ strong {
 }
 
 .home-content {
-  padding-top: clamp(4.5rem, 18vw, 8.5rem);
+  padding-top: 2rem;
 }
 
 .home-content h1 {

@@ -186,6 +186,12 @@ const tabletCss = css.slice(tabletStart, tabletFinePointerStart);
 const tabletFinePointerCss = css.slice(tabletFinePointerStart, wideStart);
 const wideCss = css.slice(wideStart, finePointerStart);
 const finePointerCss = css.slice(finePointerStart, timelineStart);
+const mobileHomeTop = css.slice(0, tabletStart).match(/\.home-content\s*\{[^}]*padding-top:\s*([^;]+);/)?.[1];
+const tabletHomeTop = tabletCss.match(/\.home-content\s*\{[^}]*padding-top:\s*([^;]+);/)?.[1];
+const wideHomeTop = wideCss.match(/\.page-home \.home-content\s*\{[^}]*padding-top:\s*([^;]+);/)?.[1];
+if (mobileHomeTop !== "2rem" || tabletHomeTop !== "3.5rem" || wideHomeTop !== "0") {
+  throw new Error("The mobile home heading needs a compact 2rem top gap without changing tablet or desktop spacing.");
+}
 const railToolsCss = declarations(tabletCss, ".rail-tools");
 const tabletNavigationCss = declarations(tabletCss, ".site-navigation");
 const tabletNavigationLinkCss = declarations(tabletCss, ".site-navigation a");
