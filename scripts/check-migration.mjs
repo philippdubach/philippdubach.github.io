@@ -149,12 +149,25 @@ function reviewedSource(source, filename) {
   return expected;
 }
 
+// Metadata corrections are exact reviewed transformations, never body exemptions.
+const seoRepairs = JSON.parse(await readFile(join(projectRoot, "scripts", "seo-metadata-repairs.json"), "utf8"));
+function reviewedMetadata(source, filename) {
+  const repair = seoRepairs.posts[filename];
+  if (!repair) return source;
+  let expected = source;
+  for (const replacement of repair.replacements) {
+    record(expected.includes(replacement.old), `${filename}: SEO repair source missing`);
+    expected = expected.replace(replacement.old, replacement.new);
+  }
+  return expected.replace(/\n*$/, "\n".repeat(repair.terminalNewlines));
+}
+
 for (const filename of sourcePosts) {
   const contentPath = `content/posts/${filename}`;
   const sourceMarkdown = await readFile(join(sourcePostDirectory, filename), "utf8");
   const destinationMarkdown = await readFile(join(destinationPostDirectory, filename), "utf8");
   record(
-    reviewedSource(sourceMarkdown, filename) === destinationMarkdown || intentionalPostEdits.has(filename),
+    reviewedMetadata(reviewedSource(sourceMarkdown, filename), filename) === destinationMarkdown || intentionalPostEdits.has(filename),
     `${filename}: imported Markdown differs from the source`,
   );
   const sourceURL = sourceRoutes.get(contentPath);

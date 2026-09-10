@@ -2,8 +2,10 @@
 title = "My First 'Optimal' Portfolio"
 seoTitle = "Python Portfolio Optimization: From Theory to Publication"
 date = 2024-03-15
+lastmod = 2026-05-17T20:37:12+02:00
 images = ["https://static.philippdubach.com/ograph/ograph-portfolio.jpg"]
 description = "How I built Python portfolio optimization tools, tripled the Sharpe ratio from 0.65 to 1.68, and published the results as an academic paper on MPT."
+seoDescription = "A Python portfolio optimization project: efficient frontiers, risk-aversion settings, and out-of-sample tests of risk-adjusted returns and expected shortfall."
 doi = "10.2139/ssrn.5915004"
 keywords = ["Python portfolio optimization", "efficient frontier", "Modern Portfolio Theory", "Sharpe ratio", "out-of-sample testing"]
 categories = ["Investing"]

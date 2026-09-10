@@ -1,9 +1,11 @@
 +++
 title = "The Tech behind this Site"
-seoTitle = "Hugo Blog Tech Stack: GitHub Pages, Cloudflare R2 & Workers"
+seoTitle = "Hugo Blog Tech Stack: Hetzner, Cloudflare R2 & Workers"
 date = 2024-01-15
+lastmod = 2026-05-31T22:33:31+02:00
 images = ["https://static.philippdubach.com/ograph/ograph-projects.jpg"]
 description = "A Hugo blog tech stack with Cloudflare R2 image hosting, responsive WebP shortcodes, Workers AI social automation, and GitHub Pages CI/CD deployment."
+seoDescription = "How this Hugo blog runs on Hetzner with Cloudflare R2 and Workers, self-hosted GoatCounter analytics, Listmonk newsletters, and Forgejo deployment."
 keywords = ["Hugo blog tech stack", "Hugo GitHub Pages Cloudflare", "Hugo responsive images shortcode", "Hugo Cloudflare R2 images", "Hugo site automation Cloudflare Workers"]
 categories = ["Tech"]
 tags = ["Project"]

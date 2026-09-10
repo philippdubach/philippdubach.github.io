@@ -443,7 +443,7 @@
 {{- if eq .Params.type "Essay" }}{{ $articleType = "Article" }}{{ end -}}
 {{- if eq .Params.type "Review" }}{{ $articleType = "Review" }}{{ end -}}
 
-{{- $desc := .Description -}}
+{{- $desc := .Params.seoDescription | default .Description | plainify -}}
 {{- if not $desc }}{{ $desc = .Summary | plainify | truncate 160 }}{{ end -}}
 
 {{- /* Keep the article graph compact: canonical identity, dates, author,

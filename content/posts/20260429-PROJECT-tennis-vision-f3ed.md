@@ -6,6 +6,7 @@ publishDate = 2026-04-29T03:00:00Z
 lastmod = 2026-04-29
 images = ["https://static.philippdubach.com/ograph/ograph-tennis-vision3.jpg"]
 description = "F3ED, the NeurIPS 2024 tennis shot detector, mislabels 73% of single-shot serve unforced errors. A 23-line scoreboard OCR reconciler fixes them."
+seoDescription = "An F3ED tennis audit across 44 rallies in two matches: scoreboard OCR corrects eight mislabeled single-shot serves, with larger-sample testing still needed."
 keywords = ["tennis shot detection", "tennis broadcast computer vision", "tennis match analytics open source", "fine-grained tennis event detection", "automatic ace detection tennis", "F3ED tennis model audit", "tennis scoreboard OCR pipeline", "score-grammar reconciler", "TenniSet V006 benchmark", "ATP Challenger video analysis", "shot outcome classification", "EasyOCR tennis scoreboard", "YOLOv8x tennis player detection", "CatBoost bounce detection filter"]
 categories = ["AI"]
 type = "Project"

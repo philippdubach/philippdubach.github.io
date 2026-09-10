@@ -1,11 +1,12 @@
 +++
 title = "Nike's Crisis and the Economics of Brand Decay"
 cta_pitch = "I write one of these every few weeks on brand economics and competitive strategy. Get the next one."
-seoTitle = "Nike's Crisis: The Economics Behind a $28B Brand Collapse"
+seoTitle = "Nike's Crisis: Brand Decline, DTC Strategy and Competition"
 date = 2025-12-02
 lastmod = 2026-03-15
 images = ["https://static.philippdubach.com/ograph/ograph-nike-crisis.jpg"]
 description = "Nike lost $28B by weakening product development, athlete partnerships, and marketing simultaneously. Data-driven analysis of how complementary assets collapse."
+seoDescription = "An analysis of Nike's brand decline: the direct-to-consumer pivot, product development, athlete partnerships, and competition from On and Hoka."
 keywords = ["Nike crisis 2025", "why is Nike struggling", "Nike brand decline analysis", "Nike direct-to-consumer strategy failure", "Nike vs On Hoka competition", "John Donahoe Nike strategy", "Nike stock decline", "Nike turnaround strategy", "complementary assets competitive advantage", "athletic footwear market share", "Nike marketing strategy failure", "Nike supply chain risk", "Nike revenue drop 2025", "Nike innovation decline", "brand erosion economics", "Nike athlete endorsement losses", "Nike Elliott Hill turnaround", "disruption economics", "Nike wholesale strategy", "Nike tariff impact 2025"]
 categories = ["Investing"]
 type = "Analysis"

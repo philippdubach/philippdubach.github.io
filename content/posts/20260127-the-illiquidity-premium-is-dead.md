@@ -2,9 +2,11 @@
 title = "Is Private Equity Just Beta With a Lockup?"
 seoTitle = "Private Equity Returns 2026: Is the Illiquidity Premium Dead?"
 date = 2026-01-29
+lastmod = 2026-05-14T23:52:49+02:00
 publishDate = 2026-01-29T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-illiquidity-premium.jpg"]
 description = "AQR's 2026 data shows private equity returning 4.2% versus 3.9% for public equities. The 30bp illiquidity premium barely justifies years of lockup."
+seoDescription = "AQR's 2026 assumptions put expected real U.S. buyout returns at 4.2% over 5–10 years, versus 3.9% for large-cap equities. Is that enough for the lockup?"
 keywords = ["illiquidity premium", "private equity returns 2026", "AQR capital market assumptions", "PE vs public equity", "venture capital dispersion"]
 categories = ["Quantitative Finance"]
 type = "Commentary"

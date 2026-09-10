@@ -6,6 +6,7 @@ lastmod = 2026-02-22
 publishDate = 2026-02-22T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-prediction-market-insider-trading.jpg"]
 description = "A Google insider made $1.15M on Polymarket in 24 hours. Israeli soldiers bet classified strike timing. Why prediction markets need insider trading regulation."
+seoDescription = "Suspected insider trading on Polymarket, the regulation debate, and how adverse selection could undermine prediction-market liquidity and forecasting."
 keywords = ["Polymarket insider trading", "prediction market regulation", "prediction market insider trading legal", "Kalshi vs Polymarket", "adverse selection prediction markets"]
 categories = ["Investing"]
 type = "Analysis"

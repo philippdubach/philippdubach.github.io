@@ -7,6 +7,7 @@ lastmod = 2026-03-16
 publishDate = 2026-03-16T03:00:00Z
 images = ["https://static.philippdubach.com/ograph/ograph-last-architecture-designed-by-hand.jpg"]
 description = "The transformer's limits are now mathematical proofs, not empirical hunches. Hybrids are in production. AI is searching for its own replacement. Here's what comes after."
+seoDescription = "What comes after transformers? A review of attention scaling limits, hybrid architectures, state space models, and AI-assisted architecture research."
 keywords = ["what comes after transformers", "transformer architecture limits", "AI architecture 2026", "Mamba vs transformer", "hybrid AI architecture", "post-transformer architecture", "AlphaEvolve AI research", "transformer quadratic scaling", "diffusion language models", "mixture of experts MoE", "AI recursive self-improvement", "LLM hallucination mathematical proof", "DeepSeek V3 training cost", "inference compute scaling", "Jamba hybrid architecture", "test-time compute scaling", "state space models vs transformers", "transformer replacement 2026"]
 categories = ["AI", "Tech"]
 type = "Analysis"

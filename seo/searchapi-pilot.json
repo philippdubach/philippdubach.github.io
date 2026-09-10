@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "stage": "pilot",
+  "panel": "baseline-2026-09",
+  "budgetCredits": 100,
+  "engines": {
+    "google": {
+      "maxCost": 1,
+      "confirmed": false,
+      "source": "UNVERIFIED planning placeholder; confirm account-specific maximum cost with SearchAPI before execution. https://www.searchapi.io/docs/google"
+    }
+  },
+  "requests": [
+    { "id": "coding-productivity", "params": { "engine": "google", "q": "AI coding tools developer productivity evidence", "gl": "us", "hl": "en" } },
+    { "id": "coding-review", "params": { "engine": "google", "q": "AI coding code review bottleneck", "gl": "us", "hl": "en" } },
+    { "id": "long-volatility", "params": { "engine": "google", "q": "long volatility premium", "gl": "us", "hl": "en" } },
+    { "id": "long-volatility-strategies", "params": { "engine": "google", "q": "long volatility put options trend following", "gl": "us", "hl": "en" } },
+    { "id": "karpathy-software", "params": { "engine": "google", "q": "Karpathy software 3.0", "gl": "us", "hl": "en" } },
+    { "id": "karpathy-playbook", "params": { "engine": "google", "q": "Karpathy software 3.0 explained", "gl": "us", "hl": "en" } },
+    { "id": "architecture", "params": { "engine": "google", "q": "the last architecture designed by hand", "gl": "us", "hl": "en" } },
+    { "id": "architecture-ai", "params": { "engine": "google", "q": "AI designing neural network architectures", "gl": "us", "hl": "en" } },
+    { "id": "casino-fairness", "params": { "engine": "google", "q": "provably fair casino mathematics", "gl": "us", "hl": "en" } },
+    { "id": "casino-house-edge", "params": { "engine": "google", "q": "provably fair house edge explained", "gl": "us", "hl": "en" } },
+    { "id": "aschenbrenner", "params": { "engine": "google", "q": "Leopold Aschenbrenner predictions track record", "gl": "us", "hl": "en" } },
+    { "id": "aschenbrenner-scorecard", "params": { "engine": "google", "q": "Aschenbrenner situational awareness predictions analysis", "gl": "us", "hl": "en" } },
+    { "id": "nike-crisis", "params": { "engine": "google", "q": "Nike brand decline", "gl": "us", "hl": "en" } },
+    { "id": "nike-strategy", "params": { "engine": "google", "q": "Nike direct to consumer strategy failure", "gl": "us", "hl": "en" } },
+    { "id": "pragma", "params": { "engine": "google", "q": "Revolut PRAGMA foundation model", "gl": "us", "hl": "en" } },
+    { "id": "pragma-banking", "params": { "engine": "google", "q": "PRAGMA banking foundation model analysis", "gl": "us", "hl": "en" } },
+    { "id": "pozsar", "params": { "engine": "google", "q": "Pozsar Bretton Woods III framework", "gl": "us", "hl": "en" } },
+    { "id": "pozsar-money", "params": { "engine": "google", "q": "Bretton Woods III inside outside money", "gl": "us", "hl": "en" } },
+    { "id": "isodde", "params": { "engine": "google", "q": "IsoDDE drug discovery", "gl": "us", "hl": "en" } },
+    { "id": "isodde-validation", "params": { "engine": "google", "q": "Isomorphic Labs drug discovery clinical validation", "gl": "us", "hl": "en" } }
+  ]
+}

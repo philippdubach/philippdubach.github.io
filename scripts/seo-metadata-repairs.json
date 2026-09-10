@@ -1,0 +1,88 @@
+{
+  "description": "Exact reviewed search-only frontmatter changes; no body exemption. September 10 2026.",
+  "posts": {
+    "20240115-PROJECT-blog.md": {
+      "replacements": [
+        {
+          "old": "seoTitle = \"Hugo Blog Tech Stack: GitHub Pages, Cloudflare R2 & Workers\"",
+          "new": "seoTitle = \"Hugo Blog Tech Stack: Hetzner, Cloudflare R2 & Workers\""
+        },
+        {
+          "old": "date = 2024-01-15",
+          "new": "date = 2024-01-15\nlastmod = 2026-05-31T22:33:31+02:00"
+        },
+        {
+          "old": "description = \"A Hugo blog tech stack with Cloudflare R2 image hosting, responsive WebP shortcodes, Workers AI social automation, and GitHub Pages CI/CD deployment.\"",
+          "new": "description = \"A Hugo blog tech stack with Cloudflare R2 image hosting, responsive WebP shortcodes, Workers AI social automation, and GitHub Pages CI/CD deployment.\"\nseoDescription = \"How this Hugo blog runs on Hetzner with Cloudflare R2 and Workers, self-hosted GoatCounter analytics, Listmonk newsletters, and Forgejo deployment.\""
+        }
+      ],
+      "terminalNewlines": 1
+    },
+    "20240315-PROJECT-portfolio-optimization.md": {
+      "replacements": [
+        {
+          "old": "date = 2024-03-15",
+          "new": "date = 2024-03-15\nlastmod = 2026-05-17T20:37:12+02:00"
+        },
+        {
+          "old": "description = \"How I built Python portfolio optimization tools, tripled the Sharpe ratio from 0.65 to 1.68, and published the results as an academic paper on MPT.\"",
+          "new": "description = \"How I built Python portfolio optimization tools, tripled the Sharpe ratio from 0.65 to 1.68, and published the results as an academic paper on MPT.\"\nseoDescription = \"A Python portfolio optimization project: efficient frontiers, risk-aversion settings, and out-of-sample tests of risk-adjusted returns and expected shortfall.\""
+        }
+      ],
+      "terminalNewlines": 1
+    },
+    "20251201-Nike-Crisis.md": {
+      "replacements": [
+        {
+          "old": "seoTitle = \"Nike's Crisis: The Economics Behind a $28B Brand Collapse\"",
+          "new": "seoTitle = \"Nike's Crisis: Brand Decline, DTC Strategy and Competition\""
+        },
+        {
+          "old": "description = \"Nike lost $28B by weakening product development, athlete partnerships, and marketing simultaneously. Data-driven analysis of how complementary assets collapse.\"",
+          "new": "description = \"Nike lost $28B by weakening product development, athlete partnerships, and marketing simultaneously. Data-driven analysis of how complementary assets collapse.\"\nseoDescription = \"An analysis of Nike's brand decline: the direct-to-consumer pivot, product development, athlete partnerships, and competition from On and Hoka.\""
+        }
+      ],
+      "terminalNewlines": 1
+    },
+    "20260127-the-illiquidity-premium-is-dead.md": {
+      "replacements": [
+        {
+          "old": "date = 2026-01-29",
+          "new": "date = 2026-01-29\nlastmod = 2026-05-14T23:52:49+02:00"
+        },
+        {
+          "old": "description = \"AQR's 2026 data shows private equity returning 4.2% versus 3.9% for public equities. The 30bp illiquidity premium barely justifies years of lockup.\"",
+          "new": "description = \"AQR's 2026 data shows private equity returning 4.2% versus 3.9% for public equities. The 30bp illiquidity premium barely justifies years of lockup.\"\nseoDescription = \"AQR's 2026 assumptions put expected real U.S. buyout returns at 4.2% over 5–10 years, versus 3.9% for large-cap equities. Is that enough for the lockup?\""
+        }
+      ],
+      "terminalNewlines": 1
+    },
+    "20260222-prediction-market-insider-trading.md": {
+      "replacements": [
+        {
+          "old": "description = \"A Google insider made $1.15M on Polymarket in 24 hours. Israeli soldiers bet classified strike timing. Why prediction markets need insider trading regulation.\"",
+          "new": "description = \"A Google insider made $1.15M on Polymarket in 24 hours. Israeli soldiers bet classified strike timing. Why prediction markets need insider trading regulation.\"\nseoDescription = \"Suspected insider trading on Polymarket, the regulation debate, and how adverse selection could undermine prediction-market liquidity and forecasting.\""
+        }
+      ],
+      "terminalNewlines": 1
+    },
+    "20260316-last-architecture-designed-by-hand.md": {
+      "replacements": [
+        {
+          "old": "description = \"The transformer's limits are now mathematical proofs, not empirical hunches. Hybrids are in production. AI is searching for its own replacement. Here's what comes after.\"",
+          "new": "description = \"The transformer's limits are now mathematical proofs, not empirical hunches. Hybrids are in production. AI is searching for its own replacement. Here's what comes after.\"\nseoDescription = \"What comes after transformers? A review of attention scaling limits, hybrid architectures, state space models, and AI-assisted architecture research.\""
+        }
+      ],
+      "terminalNewlines": 1
+    },
+    "20260429-PROJECT-tennis-vision-f3ed.md": {
+      "replacements": [
+        {
+          "old": "description = \"F3ED, the NeurIPS 2024 tennis shot detector, mislabels 73% of single-shot serve unforced errors. A 23-line scoreboard OCR reconciler fixes them.\"",
+          "new": "description = \"F3ED, the NeurIPS 2024 tennis shot detector, mislabels 73% of single-shot serve unforced errors. A 23-line scoreboard OCR reconciler fixes them.\"\nseoDescription = \"An F3ED tennis audit across 44 rallies in two matches: scoreboard OCR corrects eight mislabeled single-shot serves, with larger-sample testing still needed.\""
+        }
+      ],
+      "terminalNewlines": 1
+    }
+  }
+}
