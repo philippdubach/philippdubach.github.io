@@ -7,8 +7,8 @@ This is the non-secret runbook for `philippdubach.com`. The service map and depl
 | Component | Role | Verified version / state |
 |---|---|---|
 | Hetzner, Debian 13 | Primary production host | Static site and self-hosted services |
-| Forgejo | Source of truth and Git endpoint | 15.0.7 LTS, loopback behind Caddy |
-| Hugo Extended | Production site builder | 0.165.0 |
+| Forgejo | Source of truth and Git endpoint | 15.0.8 LTS, loopback behind Caddy |
+| Hugo Extended | Production site builder | 0.166.0 |
 | Caddy | TLS and reverse proxy | 2.11.4 |
 | PostgreSQL | Forgejo and Listmonk data | 17.11 |
 | Listmonk | Newsletter | 6.2.0 |
@@ -28,8 +28,11 @@ loopback health checks. Client-supplied forwarding headers cannot bypass this
 gate. Keep the IPv4/IPv6 list in the `cloudflare_origin` Caddy snippet aligned
 with [Cloudflare's published ranges](https://www.cloudflare.com/ips/); recheck
 on infrastructure maintenance. This is a network allowlist, not per-zone
-authenticated origin pulls. The `new` and `www` origins only redirect to the
-canonical site, even when contacted directly. Mail, analytics and Forgejo
+authenticated origin pulls. The `www` origin redirects to the canonical site.
+`new.philippdubach.com` redirects at the Cloudflare Worker only; its obsolete
+Caddy site block was removed on 2026-09-15 to stop failing ACME renewals.
+The apex redirects `/newsletter` and `/newsletter/` to `/subscribe/` permanently.
+Mail, analytics and Forgejo
 retain their existing direct access. Back up, validate and gracefully reload
 Caddy for any changes; test both uncached public content and a direct-origin
 403 afterward.
@@ -121,6 +124,31 @@ Before a Forgejo, PostgreSQL, or host upgrade:
 6. Upgrade, run Forgejo health/doctor checks and a disposable Hugo build, then reboot only after pre-reboot checks pass.
 
 The 2026-08-16 drill replayed a complete dump in an isolated cluster and restored a representative repository successfully. It validates maintenance rollback, not full-host disaster recovery. A full drill must also exercise every repository/attachment, application login, clone/push, newsletter delivery, and DNS failover.
+
+## 2026-09-16 compatibility maintenance
+
+Forgejo 15.0.8 and Hugo Extended 0.166.0 were verified against their official
+SHA-256 checksum files before installation. The offsite PostgreSQL dump was
+replayed in a socket-only PostgreSQL 17 cluster; the restored Forgejo schema
+(version 305) passed the new binary's database-version and consistency checks.
+A restored representative repository passed `git fsck --full`. The isolated
+cluster was stopped after testing. Forgejo queues were flushed, then a fresh
+database dump and offsite backup completed while Forgejo was stopped, with
+snapshot pruning disabled for that maintenance run only.
+
+Rollback binaries and checksums are retained under
+`/var/lib/pdd-upgrade-20260916/`. Forgejo stayed on its LTS release line; no
+database schema migration was required. Its post-upgrade health and database
+checks passed.
+
+Hugo 0.166.0 changes slashes in automatically inferred slugs. Four articles
+now explicitly pin their existing slash-containing slugs; the migration gate
+records those historical routes in `scripts/hugo-route-pins.json`. One article's
+previous Git-derived modification timestamp is pinned to prevent a maintenance
+commit appearing as a content update. All 301 generated paths remain unchanged.
+Aside from generator metadata, the comparison showed only the upstream reading
+time correction for one article (two to three minutes), including its feed/API
+metadata. Article text is unchanged.
 
 ## Worker toolchain
 

@@ -162,12 +162,32 @@ function reviewedMetadata(source, filename) {
   return expected.replace(/\n*$/, "\n".repeat(repair.terminalNewlines));
 }
 
+// Hugo 0.166 normalizes slashes in inferred slugs. Preserve legacy routes
+// through exact frontmatter additions, without exempting article contents.
+const routePins = JSON.parse(await readFile(join(projectRoot, "scripts", "hugo-route-pins.json"), "utf8"));
+for (const [filename, pin] of Object.entries(routePins)) {
+  record(sourcePosts.includes(filename), `Route pin references unknown baseline post: ${filename}`);
+  const key = `content/posts/${filename}`;
+  // The frozen source lacks explicit slugs: do not reinterpret its historical
+  // URLs with the newer generator's changed default slug algorithm.
+  const historical = new URL(sourceRoutes.get(key));
+  historical.pathname = `/posts/${pin.slug}/`;
+  sourceRoutes.set(key, historical.href);
+}
+function reviewedRoute(source, filename) {
+  const pin = routePins[filename];
+  if (!pin) return source;
+  let expected = source.replace(/^(title\s*=.*)$/m, `$1\nslug = "${pin.slug}"`);
+  if (pin.lastmod) expected = expected.replace(/^(date\s*=.*)$/m, `$1\nlastmod = "${pin.lastmod}"`);
+  return expected;
+}
+
 for (const filename of sourcePosts) {
   const contentPath = `content/posts/${filename}`;
   const sourceMarkdown = await readFile(join(sourcePostDirectory, filename), "utf8");
   const destinationMarkdown = await readFile(join(destinationPostDirectory, filename), "utf8");
   record(
-    reviewedMetadata(reviewedSource(sourceMarkdown, filename), filename) === destinationMarkdown || intentionalPostEdits.has(filename),
+    reviewedRoute(reviewedMetadata(reviewedSource(sourceMarkdown, filename), filename), filename) === destinationMarkdown || intentionalPostEdits.has(filename),
     `${filename}: imported Markdown differs from the source`,
   );
   const sourceURL = sourceRoutes.get(contentPath);

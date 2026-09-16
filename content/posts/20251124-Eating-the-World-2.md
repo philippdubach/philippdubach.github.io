@@ -1,7 +1,9 @@
 +++
 title = "Is AI Really Eating the World? AGI, Networks, Value [2/2]"
+slug = "is-ai-really-eating-the-world-agi-networks-value-2/2"
 seoTitle = "AI Value Chain: Why Models Commoditize But Applications Win"
 date = 2025-11-24
+lastmod = "2026-05-04T14:02:44+02:00"
 images = ["https://static.philippdubach.com/ograph/ograph-eatingtheworld2.jpg"]
 description = "AGI predictions miss the point. Multiple competing models means price war. Value flows to applications, customer relationships, and vertical integrators."
 keywords = ["AI value chain", "AGI timeline predictions", "AI model commoditization", "AI competitive advantage", "LLM data moats"]

@@ -1,5 +1,6 @@
 +++
 title = "Is AI Really Eating the World? [1/2]"
+slug = "is-ai-really-eating-the-world-1/2"
 seoTitle = "AI Model Commoditization: $400B in Capex, 97% Price Drop"
 date = 2025-11-23
 lastmod = 2026-03-15

@@ -16,7 +16,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.165.0
+      HUGO_VERSION: 0.166.0
       # Pinned pre-redesign commit that check-migration compares against.
       # Update only when the migration baseline deliberately moves.
       MIGRATION_BASELINE: 1f4c38dc0316a87079ec492f9458b2f0ad4ffd97
